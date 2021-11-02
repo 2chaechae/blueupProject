@@ -17,13 +17,13 @@ $(document).ready(function(){
 		$("#mtop > p.line, #mtop > p.finish").css("opacity","0");
 	});
 	$(".bg").mouseover(function(){
-		$(this).stop().show();
-		$(".sub").stop().show();
+			$(this).stop().show();
+			$(".sub").stop().show();
 	}).mouseout(function(){
 		$(this).stop().slideUp();
 		$(".sub").stop().hide();
 	});
-  
+  /*
 	//주메뉴 영어 -> 한글
 	$("#mtop > li ").mouseover(function(){
 		var over1 = $("> a",this).attr("data-atitle");
@@ -45,7 +45,7 @@ $(document).ready(function(){
 	}).mouseout(function(){
 		$(" > img",this).attr("src","images/top/search.png");
 	});
-	
+	*/
 	
 
 	

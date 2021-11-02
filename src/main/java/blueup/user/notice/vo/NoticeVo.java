@@ -1,7 +1,8 @@
-package blueup.user.main.vo;
+package blueup.user.notice.vo;
 
 import java.util.Date;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,7 +10,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
 public class NoticeVo {
 	int notice_no; //공지사항 번호
 	String notice_type; //공지사항 종류

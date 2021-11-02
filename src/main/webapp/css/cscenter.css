@@ -154,7 +154,7 @@ h4{
 	float:right;
 	width:900px;
 	height:100%;
-	margin-bottom:100px;
+	margin-bottom:50px;
 }
 
 /*/////고객서비스/////*/
@@ -262,23 +262,7 @@ h4{
 	color:#006a67;
 }
 
-/*/////자주찾는 질문//////*/
-#search_wrap{
-	clear:both;
-	margin-top:100px;
-	width:900px;
-	height:700px;
-}
-#search_wrap > div:first-child {
-	border-bottom:0;
-}
-/*검색창 전체*/
-#sear_wrap{
-	border:1px solid #cccccc;
-	width:900px;
-	height:100px;
-	position:relative;
-}
+
 /*검색창 폼*/
 #sear_form{
 	position:absolute;
@@ -323,8 +307,8 @@ h4{
 .top5_wrap{
 	clear:both;
 	width:900px;
-	margin-top:150px;
-	margin-bottom:200px;
+	margin-top:50px;
+	margin-bottom:50px;
 }
 
 /*자주찾는질문 Top5제목*/
