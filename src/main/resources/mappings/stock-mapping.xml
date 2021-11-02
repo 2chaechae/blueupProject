@@ -6,7 +6,7 @@
 
 <!-- 재고 추가(추가할때만 사용할 것!!! 재고 증감은 밑에 쿼리 있으) -->
 <!-- 다른 옵션의 상품일 경우 다른 재고로 추가할 것!!! -->
-	<insert id="insertStock" parameterType="stock">
+	<insert id="insertStock" parameterType="stockvo">
 		INSERT INTO STOCK (
 			PRODUCT_NO, STOCK_QUANTITY, CLOTHES_SIZE, COLOR, UNIT_PRICE, PRODUCT_NAME,
 			CATEGORY_NAME, DETAILED_CATEGORY_NAME
@@ -23,21 +23,21 @@
 	</insert>
 	
 	<!--재고 증가를 위한 쿼리  -->
-	<update id="addStock" parameterType="stock">
+	<update id="addStock" parameterType="stockvo">
 		UPDATE STOCK
 		SET STOCK_QUANTITY = (select max(STOCK_QUANTITY)+#{addOrDeduct} FROM STOCK) 
 		WHERE STOCK_NO = #{stock_no};
 	</update>
 	
 	<!--재고 차감을 위한 쿼리  -->
-	<update id="deductStock" parameterType="stock">
+	<update id="deductStock" parameterType="stockvo">
 		UPDATE STOCK
 		SET STOCK_QUANTITY = (select max(STOCK_QUANTITY)-#{addOrDeduct} FROM STOCK) 
 		WHERE STOCK_NO = #{stock_no};
 	</update>
 
 <!-- 재고 삭제를 위한 쿼리 -->
-	<delete id="deleteStock" parameterType="stock">
+	<delete id="deleteStock" parameterType="stockvo">
 		DELETE FROM STOCK WHERE STOCK_NO = #{stock_no}
 	</delete>	
 	
@@ -52,12 +52,12 @@
 	</select>
 	
 	<!-- 카테고리로 검색 -->
-	<select id="getStockList" parameterType="stockvo" resultType="stockvo">
+	<select id="getStockListbyCategory" parameterType="stockvo" resultType="stockvo">
 		SELECT * FROM STOCK WHERE CATEGORY_NAME LIKE '%'||#{category_name}||'%'
 	</select>
 	
 	<!-- 카테고리 및 세부 카테고리로 검색 -->
-	<select id="getStockList" parameterType="stockvo" resultType="stockvo">
+	<select id="getStockListByDetailedCategory" parameterType="stockvo" resultType="stockvo">
 		SELECT * FROM STOCK 
 		WHERE CATEGORY_NAME LIKE '%'||#{category_name}||'%' 
 		AND DETAILED_CATEGORY_NAME LIKE '%'||#{detailed_category_name}||'%'
