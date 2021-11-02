@@ -102,7 +102,7 @@ h3{
 	height:715px;
 }
 .items > h3{ /*아이템라인*/
-	width:1630px;
+	width:1415px;
 	padding-bottom:30px;
 	border-bottom:2px solid #333333;
 	margin-bottom:63px;
@@ -117,7 +117,7 @@ h3{
 .item{
 	width:300px; height:400px; float:left;
 	text-align:center;
-	margin-right:126px;
+	margin-right:59px;
 	position:relative;
 	box-sizing:border-box;
 	overflow:hidden;
