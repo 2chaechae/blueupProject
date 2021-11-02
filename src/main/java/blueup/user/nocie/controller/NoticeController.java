@@ -21,4 +21,29 @@ public class NoticeController {
 		mav.setViewName("redirect:cscenter.jsp");
 		return mav;
 	}
+	
+	@RequestMapping("/insertNotice.do")
+	public ModelAndView insertNotice(NoticeVo vo) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("NoticeVo", noticeserviceimpl.insertNotice(vo));
+		mav.setViewName("redirect:cscenter.jsp");
+		return mav;
+	}
+	
+	@RequestMapping("/deleteNotice.do")
+	public ModelAndView deleteNotice(NoticeVo vo) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("NoticeVo", noticeserviceimpl.deleteNotice(vo));
+		mav.setViewName("redirect:cscenter.jsp");
+		return mav;
+	}
+	
+
+	@RequestMapping("/updateNotice.do")
+	public ModelAndView updateNotice(NoticeVo vo) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("NoticeVo", noticeserviceimpl.updateNotice(vo));
+		mav.setViewName("redirect:cscenter.jsp");
+		return mav;
+	}
 }
