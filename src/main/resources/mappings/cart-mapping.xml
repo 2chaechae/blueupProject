@@ -17,7 +17,7 @@
 			#{product_name},
 			#{quantity},
 			#{total_price}
-		 )
+		)
 	</insert>
 	
 	<delete id="deleteAllCart">
