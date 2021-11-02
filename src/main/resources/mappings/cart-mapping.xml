@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cartDao">
+
+	<insert id="addCart" parameterType="cartvo">
+		INSERT INTO CART(
+			USER_NO,
+			PRODUCT_NO,
+			PRODUCT_NAME,
+			QUANTITY,
+			TOTAL_PRICE
+		) VALUES(
+			#{user_no},
+			#{product_no},
+			#{product_name},
+			#{quantity},
+			#{total_price}
+		)
+	</insert>
+	
+	<delete id="deleteAllCart">
+		DELETE FROM CART
+	</delete>
+	
+	<delete id="deleteCart" parameterType="cartvo">
+		DELETE FROM CART WHERE CART_NO = #{cart_no}
+	</delete>
+	
+	
+	<select id="cartList" resultType="cartvo">
+		SELECT * FROM CART
+	</select>
+
+</mapper>

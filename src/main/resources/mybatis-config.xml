@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties" />
+	<typeAliases>
+		<typeAlias alias="cate" type="blueup.user.main.cateVO" />
+		<typeAlias type="blueup.admin.main.vo.ProductVo" alias="productvo"/>
+		<typeAlias type="blueup.admin.main.vo.ProductVo" alias="stockvo"/>
+		<typeAlias type="blueup.user.main.vo.CartVo" alias="cartvo"/>
+		<typeAlias alias="termsVO" type="blueup.user.terms.vo.Terms_and_conditionVo" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/product-mapping.xml" />
+		<mapper resource="mappings/stock-mapping.xml" />
+		<mapper resource="mappings/cart-mapping.xml" />
+		<mapper resource="mapper/terms-mapping.xml" />
+	</mappers>
+</configuration>

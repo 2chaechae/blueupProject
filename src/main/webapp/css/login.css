@@ -1,0 +1,204 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap');
+
+@import url("top.css");/*상단영역*/
+@import url("bottom.css");/*하단영역*/
+
+/*reset*/
+body{
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif; 
+	color:#333333;
+}
+
+
+h2{
+	font:bold 60px/1.5em "Nanum Myeongjo", serif;
+}
+
+
+/*////페이지////*/
+/*페이지 전체*/
+#page_wrap{
+	height:45px;
+	width:100%;
+	margin:0 auto;
+	border-bottom:1px solid #cccccc;
+	color:#aaaaaa;
+	min-width:1920px;
+}
+#page{
+	width:1200px;
+	height:45px;
+	margin:0 auto;
+}
+
+/*페이지위치 오른쪽*/
+#r_page{
+	float:right;
+	font-size:14px;
+	height:45px;
+	line-height:45px;
+}
+#r_page > li{
+	display:inline-block;
+	margin-right:7px;
+}
+#r_page > li:last-child{
+	color:#111111;
+}
+
+
+/*////////로그인전체/////////*/
+#con_wrap{
+	width:1920px;
+	height:1048px;
+	margin:0 auto;
+	background:rgb(255, 255, 255);
+	padding-top:94px;
+	min-width:1920px;
+	box-sizing:border-box;
+}
+
+/*//////로그인내용///////*/
+#login_wrap{
+	width:600px;
+	height:860px;
+	border-radius:40px;
+	background:rgb(255, 255, 255);
+	margin:0px auto 80px auto;
+	padding-top:70px;
+	box-sizing:border-box;
+}
+#login_tit{
+	width:600px;
+	text-align:center;
+}
+#login_tit > h2{
+	margin-bottom:20px;
+}
+#login_tit > p{
+	color:#707070;
+
+}
+/*/////form/////*/
+#login_wrap > form{
+	padding-top:50px;
+	width:400px;
+	margin:0 auto;
+}
+#login_l{
+}
+/*아이디,비밀번호 입력*/
+.u_id input, .u_pwd input{
+	border:1px solid rgba(153,153,153,0.5);
+	width:394px; height:45px;
+	border-radius:2px;
+	text-indent:1em;
+	margin-bottom:5px;
+}
+.u_pwd input{
+	margin-bottom:10px;
+}
+/*아이디 저장*/
+.login_chk{
+	margin-left:-4px;
+	height:20px;
+	margin-bottom:20px;
+}
+.login_chk input{float:left;}
+.login_chk label{
+	float:left;
+	margin-left:3px;
+	line-height:20px;
+	font-size:13px;
+	color:#707070;
+}
+
+/*로그인*/
+.login input{
+	width:400px;
+	height:45px;
+	border:none;
+	background-color:rgb(0, 0, 168);
+	color:#ffffff;
+	font-size:15px;
+	cursor:pointer;
+	border-radius:25px;
+	transition:all 0.4s;
+}
+.login input:hover{background-color:rgb(55, 28, 213);}
+/*아이디/비밀번호 찾기, 회원가입*/
+.login_list{
+	margin-top:5px;
+	font-size:13px;
+}
+.login_list > li:first-child{
+	float:left;
+}
+.login_list > li:last-child{
+	float:right;
+}
+.login_list > li >a{
+	color:#707070;
+}
+.login_list > li >a:hover{
+	color:#111111;
+	font-weight:bold;
+}
+/*sns 간편로그인*/
+.login_r{
+	clear:both;
+	margin-top:80px;
+}
+.login_r > h3{
+	width:400px;
+	font-size:20px;
+	text-align:center;
+	font-size:20px;
+	margin-bottom:20px;
+}
+.btn_wrap > li{
+	width:400px;
+	height:45px;
+	margin-bottom:10px;
+	border-radius:5px;
+}
+.btn_wrap li:nth-child(1){
+	background:#fad400 url(../images/login/sns1.png) no-repeat left center;}
+.btn_wrap li:nth-child(1):hover{
+	background-color:#f9e000;
+}
+.btn_wrap li:nth-child(2){
+	background:#00bd37 url(../images/login/sns2.png) no-repeat left center;}
+.btn_wrap li:nth-child(2):hover{
+	background-color:#00c63b;
+}
+.btn_wrap > li >input{
+	width:400px;
+	height:45px;
+	border:none;
+	background:none;
+	font-size:14px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.btn_wrap > li:first-child > input{
+	color:#333333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

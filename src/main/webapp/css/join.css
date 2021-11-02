@@ -1,0 +1,397 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap');
+
+@import url("top.css");/*상단영역*/
+@import url("bottom.css");/*하단영역*/
+
+/*reset*/
+body{
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif; 
+	color:#333333;
+}
+h2{
+	font:normal 50px/1.5em "Noto Sans KR", sans-serif;
+	letter-spacing:-5px;
+}
+
+
+/*////페이지////*/
+/*페이지 전체*/
+#page_wrap{
+	height:45px;
+	width:100%;
+	margin:0 auto;
+	border-bottom:1px solid #cccccc;
+	color:#aaaaaa;
+	min-width:1920px;
+}
+#page{
+	width:1200px;
+	height:45px;
+	margin:0 auto;
+}
+
+/*페이지위치 오른쪽*/
+#r_page{
+	float:right;
+	font-size:14px;
+	height:45px;
+	line-height:45px;
+}
+#r_page > li{
+	display:inline-block;
+	margin-right:7px;
+}
+#r_page > li:last-child{
+	color:#111111;
+}
+
+/*////////회원가입전체배경/////////*/
+#con_wrap{
+	width:1920px;
+	height:1000px;
+	margin:auto auto;
+	background:white;
+	padding-top:94px;
+	min-width:1920px;
+	box-sizing:border-box;
+}
+/*회원가입 내용*/
+#join_wrap{
+	width:600px;
+	height:800px;
+	border-radius:40px;
+	border:3px solid navy;
+	background:rgba(255,255,255,0.8);
+	margin:0px auto 80px auto;
+	padding-top:100px;
+	box-sizing:border-box;
+}
+/*회원가입 h3*/
+#join_wrap > h2{
+	width:600px;
+	text-align:center;
+}
+/*회원가입 단계*/
+.join_step{
+	width:500px;
+	border:1px solid #cccccc;
+	border-radius:20px;
+	margin:10px auto 0 auto;
+	height:130px;
+	text-align:center;
+  padding:15px 10px;
+  box-sizing:border-box;
+}
+.join1, .join2, .join3{
+	width:140px;
+	height:100px;
+}
+.join1{float:left; margin-right:30px;}
+.join2{float:left;}
+.join3{float:right;}
+
+.join1 > a,
+.join2 > a,
+.join3 > a{
+  width:140px;
+	height:100px;
+  display:block;
+  padding:70px 0;
+  box-sizing:border-box;
+  font-size:14px;
+}
+.join1  a{background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon1_1.svg)no-repeat center top;}
+.join2  a{background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon2_1.svg)no-repeat center top;}
+.join3  a{background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon3_1.svg)no-repeat center top;}
+
+.join1  a.j_sel{background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon1_2.svg)no-repeat center top;}
+.join2  a.j_sel{background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon2_2.svg)no-repeat center top;}
+.join3  a.j_sel{background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon3_2.svg)no-repeat center top;}
+
+/*회원가입 내용*/
+#join_wrap2{
+  clear:both;
+  width:500px;
+  height:400px;
+  margin-left:50px;
+  overflow:hidden;
+  position:relative;
+}
+#join_con{
+  width:1500px;
+  height:400px;
+  position:absolute;
+  left:0; top:0;
+}
+
+#join_con > div{width:500px; height:400px; float:left;}
+#join_con > #join1{margin-top:20px;}
+
+
+
+/*///약관동의 및 본인인증///*/
+#phone_info{
+  width:350px;
+  height:61px;
+  margin:0 auto;
+  border:1px solid #333333;
+  border-radius:10px;
+}
+#phone_info >a{
+  display:block;
+  width:350px;
+  height:61px;
+  border-radius:10px;
+  line-height:61px;
+}
+#phone_info > a > img{
+  float:left;
+  margin-left:80px;
+  margin-top:8px;
+}
+#phone_info > a > p{
+  float:right;
+  margin-right:80px;
+  font-weight:bold;
+}
+
+/*체크박스*/
+#check_wrap{
+	width:350px;
+	margin:50px auto 0 auto;
+}
+/*전체선택 / 전체 해제*/
+.chk_all{
+	line-height:3em;
+}
+.chk_sub{
+	text-indent:25px;
+}
+#chk,#chk1,#chk2,#chk3,#chk4{
+	width:0; height:0; overflow:hidden;
+}
+label.type{
+	background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon4_1.svg)no-repeat 0 7px;
+	height:40px;
+	display:inline-block;
+	padding-left:10px;
+	line-height:40px;
+	cursor:pointer;
+}
+label.type1{
+	padding-left:30px;
+}
+label.checked{
+	background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/join/join_icon4_2.svg)no-repeat 0 7px;
+}
+.chk_sub > a{
+	color:#707070;
+	margin-top:10px;
+	float:right;
+	font-size:13px;
+	text-decoration:underline;
+}
+
+/*///정보입력///*/
+#join2_wrap{
+	width:404px;
+	margin:15px auto;
+}
+.join_box{
+	width:400px;
+	height:50px;
+	margin:0 auto 10px auto;
+}
+.join_box > label{
+	font-size:14px;
+	display:block;
+}
+#u_name, #u_birth, #u_id{
+	width:250px; height:20px;
+	border:1px solid #707070;
+	text-indent:5px;
+	margin-top:2px;
+}
+#u_name{
+	width:250px;
+	height:20px;
+}
+#u_birth{
+	width:250px;
+	height:20px;
+	margin-top:3px;
+	float:left;
+}
+.r_gender{
+	width:130px;
+	height:25px;
+	float:right;
+	margin-top:2px;
+	margin-left:10px;
+}
+.r_gender input{
+	display:none;
+}
+.r_gender input + span{
+	display:inline-block;
+  background:#ffffff;
+  border:1px solid #707070;
+	box-sizing:border-box;
+	border-radius:5px;
+  text-align:center;
+	width:60px;
+  height:24px;
+  line-height:23px;
+	font-size:14px;
+  cursor:pointer;
+}
+.r_selfC input{
+  display:inline-block;
+  background:#ffffff;
+  border:1px solid #707070;
+  box-sizing:border-box;
+  border-radius:5px;
+  text-align:center;
+  width:100px;
+  height:24px;
+  line-height:23px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.r_gender input[type="radio"]:checked + span{
+  background:#1c079d;
+	border:1px solid #ffffff;
+	border:none;
+  color:#ffffff;
+}
+.r_gender label:last-child{
+	float:right;
+}
+/*전화번호*/
+#phone1_wrap{
+	border:none;
+	width:70px;
+	height:20px;
+	float:left;
+	margin-right:2px;
+	line-height:13px;
+}/*휴대전화번호 p*/
+#phone1{
+	width:70px;
+	height:23px;
+	border:1px solid #707070;
+	margin-top:4px;
+	text-indent:5px;
+}/*select*/
+#phone2, #phone3{
+	width:70px;
+	height:19px;
+	margin-top:2px;
+	border:1px solid #707070;
+}/*휴대전화번호*/
+
+/*비밀번호,비밀번호 확인*/
+.join_box2{
+	width:180px;
+	height:50px;
+	margin:0 auto 10px auto;
+}
+.join_box2_1{
+	float:left;
+	padding-left:2px;
+}
+.join_box2_2{
+	float:right;
+}
+.join_box2:last-child{
+	padding-left:0px;
+	float:left;
+}
+.join_box2 > label{
+	font-size:14px;
+	display:block;
+}
+#pwd1, #pwd2{
+	width:170px;
+	height:20px;
+	border:1px solid #707070;
+	margin-top:2px;
+}
+.join_box3{
+	clear:both;
+}
+#u_email{
+	height:20px;
+	width:170px;
+	border:1px solid #707070;
+	background-color:#ffffff;
+}
+.email1, .email2, .email3{float:left;}/*이메일*/
+.email2{margin:0 16px;}
+.email3{
+	 line-height:13px;
+}
+.email3 select{
+	width:176px;
+	height:24px;
+	margin-top:3px;
+	border:1px solid #707070;
+}
+
+
+/*//////가입완료/////*/
+#join3_wrap{
+	width:400px;
+	height:140px;
+	margin:130px auto;
+	text-align:center;
+}
+#join3_wrap > li:first-child{
+	font-size:32px;
+	font-weight:bold;
+}
+#join3_wrap > li:nth-child(2){
+	margin-top:60px;
+	font-size:14px;
+}
+#join3_wrap > li:nth-child(3){
+	font-size:14px;
+}
+/*이전다음 버튼*/
+.btn_prev{
+	width:150px;
+	height:40px;
+  float:left;
+  margin-left:130px;
+}
+.btn_next{
+  width:150px;
+	height:40px;
+  float:right;
+  margin-right:130px;
+}
+.btn_prev > input,
+.btn_next > input{
+	width:150px;
+	height:40px;
+	border:none;
+	cursor:pointer;
+	background-color:#1c079d;
+	border-radius:20px;
+	color:#ffffff;
+	font-size:16px;
+	transition:all 0.3s;
+}
+.btn_prev > input:hover,
+.btn_next > input:hover{
+	border:1px solid #1c079d;
+	background-color:#ffffff;
+	color:#1c079d;
+	font-weight:bold;
+}
+
+

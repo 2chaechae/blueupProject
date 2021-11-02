@@ -1,0 +1,254 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap');
+
+@import url("top.css");/*상단영역*/
+@import url("bottom.css");/*하단영역*/
+
+/*reset*/
+body{
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif; 
+	color:#333333;
+}
+h2{
+	font:normal 80px/1.5em "Nanum Myeongjo", serif;
+}
+.sup{font-size:10px;}
+
+/*//////메인배너/////*/
+#banner {
+	width:1920px;
+	height:480px;
+	margin:0 auto;
+	position:relative;
+}
+/*이미지 위 색상박스 씌우기*/
+#banner > p::before{
+	content:"";
+	position:absolute;
+	left:0; top:0;
+	width:1920px; height:480px;
+	background-color:rgba(0,37,35,0.7);
+}
+/*배너내용*/
+#ban_con{
+	position:absolute;
+	left:50%; top:50%;
+	transform:translate(-50%, -50%);
+	text-align:center;
+	color:#ffffff;
+	margin:0 auto;
+	z-index:10;
+}
+
+#ban_con > h2{
+	margin-bottom:20px;
+}
+#ban_con > p{
+	font-size:20px;
+}
+
+/*////페이지위치////*/
+/*페이지 전체*/
+#page_wrap{
+	height:45px;
+	width:100%;
+	margin:0 auto;
+	border-bottom:1px solid #cccccc;
+	color:#aaaaaa;
+	min-width:1920px;
+}
+#page{
+	width:1200px;
+	height:45px;
+	margin:0 auto;
+}
+
+/*페이지위치 오른쪽*/
+#r_page{
+	float:right;
+	font-size:14px;
+	height:45px;
+	line-height:45px;
+}
+#r_page > li{
+	display:inline-block;
+	margin-right:7px;
+}
+#r_page > li:last-child{
+	color:#111111;
+}
+
+/*//////매장안내 내용///////*/
+#con_wrap{
+	clear:both;
+	width:1920px;
+	margin:50px auto 80px auto;
+	position:relative;
+}
+#loc_wrap{
+	width:1200px;
+	height:100px;
+	margin:0 auto;
+	border-bottom:3px solid #cccccc;
+}
+#loc_sear{
+	width:830px;
+	height:100px;
+	margin:0 auto;
+}
+#loc_sear > h3{
+	font-size:18px;
+	float:left;
+	margin-right:20px;
+	line-height:40px;
+}
+
+/*지역검색 select*/
+.lo_select{
+	float:left;
+	width:120px;
+	height:38px;
+	border:1px solid #cccccc;
+	margin-right:5px;
+}
+.lo_select:last-child{
+	margin-right:0;
+}
+#lo1_select, #lo2_select{
+	width:120px;
+	height:38px;
+	font-size:16px;
+	color:#707070;
+	border:none;
+	text-indent:5px;
+	box-sizing:border-box;
+}
+
+/*매장명입력*/
+#lo_input{
+	width:380px;
+	height:40px;
+	border:1px solid #cccccc;
+	box-sizing:border-box;
+	font-size:16px;
+	color:#707070;
+	text-indent:10px;
+	float:left;
+}
+#lo_input:focus{outline:none; }
+
+/*검색버튼*/
+.sear_btn{
+	width:90px;
+	height:40px;
+	border:none;
+	border-radius:5px;
+	background-color:#006a67;
+	float:right;
+	cursor:pointer;
+}
+#sear_btn{
+	width:90px;
+	height:40px;
+	border:none;
+	background:transparent;
+	line-height:35px;
+	text-align:center;
+	color:white;
+	cursor:pointer;
+}
+.sear_btn:hover{
+	color:#006a67; opacity:0.8;
+}
+
+
+/*//////////매장검색목록 / 지도///////////*/
+#list_store_wrap{
+	width:1200px;
+	height:800px;
+	margin:0 auto;
+}
+/*매장리스트*/
+#list_store{
+	width:420px;
+	height:800px;
+	float:left;
+	border-right:1px solid #cccccc;
+	z-index:5;
+}
+/*검색매장표시*/
+#list_store > p{
+	font-size:18px;
+	height:80px;
+	text-align:center;
+	line-height:80px;
+}
+/*검색매장숫자*/
+#list_store > p .num_store{
+	font-size:20px;
+	font-weight:bold;
+	color:#008480;
+	letter-spacing:3px;
+}
+/*매장리스트 내용*/
+.l_store{
+	width:420px;
+	height:720px;
+	padding-top:20px;
+	overflow-y:scroll;
+	background-color:#cccccc;
+	box-sizing:border-box;
+}
+#stores > li{
+	margin-left:20px;
+	width: 360px;
+	height:200px;
+	padding:30px;
+	box-sizing:border-box;
+	background:#ffffff;
+	margin-bottom:10px;
+}
+#stores > li:last-child{
+	margin-bottom:0;
+}
+.store_info{
+	width:100%;
+	height:100%;
+	cursor:pointer;
+}
+.store_info > h4{
+	font-size:20px;
+	float:left;
+	
+}
+
+.store_info > p:nth-of-type(1){
+	clear:both;
+	padding-top:15px;
+	border-bottom:1px dotted #cccccc;
+	padding-bottom:10px;
+}
+.store_info > p:nth-of-type(2){
+	font-size:14px;
+	color:#707070;
+	margin-top:10px;
+	
+}
+.store_info > p:nth-of-type(3){
+	font-size:14px;
+	color:#707070;
+}
+.stinfo_tit{
+	margin-right:20px;
+}
+
+
+/*지도부분*/
+#map_store{
+	float:right;
+	width:770px;
+	height:800px;
+	background:url(../images/store/map.png);
+}

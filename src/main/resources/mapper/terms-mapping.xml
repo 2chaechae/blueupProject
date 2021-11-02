@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="termsVO">
+ 	<resultMap type="termsVO" id="termsResult">
+ 		<id property="terms_no" column="terms_no"/>
+ 		<result property="terms_title" column="terms_title"/>
+ 		<result property="terms_subtitle" column="terms_subtitle"/>
+ 		<result property="terms_content" column="terms_content"/>
+ 		<result property="terms_enforcement_date" column="terms_enforcement_date"/>
+ 		<result property="terms_registration_date" column="terms_registration_date"/>
+ 		<result property="terms_agree" column="terms_agree"/>
+ 	</resultMap>
+ 	<select id="getTermsContent" resultType="termsVO">
+ 		select * from terms_and_condition where terms_subtitle=#{terms_subtitle}
+ 	</select>
+ </mapper>

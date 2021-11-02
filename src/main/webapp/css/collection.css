@@ -1,0 +1,199 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap');
+
+@import url("top.css");/*상단영역*/
+@import url("bottom.css");/*하단영역*/
+
+/*reset*/
+body{
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif; 
+	color:#333333;
+}
+h2{
+	font:bold 80px/1.5em "Nanum Myeongjo", serif;
+	letter-spacing:-2px;
+}
+
+h3{
+	font:bold 30px/1.5em "Nanum Myeongjo", serif;
+	color:#ffffff;
+}
+
+.sup{font-size:30px;}
+
+/*////페이지////*/
+/*페이지 전체*/
+#page_wrap{
+	height:45px;
+	width:100%;
+	margin:0 auto;
+	border-bottom:1px solid #cccccc;
+	background-color:rgba(218,245,240,0.6);
+	color:#aaaaaa;
+	min-width:1920px;
+}
+#page{
+	width:1200px;
+	height:45px;
+	margin:0 auto;
+}
+
+/*페이지위치 오른쪽*/
+#r_page{
+	float:right;
+	font-size:14px;
+	height:45px;
+	line-height:45px;
+}
+#r_page > li{
+	display:inline-block;
+	margin-right:7px;
+}
+#r_page > li:last-child{
+	color:#111111;
+}
+
+/*////////////collection 내용////////////*/
+/* #con_wrap{
+	width:1920px;
+	height:1000px;
+	background:url(../images/coll/collection.png) no-repeat;  사이즈 1920*1000
+	margin:0 auto;
+	box-sizing:border-box;
+} */
+#coll_tit {
+	text-align:center;
+	padding-top:100px;
+	margin-bottom:40px;
+}
+
+#coll_tit > p {
+	font-size:20px;
+}
+#coll_con{
+	width:1600px;
+	height:375px;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+	box-sizing:border-box;
+}
+
+#coll_con2{
+	width:2590px;
+	height:375px;
+	position:absolute;
+	left:0; top:0;
+}
+/*각 컬렉션 */
+.coll_i{
+	float:left;
+	margin-right:50px;
+	position:relative;
+	cursor:pointer;
+}
+.coll_i:last-child{
+	margin-right:0px;
+}
+
+.coll_i1 > h3{
+	position:absolute;
+	left:0;
+	top:325px;
+	width:280px;
+	height:50px;
+	line-height:50px;
+	text-indent:10px;
+	background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(0,0,0,0.8));
+	background: linear-gradient(rgba(255,255,255,0), rgba(0,0,0,0.8));
+}
+/*새로고침시 움직이지않기 위해 html로 감*/
+/*
+.coll_i2{
+	position:absolute;
+	left:0; top:0;
+	background:rgba(0,0,0,0.8);
+	width:280px;
+	height:375px;
+	color:#ffffff;
+	padding: 40px 20px;
+	box-sizing:border-box;
+	opacity:0;
+	transition:all 0.3s;
+}
+*/
+.coll_i2 > p:nth-child(1){
+	font:bold 30px/1.5em "Nanum Myeongjo", serif;
+	margin-bottom:50px;
+}
+.coll_i2 > p:nth-child(2):after{
+	content:"";
+	display:block;
+	width:240px;
+	height:1px;
+	border-bottom:1px solid #ffffff;
+	margin-top:80px;
+}
+.coll_btn > a{
+	margin-top:20px;
+	font-size:20px;
+	display:block;
+	color:#ffffff;
+}
+.coll_btn > a > img{
+	float:right;
+	margin-top:4px;
+}
+
+/*마우스오버시*/
+/*새로고침시 움직이지않기 위해 html로 감*/
+/*
+.coll_i:hover .coll_i2{
+	opacity:1;
+}
+*/
+
+/*coll_scroll 버튼*/
+#coll_scroll{
+	margin-top:30px;
+	margin-left:1100px;
+	width:100px;
+	height:40px;
+	background-color:#9fcfff;
+	border-radius:20px;
+	line-height:40px;
+}
+.coll_prev, .coll_t1, .coll_t2, .coll_next{
+	float:left;
+}
+.coll_prev{
+	margin-left:10px;
+	cursor:pointer;
+	
+}
+.coll_t1{
+	margin-left:8px;
+}
+.coll_next{
+	float:right;
+	margin-right:10px;
+	cursor:pointer;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

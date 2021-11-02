@@ -1,0 +1,407 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap');
+
+@import url("top.css");/*상단영역*/
+@import url("bottom.css");/*하단영역*/
+
+
+/*reset*/
+body{
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif; 
+	color:#333333;
+}
+h2{
+	font:normal 90px/1.5em "Nanum Myeongjo", serif;
+}
+
+
+/*애니메이션*/
+@keyframes slide{
+ 	0% {
+ 	 left: 0;
+ 	 top: 0;
+ 	}
+ 	100% {
+ 	 left: 20px;
+ 	 top: 0px;
+ 	}
+}
+
+/*//////메인배너/////*/
+#banner {
+	width:1920px;
+	height:480px;
+	margin:0 auto;
+	position:relative;
+}
+/*이미지 위 색상박스 씌우기*/
+#banner > p::before{
+	content:"";
+	position:absolute;
+	left:0; top:0;
+	width:1920px; height:480px;
+	background-color:rgba(0,37,35,0.7);
+}
+/*배너내용*/
+#ban_con{
+	position:absolute;
+	left:50%; top:50%;
+	transform:translate(-50%, -50%);
+	text-align:center;
+	color:#ffffff;
+	margin:0 auto;
+}
+#ban_con > h2{
+	margin-bottom:20px;
+}
+#ban_con > p{
+	font-size:20px;
+}
+
+/*////페이지////*/
+/*페이지 전체*/
+#page_wrap{
+	height:45px;
+	width:100%;
+	margin:0 auto;
+	border-bottom:1px solid #cccccc;
+	color:#aaaaaa;
+	min-width:1920px;
+}
+#page{
+	width:1200px;
+	height:45px;
+	margin:0 auto;
+}
+
+/*페이지위치 오른쪽*/
+#r_page{
+	float:right;
+	font-size:14px;
+	height:45px;
+	line-height:45px;
+}
+#r_page > li{
+	display:inline-block;
+	margin-right:7px;
+}
+#r_page > li:last-child{
+	color:#111111;
+}
+
+
+#con_wrap{
+	width:1920px;
+	height:100%;
+	margin:0 auto;
+}
+/*/////////bestgift///////*/
+#best{
+	width:1200px;
+	height:685px;
+	margin:50px auto 0 auto;
+	position:relative;
+}
+#best > h3{
+	font:bold 36px/1.5em "Nanum Myeongjo", serif;
+	color:#333333;
+	height:40px;
+	margin-left:140px;
+}
+/*이전,다음*/
+.prev, .next {
+	position:absolute;
+	cursor:pointer;
+	z-index:10;
+}
+.prev {
+	left:0; top:50%;
+	transform:translate(0,-50%);
+}/*이전화살표*/
+.next {
+	right:0; top:50%;
+	transform:translate(0,-50%);
+}/*다음화살표*/
+
+/*bestgift 내용*/
+#best_con{
+	position:absolute;
+	left:50%; top:50%;
+	transform:translate(-50%,-50%);
+	width:990px;
+	height:400px;
+	margin:0 auto;
+	overflow:hidden;
+}
+
+.gift_item{
+	width:1980px;
+	height:400px;
+	position:absolute;
+	left:0; top:0;
+}
+/*각 gift공통*/
+.item{
+	width:300px; height:400px; float:left;
+	text-align:center;
+	margin:0 15px;
+	position:relative;
+	box-sizing:border-box;
+	overflow:hidden;
+	cursor:pointer;
+}
+.item:last-child{
+	margin-right:0;
+}
+
+/*gift 이미지 공통*/
+.item_img{
+	width:300px;
+	height:300px;
+}
+/* 마우스오버시 나타날 이미지, 텍스트*/
+.item_hover > img{
+	position:absolute;
+	top:0;  left:0;
+	opacity:0;
+	transition:opacity 0.5s linear;
+}
+ .item_hover > p{
+	position:absolute;
+	top:270px; left:0;
+	opacity:0;
+	width:300px; height:30px;
+	text-align:right;
+	 padding: 0 20px;
+	 box-sizing:border-box;
+	line-height:30px;
+	background:rgba(0,0,0,0.8);
+	color:#ffffff;
+	transition:opacity 0.3s linear;
+	 z-index:10;
+}
+.h_txt{
+	font-size:14px;
+	margin-right:50px;
+	float:left;
+}
+
+/*item 제품명*/
+.item > p:nth-of-type(1){
+	clear:both;
+	font-size:14px;
+	font-weight:bold;
+	color:#008480;
+	margin-top:30px;
+}
+.item > p:nth-of-type(2){
+	font-weight:bold;
+}
+
+
+
+/*각 gift 마우스 오버시*/
+.item:hover{
+	opacity:1;
+	box-sizing:border-box;
+	border:1px solid #333333;
+}
+.item:hover .item_hover > p{
+	opacity:1;
+}
+.item:hover .item_hover > img{
+	opacity:1;
+}
+.item:hover .item_hover > p{
+	opacity:1;
+}
+
+
+/*찜하기 하트버튼*/
+.heart > img{
+	width:25px;
+	height:23px;
+	position:absolute;
+	left:270px; top:320px;
+}
+
+/*//////////선물추천 카테고리//////////*/
+/*추천 전체*/
+#rec_wrap{
+	width:100%;
+	height:1020px;
+	background-color:#daf5f0;
+	margin:0 auto;
+}
+/*추천 제목*/
+#rec_wrap > h3{
+	font-size:40px;
+	color:#333333;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	padding-top:75px;
+	margin:0 auto;
+}
+/*추천 내용*/
+#rec{
+	width:1000px;
+	height:800px;
+	margin:50px auto 0 auto;
+}
+/*각 추천항목*/
+.rec{
+	float:left;
+	width:300px;
+	height:375px;
+	position:relative;
+	overflow:hidden;
+	cursor:pointer;
+}
+/*추천항목위 검정박스 씌우기*/
+.rec::before{
+	content:"";
+	position:absolute;
+	left:0; top:0;
+	width:300px; height:375px;
+	background-color:rgba(0,0,0,0.6);
+	z-index:2;
+}
+/*각 추천항목 이미지*/
+.rec > img{
+	width:300px; height:375px;
+
+	transition:all 0.3s;
+}
+/*항목 위치지정*/
+.rec:nth-child(1), .rec:nth-child(4){
+	margin-right:50px;
+}
+.rec:nth-child(3), .rec:nth-child(6){
+	float:right;
+}
+.rec:nth-child(1), .rec:nth-child(2), .rec:nth-child(3){
+	margin-bottom:50px;
+}
+.rec:nth-child(4){
+	clear:both;
+}
+/*각 추천항목 버튼*/
+.rec_btn{
+	position:absolute;
+	left:50%; top:50%;
+	transform:translate(-50%,-50%);
+	color:#ffffff;
+	font-size:20px;
+	line-height:20px;
+	z-index:5;
+}
+.rec_btn > p{
+	float:left;
+	margin-right:10px;
+	transition:all 0.5s;
+}
+.rec_btn > img{
+	float:left;
+	position:relative;
+}
+/*마우스 오버시*/
+.rec:hover > img{
+	transform:scale(1.2);
+
+}
+.rec:hover .rec_btn > p{
+	font-size:25px;
+}
+.rec:hover .rec_btn > img{
+		animation:slide 1s;
+		animation-fill-mode:both;
+		transform:scale(1.3);
+}
+	
+
+/*/////gift service/////*/
+#ser_wrap{
+	width:100%;
+	height:350px;
+	margin:0 auto 50px auto;
+	padding-top:110px;
+	box-sizing:border-box;
+}
+#ser_con{
+	width:990px;
+	height:130px;
+	border:1px solid #a7a7a7;
+	border-radius:20px;
+	margin: 0 auto;
+	position:relative;
+}
+#ser_con > h3{
+	background:white;
+	text-align:center;
+	position:absolute;
+	left:50%; top:-15px;
+	transform:translate(-50%, 0);
+}
+
+#ser_con2{
+	width:763px;
+	height:35px;
+	position:absolute;
+	left:50%; top:50%;
+	transform:translate(-50%, -50%);
+}
+.ser{
+	float:left;
+	height:35px;
+	line-height:25px;
+	color:#707070;
+	position:relative;
+}
+.ser:nth-child(1){
+	width:144px;
+}
+
+.ser:nth-child(2){
+	margin-left:150px;
+	margin-right:150px;
+	width:165px;
+}
+
+.ser:nth-child(3){
+	width:154px;
+}
+.ser > figcaption{
+	float:right;
+}
+
+.ser_tool{
+	visibility:hidden;
+	width:260px;
+	background-color:rgba(0,0,0,0.9);
+	border-radius:20px;
+	padding:15px;
+	margin-top:10px;
+	color:white;
+	font-size:13px;
+	position:absolute;
+	z-index:5;
+	top:100%; left:50px;
+	margin-left:-105px;
+	white-space:pre-line;
+	opacity:0;
+	transition:opacity 1s;
+
+}
+.ser:hover .ser_tool{
+	visibility:visible;
+	opacity:1;
+}
+
+
+
+
+
+

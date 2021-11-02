@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productDao">
+
+<!-- 상품 등록 -->
+	<insert id="productRegistration">
+		INSERT INTO PRODUCT (PRODUCT_NAME, PRODUCT_PRICE,
+		DISCOUNT, DELIVERY_FEE, CLOTHES_SIZE, COLOR,
+		DISPLAY_STATUS, REGISTRATION_TIME, MAIN_IMAGE, PRODUCT_CONTENT, DISCOUNT_RATE,
+		CATEGORY_NAME, DETAILED_CATEGORY_NAME)
+		VALUES(
+		#{product_name},
+		#{price},
+		#{discount},
+		#{delivery_fee},
+		#{clothes_size},
+		#{color},
+		#{display_status},<!--boolean -->
+		now(),
+		#{main_image},
+		#{product_content},
+		#{discount_rate},
+		#{category_name},
+		#{detailed_category_name}
+		)
+	</insert>
+
+<!-- 상품 수정 -->
+	<update id="productUpdate" parameterType="productvo">
+		UPDATE PRODUCT
+		PRODUCT_NAME = #{product_name},
+		PRODUCT_PRICE = #{price},
+		DISCOUNT = #{discount},
+		DELIVERY_FEE = #{delivery_fee},
+		CLOTHES_SIZE = #{clothes_size},
+		COLOR = #{color},
+		DISPLAY_STATUS = #{display_status},
+		MAIN_IMAGE = #{main_image},
+		PRODUCT_CONTENT = #{product_content},
+		DISCOUNT_RATE = #{discount_rate},
+		CATEGORY_NAME = #{category_name},
+		DETAILED_CATEGORY_NAME = #{detailed_category_name}
+		WHERE PRODUCT_NO = #{product_no}
+	</update>
+
+	<select id="getProductListByCategory" resultType="productvo"
+		parameterType="productvo">
+		SELECT * FROM PRODUCT
+		WHERE
+		CATEGORY_NAME = #{category_name}
+		ORDER BY PRODUCT_NO DESC;
+	</select>
+
+	<select id="getProductListByDetailedCategory" resultType="productvo"
+		parameterType="productvo">
+		SELECT * FROM PRODUCT
+		WHERE
+		CATEGORY_NAME = #{category_name} AND DETAILED_CATEGORY_NAME = #{detailed_category_name}
+		ORDER BY PRODUCT_NO DESC;
+	</select>
+
+	<select id="getProduct" resultType="productvo" parameterType="productvo">
+		SELECT * FROM PRODUCT
+		WHERE
+		CATEGORY_NO = #{product_no};
+	</select>
+
+
+	<select id="getProductList" resultType="productvo">
+		SELECT * FROM PRODUCT ORDER BY PRODUCT_NO DESC;
+	</select>
+	
+	<select id="getProductListBySearch" parameterType="productvo" resultType="productvo">
+		SELECT * FROM PRODUCT WHERE PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+	</select>
+</mapper>
