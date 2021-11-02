@@ -125,18 +125,7 @@
       <div id="list_wrap">
         <ul id="list1">
           <li><a href="#">공지사항</a></li>
-          <li class="list_li2"><a href="#" id="list_lia">고객 서비스</a><span>+</span>
-            <div>
-              <ul>
-                <li><a href="#">문의하기</a></li>
-                <li><a href="#">맞춤서비스</a></li>
-               <li><a href="#">제품 관리&amp;수리</a></li>
-                <li><a href="#">기프트상담</a></li>              
-              </ul>
-            </div>
-          </li><!--고객서비스-->
           <li><a href="#">자주 찾는 질문</a></li>
-          <li class="list_last"><a href="#">카탈로그</a></li>
         </ul><!--list-->
         <ul id="list2">
           <li><img src="images/csc/call.png" alt="고객센터전화번호" width="30" height="31"></li>
@@ -152,24 +141,6 @@
     <div id="con_right">
 
   <!--//////고객서비스//////-->
-      <div id="service_wrap">
-        <figure class="service">
-          <img src="images/csc/service1.png" alt="문의하기" width="54" height="45">
-          <figcaption>문의하기</figcaption>
-        </figure><!--service-->
-        <figure class="service">
-          <img src="images/csc/service2.png" alt="맞춤서비스" width="45" height="45">
-          <figcaption>맞춤서비스</figcaption>
-        </figure><!--service-->
-        <figure class="service">
-          <img src="images/csc/service3.png" alt="제품관리" width="45" height="45">
-          <figcaption>제품관리 &amp; 수리</figcaption>
-        </figure><!--service-->
-        <figure class="service">
-          <img src="images/csc/service4.png" alt="기프트상담" width="44" height="45">
-          <figcaption>기프트상담</figcaption>
-        </figure><!--service-->
-      </div><!--service_wrap-->
 
       <!--//////공지사항///////-->
       <div id="notice">
@@ -184,33 +155,11 @@
         </ul>
       </div><!--notice-->
 
-      <!--//////카탈로그///////-->
-      <div id="catalog">
-        <div class="no_tit">
-          <h3>카탈로그</h3>
-          <p class="all"><a href="#">전체보기&nbsp; &#9002;</a></p>
-        </div><!--no_tit-->
-        <figure id="catalog_con">
-          <img src="images/csc/catalog1.png" alt="카탈로그" width="96" height="160">
-          <img src="images/csc/catalog2.png" alt="카탈로그" width="96" height="160">
-          <figcaption><a href="#">2021 <br>THIS IS <br>BLUE UP</a> </figcaption>
-        </figure>
-      </div><!--catalog-->
-
       <!--//////자주찾는 질문///////-->
       <div id="search_wrap">
-        <div class="no_tit">
-          <h3>자주 찾는 질문</h3>
-          <p class="all"><a href="#">전체보기&nbsp; &#9002;</a></p>
-        </div><!--no_tit-->
-        <div id="sear_wrap">
-          <form id=sear_form action="#" method="get">
-            <label for="sear_input">자주 찾는 질문 검색</label>
-            <input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요. " id="sear_input">
-            <p class="sear_btn"><button type="submit" id="sear_btn">검색</button></p>
-          </form><!--sear_form-->
           <!--///자주찾는 질문 Top5///-->
           <div class="top5_wrap">
+          	<br>
             <h4>자주찾는 질문 Top5</h4>
             <dl>
               <dt><p><span class="t5_num">1</span><span class="top_tit">교환/환불/AS</span>AS 접수는 어떻게 해야하나요?</p></dt>
@@ -248,7 +197,6 @@
             </dl>
           </div><!--top5_wrap-->
         </div><!--search_wrap-->
-      </div><!--sear_wrap-->
     </div><!--con_right-->
   </div><!--cs_wrap-->
 </div><!--con_wrap-->

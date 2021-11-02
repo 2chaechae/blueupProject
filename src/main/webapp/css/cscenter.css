@@ -182,7 +182,7 @@ h4{
 #notice{
 	float:left;
 	margin-top:80px;
-	width:430px;
+	width:900px;
 	height:234px;
 }
 /*공지사항/카탈로그 공통*/
@@ -212,7 +212,7 @@ h4{
 /*공지사항 목록*/
 #notice > ul{clear:both;}
 #notice > ul > li{
-	width:430px;
+	width:900px;	
 	height:60px;
 	line-height:60px;
 	font-size:14px;
