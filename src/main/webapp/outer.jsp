@@ -95,13 +95,7 @@
 				</div><!--top_sub 서브메뉴-->
 			</div><!--top_bar-->
 		</header><!--top 상단전체-->
-		<div id="banner">
-				<p><img src="images/item/banner2.jpg" alt="아이템메인배너" width="1920" height="700"></p>
-				<div id="ban_con">
-					<h2>OUTER</h2>
-					<p>자켓 부분 </p>
-				</div><!--ban_con 배너 안 내용-->
-		</div><!--main_ban- 메인 상단 배너 전체-->
+		
 	</div><!--top_wrap2-->
 </div><!--top_wrap-->
 
@@ -123,15 +117,15 @@
 	<div id="item_wrap">
 	<!--///////jewerly////////-->
 		<div class="items">
-			<h3>New</h3>
+			<h3>OUTER</h3>
 			<div class="item_con">
 				<div class="item">
 					<div class ="item_img">
 							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
-							<div class="item_hover">
+							<!-- <div class="item_hover">
 								<img src="images/item/jewerly1_hover.png" alt="맨투맨" width="300" height="300">
 								<p><span class="h_txt">맨투맨</span> ￦23,000</p>
-							</div><!--item_hover : 마우스 오버시-->
+							</div>item_hover : 마우스 오버시 -->
 						</div><!--item_img :gift 이미지-->
 						<p>점퍼</p>
 						<p>어디에나 착용가능한 맨투맨</p>
@@ -142,10 +136,10 @@
 					<div class="item">
 					<div class ="item_img">
 							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/vvvvvv.jpg" alt="니트" width="300" height="300">
-							<div class="item_hover">
+							<!-- <div class="item_hover">
 								<img src="images/item/jewerly2_hover.png" alt="더블드롭귀걸이2" width="300" height="300">
 								<p><span class="h_txt">니트</span> ￦32,000</p>
-							</div><!--item_hover : 마우스 오버시-->
+							</div>item_hover : 마우스 오버시 -->
 						</div><!--item_img :gift 이미지-->
 						<p>자켓</p>
 						<p>쫀쫀한 니트재질</p>
@@ -156,10 +150,10 @@
 					<div class="item">
 					<div class ="item_img">
 							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/polartee.jpg" alt="워머니트" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/jewerly3_hover.png" alt="T1 링2" width="300" height="300">
+							<!-- <div class="item_hover">
+								<img src="images/item/jewerly3_hover.png" alt="T1 링2" width="300" height="320">
 								<p><span class="h_txt">니트소재</span> ￦28,000</p>
-							</div><!--item_hover : 마우스 오버시-->
+							</div>item_hover : 마우스 오버시 -->
 						</div><!--item_img :gift 이미지-->
 						<p>코트</p>
 						<p>따뜻한 재질</p>
@@ -167,160 +161,28 @@
 							<img src="images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
 					</div><!--item: jewerly3-->
-					
+					<div class="item">
+					<div class ="item_img">
+							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
+							<!-- <div class="item_hover">
+								<img src="images/item/jewerly1_hover.png" alt="맨투맨" width="300" height="300">
+								<p><span class="h_txt">맨투맨</span> ￦23,000</p>
+							</div>item_hover : 마우스 오버시 -->
+						</div><!--item_img :gift 이미지-->
+						<p>후드</p>
+						<p>편하게 입고다니는 필수템 </p>
+						<p class="heart">
+							<img src="images/item/heart.png" alt="찜" width="25" height="23">
+						</p><!--heart:찜하기 하트버튼-->
+					</div><!--item: jewerly4-->
 			</div><!--item_con-->
+				
+			
+			
 			<p class="item_btn"><a href="jewerly.html">Outer 더보기</a></p>
 		</div><!--items-->
 		
-		
-		<!--///////watch////////-->
-		<div class="items">
-			<h3>JACKET</h3>
-			<div class="item_con">
-				<div class="item">
-					<div class ="item_img">
-							<img src="images/item/watch1.png" alt="스퀘어워치1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/watch1_hover.png" alt="스퀘어워치2" width="300" height="300">
-								<p><span class="h_txt">27mm / 남성용</span> ￦5,200,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>Tiffany 1837</p>
-						<p>maker's 스퀘어 워치</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly1-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="images/item/watch2.png" alt="핸드워치1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/watch2_hover.png" alt="핸드워치2" width="300" height="300">
-								<p><span class="h_txt">37.5mm / 남성용</span> ￦3,710,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>아틀라스2</p>
-						<p>핸드 워치</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly2-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="images/item/watch3.png" alt="T1 링1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/watch3_hover.png" alt="T1 링2" width="300" height="300">
-								<p><span class="h_txt">25mm / 여성용</span> ￦5,200,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>Tiffany T</p>
-						<p>리미티드 에디션 라운드 워치</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly3-->
-			</div><!--item_con-->
-			<p class="item_btn"><a href="jewerly.html">Jacket 더보기</a></p>
-		</div><!--items-->
-		
-		<!--///////perfume////////-->
-		<div class="items">
-			<h3>JUMPER</h3>
-			<div class="item_con">
-				<div class="item">
-					<div class ="item_img">
-							<img src="images/item/perfume1.png" alt="오드퍼퓸1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/perfume1_hover.png" alt="오드퍼퓸2" width="300" height="300">
-								<p><span class="h_txt">1.6온스 / 여성용</span> ￦153,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>Tiffany &amp; Love</p>
-						<p>오드 퍼퓸</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly1-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="images/item/perfume2.png" alt="오드트왈렛1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/perfume2_hover.png" alt="오드트왈렛2" width="300" height="300">
-								<p><span class="h_txt">3.0온스 / 남성용</span> ￦142,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>Tiffany &amp; Love</p>
-						<p>오드 트왈렛</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly2-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="images/item/perfume3.png" alt="T1 링1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/perfume3_hover.png" alt="T1 링2" width="300" height="300">
-								<p><span class="h_txt">2.5온스 / 남녀공용</span> ￦152,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>Tiffany 시어</p>
-						<p>오드 트왈렛</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly3-->
-			</div><!--item_con-->
-			<p class="item_btn"><a href="jewerly.html">Jumper 더보기</a></p>
-		</div><!--items-->
-		
-		<!--///////home & accessory////////-->
-		<div class="items">
-			<h3>COAT</h3>
-			<div class="item_con">
-				<div class="item">
-					<div class ="item_img">
-							<img src="images/item/home1.png" alt="여성용 토트1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/home1_hover.png" alt="여성용 토트2" width="300" height="300">
-								<p><span class="h_txt">가죽 소재</span> ￦2,440,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>Tiffany</p>
-						<p>여성용 토트</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly1-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="images/item/home2.png" alt="페이퍼컵1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/home2_hover.png" alt="페이퍼컵2" width="300" height="300">
-								<p><span class="h_txt">본차이나소재</span> ￦230,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>인테리어 오브제</p>
-						<p>본차이나 페이퍼컵</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜1" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly2-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="images/item/home3.png" alt="카드 케이스1" width="300" height="300">
-							<div class="item_hover">
-								<img src="images/item/home3_hover.png" alt="카드 케이스2" width="300" height="300">
-								<p><span class="h_txt">가죽 소재</span> ￦305,000</p>
-							</div><!--item_hover : 마우스 오버시-->
-						</div><!--item_img :gift 이미지-->
-						<p>Tiffany</p>
-						<p>카드 케이스</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly3-->
-			</div><!--item_con-->
-			<p class="item_btn"><a href="home.html">Coat 더보기</a></p>
+	
 		</div><!--items-->
 	</div><!--item_wrap-->
 	<!--////////item notice////////-->
@@ -334,7 +196,7 @@
 			</ul><!--notice-->
 		</div><!--notice_con-->
 	</div><!--notice_wrap-->
-</div><!--con_wrap-->
+
 
 <!--/////////하단/////////-->
 <div id="bottom_wrap">

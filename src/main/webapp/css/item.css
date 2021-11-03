@@ -115,7 +115,7 @@ h3{
 
 /*각 item공통*/
 .item{
-	width:300px; height:400px; float:left;
+	width:300px; height:450px; float:left;
 	text-align:center;
 	margin-right:59px;
 	position:relative;
@@ -181,8 +181,8 @@ h3{
 	clear:both;
 	font-size:14px;
 	font-weight:bold;
-	color:#008480;
-	margin-top:30px;
+	color:#1c079d;
+	margin-top:15px;
 }
 .item > p:nth-of-type(2){
 	font-weight:bold;
@@ -208,7 +208,7 @@ h3{
 .item_btn{
 	width:300px;
 	height:40px;
-	border:1px solid #006a67;
+	border:1px solid #1c079d;
 	border-radius:20px;
 	margin:50px auto 0 auto;
 	position:relative;
@@ -220,11 +220,11 @@ h3{
 	height:40px;
 	text-align:center;
 	line-height:40px;
-	color:#006a67;
+	color:#1c079d;
 }
 /* 각 카테고리 버튼 마우스 오버시*/
 .item_btn::after{
-	background:#008480;
+	background:#1c079d;
 	content:"";
 	position:absolute;
 	z-index:-1;
