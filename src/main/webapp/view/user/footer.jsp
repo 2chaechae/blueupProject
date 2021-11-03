@@ -13,7 +13,7 @@
       </div><!--info1-->
       <div id="info2">
          <ul id="info2_menu">
-            <li><a href="cscenter.html">고객센터</a></li>
+            <li><a href="getNoticeList.do">고객센터</a></li>
             <li><a href="#">이용약관</a></li>
             <li><a href="#">개인정보처리방침</a></li>
          </ul><!--info2_menu-->
