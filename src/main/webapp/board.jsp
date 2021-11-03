@@ -168,5 +168,4 @@
             </div>
         </form>
     </div><!--end board_wrap-->
-</body>
-</html>
+<%@ include file="/view/user/footer.jsp" %>

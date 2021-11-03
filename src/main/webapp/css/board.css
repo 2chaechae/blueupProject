@@ -3,9 +3,9 @@
 *{margin:0;padding:0;}
 
 .board_wrap{
-    max-width:950px;
+    max-width:1200px;
     margin: 0px 100px;
-    padding: 3rem 20rem 2rem;
+    padding: 3rem 20rem;
 }
 .board_title{
 	font:normal 16px/1.5em "Noto Sans KR", sans-serif;
