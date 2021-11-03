@@ -230,7 +230,7 @@
 </div><!--etc-->
 
 <!--하단-->
-<%@ include file="/footer.jsp" %>
+<%@ include file="/view/user/footer.jsp" %>
 
 </body>
 </html>
