@@ -16,6 +16,7 @@
 <p><img src="images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
 <p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
 
+<!--상단-->
 <div id="top_wrap">
 	<header id="top">
 		<!--js태그 추가자리-->
@@ -73,8 +74,8 @@
 								<li><a href="#">REVIEW</a></li>
 							</ul>
 						</li>
-						<li class="top_btn1"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>LOGIN</span></li>
-						<li class="top_btn2"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>SEARCH</span>
+						<li class="top_btn"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>LOGIN</span></li>
+						<li class="top_btn2"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>검색</span>
 							<ul class="btn_sub2">
 								<li><img src="images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
 								<li><input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요. " id="seartop_input"></li>
@@ -86,7 +87,6 @@
 		</div><!--top_bar-->
 	</header><!--top 상단전체-->
 </div><!--top_wrap-->
-
 <!--//////티파니 아이템//////-->
 <div id="item_wrap">
   <div id="item">
@@ -207,7 +207,7 @@
    </div><!--coll_wrap-->
 </div><!--collection-->
 <!--/////브랜드스토리//////-->
-<div id="brand">
+<!-- <div id="brand">
    <p id="brand_img"><img src="images/index/brand.png" alt="브랜드스토리" width="1011"  height="684"></p>
    <div id="brand_con">
       <h2>Brand story</h2>
@@ -215,20 +215,20 @@
       <p class="btn1"><a href="brand.html">MORE +</a></p>
    </div>
 </div>
-
+ -->
 <!--/////매장안내, 고객센터//////-->
-<div id="etc">
+<!-- <div id="etc">
    <p><img src="images/index/store_bg.png" alt="배경" width="1920" height="400"></p>
    <div class="store"><a href="store.html">
       <p><img src="images/index/store.png" alt="매장안내" width="48" height="62"></p>
       <p>매장안내</p></a>
-   </div><!--store-->
+   </div>store
    <div class="cs"><a href="getNoticeList.do">
       <p><img src="images/index/cscenter.png" alt="고객센터" width="60" height="62"></p>
       <p>고객센터</p></a>
-   </div><!--cs-->
-</div><!--etc-->
-
+   </div>cs
+</div>etc
+ -->
 <!--하단-->
 <%@ include file="/view/user/footer.jsp" %>
 

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div id="bottom_wrap">
    <footer id="bottom">
-      <p><a href="index.html"><img src="#" alt="하단로고"></a></p>
+      <p><a href="index.jsp"><img src="images/bottom/blueup_logo.png" alt="하단로고"></a></p>
       <div id="info1">
          <address>
             사업자 등록번호 : 106-81-59905<br>
@@ -18,7 +18,8 @@
             <li><a href="#">개인정보처리방침</a></li>
          </ul><!--info2_menu-->
       </div><!--info2-->
-      <p id="copyright">copyright&copy;2021.T&amp;CO alrights reserved</p>
+      <p id="copyright">© Copyright BLUEUP All rights reserved</p>
+
    </footer><!--bottom-->
 </div><!--bottom_wrap-->
 

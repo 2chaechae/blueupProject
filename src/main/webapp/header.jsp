@@ -16,9 +16,6 @@
 <p><img src="images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
 <p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
 
-<!--맨위로 가기 맨 아래로 가기-->
-<p><img src="images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
-<p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
 <!--상단-->
 <div id="top_wrap">
 	<header id="top">
