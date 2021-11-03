@@ -12,9 +12,12 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	<context:component-scan base-package="blueup.user"></context:component-scan>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 테스트 끝나면 지우기
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/blueup/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	 -->
 </beans>

@@ -15,10 +15,9 @@ public class NoticeController {
 	private NoticeServiceImpl noticeserviceimpl;
 	
 	@RequestMapping("/getNoticeList.do")
-	public ModelAndView getNoticeList(NoticeVo vo) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("NoticeVo", noticeserviceimpl.getnoticeList(vo));
-		mav.setViewName("redirect:cscenter.jsp");
+	public ModelAndView getNoticeList(NoticeVo vo, ModelAndView mav) {
+		mav.addObject("noticeList", noticeserviceimpl.getnoticeList(vo));
+		mav.setViewName("cscenter.jsp");
 		return mav;
 	}
 	

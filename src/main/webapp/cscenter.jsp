@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -147,7 +148,6 @@
         </ul>
       </div><!--list_wrap-->
     </div><!--con_left-->
-
     <div id="con_right">
       <!--//////공지사항///////-->
      <div id="search_wrap">
@@ -155,49 +155,30 @@
           <div class="top5_wrap">
           	<br>
             <h4>공지사항</h4>
-            <c:forEach var="noticeVO" items="${noticeList}" varStatus="status">
+            	 <dl>
+	              <dt>
+	              	<p>
+	              	  <span class="t5_num">NO.</span>
+		              <span class="top_tit">조회수</span>
+		              <span class="top_tit">공지유형</span>제목
+		            </p>
+		            </dt>
+	            </dl>
+            <c:forEach var="notice" items="${noticeList}" varStatus="status">
 	            <dl>
 	              <dt>
 	              	<p>
-	              	  <span class="t5_num"><c:out value="${status.count}"></c:out></span>
-		              <span class="top_tit"><c:out value="${noticeVO.notice_cnt}"></c:out></span>
-		              <span class="top_tit"><c:out value="${noticeVO.notice_type}"></c:out></span><c:out value="${noticeVO.notice_title}"></c:out>
+	              	  <span class="t5_num">${status.count}</span>
+		              <span class="top_tit">${notice.notice_cnt}</span>
+		              <span class="top_tit">${notice.notice_type}</span>${notice.notice_title}
 		            </p>
 		            </dt>
 	              <dd>
-	                <c:out value="${noticeVO.notice_content}"></c:out>
+	              		${notice.notice_content}
 	              </dd>
 	            </dl>
 	        </c:forEach>
 	        <!--//for문//-->
-            <dl>
-              <dt><p><span class="t5_num">2</span><span class="top_tit">조회수</span><span class="top_tit">교환/환불/AS</span>교환 / 환불은 어떻게 해야하나요?</p></dt>
-              <dd>
-                - 일반적으로 상품교환권이나 제품의 교환을 위해서는 제품을 구입한 매장에서 지정한 기한 이내에 접수해야합니다. <br>
-                - 교환이나 환불과 관련된 궁금한 사항은 가까운 매장이나 고객센터로 문의 바랍니다.
-              </dd>
-            </dl>
-            <dl>
-              <dt><p><span class="t5_num">3</span><span class="top_tit">조회수</span><span class="top_tit">상품</span>블루업 제품은 어떻게 주문하나요?</p></dt>
-              <dd>
-                - 오프라인 : 종로 매장을 방문하여 블루업제품을 직접 경험해보시기 바랍니다. <br>
-                - 온라인 : 블루업 홈페이지를 통해 블루업 제품을 구매할 수 있습니다.
-              </dd>
-            </dl>
-            <dl>
-              <dt><p><span class="t5_num">4</span><span class="top_tit">조회수</span><span class="top_tit">상품</span>옷은 어떻게 관리하나요?  </p></dt>
-              <dd>
-                - 실크로 제작된 상품들은 전문적인 관리를 정기적으로 받는 것이 좋습니다. <br>
-                - 블루업 주얼리에 비연마성 클리너를 가끔씩만 사용할 것을 권장합니다. <br>
-                - 백들은 전문 세탁점에 가서 세탁을 하시길 바랍니다.
-              </dd>
-            </dl>
-            <dl>
-              <dt><p><span class="t5_num">5</span><span class="top_tit">조회수</span><span class="top_tit">상품</span>티파니 블루박스를 별도로 구매할 수 있나요?</p></dt>
-              <dd>
-                - 블루업 패키지는 블루업 제품을 구매한 경우에만 제공됩니다.
-              </dd>
-            </dl>
           </div>
          </div>
       <div id="search_wrap">
