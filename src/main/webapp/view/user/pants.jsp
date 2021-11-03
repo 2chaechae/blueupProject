@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>티파니앤코 (리뉴얼)</title>
-<script src="js/jquery-1.12.4.min.js"></script>
-<script src = "js/top.js"></script>
-<script src="js/collection.js"></script>
-<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/collection.css">
+<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
+<script src = "${pageContext.request.contextPath}/js/top.js"></script>
+<script src="${pageContext.request.contextPath}/js/collection.js"></script>
+<link rel="shortcut icon" type="${pageContext.request.contextPath}/image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/collection.css">
 <style>
 	.coll_i2{
 		position:absolute;
@@ -31,8 +31,8 @@
 </head>
 <body>
 <!--맨위로 가기 맨 아래로 가기-->
-<p><img src="images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
-<p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
+<p><img src="${pageContext.request.contextPath}/images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
+<p><img src="${pageContext.request.contextPath}/images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
 
 <!--////////////상단//////////////-->
 <div id="top_wrap">
@@ -40,7 +40,7 @@
 		<header id="top">
 			<!--js태그 추가자리-->
 			<div id="top_bar">
-				<h1><a href="index.html"><img src="images/top/logo.png" alt="티파니앤코" width="168" height="22"></a></h1>
+				<h1><a href="index.html"><img src="${pageContext.request.contextPath}/images/top/logo.png" alt="티파니앤코" width="168" height="22"></a></h1>
 
 				<nav id="top_navi">
 					<ul id="mtop">
@@ -91,17 +91,17 @@
 					<ul>
 						<li><a href="store.html" title="매장안내">매장안내</a></li>
 						<li><a href="cscenter.html" title="고객센터">고객센터</a></li>
-						<li class="top_btn1"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>login</span>
+						<li class="top_btn1"><img src="${pageContext.request.contextPath}/images/top/login.png" alt="로그인" width="16" height="16"><br><span>login</span>
 							<ul class="btn_sub">
-								<li><img src="images/top/diamond.png" alt="다이아몬드" width="80" height="55"></li>
+								<li><img src="${pageContext.request.contextPath}/images/top/diamond.png" alt="다이아몬드" width="80" height="55"></li>
 								<li>티파니 온라인회원이 되어<br>특별한 혜택을 경험해보세요.</li>
 								<li><a href="login.html">로그인</a></li>
 								<li><a href="join.html">회원가입</a></li>
 							</ul>
 						</li>
-						<li class="top_btn2"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>검색</span>
+						<li class="top_btn2"><img src="${pageContext.request.contextPath}/images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>검색</span>
 							<ul class="btn_sub2">
-								<li><img src="images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
+								<li><img src="${pageContext.request.contextPath}/images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
 								<li><input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요. " id="seartop_input"></li>
 								<li><button type="submit" id="seartop_btn">검색</button></li>
 							</ul><!--btn_sub2-->
@@ -118,7 +118,7 @@
 	<div id="page">
 		<ul id="r_page">
 			<li>Home</li>
-			<li><img src="images/icon/page_arrow.png" alt="페이지화살표1" width="5" height="9"></li>
+			<li><img src="${pageContext.request.contextPath}/images/icon/page_arrow.png" alt="페이지화살표1" width="5" height="9"></li>
 			<li>Collection</li>
 		</ul>
 	</div><!--page-->
@@ -175,7 +175,7 @@
 					<p>도미닉</p>
 					<p>슬랙스 <br>
 					와이드 너비에 롱한 기장감 </p>
-					<p class="coll_btn" ><a href="#">자세히 보기 <img src="images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
+					<p class="coll_btn" ><a href="#">자세히 보기 <img src="${pageContext.request.contextPath}/images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
 				</div>
 			</div><!--coll_i-->
 			<div class="coll_i" data-n="1">
@@ -198,7 +198,7 @@
 				<div class="coll_i2">
 					<p>니트</p>
 					<p>여러 색감들이 담겨있는<br>따뜻한 니트들</p>
-					<p class="coll_btn" ><a href="#">자세히 보기 <img src="images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
+					<p class="coll_btn" ><a href="#">자세히 보기 <img src="${pageContext.request.contextPath}/images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
 				</div>
 			</div><!--coll_i-->
 			<div class="coll_i" data-n="2">
@@ -209,7 +209,7 @@
 				<div class="coll_i2">
 					<p>자켓</p>
 					<p>블루업만의<br>독특한 자켓</p>
-					<p class="coll_btn" ><a href="#">자세히 보기 <img src="images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
+					<p class="coll_btn" ><a href="#">자세히 보기 <img src="${pageContext.request.contextPath}/images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
 				</div>
 				
 			</div><!--coll_i-->
@@ -221,7 +221,7 @@
 				<div class="coll_i2">
 					<p>ETC</p>
 					<p>꼭 필요한<br>제품들</p>
-					<p class="coll_btn" ><a href="#">자세히 보기 <img src="images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
+					<p class="coll_btn" ><a href="#">자세히 보기 <img src="${pageContext.request.contextPath}/images/coll/link.png" alt="자세히보기" width="29" height="12"></a></p>
 				</div>
 			</div><!--coll_i-->
 			
@@ -236,49 +236,4 @@
 			<p class="coll_next">▶</p>
 		</div><!--coll_scroll-->
 <!-- </div>con_wrap -->
-
-<!--////////////하단////////////-->
-<div id="bottom_wrap">
-	<footer id="bottom">
-		<p><a href="index.html"><img src="images/bottom/logo_white.png" alt="하단로고"></a></p>
-		<div id="info1">
-			<address>
-				사업자 등록번호 : 106-81-59905<br>
-				대표이사 : 마크제임스에르켁<br>
-				본사 :  04542 서울 중구 청계천로 100 (수표동, 시그니쳐타워, 서관 17층)<br>
-				전화번호 : 02-540-6270 &nbsp; &nbsp; &nbsp; &nbsp;  팩스번호 : 02-540-6271<br>
-			</address>
-		</div><!--info1-->
-		<div id="info2">
-			<ul id="info2_menu">
-				<li><a href="cscenter.html">고객센터</a></li>
-				<li><a href="#">이용약관</a></li>
-				<li><a href="#">개인정보처리방침</a></li>
-			</ul><!--info2_menu-->
-			<ul id="sns">
-				<li class="sns_img">
-					<a href="https://www.youtube.com/user/OfficialTiffanyAndCo">
-						<img src="images/bottom/sns1.png" alt="유튜브1" width="32" height="32">
-						<img src="images/bottom/sns1_hover.png" alt="유튜브2" width="32" height="32" class="sns_hover">
-					</a>
-				</li><!--sns_img-->	
-				<li class="sns_img">
-					<a href="https://www.instagram.com/tiffanyandco/">
-						<img src="images/bottom/sns2.png" alt="인스타그램1" width="32" height="32">
-						<img src="images/bottom/sns2_hover.png" alt="인스타그램2" width="32" height="32" class="sns_hover">
-					</a>
-				</li><!--sns_img-->		
-				<li class="sns_img">
-					<a href="https://pf.kakao.com/_xlieQj">
-						<img src="images/bottom/sns3.png" alt="카카오톡1" width="32" height="32">
-						<img src="images/bottom/sns3_hover.png" alt="카카오톡2" width="32" height="32" class="sns_hover">
-					</a>
-				</li><!--sns_img-->			
-			</ul><!--sns-->
-		</div><!--info2-->
-		<p id="copyright">copyright&copy;2021.T&amp;CO alrights reserved</p>
-	</footer><!--bottom-->
-</div><!--bottom_wrap-->
-	
-</body>
-</html>
+<%@ include file="footer.jsp" %>

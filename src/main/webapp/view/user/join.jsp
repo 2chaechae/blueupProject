@@ -5,18 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>티파니앤코 (리뉴얼)</title>
-<script src="js/jquery-1.12.4.min.js"></script>
-<script src = "js/top.js"></script>
-<script src="js/join.js"></script>
-<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-<script src="js/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/join.css">	
+<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
+<script src = "${pageContext.request.contextPath}/js/top.js"></script>
+<script src="${pageContext.request.contextPath}/js/join.js"></script>
+<link rel="shortcut icon" type="${pageContext.request.contextPath}/image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/join.css">	
 </head>
 <body>
 <!--맨위로 가기 맨 아래로 가기-->
-<p><img src="images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
-<p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
+<p><img src="${pageContext.request.contextPath}/images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
+<p><img src="${pageContext.request.contextPath}/images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
 
 <!--////////////상단//////////////-->
 <div id="top_wrap">
@@ -24,7 +24,7 @@
 		<header id="top">
 			<!--js태그 추가자리-->
 			<div id="top_bar">
-				<h1><a href="index.html"><img src="images/top/logo.png" alt="티파니앤코" width="168" height="22"></a></h1>
+				<h1><a href="index.html"><img src="${pageContext.request.contextPath}/images/top/logo.png" alt="티파니앤코" width="168" height="22"></a></h1>
 
 				<nav id="top_navi">
 					<ul id="mtop">
@@ -75,17 +75,17 @@
 					<ul>
 						<li><a href="store.html" title="매장안내">매장안내</a></li>
 						<li><a href="cscenter.html" title="고객센터">고객센터</a></li>
-						<li class="top_btn1"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>login</span>
+						<li class="top_btn1"><img src="${pageContext.request.contextPath}/images/top/login.png" alt="로그인" width="16" height="16"><br><span>login</span>
 							<ul class="btn_sub">
-								<li><img src="images/top/diamond.png" alt="다이아몬드" width="80" height="55"></li>
+								<li><img src="${pageContext.request.contextPath}/images/top/diamond.png" alt="다이아몬드" width="80" height="55"></li>
 								<li>티파니 온라인회원이 되어<br>특별한 혜택을 경험해보세요.</li>
 								<li><a href="login.html">로그인</a></li>
 								<li><a href="join.html">회원가입</a></li>
 							</ul>
 						</li>
-						<li class="top_btn2"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>검색</span>
+						<li class="top_btn2"><img src="${pageContext.request.contextPath}/images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>검색</span>
 							<ul class="btn_sub2">
-								<li><img src="images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
+								<li><img src="${pageContext.request.contextPath}/images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
 								<li><input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요. " id="seartop_input"></li>
 								<li><button type="submit" id="seartop_btn">검색</button></li>
 							</ul><!--btn_sub2-->
@@ -102,7 +102,7 @@
 	<div id="page">
 		<ul id="r_page">
 			<li>Home</li>
-			<li><img src="images/icon/page_arrow.png" alt="페이지화살표1" width="5" height="9"></li>
+			<li><img src="${pageContext.request.contextPath}/images/icon/page_arrow.png" alt="페이지화살표1" width="5" height="9"></li>
 			<li>회원가입</li>
 		</ul><!--r_page-->
 	</div><!--page-->
@@ -124,7 +124,7 @@
           <div id="join1" class="contents">
             <div id="phone_info">
               <a href="#">
-                <img src="images/join/phone.png" alt="문자인증" width="30" height="45">
+                <img src="${pageContext.request.contextPath}/images/join/phone.png" alt="문자인증" width="30" height="45">
                 <p>문자 본인인증</p>
               </a>
             </div>
