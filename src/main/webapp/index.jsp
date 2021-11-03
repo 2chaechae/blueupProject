@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,91 +15,76 @@
 <!--맨위로 가기 맨 아래로 가기-->
 <p><img src="images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
 <p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
-<!--////////////상단//////////////-->
+
 <div id="top_wrap">
-
-   <header id="top">
-      <!--js태그 추가자리-->
-      <div id="top_bar">
-         <h1><a href="#"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/main/blueuplogo.png" alt="블루업"></a></h1>
-         <nav id="top_navi">
-            <ul id="mtop">
-               <li><a href="#" data-atitle="신상품" data-btitle="Brand">NEW IN</a></li>
-               <li><a href="#" data-atitle="베스트상품" data-btitle="Item">BEST 50</a></li>
-               <li><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
-               <li><a href="#" data-atitle="아우터" data-btitle="Collection">OUTER</a>
-                  <ul class="sub">
-                     <li><a href="#">가디건</a></li>
-                     <li><a href="#">자켓/베스트</a></li>
-                     <li><a href="#">점퍼</a></li>
-                     <li><a href="#">코트</a></li>
-                  </ul>
-               </li>
-               <li><a href="#" data-atitle="상의" data-btitle="Collection">TOP</a>
-                  <ul class="sub">
-                     <li><a href="#">티셔츠</a></li>
-                     <li><a href="#">니트</a></li>
-                     <li><a href="#">맨투맨/후드</a></li>
-                     <li><a href="#">셔츠/블라우스</a></li>
-                     <li><a href="#">크롭</a></li>
-                  </ul>
-               </li>
-               <li><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
-                  <ul class="sub">
-                     <li><a href="#">긴바지</a></li>
-                     <li><a href="#">트레이닝</a></li>
-                     <li><a href="#">반바지</a></li>
-                     <li><a href="#">스커트</a></li>
-                  </ul>
-               </li>
-               <li><a href="#" data-atitle="기타" data-btitle="Collection">ACC</a>
-                  <ul class="sub">
-                     <li><a href="#">Necklace</a></li>
-                     <li><a href="#">Earrings</a></li>
-                     <li><a href="#">Rings</a></li>
-                     <li><a href="#">Bracelet</a></li>
-                     <li><a href="#">BAGS/SHOES</a></li>
-                     <li><a href="#">CAP</a></li>
-                     <li><a href="#">ETC</a></li>
-                  </ul>
-               </li>
-               <li><a href="#" data-atitle="위시리스트" data-btitle="Collection">WISH</a></li>
-               <li><a href="#" data-atitle="커뮤니티" data-btitle="Collection">COMMUNITY</a>
-                  <ul class="sub">
-                     <li><a href="#">공지사항</a></li>
-                     <li><a href="#">QnA</a></li>
-                     <li><a href="#">REVIEW</a></li>
-                  </ul>
-               </li>
-            </ul>
-         </nav><!--top_navi 주메뉴-->
-         <div id="quick">
-            <!--js태그 추가자리-->
-            <ul>
-               <li class="top_btn1"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>login</span>
-               <!-- 
-                  <ul class="btn_sub">
-                     <li><img src="images/top/diamond.png" alt="다이아몬드" width="80" height="55"></li>
-                     <li>티파니 온라인회원이 되어<br>특별한 혜택을 경험해보세요.</li>
-                     <li><a href="login.html">로그인</a></li>
-                     <li><a href="join.html">회원가입</a></li>
-                  </ul>
-                -->
-               </li>
-               <li class="top_btn2"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>검색</span>
-                  <ul class="btn_sub2">
-                     <li><img src="images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
-                     <li><input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요. " id="seartop_input"></li>
-                     <li><button type="submit" id="seartop_btn">검색</button></li>
-                  </ul><!--btn_sub2-->
-               </li><!--top_btn2-->
-            </ul>
-         </div><!--top_sub 서브메뉴-->
-      </div><!--top_bar-->
-   </header><!--top 상단전체-->
-
-  
-
+	<header id="top">
+		<!--js태그 추가자리-->
+		<h1><a href="#"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/main/blueuplogo.png" alt="블루업"></a></h1>
+		<div id="top_bar">
+			
+			<nav id="top_navi">
+				<ul id="mtop">
+					<li><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
+					<li><a href="#" data-atitle="아우터" data-btitle="Collection">OUTER</a>
+						<ul class="sub">
+							<li><a href="#">가디건</a></li>
+							<li><a href="#">자켓/베스트</a></li>
+							<li><a href="#">점퍼</a></li>
+							<li><a href="#">코트</a></li>
+						</ul>
+					</li>
+					<li><a href="#" data-atitle="상의" data-btitle="Collection">TOP</a>
+						<ul class="sub">
+							<li><a href="#">티셔츠</a></li>
+							<li><a href="#">니트</a></li>
+							<li><a href="#">맨투맨/후드</a></li>
+							<li><a href="#">셔츠/블라우스</a></li>
+							<li><a href="#">크롭</a></li>
+						</ul>
+					</li>
+					<li><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
+						<ul class="sub">
+							<li><a href="#">긴바지</a></li>
+							<li><a href="#">트레이닝</a></li>
+							<li><a href="#">반바지</a></li>
+							<li><a href="#">스커트</a></li>
+						</ul>
+					</li>
+					<li><a href="#" data-atitle="기타" data-btitle="Collection">ACC</a>
+						<ul class="sub">
+							<li><a href="#">Necklace</a></li>
+							<li><a href="#">Earrings</a></li>
+							<li><a href="#">Rings</a></li>
+							<li><a href="#">Bracelet</a></li>
+							<li><a href="#">BAGS/SHOES</a></li>
+							<li><a href="#">CAP</a></li>
+							<li><a href="#">ETC</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav><!--top_navi 주메뉴-->
+			<div id="quick">
+					<!--js태그 추가자리-->
+					<ul>
+						<li class="top_btn1"><a href="#" title="고객센터"><br><span>COMMUNTIY</span></a>
+							<ul class="btn_sub">
+								<li><a href="#">공지사항</a></li>
+								<li><a href="#">QnA</a></li>
+								<li><a href="#">REVIEW</a></li>
+							</ul>
+						</li>
+						<li class="top_btn1"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>LOGIN</span></li>
+						<li class="top_btn2"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>SEARCH</span>
+							<ul class="btn_sub2">
+								<li><img src="images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
+								<li><input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요. " id="seartop_input"></li>
+								<li><button type="submit" id="seartop_btn">검색</button></li>
+							</ul><!--btn_sub2-->
+						</li><!--top_btn2-->
+					</ul>
+				</div><!--top_sub 서브메뉴-->
+		</div><!--top_bar-->
+	</header><!--top 상단전체-->
 </div><!--top_wrap-->
 
 <!--//////티파니 아이템//////-->
@@ -245,28 +229,8 @@
    </div><!--cs-->
 </div><!--etc-->
 
-<!--/////////하단/////////-->
-<div id="bottom_wrap">
-   <footer id="bottom">
-      <p><a href="index.html"><img src="#" alt="하단로고"></a></p>
-      <div id="info1">
-         <address>
-            사업자 등록번호 : 106-81-59905<br>
-            대표이사 : 성진캉<br>
-            본사 :  04542 서울 중구 청계천로 100 (수표동, 시그니쳐타워, 서관 17층)<br>
-            전화번호 : 02-540-6270 &nbsp; &nbsp; &nbsp; &nbsp;  팩스번호 : 02-540-6271<br>
-         </address>
-      </div><!--info1-->
-      <div id="info2">
-         <ul id="info2_menu">
-            <li><a href="getNoticeList.do">고객센터</a></li>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-         </ul><!--info2_menu-->
-      </div><!--info2-->
-      <p id="copyright">copyright&copy;2021.T&amp;CO alrights reserved</p>
-   </footer><!--bottom-->
-</div><!--bottom_wrap-->
+<!--하단-->
+<%@ include file="/footer.jsp" %>
 
 </body>
 </html>
