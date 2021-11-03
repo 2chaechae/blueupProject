@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -86,8 +86,7 @@
 							<li><a href="store.html" title="매장안내">매장안내</a></li>
 							<li><a href="cscenter.html" title="고객센터">고객센터</a></li>
 							<li class="top_btn1"><img src="images/top/login.png"
-								alt="로그인" width="16" height="16"><br>
-							<span>login</span>
+								alt="로그인" width="16" height="16"><br> <span>login</span>
 								<ul class="btn_sub">
 									<li><img src="images/top/diamond.png" alt="다이아몬드"
 										width="80" height="55"></li>
@@ -97,16 +96,14 @@
 									<li><a href="join.html">회원가입</a></li>
 								</ul></li>
 							<li class="top_btn2"><img src="images/top/search.png"
-								alt="상단바 검색" width="16" height="16"><br>
-							<span>검색</span>
+								alt="상단바 검색" width="16" height="16"><br> <span>검색</span>
 								<ul class="btn_sub2">
 									<li><img src="images/top/seartop_btn.png" alt="검색드롭다운메뉴"
 										width="40" height="40"></li>
 									<li><input type="text" title="검색어 입력"
 										placeholder="검색어를 입력해주세요. " id="seartop_input"></li>
 									<li><button type="submit" id="seartop_btn">검색</button></li>
-								</ul>
-								<!--btn_sub2--></li>
+								</ul> <!--btn_sub2--></li>
 							<!--top_btn2-->
 						</ul>
 					</div>
@@ -187,17 +184,37 @@
 					</div>
 					<!--no_tit-->
 					<ul>
-					
-					
-						<li>안녕</li>
-					
-					
-						<!-- for문으로 리스트 가져와주기 최근 공지사항 -->
-					
-					
-					
-					
-					
+						<c:forEach items="${qnaLimitList }" var="list">
+							<c:choose>
+								<c:when test="${list.depth gt 0 }">
+									<c:choose>
+										<c:when test="${list.secret eq true }">
+											<p>
+												<img
+													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png"width="20"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png" />${list.qna_title }</p>
+										</c:when>
+										<c:otherwise>
+											<p>
+												<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png" width="20">${list.qna_title }</p>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${list.secret eq true }">
+											<p><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png" />${list.qna_title }</p>
+										</c:when>
+										<c:otherwise>
+											<p>${list.qna_title }</p>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
+
+						</c:forEach>
+
+
 					</ul>
 				</div>
 				<!--notice-->

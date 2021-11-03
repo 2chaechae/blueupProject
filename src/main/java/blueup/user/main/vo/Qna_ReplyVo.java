@@ -20,4 +20,5 @@ public class Qna_ReplyVo {
 	int ref;
 	int depth;
 	int sgtep;
+	boolean secret; //공개 여부
 }

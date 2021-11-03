@@ -21,4 +21,7 @@ public class QnaVo {
 	int ref;
 	int step;
 	int depth;
+	int viewLimit; // 공지사항에 띄어줄 개수
+	boolean secret; //공개여부
+	String password; //비밀버놓
 }
