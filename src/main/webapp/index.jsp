@@ -142,7 +142,7 @@
                         <li><a href="#">티파니 하드웨어</a></li>
                         <li><a href="#">팔로마피카소</a></li>
                         <li><a href="#">엘사 페러티</a></li>
-                        <li><a href="#">빅토리아</a></li>
+                        <li><a href="#">빅토리아</a></li>ㅇ
                      </ul>
                   </li>
                </ul>
