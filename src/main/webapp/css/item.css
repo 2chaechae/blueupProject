@@ -131,8 +131,8 @@ h3 {
 }
 
 /*각 item공통*/
-
-.item { width : 300px;
+.item {
+	width: 300px;
 	height: 400px;
 	float: left;
 	text-align: center;
@@ -207,8 +207,8 @@ h3 {
 	clear: both;
 	font-size: 14px;
 	font-weight: bold;
-	color: #1c079d;
-	margin-top: 15px; 
+	color: #008480;
+	margin-top: 30px;
 }
 
 .item>p:nth-of-type(2) {
@@ -238,11 +238,11 @@ h3 {
 .item_btn {
 	width: 300px;
 	height: 40px;
-	border: 1px solid #1c079d;
+	border: 1px solid #006a67;
 	border-radius: 20px;
 	margin: 50px auto 0 auto;
 	position: relative;
-	overflow: hidden; 
+	overflow: hidden;
 }
 
 .item_btn>a {
@@ -251,13 +251,11 @@ h3 {
 	height: 40px;
 	text-align: center;
 	line-height: 40px;
-	color: #1c079d; 
+	color: #006a67;
 }
 /* 각 카테고리 버튼 마우스 오버시*/
-
-
 .item_btn::after {
-	background: #1c079d;
+	background: #008480;
 	content: "";
 	position: absolute;
 	z-index: -1;
@@ -265,8 +263,8 @@ h3 {
 	left: -35%;
 	top: 0;
 	transform: skew(50deg);
-	transition-duration: 0.6s; 
-	transform-origin : top left;
+	transition-duration: 0.6s;
+	transform-origin: top left;
 	width: 0;
 }
 
