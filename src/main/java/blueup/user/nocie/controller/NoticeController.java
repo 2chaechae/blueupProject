@@ -17,7 +17,7 @@ public class NoticeController {
 	@RequestMapping("/getNoticeList.do")
 	public ModelAndView getNoticeList(NoticeVo vo, ModelAndView mav) {
 		mav.addObject("noticeList", noticeserviceimpl.getnoticeList(vo));
-		mav.setViewName("cscenter.jsp");
+		mav.setViewName("cscenter");
 		return mav;
 	}
 	
