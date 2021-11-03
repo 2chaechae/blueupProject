@@ -28,7 +28,6 @@
       <p class="play"><img src="images/index/play.png" alt="play" width="16" height="17"></p>
       <p class="stop"><img src="images/index/pause.png" alt="pause" width="16" height="17"></p>
     </div>
-
       <header id="top">
          <!--js태그 추가자리-->
          <div id="top_bar">
@@ -68,9 +67,7 @@
 								<li><a href="#">티파니티</a></li>
 								<li><a href="#">아틀라스 </a></li>
 								<li><a href="#">티파니키</a></li>
-								<li><a href="#">리턴투 티파니</a></li>
-		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    +-						<li><a href="#">티파니 하드웨어</a></li>
+								<li><a href="#">리턴투 티파니</a></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   +-						<li><a href="#">티파니 하드웨어</a></li>
 								<li><a href="#">팔로마피카소</a></li>
 								<li><a href="#">엘사 페러티</a></li>
 								<li><a href="#">빅토리아</a></li>
