@@ -8,8 +8,8 @@
 		<typeAlias type="blueup.admin.main.vo.ProductVo" alias="productvo"/>
 		<typeAlias type="blueup.admin.main.vo.ProductVo" alias="stockvo"/>
 		<typeAlias type="blueup.user.main.vo.CartVo" alias="cartvo"/>
-		<typeAlias type="blueup.user.terms.vo.Terms_and_conditionVo" alias="termsvo"/>
-		<typeAlias type="blueup.user.notice.vo.NoticeVo" alias="noticevo"/>
+		<typeAlias type="blueup.user.main.vo.Terms_and_conditionVo" alias="termsvo"/>
+		<typeAlias type="blueup.user.main.vo.NoticeVo" alias="noticevo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />

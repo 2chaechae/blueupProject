@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import blueup.user.notice.vo.NoticeVo;
+import blueup.user.main.vo.NoticeVo;
 
 @Repository
 public class NoticeDAO {

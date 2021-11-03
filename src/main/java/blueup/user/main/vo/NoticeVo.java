@@ -1,4 +1,4 @@
-package blueup.user.notice.vo;
+package blueup.user.main.vo;
 
 import java.util.Date;
 import lombok.Getter;

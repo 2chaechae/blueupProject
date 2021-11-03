@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import blueup.user.main.vo.NoticeVo;
 import blueup.user.notice.service.NoticeServiceImpl;
-import blueup.user.notice.vo.NoticeVo;
 
 @Controller
 public class NoticeController {

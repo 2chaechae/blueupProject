@@ -2,7 +2,7 @@ package blueup.user.notice.service;
 
 import java.util.List;
 
-import blueup.user.notice.vo.NoticeVo;
+import blueup.user.main.vo.NoticeVo;
 
 public interface NoticeService {
 	public int insertNotice(NoticeVo vo);
