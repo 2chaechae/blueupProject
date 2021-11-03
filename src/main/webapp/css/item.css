@@ -98,8 +98,8 @@ h3{
 	margin:100px auto 0 auto;
 }
 .items{
-	width:1400px;
-	height:715px;
+	width:1578px;
+	height:402px;
 }
 .items > h3{ /*아이템라인*/
 	width:1415px;
@@ -110,7 +110,7 @@ h3{
 }
 .item_con{
 	height:402px;
-	margin-left:22px;
+	margin-left:0px;
 }
 
 /*각 item공통*/

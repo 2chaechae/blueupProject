@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -118,67 +118,25 @@
 	<!--///////jewerly////////-->
 		<div class="items">
 			<h3>OUTER</h3>
-			<div class="item_con">
+			<c:forEach var="i" begin="1" end="20">
+				<c:if test="${i % 5 == 0}">
+					  	<div class="item_con">
+				</c:if>
 				<div class="item">
-					<div class ="item_img">
+				  <!-- <c:forEach var="notice" items="${noticeList}" varStatus="status"></c:forEach>-->
+		               <div class ="item_img">
 							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
-							<!-- <div class="item_hover">
-								<img src="images/item/jewerly1_hover.png" alt="맨투맨" width="300" height="300">
-								<p><span class="h_txt">맨투맨</span> ￦23,000</p>
-							</div>item_hover : 마우스 오버시 -->
 						</div><!--item_img :gift 이미지-->
 						<p>점퍼</p>
 						<p>어디에나 착용가능한 맨투맨</p>
 						<p class="heart">
 							<img src="images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly1-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/vvvvvv.jpg" alt="니트" width="300" height="300">
-							<!-- <div class="item_hover">
-								<img src="images/item/jewerly2_hover.png" alt="더블드롭귀걸이2" width="300" height="300">
-								<p><span class="h_txt">니트</span> ￦32,000</p>
-							</div>item_hover : 마우스 오버시 -->
-						</div><!--item_img :gift 이미지-->
-						<p>자켓</p>
-						<p>쫀쫀한 니트재질</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly2-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/polartee.jpg" alt="워머니트" width="300" height="300">
-							<!-- <div class="item_hover">
-								<img src="images/item/jewerly3_hover.png" alt="T1 링2" width="300" height="320">
-								<p><span class="h_txt">니트소재</span> ￦28,000</p>
-							</div>item_hover : 마우스 오버시 -->
-						</div><!--item_img :gift 이미지-->
-						<p>코트</p>
-						<p>따뜻한 재질</p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly3-->
-					<div class="item">
-					<div class ="item_img">
-							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
-							<!-- <div class="item_hover">
-								<img src="images/item/jewerly1_hover.png" alt="맨투맨" width="300" height="300">
-								<p><span class="h_txt">맨투맨</span> ￦23,000</p>
-							</div>item_hover : 마우스 오버시 -->
-						</div><!--item_img :gift 이미지-->
-						<p>후드</p>
-						<p>편하게 입고다니는 필수템 </p>
-						<p class="heart">
-							<img src="images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
-					</div><!--item: jewerly4-->
-			</div><!--item_con-->
-				
-			
-			
+          		 	</div><!--item: jewerly1-->
+          		 <c:if test="${i % 4 == 0}">
+					  	</div>
+				</c:if>
+          	</c:forEach>
 			<p class="item_btn"><a href="jewerly.html">Outer 더보기</a></p>
 		</div><!--items-->
 		
