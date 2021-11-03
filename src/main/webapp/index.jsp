@@ -16,7 +16,6 @@
 <!--맨위로 가기 맨 아래로 가기-->
 <p><img src="images/icon/scrollup.png" alt="맨위로" width="40" height="41" class="up_btn"></p>
 <p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
-
 <!--////////////상단//////////////-->
 <div id="top_wrap">
    <div id="top_wrap2">
@@ -29,7 +28,6 @@
       <p class="play"><img src="images/index/play.png" alt="play" width="16" height="17"></p>
       <p class="stop"><img src="images/index/pause.png" alt="pause" width="16" height="17"></p>
     </div>
-
       <header id="top">
          <!--js태그 추가자리-->
          <div id="top_bar">
@@ -69,8 +67,7 @@
 								<li><a href="#">티파니티</a></li>
 								<li><a href="#">아틀라스 </a></li>
 								<li><a href="#">티파니키</a></li>
-								<li><a href="#">리턴투 티파니</a></li>
-								<li><a href="#">티파니 하드웨어</a></li>
+								<li><a href="#">리턴투 티파니</a></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   +-						<li><a href="#">티파니 하드웨어</a></li>
 								<li><a href="#">팔로마피카소</a></li>
 								<li><a href="#">엘사 페러티</a></li>
 								<li><a href="#">빅토리아</a></li>
@@ -82,7 +79,7 @@
 					<!--js태그 추가자리-->
 					<ul>
 						<li><a href="store.jsp" title="매장안내">매장안내</a></li>
-						<li><a href="cscenter.jsp" title="고객센터">고객센터</a></li>
+						<li><a href="getNoticeList.do" title="고객센터">고객센터</a></li>
 						<li class="top_btn1"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>login</span>
 							<ul class="btn_sub">
 								<li><img src="images/top/diamond.png" alt="다이아몬드" width="80" height="55"></li>
@@ -100,6 +97,7 @@
 						</li><!--top_btn2-->
 					</ul>
 				</div><!--top_sub 서브메뉴-->
+				
 			</div><!--top_bar-->
 		</header><!--top 상단전체-->
 	</div><!--top_wrap2-->
@@ -142,7 +140,7 @@
                         <li><a href="#">티파니 하드웨어</a></li>
                         <li><a href="#">팔로마피카소</a></li>
                         <li><a href="#">엘사 페러티</a></li>
-                        <li><a href="#">빅토리아</a></li>
+                        <li><a href="#">빅토리아</a></li>ㅇ
                      </ul>
                   </li>
                </ul>

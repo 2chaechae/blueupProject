@@ -2,6 +2,7 @@ package blueup.user.main.vo;
 
 import java.util.Date;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,6 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Data
 public class Terms_and_conditionVo {
 	int terms_no; //距包 锅龋
 	String terms_title; //距包 力格
