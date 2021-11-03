@@ -18,6 +18,7 @@
 <p><img src="images/icon/scrolldown.png" alt="맨아래로" width="40" height="41" class="down_btn"></p>
 <!--////////////상단//////////////-->
 <div id="top_wrap">
+
 	<header id="top">
 		<!--js태그 추가자리-->
 		<div id="top_bar">
@@ -97,6 +98,9 @@
 			</div><!--top_sub 서브메뉴-->
 		</div><!--top_bar-->
 	</header><!--top 상단전체-->
+
+  
+
 </div><!--top_wrap-->
 
 <!--//////티파니 아이템//////-->
