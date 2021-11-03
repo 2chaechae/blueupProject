@@ -127,7 +127,8 @@ h3 {
 
 .item_con {
 	height: 402px;
-	margin-left: 22px;
+	margin-left: 0px;
+	padding-left: 50px;
 }
 
 /*각 item공통*/
