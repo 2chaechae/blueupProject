@@ -1,0 +1,32 @@
+package blueup.user.notice.dao;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import blueup.user.notice.vo.NoticeVo;
+
+@Repository
+public class NoticeDAO {
+
+	@Autowired
+	private SqlSessionTemplate sqlSssionTemplate;
+	
+	public int insertNotice(NoticeVo vo) {
+		return sqlSssionTemplate.insert("noticeDao.insertNotice", vo);
+	}
+	
+	public int deleteNotice(NoticeVo vo) {
+		return sqlSssionTemplate.delete("noticeDao.deleteNotice", vo);
+	}
+	
+	public int updateNotice(NoticeVo vo) {
+		return sqlSssionTemplate.update("noticeDao.updateNotice", vo);
+	}
+	
+	public List<NoticeVo> getnoticeList(NoticeVo vo) {
+		return sqlSssionTemplate.selectList("noticeDao.getnoticeList", vo);
+	}
+}

@@ -82,7 +82,7 @@
 					<!--js태그 추가자리-->
 					<ul>
 						<li><a href="store.jsp" title="매장안내">매장안내</a></li>
-						<li><a href="cscenter.jsp" title="고객센터">고객센터</a></li>
+						<li><a href="getNoticeList.do" title="고객센터">고객센터</a></li>
 						<li class="top_btn1"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>login</span>
 							<ul class="btn_sub">
 								<li><img src="images/top/diamond.png" alt="다이아몬드" width="80" height="55"></li>
