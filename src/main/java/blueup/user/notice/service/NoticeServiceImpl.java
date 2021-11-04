@@ -33,4 +33,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticedao.getnoticeList(vo);
 	}
 
+	@Override
+	public void updateNoticeCnt(NoticeVo vo) {
+		noticedao.updateNoticeCnt(vo);
+	}
+
 }
