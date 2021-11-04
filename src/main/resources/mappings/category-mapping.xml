@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="categoryDao">
+
+<!-- 카테고리 가져오기 (1,2차) -->
+	<select id="getCategory" parameterType="categoryvo" resultType="cateDetailvo">
+		select a.category_name, b.detailed_category_name from 
+		category as a, category_detail as b 
+		where b.category_name = ${category_name} and b.category_name = a.category_name;
+	</select>
+</mapper>

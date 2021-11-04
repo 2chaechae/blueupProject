@@ -29,7 +29,7 @@
 
 <!-- 상품 수정 -->
 	<update id="productUpdate" parameterType="productvo">
-		UPDATE PRODUCT
+		UPDATE PRODUCT SET
 		PRODUCT_NAME = #{product_name},
 		PRODUCT_PRICE = #{price},
 		DISCOUNT = #{discount},
@@ -44,7 +44,8 @@
 		DETAILED_CATEGORY_NAME = #{detailed_category_name}
 		WHERE PRODUCT_NO = #{product_no}
 	</update>
-
+	
+	<!-- 카테고리 기준 상품 조회 -->
 	<select id="getProductListByCategory" resultType="productvo"
 		parameterType="productvo">
 		SELECT * FROM PRODUCT
@@ -53,25 +54,27 @@
 		ORDER BY PRODUCT_NO DESC;
 	</select>
 
+	<!-- 디테일 카테고리 기준 상품 조회 -->
 	<select id="getProductListByDetailedCategory" resultType="productvo"
 		parameterType="productvo">
 		SELECT * FROM PRODUCT
-		WHERE
-		CATEGORY_NAME = #{category_name} AND DETAILED_CATEGORY_NAME = #{detailed_category_name}
+		WHERE DETAILED_CATEGORY_NAME = #{detailed_category_name}
 		ORDER BY PRODUCT_NO DESC;
 	</select>
 
+	<!-- 특정 상품 조회 -->
 	<select id="getProduct" resultType="productvo" parameterType="productvo">
 		SELECT * FROM PRODUCT
 		WHERE
-		CATEGORY_NO = #{product_no};
+		PRODUCT_NO = #{product_no};
 	</select>
 
-
+	<!--  모든 상품 조회 -->
 	<select id="getProductList" resultType="productvo">
 		SELECT * FROM PRODUCT ORDER BY PRODUCT_NO DESC;
 	</select>
 	
+	<!-- 검색어 기준 상품 조회 -->
 	<select id="getProductListBySearch" parameterType="productvo" resultType="productvo">
 		SELECT * FROM PRODUCT WHERE PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
 	</select>
