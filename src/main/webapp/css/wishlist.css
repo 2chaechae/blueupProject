@@ -1,0 +1,63 @@
+@charset "EUC-KR";
+@import url("top.css");/*상단영역*/
+@import url("bottom.css");/*하단영역*/
+
+.wishbtn{
+
+  right:10%; top:50%;
+  transform:translate(0, -50%);
+  width:300px;
+  height:40px;
+  z-index:30;
+  cursor:pointer;
+  color: #ffffff;
+  background:rgb(58, 58, 58);
+  font-size: 14px;
+  font-weight: bold;
+}
+.wishaddbt{
+
+  right:10%; top:50%;
+  transform:translate(0, -50%);
+  width:300px;
+  height:40px;
+  z-index:30;
+  cursor:pointer;
+  color: rgb(0, 0, 0);
+  background:#ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+.walldel{
+  right:10%; top:50%;
+  transform:translate(0, -50%);
+  width:150px;
+  height:35px;
+  z-index:30;
+  cursor:pointer;
+  color: #ffffff;
+  background:rgb(58, 58, 58);
+  font-size: 14px;
+  font-weight: bold;
+  
+}
+.wish1{
+	padding:20px 0 20px 1290px;
+	
+}
+.wish2{
+	padding:0 10px 0 0 10px;
+	
+}
+
+/* .whis { width : 300px;
+	height: 600px;
+	float: left;
+	text-align: center;
+	margin-right: 59px;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+	cursor: pointer;
+} */
+
