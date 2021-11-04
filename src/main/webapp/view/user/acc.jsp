@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>outer</title>
+<title>acc</title>
 <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js"></script>
 <script
@@ -138,8 +138,8 @@
 		               <div class ="outer_img">
 							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
 						</div><!--item_img :gift 이미지-->
-						<p>점퍼</p>
-						<p>어디에나 착용가능한 맨투맨</p>
+						<p>반지</p>
+						<p>10호 11호 12호</p>
 						<p class="heart">
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
@@ -150,7 +150,7 @@
 					
 				</c:if>
           	</c:forEach></div>
-			<p class="outer_btn"><a href="jewerly.html">Outer 더보기</a></p>
+			<p class="outer_btn"><a href="jewerly.html">ACC 더보기</a></p>
 		<!--items-->
 		
 	
