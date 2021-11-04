@@ -1,0 +1,667 @@
+@charset "utf-8";
+/* 주문,장바구니 CSS */
+
+/* step Box */
+.od .stepInfoBox{margin:30px 0 20px 0; background:#000; display:block; text-align:center}
+.od .stepInfoBox li{display:inline-block; padding-left:108px; color:#fff; height:70px; line-height:70px; font-size:20px; font-weight:400; position:relative ; opacity: .3}
+.od .stepInfoBox li.on{opacity:1}
+.od .stepInfoBox li:after{ content:''; display:block; background:#ff0000; width:108px; height:70px; position:absolute; top:0; left:0; background: url('../images/od/step_arrow.png') no-repeat 50% 50%; }
+.od .stepInfoBox li:first-child{padding:0;}
+.od .stepInfoBox li:first-child:after{display:none}
+
+/* order tab style */
+.od .tab-type03{margin-top:0}
+
+/* order Layout */
+.od .orderInfoArea{position:relative; overflow:hidden; padding-right:320px }
+.od .orderInfoArea.full{padding-right:0}
+.od .orderTable{ margin-top:40px;}
+.od .orderStore{margin-top:0}
+.od .orderStore .storeArea{margin-top:60px}
+.od .orderPay{position:absolute; right:0; top:0; width:280px;}
+
+/* font style */
+.fw_bold{font-weight: 700; color:#000}
+.fc_black{color:#000 !important;}
+.fc_gray{color:#666 !important;}
+.fc_red{color:#ff3600 !important;}
+.fs_r{text-align:right !important;}
+
+/* radio Select Text None */
+.orderPayOptSel.txtNone{font-size:0; height:0; width:0; overflow: hidden; margin:0; position:absolute; left:-9999px}
+
+/* order select */
+.od .select-style02 ul li a{padding-left:20px}
+.od .select-style02 ul li:first-child {padding-top:6px}
+
+/* order Table */
+.od .orderTable .product-info{padding-left:120px}
+.od .orderTable .product-info-img{width:100px; height:100px}
+.od .orderTable .product-info.product-add-set{padding-left:146px;  background: url('../images/od/icon_list_set.png') no-repeat -7px -7px;}
+.od .orderTable .product-info.product-add-set .product-info-img{left:26px}
+.od .orderTable .product-info.product-free-gift{padding-left:146px;}
+.od .orderTable .product-info.product-free-gift .product-info-img{left:26px}
+.od .orderTable .board-list td{vertical-align: middle;}
+.od .orderTable .board-list td a{white-space:inherit}
+.od .orderTable .product-info .product-info-box{min-height:auto}
+.od .orderTable .product-info .product-option{margin-top:20px}
+.od .orderTable .quantityWrap { display: table; margin:0 auto; width:105px}
+.od .orderTable .quantityWrap button{ float:left; width:30px; height:30px; background:#ff0000; font-size:0; }
+.od .orderTable .quantityWrap .btMinus{background: url('../images/od/btn_minus.png') no-repeat}
+.od .orderTable .quantityWrap .btPlus{float:right; background: url('../images/od/btn_plus.png') no-repeat}
+.od .orderTable .quantityWrap .pdNumber{float:left; width:40px; height:30px; border:1px solid #ddd; text-align:center; vertical-align: top; margin:0 2px}
+.od .orderTable .btn_txt{display:inline-block; padding:0 4px; vertical-align: top}
+.od .orderTable .btn_txt em{display:block; padding-bottom:1px; font-size:13px; border-bottom:1px solid #666}
+.od .orderTable .btn_num_save {margin-top:8px}
+.od .orderTable .box_family {margin-top:20px}
+.od .orderTable .box_family .link_family {display:inline-flex;border:1px solid #ddd;padding:0 20px;height:25px;align-items:center}
+.od .orderTable .box_family .link_family .text_family {font-size:13px;color:#ff3600;font-weight:300;padding-right:13px}
+.od .orderTable .box_family .link_family .link_blt-b {width:5px;height:9px;background:url(../images/cm/link_blt-b.png) no-repeat}
+.od .orderTable .btn_pay_view{display:inline-block; font-size:0;  width:20px; height:15px; background:url('../images/od/btn_layer_open.png') 50% 50% no-repeat}
+.od .orderTable .btn_list_del{display:inline-block; vertical-align: top; font-size:0; width:25px; height:25px; background:url('../images/od/btn_list_del.png') 50% 50% no-repeat}
+.od .orderTable .product-info .product-option > p {color:#999; padding-top:5px; line-height:18px}
+.od .orderTable .product-info .product-option > p:first-child {padding-top:0}
+.od .orderTable .product-info .product-option > p strong {color:#000}
+.od .orderTable tfoot th, .od .orderTable tfoot td{background:#f8f8f8; border-bottom:0}
+.od .orderTable tbody td:first-child{vertical-align: top}
+.od .orderTable tfoot th{text-align:right}
+.od .orderTable tfoot th span{display:inline-block; width:100px; text-align:center}
+.od .orderTable tfoot .dvTotal{padding-right:20px; text-align:right; font-size:14px}
+.od .orderTable tfoot .dvTotal strong{display:inline-block; padding-right:50px; color:#000}
+
+.od .orderTable .btnWrap{padding-top:40px; text-align:center}
+.od .orderTable .btnWrap .btn{width:200px; margin:0 1px}
+
+.od .orderTable .noProductMs{padding:75px 50px; text-align:center}
+.od .orderTable .noProductMs p{font-size:18px; color:#666}
+.od .orderTable .noProductMs span{font-size:13px; display:block; padding-top:10px}
+.od .orderTable .noProductMs .linkBox{padding-top:25px}
+.od .orderTable .noProductMs .linkBox a{display:inline-block; text-decoration: underline; color:#000; margin:0 5px}
+
+.od .orderStore .tableBtarea{margin:0}
+.od .orderStore .storeName {font-size:16px; color:#666; text-align: center; padding-bottom:15px;}
+.od .orderStore .storeName strong{display:inline-block; padding:4px 0; color:#000;}
+.od .orderStore .storeName span{display:inline-block}
+.od .orderStore .storeName .btnMap{display:inline-block; width:30px; height:30px; vertical-align: top; margin-right:5px; margin-top:-2px}
+.od .orderStore tbody tr:last-child  td {border-bottom:2px solid #666}
+.od .orderStore tfoot th, .od .orderStore tfoot td{background:#fff; text-align:right;padding:0 10px;}
+.od .orderStore tfoot tr:last-child th, .od .orderStore tfoot tr:last-child td{ border-bottom:1px solid #ccc; padding-bottom:18px }
+.od .orderStore tfoot td dl, .od .orderStore tfoot td dt, .od .orderStore tfoot td dd{display:block; text-align:center;}
+.od .orderStore tfoot td dt{padding:17px 0 15px; color:#333 }
+.od .orderStore tfoot td dd{padding-bottom:10px}
+.od .orderStore tfoot td.pdPaySel dl{text-align:right; display:inline-block; padding:0 10px}
+.od .orderStore tfoot td.pdPaySel dd{ color:#666}
+.od .orderStore tfoot td.disPaySel dd{color:#ff0000}
+.od .orderStore tfoot td.orderPaySel dt, .od .orderStore tfoot td.orderPaySel dd{text-align:right}
+.od .orderStore tfoot td.orderPaySel dd{color:#000; background:url('../images/od/icon_equals_sign.png') 0 50% no-repeat; letter-spacing: -0.08em}
+.od .orderStore tfoot td.orderPaySel dd strong{font-weight: 700}
+.od .orderStore tfoot td dl dd strong{font-size:24px}
+.od .orderStore .tableBtarea{position:relative}
+.od .orderStore .tableBtarea a{position:absolute; top:-100px}
+
+/* 할인내역 tooltip */
+.od .tooltip-wrap{margin-left:0}
+.od .tooltip-wrap .tooltip-layer{padding:13px 20px 30px}
+.od .layer_discount .tooltip-cnt{border:0}
+.od .layer_discount .tooltip-cnt dl{overflow:hidden; display:block; width:100%;}
+.od .layer_discount .tooltip-cnt dl:first-child{border-bottom:1px solid #ddd; padding-bottom:10px; margin-bottom:10px}
+.od .layer_discount .tooltip-cnt dl:first-child dt, .od .layer_discount .tooltip-cnt dl:first-child dd{color:#666}
+.od .layer_discount .tooltip-cnt dt{float:left}
+.od .layer_discount .tooltip-cnt dd{float:right}
+.od .layer_free_gift .tooltip-layer{padding:30px 20px}
+.od .layer_free_gift .tooltip-cnt{border-top:0; margin:0}
+.od .layer_free_gift .tooltip-cnt dl{overflow:hidden}
+.od .layer_free_gift .tooltip-cnt dt{float:right;  overflow:hidden}
+.od .layer_free_gift .tooltip-cnt dd{float:left; padding-right:10px; vertical-align: top; color:#666; line-height: 18px; text-align:left;}
+.od .layer_free_gift .tooltip-cnt .product-info-img{width:100px; height:100px; background:#f8f8f8}
+.od .layer_free_gift .tooltip-cnt .product-info-img a, .od .layer_free_gift .tooltip-cnt .product-info-img span{display:block; width:100%; height:100%;position:relative}
+.od .layer_free_gift .tooltip-cnt .product-info-img img{position: absolute; top:0; bottom:0; left:0; right:0; width:100%; height:auto; max-width:100%; margin:auto; }
+
+/* 장바구니 - pay info */
+.od .orderPayList{width:280px; padding:20px; background:#fff; border:2px solid #000; position:absolute; left:0; top:0;  margin-top:90px; z-index:2}
+.od .orderPayList h3{font-size:20px; font-weight: 700}
+.od .orderPayList .btn_order{margin-top:40px; overflow: hidden}
+.od .orderPayList .btn_order .btn{width:100%}
+.od .orderPayList .btn_order.btn_two .btn{width:115px; float:right}
+.od .orderPayList .btn_order.btn_two .btn:first-child{float:left}
+.od .orderPayInfo dl{display:table; width:100%}
+.od .orderPayInfo dl:first-child{border-top:1px solid #666; margin:20px 0 35px; font-size:14px;}
+.od .orderPayInfo dl:nth-child(3){margin-top:7px; padding-top:7px; border-top:1px solid #ddd}
+.od .orderPayInfo dl:nth-child(3) dt, .od .orderPayInfo dl:nth-child(3) dd{padding-top:0}
+.od .orderPayInfo dt{float:left; padding-top:20px; clear: both;}
+.od .orderPayInfo dd{float:right; padding-top:20px; color:#666}
+.od .orderPayInfo dd strong{font-size:20px; color:#000}
+.od .orderPayInfo .c_r{color:#ff3600}
+
+/* 주문서 - pay info */
+.od .orderWrite .orderPayList{margin-top:60px}
+.od .orderPay.d_fix_on .orderPayList{margin-top:150px}
+
+/* table area style */
+.od .tableTopArea{margin:0 0 20px 0}
+.od .tableBtarea{margin:20px 0 0 0 ; position:relative}
+.od .tableBtarea .btn{position:absolute; left:0; top:0}
+.od .tableTopArea .btn, .od .tableBtarea .btn{width:107px}
+
+/* line */
+.od .line_t{border-top:1px solid #ddd}
+
+/* list */
+.od .text-list02 li{color:#666}
+.od .text-list02 li:after{background-color:#666}
+.od .text-list02 li strong{color:#000}
+.od .text-list02.line_t{padding-top:20px; margin-top:40px}
+
+/* 주문서 작성 */
+.od .orderWriteArea{position: relative; padding-bottom:40px}
+.od .orderWriteArea .title06{margin-top:20px}
+.od .orderWriteArea .order-detail-wrap{margin-top:18px; border-top:1px solid #666}
+.od .orderWriteArea .orderTable{margin:0}
+.od .orderWriteArea .d_toggle_select{display:block; width:30px; height:30px; overflow:hidden; background:#fff; position:absolute; right:0; top:0;}
+.od .orderWriteArea .d_toggle_select span{display:block; font-size:0; width:30px; height:30px;}
+.od .orderWriteArea .d_toggle_select.btn-open span{background:url('../images/od/btn_toggle_on.png') 12px 50% no-repeat}
+.od .orderWriteArea .d_toggle_select.btn-close span{background:url('../images/od/btn_toggle_close.png') 12px 50% no-repeat}
+.od .orderWriteArea .board-write{border-top:0; margin-top:0}
+.od .orderWriteArea .d_toggle .btn-close {display:none}
+.od .orderWriteArea .d_toggle .btn-open {display:block}
+.od .orderWriteArea .d_toggle.on .btn-open {display:none}
+.od .orderWriteArea .d_toggle.on .btn-close {display:block}
+.od .orderWriteArea .txtSub01 {display:inline-block; padding-left:15px; font-size:13px; line-height:18px; color:#000; letter-spacing: -.04em }
+.od .orderWriteArea .txtSub01 em {color:#ff3600 }
+.od .orderWriteArea .txtSub02 {display:block; padding-top:8px; line-height:18px; color:#666;}
+.od .orderWriteArea .txtSub02 em{margin-right:3px}
+.od .orderWriteArea .txtSub02.st{padding-left:8px; position:relative}
+.od .orderWriteArea .txtSub02.st:before{content: '*'; color:#666; position:absolute; left:0; top:8px}
+.od .orderWriteArea .btnTdArea{padding-left:5px}
+.od .orderWriteArea .btnTdArea .btn{min-width:137px; font-size:14px; margin-left:2px}
+.od .orderWriteArea label{color:#000}
+.od .orderWriteArea .payOptSave{padding-top:20px; border-top:1px solid #ddd}
+.od .orderWriteArea .payOptSave label{color:#666}
+.od .orderWriteArea .orderPaytCont{padding:40px 20px 20px; font-size:13px}
+.od .orderWriteArea .orderPaytCont p{font-size:13px}
+.od .orderWriteArea .orderPaytCont h4{padding-bottom:20px}
+.od .orderWriteArea .orderPaytCont .orderMgBox{background:#f8f8f8; padding:13px 20px; margin-top:40px; position:relative; color:#666; margin-right:-20px}
+.od .orderWriteArea .orderPaytCont .text-list01 li{margin-top:8px}
+.od .orderWriteArea .orderPaytCont .text-list01 li:first-child{margin-top:0}
+.od .orderWriteArea .orderPaytCont .mbBox{padding-bottom:18px}
+.od .orderWriteArea .orderPaytCont .payGuide a{min-width:145px; margin-left:2px; border:1px solid #ddd}
+.od .orderWriteArea .orderPaytCont .payGuide a:hover, .od .orderWriteArea .orderPaytCont .payGuide a:active{background:#000; color:#fff}
+.od .orderWriteArea .orderPaytCont .payGuide a:first-child{margin-left:0}
+.od .orderWriteArea .iconTxt01{color:#666; font-size:13px;}
+.od .orderWriteArea .iconTxt01:before{content: '-';  margin-right:4px}
+.od .orderWriteArea .btnJoinMb{color:#666; margin-left:20px; display:inline-block; padding-bottom:1px; border-bottom:1px solid #666}
+.od .chkPayAgree {margin-top:40px; position:relative; line-height:18px}
+.od .chkPayAgree .check-skin{position:absolute; top:2px; left:0}
+.od .chkPayAgree .check-skin+label{padding-left:15px; display:inline-block; font-size:12px}
+
+.od .orderPayOpt{padding:20px; overflow: hidden; width:100%; border-bottom:1px solid #ddd}
+.od .orderPayOpt li{float:left; padding-right:29px; margin-left:1px}
+.od .orderPayOpt li:last-child{padding-right:0; margin-left:0}
+
+.od .order-paymethod-group .orderPayOpt { padding:0;border-bottom:none;} 
+.od .order-paymethod-group.board-write th {padding-bottom: 18px;}
+.od .order-paymethod-group .orderPayOpt li { padding-left:0px;margin-right:29px;padding-right: 0;}
+.od .order-paymethod-group .orderPayOpt li[class^=easy-] { width:102px;}
+.od .order-paymethod-group .orderPayOpt li.easy-payco {width: auto;}
+
+.od .orderWriteArea .orderPaytCont{display:none}
+.od .orderWriteArea .agree-section{margin-top:0; border-top:0}
+
+/* Store Info */
+.od .storeInfoSel{padding:18px 0}
+.od .StoreInfo{line-height:22px; padding:0 0 25px}
+.od .StoreInfo em{display:inline-block; padding:0 5px}
+.od .StoreInfo .name{display:inline-block; position:relative}
+.od .StoreInfo .btnMap{display:inline-block; width:30px; height:30px; vertical-align: top; margin-right:5px; margin-top:-6px}
+.od .checkMg {line-height:18px; color:#ff3600}
+.od .StoreInfo .lineBar{display:inline-block; vertical-align: top; padding-left:10px; margin-left:9px; position:relative}
+.od .StoreInfo .lineBar:before{content: ''; width:1px; height:15px; border-left: 1px solid #ebebeb; background:#666; position:absolute; left:0; top:50%; margin-top:-7px}
+
+/* * */
+.od .required{color:#ff3600}
+
+/* recommend product */
+.recomPdList{ margin-top:60px; width:1200px}
+.recomPdList h3{font-size:24px; padding-bottom:18px}
+.swipPdListBox li{width:285px !important;}
+.swipPdListBox{position:relative; overflow: hidden}
+.swipPdListBox .pd_img{ background:#f8f8f8;  width:285px; height:285px;}
+.swipPdListBox .pd_img a{display:block; width:100%; height:100%; position:relative}
+.swipPdListBox .pd_img img{position: absolute;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: auto;max-width: 100%;margin: auto;}
+.swipPdListBox .pd_info{padding:28px 10px 20px; width:285px;}
+.swipPdListBox .pd_info span{display:block; width:100%; text-align:center}
+.swipPdListBox .pd_info span:first-child{margin-bottom:5px; overflow: hidden; line-height:18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient:vertical; text-overflow:ellipsis; white-space:normal;word-wrap: break-word; max-height:35px}
+.swipPdListBox .btn_list_arrow a{position:absolute; top:92px; font-size:0; z-index:1}
+.swipPdListBox .btn_list_arrow a:before{content: '';  width:35px; height:60px; display:block; background-color:#ddd; opacity: .3 ; z-index:0; position:absolute; left:0; top:0; z-index:0}
+.swipPdListBox .btn_prev{left:0}
+.swipPdListBox .btn_prev:after{content: ''; width:35px; height:60px; display:block; background:url('../images/od/swap_ar_prev.png') 50% 50% no-repeat; z-index:1}
+.swipPdListBox .btn_next:after{content: ''; width:35px; height:60px; display:block; background:url('../images/od/swap_ar_next.png') 50% 50% no-repeat; z-index:1}
+.swipPdListBox .btn_next{right:0}
+
+/* 약관 */
+.od .agree-section .title05{margin-top:20px}
+.od .agree-section-content {height: 302px; margin-top: 20px; padding: 20px; background-color: #f8f8f8; border: 1px solid #ddd; overflow: auto;}
+.od .agree-section-content * {font-size: 13px; color: #666; line-height: 18px;}
+.od .agree-section-content h1 {font-size: 16px; color: #000;}
+.od .agree-section-content h1 + p {margin-top: 30px;}
+.od .agree-section-content h2 {margin-top: 30px; color: #000;}
+.od .agree-section-content h3 {margin-top: 30px; text-indent: -20px;}
+.od .agree-section-content p {margin-top: 4px;}
+.od .agree-section-content .agree-link {overflow: hidden; margin-top: 23px; padding-bottom: 2px;}
+.od .agree-section-content .agree-link li { float: left;position: relative; width: 33.3%; margin: 7px 0 0 0; padding-left: 0; text-indent: 0;}
+.od .agree-section-content .agree-link li a {color: #000; border-bottom: 1px solid #666;}
+.od .agree-section-content ol li {margin-top: 4px; text-indent: -10px; padding-left: 10px;}
+.od .agree-section-content ol li p {text-indent: 0;}
+.od .agree-section-content ul li {margin-top: 4px; text-indent: -10px; padding-left: 10px;}
+.od .agree-section-content table {width: 100%; margin: 14px 0 40px;}
+.od .agree-section-content table thead th {padding: 8px 0 10px; border-top: 1px solid #666; border-bottom: 1px solid #666; text-align: center;}
+.od .agree-section-content table tbody td {padding: 14px 0 14px 20px; border-bottom: 1px solid #ddd; border-left: 1px solid #ddd; text-align: left; vertical-align: top;}
+.od .agree-section-content table tbody td:first-child {border-left: none;}
+.od .agree-section-content table tbody td ul,.agree-section-content table tbody td li {margin-top: 0;}
+.od .agree-section-content ol li table { width: calc(100% + 10px); margin-left: -10px; text-indent: 0;}
+.od .agree-section-content ol li ol li table {width: calc(100% + 20px); margin-left: -20px; text-indent: 0;}
+.od .agree-right {margin-top: 15px; text-align: right;}
+.od .agree-right li { display: inline-block; margin-left: 25px;}
+
+/* margin style */
+.od .mt05{margin-top:5px}
+.od .mt10{margin-top:10px}
+.od .mt20{margin-top:20px}
+.od .mt40{margin-top:40px}
+
+/* 주문완료 */
+.od .orderComCont{padding-top:40px; width:750px; margin:0 auto}
+.od .orderComCont .orderTxtBox{text-align:center;}
+.od .orderComCont .orderTxtBox strong{display:block;  font-size:24px; color:#000; font-weight: 700}
+.od .orderComCont .orderTxtBox p{padding-top:20px; color:#666; line-height:20px}
+.od .orderComCont .orderBeneBox{
+    text-align: center;
+    font-size: 13px;
+    border-top: 1px solid #666;
+    padding: 13px 0;
+    margin: 40px 0 -50px;
+}
+.od .orderComCont .orderNumBox{margin-top:50px; padding:25px; text-align:center; font-size:16px; color:#000; position:relative; border-top:1px solid #666; border-bottom:1px solid #ddd}
+.od .orderComCont .orderNumBox .btn{position:absolute; right:0; top:20px; min-width:115px; border-color:#ddd; font-size:13px}
+.od .orderComCont .orderInfoTable{margin-top:60px}
+.od .orderComCont .orderInfoTable th, .od .orderComCont .orderInfoTable td{border:0; text-align:left; padding-left:30px; font-size:13px; padding-top:18px; padding-bottom:18px;}
+.od .orderComCont .orderInfoTable tr.lineB th, .od .orderComCont .orderInfoTable tr.lineB td,
+.od .orderComCont .orderInfoTable th.lineB, .od .orderComCont .orderInfoTable td.lineB{border-bottom:1px solid #e4e4e4}
+.od .orderComCont .orderInfoTable tr.lineT th, .od .orderComCont .orderInfoTable tr.lineT td,
+.od .orderComCont .orderInfoTable th.lineT, .od .orderComCont .orderInfoTable td.lineT{border-top:1px solid #e4e4e4}
+.od .orderComCont .orderInfoTable th{padding-right:0}
+.od .orderComCont .orderInfoTable td{color:#666}
+.od .orderComCont .orderInfoTable th.tMg0, .od .orderComCont .orderInfoTable td.tMg0{padding-top:0}
+.od .orderComCont .orderInfoTable th.titSel{background:#f8f8f8}
+.od .orderComCont .orderInfoTable .addrInfoTxt p{color:#666; padding-top:13px; font-size:13px; line-height:18px}
+.od .orderComCont .orderInfoTable .addrInfoTxt p:first-child{padding-top:0}
+.od .orderComCont .orderInfoTable td.totalSel{color:#000}
+.od .orderComCont .orderInfoTable td.totalSel strong{font-size:20px; font-weight: 700}
+
+/*  Layer  */
+.ly-box{padding-top:30px; font-size:13px;}
+.ly-box p, .ly-box th, .ly-box td, .ly-box dt, .ly-box dd{font-size:13px}
+.ly-box.scroll{padding-right:5px}
+.ly-box .select-style01{height:auto}
+.ly-box .select-style01 button{height:30px}
+.ly-box .select-style01 button:after{top:12px}
+.ly-box .select-style01 ul{top:29px;bottom:auto;border-bottom-width:1px;}
+
+.ly-box .txtIcon01, .ly-box .txtIcon02{padding-left:12px; position: relative; line-height: 18px; font-size:13px}
+.ly-box .txtIcon01:after{content:'';position:absolute;top:7px;left:0;width:4px;height:4px;background:#000;}
+.ly-box .txtIcon02:after{content:'';position:absolute;top:9px;left:0;width:4px;height:1px;background:#000;}
+.ly-box .txtIcon01.txtGray, .ly-box .txtIcon02.txtGray{color:#666}
+.ly-box .txtIcon01.txtGray:after, .ly-box .txtIcon02.txtGray:after{background:#666}
+
+.ly-box .ly_tit{font-size:16px; color:#000; margin-top:40px}
+.ly-box .ly_tit.mt0{margin-top:0}
+
+.ly-box .board-list.lyType01 th{background:#f8f8f8; border-bottom:1px solid #ddd; text-align:center; vertical-align: top}
+.ly-box .board-list.lyType01 td{text-align:left; line-height:18px}
+.ly-box .board-list.lyType01 th, .ly-box .board-list.lyType01 td{padding:10px; font-size:13px}
+.ly-box .board-list.lyType02 th, .ly-box .board-list.lyType02 td{padding:10px; font-size:13px; vertical-align: middle; text-align:center}
+.ly-box .board-list td.txtLeft{text-align:left;}
+
+.ly-box .text-list01.txtTypeGray li, .ly-box .text-list02.txtTypeGray li{font-size:13px; color:#666; margin-top:4px}
+.ly-box .text-list01.txtTypeGray li:after, .ly-box .text-list02.txtTypeGray li:after{background:#666}
+
+/* 라디오 버튼 label */
+.ly-box .rdo-skin+label{display:inline-block; margin-top:2px}
+
+/* Layer Button */
+.ly-box .lyBtnArea{margin-top:30px; margin-bottom:10px; text-align:center; overflow:hidden; min-width:160px; font-size:13px}
+.ly-box.scroll .lyBtnArea{padding-bottom:20px}
+.ly-box .lyBtnArea .btn{font-size:13px; margin:0 2px}
+.ly-box .btn{padding-left:20px; padding-right:20px;}
+.ly-box .btn.w160{min-width:160px}
+.ly-box table.selMgSm th, .ly-box table.selMgSm td{padding-top:10px; padding-bottom:10px; vertical-align:middle}
+.ly-box .btnWrapBox .btn{font-size:13px}
+
+/* Step Box Style */
+.ly-box .dvStepBox{margin:0 1px;  overflow:hidden; border-top:2px solid #000}
+.ly-box .dvStepBox li{float:left; background:#f8f8f8; margin-left:5px; padding:30px 20px 28px; width:158px; position:relative; min-height:210px}
+.ly-box .dvStepBox li:first-child{margin-left:-5px;}
+.ly-box .dvStepBox li strong{display:block; padding-bottom:5px; color:#000}
+.ly-box .dvStepBox li p{padding-top:57px; color:#999; line-height:18px; word-break: break-all}
+.ly-box .dvStepBox li:after{content:''; width:30px; height:30px;  border-radius: 30px;  background:#fff url('../images/my/icon_dv_step_arr.png') 50% 50% no-repeat; position:absolute; left:-16px; top:82px}
+.ly-box .dvStepBox li:first-child:after{display:none}
+.ly-box .dvStepBox li:nth-child(1) p{background:url('../images/my/icon_dv_step01.png') 0 0 no-repeat;}
+.ly-box .dvStepBox li:nth-child(2) p{background:url('../images/my/icon_dv_step02.png') 0 0 no-repeat;}
+.ly-box .dvStepBox li:nth-child(3) p{background:url('../images/my/icon_dv_step03.png') 0 0 no-repeat;}
+.ly-box .dvStepBox li:nth-child(4) p{background:url('../images/my/icon_dv_step04.png') 0 0 no-repeat;}
+.ly-box .dvStepBox li:nth-child(5) p{background:url('../images/my/icon_dv_step05.png') 0 0 no-repeat;}
+
+/* Layer - 매장찾기 */
+.lyPopfindStore h3{padding:20px 0 5px}
+.lyPopfindStore h2{border-bottom:0}
+.lyPopfindStore .ly-box{padding-top:0}
+.lyPopfindStore .lystoreMap{ width:485px; height:400px; overflow:hidden; border:1px solid #ddd;}
+.lyPopfindStore .lystoreMap .mapUrl{width:100%; height:100%; background:url('../images/od/sample_map.png') 50% 50% no-repeat; }
+.lyPopfindStore .lystoreInfo dl{display:table; padding-top:5px; width:100%}
+.lyPopfindStore .lystoreInfo dt, .lyPopfindStore .lystoreInfo dd{float:left; line-height:18px; color:#666}
+.lyPopfindStore .lystoreInfo dt{width:105px;}
+.lyPopfindStore .lystoreInfo dd{width:calc(100% - 105px)}
+
+/* Layer - 주문실패 */
+.lyPopOrderFail .mgBoxSy01{font-size:20px; text-align:center; padding-top:45px;}
+.lyPopOrderFail .mgBoxSy02{margin-top:45px; text-align:center; padding:30px 0; background:#f8f8f8; line-height:20px}
+.lyPopOrderFail .mgBoxSy02 .txtTime{color:#666}
+.lyPopOrderFail .lyBtnArea .btn{width:158px; margin-left:5px; float:left; font-size:13px}
+.lyPopOrderFail .lyBtnArea .btn:first-child{margin-left:0}
+
+/* Layer - 배송지선택 */
+.lypopaddrSelect .layer-cont.scroll .d_tab02_cont{padding-bottom:30px}
+.lypopaddrSelect .d_tab02_cont th, .lypopaddrSelect .d_tab02_cont td{padding:15px 10px}
+.lypopaddrSelect .d_tab02_cont th{text-align:center;}
+.lypopaddrSelect .d_tab02_cont td{color:#000; vertical-align: middle}
+.lypopaddrSelect .d_tab02_cont td.addrBox{text-align:left; line-height:18px; padding-left:10px; padding-right:30px; word-break: break-all}
+.lypopaddrSelect .btn{width:80px}
+
+/* Layer - 쿠폰선택 */
+.lypopCuponSch .ly-box{padding-top:0; position:relative}
+.lypopCuponSch .title06{margin-top:0}
+.lypopCuponSch .btnCupon{position:absolute; right:5px; z-index:1; top:25px}
+.lypopCuponSch .btnAddCupon{}
+.lypopCuponSch .CuponArea{position:relative; margin-top:30px; padding-bottom:10px; padding-top:39px}
+.lypopCuponSch .CuponArea .title06{position:absolute; top:0; left:0}
+.lypopCuponSch .CuponArea .board-list{margin-top:0}
+.lypopCuponSch .txtTotal{vertical-align: middle; color:#000; text-align:right}
+.lypopCuponSch .txtTotal p{display:inline-block; padding-bottom:5px; }
+.lypopCuponSch .txtTotal strong{font-weight: bold}
+.lypopCuponSch .select-style01.selmt20{margin-top:20px;}
+.lypopCuponSch .board-list td.tleft{padding-left:0}
+.lypopCuponSch .total-list th{text-align:left}
+.lypopCuponSch .total-list tr:first-child th, .lypopCuponSch .total-list tr:first-child td{padding-top:16px}
+.lypopCuponSch .total-list th, .lypopCuponSch .total-list td{ border-bottom:0;padding:0; padding-bottom:16px}
+.lypopCuponSch .total-list tfoot th, .lypopCuponSch .total-list tfoot td{padding:16px 0; border-top:1px solid #ddd; border-bottom:1px solid #ddd; color:#ff3600}
+.lypopCuponSch .total-list tfoot .txtTotal strong{font-size:20px; font-weight: 700}
+.lypopCuponSch .board-list td{position:relative}
+.lypopCuponSch .board-list td a{text-overflow:inherit; white-space:normal}
+.lypopCuponSch .board-list .pdCupon{position:absolute; bottom:25px; right:0}
+.lypopCuponSch .product-info .product-info-img{width:100px}
+.lypopCuponSch .product-info{padding-left:120px}
+.lypopCuponSch .product-info .product-info-text .product-info-box{min-height:auto}
+.lypopCuponSch .product-info .product-info-text .product-option{margin-top:20px}
+
+/* Layer - 옵션변경 */
+.lypopPdMod .ly-box  .option-Goodssize .btn{padding-left:0; padding-right:0}
+.lypopPdMod .ly-box, .lypopPdModSet .ly-box{padding-top:0}
+.lypopPdModSet .options-GoodsList .optSelBoxList li:nth-child(2) em{height:30px; line-height:30px}
+.lypopPdModSet .options-GoodsBoxPop{overflow: auto; display:table}
+.lypopPdModSet .options-GoodsList .SelBox li{margin-bottom:0}
+.lypopPdModSet.optionModi-pop .layer-popup-cont{height:auto}
+.lypopPdModSet .optSelBoxList li .SelBox,
+.lypopPdModSet .optSelBoxList li .select-style01{display:block; width:100%;}
+.lypopPdModSet .optSelBoxList li > em{display:block;  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; padding-bottom:5px; width:280px  }
+.lypopPdModSet .optSelBoxList li:last-child em{display:table-cell; width:50px}
+.lypopPdModSet .optSelBoxList li{margin-bottom:18px}
+.lypopPdModSet .optSelBoxList li:first-child{margin-bottom:20px}
+.lypopPdModSet .optSelBoxList li:last-child{padding-top:5px; margin-bottom:15px}
+.lypopPdModSet .optSelBoxList .select-style01 li:first-child{margin-bottom:0}
+.lypopPdModSet .optSelBoxList .select-style01 li:last-child{padding-top:0; margin-bottom:0}
+.lypopPdModSet .options-GoodsList{width:284px}
+
+/* Layer - 공인인증서, 안전결제안내, 안심클릭안내 */
+.lypopCardinfo .ly-box{padding-top:0}
+.lypopCardinfo .board-list{margin-top:0; margin-bottom:15px}
+.lypopCardinfo .board-list th{text-align:center; padding:12px 0}
+.lypopCardinfo .board-list tbody th{border-color:#ddd; color:#666; text-align:left; padding-left:30px; font-size:12px}
+.lypopCardinfo .board-list td{font-size:12px; padding:12px 0}
+.lypopCardinfo .payTxtBox{padding-top:30px}
+.lypopCardinfo .payTxtBox p{padding-bottom:18px;}
+.lypopCardinfo .payTxtBox .txtSize12{font-size:12px}
+.lypopCardinfo .payTxtBox .mgB10{padding-bottom:10px}
+.lypopCardinfo .payTxtBox h3{padding-bottom:18px}
+.lypopCardinfo .payTxtBox .text-list01 ul li{color:#666; margin-top:5px;}
+.lypopCardinfo .payTxtBox .text-list01 li:first-child{margin-top:0}
+.lypopCardinfo .payTxtBox .text-list01 li{margin-top:18px;}
+.lypopCardinfo .payTxtBox .mt10{margin-top:10px;}
+.lypopCardinfo .titBox {text-align:right}
+.lypopCardinfo .titBox {display:inline-block; width:130px; text-align:center;}
+.lypopCardinfo .payTxtBox ul.issueBox{padding:25px 20px; background:#f8f8f8; overflow:hidden; margin-bottom:30px}
+.lypopCardinfo .payTxtBox ul.issueBox li{float:left; padding-right:90px; font-size:16px; padding-left:26px; position:relative; margin:0; color:#000;}
+.lypopCardinfo .payTxtBox ul.issueBox li:before{content: ''; display:block; position:absolute; top:0; left:-55px; width:20px; height:20px; background:url('../images/od/icon_step_ar.png') 50% 50% no-repeat;}
+.lypopCardinfo .payTxtBox ul.issueBox li:after{display:none}
+.lypopCardinfo .payTxtBox ul.issueBox li:last-child{padding-right:0}
+.lypopCardinfo .payTxtBox ul.issueBox li:first-child:before{display:none}
+.lypopCardinfo .payTxtBox ul.issueBox li em{font-weight:700; position:absolute; left:0; top:0}
+.lypopCardinfo .btn_custom {margin-top:20px;}
+.lypopCardinfo .btn_custom .btn{min-width:145px; color:#000}
+.lypopCardinfo .layer-cont.scroll .btn_custom{padding-bottom:30px;}
+
+.lypopCardinfo .payTxtBox .txtsBox{padding-top:20px}
+.lypopCardinfo .payTxtBox .txtsBox h4{color:#000; padding-bottom:10px; padding-left:12px; position:relative;}
+.lypopCardinfo .payTxtBox .txtsBox h4:after{content:'';position:absolute;top:7px;left:0;width:4px;height:4px;background:#000;}
+.lypopCardinfo .payTxtBox .txtsBox .txts{padding:0 0 0 12px; font-size:13px; color:#666; line-height:20px}
+.lypopCardinfo .payTxtBox .list_left th, .lypopCardinfo .payTxtBox  .list_left td{vertical-align:middle; padding:10px 0}
+.lypopCardinfo .payTxtBox .list_left td{text-align:left; padding-left:30px}
+
+.lypopCardPaysf .payTxtBox ul.issueBox{ margin:18px 0 0 0; padding-bottom:90px}
+.lypopCardPaysf .payTxtBox ul.issueBox .chkTxt{padding-top:80px; font-size:12px; position:absolute; top:3px; display:inline-block; letter-spacing: -.04em}
+.lypopCardPaysf .payTxtBox ul.issueBox .chkTxt.posFt{background:url('../images/od/icon_issu_line01.png') 50% 0 no-repeat; color:#666 !important; left:-85px}
+.lypopCardPaysf .payTxtBox ul.issueBox .chkTxt.posEnd{background:url('../images/od/icon_issu_line02.png') 50% 0 no-repeat; right:11px}
+.lypopCardPaysf .payTxtBox .btnBanks{padding:15px 0 20px; position: relative; margin-left:-15px}
+.lypopCardPaysf .payTxtBox .btn{text-decoration: none; padding:0 20px 0 33px; margin-left:2px}
+.lypopCardPaysf .payTxtBox .bankBc{background:url('../images/od/icon_bank_bc.png') 15px 50% no-repeat; margin-left:0}
+.lypopCardPaysf .payTxtBox .bankKb{padding-left:47px; background:url('../images/od/icon_bank_kb.png') 15px 50% no-repeat;}
+.lypopCardPaysf .payTxtBox .bankUri{background:url('../images/od/icon_bank_uri.png') 15px 50% no-repeat;}
+
+
+/**** start : 마이페이지 - 주문정보 ****/
+
+/* 주문,배송 조회 목록 */
+.orderInfoCon{ padding-top:30px}
+.orderInfoCon .btn{padding-left:20px; padding-right:20px}
+.orderInfoCon .btn.gray{color:#000}
+.orderInfoCon h3{font-size:16px}
+.orderInfoCon .odSearchOptBox{ position:relative; padding-top:40px}
+.orderInfoCon .odSearchOptBox .bfOrder{position:absolute; right:0; top:0}
+.orderInfoCon .odSearchOptBox .blind{font-size:0; width:0; height:0; left:-9999px}
+.orderInfoCon .odSearchOptBox dl .fl{width:225px}
+.orderInfoCon .odSearchOptBox.mgt0Box{padding-top:0}
+.orderInfoCon .period-wrap.period-type02{text-align:left}
+.orderInfoCon .odSearchResult{padding:30px 0 50px}
+.orderInfoCon .odSearchResult .odResultTop{text-align:right; position:relative}
+.orderInfoCon .odSearchResult .odResultTop .listTotal{position:absolute; left:0; top:6px}
+.orderInfoCon .odSearchResult .odResultTop  a:last-child{margin-left:3px}
+.orderInfoCon .odSearchResult .odResulCon {padding-top:15px}
+.orderInfoCon .odSearchResult .odResulCon .board-list{margin-top:0}
+.orderInfoCon .odSearchResult .odResulCon td{vertical-align: middle;  /*padding:20px*/}
+.orderInfoCon .odSearchResult .odResulCon td a{ overflow: visible; text-overflow:initial; white-space:normal;}
+.orderInfoCon .odSearchResult .odResulCon .orderNb{padding:17px 0 16px; position: relative}
+.orderInfoCon .odSearchResult .odResulCon .orderNb:before{content: ''; display:block; width:100%; height:1px; background:#666; position:absolute; left:0; top:0}
+.orderInfoCon .odSearchResult .odResulCon .orderNb a{font-weight: 700; text-decoration: underline}
+.orderInfoCon .odSearchResult .odResulCon .orderNb span{display:inline-block; padding-left:40px; position:relative}
+.orderInfoCon .odSearchResult .odResulCon .orderNb span:after{content:''; display:block; padding-left:1px; border-left:1px solid #f2f2f2; background:#ebebeb; height:10px; position:absolute; top:50%; left:19px; margin-top:-5px;}
+.orderInfoCon .odSearchResult .odResulCon .orderNb span:first-child{padding-left:0}
+.orderInfoCon .odSearchResult .odResulCon .orderNb span:first-child:after{display:none}
+.orderInfoCon .odSearchResult .odResulCon .orderNb span em{margin-right:5px}
+.orderInfoCon .odSearchResult .odResulCon .orderNb.noResult{padding:100px 0; text-align:center; color:#666; border-bottom:1px solid #ddd;}
+.orderInfoCon .odSearchResult .odResulCon .orderNb.lineBox{border-bottom:1px solid #666}
+.orderInfoCon .odSearchResult .odResulBox {margin-top:-1px; position:relative}
+.orderInfoCon .odSearchResult .odResulBox .orderTable{border-top:1px solid #ddd;}
+.orderInfoCon .odSearchResult .odResulBox .btn{min-width:105px}
+.orderInfoCon .odSearchResult .odResulBox .selBox span{margin-top:3px; display:inline-block;  border-color:#ff0000;line-height:30px}
+.orderInfoCon .odSearchResult .odResulBox .selBox span:first-child{margin-top:0}
+.orderInfoCon .odSearchResult .odResulBox .tleft{vertical-align: middle; padding-left:20px}
+.orderInfoCon .odSearchResult .odResulBox .product-info-text{max-width:380px}
+
+/* 마이페이지 주문정보 - 취소상품신청 */
+.orderInfoCon .odSearchResult.odCancel{padding-top:0}
+.orderInfoCon .odSearchResult.odCancel .odResulCon{padding-top:0}
+.orderInfoCon .odSearchResult.odCancel .orderNb{border-bottom:1px solid #666; margin-bottom:58px}
+.orderInfoCon .odSearchResult.odCancel .orderTable{margin-top:17px}
+.orderInfoCon .odSearchResult.odCancel .board-list{border-top:1px solid #666}
+.orderInfoCon .odSearchResult.odCancel .board-list th{padding:15px 0 16px}
+
+/* 마이페이지 주문정보 - 상품교환신청 */
+.orderInfoCon .odPdModify .odResulBox .board-list{border-top:1px solid #666; margin-top:18px}
+.orderInfoCon .odPdModify,.orderInfoCon .odPdModify .odResulCon{padding-top:0}
+.orderInfoCon .odPdModify .odAddBox dl{position:relative; padding-left:100px}
+.orderInfoCon .odPdModify .odAddBox dt{position:absolute; top:0; left:0}
+.orderInfoCon .odPdModify .orderAdd{border-top:1px solid #666; padding:17px 20px; position:relative}
+.orderInfoCon .odPdModify .orderAdd .odAddTit{padding-bottom:7px; display:block; font-size:13px}
+.orderInfoCon .odPdModify .orderAdd dt strong{color:#000}
+.orderInfoCon .odPdModify .orderAdd dt, .orderInfoCon .odPdModify .orderAdd dd{line-height:20px; font-size:13px; color:#666}
+.orderInfoCon .odPdModify .orderAdd .btnAddModi{position:absolute; top:50%; right:20px; margin-top:-15px}
+.orderInfoCon .odPdModify .orderAdd .btnAddModi.r{right:0}
+
+.orderInfoCon .odPdModify .exchangeAdd{border-top:1px solid #666; border-top:1px solid #ddd; border-bottom:1px solid #ddd; padding:5px 20px 10px}
+.orderInfoCon .odPdModify .exchangeAdd dt{top:13px}
+.orderInfoCon .odPdModify .exchangeAdd dd{padding-top:5px; position:relative; width:100%}
+.orderInfoCon .odPdModify .exchangeAdd .btnPosR{position:absolute; right:-20px; top:5px; min-width:106px; padding:0}
+.orderInfoCon .odPdModify .StoreInfo{padding-bottom:0}
+
+.orderInfoCon .odDetail .odResulBox .orderTable.orderMsg{border-top:1px solid #666; border-bottom:1px solid #ddd}
+.orderInfoCon .orderTable.orderMsg  th, .orderInfoCon .orderTable.orderMsg  td{border:0; border-top:1px solid #ddd}
+.orderInfoCon .orderTable.orderMsg  tr:first-child th, .orderInfoCon .orderTable.orderMsg  tr:first-child  td{border-top:0}
+.orderInfoCon .orderTable.orderMsg .seldMsg th, .orderInfoCon .orderTable.orderMsg .seldMsg td{border-top:1px solid #eee}
+
+/* 마이페이지 주문 상세 */
+.orderInfoCon .odDetail .odResulBox .board-list{margin-top:0; border-top:1px solid #ddd}
+.orderInfoCon .odDetail .selTxtMgL{margin-left:20px; color:#666; font-size:13px}
+.orderInfoCon .odDetail .selBg th, .orderInfoCon .odDetail .selBg td{background:#f8f8f8; font-size:13px; color:#666; font-weight: 400; border-top:0}
+.orderInfoCon .odDetail .selBgline th, .orderInfoCon .odDetail .selBgline td{border-top:1px solid #eee; background:#f8f8f8; font-size:13px; color:#666; font-weight: 400;}
+.orderInfoCon .odDetail .btnOdTop{position:absolute; top:10px; right:0}
+.orderInfoCon .odDetail .btnOdTop .btn{margin-left:2px}
+.orderInfoCon .odDetail .mgInfoBox .odAddBox{border-bottom:1px solid #ddd; margin-top:17px}
+.orderInfoCon .odDetail .seldMsg th, .orderInfoCon .odDetail .seldMsg td{text-align:left; font-size:13px; color:#000}
+.orderInfoCon .odDetail .seldMsg th{padding-left:20px}
+.orderInfoCon .odDetail .odResulBox .mgInfoBox .orderTable{margin-top:17px}
+.orderInfoCon .odDetail .odResulBox .mgInfoBox{margin-top:40px}
+.orderInfoCon .odDetail .odResulBox .mgInfoBox .odAddBox{border-bottom:1px solid #ddd; border-top:0; margin-top:0}
+.orderInfoCon .odDetail .btnWrapBox a{height:45px; line-height: 45px}
+.orderInfoCon .odDetail .seldMsg2{}
+.orderInfoCon .odDetail .seldMsg2 td{ text-align:left; padding-left:18px; color:#000000;}
+.orderInfoCon .odDetail .seldMsg2 .tt{ display:inline-block; vertical-align:middle; width:100px; }
+.orderInfoCon .odDetail .seldMsg2 .dd{ display:inline-block; vertical-align:middle;}
+.mgInfoBox .text-event-noti {font-size:14px;color:#ff3600;margin-left:15px;display:inline-block;}
+
+
+
+
+/* 마이페이지 이전주문목록 */
+.orderHistory .odSearchResult{padding-top:0}
+
+/* 마이페이지 증빙셔류 리스트 */
+.orderInfoCon.orderDc .board-list td{padding-top:10px; padding-bottom:10px; min-height:51px; color:#666}
+.orderInfoCon.orderDc .board-list td{padding-top:10px; padding-bottom:10px; min-height:51px; color:#666}
+.orderInfoCon.orderDc .period-wrap{text-align:center}
+.orderInfoCon.orderDc .period-wrap dd{text-align:left}
+
+/* margin */
+.orderInfoCon .mgT05 {margin-top:5px}
+.orderInfoCon .select-style01 li {text-align:left;}
+.orderInfoCon .optTxt{margin-top:5px; display:block; color:#000}
+
+/* margin Box */
+.mgInfoBox{margin-top:60px}
+
+.tbTotalList{border-top:1px solid #666; border-bottom:1px solid #ddd; width:100%; margin-top:17px; table-layout: inherit}
+.tbTotalList th, .tbTotalList td{color:#666; padding:10px 20px; text-align:left;}
+.tbTotalList tbody tr:first-child th, .tbTotalList tbody tr:first-child td{padding-top:18px}
+.tbTotalList tbody tr:last-child th, .tbTotalList tbody tr:last-child td{padding-bottom:18px}
+.tbTotalList td{text-align:right}
+.tbTotalList tr.selLineBox th, .tbTotalList tr.selLineBox td{padding:18px 20px; color:#000; border-top:1px solid #ddd;}
+.tbTotalList tr.selLineBoxBt th, .tbTotalList tr.selLineBoxBt td{padding-bottom:18px; border-bottom:1px solid #eee;}
+.tbTotalList tr.selMgT th, .tbTotalList tr.selMgT td{padding-top:18px}
+.tbTotalList tr.selmgB th ,.tbTotalList tr.selmgB td{padding-bottom:18px}
+.tbTotalList tfoot th, .tbTotalList tfoot td{padding:18px 20px; color:#000; border-top:1px solid #ddd;}
+.tbTotalList tfoot th{font-size:15px; font-weight: 700}
+.tbTotalList tfoot td{font-size:14px;}
+.tbTotalList td strong{font-size:20px; font-weight: 700; line-height:20px}
+.tbTotalList tr td:last-child{white-space:nowrap;  width: 1%;}
+.tbInputList{border-top:1px solid #666; border-bottom:1px solid #ddd; width:100%; margin-top:17px}
+.tbInputList th, .tbInputList td{color:#666; padding:3px 20px 2px; text-align:left; color:#000}
+.tbInputList tbody tr:first-child th, .tbInputList tbody tr:first-child td{padding-top:10px}
+.tbInputList tbody tr:last-child th, .tbInputList tbody tr:last-child td{padding-bottom:10px}
+
+.lypopDvGuide h2{padding-bottom:0; border-bottom:0}
+.lypopDvGuide .ly-box .lyBtnArea{margin-bottom:0}
+
+.lypopDeliveryMd .layer-cont.ly-box{padding-top:0}
+.lypopDeliveryMd .layer-cont .btnWrapBox{padding-bottom:0}
+.lypopDeliveryMd .layer-cont .board-write{margin-top:17px}
+
+.lypopPayModify .orderWriteArea{padding-bottom: 0}
+.lypopPayModify .orderWriteArea .orderPayOptTab{border-top:1px solid #666; margin-top:17px}
+.lypopPayModify .orderWriteArea .orderPayOpt{padding:7.5px 0}
+.lypopPayModify .orderWriteArea .orderPayOpt ul li {margin: 7.5px 0;}
+.lypopPayModify .orderTotalNb dl{overflow:hidden}
+.lypopPayModify .orderTotalNb dt,.lypopPayModify .orderTotalNb dd{float:left}
+.lypopPayModify .orderTotalNb dt{padding:5px 17px 0 0}
+.lypopPayModify .orderTotalNb dd strong{color:#ff3600; font-size:20px; font-weight: 700}
+.lypopPayModify .orderWriteArea .orderPaytCont{padding:20px 0 30px; border-bottom:1px solid #ddd}
+.lypopPayModify .payBgCont{padding:20px; background:#f8f8f8;  min-height:190px}
+.lypopPayModify .orderWriteArea .orderPaytCont .text-list01 li{margin-top:5px}
+.lypopPayModify .btnWrapBox{margin-top:30px}
+.lypopPayModify .btnWrapBox .btn{width:160px}
+
+/* 교환/반품 절차안내 */
+.lypopChgGuide .dvStepBox{margin-top:30px; overflow:hidden}
+.lypopChgGuide .dvStepBox li{min-height:212px}
+.lypopChgGuide .dvStepBox.step04 li{width:199px; padding:30px}
+.lypopChgGuide .dvStepBox.step04 li:first-child{width:198px}
+.lypopChgGuide .dvStepBox li:nth-child(1) p{background:url('../images/my/icon_chg_step01.png') 0 0 no-repeat}
+.lypopChgGuide .dvStepBox li:nth-child(2) p{background:url('../images/my/icon_chg_step02.png') 0 0 no-repeat}
+.lypopChgGuide .dvStepBox li:nth-child(3) p{background:url('../images/my/icon_chg_step03.png') 0 0 no-repeat}
+.lypopChgGuide .dvStepBox li:nth-child(4) p{background:url('../images/my/icon_chg_step04.png') 0 0 no-repeat}
+.lypopChgGuide .dvStepBox li:nth-child(5) p{background:url('../images/my/icon_chg_step05.png') 0 0 no-repeat}
+.lypopChgGuide .dvStepBox.step04 li:nth-child(4) p{background:url('../images/my/icon_chg_step05.png') 0 0 no-repeat}
+.lypopOdAllCancel  .board-write:first-child{margin-top:0}
+
+/* 거래명세서 */
+.receipt{width:95%;margin:40px auto}
+.receipt .page-head{position:relative;margin-bottom:20px}
+.receipt .page-head button{width:25px;height:25px;background:url(../images/od/ico_print.png) no-repeat 50% / 100% auto;position:absolute;right:0;top:50%;transform:translate(0, -50%)}
+.receipt .location{margin-top:0;padding-bottom:45px}
+.receipt .justify-wrap .left.right{right:auto;left:0;}
+.receipt table>*>tr>*{font-size:13px;vertical-align:middle;letter-spacing:-.03em}
+.receipt table>*>tr>td{color:#555}
+.receipt table>*>tr>th{color:#000}
+.receipt table *.tleft{text-align:left}
+.receipt table *.tright{text-align:right}
+.receipt table *.tcenter{text-align:center}
+.table-receipt>thead>tr>*{border-bottom:1px solid #ccc}
+.table-receipt>*>tr>*{padding:16px 8px}
+.receipt .board-list{border-top:0;margin-top:50px}
+.receipt .board-list>table>*>tr>*{padding:16px!important}
+.receipt .board-list>table>tfoot>tr>*{border-bottom:0}
+.receipt table.nowrap>*>tr>*{white-space:nowrap;text-align:center;padding:10px 0}
+.receipt table.nowrap{margin:40px 0 60px}
+.receipt table.nowrap>thead>tr>*{background:#faf8f8}
+.receipt p{text-align:center}
+@media print{
+    .receipt{width:100%;margin-bottom:0}
+    .receipt .page-head button{display:none!important}
+    .receipt p, .receipt table>*>tr>*{font-size:12px}
+    .receipt .title01{font-size:20px}
+    .receipt .location{border-bottom-width:2px}
+}
+
+/**** end : 마이페이지 - 주문정보 ****/
+
+.not-delivery {position:relative}
+.not-delivery a {position:absolute;right:28px;top:6px;font-size:13px;color:#000;text-decoration:underline;padding-right:3px}
+
+

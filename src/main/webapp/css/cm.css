@@ -165,7 +165,7 @@ textarea {padding: 13px 10px;font-size:13px;color:#000;border:1px solid #ddd;}
 .check-skin {display: inline-block;position: relative;vertical-align: middle;cursor: pointer;overflow: hidden;}
 .check-skin-box {padding-left: 22px;text-indent: -22px;}
 .check-skin>input {position: absolute;top: 0;left: 0;opacity: 0;cursor: pointer;z-index: 5;}
-.check-skin>span {display: block;width: 15px;height: 15px;font-size: 0;color: transparent;background: url(../images/cm/checkbox.png) no-repeat left top;z-index: 3;}
+.check-skin>span {display: block;width: 15px;height: 15px;font-size: 0;color: transparent;background: url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/checkbox.png) no-repeat left top;z-index: 3;}
 .check-skin>input:checked+span {background-position: 0 -15px;}
 .check-skin>input:disabled+span {background-position: 0 -30px;}
 .check-skin+label {margin-left: 5px;font-size: 13px;color: #666;vertical-align: -1px;}
@@ -175,7 +175,7 @@ label+.check-skin {margin-left: 25px;}
 /* radio */
 .rdo-skin {display: inline-block;position: relative;vertical-align: middle;cursor: pointer;overflow: hidden;}
 .rdo-skin>input[type='radio'] {position: absolute;top: 0;left: 0;width:20px;height:20px;opacity: 0;cursor: pointer;z-index: 5;}
-.rdo-skin>span {display: block;width: 20px;height: 20px;font-size: 0;color: transparent;background: url(../images/cm/radio.png) no-repeat left top;z-index: 3;}
+.rdo-skin>span {display: block;width: 20px;height: 20px;font-size: 0;color: transparent;background: url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/radio.png) no-repeat left top;z-index: 3;}
 .rdo-skin>input[type='radio']:checked+span{background-position: 0 -20px;}
 .rdo-skin>input[type='radio']:disabled+span{background-position: 0 -40px;}
 .rdo-skin+label {margin-left: 5px;font-size: 13px;color: #000;}
@@ -189,7 +189,7 @@ label+.check-skin {margin-left: 25px;}
 /* select */
 .select-style01 {display: inline-block;position: relative;height: 40px;background: #fff;vertical-align: middle;z-index: 1;}
 .select-style01 button {position: relative;overflow:hidden;max-width:100%;height: 40px;padding: 0 30px 0 10px;border: 1px solid #ddd;vertical-align: middle;text-align: left;font-size: 13px;text-overflow:ellipsis;white-space:nowrap !important;word-wrap:normal;}
-.select-style01 button:after {content: '';position: absolute;right:10px;top: 16px;width: 11px;height: 6px;background: url(../images/cm/bg_select_open.png) no-repeat 0 0;}
+.select-style01 button:after {content: '';position: absolute;right:10px;top: 16px;width: 11px;height: 6px;background: url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/bg_select_open.png) no-repeat 0 0;}
 .select-style01 ul {display: none;overflow-y: auto;position: absolute;left: 0;top: 35px;width: 100%;max-height: 154px;padding-bottom: 4px;background: #fff;border: 1px solid #000;border-top: none;}
 .select-style01 ul li a {display: block;overflow:hidden;max-width:100%;height: 30px;padding: 0 10px 0 20px;font-size: 13px;line-height: 30px;color: #666;text-overflow:ellipsis;white-space:nowrap !important;word-wrap:normal;}
 .select-style01 ul li a:hover {color: #000;}
@@ -387,7 +387,7 @@ label+.check-skin {margin-left: 25px;}
 .location-contents .title01{ text-align:center; }
 
 .location{margin-top:23px;padding-bottom:12px;border-bottom:4px solid #000;font-size:12px;line-height:13px;}
-.location span{display:inline-block;padding:0 14px 0 10px;background:url(../images/cm/bg_arrow_01.png) no-repeat right 1px top 4px;color:#999;}
+.location span{display:inline-block;padding:0 14px 0 10px;background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/bg_arrow_01.png) no-repeat right 1px top 4px;color:#999;}
 .location span a {color: #999;}
 .location strong{display:inline-block;padding:0 0 0 10px;/* font-weight:400; */}
 .location span:first-child{padding:0 14px 0 0;}
@@ -762,7 +762,7 @@ h3 + .data-tbl01{margin-top:17px;}
 .layer-popup-cont h2.layer-popup-tit01{border-bottom:0;}
 .layer-popup-cont .layer-popup-wrap01 {padding-top: 30px;}
 .layer-popup-cont .layer-popup-close {position: absolute;right: 20px;top: 30px;}
-.layer-popup-cont .layer-popup-close button {display: block;width: 20px;height: 19px;background:url(../images/cm/btn_layerpopup_close.png) no-repeat 0 0;font-size: 0;}
+.layer-popup-cont .layer-popup-close button {display: block;width: 20px;height: 19px;background:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/x.png) no-repeat 0 0;font-size: 0;}
 
 .layer-popup.layer-type02 .layer-popup-cont {width:369px;}
 .layer-popup.layer-type03 .layer-popup-cont {   width:529px;}
@@ -798,7 +798,7 @@ h3 + .data-tbl01{margin-top:17px;}
 .layer-popup.sm{}
 .layer-popup.sm .layer-popup-cont{ width:286px; border-width:1px; padding:30px 20px; font-size:13px; }
 .layer-popup.sm .layer-popup-cont .layer-popup-close{ right:3px; top:3px; }
-.layer-popup.sm .layer-popup-cont .layer-popup-close button {width: 24px;height:24px;background-image:url(../images/cm/btn_layerpopup_close_sm.png)}
+.layer-popup.sm .layer-popup-cont .layer-popup-close button {width: 24px;height:24px;background-image:url(https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/x.png)}
 
 .tooltip-wrap{display:inline-block;position:relative;margin-left:5px;}
 .tooltip-wrap .tooltip-detail{display:inline-block;width:16px;height:16px;background:url(../images/cm/btn_product_more.png) no-repeat 0 0;font-size:0;line-height:0; vertical-align:middle;}
@@ -960,7 +960,7 @@ h3 + .data-tbl01{margin-top:17px;}
 
 
 
-/* 우편  번호 팝업*/
+/* 우편 번호 팝업*/
 .popZipSch{}
 .popZipSch .layer-popup-cont{ width:529px; }
 .popZipSch .txt-sub-info01{ color:#666666; margin-top:21px; }
