@@ -175,9 +175,9 @@
 						
 						<p>점퍼</p>
 						<p>어디에나 착용가능한 맨투맨</p>
-						<p class="heart">
+						<%-- <p class="heart">
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
-						</p><!--heart:찜하기 하트버튼-->
+						</p><!--heart:찜하기 하트버튼--> --%>
 						<br>
 						<p class="wish2">
 	          				<button class="wishaddbt"> 쇼핑백 담기 </button>

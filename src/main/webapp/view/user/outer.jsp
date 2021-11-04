@@ -123,18 +123,7 @@
 				<!--top_bar-->
 			</header>
 			<!--top 상단전체-->
-			<div id="banner">
-				<p>
-					<img
-						src="${pageContext.request.contextPath}/images/item/banner2.jpg"
-						alt="아이템메인배너" width="1920" height="700">
-				</p>
-				<div id="ban_con">
-					<h2>OUTER</h2>
-					<p>자켓 부분</p>
-				</div>
-				<!--ban_con 배너 안 내용-->
-			</div>
+			
 			<!--main_ban- 메인 상단 배너 전체-->
 		</div>
 		<!--top_wrap2-->
@@ -160,39 +149,39 @@
 	</div>
 	<!--page wrap:페이지위치 전체-->
 
-	<div id="out_wrap">
-		<!--///////////////////item///////////////////////	-->
-		<div id="item_wrap">
-			<!--///////jewerly////////-->
-				<h3>OUTER</h3>
-				<div class="item_con">
-				<c:forEach var="i" begin="1" end="20">
-					<c:if test="${i % 5 == 0}">
-						<div class="item_con">
-					</c:if>
-					<div class="item">
-						<!-- <c:forEach var="notice" items="${noticeList}" varStatus="status"></c:forEach>-->
-						<div class="item_img">
-							<img
-								src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg"
-								alt="맨투맨" width="300" height="300">
-						</div>
-						<!--item_img :gift 이미지-->
+<div id="con_wrap">
+<!--///////////////////item///////////////////////	-->
+	<div id="item_wrap">
+	<!--///////jewerly////////-->
+		<div class="items">
+			<h3>OUTER</h3>
+			<c:forEach var="i" begin="1" end="20">
+				<c:if test="${i % 5 == 0}">
+					  <div class="item_con"	>
+				</c:if>
+				<div class="item">
+				  <!-- <c:forEach var="notice" items="${noticeList}" varStatus="status"></c:forEach>-->
+		               <div class ="item_img">
+							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
+						</div><!--item_img :gift 이미지-->
 						<p>점퍼</p>
 						<p>어디에나 착용가능한 맨투맨</p>
 						<p class="heart">
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
-						</p>
-						<!--heart:찜하기 하트버튼-->
+						</p><!--heart:찜하기 하트버튼-->
+						
+          		 	</div><!--item: jewerly1-->
+          		 <c:if test="${i % 4 == 0}">
 					</div>
-					<!--item: jewerly1-->
-					<c:if test="${i % 4 == 0}">
-						</div>
-					</c:if>
-			</c:forEach>
-			<p class="item_btn">
-				<a href="jewerly.html">Outer 더보기</a>
-			</p>
+					
+				</c:if>
+          	</c:forEach></div>
+			<p class="item_btn"><a href="jewerly.html">Outer 더보기</a></p>
+		<!--items-->
+		
+	
+		</div><!--items-->
+	</div><!--item_wrap-->
 	<!--////////item notice////////-->
 	<div id="notice_wrap">
 		<div id="notice_con">
@@ -207,6 +196,6 @@
 		<!--notice_con-->
 	</div>
 	<!--notice_wrap-->
-	</div>
+	
 	<!--con_wrap-->
 	<%@ include file="/view/user/footer.jsp"%>
