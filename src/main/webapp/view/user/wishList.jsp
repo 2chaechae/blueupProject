@@ -121,7 +121,7 @@
              </p>
          <div class="wish_con">   
          <c:forEach var="i" begin="0" end="15">
-            <c:if test="${i % 5 == 0}">
+            <c:if test="${i % 4 == 0}">
                     <div class="wish_con">
             </c:if>
             <div class="wish">
@@ -141,10 +141,10 @@
                          <button class="wishbtn"> 삭제 </button> <!-- 나중에 디비 연결 할것  /////-->                       
                       </p>
                     </div><!--전체 페이지-->
-                 <c:if test="${i % 4 == 3}">
-                    </div>
-            </c:if>
-             </c:forEach>
+                 <c:if test="${i % 4 == 3}"></div>
+                 
+            </c:if> 
+             </c:forEach></div>
       </div>
    <!-- </div>item_wrap -->
    <!--////////item notice////////-->
