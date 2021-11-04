@@ -53,4 +53,9 @@
 	<select id="getnoticeList" parameterType="noticevo" resultType="noticevo">
 		SELECT * FROM NOTICE
 	</select>
+	
+	<!-- 조회수 검색 쿼리 -->
+	<select id="getnoticeCnt" parameterType="noticevo" resultType="noticevo">
+		SELECT notice_cnt FROM NOTICE WHERE notice_no = #{notice_no}
+	</select>
 </mapper>

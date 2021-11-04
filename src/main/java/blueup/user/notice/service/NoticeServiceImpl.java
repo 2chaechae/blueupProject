@@ -38,4 +38,9 @@ public class NoticeServiceImpl implements NoticeService{
 		noticedao.updateNoticeCnt(vo);
 	}
 
+	@Override
+	public String getNoticeCnt(NoticeVo vo) {
+		return noticedao.getnoticeCnt(vo);
+	}
+
 }

@@ -14,6 +14,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeServiceImpl noticeserviceimpl;
 	
+	// 공지사항 리스트 가져오기
 	@RequestMapping("/getNoticeList.do")
 	public ModelAndView getNoticeList(NoticeVo vo, ModelAndView mav) {
 		mav.addObject("noticeList", noticeserviceimpl.getnoticeList(vo));
@@ -21,6 +22,7 @@ public class NoticeController {
 		return mav;
 	}
 	
+	// 공지사항 선택 시 조회수 update
 	@RequestMapping("/updateNoticeCnt.do")
 	public ModelAndView updateNoticeCnt(NoticeVo vo) {
 		System.out.println("cnt");
@@ -30,6 +32,16 @@ public class NoticeController {
 		return mav;
 	}
 	
+	// 선택한 공지사항의 조회수만 가져오기
+	@RequestMapping("/getNoticeCnt.do")
+	public ModelAndView getNoticeCnt(NoticeVo vo) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("cnt", getNoticeCnt(vo));
+		mav.setViewName("cscenter");
+		return mav;
+	}
+	
+	// 공지사항 삽입하기
 	@RequestMapping("/insertNotice.do")
 	public ModelAndView insertNotice(NoticeVo vo) {
 		ModelAndView mav = new ModelAndView();
@@ -38,6 +50,7 @@ public class NoticeController {
 		return mav;
 	}
 	
+	//공지사항 삭제하기
 	@RequestMapping("/deleteNotice.do")
 	public ModelAndView deleteNotice(NoticeVo vo) {
 		ModelAndView mav = new ModelAndView();
@@ -46,7 +59,7 @@ public class NoticeController {
 		return mav;
 	}
 	
-
+	// 공지사항 수정하기
 	@RequestMapping("/updateNotice.do")
 	public ModelAndView updateNotice(NoticeVo vo) {
 		ModelAndView mav = new ModelAndView();

@@ -10,4 +10,5 @@ public interface NoticeService {
 	public int deleteNotice(NoticeVo vo);
 	public void updateNoticeCnt(NoticeVo vo);
 	public List<NoticeVo> getnoticeList(NoticeVo vo);
+	public String getNoticeCnt(NoticeVo vo);
 }

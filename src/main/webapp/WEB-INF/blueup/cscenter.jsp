@@ -14,6 +14,9 @@
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/cscenter.css">
+<style type="text/css">
+	#v {visibility: hidden}
+</style>
 </head>
 <body>
 	<!--맨위로 가기 맨 아래로 가기-->
@@ -148,7 +151,7 @@
 						<dl>
 							<dt>
 								<p>
-									<span class="t5_num">NO.</span> <span class="top_tit">조회수</span>
+									<span class="t5_num">NO.</span>
 									<span class="top_tit">공지유형</span>제목
 								</p>
 							</dt>
@@ -156,16 +159,9 @@
 						<c:forEach var="notice" items="${noticeList}" varStatus="status">
 							<dl>
 								<dt>
-									<style type="text/css">
-#v {
-	visibility: hidden
-}
-</style>
-									<p id="event">
-										<span class="t5_num">${status.count}</span> <span
-											class="top_tit">${notice.notice_cnt}</span> <span
-											class="top_tit">${notice.notice_type}</span>${notice.notice_title}
-									<p id="v">${notice.notice_no}</p>
+									<p class="event">
+										<span class="t5_num">${status.count}</span>
+										<span class="top_tit">${notice.notice_type}</span>${notice.notice_title}
 									</p>
 								</dt>
 								<dd>${notice.notice_content}</dd>
@@ -321,7 +317,8 @@
 			});	
 			
 		});
-	
+
 	</script>
+	
 	<!--/////////하단/////////-->
 	<%@include file="/view/user/footer.jsp"%>
