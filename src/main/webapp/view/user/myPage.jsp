@@ -167,7 +167,7 @@ function addPayReload() {
 			</script>
 
 		<nav id="lnb" class="lnb-nav">
-			<strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
+			<strong><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/mypage/mypage_titImg.png" alt="MYPAGE"></strong>
 			<p>
 				<b>블루업</b>님<br />반갑습니다.
 			</p>
@@ -265,31 +265,31 @@ function addPayReload() {
 								<th scope="col">등급</th>
 								<th scope="col">
 									<div>
-										<img src="https://static.mlb-korea.com/pc/static/images/my/bg_friends.png" alt="FRIENDS">
+										<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/mypage/bg_friends.png" alt="FRIENDS">
 										<strong class="lv">FRIENDS</strong>
 									</div>
 								</th>
 								<th scope="col">
 									<div>
-										<img src="https://static.mlb-korea.com/pc/static/images/my/bg_family.png" alt="FAMILY">
+										<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/mypage/bg_family.png" alt="FAMILY">
 										<strong class="lv">FAMILY</strong>
 									</div>
 								</th>
 								<th scope="col">
 									<div>
-										<img src="https://static.mlb-korea.com/pc/static/images/my/bg_silver.png" alt="SILVER">
+										<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/mypage/bg_silver.png" alt="SILVER">
 										<strong class="lv">SILVER</strong>
 									</div>
 								</th>
 								<th scope="col">
 									<div>
-										<img src="https://static.mlb-korea.com/pc/static/images/my/bg_gold.png" alt="GOLD VIP">
+										<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/mypage/bg_gold.png" alt="GOLD VIP">
 										<strong class="lv">GOLD VIP</strong>
 									</div>
 								</th>
 								<th scope="col">
 									<div>
-										<img src="https://static.mlb-korea.com/pc/static/images/my/bg_platinum.png" alt="PLATINUM VVIP">
+										<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/mypage/bg_platinum.png" alt="PLATINUM VVIP">
 										<strong class="lv">PLATINUM VVIP</strong>
 									</div>
 								</th>
@@ -343,6 +343,6 @@ function addPayReload() {
 <div id="layerPopupCouponProductDiv">
 </div>
 <!-- //layerpopup - 쿠폰 적용 가능 상품 -->
-<!--// 컨텐츠 끝 -->ㄴ
+<!--// 컨텐츠 끝 -->
 </body>
 </html>
