@@ -179,11 +179,13 @@
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼--> --%>
 						<br>
+						<!--///// 나중에 디비 연결 할것 -->
 						<p class="wish2">
 	          				<button class="wishaddbt"> 쇼핑백 담기 </button>
 	          				<button class="wishbtn"> 삭제 </button>
+	          				<!-- 나중에 디비 연결 할것  /////-->
           				</p>
-          		 	</div><!--item: jewerly1-->
+          		 	</div><!--전체 페이지-->
           		 <c:if test="${i % 4 == 3}">
 					  	</div>
 				</c:if>
@@ -208,7 +210,7 @@
 	<!--con_wrap-->
 	<script type="text/javascript">
 	window.onload= function(){
-		document.getElemetById('wish con').onmouseover = function(){
+		document.getElemetById('wish_con').onmouseover = function(){
 			$(.heart).add(.wish2);
 			$(.wish).add(.heart);
 		});
