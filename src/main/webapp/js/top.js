@@ -33,6 +33,7 @@ $(document).ready(function(){
     $("#mtop > li").children("a").addClass("selm");
 	});
 	*/
+	/*
 	// 퀵메뉴 버튼 이미지 바꾸기
 	$(".top_btn1").mouseover(function(){
 		$(" > img",this).attr("src","images/top/login_hover.png");
@@ -45,7 +46,7 @@ $(document).ready(function(){
 		$(" > img",this).attr("src","images/top/search.png");
 	});
 	
-	
+	*/
 	//태그추가 로그인 드롭다운메뉴
 	$("#quick > ul").before("<div class='login_bg'></div>");
 	
