@@ -26,6 +26,10 @@ public class NoticeDAO {
 		return sqlSssionTemplate.update("noticeDao.updateNotice", vo);
 	}
 	
+	public void updateNoticeCnt(NoticeVo vo) {
+		sqlSssionTemplate.update("noticeDao.updateNoticeCnt", vo);
+	}
+	
 	public List<NoticeVo> getnoticeList(NoticeVo vo) {
 		return sqlSssionTemplate.selectList("noticeDao.getnoticeList", vo);
 	}

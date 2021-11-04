@@ -21,6 +21,15 @@ public class NoticeController {
 		return mav;
 	}
 	
+	@RequestMapping("/updateNoticeCnt.do")
+	public ModelAndView updateNoticeCnt(NoticeVo vo) {
+		System.out.println("cnt");
+		ModelAndView mav = new ModelAndView();
+		noticeserviceimpl.updateNoticeCnt(vo);
+		mav.setViewName("getNoticeList.do");
+		return mav;
+	}
+	
 	@RequestMapping("/insertNotice.do")
 	public ModelAndView insertNotice(NoticeVo vo) {
 		ModelAndView mav = new ModelAndView();

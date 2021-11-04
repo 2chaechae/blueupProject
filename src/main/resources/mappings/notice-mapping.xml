@@ -25,6 +25,13 @@
 		)
 	</insert>
 	
+	<!-- 조회수 올리는 쿼리 -->
+	<update id="updateNoticeCnt" parameterType="noticevo">
+		UPDATE NOTICE SET
+		NOTICE_CNT = MAX(#{notice_cnt})+1
+		WHERE NOTICE_NO = #{notice_no}
+	</update>
+	
 	<!-- 공지사항 수정을 위한 쿼리 -->
 	<update id="updateNotice" parameterType="noticevo">
 		UPDATE NOTICE

@@ -196,6 +196,54 @@ h4{
 	float:left;
 	cursor:pointer;
 }
+
+.btn_wrap{
+	width:100%;
+    margin-top:60px; 
+    display:flex;
+    justify-content: space-between;
+}
+
+#btn1{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
+#btn2{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
+#btn3{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
+#btn4{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
 /*전체보기*/
 .all{
 	float:right;
@@ -355,4 +403,11 @@ h4{
 	font-size:14px;
 	padding-top:25px;
 	padding-bottom:25px;
+}
+
+.top_tit1 {
+	display:inline-block;
+	width:100px;
+	text-align:center;
+	margin-right:50px;
 }
