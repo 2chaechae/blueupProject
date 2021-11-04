@@ -79,7 +79,7 @@
 					<ul>
 						<li class="top_btn1"><a href="#" title="고객센터"><br><span>COMMUNTIY</span></a>
 							<ul class="btn_sub">
-								<li><a href="#">공지사항</a></li>
+								<li><a href="/getNoticeList.do">공지사항</a></li>
 								<li><a href="#">QnA</a></li>
 								<li><a href="#">REVIEW</a></li>
 							</ul>
