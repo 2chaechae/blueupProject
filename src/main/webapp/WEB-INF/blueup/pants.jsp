@@ -142,10 +142,11 @@
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
           		 	</div><!--item: jewerly1-->
-          		 <c:if test="${status.count % 4 == 0}">
+          		 <c:if test="${status.count % 4 == 0 }">
 					</div>
 				</c:if>
           	</c:forEach>
+          	<br>
 			<p class="item_btn"><a href="jewerly.html">Outer 더보기</a></p>
 		</div><!--items-->
 	</div><!--item_wrap-->
