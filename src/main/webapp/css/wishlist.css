@@ -1,14 +1,14 @@
-@charset "EUC-KR";
+@charset "utf-8";
 
 @import
 	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap")
 	; 
-/* <ÆùÆ® ¼³Á¤> */
+/* <í°íŠ¸ ì„¤ì •> */
 @import
 	url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap')
 	;
-@import url("top.css");/*»ó´Ü¿µ¿ª*/
-@import url("bottom.css");/*ÇÏ´Ü¿µ¿ª*/
+@import url("top.css");/*ìƒë‹¨ì˜ì—­*/
+@import url("bottom.css");/*í•˜ë‹¨ì˜ì—­*/
 #wishpage_wrap {
 	height: 45px;
 	width: 100%;
@@ -77,7 +77,7 @@
 	cursor: pointer;
 } */
 
-/*//////////////wishÆ²/////////////////*/
+/*//////////////wishí‹€/////////////////*/
 #wi_wrap {
 	width: 1920px;
 	height: 100%;
@@ -94,7 +94,7 @@
 	height: 715px;
 }
 
-.wishes>h3 { /*¾ÆÀÌÅÛ¶óÀÎ*/
+.wishes>h3 { /*ì•„ì´í…œë¼ì¸*/
 	width: 1415px;
 	padding-bottom: 30px;
 	border-bottom: 2px solid #333333;
@@ -107,7 +107,7 @@
 	padding-left: 50px;
 	padding-bottom : 20px;
 }
-/*°¢ item°øÅë*/
+/*ê° itemê³µí†µ*/
 
 .wish { width : 300px;
 	height: 450px;
@@ -124,12 +124,12 @@
 	margin-right: 0;
 }
 
-/*item ÀÌ¹ÌÁö °øÅë*/
+/*item ì´ë¯¸ì§€ ê³µí†µ*/
 .wish_img {
 	width: 300px;
 	height: 300px;
 }
-/* ¸¶¿ì½º¿À¹ö½Ã ³ªÅ¸³¯ ÀÌ¹ÌÁö, ÅØ½ºÆ®*/
+/* ë§ˆìš°ìŠ¤ì˜¤ë²„ì‹œ ë‚˜íƒ€ë‚  ì´ë¯¸ì§€, í…ìŠ¤íŠ¸*/
 .wish_hover>img {
 	position: absolute;
 	top: 0;
@@ -156,7 +156,7 @@
 }
 
 
-/*°¢ item ¸¶¿ì½º ¿À¹ö½Ã*/
+/*ê° item ë§ˆìš°ìŠ¤ ì˜¤ë²„ì‹œ*/
 .wish:hover {
 	opacity: 1;
 	box-sizing: border-box;
@@ -174,7 +174,7 @@
 .wish:hover .wish_hover>p {
 	opacity: 1;
 }
-/*wish Á¦Ç°¸í*/
+/*wish ì œí’ˆëª…*/
 .wish>p:nth-of-type(1) {
 	clear: both;
 	font-size: 14px;
@@ -186,7 +186,7 @@
 .wish>p:nth-of-type(2) {
 	font-weight: bold;
 }
-/* µµÀü¿ë */
+/* ë„ì „ìš© */
 body {
 	font: normal 16px/1.5em "Noto Sans KR", sans-serif;
 	color: #333333;
@@ -206,14 +206,14 @@ h3 {
 	font-size: 10px;
 }
 
-/*//////¸ŞÀÎ¹è³Ê/////*/
+/*//////ë©”ì¸ë°°ë„ˆ/////*/
 #banner {
 	width: 1920px;
 	height: 480px;
 	margin: 0 auto;
 	position: relative;
 }
-/*ÀÌ¹ÌÁö À§ »ö»ó¹Ú½º ¾º¿ì±â*/
+/*ì´ë¯¸ì§€ ìœ„ ìƒ‰ìƒë°•ìŠ¤ ì”Œìš°ê¸°*/
 #banner>p::before {
 	content: "";
 	position: absolute;
@@ -223,7 +223,7 @@ h3 {
 	height: 480px;
 	background-color: rgba(0, 37, 35, 0.7);
 }
-/*¹è³Ê³»¿ë*/
+/*ë°°ë„ˆë‚´ìš©*/
 #ban_con {
 	position: absolute;
 	left: 50%;
@@ -242,8 +242,8 @@ h3 {
 	font-size: 20px;
 }
 
-/*////ÆäÀÌÁö////*/
-/*ÆäÀÌÁö ÀüÃ¼*/
+/*////í˜ì´ì§€////*/
+/*í˜ì´ì§€ ì „ì²´*/
 #page_wrap {
 	height: 45px;
 	width: 100%;
@@ -259,7 +259,7 @@ h3 {
 	margin: 0 auto;
 }
 
-/*ÆäÀÌÁöÀ§Ä¡ ¿À¸¥ÂÊ*/
+/*í˜ì´ì§€ìœ„ì¹˜ ì˜¤ë¥¸ìª½*/
 #r_page {
 	float: right;
 	font-size: 14px;
