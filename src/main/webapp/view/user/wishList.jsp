@@ -92,7 +92,7 @@
 </div><!--top_wrap-->
 
  <!--페이지위치-->
-<div id="page_wrap">
+<div id="wishpage_wrap">
    <div id="page">
       <ul id="r_page">
          <li>Home</li>
@@ -108,7 +108,7 @@
    </div>
    <!--page-->
 </div>
-<!--page wrap:페이지위치 전체-->
+<!--wishpage wrap:페이지위치 전체-->
 
 <div id="wi_wrap">
 <!--item-->

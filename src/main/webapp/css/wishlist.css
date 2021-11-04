@@ -1,7 +1,15 @@
 @charset "EUC-KR";
 @import url("top.css");/*상단영역*/
 @import url("bottom.css");/*하단영역*/
-
+#wishpage_wrap {
+	height: 45px;
+	width: 100%;
+	padding: 100px;
+	margin: 0 auto;
+	border-bottom: 1px solid #cccccc;
+	color: #aaaaaa;
+	min-width: 1920px;
+}
 .wishbtn{
 
   right:10%; top:50%;
