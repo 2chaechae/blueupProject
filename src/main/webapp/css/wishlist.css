@@ -1,4 +1,12 @@
 @charset "EUC-KR";
+
+@import
+	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap")
+	; 
+/* <폰트 설정> */
+@import
+	url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap')
+	;
 @import url("top.css");/*상단영역*/
 @import url("bottom.css");/*하단영역*/
 #wishpage_wrap {
@@ -166,7 +174,7 @@
 .wish:hover .wish_hover>p {
 	opacity: 1;
 }
-/*item 제품명*/
+/*wish 제품명*/
 .wish>p:nth-of-type(1) {
 	clear: both;
 	font-size: 14px;
@@ -177,4 +185,93 @@
 
 .wish>p:nth-of-type(2) {
 	font-weight: bold;
+}
+/* 도전용 */
+body {
+	font: normal 16px/1.5em "Noto Sans KR", sans-serif;
+	color: #333333;
+}
+
+h2 {
+	font: normal 90px/1.5em "Nanum Myeongjo", serif;
+}
+
+h3 {
+	font: bold 40px/1.5em "Nanum Myeongjo", serif;
+	letter-spacing: -1px;
+	color: #333333;
+}
+
+.sup {
+	font-size: 10px;
+}
+
+/*//////메인배너/////*/
+#banner {
+	width: 1920px;
+	height: 480px;
+	margin: 0 auto;
+	position: relative;
+}
+/*이미지 위 색상박스 씌우기*/
+#banner>p::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1920px;
+	height: 480px;
+	background-color: rgba(0, 37, 35, 0.7);
+}
+/*배너내용*/
+#ban_con {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
+#ban_con>h2 {
+	margin-bottom: 20px;
+}
+
+#ban_con>p {
+	font-size: 20px;
+}
+
+/*////페이지////*/
+/*페이지 전체*/
+#page_wrap {
+	height: 45px;
+	width: 100%;
+	margin: 0 auto;
+	border-bottom: 1px solid #cccccc;
+	color: #aaaaaa;
+	min-width: 1920px;
+}
+
+#page {
+	width: 1200px;
+	height: 45px;
+	margin: 0 auto;
+}
+
+/*페이지위치 오른쪽*/
+#r_page {
+	float: right;
+	font-size: 14px;
+	height: 45px;
+	line-height: 45px;
+}
+
+#r_page>li {
+	display: inline-block;
+	margin-right: 7px;
+}
+
+#r_page>li:last-child {
+	color: #111111;
 }
