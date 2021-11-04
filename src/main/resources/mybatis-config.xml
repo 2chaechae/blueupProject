@@ -5,13 +5,13 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
-		<typeAlias type="blueup.admin.main.vo.ProductVo" alias="productvo"/>
-		<typeAlias type="blueup.admin.main.vo.ProductVo" alias="stockvo"/>
-		<typeAlias type="blueup.user.main.vo.CartVo" alias="cartvo"/>
-		<typeAlias type="blueup.user.main.vo.CartVo" alias="cartvo"/>
-		<typeAlias type="blueup.user.main.vo.Terms_and_conditionVo" alias="termsvo"/>
-		<typeAlias type="blueup.user.main.vo.NoticeVo" alias="noticevo"/>
-		<typeAlias type="blueup.user.main.vo.QnaVo" alias="qnavo"  />
+		<typeAlias type="blueup.admin.vo.ProductVo" alias="productvo"/>
+		<typeAlias type="blueup.admin.vo.ProductVo" alias="stockvo"/>
+		<typeAlias type="blueup.user.vo.CartVo" alias="cartvo"/>
+		<typeAlias type="blueup.user.vo.CartVo" alias="cartvo"/>
+		<typeAlias type="blueup.user.vo.Terms_and_conditionVo" alias="termsvo"/>
+		<typeAlias type="blueup.user.vo.NoticeVo" alias="noticevo"/>
+		<typeAlias type="blueup.user.vo.QnaVo" alias="qnavo"  />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />
