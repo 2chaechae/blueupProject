@@ -61,3 +61,112 @@
 	cursor: pointer;
 } */
 
+/*//////////////wish틀/////////////////*/
+#wi_wrap {
+	width: 1920px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#wish_wrap {
+	width: 1600px;
+	margin: 100px auto 0 auto;
+}
+
+.wishes {
+	width: 1400px;
+	height: 715px;
+}
+
+.wishes>h3 { /*아이템라인*/
+	width: 1415px;
+	padding-bottom: 30px;
+	border-bottom: 2px solid #333333;
+	margin-bottom: 63px;
+}
+
+.wish_con {
+	height: 402px;
+	margin-left: 0px;
+	padding-left: 50px;
+	padding-bottom : 20px;
+}
+/*각 item공통*/
+
+.wish { width : 300px;
+	height: 450px;
+	float: left;
+	text-align: center;
+	margin-right: 59px;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.wish:last-child {
+	margin-right: 0;
+}
+
+/*item 이미지 공통*/
+.wish_img {
+	width: 300px;
+	height: 300px;
+}
+/* 마우스오버시 나타날 이미지, 텍스트*/
+.wish_hover>img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	transition: opacity 0.5s linear;
+}
+
+.wish_hover>p {
+	position: absolute;
+	top: 270px;
+	left: 0;
+	opacity: 0;
+	width: 300px;
+	height: 30px;
+	text-align: right;
+	padding: 0 20px;
+	box-sizing: border-box;
+	line-height: 30px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #ffffff;
+	transition: opacity 0.3s linear;
+	z-index: 10;
+}
+
+
+/*각 item 마우스 오버시*/
+.wish:hover {
+	opacity: 1;
+	box-sizing: border-box;
+	border: 1px solid #333333;
+}
+
+.wish:hover .wish_hover>p {
+	opacity: 1;
+}
+
+.wish:hover .wish_hover>img {
+	opacity: 1;
+}
+
+.item:hover .item_hover>p {
+	opacity: 1;
+}
+/*item 제품명*/
+.wish>p:nth-of-type(1) {
+	clear: both;
+	font-size: 14px;
+	font-weight: bold;
+	color: #1c079d;
+	margin-top: 15px; 
+}
+
+.wish>p:nth-of-type(2) {
+	font-weight: bold;
+}

@@ -151,24 +151,24 @@
 	</div>
 	<!--page wrap:페이지위치 전체-->
 
-<div id="con_wrap">
+<div id="wi_wrap">
 <!--///////////////////item///////////////////////	-->
-	<div id="item_wrap">
+	<div id="wish_wrap">
 	<!--///////jewerly////////-->
-		<!-- <div class="items"> -->
+		<!-- <div class="wishes"> -->
 			<h3 align="center"> WISHLIST</h3>
 			<br><br><br>
 			<p class="wish1">
           	<button class="walldel"> 전체삭제 </button>
           	</p>
-			<div class="item_con">	
+			<div class="wish_con">	
 			<c:forEach var="i" begin="0" end="15">
 				<c:if test="${i % 5 == 0}">
-					  	<div class="item_con">
+					  	<div class="wish_con">
 				</c:if>
-				<div class="item">
+				<div class="wish">
 				  <!-- <c:forEach var="notice" items="${noticeList}" varStatus="status"></c:forEach>-->
-		               <div class ="item_img">
+		               <div class ="wish_img">
 							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
 							
 						</div><!--item_img :gift 이미지-->
@@ -208,9 +208,9 @@
 	<!--con_wrap-->
 	<script type="text/javascript">
 	window.onload= function(){
-		document.getElemetById('item con').onmouseover = function(){
+		document.getElemetById('wish con').onmouseover = function(){
 			$(.heart).add(.wish2);
-			$(.item).add(.heart);
+			$(.wish).add(.heart);
 		});
 	});s
 	</script>
