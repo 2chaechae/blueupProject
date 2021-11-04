@@ -338,7 +338,6 @@ function addPayReload() {
 		</div>
 	</section>
 </article>
-
 <!-- layerpopup - 쿠폰 적용 가능 상품 -->
 <div id="layerPopupCouponProductDiv">
 </div>
