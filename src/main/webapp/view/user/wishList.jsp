@@ -12,7 +12,6 @@
 <script src="${pageContext.request.contextPath}/js/item.js"></script>
 <link rel="shortcut icon" type="${pageContext.request.contextPath}/image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishlist.css">
 </head>
 <body>
@@ -122,7 +121,7 @@
              </p>
          <div class="wish_con">   
          <c:forEach var="i" begin="0" end="15">
-            <c:if test="${i % 5 == 0}">
+            <c:if test="${i % 4 == 0}">
                     <div class="wish_con">
             </c:if>
             <div class="wish">
@@ -134,25 +133,22 @@
                   
                   <p>점퍼</p>
                   <p>어디에나 착용가능한 맨투맨</p>
-                  <%-- <p class="heart">
-                     <img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
-                  </p><!--heart:찜하기 하트버튼--> --%>
+                  <%-- <p class="heart"> 뺄지말지 고민 --%>
                   <br>
                   <!--///// 나중에 디비 연결 할것 -->
                   <p class="wish2">
                          <button class="wishaddbt"> 쇼핑백 담기 </button>
-                         <button class="wishbtn"> 삭제 </button>
-                         <!-- 나중에 디비 연결 할것  /////-->
+                         <button class="wishbtn"> 삭제 </button> <!-- 나중에 디비 연결 할것  /////-->                       
                       </p>
                     </div><!--전체 페이지-->
-                 <c:if test="${i % 4 == 3}">
-                    </div>
-            </c:if>
-             </c:forEach>
+                 <c:if test="${i % 4 == 3}"></div>
+                 
+            </c:if> 
+             </c:forEach></div>
       </div>
    <!-- </div>item_wrap -->
    <!--////////item notice////////-->
- <div id="notice_wrap">
+ <!-- <div id="notice_wrap">
       <div id="notice_con">
          <h4>NOTICE</h4>
          <ul id="notice">
@@ -163,10 +159,10 @@
          notice
       </div>
       notice_con
-   </div>
+   </div> -->
    <!-- notice_wrap -->
    </div> 
-   <!--con_wrap-->
+   <!--wis_wrap-->
    <script type="text/javascript">
    window.onload= function(){
       document.getElemetById('wish_con').onmouseover = function(){
