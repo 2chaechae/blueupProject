@@ -18,7 +18,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/item.css">
+	href="${pageContext.request.contextPath}/css/outer.css">
 </head>
 <body>
 	<!--맨위로 가기 맨 아래로 가기-->
@@ -123,19 +123,19 @@
 	<!-- 이부분 item css로 통일해야함. -->
 	<!--page wrap:페이지위치 전체-->
 
-<div id="con_wrap">
+<div id="outcon_wrap">
 <!--///////////////////item///////////////////////	-->
-	<div id="item_wrap">
+	<div id="outer_wrap">
 	<!--///////jewerly////////-->
-		<div class="items">
+		<div class="outers">
 			<h3>OUTER</h3>
 			<c:forEach var="i" begin="1" end="20">
 				<c:if test="${i % 4 == 0}">
-					  <div class="item_con"	>
+					  <div class="outer_con"	>
 				</c:if>
-				<div class="item">
+				<div class="outer">
 				  <!-- <c:forEach var="notice" items="${noticeList}" varStatus="status"></c:forEach>-->
-		               <div class ="item_img">
+		               <div class ="outer_img">
 							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
 						</div><!--item_img :gift 이미지-->
 						<p>점퍼</p>
@@ -150,7 +150,7 @@
 					
 				</c:if>
           	</c:forEach></div>
-			<p class="item_btn"><a href="jewerly.html">Outer 더보기</a></p>
+			<p class="outer_btn"><a href="jewerly.html">Outer 더보기</a></p>
 		<!--items-->
 		
 	
