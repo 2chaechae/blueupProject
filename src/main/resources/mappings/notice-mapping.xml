@@ -11,6 +11,7 @@
  		<result property="notice_cnt" column="notice_cnt"/>
  		<result property="notice_time" column="notice_time"/>
  	</resultMap>
+ 	
 	<!-- 공지사항 추가를 위한 쿼리 -->
 	<insert id="insertNotice" parameterType="noticevo">
 		INSERT INTO NOTICE (
@@ -24,13 +25,6 @@
 			#{notice_time}
 		)
 	</insert>
-	
-	<!-- 조회수 올리는 쿼리 -->
-	<update id="updateNoticeCnt" parameterType="noticevo">
-		UPDATE NOTICE SET
-		NOTICE_CNT = MAX(#{notice_cnt})+1
-		WHERE NOTICE_NO = #{notice_no}
-	</update>
 	
 	<!-- 공지사항 수정을 위한 쿼리 -->
 	<update id="updateNotice" parameterType="noticevo">
@@ -54,8 +48,4 @@
 		SELECT * FROM NOTICE
 	</select>
 	
-	<!-- 조회수 검색 쿼리 -->
-	<select id="getnoticeCnt" parameterType="noticevo" resultType="noticevo">
-		SELECT notice_cnt FROM NOTICE WHERE notice_no = #{notice_no}
-	</select>
 </mapper>

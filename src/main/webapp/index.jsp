@@ -27,7 +27,7 @@
 					<li><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
 					<li><a href="#" data-atitle="아우터" data-btitle="Collection">OUTER</a>
 						<ul class="sub">
-							<li><a href="#">가디건</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">가디건</a></li>
 							<li><a href="#">자켓/베스트</a></li>
 							<li><a href="#">점퍼</a></li>
 							<li><a href="#">코트</a></li>
@@ -44,11 +44,12 @@
 					</li>
 					<li><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
 						<ul class="sub">
-							<li><a href="#">긴바지</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">긴바지</a></li>
 							<li><a href="#">트레이닝</a></li>
 							<li><a href="#">반바지</a></li>
 							<li><a href="#">스커트</a></li>
 						</ul>
+						
 					</li>
 					<li><a href="#" data-atitle="기타" data-btitle="Collection">ACC</a>
 						<ul class="sub">
@@ -234,6 +235,15 @@
    </div>cs
 </div>etc
  -->
+<script type="text/javascript">
+function checkCategory(element){
+	alert("Test");
+	var second = $(element).text();
+	console.log(element);
+	console.log(second);
+	location.href="${pageContext.request.contextPath}/getProduct.do?detailed_category_name="+second;
+}
+</script>
 <!--하단-->
 <%@ include file="/view/user/footer.jsp" %>
 

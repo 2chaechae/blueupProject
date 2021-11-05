@@ -128,7 +128,7 @@
 	<div id="outer_wrap">
 	<!--///////jewerly////////-->
 		<div class="outers">
-			<h3>ACC</h3>
+			<h3>LONG</h3>
 			<c:forEach var="i" begin="1" end="20">
 				<c:if test="${i % 4 == 0}">
 					  <div class="outer_con"	>
@@ -136,10 +136,10 @@
 				<div class="outer">
 				  <!-- <c:forEach var="notice" items="${noticeList}" varStatus="status"></c:forEach>-->
 		               <div class ="outer_img">
-							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" alt="맨투맨" width="300" height="300">
+							<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/pants/jeans.webp" alt="도미닉 와이드 롱 슬랙스" width="300" height="300">
 						</div><!--item_img :gift 이미지-->
-						<p>반지</p>
-						<p>10호 11호 12호</p>
+						<p>도미닉 와이드 롱 슬랙스</p>
+						<p>S M L</p>
 						<p class="heart">
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
@@ -150,7 +150,7 @@
 					
 				</c:if>
           	</c:forEach></div>
-			<p class="outer_btn"><a href="jewerly.html">ACC 더보기</a></p>
+			<p class="outer_btn"><a href="jewerly.html">PANTS 더보기</a></p>
 		<!--items-->
 		
 	

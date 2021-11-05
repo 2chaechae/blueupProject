@@ -126,6 +126,7 @@ h3 {
 }
 
 .item_con {
+	display:inline-block;
 	height: 402px;
 	margin-left: 22px;
 }
