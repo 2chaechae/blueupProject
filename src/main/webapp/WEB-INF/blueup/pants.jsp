@@ -12,6 +12,7 @@
 	src="${pageContext.request.contextPath}/js/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/top.js"></script>
 <script src="${pageContext.request.contextPath}/js/item.js"></script>
+<script src="${pageContext.request.contextPath}/js/product.js"></script>
 <link rel="shortcut icon"
 	type="${pageContext.request.contextPath}/image/x-icon"
 	href="${pageContext.request.contextPath}/images/favicon.ico">

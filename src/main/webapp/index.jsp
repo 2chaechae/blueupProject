@@ -7,6 +7,7 @@
    <script src="js/jquery-1.12.4.min.js"></script>
    <script src = "js/top.js"></script>
    <script src="js/index.js"></script>
+   <script src="js/product.js"></script>
    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
    <link rel="stylesheet" href="css/reset.css">
    <link rel="stylesheet" href="css/index.css">
@@ -235,13 +236,6 @@
    </div>cs
 </div>etc
  -->
-<script type="text/javascript">
-function checkCategory(element){
-		var first = $(element).closest('.selected').children('a').text();
-		var second = $(element).text();
-		location.href="${pageContext.request.contextPath}/getCategory.do?category_name="+first+"&detailed_category_name="+second;
-}
-</script>
 <!--하단-->
 <%@ include file="/view/user/footer.jsp" %>
 
