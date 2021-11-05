@@ -128,11 +128,12 @@
 	<!--///////jewerly////////-->
 		<div class="outers">
 			<!-- 페이지 카테로리 설정 -->
-			<h3 id="cate" style="align:center">${Category.get(0).category_name}</h3>
-			<div style="display:flex">
-			<c:forEach var="category" items="${Category}">
-				<a href="javascript:void(0)" onclick="check(this)">${category.detailed_category_name}</a>
-			</c:forEach></div>
+			<h3 id="cate">${Category.get(0).category_name}</h3>
+			<div id="catewrap">
+				<c:forEach var="category" items="${Category}">
+					<a class="detailcate" href="javascript:void(0)" onclick="check(this)">${category.detailed_category_name}</a>
+				</c:forEach>
+			</div>
 			<!-- 상품 목록 보여주기 -->
 			<c:forEach var="product" items="${Product}" varStatus="status">
 				<c:if test="${status.count % 4 == 0}">
