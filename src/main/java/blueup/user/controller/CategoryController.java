@@ -1,6 +1,5 @@
 package blueup.user.controller;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +17,10 @@ public class CategoryController<ModelAndVeiw> {
 	
 	@ResponseBody
 	@RequestMapping("/getCategory.do")
-	public ModelAndView getCategory( HttpServletRequest request, Category_detailVo vo) {
-		request.setAttribute("Category", categoryserviceimpl.getCategory(vo));
-		request.setAttribute("Selected", vo);
+	public ModelAndView getCategory( HttpSession session, Category_detailVo vo) {
+		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
+		session.setAttribute("Selected", vo);
+		System.out.println(vo.getCategory_name());
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/getProduct.do");
 		return mav;

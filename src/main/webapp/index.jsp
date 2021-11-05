@@ -237,7 +237,7 @@ function checkCategory(element){
 	var second = $(element).text();
 	alert(first);
 	alert(second)
-	location.href="${pageContext.request.contextPath}/getCategory.do?category_name="+first+"&detailed_category_name="+second;
+	location.href="${pageContext.request.contextPath}/getProduct.do?category_name="+first+"&detailed_category_name="+second;
 }
 </script>
 <!--하단-->

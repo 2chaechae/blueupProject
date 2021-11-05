@@ -4,11 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
-
 import blueup.user.dao.CategoryDAO;
-import blueup.user.vo.CategoryVo;
 import blueup.user.vo.Category_detailVo;
 
 @Service("CategoryService")
