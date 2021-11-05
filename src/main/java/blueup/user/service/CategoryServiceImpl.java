@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.dao.CategoryDAO;
 import blueup.user.vo.CategoryVo;
@@ -16,7 +18,7 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public List<Category_detailVo> getCategory(CategoryVo vo) {
-		return categorydao.getCategory(vo);
+		return categorydao.getCategory(vo, null);
 	}
 
 }

@@ -233,10 +233,11 @@
 <script type="text/javascript">
 function checkCategory(element){
 	alert("Test");
+	var first = $(element).parent('li').text();
 	var second = $(element).text();
 	console.log(element);
 	console.log(second);
-	location.href="${pageContext.request.contextPath}/getProduct.do?detailed_category_name="+second;
+	location.href="${pageContext.request.contextPath}/getProduct.do?category_name="+first+"detailed_category_name="+second;
 }
 </script>
 <!--하단-->

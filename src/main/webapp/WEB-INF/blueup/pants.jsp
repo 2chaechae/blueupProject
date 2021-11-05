@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -18,7 +19,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/item.css">
+	href="${pageContext.request.contextPath}/css/outer.css">
 </head>
 <body>
 	<!--맨위로 가기 맨 아래로 가기-->
@@ -123,31 +124,37 @@
 	<!-- 이부분 item css로 통일해야함. -->
 	<!--page wrap:페이지위치 전체-->
 
-<div id="con_wrap">
+<div id="outcon_wrap">
 <!--///////////////////item///////////////////////	-->
-	<div id="item_wrap">
+	<div id="outer_wrap">
 	<!--///////jewerly////////-->
-		<div class="items">
-			<h3>OUTER</h3>
+		<div class="outers">
+			<!-- 페이지 카테로리 설정 -->
+			<h3 style="align:center">${Catecory.category_name }</h3>
+			<div style="display:flex">
+			<c:forEach var="category" items="${Catecory}">
+				<a href="#">${category.detailed_category_name}</a>
+			</c:forEach></div>
+			<!-- 상품 목록 보여주기 -->
 			<c:forEach var="product" items="${Product}" varStatus="status">
 				<c:if test="${status.count % 4 == 0}">
-					  <div class="item_con"	>
+					   <div class="outer_con">
 				</c:if>
-				<div class="item">
-		               <div class ="item_img">
+				<div class="outer">
+		               <div class ="outer_img">
 							<img src="${product.main_image}" alt="맨투맨" width="300" height="300">
 						</div><!--item_img :gift 이미지-->
 						<p>${product.product_name}</p>
+						<p>${product.price}</p>
 						<p class="heart">
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
-          		 	</div><!--item: jewerly1-->
-          		 <c:if test="${status.count % 4 == 0 }">
+          		 </div><!--item: jewerly1-->
+          		 <c:if test="${status.count % 4 == 0}">
 					</div>
-				</c:if>
-          	</c:forEach>
-          	<br>
-			<p class="item_btn"><a href="jewerly.html">Outer 더보기</a></p>
+				 </c:if>
+			</c:forEach>
+			<p class="outer_btn"><a href="jewerly.html">Outer 더보기</a></p>
 		</div><!--items-->
 	</div><!--item_wrap-->
 	<!--////////item notice////////-->
@@ -164,10 +171,4 @@
 		<!--notice_con-->
 	</div>
 	<!--notice_wrap-->
-<script type="text/javascript">
-function checkCategory(){
-	var second = $(this).text();
-		location.href="getProduct.do?detailed_category_name=" + second;
-}
-</script>
 	<%@ include file="/view/user/footer.jsp"%>

@@ -9,14 +9,13 @@ import blueup.user.service.CategoryServiceImpl;
 import blueup.user.vo.CategoryVo;
 
 @Controller
-public class CategoryController {
+public class CategoryController<ModelAndVeiw> {
 	@Autowired 
 	private CategoryServiceImpl categoryserviceimpl;
 	
 	@ResponseBody
 	@RequestMapping("/getCategory.do")
-	public ModelAndView getCategory(CategoryVo vo) {
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView getCategory(CategoryVo vo, ModelAndVeiw mav) {
 		mav.addObject("Category", categoryserviceimpl.getCategory(vo));
 		mav.setViewName("pants");
 		return mav;
