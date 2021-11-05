@@ -5,11 +5,35 @@
 <mapper namespace="qnaDao">
 
 
-	<select id="getQnaListTen" resultType="qnavo">
-	<![CDATA[	
-		select * from (
-			SELECT (ROW_NUMBER() OVER()) AS ROWNUM,
-			QNA_NO,
+	<select id="getQnaList" resultType="qnavo" parameterType="cri">
+		<!-- <![CDATA[ select * from ( SELECT (ROW_NUMBER() OVER()) AS ROWNUM, 
+			QNA_NO, QNA_TYPE, QNA_TITLE, QNA_CONTENT, USER_ID, QNA_CNT, QNA_TIME, REF, 
+			DEPTH, STEP, SECRET FROM ( SELECT * FROM QNA ORDER BY REF DESC, STEP ASC 
+			) AS LIST) AS ALLLIST WHERE ROWNUM>=1 AND ROWNUM<=10; ]]> -->
+		SELECT
+		QNA_NO,
+		QNA_TYPE,
+		QNA_TITLE,
+		QNA_CONTENT,
+		USER_ID,
+		QNA_CNT,
+		QNA_TIME,
+		REF,
+		DEPTH,
+		STEP,
+		SECRET,
+		PASSWORD
+		FROM QNA
+		ORDER BY REF DESC, STEP ASC
+		LIMIT #{perPageNum} OFFSET #{startRow}
+	</select>
+
+	<select id="getCount" resultType="int">
+		SELECT COUNT(*) FROM QNA
+	</select>
+
+	<insert id="insertQna" parameterType="qnavo">
+		INSERT INTO QNA (
 			QNA_TYPE,
 			QNA_TITLE,
 			QNA_CONTENT,
@@ -19,12 +43,21 @@
 			REF,
 			DEPTH,
 			STEP,
-			SECRET FROM (
-				SELECT * FROM QNA ORDER BY REF DESC, STEP ASC
-				) AS LIST) AS ALLLIST
-				WHERE ROWNUM>=1 AND ROWNUM<=10;
-		]]>
-	</select>
-	
-	
+			SECRET,
+			PASSWORD
+		)
+			VALUES(
+				#{qna_type}, 
+				#{qna_title}, 
+				#{qna_content}, 
+				#{user_id}, 
+				0, 
+				now(), 
+				COALESCE((SELECT MAX(ref) FROM QNA),0), 
+				0,
+				0,
+				#{secret}, 
+				#{password})
+	</insert>
+
 </mapper>
