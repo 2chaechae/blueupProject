@@ -11,43 +11,41 @@
 			<h1><a href="#"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/main/blueuplogo.png" alt="블루업"></a></h1>
 			<nav id="top_navi">
 				<ul id="mtop">
-					<li><a href="#" data-atitle="신상품" data-btitle="Brand">NEW IN</a></li>
-					<li><a href="#" data-atitle="베스트상품" data-btitle="Item">BEST 50</a></li>
-					<li><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
-					<li><a href="#" data-atitle="아우터" data-btitle="Collection">OUTER</a>
+					<li class="selected"><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
+					<li class="selected"><a href="#" data-atitle="아우터" data-btitle="Collection">OUTER</a>
 						<ul class="sub">
-							<li><a href="#">가디건</a></li>
-							<li><a href="#">자켓/베스트</a></li>
-							<li><a href="#">점퍼</a></li>
-							<li><a href="#">코트</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">가디건</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">자켓/베스트</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">점퍼</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">코트</a></li>
 						</ul>
 					</li>
-					<li><a href="#" data-atitle="상의" data-btitle="Collection">TOP</a>
+					<li class="selected"><a href="#" data-atitle="상의" data-btitle="Collection">TOP</a>
 						<ul class="sub">
-							<li><a href="#">티셔츠</a></li>
-							<li><a href="#">니트</a></li>
-							<li><a href="#">맨투맨/후드</a></li>
-							<li><a href="#">셔츠/블라우스</a></li>
-							<li><a href="#">크롭</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">티셔츠</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">니트</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">맨투맨/후드</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">셔츠/블라우스</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">크롭</a></li>
 						</ul>
 					</li>
-					<li><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
+					<li class="selected"><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
 						<ul class="sub">
-							<li><a href="#">긴바지</a></li>
-							<li><a href="#">트레이닝</a></li>
-							<li><a href="#">반바지</a></li>
-							<li><a href="#">스커트</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">긴바지</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">트레이닝</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">반바지</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">스커트</a></li>
 						</ul>
 					</li>
-					<li><a href="#" data-atitle="기타" data-btitle="Collection">ACC</a>
+					<li class="selected"><a href="#" data-atitle="기타" data-btitle="Collection">ACC</a>
 						<ul class="sub">
-							<li><a href="#">Necklace</a></li>
-							<li><a href="#">Earrings</a></li>
-							<li><a href="#">Rings</a></li>
-							<li><a href="#">Bracelet</a></li>
-							<li><a href="#">BAGS/SHOES</a></li>
-							<li><a href="#">CAP</a></li>
-							<li><a href="#">ETC</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">Necklace</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">Earrings</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">Rings</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">Bracelet</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">BAGS/SHOES</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">CAP</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">ETC</a></li>
 						</ul>
 					</li>
 					<li><a href="#" data-atitle="위시리스트" data-btitle="Collection">WISH</a></li>
