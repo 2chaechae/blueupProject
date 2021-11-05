@@ -5,9 +5,9 @@
 <mapper namespace="categoryDao">
 
 <!-- 카테고리 가져오기 (1,2차) -->
-	<select id="getCategory" parameterType="categoryvo" resultType="cateDetailvo">
-		select a.category_name, b.detailed_category_name from 
-		category as a, category_detail as b 
-		where b.category_name = ${category_name} and b.category_name = a.category_name;
+	<select id="getCategory" parameterType="cateDetailvo" resultType="cateDetailvo">
+		select a.category_name, b.detailed_category_name from category as a, category_detail as b 
+		where 
+		b.category_name = #{category_name} and b.category_name = a.category_name;
 	</select>
 </mapper>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import blueup.admin.vo.ProductVo;
 import blueup.user.dao.ProductDAO;
+import blueup.user.vo.Category_detailVo;
 
 @Service("ProductService")
 public class ProductServiceImpl implements ProductService{
@@ -29,7 +30,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVo> getProductListByDetailedCategory(ProductVo vo) {
+	public List<ProductVo> getProductListByDetailedCategory(Category_detailVo vo) {
 		return productdao.getProductListByDetailedCategory(vo);
 	}
 

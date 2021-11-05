@@ -130,9 +130,9 @@
 	<!--///////jewerly////////-->
 		<div class="outers">
 			<!-- 페이지 카테로리 설정 -->
-			<h3 style="align:center">${Catecory.category_name }</h3>
+			<h3 style="align:center">${Category.category_name}</h3>
 			<div style="display:flex">
-			<c:forEach var="category" items="${Catecory}">
+			<c:forEach var="category" items="${Category}">
 				<a href="#">${category.detailed_category_name}</a>
 			</c:forEach></div>
 			<!-- 상품 목록 보여주기 -->
@@ -145,7 +145,7 @@
 							<img src="${product.main_image}" alt="맨투맨" width="300" height="300">
 						</div><!--item_img :gift 이미지-->
 						<p>${product.product_name}</p>
-						<p>${product.price}</p>
+						<p>${product.product_price}</p>
 						<p class="heart">
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
