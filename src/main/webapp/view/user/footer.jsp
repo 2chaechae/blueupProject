@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div id="bottom_wrap">
    <footer id="bottom">
-      <p><a href="index.jsp"><img src="images/bottom/blueup_logo.png" alt="하단로고"></a></p>
+      <p><a href="index.jsp"><img src="images/top/blueup_logo.png" alt="하단로고"></a></p>
       <div id="info1">
          <address>
             사업자 등록번호 : 106-81-59905<br>

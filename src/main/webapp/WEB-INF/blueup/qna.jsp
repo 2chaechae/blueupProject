@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -177,25 +177,30 @@
 				<!--//////공지사항///////-->
 				<div id="notice">
 					<div class="no_tit">
-						<h3>문의하기</h3>
-						<p class="all">
-							<a href="#">전체보기&nbsp; &#9002;</a>
-						</p>
+						<h3 style="display:inline-block;">문의하기</h3>
+						<button onClick="location.href='/test/qnaWriteForm.do'">문의작성</button>
 					</div>
 					<!--no_tit-->
 					<ul>
-						<c:forEach items="${qnaLimitList }" var="list">
+						<c:forEach items="${list }" var="list">
 							<c:choose>
 								<c:when test="${list.depth gt 0 }">
 									<c:choose>
 										<c:when test="${list.secret eq true }">
 											<p>
-												<img
-													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png"width="20"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png" />${list.qna_title }</p>
+												&nbsp;&nbsp;&nbsp;&nbsp;<img
+													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png"
+													width="20"><img
+													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png"
+													width="15px" />&nbsp;&nbsp;${list.qna_title }</p>
+											<hr>
 										</c:when>
 										<c:otherwise>
 											<p>
-												<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png" width="20">${list.qna_title }</p>
+												&nbsp;&nbsp;&nbsp;&nbsp;<img
+													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png"
+													width="20">${list.qna_title }</p>
+											<hr>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
@@ -203,16 +208,45 @@
 								<c:otherwise>
 									<c:choose>
 										<c:when test="${list.secret eq true }">
-											<p><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png" />${list.qna_title }</p>
+											<p>
+												<img
+													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png"
+													width="15px" />&nbsp;&nbsp;${list.qna_title }</p>
+											<hr>
 										</c:when>
 										<c:otherwise>
 											<p>${list.qna_title }</p>
+											<hr>
 										</c:otherwise>
 									</c:choose>
 								</c:otherwise>
 							</c:choose>
 
 						</c:forEach>
+
+						<!-- 페이지 -->
+						<div style="display: block; text-align: center;">
+							<c:if test="${pageMaker.startPage != 1 }">
+								<a
+									href="/test/qna.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+							</c:if>
+							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }"
+								var="p">
+								<c:choose>
+									<c:when test="${p == cri.page }">
+										<b>${p }</b>
+									</c:when>
+									<c:when test="${p != cri.page }">
+										<a
+											href="/test/qna.do?pageNum=${p }">${p }</a>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+								<a
+									href="/test/qna.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+							</c:if>
+						</div>
 
 
 					</ul>

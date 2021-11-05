@@ -48,16 +48,16 @@ $(document).ready(function(){
 	
 	*/
 	//태그추가 로그인 드롭다운메뉴
-	$("#quick > ul").before("<div class='login_bg'></div>");
+	$("#quick > ul").before("<div class='community_bg'></div>");
 	
 	//추가 태그, 로그인 드롭다운메뉴
-	$(".login_bg, .btn_sub").hide();
+	$(".community_bg, .btn_sub").hide();
 	$(".top_btn1").mouseenter(function(){
-		$(".login_bg, .btn_sub").stop().slideDown("fast");
+		$(".community_bg, .btn_sub").stop().slideDown("fast");
 	}).mouseleave(function(){
-		$(".login_bg, .btn_sub").stop().slideUp("");
+		$(".community_bg, .btn_sub").stop().slideUp("");
 	});
-	$(".login_bg").mouseover(function(){
+	$(".community_bg").mouseover(function(){
 		$(this).stop().show();
 		$(".btn_sub").stop().show();
 	}).mouseout(function(){

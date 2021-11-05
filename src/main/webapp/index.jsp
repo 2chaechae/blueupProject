@@ -20,9 +20,8 @@
 <div id="top_wrap">
 	<header id="top">
 		<!--js태그 추가자리-->
-		<h1><a href="#"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/main/blueuplogo.png" alt="블루업"></a></h1>
 		<div id="top_bar">
-			
+			<h1><a href="#"><img src="images/top/blueup_logo.png" alt="블루업"></a></h1>
 			<nav id="top_navi">
 				<ul id="mtop">
 					<li><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
@@ -68,15 +67,15 @@
 			<div id="quick">
 					<!--js태그 추가자리-->
 					<ul>
-						<li class="top_btn1"><a href="#" title="고객센터"><br><span>COMMUNTIY</span></a>
+						<li class="top_btn1"><a href="#"><img src="images/top/notice.png"></a>
 							<ul class="btn_sub">
 								<li><a href="#">공지사항</a></li>
 								<li><a href="#">QnA</a></li>
 								<li><a href="#">REVIEW</a></li>
 							</ul>
 						</li>
-						<li class="top_btn"><img src="images/top/login.png" alt="로그인" width="16" height="16"><br><span>LOGIN</span></li>
-						<li class="top_btn2"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"><br><span>검색</span>
+						<li class="top_btn"><a href="#"><img src="images/top/login.png" alt="로그인" width="16" height="16"></a><br><span>LOGIN</span></li>
+						<li class="top_btn2"><a href="#"><img src="images/top/search.png" alt="상단바 검색" width="16" height="16"></a><br><span>검색</span>
 							<ul class="btn_sub2">
 								<li><img src="images/top/seartop_btn.png" alt="검색드롭다운메뉴" width="40" height="40"></li>
 								<li><input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요. " id="seartop_input"></li>
@@ -88,6 +87,12 @@
 		</div><!--top_bar-->
 	</header><!--top 상단전체-->
 </div><!--top_wrap-->
+
+<!-- 메인베너(사진넘어가는부분) -->
+<div id="banner_wrap">
+
+</div>
+
 <!--//////티파니 아이템//////-->
 <div id="item_wrap">
   <div id="item">
