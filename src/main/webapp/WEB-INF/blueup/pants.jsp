@@ -136,7 +136,7 @@
 			</div>
 			<!-- 상품 목록 보여주기 -->
 			<c:forEach var="product" items="${Product}" varStatus="status">
-				<c:if test="${status.count % 4 == 0}">
+				<c:if test="${status.count % 3 == 0}">
 					   <div class="outer_con">
 				</c:if>
 				<div class="outer">
@@ -149,7 +149,7 @@
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
           		 </div><!--item: jewerly1-->
-          		 <c:if test="${status.count % 4 == 0}">
+          		 <c:if test="${status.count % 3 == 0}">
 					</div>
 				 </c:if>
 			</c:forEach>
@@ -170,13 +170,5 @@
 		<!--notice_con-->
 	</div>
 	<!--notice_wrap-->
-<script type="text/javascript">
 
-function check(element){
-	alert('test');
-	var second = $(element).text();
-	$(element).css('font-weight','bold');
-	location.href="${pageContext.request.contextPath}/getProductByDetail.do?detailed_category_name="+second;
-}
-</script>
 	<%@ include file="/view/user/footer.jsp"%>
