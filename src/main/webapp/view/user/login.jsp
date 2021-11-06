@@ -117,7 +117,7 @@
 				<p class="login"><input type="button" id="login_btn" value="로그인"></p>
 				<ul class="login_list">
 					<li><a href="#">아이디 / 비밀번호 찾기</a></li>
-					<li><a href="join.html">회원가입</a></li>
+					<li><a href="/test/join.do">회원가입</a></li>
 				</ul><!--login_list-->
 			</div><!--login_l 회원로그인-->
 			<div class="login_r">
@@ -130,6 +130,11 @@
 		</form>
 	</div><!--login_wrap-->
 </div><!--con_wrap-->
+<form id="userInfoForm" method="post" action="/test/join.do">
+	<input type="hidden" id="email_address" name="email_address" value=""/>
+	<input type="hidden" id="user_name" name="user_name" value=""/>
+	<input type="hidden" id="user_gender" name="user_gender" value=""/>
+</form>
 
 <script src = "${pageContext.request.contextPath}/js/top.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
@@ -198,7 +203,21 @@ function kakaoLogin() {
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (response) {
-        	  console.log(response);
+        	  var kakao_account = response.kakao_account;
+        	  var nickname = response.properties.nickname; //properties 안에 담겨있는 닉네임
+        	  var email = kakao_account.email; // kakao_account 안에 담겨있는 이메일
+        	  var gender = kakao_account.gender; // kakao_account 안에 담겨있는 성별
+        	  /* console.log("qweqwe____ kakao_account ", kakao_account);
+        	  console.log("qweqwe____ email ", email);
+        	  console.log("qweqwe____ nickname ", nickname);
+        	  console.log("qweqwe____ gender ", gender);
+        	  console.log(response); */
+        	  $('#user_name').val(nickname);
+        	  $('#email_address').val(email);
+        	  $('#user_gender').val(gender);
+        	  
+        	  $('#userInfoForm').submit();
+        	  
           },
           fail: function (error) {
             console.log(error);

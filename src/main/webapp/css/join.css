@@ -341,8 +341,8 @@ label.checked{
 	 line-height:13px;
 }
 .email3 select{
-	width:176px;
 	height:24px;
+	width:90px;
 	margin-top:3px;
 	border:1px solid #707070;
 }

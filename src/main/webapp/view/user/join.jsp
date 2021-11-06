@@ -114,9 +114,9 @@
 		<h2>회원가입</h2>
 		<form action="join.asp" method="post">
       <ul class="join_step">
-        <li class="join1"><a href="#join1" class="j_sel">약관동의</a></li>
-        <li class="join2"><a href="#join2">정보입력</a></li>
-        <li class="join3"><a href="#join3">가입완료
+        <li class="join1"><a href="#none;" class="j_sel">약관동의</a></li>
+        <li class="join2"><a href="##none;">정보입력</a></li>
+        <li class="join3"><a href="#none;">가입완료
           </a></li>
       </ul>
       <div id="join_wrap2">
@@ -180,7 +180,10 @@
 							</div><!--휴대전화번호-->
 							<div class="join_box">
 								<label for="u_id">아이디</label>
-								<input type="text" id="u_id" placeholder="영문 / 숫자 6~15자리 이내">
+								<input type="text" id="u_id" maxlength="15" placeholder="영문 / 숫자 6~15자리 이내">&nbsp;&nbsp;&nbsp;
+								<span class="r_selfC">
+									<a href="#"><input type="button" id="id_chk" value="중복 검사"></a>
+								</span>
 							</div>
 							<div class="join_box2 join_box2_1">
 								<label for="pwd1">비밀번호</label><input type="password" id="pwd1" autocomplete="off" required placeholder="영문필수 8~12자이내"><!--비밀번호-->
@@ -200,7 +203,10 @@
 											<option value="gmail.com">gmail.com</option>
 											<option value="nate.com">nate.com</option>
 										</select>
-									</p><!--email3-->
+									</p><!--email3-->&nbsp;&nbsp;
+									<span class="r_selfC">
+										<a href="#"><input type="button" id="email_chk" value="중복 검사"></a>
+									</span>
 								</div><!--r_con-->
 							</div>
 						</div><!--join2_wrap-->
@@ -255,7 +261,7 @@ $(document).ready(function(){
 					return;
 				}
 			} else if(i==1){
-				/* 회원가입 유효성 검사 빈값이 있을시 START */
+				/* 회원가입 유효성 검사 START */
 				var userName = $('#u_name').val();
 				var userBirth = $('#u_birth').val();
 				var userPhone2 = $('#phone2').val();
@@ -297,6 +303,10 @@ $(document).ready(function(){
 					alert("아이디를 채워주세요");
 					$('#u_id').focus();
 					return;
+				}else if(userId.length <6){
+					alert("아이디는 최소 6자리 이상 채워주세요");
+					$('#u_id').focus();
+					return;
 				} else if(userPw1 == ""){
 					alert("비밀번호란을 채워주세요");
 					$('#pwd1').focus();
@@ -307,6 +317,8 @@ $(document).ready(function(){
 					return;
 				}else if(userPw1 != userPw2){
 					alert("패스워드가 서로 맞지 않습니다");
+					$('#pwd1').val("");
+					$('#pwd2').val("");
 					$('#pwd1').focus();
 					return;
 				}else if(userEmail == ""){
@@ -353,17 +365,17 @@ $(document).ready(function(){
 // var test = $('input[name=????]:checked').val();
 // test = true || false 값 셋팅이 됨.
 
-	$('#u_birth').keyup(function(event){
+	$('#u_birth').keyup(function(event){ //생년월일에 숫자만 오게 셋팅
 		var inputVal = $(this).val();
 		$(this).val(inputVal.replace(/[^0-9]/gi,''));
 	});
 	
-	$('#phone2').keyup(function(event){
+	$('#phone2').keyup(function(event){ //전화번호 중자리 숫자만 오게 셋팅
 		var inputVal = $(this).val();
 		$(this).val(inputVal.replace(/[^0-9]/gi,''));
 	});
 	
-	$('#phone3').keyup(function(event){
+	$('#phone3').keyup(function(event){ //전화번호 뒷자리 숫자만 오게 셋팅
 		var inputVal = $(this).val();
 		$(this).val(inputVal.replace(/[^0-9]/gi,''));
 	});
@@ -374,10 +386,10 @@ $(document).ready(function(){
 		 
 		 var temp=$("#u_name").val();
 		 
-		 if(re.test(temp)){ //특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 if(re.test(temp)){ //이름에 특수문자가 포함되면 삭제하여 값으로 다시셋팅
 		 	$("#u_name").val(temp.replace(re,""));
 		 	return;
-		 } else if(re2.test(temp)){
+		 } else if(re2.test(temp)){ //이름에 숫자가 오게 되면 삭제하여 값으로 다시 셋팅
 			$("#u_name").val(temp.replace(re2,""));
 			return;
 		 }
@@ -386,7 +398,7 @@ $(document).ready(function(){
 	$("#u_id").keyup(function(){
 		 re = /[~!@\#$%^&*\()\-=+_']/gi; 
 		 var temp=$("#u_id").val();
-		 if(re.test(temp)){ //특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 if(re.test(temp)){ //아이디 특수문자가 포함되면 삭제하여 값으로 다시셋팅
 		 $("#u_id").val(temp.replace(re,"")); 
 		} 
 	});
@@ -394,7 +406,7 @@ $(document).ready(function(){
 	$("#u_email").keyup(function(){
 		 re = /[~!@\#$%^&*\()\-=+_']/gi; 
 		 var temp=$("#u_email").val();
-		 if(re.test(temp)){ //특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 if(re.test(temp)){ //이메일 특수문자가 포함되면 삭제하여 값으로 다시셋팅
 		 $("#u_email").val(temp.replace(re,"")); 
 		} 
 	});

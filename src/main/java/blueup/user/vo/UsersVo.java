@@ -2,14 +2,9 @@ package blueup.user.vo;
 
 import java.util.Date;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-
-@Setter
-@Getter
-@ToString
+@Data
 public class UsersVo {
 	int user_no; // 회원 번호
 	String user_name; // 회원 이름
@@ -17,6 +12,7 @@ public class UsersVo {
 	String user_jumin2; // 주민번호 뒷자리
 	String user_id; //회원 아이디
 	String user_password; //회원 비밀번호
+	String user_gender; //회원 성별
 	String mobile_carrier; //통신사
 	String phone1; //휴대폰 번호 앞자리
 	String phone2; //휴대폰 번호 중간자리
