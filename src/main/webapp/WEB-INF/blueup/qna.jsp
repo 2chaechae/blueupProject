@@ -15,6 +15,13 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/cscenter.css">
 </head>
+
+<script>
+function write(){
+	var pageNum = "<c:out value='${pageNum}' />";
+	location.href="/test/qnaWriteForm.do?qna_no=0"+pageNum="+pageNum;
+}
+</script>
 <body>
 	<!--맨위로 가기 맨 아래로 가기-->
 	<p>
@@ -178,7 +185,9 @@
 				<div id="notice">
 					<div class="no_tit">
 						<h3 style="display:inline-block;">문의하기</h3>
-						<button onClick="location.href='/test/qnaWriteForm.do'">문의작성</button>
+						
+						<button onClick="location.href='/test/qnaWriteForm.do?qna_no=0&pageNum=${pageNum}'">문의작성</button>
+					
 					</div>
 					<!--no_tit-->
 					<ul>
@@ -192,14 +201,14 @@
 													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png"
 													width="20"><img
 													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png"
-													width="15px" />&nbsp;&nbsp;${list.qna_title }</p>
+													width="15px" />&nbsp;&nbsp;<a href="/test/getQnaContent.do?qna_no=${list.qna_no }&pageNum=${pageNum}">${list.qna_title }</a></p>
 											<hr>
 										</c:when>
 										<c:otherwise>
 											<p>
 												&nbsp;&nbsp;&nbsp;&nbsp;<img
 													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/arrow.png"
-													width="20">${list.qna_title }</p>
+													width="20"><a href="/test/getQnaContent.do?qna_no=${list.qna_no }&pageNum=${pageNum}">${list.qna_title }</a></p>
 											<hr>
 										</c:otherwise>
 									</c:choose>
@@ -211,11 +220,11 @@
 											<p>
 												<img
 													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/review/lock.png"
-													width="15px" />&nbsp;&nbsp;${list.qna_title }</p>
+													width="15px" />&nbsp;&nbsp;<a href="/test/getQnaContent.do?qna_no=${list.qna_no }&pageNum=${pageNum}">${list.qna_title }</a></p>
 											<hr>
 										</c:when>
 										<c:otherwise>
-											<p>${list.qna_title }</p>
+											<p><a href="/test/getQnaContent.do?qna_no=${list.qna_no }&pageNum=${pageNum}">${list.qna_title }</a></p>
 											<hr>
 										</c:otherwise>
 									</c:choose>

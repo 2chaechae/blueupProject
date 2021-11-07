@@ -59,5 +59,35 @@
 				#{secret}, 
 				#{password})
 	</insert>
+	
+	<select id="getQnaContent" resultType="qnavo" parameterType="int">
+		SELECT * FROM QNA WHERE QNA_NO = #{qna_no}
+	</select>
+	
+	<update id="qnaUpdate" parameterType="qnavo">
+		UPDATE QNA SET 
+		QNA_TYPE = #{qna_type},
+		QNA_TITLE = #{qna_title},
+		QNA_CONTENT = #{qna_content},
+		QNA_CNT = (SELECT MAX(QNA_CNT) FROM QNA WHERE QNA_NO = #{qna_no}),
+		QNA_TIME = (SELECT QNA_TIME FROM QNA WHERE QNA_NO = #{qna_no}),
+		REF = (SELECT REF FROM QNA WHERE QNA_NO = #{qna_no}),
+		DEPTH = (SELECT DEPTH FROM QNA WHERE QNA_NO = #{qna_no}),
+		STEP = (SELECT STEP FROM QNA WHERE QNA_NO = #{qna_no}),
+		SECRET = #{secret},
+		PASSWORD = #{password}
+		WHERE QNA_NO =#{qna_no}
+	</update>
+	
+	<update id="addCnt" parameterType="qnavo">
+		UPDATE QNA SET
+		QNA_CNT = (SELECT MAX(QNA_CNT)+1 FROM QNA WHERE QNA_NO = #{qna_no})
+		WHERE QNA_NO = #{qna_no}
+	</update>
+	
+	
+	<delete id="deleteQna" parameterType="qnavo">
+		DELETE FROM QNA WHERE QNA_NO = #{qna_no}
+	</delete>
 
 </mapper>
