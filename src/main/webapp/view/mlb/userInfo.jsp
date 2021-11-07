@@ -10,8 +10,7 @@
 		<div class="container">
 			<h2 class="title01">마이페이지</h2>
 
-<%@ include file="mypageManu.jsp" %>				
-
+<%@ include file="mypageMenu.jsp" %>
 <main class="contents memberInfoModi-wrap" id="contents">
 				<form action="/mypage/member/modifyMember" id="modifyMbrForm" method="post">
 				<input type="hidden" name="_csrf" value="3c6cc40e-e420-4266-9985-626c86d3b96d">

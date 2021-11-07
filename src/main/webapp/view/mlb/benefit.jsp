@@ -7,7 +7,7 @@
     <div class="container">
 
         <h2 class="title01">회원등급혜택</h2>
-<%@ include file="mypageManu.jsp" %>
+<%@ include file="mypageMenu.jsp" %>
 <main class="contents ratingBenefit-wrap" id="contents">
 			<div class="location-contents">
 				<p class="location">

@@ -14,8 +14,7 @@
     <div class="container">
 
         <h2 class="title01">쿠폰함</h2>
-<%@ include file="mypageManu.jsp" %>
-
+<%@ include file="mypageMenu.jsp" %>
 <main class="contents couponList-wrap" id="contents">
 
             <div class="location-contents">

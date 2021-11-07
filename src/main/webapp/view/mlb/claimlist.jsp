@@ -18,8 +18,7 @@
 
 			<h2 class="title01">취소/교환/반품 조회</h2>
 
-<%@ include file="mypageManu.jsp" %>
-
+<%@ include file="mypageMenu.jsp" %>
 <main class="contents" id="contents">
 				
 				<div class="location-contents">

@@ -13,7 +13,7 @@
 			<h2 class="title01">마이페이지</h2>
 
 
-<%@ include file="mypageManu.jsp" %>
+<%@ include file="mypageMenu.jsp" %>
 
 <main class="contents deliveryList-wrap" id="contents">
 				
