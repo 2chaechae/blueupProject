@@ -15,7 +15,7 @@
 				<h3 style="font: bold 40px/1.5em 'Nanum Myeongjo', serif; text-align:center" >${Category.get(0).category_name}</h3>
 				<div  style="text-align:center; font-size:20px; padding-bottom:30px;">
 					<c:forEach var="category" items="${Category}">
-						<a href="#" onclick="checkCategory(this)" style="display:inline-block; zoom:1; display:inline; padding-right:20px;">${category.category_detailed_name}</a>
+						<a href="#" onclick="checkCategory(this)" style="display:inline-block; zoom:1; display:inline; padding-right:20px;">${category.detailed_category_name}</a>
 					</c:forEach>
 				</div>
 			</div>

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import blueup.admin.vo.ProductVo;
 import blueup.user.service.ProductServiceImpl;
 import blueup.user.vo.Category_detailVo;
 
@@ -24,6 +26,13 @@ public class ProductController {
 		//return °ª
 		ModelAndView mav = new ModelAndView();
 		List<Category_detailVo> test = (List<Category_detailVo>) session.getAttribute("Category");
+		for(Category_detailVo i : test) {
+			System.out.println(i.getCategory_name());
+		}
+		List<ProductVo> test1 = productserviceimpl.getProductListByDetailedCategory(cate);
+		for(ProductVo m : test1) {
+			System.out.println(m.getDetailed_category_name());
+		}
 		mav.addObject("Category", test);
 		mav.addObject("Selected", cate.getDetailed_category_name());
 		mav.addObject("Product", productserviceimpl.getProductListByDetailedCategory(cate));

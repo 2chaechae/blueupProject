@@ -205,7 +205,7 @@
 												<li class="select">
 														<a href="javascript:cateLink('MBMA10A01', '2', 'GNRL_CTGRY', 'MBMA10', 'MBMA10A01');" data-ga-category="PC_MLB_Header" data-ga-action="SHOES" data-ga-label="운동화">운동화</a>
 														<ul>
-																<li><a href="javascript:void(0)" onclick="checkCategory(this)" >빅볼 청키</a></li>
+																<li><a href="javascript:void(0)" onclick="checkCategory(this)" >빅볼청키</a></li>
 																<li><a href="javascript:cateLink('MBMA10A01A05', '3', 'GNRL_CTGRY', 'MBMA10', 'MBMA10A01');" >청키 하이</a></li>
 																<li><a href="javascript:cateLink('MBMA10A01A06', '3', 'GNRL_CTGRY', 'MBMA10', 'MBMA10A01');" >청키 조거</a></li>
 																<li><a href="javascript:cateLink('MBMA10A01A08', '3', 'GNRL_CTGRY', 'MBMA10', 'MBMA10A01');" >청키 로우</a></li>
