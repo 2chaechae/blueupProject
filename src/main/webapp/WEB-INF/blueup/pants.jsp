@@ -12,13 +12,14 @@
 	src="${pageContext.request.contextPath}/js/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/top.js"></script>
 <script src="${pageContext.request.contextPath}/js/item.js"></script>
+<script src="${pageContext.request.contextPath}/js/product.js"></script>
 <link rel="shortcut icon"
 	type="${pageContext.request.contextPath}/image/x-icon"
 	href="${pageContext.request.contextPath}/images/favicon.ico">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/item.css">
+	href="${pageContext.request.contextPath}/css/outer.css">
 </head>
 <body>
 	<!--맨위로 가기 맨 아래로 가기-->
@@ -44,7 +45,7 @@
 					<li><a data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
 					<li><a data-atitle="아우터" data-btitle="Collection">OUTER</a>
 						<ul class="sub">
-							<li><a href="javascript:void(0)" onclick="checkCategory()">가디건</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">가디건</a></li>
 							<li><a href="#">자켓/베스트</a></li>
 							<li><a href="#">점퍼</a></li>
 							<li><a href="#">코트</a></li>
@@ -61,7 +62,7 @@
 					</li>
 					<li><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
 						<ul class="sub">
-							<li><a href="#">긴바지</a></li>
+							<li><a href="javascript:void(0)" onclick="checkCategory(this)">긴바지</a></li>
 							<li><a href="#">트레이닝</a></li>
 							<li><a href="#">반바지</a></li>
 							<li><a href="#">스커트</a></li>
@@ -123,31 +124,36 @@
 	<!-- 이부분 item css로 통일해야함. -->
 	<!--page wrap:페이지위치 전체-->
 
-<div id="con_wrap">
-<!--///////////////////item///////////////////////	-->
-	<div id="item_wrap">
+<div id="outer_wrap">
 	<!--///////jewerly////////-->
-		<div class="items">
-			<h3>OUTER</h3>
+		<div class="outers">
+			<!-- 페이지 카테로리 설정 -->
+			<h3 id="cate">${Category.get(0).category_name}</h3>
+			<div id="catewrap">
+				<c:forEach var="category" items="${Category}">
+					<a class="detailcate" href="javascript:void(0)" onclick="check(this)">${category.detailed_category_name}</a>
+				</c:forEach>
+			</div>
+			<!-- 상품 목록 보여주기 -->
 			<c:forEach var="product" items="${Product}" varStatus="status">
-				<c:if test="${status.count % 4 == 0}">
-					  <div class="item_con"	>
+				<c:if test="${status.count % 3 == 0}">
+					   <div class="outer_con">
 				</c:if>
-				<div class="item">
-		               <div class ="item_img">
+				<div class="outer">
+		               <div class ="outer_img">
 							<img src="${product.main_image}" alt="맨투맨" width="300" height="300">
 						</div><!--item_img :gift 이미지-->
 						<p>${product.product_name}</p>
+						<p>${product.product_price}</p>
 						<p class="heart">
 							<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23">
 						</p><!--heart:찜하기 하트버튼-->
-          		 	</div><!--item: jewerly1-->
-          		 <c:if test="${status.count % 4 == 0 }">
+          		 </div><!--item: jewerly1-->
+          		 <c:if test="${status.count % 3 == 0}">
 					</div>
-				</c:if>
-          	</c:forEach>
-          	<br>
-			<p class="item_btn"><a href="jewerly.html">Outer 더보기</a></p>
+				 </c:if>
+			</c:forEach>
+			<p class="outer_btn"><a href="jewerly.html">Outer 더보기</a></p>
 		</div><!--items-->
 	</div><!--item_wrap-->
 	<!--////////item notice////////-->
@@ -164,10 +170,5 @@
 		<!--notice_con-->
 	</div>
 	<!--notice_wrap-->
-<script type="text/javascript">
-function checkCategory(){
-	var second = $(this).text();
-		location.href="getProduct.do?detailed_category_name=" + second;
-}
-</script>
+
 	<%@ include file="/view/user/footer.jsp"%>

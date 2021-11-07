@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+*{margin:0;padding:0;}
+
+.board_wrap{
+    max-width:1200px;
+    margin: 0px 100px;
+    padding: 3rem 20rem;
+}
+.board_title{ /* font size 수정함 */
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif;
+    font-size:40px;
+    font-weight:bold;
+    margin:50px 0 20px;
+    text-align: center;
+}
+.black_box{
+    width:100%;
+    height:43px;
+    margin:15px 0;
+}
+.black_box select{
+    width:100%;
+    padding:13px 35px 13px 10px;
+    box-sizing: border-box;
+    border:2px solid black;
+}
+.black_box input{
+    width:100%;
+    padding:13px 0 13px 13px;
+    box-sizing: border-box;
+    border:2px solid black;
+}
+.black_box input[type="password"]{
+    margin: 8px 0;
+}
+.radio_boxs{
+    margin: 25px 0 0;
+    font-size:13px;
+}
+.black_box.content_area{
+    width:100%;
+    height:400px;
+}
+.black_box.content_area textarea{
+    width:100%;height:100%;
+    resize: none;
+    box-sizing: border-box;
+    border:2px solid black;
+    padding:13px;
+}
+.black_box.agree textarea{
+    width:100%;
+    padding:10px;
+    box-sizing: border-box;
+    border:2px solid black;
+    font-size:11px;
+    height:43px;
+    resize: none;
+    line-height:1.5;
+}
+.desc{
+    width:100%;
+    font-size:11px;
+    margin-top:10px;
+}
+.descstar{
+    width:100%;
+    font-size:15px;
+    font-weight: bold;
+}
+.desc span{
+    display:inline-block;
+    margin-right:10px;
+}
+.desc input[type="checkbox"]{
+    display:inline-block;
+    width:auto;
+    vertical-align: sub;
+}
+
+.buttons_area{
+    width:100%;
+    margin-top:60px; 
+    display:flex;
+    justify-content: space-between;
+}
+.buttons_area .board_btn{
+    width:450px;
+    height:45px;
+    background:black;
+    text-align: center;
+    color:#fff;
+    font-size:13px;
+    border:none;
+    transition:all 0.3s;
+}
+.buttons_area .board_btn:hover{
+    border:1px solid #000;
+    background:gray;
+}

@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/*폰트*/
+@import
+   url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap")
+   ;
+
+@import
+   url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap')
+   ;
+@import url("top.css"); /*상단영역*/
+@import url("bottom.css"); /*하단영역*/
+
+.contain{ padding-top:51px; padding-bottom:60px; min-height:700px; position:relative;  z-index:100; }
+body.isPopLayer .contain{ z-index:auto; }
+.contain .container{ max-width:1280px; min-width:1260px; margin:auto; padding-top:90px; }
+.contain .container .location-container{ width:1200px; margin:auto; }
+.contain .container .contents{ width:1200px; margin:auto; min-height:300px; }
+.title01{font-size:24px; font-weight:bold; letter-spacing: 0}
+
+.location-contents .title01{ text-align:center; }
+
+.location{margin-top:23px;padding-bottom:12px;border-bottom:4px solid #000;font-size:12px;line-height:13px;}
+.location span{display:inline-block;padding:0 14px 0 10px;background:url(https://static.mlb-korea.com/pc/static/images/cm/bg_arrow_01.png) no-repeat right 1px top 4px;color:#999;}
+.location span a {color: #999;}
+.location strong{display:inline-block;padding:0 0 0 10px;/* font-weight:400; */}
+.location span:first-child{padding:0 14px 0 0;}
+
+/* lnb를 가지는 영역 */
+.lnblist-Wrap .container,
+.my .container {overflow:hidden; width:1200px; min-width:1200px;}
+.lnblist-Wrap .lnb-nav + .contents {position:relative; width:1020px !important; float:left;}
+.my.contain .container .contents {position:relative; width:1200px; float:left;}
+.lnblist-Wrap :not(.lnb-nav) + .contents {position:relative; width:1200px; float:left;}
+.lnblist-Wrap .title01,
+.my .title01 {text-align:center;}
+.my .disablebtn {cursor:default;}
+.my .required {color:#ff3600;}
+.my .text-list02.col-type01 {margin-top:20px;}
+.my table .text-list02.col-type01 {margin:15px 0 10px;}
+.my table .text-list02 li {color:#999;}
+.my table .text-list02 li:after {background-color:#999 !important;}
+.my .text-list02 li {color:#666;}
+.my .text-list02 li:after {background-color:#666;}
+.my .select-style01 button:after {right:10px;}
+.my .board-write .input-style01+.hyphen {padding:0 4px;}
+.my .board-write .input-style01+.at {padding:0 1px;}
+.inputcallBox {display:inline-block;}
+.inputcallBox input {text-align:center;}
+.inputcallBox + .check-skin {margin-left:10px;}
+.my .period-wrap dd .btn,
+.orderInfoSearch-popWrap .period-wrap dd .btn {margin-right:2px;}
+.my .period-wrap .calendar + .calendar,
+.orderInfoSearch-popWrap .period-wrap .calendar + .calendar {margin-left:5px;}
+.my .period-wrap .calendar+a,
+.orderInfoSearch-popWrap .period-wrap .calendar+a {margin-left:2px;}
+.tbSTvtc-top {vertical-align:top !important;}
+.mtST10 {margin-top:10px;}
+.hr-ddd {height:1px; background-color:#ddd; margin:0; border:0;}
+.hr-666 {height:1px; background-color:#666; margin:0; border:0;}
+.tbst-div {display:table; table-layout:fixed; width:100%; margin:22px 0 11px; height:30px;}
+.tbst-div .mid {display:table-cell; vertical-align:middle; height:30px;}
+.tbst-div .fl {text-align:left;}
+.tbst-div .fr {text-align:right;}
+.tbst-div .mid.fr  .btn.fill.sm {width:107px;}
+.txt13-666 {color:#666; font-size:13px;}
+.txt13-000 {color:#000; font-size:13px;}
+.txt13-999 {color:#999; font-size:13px;}
+.txt16-000 {color:#000; font-size:16px;}
+.txtFR-txt {text-align:right;}
+
+
+.my .btnWrapBox .btn {height:45px; line-height:45px;}
+.my .page > a.first, 
+.my .page > a.prev, 
+.my .page > a.next, 
+.my .page > a.last {background: url(../images/cm/paging_off.png) no-repeat 0px center;}
+.my .page > a.first:hover, 
+.my .page > a.prev:hover, 
+.my .page > a.next:hover, 
+.my .page > a.last:hover {background: url(../images/cm/paging_on.png) no-repeat 0px center;}
+.my .page > a.first,
+.my .page > a.first:hover {background-position-x: 0px}
+.my .page > a.prev,
+.my .page > a.prev:hover {background-position-x: -50px}
+.my .page > a.next,
+.my .page > a.next:hover{background-position-x: -100px}
+.my .page > a.last,
+.my .page > a.last:hover {background-position-x: -150px}
+/*배송지관리*/
+.deliveryList-wrap .board-list {
+	margin-top: 0;
+}
+
+.deliveryList-wrap .board-list .no-result {
+	text-align: center !important;
+	padding: 100px 0 !important;
+}
+
+.deliveryList-wrap .board-list td {
+	vertical-align: middle;
+	padding: 10px 0;
+	min-height: 70px;
+	height: 70px;
+}
+
+.deliveryList-wrap .board-list td:first-child {
+	padding-left: 10px;
+	text-align: left;
+}
+
+.deliveryList-wrap .board-list td:nth-child(4) {
+	text-align: right;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.deliveryList-wrap .board-list td.tleft {
+	padding-left: 20px;
+}
+
+.deliveryList-wrap .board-list td p {
+	margin: 3px 0;
+	font-size: 13px;
+}
+
+.deliveryList-wrap .board-list td span {
+	margin: 4px 0 3px;
+}
+
+.deliveryList-wrap .btnWrapBox a {
+	width: 200px;
+}
+
+.tbST-R-BtnBox {
+	vertical-align: middle;
+}
+
+.tbST-R-BtnBox a {
+	width: 105px;
+	margin-bottom: 3px;
+	color: #000 !important;
+}
+
+.tbST-R-BtnBox a:last-child, .tbST-R-BtnBox a:only-child {
+	margin-bottom: 0;
+}

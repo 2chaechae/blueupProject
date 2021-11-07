@@ -56,7 +56,7 @@
 
 	<!-- 디테일 카테고리 기준 상품 조회 -->
 	<select id="getProductListByDetailedCategory" resultType="productvo"
-		parameterType="productvo">
+		parameterType="cateDetailvo">
 		SELECT * FROM PRODUCT
 		WHERE DETAILED_CATEGORY_NAME = #{detailed_category_name}
 		ORDER BY PRODUCT_NO DESC;

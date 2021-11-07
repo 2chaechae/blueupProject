@@ -5,7 +5,9 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import blueup.admin.vo.ProductVo;
+import blueup.user.vo.Category_detailVo;
 
 
 @Repository
@@ -26,7 +28,7 @@ public class ProductDAO {
 		return sqlSssionTemplate.selectList("productDao.getProductListByCategory", vo);
 	}
 	
-	public List<ProductVo> getProductListByDetailedCategory(ProductVo vo) {
+	public List<ProductVo> getProductListByDetailedCategory(Category_detailVo vo) {
 		return sqlSssionTemplate.selectList("productDao.getProductListByDetailedCategory", vo);
 	}
 

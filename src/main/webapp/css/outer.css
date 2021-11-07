@@ -23,8 +23,19 @@ h2 {
 
 h3 {
 	font: bold 40px/1.5em "Nanum Myeongjo", serif;
-	letter-spacing: -1px;
+	text-align : center;
+	letter-spacing: 4px;
 	color: #333333;
+}
+#catewrap{
+	padding : 0 0 20px 0;
+	text-align : center;
+}
+
+.detailcate{
+	display:inline-block; zoom :1; display:inline;
+	padding : 0 10px 20px 0;
+	font-size : 20px;
 }
 
 .sup {
@@ -120,13 +131,14 @@ h3 {
 
 .outers>h3 { /*아이템라인*/
 	width: 1415px;
-	padding-bottom: 30px;
+	padding: 0 0 30px 0;
 	border-bottom: 2px solid #333333;
-	margin-bottom: 63px;
+	margin-bottom: 60px;
 }
 
 .outer_con {
 	height: 402px;
+	padding : 10px;
 	margin-left: 22px;
 }
 

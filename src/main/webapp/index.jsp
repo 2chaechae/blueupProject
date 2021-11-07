@@ -7,6 +7,7 @@
    <script src="js/jquery-1.12.4.min.js"></script>
    <script src = "js/top.js"></script>
    <script src="js/index.js"></script>
+   <script src="js/product.js"></script>
    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
    <link rel="stylesheet" href="css/reset.css">
    <link rel="stylesheet" href="css/index.css">
@@ -24,8 +25,8 @@
 			<h1><a href="#"><img src="images/top/blueup_logo.png" alt="블루업"></a></h1>
 			<nav id="top_navi">
 				<ul id="mtop">
-					<li><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
-					<li><a href="#" data-atitle="아우터" data-btitle="Collection">OUTER</a>
+					<li class="selected"><a href="#"  data-atitle="세일상품" data-btitle="Gift">SALES</a></li>
+					<li class="selected"><a href="#" data-atitle="아우터" data-btitle="Collection">OUTER</a>
 						<ul class="sub">
 							<li><a href="javascript:void(0)" onclick="checkCategory(this)">가디건</a></li>
 							<li><a href="#">자켓/베스트</a></li>
@@ -42,7 +43,7 @@
 							<li><a href="#">크롭</a></li>
 						</ul>
 					</li>
-					<li><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
+					<li class="selected"><a href="#" data-atitle="바지" data-btitle="Collection">BOTTOM</a>
 						<ul class="sub">
 							<li><a href="javascript:void(0)" onclick="checkCategory(this)">긴바지</a></li>
 							<li><a href="#">트레이닝</a></li>
@@ -235,15 +236,6 @@
    </div>cs
 </div>etc
  -->
-<script type="text/javascript">
-function checkCategory(element){
-	alert("Test");
-	var second = $(element).text();
-	console.log(element);
-	console.log(second);
-	location.href="${pageContext.request.contextPath}/getProduct.do?detailed_category_name="+second;
-}
-</script>
 <!--하단-->
 <%@ include file="/view/user/footer.jsp" %>
 
