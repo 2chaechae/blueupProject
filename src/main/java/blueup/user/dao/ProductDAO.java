@@ -1,5 +1,6 @@
 package blueup.user.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -24,11 +25,11 @@ public class ProductDAO {
 		return sqlSssionTemplate.update("productDao.productUpdate", vo);
 	}
 	
-	public List<ProductVo> getProductListByCategory(Category_detailVo vo) {
+	public List<ProductVo> getProductListByCategory(HashMap<Object, Object> vo) {
 		return sqlSssionTemplate.selectList("productDao.getProductListByCategory", vo);
 	}
 	
-	public List<ProductVo> getProductListByDetailedCategory(Category_detailVo vo) {
+	public List<ProductVo> getProductListByDetailedCategory(HashMap<Object, Object> vo) {
 		return sqlSssionTemplate.selectList("productDao.getProductListByDetailedCategory", vo);
 	}
 

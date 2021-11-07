@@ -24,7 +24,7 @@
 				<div class="ui_dp_list">
 					<ul class="list">
 						<c:forEach var="product" items="${Product}">
-							<input type="hidden" class="criteoGod" value="3APT00114-50CGS" />
+							<input type="hidden" class="product_no" value="${product.product_no }" />
 							<li>
 								<div class="item">
 									<div class="thumb">
@@ -40,7 +40,7 @@
 										<p class="heart" style="display:inline-block;">
 											<c:set var="wish" value="${product.wish_no}"></c:set>
 											<c:choose>
-												<c:when test="${wish eq 1}">
+												<c:when test="${wish ne 0}">
 													<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
 												</c:when>
 												<c:when test="${wish eq 0}">
@@ -69,15 +69,31 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
+var id = sessionStorage.getItem("id");
+
 function heart(element){
 var img = $(element).attr("src");
-alert(img);
-if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
-	$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
-}else{
-	$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
-}
-	
+	alert(img);
+	if(id != null){
+		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
+			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
+		}else{
+			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
+		}
+	}else{
+		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
+			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
+			var no = $(element).closest('.product_no').val();
+			var name = $(element).closest('.name').text();
+			console.log(no);
+			console.log(name);
+			$.cookie(name, no);
+		}else{
+			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
+			var name = $(element).closest('.name').text();
+			$.removecookie(name);
+		}
+	}
 }
 </script>
 <%@ include file="/view/mlb/footer.jsp"%>

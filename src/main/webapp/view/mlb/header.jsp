@@ -358,10 +358,7 @@
 									</div>
 								</div></li>
 							<!-- 위시리스트 -->
-							<li class="kids"><a data-pan="top_cate_pan_6"
-								href="javascript:cateLink('MBMA05', '1', 'GNRL_CTGRY', 'MBMA05');"
-								data-ga-category="PC_MLB_Header" data-ga-action="KIDS"> <font
-									color="">WISHLIST</font><img /></a>
+							<li class="kids"><a href="#">WISHLIST</font><img /></a>
 							</li>
 							<!-- Community -->
 							<li><a data-pan="top_cate_pan_7"

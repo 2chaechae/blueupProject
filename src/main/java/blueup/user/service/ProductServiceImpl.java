@@ -1,5 +1,6 @@
 package blueup.user.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,14 @@ public class ProductServiceImpl implements ProductService{
 	public void updateProduct(ProductVo vo) {
 		productdao.updateProduct(vo);
 	}
-
+	
 	@Override
-	public List<ProductVo> getProductListByCategory(Category_detailVo vo) {
+	public List<ProductVo> getProductListByCategory(HashMap<Object, Object> vo) {
 		return productdao.getProductListByCategory(vo); 
 	}
 
 	@Override
-	public List<ProductVo> getProductListByDetailedCategory(Category_detailVo vo) {
+	public List<ProductVo> getProductListByDetailedCategory(HashMap<Object, Object> vo) {
 		return productdao.getProductListByDetailedCategory(vo);
 	}
 
