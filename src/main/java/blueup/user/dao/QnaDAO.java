@@ -27,4 +27,20 @@ public class QnaDAO {
 	public void insertQnaDao(QnaVo vo) {
 		sqlSessionTemplate.insert("qnaDao.insertQna", vo);
 	}
+	
+	public QnaVo getQnaContentDao(int qnaNo) {
+		return sqlSessionTemplate.selectOne("qnaDao.getQnaContent", qnaNo);
+	}
+	
+	public void qnaUpdateDao(QnaVo vo) {
+		sqlSessionTemplate.update("qnaDao.qnaUpdate", vo);
+	}
+	
+	public void addCntDao(QnaVo vo) {
+		sqlSessionTemplate.update("qnaDao.addCnt",vo);
+	}
+	
+	public void deleteQna(QnaVo vo) {
+		sqlSessionTemplate.delete("qnaDao.deleteQna", vo);
+	}
 }

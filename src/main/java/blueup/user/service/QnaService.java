@@ -11,4 +11,12 @@ public interface QnaService {
 	public int getCountInService();
 	
 	public void insertQnaService(QnaVo vo);
+	
+	public QnaVo getQnaContentService(int qnaNo);
+	
+	public void qnaUpdateService(QnaVo vo);
+	
+	public void addCntService(QnaVo vo);
+	
+	public void deleteQna(QnaVo vo);
 }

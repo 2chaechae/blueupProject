@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,30 +18,21 @@
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/board.css">
 <link rel="stylesheet" href="css/cscenter.css">
-
 <script>
-	$(document).ready(function() {
-		// 라디오버튼 클릭시 이벤트 발생
-		$("input:radio[name=open]").click(function() {
 
-			if ($("input:radio[name=open]:checked").val() == "false") {
-				$("input:password[name=password]").attr("disabled", true);
-				$("input.password[name=password]").val('');
-				// radio 버튼의 value 값이 false이라면 활성화
+function qnaModify(){
+	var qnaNum = "<c:out value='${qna_no}' />";
+	var pageNum = "<c:out value='${pageNum}' />";
+	location.href="/test/qnaUpdate.do?qna_no="+qnaNum+"&pageNum="+pageNum;
+}
 
-			} else if ($("input:radio[name=open]:checked").val() == "true") {
-				$("input:password[name=password]").attr("disabled", false);
-				// radio 버튼의 value 값이 true이라면 비활성화
-			}
-		});
-	});
-	
-	function cancel(){
-		var pageNum = "<c:out value='${pageNum}' />";
-		location.href="/test/qna.do?pageNum="+pageNum;
-	}
-	
+function qnaDelete(){
+	var qnaNum = "<c:out value='${qna_no}' />";
+	var pageNum = "<c:out value='${pageNum}' />";
+	location.href="/test/qnaDelete.do?qna_no="+qnaNum+"&pageNum="+pageNum;
+}
 </script>
+
 </head>
 <body>
 	<!--맨위로 가기 맨 아래로 가기-->
@@ -170,107 +162,49 @@
 		<!--page-->
 	</div>
 	<!--page wrap:페이지위치 전체-->
-	
-	<c:choose>
-		<c:when test="${qna_no gt 0}">
-			<div class="board_wrap">
-		<h2 class="board_title">문의</h2>
-		<form action="/test/qnaUpdateProc.do?${qna_no }&pageNum=${pageNum}" id="form">
-		<input type="hidden" name="qna_no" value="${qna_no }" />
-			<div class="black_box select_area">
-				<select name="type">
-					<option value="상품문의">[상품문의]</option>
-					<option value="교환문의">[교환문의]</option>
-					<option value="배송문의">[배송문의]</option>
-					<option value="환불문의">[환불문의]</option>
-					<option value="결제문의">[결제문의]</option>
-				</select>
-			</div>
-			<div class="black_box writer">
-				<input name="title" class="input_ea" type="text"
-					placeholder="제목을 입력해주세요" value="${content.qna_title }">
-			</div>
-			<div class="black_box writer">
-				<input name="writer" class="input_ea" type="text" placeholder="작성자"
-					value="${content.user_id }" readonly>
-			</div>
-			<div class="black_box content_area">
-				<textarea class="contents" name="contents" placeholder="내용을 입력해주세요." >${content.qna_content }</textarea>
-			</div>
-			<div class="black_box passwords">
-				<input class="input_ea password" name="password" type="password" placeholder="비밀번호" >
-			</div>
-
-
-			<div class="radio_boxs" align="center">
-				<input class="radio-value" id="false" type="radio" name="open" value="false"  >
-				<label for="true">공개글</label>
-				<input class="radio-value" id="true" type="radio" name="open" value="true" checked> 
-				<label for="false">비밀글</label> 
-			</div>
-			<input type="hidden" value="${pageNum }" name="pageNum" />
-
-
-			<div class="buttons_area">
-				<button class="board_btn cancle"
-					onClick="cancel(); return false">취소</button>
-				<button class="board_btn confirm" name="submitBtn"
-					onClick="document.getElementById('form').submit();">수정</button>
-			</div>
-		</form>
-	</div>
-		</c:when>
-	
-	
-	<c:otherwise>
 	<div class="board_wrap">
 		<h2 class="board_title">문의</h2>
 		<form action="/test/qnaWriteProc.do?pageNum=1" id="form">
 			<div class="black_box select_area">
 				<select name="type">
+				<c:if test="${content.qna_type eq '상품문의'}">
 					<option value="상품문의">[상품문의]</option>
-					<option value="교환문의">[교환문의]</option>
+				</c:if>
+				<c:if test="${content.qna_type eq '배송문의'}">
 					<option value="배송문의">[배송문의]</option>
+				</c:if>
+				<c:if test="${content.qna_type eq '환불문의'}">
 					<option value="환불문의">[환불문의]</option>
+				</c:if>
+				<c:if test="${content.qna_type eq '결제문의'}">
 					<option value="결제문의">[결제문의]</option>
+				</c:if>
+
 				</select>
 			</div>
 			<div class="black_box writer">
 				<input name="title" class="input_ea" type="text"
-					placeholder="제목을 입력해주세요">
+					placeholder="제목을 입력해주세요" value="${content.qna_title }" disabled>
 			</div>
 			<div class="black_box writer">
 				<input name="writer" class="input_ea" type="text" placeholder="작성자"
-					value="${writer }" readonly>
+					value="${content.qna_title }" disabled>
 			</div>
 			<div class="black_box content_area">
-				<textarea class="contents" name="contents" placeholder="내용을 입력해주세요."></textarea>
+				<textarea class="contents" name="contents" disabled placeholder="내용을 입력해주세요.">${content.qna_content }</textarea>
 			</div>
-			<div class="black_box passwords">
-				<input class="input_ea password" name="password" type="password"
-					placeholder="비밀번호">
-			</div>
-
-
-			<div class="radio_boxs" align="center">
-				<input class="radio-value" id="false" type="radio" name="open" value="false" >
-				<label for="true">공개글</label>
-				<input class="radio-value" id="true" type="radio" name="open" value="true" checked> 
-				<label for="false">비밀글</label> 
-			</div>
-			<input type="hidden" value="1" name="pageNum" />
 
 
 			<div class="buttons_area">
 				<button class="board_btn cancle"
-					onClick="cancel(); return false">취소</button>
+					onClick='qnaModify(); return false'>수정</button>
 				<button class="board_btn confirm" name="submitBtn"
-					onClick="document.getElementById('form').submit();">등록</button>
+					onClick="location.href='/test/qna.do?pageNum=1'; return false">목록으로</button>
+				<button class="board_btn confirm" name="submitBtn"
+					onClick="qnaDelete(); return false ">삭제</button>
 			</div>
 		</form>
 	</div>
-	</c:otherwise>
-	</c:choose>
 	<!--end board_wrap-->
 </body>
 </html>
