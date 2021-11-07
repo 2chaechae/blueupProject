@@ -27,4 +27,6 @@ public class ProductVo {
 	String detailed_category_name; //세부 카테고리
 	
 	String searchKeyword; //검색을 위해 넣었다.
+	int wish_no; // 상품 조회시 wish list check를 위해 넣음
+	int user_no; // 상품 조회시 회원번호 기준 wish list check를 위해 넣음
 }

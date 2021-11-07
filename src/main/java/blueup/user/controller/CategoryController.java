@@ -13,10 +13,11 @@ public class CategoryController {
 	@Autowired 
 	private CategoryServiceImpl categoryserviceimpl;
 	
+	// 카테고리 목록 조회 (상위/하위 카테고리 매개변수)
 	@RequestMapping("/getCategory.do")
 	public ModelAndView getCategory(HttpSession session, Category_detailVo vo) {
-		System.out.println(vo.getCategory_name());
-		System.out.println(vo.getDetailed_category_name());
+		System.out.println("카테고리 이름 : " + vo.getCategory_name());
+		System.out.println("하위 카테고리 이름 : " + vo.getDetailed_category_name());
 		ModelAndView mav = new ModelAndView();
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
 		session.setAttribute("Selected", vo);
@@ -24,9 +25,10 @@ public class CategoryController {
 		return mav;
 	}
 	
+	// 카테고리 목록 조회 (상위 카테고리 매개변수)
 	@RequestMapping("/getCategoryAll.do")
 	public ModelAndView getCategoryAll(HttpSession session, Category_detailVo vo) {
-		System.out.println(vo.getCategory_name());
+		System.out.println("카테고리 이름 : " + vo.getCategory_name());
 		ModelAndView mav = new ModelAndView();
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
 		session.setAttribute("Selected", vo);

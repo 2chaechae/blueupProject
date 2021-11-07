@@ -15,7 +15,7 @@
 				<h3 id="cate" style="font: bold 40px/1.5em 'Nanum Myeongjo', serif; text-align:center" >${Category.get(0).category_name}</h3>
 				<div  style="text-align:center; font-size:20px; padding:30px 30px;">
 					<c:forEach var="category" items="${Category}">
-						<a href="javascript:void(0)" onclick="check(this)" style="display:inline-block; zoom:1; display:inline; padding-right:20px;">${category.detailed_category_name}</a>
+						<a href="javascript:void(0)" onclick="checkCategoryDown(this)" style="display:inline-block; zoom:1; display:inline; padding-right:20px;">${category.detailed_category_name}</a>
 					</c:forEach>
 				</div>
 			</div>
@@ -38,7 +38,15 @@
 									<div class="info">
 										<div class="name">${product.product_name}
 										<p class="heart" style="display:inline-block;">
-											<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
+											<c:set var="wish" value="${product.wish_no}"></c:set>
+											<c:choose>
+												<c:when test="${wish eq 1}">
+													<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
+												</c:when>
+												<c:when test="${wish eq 0}">
+													<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
+												</c:when>
+											</c:choose>
 										<div class="prc">
 											<em class="p">${product.product_price}원</em>
 										</div>

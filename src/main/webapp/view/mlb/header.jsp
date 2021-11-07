@@ -78,7 +78,7 @@
 						<ul class="list cate">
 							<!-- 세일상품 -->
 							<li class="select">
-								<a href="javascript:void(0)" onclick="checkCategory(this)"> <font >SALES</font></a>
+								<a href="javascript:void(0)" onclick="checkCategoryUp(this)"> <font >SALES</font></a>
 									<!-- 
 								<div class="pan top_cate_pan_1">
 									<div class="inner">	
@@ -235,10 +235,10 @@
 												<li>
 													<a href="javascript:void(0)" onclick="checkCategoryAll(this)">CAP</a>
 													<ul>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">볼캡</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">스냅백</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">비니</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">HAT</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">볼캡</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">스냅백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">비니</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">HAT</a></li>
 													</ul></li>
 											</ul>
 										</div>
@@ -262,11 +262,11 @@
 											<ul class="list">
 												<li><a href="javascript:void(0)" onclick="checkCategoryAll(this)">SHOES</a>
 													<ul>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">빅볼청키</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">청키</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">플레이볼</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">뮬</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">슬리퍼</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">빅볼청키</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">청키</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">플레이볼</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">뮬</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">슬리퍼</a></li>
 													</ul>
 											</div>
 										<div class="banner">
@@ -295,12 +295,12 @@
 												<li>
 													<a href="javascript:void(0)" onclick="checkCategoryAll(this)">BAG</a>
 													<ul>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">백팩</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">힙색</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">크로스백</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">호보백</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">버킷백</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">토드백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">백팩</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">힙색</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">크로스백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">호보백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">버킷백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">토드백</a></li>
 													</ul>
 												</li>
 											</ul>
@@ -329,22 +329,22 @@
 												<li>
 													<a href="javascript:void(0)" onclick="checkCategoryAll(this)">ACC/PET</a>
 													<ul>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">양말</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">마스크</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">양말</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">마스크</a></li>
 													</ul>
 												</li>
 												<li>
 													<ul>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">PET-의류</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">PET-ACC</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">PET-의류</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">PET-ACC</a></li>
 													</ul>
 												</li>
 												<li>
 													<ul>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">목걸이</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">팔찌</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">귀걸이</a></li>
-														<li><a href="javascript:void(0)" onclick="checkCategory(this)">반지</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">목걸이</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">팔찌</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">귀걸이</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategoryUp(this)">반지</a></li>
 													</ul></li>
 											</ul>
 										</div>
