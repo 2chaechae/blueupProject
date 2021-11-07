@@ -12,11 +12,12 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/view/user/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+	 -->
 	<context:component-scan base-package="blueup.user.controller"/>
 </beans>

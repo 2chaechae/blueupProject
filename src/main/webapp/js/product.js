@@ -9,7 +9,7 @@ function check(element){
 
 /* 상품목록 조회시 카테고리 가져오기*/
 function checkCategory(element){
-		var first = $(element).closest('.selected').children('a').text();
+		var first = $(element).closest('.select').children('a').text();
 		var second = $(element).text();
 		$(element).css('font-weight','bold');
 		location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second;
