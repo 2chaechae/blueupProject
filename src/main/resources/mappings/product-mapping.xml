@@ -47,7 +47,7 @@
 	
 	<!-- 카테고리 기준 상품 조회 -->
 	<select id="getProductListByCategory" resultType="productvo"
-		parameterType="productvo">
+		parameterType="cateDetailvo">
 		SELECT * FROM PRODUCT
 		WHERE
 		CATEGORY_NAME = #{category_name}

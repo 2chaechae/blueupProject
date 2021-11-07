@@ -81,7 +81,7 @@
 								<a href="javascript:void(0)" onclick="checkCategory(this)"> <font >SALES</font></a>
 									<!-- 
 								<div class="pan top_cate_pan_1">
-									<div class="inner">
+									<div class="inner">	
 										<div class="cate">
 											<ul class="list">
 												<li><a
@@ -216,7 +216,7 @@
 									</div>
 								</div></li> -->
 							<!-- CAP -->
-							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)"><font>CAP</font></a>
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategoryAll(this)"><font>CAP</font></a>
 								<div class="pan top_cate_pan_2">
 									<div class="inner">
 									<!--	 <div class="cate">
@@ -233,7 +233,7 @@
 										<div class="depth">
 											<ul class="list">
 												<li>
-													<a href="javascript:void(0)" onclick="checkCategory(this)">CAP</a>
+													<a href="javascript:void(0)" onclick="checkCategoryAll(this)">CAP</a>
 													<ul>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">볼캡</a></li>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">스냅백</a></li>
@@ -251,7 +251,7 @@
 									</div>
 								</div></li>
 							<!-- 상의 -->
-							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)">SHOES</font></a>
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategoryAll(this)">SHOES</font></a>
 								<div class="pan top_cate_pan_3">
 									<div class="inner">
 										<div class="cate">
@@ -260,7 +260,7 @@
 										</div>
 										<div class="depth">
 											<ul class="list">
-												<li><a href="javascript:void(0)" onclick="checkCategory(this)">SHOES</a>
+												<li><a href="javascript:void(0)" onclick="checkCategoryAll(this)">SHOES</a>
 													<ul>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">빅볼청키</a></li>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">청키</a></li>
@@ -279,7 +279,7 @@
 									</div>
 								</div></li>
 							<!-- BAG -->
-							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)">BAG</font></a>
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategoryAll(this)">BAG</font></a>
 								<div class="pan top_cate_pan_4">
 									<div class="inner">
 										<div class="cate">
@@ -293,7 +293,7 @@
 										<div class="depth">
 											<ul class="list">
 												<li>
-													<a href="javascript:void(0)" onclick="checkCategory(this)">BAG</a>
+													<a href="javascript:void(0)" onclick="checkCategoryAll(this)">BAG</a>
 													<ul>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">백팩</a></li>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">힙색</a></li>
@@ -315,7 +315,7 @@
 									</div>
 								</div></li>
 							<!-- ACC -->
-							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)">
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategoryAll(this)">
 									<font>ACC/PET</font>
 							</a>
 								<div class="pan top_cate_pan_5">
@@ -327,7 +327,7 @@
 										<div class="depth">
 											<ul class="list">
 												<li>
-													<a href="javascript:void(0)" onclick="checkCategory(this)">ACC/PET</a>
+													<a href="javascript:void(0)" onclick="checkCategoryAll(this)">ACC/PET</a>
 													<ul>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">양말</a></li>
 														<li><a href="javascript:void(0)" onclick="checkCategory(this)">마스크</a></li>

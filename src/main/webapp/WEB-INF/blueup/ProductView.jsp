@@ -69,6 +69,7 @@ if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png
 }else{
 	$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
 }
+	
 }
 </script>
 <%@ include file="/view/mlb/footer.jsp"%>

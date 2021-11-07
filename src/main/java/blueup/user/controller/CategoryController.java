@@ -23,4 +23,14 @@ public class CategoryController {
 		mav.setViewName("redirect:/getProduct.do");
 		return mav;
 	}
+	
+	@RequestMapping("/getCategoryAll.do")
+	public ModelAndView getCategoryAll(HttpSession session, Category_detailVo vo) {
+		System.out.println(vo.getCategory_name());
+		ModelAndView mav = new ModelAndView();
+		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
+		session.setAttribute("Selected", vo);
+		mav.setViewName("redirect:/getProductAll.do");
+		return mav;
+	}
 }

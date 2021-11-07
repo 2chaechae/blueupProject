@@ -40,13 +40,14 @@ public class ProductController {
 		return mav;
 	}
 	
-	// 상품 조회 화면에서 하위 카테고리 클릭시 상품 불러오기
-	@RequestMapping("/getProductByDetail.do")
-	public ModelAndView getProductByDetail(Category_detailVo vo) {
+	// 상위 카테고리 전체
+	@RequestMapping("/getProductAll.do")
+	public ModelAndView getProductByDetail(HttpSession session) {
+		Category_detailVo vo = (Category_detailVo) session.getAttribute("Selected");
 		ModelAndView mav = new ModelAndView();
-		System.out.println("세컨 선택 값 : " + vo.getDetailed_category_name());
-		mav.addObject("Product", productserviceimpl.getProductListByDetailedCategory(vo));
-		mav.setViewName("pants");
+		System.out.println("상위 카테고리 값 : " + vo.getCategory_name());
+		mav.addObject("Product", productserviceimpl.getProductListByCategory(vo));
+		mav.setViewName("ProductView");
 		return mav;
 		
 	}

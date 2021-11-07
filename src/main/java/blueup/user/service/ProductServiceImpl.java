@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVo> getProductListByCategory(ProductVo vo) {
+	public List<ProductVo> getProductListByCategory(Category_detailVo vo) {
 		return productdao.getProductListByCategory(vo); 
 	}
 

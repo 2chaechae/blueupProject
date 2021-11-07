@@ -24,7 +24,7 @@ public class ProductDAO {
 		return sqlSssionTemplate.update("productDao.productUpdate", vo);
 	}
 	
-	public List<ProductVo> getProductListByCategory(ProductVo vo) {
+	public List<ProductVo> getProductListByCategory(Category_detailVo vo) {
 		return sqlSssionTemplate.selectList("productDao.getProductListByCategory", vo);
 	}
 	
