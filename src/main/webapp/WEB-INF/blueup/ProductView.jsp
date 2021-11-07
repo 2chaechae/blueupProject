@@ -38,7 +38,7 @@
 									<div class="info">
 										<div class="name">${product.product_name}
 										<p class="heart" style="display:inline-block;">
-											<img src="${pageContext.request.contextPath}/images/item/heart.png" alt="찜" width="25" height="23"></p></div>
+											<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
 										<div class="prc">
 											<em class="p">${product.product_price}원</em>
 										</div>
@@ -61,13 +61,15 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-$(document).ready(function(){
-$(".heart img").toggle(function(){ 
-	 	$(this).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
-	 },function(){
-	   $(this).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
-	 });
-});
+function heart(element){
+var img = $(element).attr("src");
+alert(img);
+if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
+	$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
+}else{
+	$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
+}
+}
 </script>
 <%@ include file="/view/mlb/footer.jsp"%>
 </body>
