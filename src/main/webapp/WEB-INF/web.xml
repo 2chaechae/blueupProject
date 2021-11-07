@@ -21,6 +21,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				/WEB-INF/spring/user/spring-servlet.xml
+				/WEB-INF/spring/user/loginjoinContext.xml
 				<!-- 아래처럼 각 팀원들이 만들 컨텍스트를 등록하면 됩니다. /WEB-INF/spring/customContext/indexContext.xml -->
 			</param-value>
 		</init-param>

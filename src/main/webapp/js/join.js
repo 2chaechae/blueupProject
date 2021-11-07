@@ -5,7 +5,7 @@ $(document).ready(function(){
 	
 	$(".btn_prev").css("opacity","0.5"); //이전버튼
 	
-	var i = 0;
+	/*var i = 0;
 	$(".btn_next").click(function(){ //다음
 		$(".btn_prev").css("opacity","1.0");
 		
@@ -43,7 +43,7 @@ $(document).ready(function(){
 			alert("첫 페이지 입니다.");
 			$(".btn_prev").css("opacity","0.5");
 		}
-	});
+	});*/
   
   
   

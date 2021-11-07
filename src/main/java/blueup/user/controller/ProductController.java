@@ -15,17 +15,15 @@ public class ProductController {
 	@Autowired 
 	private ProductServiceImpl productserviceimpl;
 	
+	// 상품 & 카테고리 불러오기
 	@RequestMapping("/getProduct.do")
 	public ModelAndView getProduct(HttpSession session) {
 		System.out.println("getProduct 시작");
 		Category_detailVo cate = (Category_detailVo) session.getAttribute("Selected");
 		System.out.println("선택한 값 :" +cate.getCategory_name() + "," + cate.getDetailed_category_name());
+		//return 값
 		ModelAndView mav = new ModelAndView();
 		List<Category_detailVo> test = (List<Category_detailVo>) session.getAttribute("Category");
-		for(Category_detailVo m : test) {
-			System.out.println(m.getCategory_name());
-			System.out.println(m.getDetailed_category_name());
-		}
 		mav.addObject("Category", test);
 		mav.addObject("Selected", cate.getDetailed_category_name());
 		mav.addObject("Product", productserviceimpl.getProductListByDetailedCategory(cate));
@@ -33,6 +31,7 @@ public class ProductController {
 		return mav;
 	}
 	
+	// 상품 조회 화면에서 하위 카테고리 클릭시 상품 불러오기
 	@RequestMapping("/getProductByDetail.do")
 	public ModelAndView getProductByDetail(Category_detailVo vo) {
 		ModelAndView mav = new ModelAndView();

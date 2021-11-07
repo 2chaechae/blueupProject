@@ -114,35 +114,29 @@
 		<h2>회원가입</h2>
 		<form action="join.asp" method="post">
       <ul class="join_step">
-        <li class="join1"><a href="#join1" class="j_sel">약관동의 및 본인인증</a></li>
-        <li class="join2"><a href="#join2">정보입력</a></li>
-        <li class="join3"><a href="#join3">가입완료
+        <li class="join1"><a href="#none;" class="j_sel">약관동의</a></li>
+        <li class="join2"><a href="##none;">정보입력</a></li>
+        <li class="join3"><a href="#none;">가입완료
           </a></li>
       </ul>
       <div id="join_wrap2">
         <div id="join_con">
           <div id="join1" class="contents">
-            <div id="phone_info">
-              <a href="#">
-                <img src="${pageContext.request.contextPath}/images/join/phone.png" alt="문자인증" width="30" height="45">
-                <p>문자 본인인증</p>
-              </a>
-            </div>
             <div id="check_wrap">
               <p class="chk_all">
                 <input type="checkbox" id="chk" ><label for="chk"  class="type type1">아래 내용에 모두 동의합니다.</label>
               </p> 
               <p class="chk_sub">
-                <input type="checkbox" id="chk1" ><label for="chk1"  class="type type2">BlueUp 이용약관</label><a href="getTerms.do">전문보기</a>
+                <input type="checkbox" id="chk1" ><label for="chk1"  class="type type2">BlueUp 이용약관 [필수]</label><a href="getTerms.do">전문보기</a>
               </p>
               <p class="chk_sub">
-                <input type="checkbox" id="chk2"><label for="chk2"  class="type type3">개인정보 수집과 이용</label><a href="#">전문보기</a>
+                <input type="checkbox" id="chk2"><label for="chk2"  class="type type3">개인정보 수집과 이용 [필수]</label><a href="#">전문보기</a>
               </p>
               <p class="chk_sub">
-                <input type="checkbox" id="chk3"><label for="chk3" class="type type4">만14세 이상입니다.</label> 
+                <input type="checkbox" id="chk3"><label for="chk3" class="type type4">만14세 이상입니다. [필수]</label> 
               </p>
               <p class="chk_sub">
-                <input type="checkbox" id="chk4"><label for="chk4"  class="type type5">홍보성 정보 수신동의(선택)</label>
+                <input type="checkbox" id="chk4"><label for="chk4"  class="type type5">홍보성 정보 수신동의 [선택]</label>
               </p>
             </div><!--check_wrap-->   
           </div><!--join1-->
@@ -152,10 +146,10 @@
               <label for="u_name">이름</label><input type="text" id="u_name" autocomplete="off" required placeholder="홍길동">
              </div>
              <div class="join_box">
-								<label for="u_birth">생년월일 / 성별</label><input type="text" id="u_birth" autocomplete="off" required placeholder="900101">
+								<label for="u_birth">생년월일 / 성별</label><input type="text" id="u_birth" autocomplete="off" maxlength="6" required placeholder="900101">
 								<div class="r_gender">
 									<label for="man">
-											<input type="radio" name="gender" value="m" id="man"><span>남자</span>
+										<input type="radio" name="gender" value="m" id="man"><span>남자</span>
 									</label>
 									<label for="woman">
 										<input type="radio" name="gender" value="m" id="woman"><span>여자</span>
@@ -167,19 +161,29 @@
 								<p id="phone1_wrap">
 									<select id="phone1">
 										<option>선택</option>
+										<option value="skt">SKT</option>
+										<option value="kt">KT</option>
+										<option value="lgt">LGT</option>
+									</select>
+									<!-- <select id="phone1">
+										<option>선택</option>
 										<option value="010">010</option>
 										<option value="011">011</option>
-									</select>
+									</select> -->
 								</p><!--phone1_wrap-->
-								- <input type="tel" id="phone2" title="전화번호 앞자리">
-								- <input type="tel" id="phone3" title="전화번호 뒷자리">&nbsp;&nbsp;&nbsp;
+								&emsp;<input type="tel" id="phoneDefault" maxlength="3" title="전화번호 앞자리">
+								- <input type="tel" id="phone2" maxlength="4" title="전화번호 중자리">
+								- <input type="tel" id="phone3" maxlength="4" title="전화번호 뒷자리">&nbsp;&nbsp;&nbsp;
 								<span class="r_selfC">
 									<a href="#"><input type="button" value="본인 인증"></a>
 								</span>
 							</div><!--휴대전화번호-->
 							<div class="join_box">
 								<label for="u_id">아이디</label>
-								<input type="text" id="u_id" placeholder="영문 / 숫자 6~15자리 이내">
+								<input type="text" id="u_id" maxlength="15" placeholder="영문 / 숫자 6~15자리 이내">&nbsp;&nbsp;&nbsp;
+								<span class="r_selfC">
+									<a href="#"><input type="button" id="id_chk" value="중복 검사"></a>
+								</span>
 							</div>
 							<div class="join_box2 join_box2_1">
 								<label for="pwd1">비밀번호</label><input type="password" id="pwd1" autocomplete="off" required placeholder="영문필수 8~12자이내"><!--비밀번호-->
@@ -199,7 +203,10 @@
 											<option value="gmail.com">gmail.com</option>
 											<option value="nate.com">nate.com</option>
 										</select>
-									</p><!--email3-->
+									</p><!--email3-->&nbsp;&nbsp;
+									<span class="r_selfC">
+										<a href="#"><input type="button" id="email_chk" value="중복 검사"></a>
+									</span>
 								</div><!--r_con-->
 							</div>
 						</div><!--join2_wrap-->
@@ -218,4 +225,193 @@
 		</form><!--join-->
 	</div><!--join_wrap-->
 </div><!--con_wrap-->
+<script type="text/javascript">
+$(document).ready(function(){
+	/* join.js  prev|next  button custom */
+	var i = 0;
+	$(".btn_next").click(function(){ //다음
+		$(".btn_prev").css("opacity","1.0");
+		var move;
+		var n;
+		var k;
+		if(i<2){
+			
+			if(i==0){
+				var chk = document.getElementById("chk").checked;
+				var chk1 = document.getElementById("chk1").checked;
+				var chk2 = document.getElementById("chk2").checked;
+				var chk3 = document.getElementById("chk3").checked;
+				var chk4 = document.getElementById("chk4").checked;
+				
+				if(chk1 && chk2 && chk3){
+					
+					//다음페이지로 넘어가기
+					i++;
+					move = -500 *i;
+					$("#join_con").stop().animate({left:move},500);
+					
+					n=1;
+					k=n+i;
+					$(".join_step li a").removeClass("j_sel");
+					$(".join"+k+" a").addClass("j_sel");
+					
+				} else {
+					alert("[필수]동의사항에는 체크 해주세요.");
+					$(".btn_prev").css("opacity","0.5");
+					return;
+				}
+			} else if(i==1){
+				/* 회원가입 유효성 검사 START */
+				var userName = $('#u_name').val();
+				var userBirth = $('#u_birth').val();
+				var userPhone2 = $('#phone2').val();
+				var userPhone3 = $('#phone3').val();
+				var userId = $('#u_id').val();
+				var userPw1 = $('#pwd1').val();
+				var userPw2 = $('#pwd2').val();
+				var userEmail = $('#u_email').val();
+				
+				if(userName == ""){
+					alert("이름을 입력해주세요");
+					$('#u_name').focus();
+					return;
+				}else if(userBirth == ""){
+					alert("생년월일을 채워주세요");
+					$('#u_birth').focus();
+					return;
+				}else if (userBirth.length != 6 ){
+					alert("생년월일을 확인해 주세요");
+					$('#u_birth').focus();
+					return;	
+				}else if(userPhone2 == ""){
+					alert("전화번호를 채워주세요");
+					$('#phone2').focus();
+					return;
+				}else if (userPhone2.length != 4 ){
+					alert("전화번호를 확인해 주세요");
+					$('#phone2').focus();
+					return;	
+				}else if(userPhone3 == ""){
+					alert("전화번호를 채워주세요");
+					$('#phone3').focus();
+					return;
+				}else if (userPhone3.length != 4 ){
+					alert("전화번호를 확인해 주세요");
+					$('#phone3').focus();
+					return;	
+				}else if(userId == ""){
+					alert("아이디를 채워주세요");
+					$('#u_id').focus();
+					return;
+				}else if(userId.length <6){
+					alert("아이디는 최소 6자리 이상 채워주세요");
+					$('#u_id').focus();
+					return;
+				} else if(userPw1 == ""){
+					alert("비밀번호란을 채워주세요");
+					$('#pwd1').focus();
+					return;
+				} else if(userPw2 == ""){
+					alert("비밀번호 확인란을 채워주세요");
+					$('#pwd2').focus();
+					return;
+				}else if(userPw1 != userPw2){
+					alert("패스워드가 서로 맞지 않습니다");
+					$('#pwd1').val("");
+					$('#pwd2').val("");
+					$('#pwd1').focus();
+					return;
+				}else if(userEmail == ""){
+					alert("이메일을 채워주세요");
+					$('#u_email').focus();
+					return;
+				} else {
+					i++;
+					move = -500 *i;
+					$("#join_con").stop().animate({left:move},500);
+					
+					n=1;
+					k=n+i;
+					$(".join_step li a").removeClass("j_sel");
+					$(".join"+k+" a").addClass("j_sel");
+				}
+			}
+			
+		}else{
+			alert("회원가입이 완료되었습니다.");
+			$(".btn_next").css("opacity","0.5");
+		}
+	});
+	$(".btn_prev").click(function(){
+		$(".btn_next").css("opacity","1.0");
+		
+		if(i>0){
+			i--;
+			var move = -500 *i;
+			$("#join_con").stop().animate({left:move},500);
+			
+			var n=1;
+			var k=n+i;
+			$(".join_step li a").removeClass("j_sel");
+			$(".join"+k+" a").addClass("j_sel");
+		}else{
+			alert("첫 페이지 입니다.");
+			$(".btn_prev").css("opacity","0.5");
+		}
+	});
+	/* join.js  prev|next  button custom */
+	
+//라디오버튼 체크여부
+// var test = $('input[name=????]:checked').val();
+// test = true || false 값 셋팅이 됨.
+
+	$('#u_birth').keyup(function(event){ //생년월일에 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#phone2').keyup(function(event){ //전화번호 중자리 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#phone3').keyup(function(event){ //전화번호 뒷자리 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#u_name').keyup(function(event){
+		 re = /[~!@\#$%^&*\()\-=+_']/gi;
+		 re2 = /[0-9]/gi;
+		 
+		 var temp=$("#u_name").val();
+		 
+		 if(re.test(temp)){ //이름에 특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 	$("#u_name").val(temp.replace(re,""));
+		 	return;
+		 } else if(re2.test(temp)){ //이름에 숫자가 오게 되면 삭제하여 값으로 다시 셋팅
+			$("#u_name").val(temp.replace(re2,""));
+			return;
+		 }
+	});
+	
+	$("#u_id").keyup(function(){
+		 re = /[~!@\#$%^&*\()\-=+_']/gi; 
+		 var temp=$("#u_id").val();
+		 if(re.test(temp)){ //아이디 특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 $("#u_id").val(temp.replace(re,"")); 
+		} 
+	});
+	
+	$("#u_email").keyup(function(){
+		 re = /[~!@\#$%^&*\()\-=+_']/gi; 
+		 var temp=$("#u_email").val();
+		 if(re.test(temp)){ //이메일 특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 $("#u_email").val(temp.replace(re,"")); 
+		} 
+	});
+
+});
+
+</script>
 <%@ include file="footer.jsp" %>

@@ -255,7 +255,6 @@ label.checked{
   box-sizing:border-box;
   border-radius:5px;
   text-align:center;
-  width:100px;
   height:24px;
   line-height:23px;
   font-size:14px;
@@ -293,6 +292,12 @@ label.checked{
 	margin-top:2px;
 	border:1px solid #707070;
 }/*휴대전화번호*/
+#phoneDefault{
+	width:40px;
+	height:19px;
+	margin-top:2px;
+	border:1px solid #707070;
+}
 
 /*비밀번호,비밀번호 확인*/
 .join_box2{
@@ -336,8 +341,8 @@ label.checked{
 	 line-height:13px;
 }
 .email3 select{
-	width:176px;
 	height:24px;
+	width:90px;
 	margin-top:3px;
 	border:1px solid #707070;
 }
