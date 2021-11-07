@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-   <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/min/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.js"></script>
+    <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/min/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/gtm.js?v=20211106192902"></script>
 
    <meta charset="utf-8">
@@ -76,10 +77,8 @@
 					<div class="menu">
 						<ul class="list cate">
 							<!-- 세일상품 -->
-							<li><a data-pan="top_cate_pan_1"
-								href="javascript:cateLink('MBMA01', '1', 'GNRL_CTGRY', 'MBMA01');"
-								data-ga-category="PC_MLB_Header" data-ga-action="APPAREL"> <font
-									color="">SALES</font></a>
+							<li class="select">
+								<a href="javascript:void(0)" onclick="checkCategory(this)"> <font >SALES</font></a>
 									<!-- 
 								<div class="pan top_cate_pan_1">
 									<div class="inner">
@@ -216,11 +215,8 @@
 										</div>
 									</div>
 								</div></li> -->
-							<!-- 아우터 -->
-							<li><a data-pan="top_cate_pan_2"
-								href="javascript:cateLink('MBMA03', '1', 'GNRL_CTGRY', 'MBMA03');"
-								data-ga-category="PC_MLB_Header" data-ga-action="CAP"> <font
-									color="">OUTER</font></a>
+							<!-- CAP -->
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)"><font>CAP</font></a>
 								<div class="pan top_cate_pan_2">
 									<div class="inner">
 									<!--	 <div class="cate">
@@ -236,29 +232,14 @@
 										</div>-->
 										<div class="depth">
 											<ul class="list">
-												<li><a
-													href="javascript:cateLink('MBMA05A04', '2', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A04');"
-													data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-													data-ga-label="아우터">아우터</a>
+												<li>
+													<a href="javascript:void(0)" onclick="checkCategory(this)">CAP</a>
 													<ul>
-														<li><a
-															href="javascript:cateLink('MBMA05A04A01', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A04');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="아우터_숏패딩/롱패딩">가디건</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A04A08', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A04');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="아우터_경량패딩">자켓/베스트</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A04A06', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A04');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="아우터_후리스점퍼">점퍼</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A04A04', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A04');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="아우터_베스트">코트</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">볼캡</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">스냅백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">비니</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">HAT</a></li>
 													</ul></li>
-												
 											</ul>
 										</div>
 										<div class="banner">
@@ -270,10 +251,7 @@
 									</div>
 								</div></li>
 							<!-- 상의 -->
-							<li><a data-pan="top_cate_pan_3"
-								href="javascript:cateLink('MBMA10', '1', 'GNRL_CTGRY', 'MBMA10');"
-								data-ga-category="PC_MLB_Header" data-ga-action="SHOES"> <font
-									color="">TOP</font></a>
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)">SHOES</font></a>
 								<div class="pan top_cate_pan_3">
 									<div class="inner">
 										<div class="cate">
@@ -282,33 +260,15 @@
 										</div>
 										<div class="depth">
 											<ul class="list">
-												<li><a
-													href="javascript:cateLink('MBMA05A05', '2', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A05');"
-													data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-													data-ga-label="상의">상의</a>
+												<li><a href="javascript:void(0)" onclick="checkCategory(this)">SHOES</a>
 													<ul>
-														<li><a
-															href="javascript:cateLink('MBMA05A05A01', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A05');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="상의_티셔츠">티셔츠</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A05A02', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A05');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="상의_맨투맨">니트</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A05A03', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A05');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="상의_후드티">맨투맨/후드티</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A05A04', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A05');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="상의_트레이닝 집업">셔츠/블라우스</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A05A05', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A05');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="상의_원피스">크롭</a></li>
-											</ul>
-										</div>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">빅볼청키</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">청키</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">플레이볼</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">뮬</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">슬리퍼</a></li>
+													</ul>
+											</div>
 										<div class="banner">
 											<a href="/special/2467" data-ga-category="PC_MLB_Header"
 												data-ga-action="배너" data-ga-label="청키클래식"><img
@@ -318,11 +278,8 @@
 										</div>
 									</div>
 								</div></li>
-							<!-- 하의 -->
-							<li><a data-pan="top_cate_pan_4"
-								href="javascript:cateLink('MBMA14', '1', 'GNRL_CTGRY', 'MBMA14');"
-								data-ga-category="PC_MLB_Header" data-ga-action="BAG"> <font
-									color="">BOTTOM</font></a>
+							<!-- BAG -->
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)">BAG</font></a>
 								<div class="pan top_cate_pan_4">
 									<div class="inner">
 										<div class="cate">
@@ -335,39 +292,17 @@
 										</div>
 										<div class="depth">
 											<ul class="list">
-												<li><a
-													href="javascript:cateLink('MBMA05A06', '2', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A06');"
-													data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-													data-ga-label="하의">바지</a>
+												<li>
+													<a href="javascript:void(0)" onclick="checkCategory(this)">BAG</a>
 													<ul>
-														<li><a
-															href="javascript:cateLink('MBMA05A06A01', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A06');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="하의_팬츠">긴바지</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A06A03', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A06');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="하의_레깅스">반바지</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A06A02', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A06');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="하의_트레이닝팬츠">트레이닝팬츠</a></li>
-													</ul></li>
-													<li><a
-													href="javascript:cateLink('MBMA05A06', '2', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A06');"
-													data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-													data-ga-label="하의">스커트</a>
-													<ul>
-														<li><a
-															href="javascript:cateLink('MBMA05A06A01', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A06');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="하의_팬츠">스커트</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA05A06A03', '3', 'GNRL_CTGRY', 'MBMA05', 'MBMA05A06');"
-															data-ga-category="PC_MLB_Header" data-ga-action="KIDS"
-															data-ga-label="하의_레깅스">원피스</a></li>
-													</ul></li>
-													
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">백팩</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">힙색</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">크로스백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">호보백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">버킷백</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">토드백</a></li>
+													</ul>
+												</li>
 											</ul>
 										</div>
 										<div class="banner">
@@ -380,10 +315,8 @@
 									</div>
 								</div></li>
 							<!-- ACC -->
-							<li><a data-pan="top_cate_pan_5"
-								href="javascript:cateLink('MBMA04', '1', 'GNRL_CTGRY', 'MBMA04');"
-								data-ga-category="PC_MLB_Header" data-ga-action="ACC &amp; PET">
-									<font color="">ACC</font>
+							<li class="select"><a href="javascript:void(0)" onclick="checkCategory(this)">
+									<font>ACC/PET</font>
 							</a>
 								<div class="pan top_cate_pan_5">
 									<div class="inner">
@@ -393,59 +326,25 @@
 										</div>
 										<div class="depth">
 											<ul class="list">
-												<li><a
-													href="javascript:cateLink('MBMA04A12', '2', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A12');"
-													data-ga-category="PC_MLB_Header"
-													data-ga-action="ACC &amp; PET" data-ga-label="PET">BAG&SHOES</a>
+												<li>
+													<a href="javascript:void(0)" onclick="checkCategory(this)">ACC/PET</a>
 													<ul>
-														<li><a
-															href="javascript:cateLink('MBMA04A12A01', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A12');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="PET_의류">가방</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA04A12A02', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A12');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="PET_ACC">슈즈</a></li>
-													</ul></li>
-												<li><a
-													href="javascript:cateLink('MBMA04A13', '2', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A13');"
-													data-ga-category="PC_MLB_Header"
-													data-ga-action="ACC &amp; PET" data-ga-label="쥬얼리">쥬얼리</a>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">양말</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">마스크</a></li>
+													</ul>
+												</li>
+												<li>
 													<ul>
-														<li><a
-															href="javascript:cateLink('MBMA04A13A01', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A13');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="쥬얼리_목걸이">목걸이</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA04A13A04', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A13');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="쥬얼리_팔찌">팔찌</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA04A13A02', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A13');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="쥬얼리_귀걸이">귀걸이</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA04A13A03', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A13');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="쥬얼리_반지">반지</a></li>
-													</ul></li>
-												<li><a
-													href="javascript:cateLink('MBMA04A06', '2', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A06');"
-													data-ga-category="PC_MLB_Header"
-													data-ga-action="ACC &amp; PET" data-ga-label="악세서리">ACC</a>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">PET-의류</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">PET-ACC</a></li>
+													</ul>
+												</li>
+												<li>
 													<ul>
-														<li><a
-															href="javascript:cateLink('MBMA04A06A01', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A06');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="악세서리_양말">CAP</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA04A06A03', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A06');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="악세서리_마스크">벨트</a></li>
-														<li><a
-															href="javascript:cateLink('MBMA04A06A02', '3', 'GNRL_CTGRY', 'MBMA04', 'MBMA04A06');"
-															data-ga-category="PC_MLB_Header"
-															data-ga-action="ACC &amp; PET" data-ga-label="악세서리_기타">ETC</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">목걸이</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">팔찌</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">귀걸이</a></li>
+														<li><a href="javascript:void(0)" onclick="checkCategory(this)">반지</a></li>
 													</ul></li>
 											</ul>
 										</div>
