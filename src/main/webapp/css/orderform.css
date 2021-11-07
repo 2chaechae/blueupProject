@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/*폰트*/
+@import
+	url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap")
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap')
+	;
+
+@import url("top.css"); /*상단영역*/
+@import url("bottom.css"); /*하단영역*/
+.orderform {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.orderInfo {
+	border: 5px solid #ffffff;
+	padding: 20px;
+	height: 700px;
+	margin-top: 500px;
+	margin-bottom: 500px;
+}
+
+.orderInfo .inputArea {
+	margin: 10px 0;
+}
+
+.orderInfo .inputArea label {
+	display: inline-block;
+	width: 120px;
+	margin-right: 10px;
+}
+
+.orderInfo .inputArea input {
+	font-size: 14px;
+	padding: 5px;
+}
+
+#userAddr2, #userAddr3 {
+	width: 250px;
+}
+
+.orderInfo .inputArea:last-child {
+	margin-top: 900px;
+	margin-bottom: 900px;
+}
+
+.orderInfo .inputArea button {
+	font-size: 20px;
+	border: 2px solid #ccc;
+	padding: 5px 10px;
+	background: #fff;
+	margin-right: 20px;
+}
+.buttons_area{
+    width:100%;
+    margin-top:60px; 
+    display:flex;
+    justify-content: space-between;
+}
+.buttons_area .orderform_btn{
+    width:450px;
+    height:45px;
+    background:black;
+    
+    text-align: center;
+    color:#fff;
+    font-size:13px;
+    border:none;
+    transition:all 0.3s;
+}
+.orderform_title{
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif;
+    font-size:40px;
+    font-weight:bold;
+    margin:150px 0 20px;
+    text-align: center;
+}
+
+.productInfo{    
+    margin:150px 720px 20px;
+    width: 80px;
+	height: 100px;
+}
+.orderimg{
+	width: 50px;
+	height: 80px;
+	margin:150px 0 20px;
+} 
