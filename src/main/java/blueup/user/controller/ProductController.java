@@ -27,7 +27,7 @@ public class ProductController {
 		mav.addObject("Category", test);
 		mav.addObject("Selected", cate.getDetailed_category_name());
 		mav.addObject("Product", productserviceimpl.getProductListByDetailedCategory(cate));
-		mav.setViewName("pants");
+		mav.setViewName("ProductView");
 		return mav;
 	}
 	
