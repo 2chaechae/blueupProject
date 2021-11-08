@@ -24,7 +24,7 @@
 				<div class="ui_dp_list">
 					<ul class="list">
 						<c:forEach var="product" items="${Product}">
-							<input type="hidden" class="product_no" value="${product.product_no }" />
+							<input type="hidden" class="product_no" value="${product.product_no}"/>
 							<li>
 								<div class="item">
 									<div class="thumb">
@@ -74,27 +74,40 @@ var id = sessionStorage.getItem("id");
 function heart(element){
 var img = $(element).attr("src");
 	alert(img);
+	// 회원 위시리스트
 	if(id != null){
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
 		}else{
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
 		}
+	// 비회원 위시리스트
 	}else{
+		var no = $(element).closest('li').prev('.product_no').val();
+		//쿠키 생성 & 내용 추가
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
-			var no = $(element).closest('.product_no').val();
-			var name = $(element).closest('.name').text();
-			console.log(no);
-			console.log(name);
-			$.cookie(name, no);
+			var cookieValue = $.cookie('product');
+				if(cookieValue == undefined){
+					var cookieList = [];
+					cookieList.push(no);
+					$.cookie('product', cookieList);
+					console.log(cookieList);
+				}else{
+					cookieValue.push(no);
+					$.cookie('product', cookieValue);
+					console.log(cookieValue);
+				}
+		// 쿠키삭제 & 내용 삭제
 		}else{
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
-			var name = $(element).closest('.name').text();
-			$.removecookie(name);
+			var cookieValue = $.cookie('product');
+				cookieValue.pop(no);
+				$.removeCookie('product');
+				$.cookie('product', cookieValue);
+			}
 		}
 	}
-}
 </script>
 <%@ include file="/view/mlb/footer.jsp"%>
 </body>

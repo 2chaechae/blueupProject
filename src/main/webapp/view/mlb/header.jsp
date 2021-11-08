@@ -28,6 +28,8 @@
    <link href="https://static.mlb-korea.com/pc/static/css/cs.css?v=10-7-4-29-2" rel="stylesheet" type="text/css" />
    <link href="https://static.mlb-korea.com/pc/static/css/et.css?v=10-7-4-29-2" rel="stylesheet" type="text/css" />
    <script>var PATH_LOCALE = '';</script>
+   <script src="https://static.mlb-korea.com/pc/static/js/jquery.cookie.js"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
    <script src="https://static.mlb-korea.com/pc/static/js/jquery-ui.min.js"></script>
    <script src="https://static.mlb-korea.com/pc/static/js/min/jsrender-0.9.90.min.js"></script>   
    <script src="https://static.mlb-korea.com/pc/static/js/min/masonry.pkgd.min.js"></script>

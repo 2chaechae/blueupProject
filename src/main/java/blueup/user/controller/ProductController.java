@@ -41,23 +41,28 @@ public class ProductController {
 			mav.setViewName("ProductView");
 		}
 		
-//		else {
-//			// 비회원 - 위시리스트 쿠키 이용 
-//			Category_detailVo cate = (Category_detailVo) session.getAttribute("Selected");
-//			System.out.println("선택한 값 :" +cate.getCategory_name() + "," + cate.getDetailed_category_name());
-//			List<Category_detailVo> test = (List<Category_detailVo>) session.getAttribute("Category");
-//			for(Category_detailVo i : test) {
-//				System.out.println(i.getCategory_name());
-//			}
-//			List<ProductVo> test1 = productserviceimpl.getProductListByDetailedCategory(cate);
-//			for(ProductVo m : test1) {
-//				System.out.println(m.getDetailed_category_name());
-//			}
-//			mav.addObject("Category", test);
-//			mav.addObject("Selected", cate.getDetailed_category_name());
-//			mav.addObject("Product", productserviceimpl.getProductListByDetailedCategory(cate));
-//			mav.setViewName("ProductView");
-//		}
+		else {
+			// 비회원 - 위시리스트 쿠키 이용 
+			// 선택한 카테고리값 확인 
+			vo.put("userNO", 0);
+			vo.put("Selected", session.getAttribute("Selected"));
+			Category_detailVo cate = (Category_detailVo) session.getAttribute("Selected");
+			System.out.println("선택한 값 :" +cate.getCategory_name() + "," + cate.getDetailed_category_name());
+			// 카테고리 리스트 확인
+			List<Category_detailVo> cateList = (List<Category_detailVo>) session.getAttribute("Category");
+			for(Category_detailVo i : cateList) {
+				System.out.println(i.getCategory_name());
+			}
+			// 상품 확인
+			List<ProductVo> test1 = productserviceimpl.getProductListByDetailedCategory(vo);
+			for(ProductVo m : test1) {
+				System.out.println(m.getDetailed_category_name());
+			}
+			mav.addObject("Category", cateList);
+			mav.addObject("Selected", cate.getDetailed_category_name());
+			mav.addObject("Product", productserviceimpl.getProductListByDetailedCategory(vo));
+			mav.setViewName("ProductView");
+		}
 		return mav;
 	}
 	
