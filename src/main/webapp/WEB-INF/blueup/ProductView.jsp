@@ -94,9 +94,15 @@ var img = $(element).attr("src");
 					$.cookie('product', cookieList);
 					console.log(cookieList);
 				}else{
-					cookieValue.push(no);
-					$.cookie('product', cookieValue);
-					console.log(cookieValue);
+					var cookieList = [];
+					console.log(cookieValue.length);
+					for(var i=0; i < cookieValue.length-1; i++){
+						console.log(cookieValue[i]);
+						cookieList.push(cookieValue[i]);
+					}
+					cookieList.push(no);
+					$.cookie('product', cookieList);
+					console.log(cookieList);
 				}
 		// 쿠키삭제 & 내용 삭제
 		}else{
