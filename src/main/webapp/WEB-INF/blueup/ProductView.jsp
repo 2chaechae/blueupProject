@@ -87,22 +87,19 @@ var img = $(element).attr("src");
 		//쿠키 생성 & 내용 추가
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
-			var cookieValue = $.cookie('product');
-				if(cookieValue == undefined){
-					var cookieList = [];
+			var getlist = $.cookie('product');
+				if(getlist == undefined){
+					var cookieList = new Array();
 					cookieList.push(no);
 					$.cookie('product', cookieList);
-					console.log(cookieList);
+					console.log("첫번째값 넣기 :" + cookieList);
 				}else{
-					var cookieList = [];
-					console.log(cookieValue.length);
-					for(var i=0; i < cookieValue.length-1; i++){
-						console.log(cookieValue[i]);
-						cookieList.push(cookieValue[i]);
-					}
-					cookieList.push(no);
-					$.cookie('product', cookieList);
-					console.log(cookieList);
+					var cookieValue = getlist.split(',');
+					console.log("기존쿠키: " + cookieValue);
+					cookieValue.push(no);
+					console.log("두번째 쿠키 넣기 : " + cookieValue);
+					$.cookie('product', cookieValue);
+
 				}
 		// 쿠키삭제 & 내용 삭제
 		}else{
