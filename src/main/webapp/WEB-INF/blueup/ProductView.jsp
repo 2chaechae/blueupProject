@@ -70,7 +70,7 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-var id = 1;
+var id = sessionStorage.getitem("userNO");
 console.log(id);
 
 function heart(element){
@@ -114,7 +114,8 @@ var img = $(element).attr("src");
 		}
 	// 비회원 위시리스트
 	}else{
-		var no = $(element).closest('li').prev('.product_no').val();
+		var no = $(element).closest('li').prev().prev().val();
+		console.log(no);
 		//쿠키 생성 & 내용 추가
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
