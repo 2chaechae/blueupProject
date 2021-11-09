@@ -45,6 +45,9 @@
 								</colgroup>
 								<thead>
 									<tr>
+										<th scope="col">
+											<input type="checkbox" id="smsRecptnAgrYn" name="smsRecptnAgrYn" value="Y" >
+										</th>
 										<th scope="col">번호</th>
 										<th scope="col">제목</th>
 										<th scope="col">작성일</th>
@@ -52,7 +55,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="5" class="no-result">공지내역이 없습니다.</td>
+										<td colspan="4" class="no-result">공지내역이 없습니다.</td>
 									</tr>
 									</tbody>
 							</table>
@@ -84,6 +87,9 @@
 								</colgroup>
 								<thead>
 									<tr>
+										<th scope="col">
+											<input type="checkbox" id="smsRecptnAgrYn" name="smsRecptnAgrYn" value="Y" >
+										</th>
 										<th scope="col">번호</th>
 										<th scope="col">제목</th>
 										<th scope="col">작성일</th>
@@ -91,7 +97,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="3" class="no-result">약관내용이 없습니다.</td>
+										<td colspan="4" class="no-result">약관내용이 없습니다.</td>
 									</tr>
 									</tbody>
 							</table>

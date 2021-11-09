@@ -13,27 +13,30 @@
     					<a href="#"><span>공지사항/약관 관리</span></a>
     				</li>
     				<li>
-    					<a href="#"><span>쿠폰 관리</span></a>
+    					<a href="#"><span>문의 관리</span></a>
     				</li>
     				<li>
+    					<a href="#"><span>쿠폰 관리</span></a>
+    				</li>
+    				<!-- <li>
     					<a href="#"><span>배너 관리</span></a>
     				</li>
     				<li>
     					<a href="#"><span>카테고리 관리</span></a>
-    				</li>
+    				</li> -->
     			</ul>
     		</li>
     		<li id="myNavi2">
     			<a href="javascript:;"><span>주문 관리</span></a>
     			<ul>
     				<li>
-    					<a href="#"><span>주문 통계내역</span></a>
+    					<a href="#"><span>통계내역</span></a>
     				</li>
     				<li>
     					<a href="#"><span>일일주문내역</span></a>
     				</li>
     				<li>
-    					<a href="#"><span>주문 현황</span></a>
+    					<a href="#"><span>배송/주문 관리</span></a>
     				</li>
     			</ul>
     		</li>
@@ -53,33 +56,12 @@
     					<a href="#"><span>취소 관리</span></a>
     				</li>
     				<li>
-    					<a href="#"><span>재고관리</span></a>
+    					<a href="#"><span>재고/파손품 관리</span></a>
     				</li>
     			</ul>
     		</li>
+ 
     		<li id="myNavi4">
-    			<a href="javascript:;"><span>문의/공지사항 관리</span></a>
-    			<ul>
-    				<li>
-    					<a href="#"><span>문의 관리</span></a>
-    				</li>
-    				<li>
-    					<a href="#"><span>공지 관리</span></a>
-    				</li>
-    			</ul>
-    		</li>
-    		<li id="myNavi5">
-    			<a href="javascript:;"><span>배송관리</span></a>
-    			<ul>
-    				<li>
-    					<a href="#"><span>배송 관리</span></a>
-    				</li>
-    				<li>
-    					<a href="#"><span>반품/교환관리</span></a>
-    				</li>
-    			</ul>
-    		</li>
-    		<li id="myNavi6">
     			<a href="javascript:;"><span>정산관리</span></a>
     			<ul>
     				<li>
