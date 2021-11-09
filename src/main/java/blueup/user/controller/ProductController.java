@@ -1,7 +1,10 @@
 package blueup.user.controller;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +23,12 @@ public class ProductController {
 	
 	// 하위 카테고리 기준 상품 조회
 	@RequestMapping("/getProduct.do")
-	public ModelAndView getProduct(HttpSession session) {
+	public ModelAndView getProduct(HttpSession session, HttpServletRequest req) {
 		//return value
 		ModelAndView mav = new ModelAndView();
 		HashMap<Object, Object> vo = new HashMap<Object, Object>();
 		if(session.getAttribute("userNO") != null) {
+			System.out.println("회원");
 			// 회원 - 위시리스트 db 이용
 			System.out.println(session.getAttribute("userNO"));
 			vo.put("userNO", session.getAttribute("userNO"));
@@ -42,25 +46,48 @@ public class ProductController {
 		}
 		
 		else {
-			// 비회원 - 위시리스트 쿠키 이용 
+			////////////////// 비회원////////////////////////
 			// 선택한 카테고리값 확인 
+			System.out.println("비회원");
 			vo.put("userNO", 0);
 			vo.put("Selected", session.getAttribute("Selected"));
 			Category_detailVo cate = (Category_detailVo) session.getAttribute("Selected");
 			System.out.println("선택한 값 :" +cate.getCategory_name() + "," + cate.getDetailed_category_name());
+			
 			// 카테고리 리스트 확인
 			List<Category_detailVo> cateList = (List<Category_detailVo>) session.getAttribute("Category");
 			for(Category_detailVo i : cateList) {
 				System.out.println(i.getCategory_name());
 			}
 			// 상품 확인
-			List<ProductVo> test1 = productserviceimpl.getProductListByDetailedCategory(vo);
-			for(ProductVo m : test1) {
-				System.out.println(m.getDetailed_category_name());
+			List<ProductVo> productValue = productserviceimpl.getProductListByDetailedCategory(vo);
+			
+			// 쿠키 값 확인 및 상품list mav에 추가
+			Cookie cookies[] = req.getCookies();
+			String[] p_no = null;
+			for(Cookie c : cookies) {
+				if(c.getName().equals("product")) {
+					System.out.println("test");
+					String value = c.getValue();
+					System.out.println("1 : " + value);
+					p_no = value.split("%2C");
+				}
+			}
+
+			if(p_no != null) {
+				for(int i =0; i < productValue.size(); i++) {
+					for(String p : p_no) {
+						System.out.println("test");
+						System.out.println(p);
+						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
+							productValue.get(i).setWish_no(1);
+						}
+					}
+				}
 			}
 			mav.addObject("Category", cateList);
 			mav.addObject("Selected", cate.getDetailed_category_name());
-			mav.addObject("Product", productserviceimpl.getProductListByDetailedCategory(vo));
+			mav.addObject("Product", productValue);
 			mav.setViewName("ProductView");
 		}
 		return mav;
