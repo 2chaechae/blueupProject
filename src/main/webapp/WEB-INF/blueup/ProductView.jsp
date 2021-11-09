@@ -25,6 +25,7 @@
 					<ul class="list">
 						<c:forEach var="product" items="${Product}">
 							<input type="hidden" class="product_no" value="${product.product_no}"/>
+							<input type="hidden" class="wish_no" value="${product.wish_no}"/>
 							<li>
 								<div class="item">
 									<div class="thumb">
@@ -69,7 +70,8 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-var id = sessionStorage.getItem("id");
+var id = 1;
+console.log(id);
 
 function heart(element){
 var img = $(element).attr("src");
@@ -77,9 +79,38 @@ var img = $(element).attr("src");
 	// 회원 위시리스트
 	if(id != null){
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
+			console.log("test");
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
+			var p_no = $(element).closest('li').prev().prev().val();
+			console.log(p_no);
+				$.ajax({
+					url:'/test/insertWishList.do',
+				    type:'POST',
+				   	cache:false,
+					data: {"user_no":id , "product_no":p_no},
+					success:function() {
+						alert('위시리스트에 담겼습니다.');
+					},
+					error:function() {
+						alert('다시 시도해주세요');
+					}
+				});
 		}else{
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
+			var w_no = $(element).closest('li').prev('.wish_no').val();
+			console.log(w_no);
+				$.ajax({
+					url:'/test/deleteWishList.do',
+				    type:'POST',
+				   	cache:false,
+					data: {"user_no":id , "wish_no":w_no},
+					success:function() {
+						alert('제외되었습니다.');
+					},
+					error:function() {	
+						alert('다시 시도해주세요');
+					}
+				});
 		}
 	// 비회원 위시리스트
 	}else{

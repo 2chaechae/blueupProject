@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import blueup.user.vo.NoticeVo;
+import blueup.user.vo.WishListVo;
 
 @Repository
 public class NoticeDAO {
-
 	@Autowired
 	private SqlSessionTemplate sqlSssionTemplate;
 	

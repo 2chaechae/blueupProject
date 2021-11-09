@@ -49,6 +49,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVo> getProductListBySearch(ProductVo vo) {
 		return productdao.getProductListBySearch(vo);
 	}
+
+	@Override
+	public List<ProductVo> getProductListBywishList(String userid) {
+		return productdao.getProductListBywishList(userid);
+	}
 	
 
 

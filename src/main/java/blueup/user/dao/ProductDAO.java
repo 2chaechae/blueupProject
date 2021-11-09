@@ -33,6 +33,14 @@ public class ProductDAO {
 		return sqlSssionTemplate.selectList("productDao.getProductListByDetailedCategory", vo);
 	}
 
+	public List<ProductVo> getProductListBywishList(String userid){
+		return sqlSssionTemplate.selectList("productDao.getProductListBywishList", userid);
+	}
+	
+	
+	
+	
+	/////////////////////// 아직 안쓴거 /////////////////////////
 	public ProductVo getProduct(ProductVo vo) {
 		return sqlSssionTemplate.selectOne("productDao.getProduct", vo);
 	}

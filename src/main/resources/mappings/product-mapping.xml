@@ -61,6 +61,14 @@
 		WHERE a.detailed_category_name = #{Selected.detailed_category_name};
 	</select>
 
+	<!-- 특정 회원의 wishList 상품 조회 -->
+	<select id="getProductListBywishList" resultType="productvo" parameterType="String">
+		SELECT a.main_image, a.product_no, a.product_price, a.product_name, b.wish_no, b.user_no
+		FROM product as a RIGHT JOIN wishlist as b
+		ON a.product_no = b.product_no 
+		WHERE b.user_no = #{userNO};
+	</select>
+	
 	<!-- 특정 상품 조회 -->
 	<select id="getProduct" resultType="productvo" parameterType="productvo">
 		SELECT * FROM PRODUCT

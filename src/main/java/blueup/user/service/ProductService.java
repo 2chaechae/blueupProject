@@ -14,4 +14,5 @@ public interface ProductService {
 	public ProductVo getProduct(ProductVo vo);
 	public List<ProductVo> getProductList(ProductVo vo);
 	public List<ProductVo> getProductListBySearch(ProductVo vo);
+	public List<ProductVo> getProductListBywishList(String userid);
 }
