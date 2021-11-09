@@ -1,17 +1,13 @@
 package blueup.user.controller;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import blueup.admin.vo.ProductVo;
 import blueup.user.service.ProductServiceImpl;
 import blueup.user.vo.Category_detailVo;
@@ -75,8 +71,6 @@ public class ProductController {
 			if(p_no != null) {
 				for(int i =0; i < productValue.size(); i++) {
 					for(String p : p_no) {
-						System.out.println("test");
-						System.out.println(p);
 						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
 							productValue.get(i).setWish_no(1);
 						}
@@ -138,8 +132,6 @@ public class ProductController {
 			if(p_no != null) {
 				for(int i =0; i < productValue.size(); i++) {
 					for(String p : p_no) {
-						System.out.println("test");
-						System.out.println(p);
 						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
 							productValue.get(i).setWish_no(1);
 						}
