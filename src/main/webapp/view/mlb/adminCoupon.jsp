@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
 						<tr>
 						<th scope="row"><label for="">고객 선택</label></th>
 							<td>
-							<input type="checkbox" id="smsRecptnAgrYn" name="smsRecptnAgrYn" value="Y" >
+									<input type="checkbox" id="smsRecptnAgrYn" name="smsRecptnAgrYn" value="Y" >
 										<span>전체 회원</span>
 										<input type="checkbox" id="smsRecptnAgrYn" name="smsRecptnAgrYn" value="Y" >
 										<span>재구매 고객</span>
