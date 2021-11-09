@@ -28,8 +28,8 @@ public class ProductController {
 		ModelAndView mav = new ModelAndView();
 		HashMap<Object, Object> vo = new HashMap<Object, Object>();
 		if(session.getAttribute("userNO") != null) {
+			/////////////////////////회원//////////////////////////
 			System.out.println("회원");
-			// 회원 - 위시리스트 db 이용
 			System.out.println(session.getAttribute("userNO"));
 			vo.put("userNO", session.getAttribute("userNO"));
 			// 선택한 카테고리값 확인 
@@ -46,8 +46,7 @@ public class ProductController {
 		}
 		
 		else {
-			////////////////// 비회원////////////////////////
-			// 선택한 카테고리값 확인 
+			/////////////////////////비회원//////////////////////////
 			System.out.println("비회원");
 			vo.put("userNO", 0);
 			vo.put("Selected", session.getAttribute("Selected"));
@@ -59,21 +58,20 @@ public class ProductController {
 			for(Category_detailVo i : cateList) {
 				System.out.println(i.getCategory_name());
 			}
-			// 상품 확인
-			List<ProductVo> productValue = productserviceimpl.getProductListByDetailedCategory(vo);
 			
 			// 쿠키 값 확인 및 상품list mav에 추가
+			List<ProductVo> productValue = productserviceimpl.getProductListByDetailedCategory(vo);
 			Cookie cookies[] = req.getCookies();
 			String[] p_no = null;
+			// 쿠키 값 확인 
 			for(Cookie c : cookies) {
 				if(c.getName().equals("product")) {
-					System.out.println("test");
 					String value = c.getValue();
-					System.out.println("1 : " + value);
 					p_no = value.split("%2C");
 				}
 			}
-
+			
+			// 쿠키 값 == 상품번호 wish no 수정 
 			if(p_no != null) {
 				for(int i =0; i < productValue.size(); i++) {
 					for(String p : p_no) {
@@ -95,12 +93,12 @@ public class ProductController {
 	
 	// 상위 카테고리 기준 전체 상품 조회
 	@RequestMapping("/getProductAll.do")
-	public ModelAndView getProductByDetail(HttpSession session) {
+	public ModelAndView getProductByDetail(HttpSession session,  HttpServletRequest req) {
 		//return value
 		HashMap<Object, Object> vo = new HashMap<Object, Object>();
 		ModelAndView mav = new ModelAndView();
 		if(session.getAttribute("userNO") != null) {
-			// 회원 - 위시리스트 db 이용
+			/////////////////////////회원//////////////////////////
 			System.out.println(session.getAttribute("userNO"));
 			vo.put("userNO", session.getAttribute("userNO"));
 			// 선택한 카테고리 값 가져오기
@@ -110,13 +108,48 @@ public class ProductController {
 			
 			mav.addObject("Product", productserviceimpl.getProductListByCategory(vo)); // 선택 카테고리 기준 상품 & wishlist
 			mav.setViewName("ProductView");
-//		}else {
-//			// 비회원 - 위시리스트 쿠키 이용 
-//			Category_detailVo vo = (Category_detailVo) session.getAttribute("Selected");
-//			System.out.println("상위 카테고리 값 : " + vo.getCategory_name());
-//			mav.addObject("Product", productserviceimpl.getProductListByCategory(vo));
-//			mav.setViewName("ProductView");
-//		}
+		}else {
+			/////////////////////////비회원//////////////////////////
+			System.out.println("비회원");
+			vo.put("userNO", 0);
+			vo.put("Selected", session.getAttribute("Selected"));
+			Category_detailVo cate = (Category_detailVo) vo.get("Selected");
+			System.out.println("상위 카테고리 값 : " + cate.getCategory_name());
+			
+			// 카테고리 리스트 확인
+			List<Category_detailVo> cateList = (List<Category_detailVo>) session.getAttribute("Category");
+			for(Category_detailVo i : cateList) {
+				System.out.println(i.getCategory_name());
+			}
+			
+			// 쿠키 값 확인 및 상품list mav에 추가
+			List<ProductVo> productValue = productserviceimpl.getProductListByCategory(vo);
+			Cookie cookies[] = req.getCookies();
+			String[] p_no = null;
+			// 쿠키 값 확인 
+			for(Cookie c : cookies) {
+				if(c.getName().equals("product")) {
+					String value = c.getValue();
+					p_no = value.split("%2C");
+				}
+			}
+			
+			// 쿠키 값 == 상품번호 wish no 수정 
+			if(p_no != null) {
+				for(int i =0; i < productValue.size(); i++) {
+					for(String p : p_no) {
+						System.out.println("test");
+						System.out.println(p);
+						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
+							productValue.get(i).setWish_no(1);
+						}
+					}
+				}
+			}
+			mav.addObject("Category", cateList);
+			mav.addObject("Selected", cate.getCategory_name());
+			mav.addObject("Product", productValue);
+			mav.setViewName("ProductView");
 		}
 		return mav;
 	}
