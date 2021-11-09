@@ -70,7 +70,8 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-var id = sessionStorage.getitem("userNO");
+//var id = sessionStorage.getitem("userNO");
+var id = 1;
 console.log(id);
 
 function heart(element){
