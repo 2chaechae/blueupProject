@@ -1,0 +1,416 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap');
+
+@import url("top.css");/*상단영역*/
+@import url("bottom.css");/*하단영역*/
+
+/*reset*/
+body{
+	font:normal 16px/1.5em "Noto Sans KR", sans-serif; 
+	color:#333333;
+}
+h2{
+	font:normal 80px/1.5em "Nanum Myeongjo", serif;
+}
+
+h3{
+	font:bold 20px/1.5em "Noto Sans KR", sans-serif;
+	color:#333333;
+}
+h4{
+	font:bold 18px/1.5em "Noto Sans KR", sans-serif;
+	color:#333333;
+}
+
+
+/*//////메인배너/////*/
+#banner {
+	width:1920px;
+	height:480px;
+	margin:0 auto;
+	position:relative;
+}
+/*이미지 위 색상박스 씌우기*/
+#banner > p::before{
+	content:"";
+	position:absolute;
+	left:0; top:0;
+	width:1920px; height:480px;
+	background-color:rgba(0,37,35,0.7);
+}
+/*배너내용*/
+#ban_con{
+	position:absolute;
+	left:50%; top:50%;
+	transform:translate(-50%, -50%);
+	text-align:center;
+	color:#ffffff;
+	margin:0 auto;
+}
+#ban_con > h2{
+	margin-bottom:20px;
+}
+#ban_con > p{
+	font-size:20px;
+}
+
+/*////페이지위치////*/
+/*페이지 전체*/
+#page_wrap{
+	height:45px;
+	width:100%;
+	margin:100px auto;
+	border-bottom:1px solid #cccccc;
+	color:#aaaaaa;
+	min-width:1920px;
+}
+#page{
+	width:1200px;
+	height:45px;
+	margin:0 auto;
+}
+
+/*페이지위치 오른쪽*/
+#r_page{
+	float:right;
+	font-size:14px;
+	height:45px;
+	line-height:45px;
+}
+#r_page > li{
+	display:inline-block;
+	margin-right:7px;
+}
+#r_page > li:last-child{
+	color:#111111;
+}
+
+/*/////내용 전체///////*/
+#con_wrap{width:1920px; height:100%; margin:0 auto; }
+
+#cs_wrap{width:1200px; height:100%; margin:50px auto 0 auto;}
+/*///내용왼쪽///*/
+#con_left{float:left;}
+
+/*////////고객센터 리스트//////////*/
+#list_wrap{
+	width:250px;
+	height:600px;
+	padding:30px;
+	box-sizing:border-box;
+}
+
+/*///리스트1///*/
+#list1 {margin-bottom:35px;}
+#list1 > li{
+	line-height:2.5em;
+	font-size:18px;
+}
+#list_lia.sel{color:#333333;}
+#list1 .list_li2 span{
+	float:right;
+	font-size:20px;
+}
+#list1 .list_li2 div{
+	margin-left:10px;
+	font-size:14px;
+}
+#list1 .list_li2 div a{color:#707070;}
+/*리스트1의 마지막*/
+.list_last{
+	padding-bottom:20px;
+	border-bottom:1px solid #cccccc;
+}
+#list1 > li >a:hover{color:#333333; font-weight:bold;}
+#list1 > .list_li2 > div > ul > li > a:hover{color:#333333; font-weight:bold;} 
+/*///리스트2///*/
+#list2 > li{line-height:2em;}
+#list2 > li:first-child{
+	line-height:31px;
+	float:left;
+}
+#list2 > li:nth-child(2){
+	float:left;
+	margin-left:10px;
+}
+#list2 > li:nth-child(3){
+	clear:both;
+	font-size:30px;
+	font-weight:bold;
+}
+#list2 > li:nth-child(5){
+	font-size:14px;
+	color:#707070;
+}
+#list2 > li:nth-child(6){
+	font-size:14px;
+	color:#333333;
+}
+
+/*/////내용오른쪽/////*/
+#con_right{
+	float:right;
+	width:900px;
+	height:100%;
+	margin-bottom:50px;
+}
+
+/*/////고객서비스/////*/
+#service_wrap{
+	clear:both;
+	width:900px;
+	height:135px;
+	border:1px solid #cccccc;
+}
+.service{
+	float:left;
+	width:225px;
+	height:135px;
+	text-align:center;
+	border-right:1px solid #cccccc;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+.service:last-child{border-right:0;}
+.service > img{margin-top:30px;}
+.service > figcaption{width:85px; margin:0 auto;}
+.service:nth-child(3) > figcaption{width:150px; margin:0 auto;}
+
+/*/////공지사항/////*/
+#notice{
+	float:left;
+	margin-top:80px;
+	width:900px;
+	height:234px;
+}
+/*공지사항/카탈로그 공통*/
+.no_tit{
+	height:50px;
+	line-height:50px;
+	border-bottom:1px solid #cccccc;
+}
+.no_tit > h3{
+	margin-top:10px;
+	float:left;
+	cursor:pointer;
+}
+
+.btn_wrap{
+	width:100%;
+    margin-top:60px; 
+    display:flex;
+    justify-content: space-between;
+}
+
+#btn1{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
+#btn2{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
+#btn3{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
+#btn4{
+    width:200px;
+    height:55px;
+    background:white;
+    text-align: center;
+    color:black;
+    font-size:15px;
+    border:2px, solid black;
+    cursor:pointer;
+}
+/*전체보기*/
+.all{
+	float:right;
+	cursor:pointer;
+}
+.all a{
+	font-size:13px;
+	color:#707070;
+}
+.all a:hover{
+	color:#333333;
+	font-weight:bold;
+}
+/*공지사항 목록*/
+#notice > ul{clear:both;}
+#notice > ul > li{
+	width:900px;	
+	height:60px;
+	line-height:60px;
+	font-size:14px;
+	padding-left:20px;
+	box-sizing:border-box;
+	border-bottom:1px dotted #cccccc;
+	cursor:pointer;
+}
+#notice > ul > li > a{
+	color:#707070;
+}
+#notice > ul > li:hover > a{
+	color:#333333;
+}
+
+.nt_txt{
+	font-size:13px;
+	float:right;
+}
+
+/*/////카탈로그//////*/
+#catalog{
+	float:right;
+	margin-top:80px;
+	width:430px;
+	height:234px;
+	margin-bottom:70px;
+}
+#catalog_con{
+	clear:both;
+	margin-left:20px;
+}
+
+#catalog_con > img{
+	float:left;
+	margin-top:10px;
+	margin-left:10px;
+}
+#catalog_con > figcaption{
+	float:right;
+	margin-right:20px;
+	margin-top:40px;
+	font:bold 18px/1.5em "Nanum Myeongjo", serif;
+	cursor:pointer;
+}
+#catalog_con > figcaption >a{
+	color:#333333;
+}
+
+
+/*검색창 폼*/
+#sear_form{
+	position:absolute;
+	left:50%; top:50%;
+	transform:translate(-50%, -50%);
+	width:650px;
+	height:35px;
+}
+#sear_form > label{
+	float:left;
+	line-height:35px;
+	color:#707070;
+}
+/*검색 입력창*/
+#sear_input{
+	border:1px solid #cccccc;
+	width:400px;
+	height:35px;
+	margin-left:20px;
+	float:left;
+	font-size:13px;
+	padding-left:10px;
+	box-sizing:border-box;
+}
+#sear_input:focus{outline:none;}
+/*검색버튼*/
+.sear_btn{
+	width:90px;
+	height:35px;
+	border:none;
+	border-radius:5px;
+	background-color:#006a67;
+	float:right;
+	cursor:pointer;
+}
+#sear_btn{width:90px; height:35px; border:none; background:transparent; line-height:35px; text-align:center; color:white; cursor:pointer;}
+.sear_btn:hover{
+	color:#333333; opacity:0.8;
+}
+
+/*///자주찾는 질문 Top5///*/
+.top5_wrap{
+	clear:both;
+	width:1150px;
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+/*자주찾는질문 Top5제목*/
+.top5_wrap > h4{
+	border-bottom:1px solid #cccccc;
+	padding-bottom:20px;
+}
+
+.top5_wrap > dl{
+	width:1100px;
+}
+.top5_wrap > dl > dt{
+	width:1100px;
+	height:60px;
+	line-height:60px;
+	border-bottom:1px dotted #cccccc;
+	cursor:pointer;
+}
+.top5_wrap > dl > dt > p{
+	background:url(../images/csc/down.png)no-repeat 850px center;
+}
+.top5_wrap > dl > dt > p.selected{
+	color:#333333;
+	font-weight:bold;
+	background-image:url(../images/csc/up.png)
+}
+
+.top5_wrap > dl > dt > p > .t5_num{
+	display:inline-block;
+	width:100px;
+	text-align:center;
+	font-size:14px;
+	color:#707070;
+}
+.top5_wrap > dl > dt > p >.top_tit {
+	display:inline-block;
+	width:100px;
+	text-align:center;
+	margin-right:50px;
+}
+.top5_wrap > dl > dd{
+	padding-left:200px;
+	height:100%;
+	font-size:14px;
+	padding-top:25px;
+	padding-bottom:25px;
+}
+
+.top_tit1 {
+	display:inline-block;
+	width:100px;
+	text-align:center;
+	margin-right:50px;
+}
+.faq_wrap {
+	padding-bottom:20px;
+}

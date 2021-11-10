@@ -1,5 +1,7 @@
 package blueup.user.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ public class NoticeController {
 	@RequestMapping("/getNoticeList.do")
 	public ModelAndView getNoticeList(NoticeVo vo, ModelAndView mav) {
 		mav.addObject("noticeList", noticeserviceimpl.getnoticeList(vo));
-		mav.setViewName("cscenter");
+		mav.setViewName("nscenter");
 		return mav;
 	}
 	
@@ -46,7 +48,7 @@ public class NoticeController {
 	public ModelAndView insertNotice(NoticeVo vo) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("NoticeVo", noticeserviceimpl.insertNotice(vo));
-		mav.setViewName("redirect:cscenter.jsp");
+		mav.setViewName("redirect:nscenter.jsp");
 		return mav;
 	}
 	
@@ -55,7 +57,7 @@ public class NoticeController {
 	public ModelAndView deleteNotice(NoticeVo vo) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("NoticeVo", noticeserviceimpl.deleteNotice(vo));
-		mav.setViewName("redirect:cscenter.jsp");
+		mav.setViewName("redirect:nscenter.jsp");
 		return mav;
 	}
 	
@@ -64,7 +66,19 @@ public class NoticeController {
 	public ModelAndView updateNotice(NoticeVo vo) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("NoticeVo", noticeserviceimpl.updateNotice(vo));
-		mav.setViewName("redirect:cscenter.jsp");
+		mav.setViewName("getNoticeList.do");
 		return mav;
 	}
+	// 공지사항 선택해서 조회
+	@RequestMapping("/getnoticeone.do")
+	public ModelAndView getselectNoticeCnt(NoticeVo vo, ModelAndView mav) {
+		mav.addObject("getnoticeone", noticeserviceimpl.getnoticeone(vo));
+		NoticeVo test = noticeserviceimpl.getnoticeone(vo);
+		System.out.println(test.getNotice_title());
+		mav.setViewName("gongjidetail");
+		return mav;
+	}
+	
 }
+
+	
