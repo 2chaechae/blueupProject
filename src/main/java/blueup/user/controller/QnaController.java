@@ -34,7 +34,7 @@ public class QnaController {
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(qnaService.getCountInService());
+		pageMaker.setTotalCount(qnaService.getCountInService()); //ÃÑ°è¼ö
 		
 		List<QnaVo> list = qnaService.getQnaListInService(cri);
 		mav.addObject("pageNum", pageNum);

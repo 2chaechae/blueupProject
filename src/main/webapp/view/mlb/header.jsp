@@ -360,7 +360,7 @@
 									</div>
 								</div></li>
 							<!-- 위시리스트 -->
-							<li class="kids"><a href="/getWishList.do">WISHLIST</font><img /></a>
+							<li class="kids"><a href="/test/getWishList.do">WISHLIST</font><img /></a>
 							</li>
 							<!-- Community -->
 							<li><a data-pan="top_cate_pan_7"

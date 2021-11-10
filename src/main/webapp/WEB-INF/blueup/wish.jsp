@@ -14,7 +14,7 @@
 			<h2 class="title01">위시리스트</h2>
 		<nav id="lnb" class="lnb-nav">
         <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
-    	<p><b>이하진</b>님<br/>반갑습니다.</p>
+    	<p><b>${session.userNO}</b>님<br/>반갑습니다.</p>
     	<hr class="hr-ddd" />
     	
     	<ul class="nav-mnlist">
@@ -96,7 +96,7 @@
 
 			<div class="tbst-div">
 				<div class="mid fl">
-					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt"></em></span>건)
+					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt">1</em></span>건)
 				</div>
 				<div class="mid fr">
 					<a href="#" class="btn fill sm" onclick="javascript:deleteAllWishList(); return false;" data-ga-category="PC_MLB_위시리스트" data-ga-action="전체삭제"><span>전체삭제</span></a>
@@ -104,14 +104,33 @@
 			</div>
 
 			<hr class="hr-666" />
-			<div id="includeWishList"><p class="list-noneinfo">위시리스트 보관 상품이 없습니다.<br>상품을 위시리스트에 담아 두시면 언제든지 쉽게 상품을 찾으실 수 있습니다.</p>
-			<form id="srchForm" action="" method="post">
-				<input type="hidden" name="_csrf" value="e10c8807-8415-4905-b1ec-a9230cf6bc3f">
-				<input type="hidden" name="wishlstSn" id="wishlstSn" value="">
-				<input type="hidden" name="godTurn" id="godTurn" value="">
-			</form>
+			<div id="includeWishList">
+				<!--
+					<p class="list-noneinfo">위시리스트 보관 상품이 없습니다.<br>상품을 위시리스트에 담아 두시면 언제든지 쉽게 상품을 찾으실 수 있습니다.</p>
+					<form id="srchForm" action="" method="post">
+						<input type="hidden" name="_csrf" value="e10c8807-8415-4905-b1ec-a9230cf6bc3f">
+						<input type="hidden" name="wishlstSn" id="wishlstSn" value="">
+						<input type="hidden" name="godTurn" id="godTurn" value="">
+					</form>
+				-->
+				<div>
+					<ul>
+						<li>
+							<div>
+								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; margin-bottom:200px;">
+							</div>
+							<div style="width:242px; text-align:center;">  
+								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
+								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
+							</div>
+							<div style="width:242px; display: flex;">
+								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
-
 			<hr class="hr-ddd" />
 		</main>
 		</div>
