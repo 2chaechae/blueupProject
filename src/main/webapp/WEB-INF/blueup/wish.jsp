@@ -115,11 +115,10 @@
 				-->
 				<div>
 					<ul>
-						<li>
-							<div>
+						<li style="display:inline-flex;">
+							<div style="width:250px; margin:0 auto;">
 								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; margin-bottom:200px;">
-							</div>
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
 							<div style="width:242px; text-align:center;">  
 								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
 								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
@@ -127,8 +126,56 @@
 							<div style="width:242px; display: flex;">
 								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
 							</div>
+							</div>
+							<div style="width:250px; margin:0 auto;">
+								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
+							<div style="width:242px; text-align:center;">  
+								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
+								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
+							</div>
+							<div style="width:242px; display: flex;">
+								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+							</div>
+							</div>
+							<div style="width:250px; margin:0 auto;">
+								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
+							<div style="width:242px; text-align:center;">  
+								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
+								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
+							</div>
+							<div style="width:242px; display: flex;">
+								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+							</div>
+							</div>
+							<div style="width:250px; margin:0 auto;">
+								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
+							<div style="width:242px; text-align:center;">  
+								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
+								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
+							</div>
+							<div style="width:242px; display: flex;">
+								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+							</div>
+							</div>
+						</li>
+						<li style="display:inline-flex;">
+							<div style="width:250px; margin:0 auto;">
+								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
+							<div style="width:242px; text-align:center;">  
+								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
+								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
+							</div>
+							<div style="width:242px; display: flex;">
+								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+							</div>
+							</div>
 						</li>
 					</ul>
+					
 				</div>
 			</div>
 			<hr class="hr-ddd" />
