@@ -368,6 +368,7 @@
 								data-ga-category="PC_MLB_Header" data-ga-action="MONOGRAM">
 									<font color="">COMMUNITY</font>
 								</a>
+								<li><a href="/test/getNoticeList.do" >공지사항</a></li>
 								<!-- <div class="pan top_cate_pan_7">
 									<div class="inner">
 									</div>
