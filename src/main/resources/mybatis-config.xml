@@ -14,7 +14,7 @@
 		<typeAlias type="blueup.user.vo.QnaVo" alias="qnavo"/>
 		<typeAlias type="blueup.user.vo.Category_detailVo" alias="cateDetailvo"/>
 		<typeAlias type="blueup.user.vo.CategoryVo" alias="categoryvo"/>
-		<typeAlias type="blueup.user.paging.Criteria" alias="cri" />
+		<typeAlias type="blueup.user.paging.Criteria" alias="cri"  />
 		<typeAlias type="blueup.user.vo.WishListVo" alias="wishvo" />
 	</typeAliases>
 	<mappers>

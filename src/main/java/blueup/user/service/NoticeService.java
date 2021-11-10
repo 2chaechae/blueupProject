@@ -11,4 +11,5 @@ public interface NoticeService {
 	public void updateNoticeCnt(NoticeVo vo);
 	public List<NoticeVo> getnoticeList(NoticeVo vo);
 	public String getNoticeCnt(NoticeVo vo);
+	public NoticeVo getnoticeone(NoticeVo vo);
 }

@@ -48,4 +48,11 @@
 		SELECT * FROM NOTICE
 	</select>
 	
+	<!-- 특정 공지사항 검색 -->
+	<select id="getnoticeone" parameterType="noticevo" resultType="noticevo">
+		SELECT NOTICE_NO, NOTICE_TYPE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_CNT, NOTICE_TIME
+		FROM NOTICE
+		WHERE NOTICE_NO = #{notice_no}
+	</select>
+	
 </mapper>

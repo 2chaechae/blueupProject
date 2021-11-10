@@ -37,4 +37,8 @@ public class NoticeDAO {
 	public String getnoticeCnt(NoticeVo vo) {
 		return sqlSssionTemplate.selectOne("noticeDao.getNoticeCnt", vo);
 	}
+	
+	public NoticeVo getnoticeone(NoticeVo vo) {
+		return sqlSssionTemplate.selectOne("noticeDao.getnoticeone", vo);
+	}
 }
