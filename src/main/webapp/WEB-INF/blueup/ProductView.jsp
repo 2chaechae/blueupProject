@@ -13,11 +13,11 @@
 			<!-- 카테고리 메뉴 -->
 			<div class="dp_cate_top">
 				<h3 id="cate" style="font: bold 40px/1.5em 'Nanum Myeongjo', serif; text-align:center" >${Category.get(0).category_name}</h3>
-				<div style="text-align:center; font-size:20px; padding:30px 30px;">
+				<div style="text-align:center; font-size:20px; padding:30px 0;">
 					<c:forEach var="category" items="${Category}">
 						<a href="javascript:void(0)" onclick="checkCategoryDown(this)" style="display:inline-block; zoom:1; display:inline; padding-right:20px;">${category.detailed_category_name}</a>
 					</c:forEach>
-					<hr style="margin-top:10px;">
+					<div style="margin-top:30px;"><hr></div>
 				</div>
 			</div>
 			<!-- //카테고리 메뉴 (일자형식으로 바꾸기) -->
@@ -30,9 +30,7 @@
 							<li>
 								<div class="item">
 									<div class="thumb">
-									  <a href="#"
-                                 onclick="javascript:gaTagging('/goods/LA-다저스/맨투맨/3AMTB0414-07LDD','3AMTB0414-07LDD','베이직 중앙 스몰로고 오버핏 맨투맨 (셋업) LA다저스','69000','엠엘비','MLB 셋업','0','','','프리미엄하게 즐기는 TONE-ON-TONE 셋업','2442','0','Lavender','겉감:면 62%, 겉감:폴리에스터 38%, 부속:면 97%, 부속:폴리우레탄 3%','','','/goods/LA-다저스/맨투맨/3AMTB0414-07LDD','21F','','/goods/thnail/m/20210818/3AMTB0414-07LDD-45293041248757105.png');"
-                                 class="goDetail">
+									  <a>
 											<span class="img"><img src="${product.main_image}" class="first">
 											</span>
 										</a>
@@ -56,7 +54,7 @@
 								</div>
 							</li>
 						</c:forEach>
-					<div style="display: block; text-align: center;">
+					<div style="display: block; text-align: center; width:1260px; margin : 0 auto;">
 							<c:if test="${pageMaker.startPage != 1 }">
 								<a
 									href="/test/getProduct.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
@@ -65,17 +63,18 @@
 								var="p">
 								<c:choose>
 									<c:when test="${p == cri.page }">
-										<b>${p }</b>
+										<b>|&nbsp;${p}&nbsp;|</b>
+										
 									</c:when>
 									<c:when test="${p != cri.page }">
 										<a
-											href="/test/getProduct.do?pageNum=${p }">${p }</a>
+											href="/test/getProduct.do?pageNum=${p }">|&nbsp;${p}&nbsp;|</a>
 									</c:when>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
 								<a
-									href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+								href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
 							</c:if>
 						</div>
 			</section>
