@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import blueup.admin.vo.ProductVo;
+import blueup.user.vo.CategoryVo;
 import blueup.user.vo.Category_detailVo;
 
 
@@ -37,8 +38,12 @@ public class ProductDAO {
 		return sqlSssionTemplate.selectList("productDao.getProductListBywishList", userid);
 	}
 	
-	public int getCountProduct() {
-		return sqlSssionTemplate.selectOne("productDao.getCountProduct");
+	public int getCountProductDetail(HashMap<Object, Object> vo) {
+		return sqlSssionTemplate.selectOne("productDao.getCountProductDetail",vo);
+	}
+	
+	public int getCountProduct(HashMap<Object, Object> vo) {
+		return sqlSssionTemplate.selectOne("productDao.getCountProduct", vo);
 	}
 	
 	

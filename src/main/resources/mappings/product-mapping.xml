@@ -60,9 +60,14 @@
 		ON a.product_no = b.product_no and b.user_no = #{userNO}
 		WHERE a.detailed_category_name = #{Selected.detailed_category_name} LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
+	<!--  전체 목록 수 조회(디테일) -->
+	<select id="getCountProductDetail" resultType="int">
+		SELECT COUNT(*) FROM PRODUCT WHERE detailed_category_name = #{Selected.detailed_category_name};
+	</select>
+	
 	<!--  전체 목록 수 조회 -->
 	<select id="getCountProduct" resultType="int">
-		SELECT COUNT(*) FROM PRODUCT;
+		SELECT COUNT(*) FROM PRODUCT WHERE category_name = #{Selected.category_name};
 	</select>
 
 	<!-- 특정 회원의 wishList 상품 조회 -->

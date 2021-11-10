@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import blueup.admin.vo.ProductVo;
+import blueup.user.vo.CategoryVo;
 import blueup.user.vo.Category_detailVo;
 
 public interface ProductService {
@@ -15,5 +16,6 @@ public interface ProductService {
 	public List<ProductVo> getProductList(ProductVo vo);
 	public List<ProductVo> getProductListBySearch(ProductVo vo);
 	public List<ProductVo> getProductListBywishList(String userid);
-	public int getCountProduct();
+	public int getCountProductDetail(HashMap<Object, Object> vo);
+	public int getCountProduct(HashMap<Object, Object> vo);
 }
