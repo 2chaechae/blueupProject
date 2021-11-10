@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <nav id="lnb" class="lnb-nav">
-        <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
+ <!-- <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>  -->
     	<p><b>관리자</b>님<br/>반갑습니다.</p>
     	<hr class="hr-ddd" />
     	

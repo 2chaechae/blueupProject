@@ -3,16 +3,14 @@
 <%@ include file="header.jsp" %>   
 
 <!-- 컨텐츠 시작 -->
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.util.js?v=prod-version-858_20211102145956"></script>
+<!-- <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.util.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.pay.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.form.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.coupon.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/jquery.serializejson.min.js?v=prod-version-858_20211102145956"></script>
 
-<script type="text/javascript" src="/javascript/message/order_ko.js?v=prod-version-858_20211102145956"></script>
+<script type="text/javascript" src="/javascript/message/order_ko.js?v=prod-version-858_20211102145956"></script> -->
 
-
-<!-- 컨텐츠 시작 -->
 
 <!-- 컨텐츠 시작 -->
 <div class="contain od list" id="contain">
@@ -501,7 +499,27 @@
 	</div>
 </div>
 
-<div class="ld-bar-wrap"><div class="ld-bar"></div></div>
+<!-- 결제실패시 팝업창  -->
+<article id="lyPopOrderFail" class="layer-popup lyPopOrderFail">
+	<section class="layer-popup-cont" tabindex="0" style="width:530px">
+		<h2>주문실패</h2>
+		<div class="layer-cont ly-box">
+			<div class="mgBoxSy01">주문 처리에 실패하여<br>주문을 완료하지 못했습니다.</div>
+			<div class="mgBoxSy02">재시도를 하시거나 계속 발생하는 경우 <br>고객센터(080-807-0012)로 문의 주시기 바랍니다.<br><span class="txtTime">(평일 오전 9시 ~ 오후 6시: 토/일 공휴일 휴무)</span></div>
+			<div class="lyBtnArea">
+				<a href="/" class="btn">홈으로 가기</a>
+				<a href="/cart/goods/list" class="btn">장바구니 가기</a>
+				<a href="/order/orderform/new" class="btn fill">다시 주문하기</a>
+			</div>	
+		</div>
+		<div class="layer-popup-close">
+			<button type="button" class="d_layer_close">닫기</button>
+		</div>
+	</section>
+</article>
+
+<!-- 계속 로딩되는부분 -->
+<!-- <div class="ld-bar-wrap"><div class="ld-bar"></div></div> -->
 
 <!-- layerpopup - 쿠폰선택 -->
 
