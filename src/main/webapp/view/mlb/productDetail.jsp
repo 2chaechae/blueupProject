@@ -4,12 +4,13 @@
 <%@ include file="header.jsp" %>
 
 <!-- 컨텐츠 시작 -->
-<meta property="recopick:title" content="하트 비니 뉴욕양키스">
+<!-- <meta property="recopick:title" content="하트 비니 뉴욕양키스">
 <meta property="recopick:image" content="https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png">
 <meta property="recopick:price" content="49000">
 <meta property="recopick:price:currency" content="KRW">
 <meta property="recopick:description" content="하트 비니 뉴욕양키스">
-
+ -->
+<!-- <link rel="stylesheet" type="text/css" href="http://img3.tmon.kr/fe/release/staticResource/deals_v3/p/css/deals.css?v=1636078127276"> -->
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/goods.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript" src="/javascript/message/goods_ko.js?v=prod-version-858_20211102145956"></script>
 <!-- <script>
@@ -473,11 +474,1614 @@
 <img src="https://prd-static-fnf-online-mall.s3.ap-northeast-2.amazonaws.com/webresource/mlb-korea/images/display/content/img_detail/2020/0.SABANGNET/1MLB/1MLBmd1/3ABNM0916-50BKS-md1.jpg" /><br />
 &nbsp;</div>
 		</div>
-	
+	<!-- 
 	<div id="productInfo02" class="product-detail-section box-review">
 		<h2 class="title03">상품리뷰</h2>
 		<div class="product-ext-review">
-			<div class="crema-product-reviews" data-product-code="3ABNM0916-50BKS"></div>
+			<div class="crema-product-reviews" data-product-code="3ABNM0916-50BKS"> -->
+			
+			<!-- ㅑㅑㅑㅑㅑㅑㅑ -->
+			<!-- 
+			<section data-role="content-rely-tab" data-name="review" id="review" class="content-rely-tab tab_content" style="min-height: 428.6px;">
+                        <article class="review_wrp">
+                            <div id="_reviewWrap" class="review_user"><div class="review_tit title_review_info">
+      <h2>상품리뷰</h2>
+      <span class="count">총 <em>110</em>개</span>
+      <ul class="review_info_list"><li class="item"><p class="text">이 상품으로 받을 수 있는 리뷰 적립금은 <span class="point_color">10원</span>입니다.</p></li>
+      </ul> <div class="regist_btn_area"><a href="https://login.tmon.co.kr/user/buyInfo" data-tlarea="PCI0" data-tlord="6" data-role="moveToBuylist" class="btn btn_arr gray">리뷰 작성하기</a></div>  
+    </div><section class="star_score_wrap">
+                <h1 class="blind">상품 리뷰 통계</h1>
+                <div class="star_score_box">
+                    <div class="star_score_bind"><div class="star_rate_wrap ">
+            <span class="star_rate_bind">
+                <span class="text">상품 만족도</span>
+                <div class="grade_average" aria-label="구매후기 5점 만점 중 4.6점 110명 참여">
+                    <div class="grade_average_points" tabindex="-1">
+                        <span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_60"></span>
+                            </span>
+                    </div>
+                </div>
+            </span>
+            <span class="star_rate_num">4.6</span>
+        </div> <div class="star_rate_wrap ">
+            <span class="star_rate_bind">
+                <span class="text">배송 만족도</span>
+                <div class="grade_average" aria-label="구매후기 5점 만점 중 4.6점 110명 참여">
+                    <div class="grade_average_points" tabindex="-1">
+                        <span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_100"></span>
+                            </span><span class="grade_average_point">
+                                <span class="grade_average_mark mark_60"></span>
+                            </span>
+                    </div>
+                </div>
+            </span>
+            <span class="star_rate_num">4.6</span>
+        </div></div> <div class="star_user_bind">
+      <span class="star_user_title">사용 만족도</span>
+      <ul class="keyword_bar_list">
+        <li class="keyword_bar_item">
+                        <div class="keyword_bar_wrap">
+                            <span class="keyword_bar_label">포장</span>
+                            <span class="text">"꼼꼼해요"</span>
+                            <span class="unit">61%</span>
+                        </div>
+                    </li><li class="keyword_bar_item">
+                        <div class="keyword_bar_wrap">
+                            <span class="keyword_bar_label">유통기한</span>
+                            <span class="text">"적당해요"</span>
+                            <span class="unit">50%</span>
+                        </div>
+                    </li>
+        
+      </ul>
+      <div class="star_keyword_bind">
+        <div class="star_keyword_box">
+                    <span class="q_title">
+                        <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_q"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="ico_q"><g><circle id="Oval" fill="#848C95" cx="9" cy="9" r="9"></circle><text id="Q" font-family="GothamBold, Gotham Bold" font-size="12" font-weight="bold" letter-spacing="-0.32" fill="#FFFFFF"><tspan x="4" y="13">Q</tspan></text></g></g></g></svg>
+                        <span class="text"><span classname="notice">포장</span>은 어떤가요?</span>
+                    </span>
+                    <div class="percent_bar_wrap on">
+                                    <span class="text">꼼꼼해요</span>
+                                    <span class="percent_bar">
+                                        <span class="progress" style="width: 61%"></span>
+                                    </span>
+                                    <span class="unit">61%</span>
+                                </div><div class="percent_bar_wrap ">
+                                    <span class="text">보통이에요</span>
+                                    <span class="percent_bar">
+                                        <span class="progress" style="width: 37%"></span>
+                                    </span>
+                                    <span class="unit">37%</span>
+                                </div><div class="percent_bar_wrap ">
+                                    <span class="text">아쉬워요</span>
+                                    <span class="percent_bar">
+                                        <span class="progress" style="width: 2%"></span>
+                                    </span>
+                                    <span class="unit">2%</span>
+                                </div>
+                </div><div class="star_keyword_box">
+                    <span class="q_title">
+                        <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_q"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="ico_q"><g><circle id="Oval" fill="#848C95" cx="9" cy="9" r="9"></circle><text id="Q" font-family="GothamBold, Gotham Bold" font-size="12" font-weight="bold" letter-spacing="-0.32" fill="#FFFFFF"><tspan x="4" y="13">Q</tspan></text></g></g></g></svg>
+                        <span class="text"><span classname="notice">유통기한</span>은 어떤가요?</span>
+                    </span>
+                    <div class="percent_bar_wrap on">
+                                    <span class="text">적당해요</span>
+                                    <span class="percent_bar">
+                                        <span class="progress" style="width: 50%"></span>
+                                    </span>
+                                    <span class="unit">50%</span>
+                                </div><div class="percent_bar_wrap ">
+                                    <span class="text">아주 넉넉해요</span>
+                                    <span class="percent_bar">
+                                        <span class="progress" style="width: 48%"></span>
+                                    </span>
+                                    <span class="unit">48%</span>
+                                </div><div class="percent_bar_wrap ">
+                                    <span class="text">임박상품이에요</span>
+                                    <span class="percent_bar">
+                                        <span class="progress" style="width: 2%"></span>
+                                    </span>
+                                    <span class="unit">2%</span>
+                                </div>
+                </div>
+         
+      </div>
+      <button type="button" class="btn_review_wide">
+        <span class="text">자세히 보기</span>
+        <svg width="11px" height="6px" viewBox="0 0 11 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_arrow"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="btn_open" fill="#B7BFC8" fill-rule="nonzero"><polygon transform="translate(5.500000, 3.000000) rotate(-180.000000) translate(-5.500000, -3.000000) " points="5.5 1.4 0.723 6 0 5.3 4.777 0.7 5.5 0 11 5.3 10.277 6"></polygon></g></g></svg>
+      </button>
+    </div>
+                </div>
+            </section><section id="_photoArea" class="photo_review_wrap">
+            <div class="review_tit title_review_photo">
+                <h2>포토 리뷰</h2>
+                <span class="count">총 <em>6</em>개</span>
+            </div>
+            <div class="photo_review_area">
+                <div class="review_container">
+                    <ul data-role="photoReviewListWrap" class="photo_list_wrap">
+                        <li class="photo_list_item " style="" data-reviewno="242489262">
+                    <a href="#scene=scene-review&amp;photoReview=review&amp;reviewNo=242489262" data-tlarea="PCI0" data-tlord="7" class="photo_link" data-role="showReviewDetail" data-reviewno="242489262">
+                        <img src="http://storage.tmon.co.kr/thumbs/image?w=300&amp;h=300&amp;url=http://img2.tmon.kr/cdn3/userReview/2021/08/16/20210816/resized-MF8wNDc3YjEzZS03_51481.jpg" onerror="this.parentNode.className='photo_link error'">
+                    </a>
+                    
+                </li><li class="photo_list_item " style="" data-reviewno="239955518">
+                    <a href="#scene=scene-review&amp;photoReview=review&amp;reviewNo=239955518" data-tlarea="PCI0" data-tlord="7" class="photo_link" data-role="showReviewDetail" data-reviewno="239955518">
+                        <img src="http://storage.tmon.co.kr/thumbs/image?w=300&amp;h=300&amp;url=http://img2.tmon.kr/cdn3/userReview/2021/08/01/20210801/resized-MF8xNDc5OWE2Yi1j_0d397.jpg" onerror="this.parentNode.className='photo_link error'">
+                    </a>
+                    
+                </li><li class="photo_list_item " style="" data-reviewno="226237954">
+                    <a href="#scene=scene-review&amp;photoReview=review&amp;reviewNo=226237954" data-tlarea="PCI0" data-tlord="7" class="photo_link" data-role="showReviewDetail" data-reviewno="226237954">
+                        <img src="http://storage.tmon.co.kr/thumbs/image?w=300&amp;h=300&amp;url=http://img2.tmon.kr/cdn3/userReview/2021/05/23/20210523/resized-MF8xYmMxNGE1Ni02_32569.jpg" onerror="this.parentNode.className='photo_link error'">
+                    </a>
+                    
+                </li><li class="photo_list_item " style="" data-reviewno="223774990">
+                    <a href="#scene=scene-review&amp;photoReview=review&amp;reviewNo=223774990" data-tlarea="PCI0" data-tlord="7" class="photo_link" data-role="showReviewDetail" data-reviewno="223774990">
+                        <img src="http://storage.tmon.co.kr/thumbs/image?w=300&amp;h=300&amp;url=http://img3.tmon.kr/cdn3/userReview/2021/05/09/5795515810/1620504441339_8_04a61.jpg" onerror="this.parentNode.className='photo_link error'">
+                    </a>
+                    
+                </li><li class="photo_list_item more" style="" data-reviewno="221052882">
+                    <a href="#scene=scene-review&amp;photoReview=review&amp;reviewNo=221052882" data-tlarea="PCI0" data-tlord="7" class="photo_link" data-role="showReviewDetail" data-reviewno="221052882">
+                        <img src="http://storage.tmon.co.kr/thumbs/image?w=300&amp;h=300&amp;url=http://img2.tmon.kr/cdn3/userReview/2021/04/24/5795515810/1619215973052_image_e9c68.jpg" onerror="this.parentNode.className='photo_link error'">
+                    </a>
+                    
+                </li><li class="photo_list_item more" style="display:none" data-reviewno="220755682">
+                    <a href="#scene=scene-review&amp;photoReview=review&amp;reviewNo=220755682" data-tlarea="PCI0" data-tlord="7" class="photo_link" data-role="showReviewDetail" data-reviewno="220755682">
+                        <img src="http://storage.tmon.co.kr/thumbs/image?w=300&amp;h=300&amp;url=http://img2.tmon.kr/cdn3/userReview/2021/04/22/20210422/resized-SU1HXzE2MTkwODE3MjM2ODk=_a1340.jpg" onerror="this.parentNode.className='photo_link error'">
+                    </a>
+                    
+                </li>
+                    </ul>
+                </div>
+                <button data-tlarea="PCI0" data-tlord="13" data-role="prevPhotoReviewImage" type="button" class="btn_review prev disabled" disabled="" style="display:block">이전 슬라이드</button>
+                    <button data-tlarea="PCI0" data-tlord="14" data-role="nextPhotoReviewImage" type="button" class="btn_review next" style="display:block">디음 슬라이드</button>
+            </div>
+        </section>
+            <section class="review_user_wrap"><div class="review_tit title_review_all">
+            <h2>리뷰 전체</h2>
+            <div class="review_tit_sort">
+                    <div class="sort_review">
+                        <ul class="sort_review_list" id="_sortFilters">
+                            <li class="sort_review_item">
+                                <button type="button" class="sort_review_btn on" aria-pressed="true" data-sortkey="NEW">최신순</button>
+                            </li>
+                            <li class="sort_review_item">
+                                <button type="button" class="sort_review_btn" aria-pressed="false" data-sortkey="RECOMMEND">좋아요순</button>
+                            </li>
+                            <li class="sort_review_item">
+                                <button type="button" class="sort_review_btn" aria-pressed="false" data-sortkey="SCORE">별점 높은순</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            <div class="review_tit_option">
+                포토리뷰 체크박스
+                <div class="option_checkbox">
+                    <input type="checkbox" name="_showOnlyPhotoReview" id="_showOnlyPhotoReview" class="option_checkbox_input">
+                    <label for="_showOnlyPhotoReview" class="option_checkbox_label">
+                        <span class="ico_checkbox"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g fill="none" fill-rule="evenodd"><path d="M0 0h20v20H0z"></path><path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.625 9l4.276 5.13M9 14l7-8"></path></g></svg></span>
+                        <span class="option_checkbox_text">포토리뷰</span>
+                    </label>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+              <div class="_noContents" style="display: none">
+            <div class="_noFilteredReview" style="display: none;">
+                <div class="option_review_error">
+                    <p class="_noPhotoReviewWithOption option_review_error_text" style="display: none">선택하신 옵션의 포토리뷰가 없습니다.<br>다른 옵션으로 조회해 주세요.</p>
+                    <p class="_noReviewWithOption option_review_error_text" style="display: none">선택하신 옵션의 리뷰가 없습니다.<br>다른 옵션으로 조회해 주세요.</p>
+                    <p class="_noPhotoReview option_review_error_text" style="display: none">등록된 포토리뷰가 없습니다.<br>일반 리뷰 목록에서 리뷰를 확인해 주세요.</p>
+                </div>
+            </div>
+        </div>
+              <div id="_reviewContents">
+            <div class="option_review_wrap">
+                    <div class="option_review_inner">
+                        <div class="option_review_box_wrap">[D] 옵션 클릭시 on 클래스 추가
+                <div class="option_review_box" data-name="reviewDepSelWrap0">
+                    리뷰옵션 버튼
+                    <button type="button" class="option_review_button option_default" data-index="0">
+                        <i>상품명</i><span class="ico_arrow"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6"><path fill="#939DA7" fill-rule="evenodd" d="M4.5 6L9 0H0z"></path></svg></span>
+                    </button>
+                    리뷰옵션 리스트
+                    <ul data-depth="0" class="option_review_list"><li class="option_review_item" data-index="0" data-optionno="8821915290">
+            <button type="button" class="option_review_button option_item">001.[1+1] 닥터브라이언 쿠바산 폴리코사놀 20mg (총6개월분)</button>
+        </li><li class="option_review_item" data-index="1" data-optionno="8821915314">
+            <button type="button" class="option_review_button option_item">006.[1+1] 닥터브라이언 루테인 지아잔틴 플러스 164 (총4개월분)</button>
+        </li><li class="option_review_item" data-index="2" data-optionno="8821915318">
+            <button type="button" class="option_review_button option_item">007.[1+1] 닥터브라이언 보스웰리아 캡슐 1800mg (총200일분)</button>
+        </li><li class="option_review_item" data-index="3" data-optionno="8821915322">
+            <button type="button" class="option_review_button option_item">008.[1+1] 닥터브라이언 옵티멈 맥스 크릴오일 90캡슐 (총6개월분)</button>
+        </li><li class="option_review_item" data-index="4" data-optionno="5795515842">
+            <button type="button" class="option_review_button option_item">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</button>
+        </li><li class="option_review_item" data-index="5" data-optionno="5795645342">
+            <button type="button" class="option_review_button option_item">02. [1통/3개월분] 닥터브라이언 밀크시슬 비타민B 90타블렛</button>
+        </li><li class="option_review_item" data-index="6" data-optionno="5795645350">
+            <button type="button" class="option_review_button option_item">04. [1통/1개월분] 닥터브라이언 맨파워 마카 아르기닌 650(60캡슐)</button>
+        </li><li class="option_review_item" data-index="7" data-optionno="5795645362">
+            <button type="button" class="option_review_button option_item">07. [1통/2개월분] 닥터브라이언 루테인 지아잔틴 플러스 164</button>
+        </li><li class="option_review_item" data-index="8" data-optionno="5795645370">
+            <button type="button" class="option_review_button option_item">09. [2통/총200일분] 닥터브라이언 보스웰리아 캡슐 1800mg 100캡슐</button>
+        </li><li class="option_review_item" data-index="9" data-optionno="5795645374">
+            <button type="button" class="option_review_button option_item">10. [2통/총2개월분] 닥터브라이언 유비퀴놀 코큐텐 100(30캡슐)</button>
+        </li><li class="option_review_item" data-index="10" data-optionno="5795645378">
+            <button type="button" class="option_review_button option_item">11. [선물세트/총9개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</button>
+        </li><li class="option_review_item" data-index="11" data-optionno="5795645382">
+            <button type="button" class="option_review_button option_item">12. [3통/총9개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</button>
+        </li><li class="option_review_item" data-index="12" data-optionno="5795645390">
+            <button type="button" class="option_review_button option_item">14. [3통/총6개월분] 닥터브라이언 인텐스 프로바이오틱스 100 60캡슐</button>
+        </li><li class="option_review_item" data-index="13" data-optionno="5795645394">
+            <button type="button" class="option_review_button option_item">15. [3통/총3개월분] 닥터브라이언 맨파워 마카 아르기닌 650(60캡슐)</button>
+        </li><li class="option_review_item" data-index="14" data-optionno="5795645402">
+            <button type="button" class="option_review_button option_item">17. [3통/총6개월분] 닥터브라이언 L-글루타민 홍삼 플러스B</button>
+        </li><li class="option_review_item" data-index="15" data-optionno="5795645410">
+            <button type="button" class="option_review_button option_item">19. [1통/총2개월분] 닥터브라이언 초록입홍합오일 25000</button>
+        </li><li class="option_review_item" data-index="16" data-optionno="5795645414">
+            <button type="button" class="option_review_button option_item">20. [2통/총4개월분] 닥터브라이언 슈퍼 이지 슬립</button>
+        </li><li class="option_review_item" data-index="17" data-optionno="5795645426">
+            <button type="button" class="option_review_button option_item">22. [6통/총18개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</button>
+        </li><li class="option_review_item" data-index="18" data-optionno="5795645438">
+            <button type="button" class="option_review_button option_item">25. [6통/총6개월분] 닥터브라이언 맨파워 마카 아르기닌 650(60캡슐)</button>
+        </li><li class="option_review_item" data-index="19" data-optionno="5795645442">
+            <button type="button" class="option_review_button option_item">26. [6통/총6개월분] 닥터브라이언 옵티멈 크릴오일 1200(30캡슐)</button>
+        </li><li class="option_review_item" data-index="20" data-optionno="5795645450">
+            <button type="button" class="option_review_button option_item">28. [6통/총12개월분] 닥터브라이언 루테인 지아잔틴 플러스 164</button>
+        </li></ul>
+                </div></div>
+                    </div>
+                    <div class="option_review_button_area">
+                        리셋 버튼
+                        <button type="button" class="option_review_button option_reset" aria-label="새로고침"><span class="ico_reset"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><g fill="none" fill-rule="evenodd" stroke="#959EA8"><path stroke-width=".944" d="M17.472 8.972a8.5 8.5 0 1 1-1.026-4.052"></path><path d="M16.8.972v4h-4"></path></g></svg></span></button>
+                        조회 버튼
+                        [D]  비활성화 일때 disabled, 조회 버튼 활성화시 on 클래스 추가
+                        <button type="button" class="option_review_button option_confirm" disabled="">조회</button>
+                    </div>
+                </div>
+            <ul id="_reviewList" class="review_block_list"><li class="review_block_item" data-reviewsrl="255111554">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 80%;">
+                                        <span class="blind">상품 평점 4</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">001.[1+1] 닥터브라이언 쿠바산 폴리코사놀 20mg (총6개월분)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">저렴하게구입잘했어요 감사합니다 </div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">kan*******</li>
+                            <li class="type_bar_item">2021-11-06 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="255111554" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="255111554" data-membersrl="62933090" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="254608090">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">001.[1+1] 닥터브라이언 쿠바산 폴리코사놀 20mg (총6개월분)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">가성비, 배송도 빨라 좋아요</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">hdp*****</li>
+                            <li class="type_bar_item">2021-11-03 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="254608090" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="254608090" data-membersrl="108744746" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="254311534">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 아주 넉넉해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <button type="button" class="_optionList button_list" aria-label="옵션 딜 더보기">
+                                        <span class="text">001.[1+1] 닥터브라이언 쿠바산 폴리코사놀 20mg (총6개월분)</span>
+                                        <svg width="11px" height="6px" viewBox="0 0 11 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_arrow"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="btn_open" fill="#B7BFC8" fill-rule="nonzero"><polygon transform="translate(5.500000, 3.000000) rotate(-180.000000) translate(-5.500000, -3.000000) " points="5.5 1.4 0.723 6 0 5.3 4.777 0.7 5.5 0 11 5.3 10.277 6"></polygon></g></g></svg>
+                                    </button>
+                                    <div class="button_list_bind">
+                                        <span class="button_list_text">006.[1+1] 닥터브라이언 루테인 지아잔틴 플러스 164 (총4개월분)</span>
+                                    </div>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">아주좋습니다 강추입니다</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">man*******</li>
+                            <li class="type_bar_item">2021-11-01 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="254311534" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="254311534" data-membersrl="35768089" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="254311510">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 아주 넉넉해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">006.[1+1] 닥터브라이언 루테인 지아잔틴 플러스 164 (총4개월분)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">아주좋습니다 강추입니다</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">man*******</li>
+                            <li class="type_bar_item">2021-11-01 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="254311510" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="254311510" data-membersrl="35768089" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="254255578">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 아주 넉넉해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">001.[1+1] 닥터브라이언 쿠바산 폴리코사놀 20mg (총6개월분)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">콜레스테롤 관리하기에 좋아요.. </div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">rob****</li>
+                            <li class="type_bar_item">2021-11-01 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="254255578" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="254255578" data-membersrl="13253385" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="254237190">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <button type="button" class="_optionList button_list" aria-label="옵션 딜 더보기">
+                                        <span class="text">001.[1+1] 닥터브라이언 쿠바산 폴리코사놀 20mg (총6개월분)</span>
+                                        <svg width="11px" height="6px" viewBox="0 0 11 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_arrow"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="btn_open" fill="#B7BFC8" fill-rule="nonzero"><polygon transform="translate(5.500000, 3.000000) rotate(-180.000000) translate(-5.500000, -3.000000) " points="5.5 1.4 0.723 6 0 5.3 4.777 0.7 5.5 0 11 5.3 10.277 6"></polygon></g></g></svg>
+                                    </button>
+                                    <div class="button_list_bind">
+                                        <span class="button_list_text">007.[1+1] 닥터브라이언 보스웰리아 캡슐 1800mg (총200일분)</span>
+                                    </div>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">좋아요~~<br>해외배송이아 기간은 걸려도 잘 구매가 되었어요!<br>그리고 해외직구 적절한 프로그램으로 D/C도 절 되었구요~~</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">che****</li>
+                            <li class="type_bar_item">2021-11-01 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="254237190" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="254237190" data-membersrl="91481114" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="254137394">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 60%;">
+                                        <span class="blind">상품 평점 3</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 40%;">
+                                        <span class="blind">배송 평점 2점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">008.[1+1] 닥터브라이언 옵티멈 맥스 크릴오일 90캡슐 (총6개월분)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">닥터브라이언 쿠바산 폴리코사놀 /크릴오일/ 밀크시슬/ 루테인 외 인기 상품 모음전<br>008.[1+1] 닥터브라이언 옵티멈 맥스 크릴오일 90캡슐 (총6개월분)</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">tea****</li>
+                            <li class="type_bar_item">2021-10-31 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="254137394" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="254137394" data-membersrl="103414702" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="254072286">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 80%;">
+                                        <span class="blind">상품 평점 4</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 80%;">
+                                        <span class="blind">배송 평점 4점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">006.[1+1] 닥터브라이언 루테인 지아잔틴 플러스 164 (총4개월분)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">해외직구인데 빨리왔네요 좋다고하니 먹어봐야 알겠죠</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">son*****</li>
+                            <li class="type_bar_item">2021-10-30 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="254072286" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="254072286" data-membersrl="84597594" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="253629494">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">008.[1+1] 닥터브라이언 옵티멈 맥스 크릴오일 90캡슐 (총6개월분)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">잘받았습니다 감사합니다 </div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">pel*****</li>
+                            <li class="type_bar_item">2021-10-27 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="253629494" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="253629494" data-membersrl="273684" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="253000850">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">와우 가격 저렴하게 잘 샀습니다 ㅎㅎ</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">gg8***</li>
+                            <li class="type_bar_item">2021-10-23 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="253000850" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="253000850" data-membersrl="60278798" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="248711490">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">22. [6통/총18개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">정말 좋은 제품 잘 받았습니다.</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">lov*******</li>
+                            <li class="type_bar_item">2021-09-25 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="248711490" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="248711490" data-membersrl="14048193" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="248711462">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">26. [6통/총6개월분] 닥터브라이언 옵티멈 크릴오일 1200(30캡슐)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">정말 좋은 제품 잘 받았습니다.</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">lov*******</li>
+                            <li class="type_bar_item">2021-09-25 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="248711462" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="248711462" data-membersrl="14048193" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="247089998">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 아주 넉넉해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">가격에 비해 아주 만족합니다</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">mar********</li>
+                            <li class="type_bar_item">2021-09-12 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="247089998" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="247089998" data-membersrl="34655273" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="246330854">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 아주 넉넉해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">15. [3통/총3개월분] 닥터브라이언 맨파워 마카 아르기닌 650(60캡슐)</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">배송빠르고 효과 있었으면 좋겠어요</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">gal********</li>
+                            <li class="type_bar_item">2021-09-07 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="246330854" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="246330854" data-membersrl="16481509" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="242489262">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 아주 넉넉해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">좋아요.<br>배송도빨랐구요.<br>좋은가격에 잘샀어요.</div>
+                            </div>
+                        <div class="review_image">
+                                <ul class="review_image_list"><li class="review_image_item">
+                                            <button type="button" class="review_image_box" aria-label="이미지 상세보기" data-tlarea="PCI0" data-tlord="5" data-role="callPreview" data-originsrc="http://img1.tmon.kr/cdn3/userReview/2021/08/16/20210816/resized-MF8wNDc3YjEzZS03_51481.jpg"> <img src="http://img1.tmon.kr/cdn3/userReview/2021/08/16/20210816/resized-MF8wNDc3YjEzZS03_51481.jpg" alt="리뷰 이미지" onerror="$(this).parent().parent().addClass('onError'); $(this).parent().remove();"></button>
+                                        </li></ul>
+                                
+                            </div>
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">ctf******</li>
+                            <li class="type_bar_item">2021-08-16 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="242489262" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="242489262" data-membersrl="17261541" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="241233798">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 아주 넉넉해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">처음 먹는거라 잘모르겠네요 꾸준히 먹어봐야 될것같아요</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">blu****</li>
+                            <li class="type_bar_item">2021-08-08 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="241233798" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="241233798" data-membersrl="25874581" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="239955518">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 80%;">
+                                        <span class="blind">상품 평점 4</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 80%;">
+                                        <span class="blind">배송 평점 4점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">만족합니다.<br>만족합니다.</div>
+                            </div>
+                        <div class="review_image">
+                                <ul class="review_image_list"><li class="review_image_item">
+                                            <button type="button" class="review_image_box" aria-label="이미지 상세보기" data-tlarea="PCI0" data-tlord="5" data-role="callPreview" data-originsrc="http://img1.tmon.kr/cdn3/userReview/2021/08/01/20210801/resized-MF8xNDc5OWE2Yi1j_0d397.jpg"> <img src="http://img1.tmon.kr/cdn3/userReview/2021/08/01/20210801/resized-MF8xNDc5OWE2Yi1j_0d397.jpg" alt="리뷰 이미지" onerror="$(this).parent().parent().addClass('onError'); $(this).parent().remove();"></button>
+                                        </li></ul>
+                                
+                            </div>
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">top*****</li>
+                            <li class="type_bar_item">2021-08-01 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="239955518" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="239955518" data-membersrl="370586" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="238555562">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">빠른배송에 상품도 좋아요</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">kko*******</li>
+                            <li class="type_bar_item">2021-07-24 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="238555562" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="238555562" data-membersrl="5735273" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="238424722">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">상품 평점 5</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 보통이에요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 비슷해요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <p class="button_list">
+                                        <span class="text">22. [6통/총18개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                    </p>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">요즘 이거 모르면 간첩이죠</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">gla******</li>
+                            <li class="type_bar_item">2021-07-24 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="238424722" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="238424722" data-membersrl="23901585" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li><li class="review_block_item" data-reviewsrl="236463290">
+                    <div class="review_block">
+                        
+                        <div class="review_block_rate">
+                            <div class="review_block_star">
+                                <span class="text">상품</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 80%;">
+                                        <span class="blind">상품 평점 4</span>
+                                    </span>
+                                </span>
+                            </div> <div class="review_block_star">
+                                <span class="text">배송</span>
+                                <span class="star_rate">
+                                    <span class="star_progress_bar" style="width: 100%;">
+                                        <span class="blind">배송 평점 5점</span>
+                                    </span>
+                                </span>
+                            </div> </div>
+                        
+                        <div class="review_tag"><span class="review_tag_label">#포장 - 꼼꼼해요</span>,<span class="review_tag_label">#유통기한 - 적당해요</span></div>
+                        <div class="review_tag"><span class="review_tag_label">#상품설명 - 상품과 같아요</span></div>
+                          <div class="button_list_box close">
+                            <span class="blind">상품 옵션</span>
+                            <button type="button" class="_optionList button_list" aria-label="옵션 딜 더보기">
+                                        <span class="text">01. [1통/3개월분] 닥터브라이언 폴리코사놀 20mg 90타블렛</span>
+                                        <svg width="11px" height="6px" viewBox="0 0 11 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_arrow"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="btn_open" fill="#B7BFC8" fill-rule="nonzero"><polygon transform="translate(5.500000, 3.000000) rotate(-180.000000) translate(-5.500000, -3.000000) " points="5.5 1.4 0.723 6 0 5.3 4.777 0.7 5.5 0 11 5.3 10.277 6"></polygon></g></g></svg>
+                                    </button>
+                                    <div class="button_list_bind">
+                                        <span class="button_list_text">15. [3통/총3개월분] 닥터브라이언 맨파워 마카 아르기닌 650(60캡슐)</span>
+                                    </div>
+                        </div>
+                        <div class="review_block_text">
+                                <div class="review_text">필요한 물건 저렴하게 구입할 수 있어 좋았음</div>
+                            </div>
+                        
+                        
+                        <ul class="type_bar_list">
+                            <li class="type_bar_item">che*****</li>
+                            <li class="type_bar_item">2021-07-14 <span class="type_bar_text">작성</span></li>
+                            
+                                <li class="type_bar_item">
+                                        <button type="button" class="btn_type_bar" data-role="reportReview" data-reviewsrl="236463290" data-tlarea="PCI0" data-tlord="4">신고</button>
+                                    </li>
+                        </ul>
+                        
+                        <button type="button" data-role="recommendReview" class="btn_review_thumbs " data-reviewsrl="236463290" data-membersrl="19463621" data-tlarea="PCI0" data-tlord="3">
+        <svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ico_recommend">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="ico_recommend_off">
+              <g>
+                <rect id="area" x="0" y="0" width="12" height="14"></rect>
+                <path d="M4,12 L1.707,12 C1.31666667,12 1,11.6833333 1,11.293 L1,5.707 C1,5.31666667 1.31666667,5 1.707,5 L4,5 L4,12 Z" id="Stroke-1" stroke="#6C7580"></path><path d="M9.09090909,5.4 L7.45577273,5.4 C7.37177273,5.4 7.32468182,5.31011429
+                  7.36763636,5.23845714 C7.61295455,4.82925714 7.81818182,3.76665714 7.81818182,3.51428571 L7.81818182,2.88571429 
+                  C7.81818182,2.57142857 7.5,1 6.54545455,1 C5.27272727,1 5.27272727,2.88571429 5.27272727,2.88571429 L5.27272727,3.51428571 
+                  C5.27272727,4.45714286 4,5.4 4,5.4 L4,10.4285714 C4,11.2963143 4.71209091,12 5.59090909,12 L8.45454545,12 C9.86027273,12 
+                  11,10.8742286 11,9.48571429 L11,7.28571429 C11,6.24448571 10.1450455,5.4 9.09090909,5.4 Z" id="Stroke-3" stroke="#6C7580" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      <span class="text">0</span>
+    </button>
+                        <div data-role="review_reject_toast" class="review_toast_recommend" style="display:none;">
+                          <p class="text">다른 사용자의 리뷰만 '좋아요' 할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </li></ul>
+            <div class="ct_wrp" data-role="paginate-wrap" id="reviewPaginate">
+                
+                    
+                    
+                    
+                    
+                    
+                    <div class="pagination">
+                    <a href="#" class="crnt_page" data-role="paginate-num" data-num="1" data-tlarea="PCIABT" data-tlord="3">1</a>
+                
+                    <a href="#" data-role="paginate-num" data-num="2" data-tlarea="PCIABT" data-tlord="3">2</a>
+                
+                    <a href="#" data-role="paginate-num" data-num="3" data-tlarea="PCIABT" data-tlord="3">3</a>
+                
+                    <a href="#" data-role="paginate-num" data-num="4" data-tlarea="PCIABT" data-tlord="3">4</a>
+                
+                    <a href="#" data-role="paginate-num" data-num="5" data-tlarea="PCIABT" data-tlord="3">5</a>
+                
+                    <a href="#" data-role="paginate-num" data-num="6" data-tlarea="PCIABT" data-tlord="3">6</a>
+                
+                <a class="next_page" href="#" title="다음 페이지" data-role="paginate-num" data-num="2" data-tlarea="PCIABT" data-tlord="4">다음 페이지</a>
+                <a class="last_page" href="#" title="맨 끝 페이지" data-role="paginate-num" data-num="6" data-tlarea="PCIABT" data-tlord="5">맨 끝 페이지</a>
+            </div></div>
+        </div>
+          </section><div class="_noContents" style="display: none">
+            <div class="_noReview no_ct_txt" style="display: none">
+                <p class="btn_write_go">
+                    아직 작성된 리뷰가 없습니다.<br>
+                    이 상품에 첫 번째 리뷰를 작성해 주세요.
+                        <span class="point_color">리뷰를 작성하면 적립금을 드립니다.</span>
+                </p>
+                <a href="https://login.tmon.co.kr/user/buyInfo" class="btn_go" data-role="moveToBuylist" data-tlarea="PCI8" data-tlord="1">상품리뷰 작성하기</a>
+            </div>
+        </div></div>
+                        </article>
+                    </section> -->
+			
+			<!-- ㅑㅑㅑㅑㅑㅑㅑ -->
+			
+			
+			
+			
+			</div>
 		</div>
 		<!-- //product-ext-review -->
 	</div>
@@ -1396,6 +3000,8 @@
 			<button type="button" class="d_layer_close" onclick="javascript:closeLayerPopAndReset('lypopGoodsReview');">닫기</button>
 		</div>
 	</section>
+	
+	
 </article>
 
 <!-- 해외매장 찾기 팝업 -->
@@ -1471,6 +3077,7 @@ fnf_appendTargetGateScript();
 	}
 </script>
 	
+
 
 <%@ include file="footer.jsp" %>
 </body>

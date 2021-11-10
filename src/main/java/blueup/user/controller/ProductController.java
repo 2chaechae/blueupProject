@@ -145,4 +145,12 @@ public class ProductController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping("/getWishList.do")
+	public ModelAndView getProductListBywishList(String userid) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("wishList", productserviceimpl.getProductListBywishList(userid));
+		mav.setViewName("wish");
+		return mav;
+	}
 }

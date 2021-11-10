@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="/view/mlb/header.jsp" %>
 
 <!-- 컨텐츠 시작 -->
 	<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/validator.js"></script>
@@ -118,6 +118,6 @@
 	</div>
 	<!--// 컨텐츠 끝 -->
 </form>
-<%@ include file="footer.jsp" %>
+<%@ include file="/view/mlb/footer.jsp" %>
 </body>
 </html>
