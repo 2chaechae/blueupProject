@@ -1,6 +1,5 @@
 package blueup.user.controller;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +22,8 @@ public class CategoryController {
 		ModelAndView mav = new ModelAndView();
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
 		session.setAttribute("Selected", vo);
+		session.setAttribute("start", 0);
+		session.setAttribute("end", 13);
 		mav.setViewName("redirect:/getProduct.do");
 		return mav;
 	}
@@ -34,6 +35,8 @@ public class CategoryController {
 		ModelAndView mav = new ModelAndView();
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
 		session.setAttribute("Selected", vo);
+		session.setAttribute("start", 0);
+		session.setAttribute("end", 13);
 		mav.setViewName("redirect:/getProductAll.do");
 		return mav;
 	}

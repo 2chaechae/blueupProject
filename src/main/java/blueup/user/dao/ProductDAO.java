@@ -37,7 +37,9 @@ public class ProductDAO {
 		return sqlSssionTemplate.selectList("productDao.getProductListBywishList", userid);
 	}
 	
-	
+	public int getCountProduct() {
+		return sqlSssionTemplate.selectOne("productDao.getCountProduct");
+	}
 	
 	
 	/////////////////////// 아직 안쓴거 /////////////////////////

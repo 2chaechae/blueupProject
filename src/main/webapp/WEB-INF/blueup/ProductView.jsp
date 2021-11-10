@@ -13,10 +13,11 @@
 			<!-- 카테고리 메뉴 -->
 			<div class="dp_cate_top">
 				<h3 id="cate" style="font: bold 40px/1.5em 'Nanum Myeongjo', serif; text-align:center" >${Category.get(0).category_name}</h3>
-				<div  style="text-align:center; font-size:20px; padding:30px 30px;">
+				<div style="text-align:center; font-size:20px; padding:30px 30px;">
 					<c:forEach var="category" items="${Category}">
 						<a href="javascript:void(0)" onclick="checkCategoryDown(this)" style="display:inline-block; zoom:1; display:inline; padding-right:20px;">${category.detailed_category_name}</a>
 					</c:forEach>
+					<hr style="margin-top:10px;">
 				</div>
 			</div>
 			<!-- //카테고리 메뉴 (일자형식으로 바꾸기) -->
@@ -29,10 +30,10 @@
 							<li>
 								<div class="item">
 									<div class="thumb">
-										<a href="#"
-											onclick="javascript:gaTagging('/goods/LA-다저스/맨투맨/3AMTB0414-07LDD','3AMTB0414-07LDD','베이직 중앙 스몰로고 오버핏 맨투맨 (셋업) LA다저스','69000','엠엘비','MLB 셋업','0','','','프리미엄하게 즐기는 TONE-ON-TONE 셋업','2442','0','Lavender','겉감:면 62%, 겉감:폴리에스터 38%, 부속:면 97%, 부속:폴리우레탄 3%','','','/goods/LA-다저스/맨투맨/3AMTB0414-07LDD','21F','','/goods/thnail/m/20210818/3AMTB0414-07LDD-45293041248757105.png');"
-											class="goDetail">
-											<span class="img"><img src="${product.main_image}" onerror='errorImgShow(this, "414");' class="first">
+									  <a href="#"
+                                 onclick="javascript:gaTagging('/goods/LA-다저스/맨투맨/3AMTB0414-07LDD','3AMTB0414-07LDD','베이직 중앙 스몰로고 오버핏 맨투맨 (셋업) LA다저스','69000','엠엘비','MLB 셋업','0','','','프리미엄하게 즐기는 TONE-ON-TONE 셋업','2442','0','Lavender','겉감:면 62%, 겉감:폴리에스터 38%, 부속:면 97%, 부속:폴리우레탄 3%','','','/goods/LA-다저스/맨투맨/3AMTB0414-07LDD','21F','','/goods/thnail/m/20210818/3AMTB0414-07LDD-45293041248757105.png');"
+                                 class="goDetail">
+											<span class="img"><img src="${product.main_image}" class="first">
 											</span>
 										</a>
 									</div>
@@ -55,14 +56,27 @@
 								</div>
 							</li>
 						</c:forEach>
-						<div class="page">
-							<span> <strong>1</strong><a
-								href="javascript:getPage('2');"> 2</a> <a
-								href="javascript:getPage('3');"> 3</a> <a
-								href="javascript:getPage('4');"> 4</a>
-							</span> <a class="last" href="javascript:getPage('4');" alt="마지막페이지">
-								<span>마지막페이지</span>
-							</a>
+					<div style="display: block; text-align: center;">
+							<c:if test="${pageMaker.startPage != 1 }">
+								<a
+									href="/test/getProduct.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+							</c:if>
+							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }"
+								var="p">
+								<c:choose>
+									<c:when test="${p == cri.page }">
+										<b>${p }</b>
+									</c:when>
+									<c:when test="${p != cri.page }">
+										<a
+											href="/test/getProduct.do?pageNum=${p }">${p }</a>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+								<a
+									href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+							</c:if>
 						</div>
 			</section>
 		</main>
@@ -72,15 +86,14 @@
 <script type="text/javascript">
 //var id = sessionStorage.getitem("userNO");
 var id = 1;
-console.log(id);
 
+// 하트 눌렀을 때 : 회원 db 위시리스트 , 비회원 쿠키에 상품번호 추가
 function heart(element){
 var img = $(element).attr("src");
 	alert(img);
 	// 회원 위시리스트
 	if(id != null){
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
-			console.log("test");
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
 			var p_no = $(element).closest('li').prev().prev().val();
 			console.log(p_no);

@@ -15,4 +15,5 @@ public interface ProductService {
 	public List<ProductVo> getProductList(ProductVo vo);
 	public List<ProductVo> getProductListBySearch(ProductVo vo);
 	public List<ProductVo> getProductListBywishList(String userid);
+	public int getCountProduct();
 }

@@ -11,11 +11,21 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	<context:component-scan base-package="blueup.user"></context:component-scan>
+	<context:component-scan
+		base-package="blueup.user"></context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/blueup/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver"
+		id="viewResolver2" p:order="0" />
+	<bean
+		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<property name="contentType" value="application/json" />
+	</bean>
+
+
 </beans>
