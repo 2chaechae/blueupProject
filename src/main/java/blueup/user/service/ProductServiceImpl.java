@@ -42,8 +42,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVo> getProductList(ProductVo vo) {
-		return productdao.getProductList(vo);
+	public List<ProductVo> getProductList() {
+		return productdao.getProductList();
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVo> getProductListBywishList(String userid) {
-		return productdao.getProductListBywishList(userid);
+	public List<ProductVo> getProductListBywishList(String id) {
+		return productdao.getProductListBywishList(id);
 	}
 
 	@Override

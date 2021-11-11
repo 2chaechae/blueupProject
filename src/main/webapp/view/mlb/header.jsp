@@ -360,7 +360,7 @@
 									</div>
 								</div></li>
 							<!-- 위시리스트 -->
-							<li class="kids"><a href="/test/getWishList.do">WISHLIST</font><img /></a>
+							<li class="kids"><a href="javascript:void(0)" onclick="wish()" >WISHLIST</font><img /></a>
 							</li>
 							<!-- Community -->
 							<li><a data-pan="top_cate_pan_7"
@@ -547,6 +547,17 @@
             <li><a href="/culture/cultureList" data-ga-category="PC_MLB_Header" data-ga-action="CULTURE">CULTURE</a></li>
 </ul>
       </div>
+<script type="text/javascript">
+function wish(){
+	//sessionStorage.setItem("userNO", 1);
+	var userNO = sessionStorage.getItem("userNO");
+	if(userNO != null){
+		location.href="/test/getWishList.do?userNO="+ userNO;
+	}else{
+		location.href="/test/getWishListCookie.do";
+	}
+}
+</script>
       <!--  [EOSD-2740] 카테고리 수정
       <div class="banner">
          <ul class="list">

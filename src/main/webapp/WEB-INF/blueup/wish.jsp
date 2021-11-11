@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/view/mlb/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- 컨텐츠 시작 -->
 	<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/validator.js"></script>
@@ -14,7 +17,7 @@
 			<h2 class="title01">위시리스트</h2>
 		<nav id="lnb" class="lnb-nav">
         <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
-    	<p><b>${session.userNO}</b>님<br/>반갑습니다.</p>
+    	<p id="id"><b></b>님</p><br/><p>반갑습니다.</p>
     	<hr class="hr-ddd" />
     	
     	<ul class="nav-mnlist">
@@ -96,7 +99,7 @@
 
 			<div class="tbst-div">
 				<div class="mid fl">
-					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt">1</em></span>건)
+					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt">${fn:length(wishList)}</em></span>건)
 				</div>
 				<div class="mid fr">
 					<a href="#" class="btn fill sm" onclick="javascript:deleteAllWishList(); return false;" data-ga-category="PC_MLB_위시리스트" data-ga-action="전체삭제"><span>전체삭제</span></a>
@@ -115,65 +118,25 @@
 				-->
 				<div>
 					<ul>
-						<li style="display:inline-flex;">
+						<c:forEach var="wishList" items="${wishList}" varStatus="status">
+						<c:if test="${status.count % 4 == 1 }">
+							<li style="display:inline-flex;">
+						</c:if>
 							<div style="width:250px; margin:0 auto;">
-								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
+								<img src="${wishList.main_image}" style="width:242px;height:242px;margin-top:27px;">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-19em; right:-16.5em;">
 							<div style="width:242px; text-align:center;">  
-								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
-								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
+								<p style="font-size:14px; font-family:Noto Sans Korean;margin-bottom:5px;"><a href="#" onclick="#">${wishList.product_name}</a></p>
+								<p style="text-align:center; margin-bottom:5px;"><strong><fmt:formatNumber value="${wishList.product_price}" pattern="#,###,###"/>원</strong></p>
 							</div>
 							<div style="width:242px; display: flex;">
 								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
 							</div>
 							</div>
-							<div style="width:250px; margin:0 auto;">
-								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
-							<div style="width:242px; text-align:center;">  
-								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
-								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
-							</div>
-							<div style="width:242px; display: flex;">
-								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
-							</div>
-							</div>
-							<div style="width:250px; margin:0 auto;">
-								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
-							<div style="width:242px; text-align:center;">  
-								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
-								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
-							</div>
-							<div style="width:242px; display: flex;">
-								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
-							</div>
-							</div>
-							<div style="width:250px; margin:0 auto;">
-								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
-							<div style="width:242px; text-align:center;">  
-								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
-								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
-							</div>
-							<div style="width:242px; display: flex;">
-								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
-							</div>
-							</div>
-						</li>
-						<li style="display:inline-flex;">
-							<div style="width:250px; margin:0 auto;">
-								<img src="https://static.mlb-korea.com/images/goods/thnail/m/20211029/3ABKS051N-50CRS-51488091370922635.png/dims/resize/242x242">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-15em;">
-							<div style="width:242px; text-align:center;">  
-								<p style="font-size:14px; font-family:Noto Sans Korean;"><a href="#" onclick="#">아이템이름</a></p>
-								<p style="text-align:center; margin-bottom:5px;"><strong>가격</strong></p>
-							</div>
-							<div style="width:242px; display: flex;">
-								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
-							</div>
-							</div>
-						</li>
+						<c:if test="${status.count % 4 == 0 }">
+							</li>
+						</c:if>
+						</c:forEach>
 					</ul>
 					
 				</div>
@@ -185,5 +148,16 @@
 	<!--// 컨텐츠 끝 -->
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
+<script type="text/javascript">
+$(document).ready(function(){
+	//sessionStorage.setItem("userID", "이채린");
+	var userID = sessionStorage.getItem("userID");
+		if(userID != null){
+			$('#id').text(userID);
+		}else{
+			$('#id').text("비회원");
+		}
+});
+</script>
 </body>
 </html>

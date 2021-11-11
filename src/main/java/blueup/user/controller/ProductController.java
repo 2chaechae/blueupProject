@@ -1,4 +1,5 @@
 package blueup.user.controller;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,11 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.admin.vo.ProductVo;
-import blueup.user.paging.PageMaker;
 import blueup.user.paging.productCriteria;
 import blueup.user.paging.productPageMaker;
 import blueup.user.service.ProductServiceImpl;
@@ -199,10 +198,47 @@ public class ProductController {
 	}
 
 	
+	// 회원 wish
 	@RequestMapping("/getWishList.do")
-	public ModelAndView getProductListBywishList(String userid) {
+	public ModelAndView getProductListBywishList(String userNO) {
+		System.out.println("위시리스트 가져오기");
+		// 리턴값 셋팅
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("wishList", productserviceimpl.getProductListBywishList(userid));
+		mav.addObject("wishList", productserviceimpl.getProductListBywishList(userNO));
+		mav.setViewName("wish");
+		return mav;
+	}
+	
+	// 비회원 wish
+	@RequestMapping("/getWishListCookie.do")
+	public ModelAndView getProductList(HttpServletRequest req) {
+		List<ProductVo> product = productserviceimpl.getProductList();
+		
+		Cookie cookies[] = req.getCookies();
+		String[] p_no = null;
+		List<ProductVo> productValue = new ArrayList<ProductVo>();
+		
+		// 쿠키 값 확인 
+		for(Cookie c : cookies) {
+			if(c.getName().equals("product")) {
+				String value = c.getValue();
+				p_no = value.split("%2C");
+			}
+		}
+		
+		// 쿠키 값 == 상품번호 wish no 수정 
+		if(p_no != null) {
+			for(int i =0; i < product.size(); i++) {
+				for(String p : p_no) {
+					if(Integer.parseInt(p) == product.get(i).getProduct_no()) {
+						product.get(i).setWish_no(1);
+						productValue.add(product.get(i));
+					}
+				}
+			}
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("wishList", productValue);
 		mav.setViewName("wish");
 		return mav;
 	}
