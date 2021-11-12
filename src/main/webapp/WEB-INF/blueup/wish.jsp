@@ -99,7 +99,7 @@
 
 			<div class="tbst-div">
 				<div class="mid fl">
-					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt">${fn:length(wishList)}</em></span>건)
+					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt"></em></span>건)
 				</div>
 				<div class="mid fr">
 					<a href="#" class="btn fill sm" onclick="javascript:deleteAllWishList(); return false;" data-ga-category="PC_MLB_위시리스트" data-ga-action="전체삭제"><span>전체삭제</span></a>
@@ -159,9 +159,18 @@ $(document).ready(function(){
 	var userID = sessionStorage.getItem("userID");
 		if(userID != null){
 			$('#id').text(userID);
+			var count = ${fn:length(wishList)};
+			$('em').text(count);
 		}else{
 			$('#id').text("비회원");
+			var getlist = $.cookie('product');
+			var cookieValue = getlist.split(',');
+			console.log(cookieValue);
+			var length = cookieValue.length;
+			console.log(length);
+			$('em').text(length);
 		}
+
 });
 
 function delete_wish(element){
@@ -182,6 +191,11 @@ function delete_wish(element){
 		success:function(data) {
 			if(data == 1){
 				$(element).closest('.wish').remove();
+				var now = $('.num').text();
+				console.log(now);
+				var new_num = Number(now) - 1; 
+				console.log(new_num);
+				$('.num').text(new_num);
 			}
 			else{
 				alert("삭제 실패")
