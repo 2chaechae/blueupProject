@@ -102,7 +102,7 @@
 					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt"></em></span>건)
 				</div>
 				<div class="mid fr">
-					<a href="#" class="btn fill sm" onclick="javascript:deleteAllWishList(); return false;" data-ga-category="PC_MLB_위시리스트" data-ga-action="전체삭제"><span>전체삭제</span></a>
+					<a href="#" class="btn fill sm" onclick="deleteAll();" ><span>전체삭제</span></a>
 				</div>
 			</div>
 
@@ -156,7 +156,9 @@
 
 $(document).ready(function(){
 	//sessionStorage.setItem("userID", "이채린");
+	//sessionStorage.setItem("userNO", 1); 	//회원
 	var userID = sessionStorage.getItem("userID");
+	var userNO = sessionStorage.getItem("userNO");
 		if(userID != null){
 			$('#id').text(userID);
 			var count = ${fn:length(wishList)};
@@ -174,15 +176,10 @@ $(document).ready(function(){
 });
 
 function delete_wish(element){
-	//sessionStorage.setItem("userNO", 1);
-	sessionStorage.setItem("userNO", 0);
-	alert(element);
-	var userNO = sessionStorage.getItem("userNO");
 	var product_no = $(element).closest('div').prev().val();
 	var wish_no = $(element).closest('div').prev().prev().val();
 	alert(product_no);
 	alert(wish_no);
-
 	$.ajax({
 		url:'/test/deleteWishList.do',
 		type:'POST',
@@ -206,6 +203,28 @@ function delete_wish(element){
 		}
 	});	
 }
+
+function deleteAll(){
+	if(userNO == null){
+		$.removeCookie('product');
+		$('.num').text(0);
+	}else{
+		$.ajax({
+			url:'/test/deleteWishAll.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"user_no":userNO},
+			success:function(data) {
+				if(data == 1)
+				alert('모두 삭제되었습니다.');
+			},
+			error:function() {
+				alert('다시 시도해주세요');
+			}
+		});
+	}
+}
+
 </script>
 </body>
 </html>

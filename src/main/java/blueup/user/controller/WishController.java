@@ -74,5 +74,12 @@ public class WishController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/deleteWishAll.do")
+	@ResponseBody
+	public String deleteWishAll(WishListVo vo) {
+		int result = wishserviceimpl.deleteWishListAll(vo);
+		return Integer.toString(result);
+	}
 
 }
