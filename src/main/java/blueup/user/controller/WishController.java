@@ -34,6 +34,7 @@ public class WishController {
 	@ResponseBody
 	public String deleteWishList(WishListVo vo, HttpServletRequest req, HttpServletResponse repo) {
 		String result;
+		System.out.println("test");
 		if (vo.getUser_no() > 0) {
 			System.out.println("회원-카테삭제");
 			int num = wishserviceimpl.deleteWishList(vo);
@@ -47,26 +48,34 @@ public class WishController {
 
 			// 쿠키 값 확인
 			for (Cookie c : cookies) {
-				if (c.getName().equals("product")) {
+				if (c.getName().equals("p_list")) {
 					String value = c.getValue();
 					p_no = value.split("%2C");
 				}
 			}
+			System.out.println(p_no[0]);
 			System.out.println("삭제상품 번호 : " + vo.getProduct_no());
 			// 쿠키 값 == 상품번호 wish no 수정
 			if (p_no != null) {
 				for (int i=0; i<p_no.length; i++) {
+					System.out.println("쿠키 널아님");
 					if (Integer.parseInt(p_no[i]) != vo.getProduct_no()) {
 						if(i != p_no.length-1) p_new_no += p_no[i] + ",";
 						else p_new_no += p_no[i];
 					}
 				}
-				System.out.println(p_new_no);
+				System.out.println("새로운 리스트" + p_new_no);
 			}
 			String check[] = p_new_no.split(",");
-			if(p_no.length > check.length) {
-				Cookie cookie = new Cookie("product", p_new_no);
+			System.out.println("check" + check.length);
+			System.out.println("p_no" + p_no.length );
+			if(p_no.length > check.length || check.length == 0) {
+				Cookie cookie = new Cookie("p_list", null);
 				repo.addCookie(cookie);
+				System.out.println("쿠키삭제");
+				cookie = new Cookie("p_list", p_new_no);
+				repo.addCookie(cookie);
+				System.out.println("쿠키추가");
 				result = "1";
 			}else {
 				result = "0";

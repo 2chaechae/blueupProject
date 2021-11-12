@@ -102,23 +102,18 @@
 					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt"></em></span>건)
 				</div>
 				<div class="mid fr">
-					<a href="#" class="btn fill sm" onclick="deleteAll();" ><span>전체삭제</span></a>
+					<a href="#" class="btn fill sm" onclick="deleteAll()" ><span>전체삭제</span></a>
 				</div>
 			</div>
 
 			<hr class="hr-666" />
 			<div id="includeWishList">
-				<!--
-					<p class="list-noneinfo">위시리스트 보관 상품이 없습니다.<br>상품을 위시리스트에 담아 두시면 언제든지 쉽게 상품을 찾으실 수 있습니다.</p>
-					<form id="srchForm" action="" method="post">
-						<input type="hidden" name="_csrf" value="e10c8807-8415-4905-b1ec-a9230cf6bc3f">
-						<input type="hidden" name="wishlstSn" id="wishlstSn" value="">
-						<input type="hidden" name="godTurn" id="godTurn" value="">
-					</form>
-				-->
 				<div>
 					<ul>
 						<c:forEach var="wishList" items="${wishList}" varStatus="status">
+						<c:if test="${status.count < 1}">
+							<p class="list-noneinfo">위시리스트 보관 상품이 없습니다.<br>상품을 위시리스트에 담아 두시면 언제든지 쉽게 상품을 찾으실 수 있습니다.</p>
+						</c:if>
 						<c:if test="${status.count % 4 == 1 }">
 							<li style="display:inline-flex;">
 						</c:if>
@@ -153,19 +148,18 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-
+//sessionStorage.setItem("userID", "이채린");
+//sessionStorage.setItem("userNO", 1); 	//회원
+var userID = sessionStorage.getItem("userID");
+var userNO = sessionStorage.getItem("userNO");
 $(document).ready(function(){
-	//sessionStorage.setItem("userID", "이채린");
-	//sessionStorage.setItem("userNO", 1); 	//회원
-	var userID = sessionStorage.getItem("userID");
-	var userNO = sessionStorage.getItem("userNO");
 		if(userID != null){
 			$('#id').text(userID);
 			var count = ${fn:length(wishList)};
 			$('em').text(count);
 		}else{
 			$('#id').text("비회원");
-			var getlist = $.cookie('product');
+			var getlist = $.cookie('p_list');
 			var cookieValue = getlist.split(',');
 			console.log(cookieValue);
 			var length = cookieValue.length;
@@ -180,11 +174,14 @@ function delete_wish(element){
 	var wish_no = $(element).closest('div').prev().prev().val();
 	alert(product_no);
 	alert(wish_no);
+	if(userNO == null){
+		userNO = 0;
+	}
 	$.ajax({
 		url:'/test/deleteWishList.do',
 		type:'POST',
 		cache:false,
-		data: {"user_no":userNO , "wish_no":wish_no, "product_no" : product_no},
+		data: {"user_no":userNO, "wish_no":wish_no, "product_no":product_no},
 		success:function(data) {
 			if(data == 1){
 				$(element).closest('.wish').remove();
@@ -206,7 +203,7 @@ function delete_wish(element){
 
 function deleteAll(){
 	if(userNO == null){
-		$.removeCookie('product');
+		$.removeCookie('p_list');
 		$('.num').text(0);
 	}else{
 		$.ajax({

@@ -87,7 +87,7 @@ public class ProductController {
 			
 			// 쿠키의 상품 위시리스트 정보 얻어서 리스트에 넣기
 			for(Cookie c : cookies) {
-				if(c.getName().equals("product")) {	
+				if(c.getName().equals("p_list")) {	
 					String value = c.getValue();
 					p_no = value.split("%2C");
 				}
@@ -169,7 +169,7 @@ public class ProductController {
 			
 			// 쿠키 값 확인 
 			for(Cookie c : cookies) {
-				if(c.getName().equals("product")) {
+				if(c.getName().equals("p_list")) {
 					String value = c.getValue();
 					p_no = value.split("%2C");
 				}
@@ -181,6 +181,7 @@ public class ProductController {
 					for(String p : p_no) {
 						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
 							productValue.get(i).setWish_no(1);
+							System.out.println(p);
 						}
 					}
 				}
@@ -220,7 +221,7 @@ public class ProductController {
 		
 		// 쿠키 값 확인 
 		for(Cookie c : cookies) {
-			if(c.getName().equals("product")) {
+			if(c.getName().equals("p_list")) {
 				String value = c.getValue();
 				p_no = value.split("%2C");
 			}
