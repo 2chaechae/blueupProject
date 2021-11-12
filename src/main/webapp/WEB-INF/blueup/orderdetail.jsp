@@ -175,11 +175,11 @@
 									<tfoot>
 										<tr class="selLineBoxBt">
 											<th>총 결제금액</th>
-											<td>
+											<%-- <td>
 												<span class="selTxtMgL">${orderdetail.get(0).order_means }</span> 
 												<span class="selTxtMgL">결제한 은행</span> 
 												<span class="selTxtMgL">결제한 계좌</span>
-											</td>
+											</td> --%>
 											<td><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.get(0).order_price + orderdetail.get(0).delivery_fee }" /></strong> 원</td>
 										</tr>
 									</tfoot>
@@ -224,10 +224,10 @@
 												<tfoot>
 													<tr>
 														<th>환불 금액</th>
-														<td><span class="selTxtMgL">${orderdetail.refund_means }</span>
+														<%-- <td><span class="selTxtMgL">${orderdetail.refund_means }</span>
 															<span class="selTxtMgL">${orderdetail.refund_bank }</span>
 															<span class="selTxtMgL">${orderdetail.refund_account }</span>
-														</td>
+														</td> --%>
 														<td><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.refund_price}" /></strong> 원</td>
 
 													</tr>
@@ -301,7 +301,7 @@
 							</c:forEach>
 							<!-- 확인버튼 -->
 							<div class="btnWrapBox">
-								<a href="/blueup/getOrderList.do" class="btn fill">확인</a>
+								<a href="/test/getOrderList.do" class="btn fill">확인</a>
 							</div>
 						</div>
 					</div>
