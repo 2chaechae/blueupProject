@@ -15,6 +15,7 @@
 		<typeAlias type="blueup.user.vo.Category_detailVo" alias="cateDetailvo"/>
 		<typeAlias type="blueup.user.vo.CategoryVo" alias="categoryvo"/>
 		<typeAlias type="blueup.user.paging.Criteria" alias="cri"  />
+		<typeAlias type="blueup.user.vo.UsersVo" alias="userVo"  />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />
@@ -24,5 +25,6 @@
 		<mapper resource="mappings/notice-mapping.xml" />
 		<mapper resource="mappings/qna-mapping.xml" />
 		<mapper resource="mappings/category-mapping.xml" />
+		<mapper resource="mappings/userInfo-mapping.xml" />
 	</mappers>
 </configuration>

@@ -3,8 +3,14 @@ package blueup.user.vo;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Data
+@Getter
+@Setter
+@ToString
 public class UsersVo {
 	int user_no; // 회원 번호
 	String user_name; // 회원 이름
@@ -27,5 +33,6 @@ public class UsersVo {
 	boolean agree_sns; //sns 수신 여부
 	boolean agree_email;//이메일 수신여부
 	boolean newbie; //신규회원 여부
+	int total_point;
 	
 }
