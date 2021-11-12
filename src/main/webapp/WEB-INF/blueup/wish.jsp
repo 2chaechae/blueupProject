@@ -122,9 +122,12 @@
 						<c:if test="${status.count % 4 == 1 }">
 							<li style="display:inline-flex;">
 						</c:if>
+							<section class="wish">
+							<input type="hidden" class="w" value="${wishList.wish_no}" />
+							<input type="hidden" class="p" value="${wishList.product_no}" />
 							<div style="width:250px; margin:0 auto;">
 								<img src="${wishList.main_image}" style="width:242px;height:242px;margin-top:27px;">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" style="width:10px;height:10px; position:relative; top:-19em; right:-16.5em;">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="delete_wish(this)" style="width:10px;height:10px; position:relative; top:-19em; right:-16.5em;">
 							<div style="width:242px; text-align:center;">  
 								<p style="font-size:14px; font-family:Noto Sans Korean;margin-bottom:5px;"><a href="#" onclick="#">${wishList.product_name}</a></p>
 								<p style="text-align:center; margin-bottom:5px;"><strong><fmt:formatNumber value="${wishList.product_price}" pattern="#,###,###"/>원</strong></p>
@@ -133,6 +136,7 @@
 								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
 							</div>
 							</div>
+							</section>
 						<c:if test="${status.count % 4 == 0 }">
 							</li>
 						</c:if>
@@ -149,6 +153,7 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	//sessionStorage.setItem("userID", "이채린");
 	var userID = sessionStorage.getItem("userID");
@@ -158,6 +163,35 @@ $(document).ready(function(){
 			$('#id').text("비회원");
 		}
 });
+
+function delete_wish(element){
+	//sessionStorage.setItem("userNO", 1);
+	sessionStorage.setItem("userNO", 0);
+	alert(element);
+	var userNO = sessionStorage.getItem("userNO");
+	var product_no = $(element).closest('div').prev().val();
+	var wish_no = $(element).closest('div').prev().prev().val();
+	alert(product_no);
+	alert(wish_no);
+
+	$.ajax({
+		url:'/test/deleteWishList.do',
+		type:'POST',
+		cache:false,
+		data: {"user_no":userNO , "wish_no":wish_no, "product_no" : product_no},
+		success:function(data) {
+			if(data == 1){
+				$(element).closest('.wish').remove();
+			}
+			else{
+				alert("삭제 실패")
+			}
+		},
+		error:function() {
+			alert('다시 시도해주세요');
+		}
+	});	
+}
 </script>
 </body>
 </html>

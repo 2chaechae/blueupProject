@@ -19,7 +19,13 @@ public class WishDAO {
 		return sqlSssionTemplate.insert("wishDao.insertWish", vo);
 	}
 	
+	// 특정 wish list 삭제
 	public int deleteWishList(WishListVo vo) {
 		return sqlSssionTemplate.delete("wishDao.deleteWish", vo);
+	}
+	
+	// 전체 wish list 삭제
+	public int deleteWishAll(WishListVo vo) {
+		return sqlSssionTemplate.delete("wishDao.deleteWishAll", vo);
 	}
 }
