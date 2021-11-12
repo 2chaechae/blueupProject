@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userInfoMyBatis">
+
+	<!-- 재고 추가(추가할때만 사용할 것!!! 재고 증감은 밑에 쿼리 있으) -->
+	<!-- 다른 옵션의 상품일 경우 다른 재고로 추가할 것!!! -->
+	<select id="getUserInfo" resultType="userVo" parameterType="userVo">
+		SELECT * FROM USERS WHERE USER_NO = #{user_no}
+	</select>
+
+	<update id="updateUser" parameterType="userVo">
+		UPDATE USERS SET 
+			USER_PASSWORD=#{user_password}, 
+			EMAIL_ID=#{email_id}, 
+			EMAIL_ADDRESS=#{email_address}, 
+			ZIPCODE=#{zipcode}, 
+			ADDRESS=#{address}, 
+			DETAILED_ADDRESS=#{detailed_address}, 
+			AGREE_SNS=#{agree_sns}, 
+			AGREE_EMAIL=#{agree_email}
+		WHERE USER_NO = #{user_no}
+	</update>
+
+
+</mapper>
