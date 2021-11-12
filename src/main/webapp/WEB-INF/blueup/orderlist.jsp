@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="../../header.jsp"%>
+<%@ include file="/header.jsp"%>
 
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript" src="/javascript/message/mypage_ko.js?v=prod-version-858_20211102145956"></script>
@@ -485,5 +485,5 @@ function getorder(element){
 	$('#orderNumFrm').submit();
 }
 </script>
-<%@ include file="../../footer.jsp"%>
+<%@ include file="/footer.jsp" %>
 </html>

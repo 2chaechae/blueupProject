@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="../../header.jsp"%>
+<%@ include file="/header.jsp"%>
 
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript" src="/javascript/message/mypage_ko.js?v=prod-version-858_20211102145956"></script>
@@ -310,3 +310,4 @@
 		</main>
 	</div>
 </div>
+<%@ include file="/footer.jsp" %>
