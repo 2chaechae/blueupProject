@@ -34,8 +34,8 @@ public class ProductDAO {
 		return sqlSssionTemplate.selectList("productDao.getProductListByDetailedCategory", vo);
 	}
 
-	public List<ProductVo> getProductListBywishList(String userid){
-		return sqlSssionTemplate.selectList("productDao.getProductListBywishList", userid);
+	public List<ProductVo> getProductListBywishList(String id){
+		return sqlSssionTemplate.selectList("productDao.getProductListBywishList", id);
 	}
 	
 	public int getCountProductDetail(HashMap<Object, Object> vo) {
@@ -46,14 +46,13 @@ public class ProductDAO {
 		return sqlSssionTemplate.selectOne("productDao.getCountProduct", vo);
 	}
 	
+	public List<ProductVo> getProductList() {
+		return sqlSssionTemplate.selectList("productDao.getProductList");
+	}
 	
 	/////////////////////// 아직 안쓴거 /////////////////////////
 	public ProductVo getProduct(ProductVo vo) {
 		return sqlSssionTemplate.selectOne("productDao.getProduct", vo);
-	}
-	
-	public List<ProductVo> getProductList(ProductVo vo) {
-		return sqlSssionTemplate.selectList("productDao.getProductList", vo);
 	}
 
 	public List<ProductVo> getProductListBySearch(ProductVo vo) {

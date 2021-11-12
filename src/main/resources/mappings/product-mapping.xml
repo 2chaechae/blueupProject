@@ -75,7 +75,7 @@
 		SELECT a.main_image, a.product_no, a.product_price, a.product_name, b.wish_no, b.user_no
 		FROM product as a RIGHT JOIN wishlist as b
 		ON a.product_no = b.product_no 
-		WHERE b.user_no = #{userNO};
+		WHERE b.user_no = CAST(#{userNO} AS INTEGER);
 	</select>
 	
 	<!-- 특정 상품 조회 -->

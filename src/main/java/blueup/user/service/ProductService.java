@@ -13,9 +13,9 @@ public interface ProductService {
 	public List<ProductVo> getProductListByCategory(HashMap<Object, Object> vo);
 	public List<ProductVo> getProductListByDetailedCategory(HashMap<Object, Object> vo);
 	public ProductVo getProduct(ProductVo vo);
-	public List<ProductVo> getProductList(ProductVo vo);
+	public List<ProductVo> getProductList();
 	public List<ProductVo> getProductListBySearch(ProductVo vo);
-	public List<ProductVo> getProductListBywishList(String userid);
+	public List<ProductVo> getProductListBywishList(String id);
 	public int getCountProductDetail(HashMap<Object, Object> vo);
 	public int getCountProduct(HashMap<Object, Object> vo);
 }
