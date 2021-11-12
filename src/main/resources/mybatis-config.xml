@@ -16,6 +16,7 @@
 		<typeAlias type="blueup.user.vo.CategoryVo" alias="categoryvo"/>
 		<typeAlias type="blueup.user.paging.Criteria" alias="cri"  />
 		<typeAlias type="blueup.user.vo.WishListVo" alias="wishvo" />
+		<typeAlias type="blueup.user.vo.OrderVo" alias="ordervo"  />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />
@@ -26,5 +27,6 @@
 		<mapper resource="mappings/qna-mapping.xml" />
 		<mapper resource="mappings/category-mapping.xml" />
 		<mapper resource="mappings/wish-mapping.xml" />
+		<mapper resource="mappings/orderlist-mapping.xml" />
 	</mappers>
 </configuration>
