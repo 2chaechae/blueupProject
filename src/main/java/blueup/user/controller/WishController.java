@@ -34,13 +34,14 @@ public class WishController {
 	@ResponseBody
 	public String deleteWishList(WishListVo vo, HttpServletRequest req, HttpServletResponse repo) {
 		String result;
-		System.out.println("test");
 		if (vo.getUser_no() > 0) {
+			//////////////////회원/////////////////////////
 			System.out.println("회원-카테삭제");
 			int num = wishserviceimpl.deleteWishList(vo);
 			result = Integer.toString(num);
 			System.out.println(result);
 		} else {
+			//////////////////비회원/////////////////////////
 			System.out.println("비회원-카테삭제");
 			Cookie cookies[] = req.getCookies();
 			String[] p_no = null;
@@ -50,7 +51,7 @@ public class WishController {
 			for (Cookie c : cookies) {
 				if (c.getName().equals("p_list")) {
 					String value = c.getValue();
-					p_no = value.split("%2C");
+					p_no = value.split("%2F");
 				}
 			}
 			System.out.println(p_no[0]);
@@ -60,16 +61,19 @@ public class WishController {
 				for (int i=0; i<p_no.length; i++) {
 					System.out.println("쿠키 널아님");
 					if (Integer.parseInt(p_no[i]) != vo.getProduct_no()) {
-						if(i != p_no.length-1) p_new_no += p_no[i] + ",";
-						else p_new_no += p_no[i];
+							p_new_no += p_no[i];
+							p_new_no += "%2F";
 					}
 				}
 				System.out.println("새로운 리스트" + p_new_no);
 			}
-			String check[] = p_new_no.split(",");
+			String check[] = p_new_no.split("%2F");
+			for(String m : check) {
+				System.out.println(m);
+			}
 			System.out.println("check" + check.length);
 			System.out.println("p_no" + p_no.length );
-			if(p_no.length > check.length || check.length == 0) {
+			if(p_no.length > check.length || check == null) {
 				Cookie cookie = new Cookie("p_list", null);
 				repo.addCookie(cookie);
 				System.out.println("쿠키삭제");
@@ -86,8 +90,15 @@ public class WishController {
 	
 	@RequestMapping("/deleteWishAll.do")
 	@ResponseBody
-	public String deleteWishAll(WishListVo vo) {
-		int result = wishserviceimpl.deleteWishListAll(vo);
+	public String deleteWishAll(WishListVo vo, HttpServletRequest req, HttpServletResponse repo) {
+		int result = 0;
+		if(vo.getUser_no() > 0) {
+			result = wishserviceimpl.deleteWishListAll(vo);
+		}else {
+			Cookie cookie = new Cookie("p_list", null);
+			repo.addCookie(cookie);
+			result = 1;
+		}
 		return Integer.toString(result);
 	}
 

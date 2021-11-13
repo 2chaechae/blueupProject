@@ -40,7 +40,7 @@ public class ProductController {
 		
 		productPageMaker pageMaker = new productPageMaker();
 		pageMaker.setCri(cri);
-
+		
 		/////////////////////////회원//////////////////////////
 		if(session.getAttribute("userNO") != null) {
 			System.out.println("회원");
@@ -89,7 +89,7 @@ public class ProductController {
 			for(Cookie c : cookies) {
 				if(c.getName().equals("p_list")) {	
 					String value = c.getValue();
-					p_no = value.split("%2C");
+					p_no = value.split("%2F");
 				}
 			}
 			
@@ -171,7 +171,8 @@ public class ProductController {
 			for(Cookie c : cookies) {
 				if(c.getName().equals("p_list")) {
 					String value = c.getValue();
-					p_no = value.split("%2C");
+					System.out.println(value);
+					p_no = value.split("%2F");
 				}
 			}
 			
@@ -223,7 +224,7 @@ public class ProductController {
 		for(Cookie c : cookies) {
 			if(c.getName().equals("p_list")) {
 				String value = c.getValue();
-				p_no = value.split("%2C");
+				p_no = value.split("%2F");
 			}
 		}
 		

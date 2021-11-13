@@ -102,7 +102,7 @@
 					<span>전체</span> (<span class="text-color01"><em class="num" id="wishListCnt"></em></span>건)
 				</div>
 				<div class="mid fr">
-					<a href="#" class="btn fill sm" onclick="deleteAll()" ><span>전체삭제</span></a>
+					<a href="javascript:void(0)" class="btn fill sm" onclick="deleteAll();" ><span>전체삭제</span></a>
 				</div>
 			</div>
 
@@ -148,8 +148,8 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-//sessionStorage.setItem("userID", "이채린");
-//sessionStorage.setItem("userNO", 1); 	//회원
+sessionStorage.setItem("userID", "이채린");
+sessionStorage.setItem("userNO", 1); 	//회원
 var userID = sessionStorage.getItem("userID");
 var userNO = sessionStorage.getItem("userNO");
 $(document).ready(function(){
@@ -160,9 +160,10 @@ $(document).ready(function(){
 		}else{
 			$('#id').text("비회원");
 			var getlist = $.cookie('p_list');
-			var cookieValue = getlist.split(',');
+			var cookieValue = getlist.split('/');
 			console.log(cookieValue);
 			var length = cookieValue.length;
+			length = length - 1;
 			console.log(length);
 			$('em').text(length);
 		}
@@ -202,9 +203,11 @@ function delete_wish(element){
 }
 
 function deleteAll(){
+	alert("test");
 	if(userNO == null){
 		$.removeCookie('p_list');
 		$('.num').text(0);
+		$('.wish').remove();
 	}else{
 		$.ajax({
 			url:'/test/deleteWishAll.do',
@@ -212,8 +215,12 @@ function deleteAll(){
 		   	cache:false,
 			data: {"user_no":userNO},
 			success:function(data) {
-				if(data == 1)
+				alert('성공');
+				if(data > 1){
+				$('.wish').remove();
+				$('.num').text(0);
 				alert('모두 삭제되었습니다.');
+				}
 			},
 			error:function() {
 				alert('다시 시도해주세요');

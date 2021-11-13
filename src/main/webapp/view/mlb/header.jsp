@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% session.setAttribute("userNO", 1); %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -549,7 +550,7 @@
       </div>
 <script type="text/javascript">
 function wish(){
-	//sessionStorage.setItem("userNO", 1);
+	sessionStorage.setItem("userNO", 1);
 	var userNO = sessionStorage.getItem("userNO");
 	if(userNO != null){
 		location.href="/test/getWishList.do?userNO="+ userNO;

@@ -83,15 +83,15 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-var id = sessionStorage.getItem("userNO");
-//var id = 1;
+//var id = sessionStorage.getItem("userNO");
+var id = 1;
 
 // 하트 눌렀을 때 : 회원 db 위시리스트 , 비회원 쿠키에 상품번호 추가
 function heart(element){
 var img = $(element).attr("src");
 	alert(img);
 	// 회원 위시리스트
-	if(id != null){
+	if(id > 0){
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
 			var p_no = $(element).closest('li').prev().prev().val();
@@ -134,25 +134,36 @@ var img = $(element).attr("src");
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
 			var getlist = $.cookie('p_list');
 				if(getlist == undefined){
-					var cookieList = new Array();
-					cookieList.push(no);
+					var cookieList = no + "/";
 					$.cookie('p_list', cookieList);
 					console.log("첫번째값 넣기 :" + cookieList);
 				}else{
-					var cookieValue = getlist.split(',');
-					console.log("기존쿠키: " + cookieValue);
-					cookieValue.push(no);
-					console.log("두번째 쿠키 넣기 : " + cookieValue);
-					$.cookie('p_list', cookieValue);
+					console.log("기존쿠키: " + getlist);
+					getlist += no;
+					getlist += "/";
+					console.log("두번째 쿠키 넣기 : " + getlist);
+					$.cookie('p_list', getlist);
 
 				}
 		// 쿠키삭제 & 내용 삭제
 		}else{
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
 			var cookieValue = $.cookie('p_list');
-				cookieValue.pop(no);
+			console.log("기존쿠기 : " +  cookieValue);
+			var remove = cookieValue.split("/");
+			var cookieList= "";
+			for(var m of remove){
+				if( m != no){
+					console.log(m);
+					cookieList += m;
+					cookieList += "/";
+				}
+			}
+				console.log(cookieList);
 				$.removeCookie('p_list');
-				$.cookie('p_list', cookieValue);
+				console.log("쿠키삭제");
+				$.cookie('p_list', cookieList);
+				console.log("쿠키생성");
 			}
 		}
 	}
