@@ -54,4 +54,19 @@
 		  FROM USERS
 		 WHERE USER_ID = #{user_id}
 	</select>
+	
+	<select id="loginIdChk" parameterType="userVo" resultType="Integer">
+		SELECT COUNT(*)
+		  FROM USERS
+		 WHERE USER_ID = #{user_id}
+		   AND USER_PASSWORD = #{user_password}
+	</select>
+	
+	<select id="userInfo" parameterType="userVo" resultType="userVo">
+		SELECT *
+		  FROM USERS
+		 WHERE USER_ID = #{user_id}
+		   AND USER_PASSWORD = #{user_password}	
+	</select>
+	
 </mapper>

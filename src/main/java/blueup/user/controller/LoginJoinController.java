@@ -1,6 +1,7 @@
 package blueup.user.controller;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.admin.util.SHA256;
+import blueup.admin.vo.ProductVo;
 import blueup.user.service.LoginJoinServiceImpl;
 import blueup.user.vo.UsersVo;
 
@@ -32,6 +34,14 @@ public class LoginJoinController {
 	public String join(UsersVo userVo, Model model) {
 		
 		return "join";
+	}
+	
+	@RequestMapping("/movedIndex.do")
+	public ModelAndView movedIndex(HttpServletRequest request, HttpSession session, UsersVo userVo) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("indexmlb");
+		
+		return mav;
 	}
 	
 	@RequestMapping("/insertJoin.do")
@@ -85,4 +95,29 @@ public class LoginJoinController {
 		return result;
 	}
 	
+	@RequestMapping("/loginChkId.do")
+	@ResponseBody
+	public Map<String,Object> loginChkId(UsersVo userVo) {
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+	String pw = userVo.getUser_password().toString();
+		
+		SHA256 sha256 = new SHA256(); //사용자 패스워드 암호화
+		
+		try {
+			pw = sha256.encrypt(pw);
+			userVo.setUser_password(pw);
+			
+			int userIdChkNum = loginjoinserviceimpl.getLoginIdChk(userVo);
+			List<UsersVo> vo = loginjoinserviceimpl.getUserInfo(userVo); //세션에 올려둘 유저 정보
+			
+			result.put("userInfo", vo.get(0));
+			result.put("userIdChkNum", userIdChkNum);
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

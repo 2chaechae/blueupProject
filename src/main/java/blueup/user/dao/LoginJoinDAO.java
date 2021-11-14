@@ -1,5 +1,7 @@
 package blueup.user.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,5 +19,15 @@ public class LoginJoinDAO {
 	public int userId(UsersVo userVo) {
 		return sqlSssionTemplate.selectOne("loginjoinDao.userId", userVo);
 	}
+
+	public int loginIdChk(UsersVo userVo) {
+		return sqlSssionTemplate.selectOne("loginjoinDao.loginIdChk", userVo);
+	}
+
+	public List<UsersVo> userInfo(UsersVo userVo) {
+		return sqlSssionTemplate.selectList("loginjoinDao.userInfo", userVo);
+	}
+
+	
 	
 }

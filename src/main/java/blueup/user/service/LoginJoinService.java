@@ -6,4 +6,5 @@ public interface LoginJoinService {
 	
 	public void getInsertUserInfo(UsersVo userVo);
 	public int getUserId(UsersVo userVo);
+	public int getLoginIdChk(UsersVo userVo);
 }
