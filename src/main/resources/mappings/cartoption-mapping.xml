@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cartoptionDao">
+
+	<select id="searchCartOption" parameterType="cartoptionvo" resultType="cartoptionvo">
+		SELECT 
+		a.stock_no, a.product_no, a.stock_quantity, a.clothes_size, a.color, b.product_price, b.category_name,
+		b.detailed_category_name, b.main_image
+		FROM stock AS a JOIN product AS b
+		ON a.product_no = b.product_no
+		WHERE a.product_no = #{product_no};
+	</select>
+</mapper>

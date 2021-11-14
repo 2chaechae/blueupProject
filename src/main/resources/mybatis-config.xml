@@ -17,6 +17,7 @@
 		<typeAlias type="blueup.user.vo.WishListVo" alias="wishvo" />
 		<typeAlias type="blueup.user.vo.OrderVo" alias="ordervo"  />
 		<typeAlias type="blueup.user.vo.UsersVo" alias="userVo"  />
+		<typeAlias type="blueup.user.vo.CartOptionVo" alias="cartoptionvo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />
@@ -29,5 +30,6 @@
 		<mapper resource="mappings/wish-mapping.xml" />
 		<mapper resource="mappings/orderlist-mapping.xml" />
 		<mapper resource="mappings/userInfo-mapping.xml" />
+		<mapper resource="mappings/cartoption-mapping.xml" />
 	</mappers>
 </configuration>

@@ -128,7 +128,7 @@
 								<p style="text-align:center; margin-bottom:5px;"><strong><fmt:formatNumber value="${wishList.product_price}" pattern="#,###,###"/>원</strong></p>
 							</div>
 							<div style="width:242px; display: flex;">
-								<a href="#" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+								<a href="javascript:void(0)" onclick="option(this)" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
 							</div>
 							</div>
 							</section>
@@ -154,6 +154,7 @@ var userID = sessionStorage.getItem("userID");
 var userNO = sessionStorage.getItem("userNO");
 $(document).ready(function(){
 		if(userID != null){
+			alert("아이디ok");
 			$('#id').text(userID);
 			var count = ${fn:length(wishList)};
 			$('em').text(count);
@@ -227,6 +228,13 @@ function deleteAll(){
 			}
 		});
 	}
+}
+
+function option(element){
+	alert("test");
+	var product_no = $(element).closest('.wish').children('.p').val();
+	alert(product_no);
+	window.open("/test/getCartOption.do?product_no=" + product_no,"height=300", "width=500");
 }
 
 </script>
