@@ -8,7 +8,6 @@
 		<typeAlias type="blueup.admin.vo.ProductVo" alias="productvo"/>
 		<typeAlias type="blueup.admin.vo.ProductVo" alias="stockvo"/>
 		<typeAlias type="blueup.user.vo.CartVo" alias="cartvo"/>
-		<typeAlias type="blueup.user.vo.CartVo" alias="cartvo"/>
 		<typeAlias type="blueup.user.vo.Terms_and_conditionVo" alias="termsvo"/>
 		<typeAlias type="blueup.user.vo.NoticeVo" alias="noticevo"/>
 		<typeAlias type="blueup.user.vo.QnaVo" alias="qnavo"/>
