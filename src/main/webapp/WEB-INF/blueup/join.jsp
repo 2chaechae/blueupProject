@@ -49,7 +49,7 @@
 													<span class="error-msg"></span>													
 												</li>
 												<li>													
-													<input type="password" class="input-style01 pw" style="width:100%;" placeholder="비밀번호 ( 8~12자 영문, 숫자, 특수문자 중 최소 2가지 조합)" id="user_pw" name="user_pw" maxlength="12">
+													<input type="password" class="input-style01 pw" style="width:100%;" placeholder="비밀번호 ( 8~12자 영문, 숫자, 특수문자 중 최소 2가지 조합)" id="user_password" name="user_password" maxlength="12">
 													<span class="error-msg"></span>
 												</li>
 												<li>												
@@ -67,11 +67,11 @@
 														<input type="text" class="input-style01 email2" style="width:130px;" placeholder="주민번호 뒷자리" id="user_jumin2" name="user_jumin2">
 													</span>
 													<span class="rdo-skin">
-														<input type="radio" name="genderRadio" id="male" value="남자" checked><span>선택</span>
+														<input type="radio" name="user_gender" id="male" value="남자" checked><span>선택</span>
 													</span>
 													<label for="gender1">남자</label>
 													<span class="rdo-skin">
-														<input type="radio" name="genderRadio" id="female" value="여자"><span>선택</span>
+														<input type="radio" name="user_gender" id="female" value="여자"><span>선택</span>
 													</span>
 													<label for="gender2">여자</label>
 													<span class="error-msg"></span>
@@ -80,16 +80,16 @@
 													<span class="email">
 														<input type="text" class="input-style01 email1" style="width:130px;" placeholder="E-mail" id="email_id" name="email_id">
 														<em class="att">@</em>
-														<input type="text" class="input-style01 email2" style="width:130px;" placeholder="" id="email_address" name="email_address">
+														<input type="text" class="input-style01 email2" style="width:130px;" placeholder="" id="email_address" name="email_address" readonly>
 														<div class="select-style01 d_select email3">
 															<button type="button" class="d_select_sel" id="user_email_select" name="user_email_select" style="width:151px;"><span>이메일선택</span></button>
 															<ul>			
-																<li><a href="#" id="enormal1">직접입력</a></li>													
-																<li><a href="#" id="enormal2">naver.com</a></li>
-																<li><a href="#" id="enormal3">daum.net</a></li>
-																<li><a href="#" id="enormal4">nate.com</a></li>
-																<li><a href="#" id="enormal5">gmail.com</a></li>
-																<li><a href="#" id="enormal6">hotmail.com</a></li>
+																<li><a href="#none;" id="enormal1">직접입력</a></li>													
+																<li><a href="#none;" id="enormal2">naver.com</a></li>
+																<li><a href="#none;" id="enormal3">daum.net</a></li>
+																<li><a href="#none;" id="enormal4">nate.com</a></li>
+																<li><a href="#none;" id="enormal5">gmail.com</a></li>
+																<li><a href="#none;" id="enormal6">hotmail.com</a></li>
 															</ul>
 														</div>
 													</span>
@@ -100,9 +100,9 @@
 														<div class="select-style01 d_select phone0">
 															<button type="button" class="d_select_sel" style="width:151px;" id="mobileBtn"><span>통신사 선택</span></button>
 															<ul>
-																<li><a href="#" id="mobileSkt">SKT</a></li>
-																<li><a href="#" id="mobileKt">KT</a></li>
-																<li><a href="#" id="mobileLg">LG</a></li>
+																<li><a href="#none;" id="mobileSkt">SKT</a></li>
+																<li><a href="#none;" id="mobileKt">KT</a></li>
+																<li><a href="#none;" id="mobileLg">LG</a></li>
 															</ul>
 														</div>													
 														<input type="text" class="input-style01 phone1" style="width:80px;" name="phone1" id="phone1" maxlength="3" >
@@ -125,7 +125,7 @@
 												<div class="hbox">
 													<span class="required">*</span>
 													<span class="check-skin">
-														<input type="checkbox" id="certAgreeYn" name="certAgreeYn" value="Y"><span>선택</span>
+														<input type="checkbox" id="certAgreeYn" name="certAgreeYn" value="Y" onclick="setAgree();"><span>선택</span>
 													</span>
 													<label for="certAgreeYn">본인 인증을 위한 약관 모두 동의</label>
 													<a href="#" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certBtn" name="certBtn">본인인증</a>
@@ -225,14 +225,14 @@
 										<span class="item">
 											<span class="required">*</span>
 											<span class="check-skin">
-												<input type="checkbox" name="onlineSiteUsefStplat" id="onlineSiteUsefStplat" name="onlineSiteUsefStplat" value="Y" onclick="setCheck2()"><span>선택</span>												
+												<input type="checkbox" name="onlineSiteUsefStplat" id="onlineSiteUsefStplat" value="N" onclick="setCheck2()"><span>선택</span>												
 											</span>
 											<label for="chk_pol_receive_1">서비스 이용약관(필수)</label>
 										</span>
 										<span class="item">
 											<span class="required">*</span>
 											<span class="check-skin">
-												<input type="checkbox" name="psnlInfoColctUsefAgr" id="psnlInfoColctUsefAgr" value="Y" onclick="setCheck2()"><span>선택</span>												
+												<input type="checkbox" name="psnlInfoColctUsefAgr" id="psnlInfoColctUsefAgr" value="N" onclick="setCheck2()"><span>선택</span>												
 											</span>
 											<label for="chk_pol_receive_2">개인정보 수집 및 이용 (필수)</label>		
 										</span>
@@ -286,8 +286,7 @@
 						</ul>
 					</section>
 				</div>
-				<input type="hidden" id="agree_sns" name="agree_sns" value="N"/>
-				<input type="hidden" id="agree_email" name="agree_email" value="N"/>
+				<input type="hidden" id="mobile_carrier" name="mobile_carrier" value=""/>
 				</form>
 			</main>
 			
@@ -1786,7 +1785,8 @@
 				</div>
 			</section>
 		</article>
-		<input type="hidden" id="mobile_Carrier" name="mobile_Carrier" value=""/>
+		<input type="hidden" id="tmpId" name="tmpId" value="" />
+		<input type="hidden" id="chkNum" name="chkNum" value="" />
 <%@ include file="footer.jsp" %>
 </body>
 <script type="text/javascript">
@@ -1801,6 +1801,39 @@ $(document).ready(function(){
 	$("#mobileLg").on('click',function(){
 		mobileCarrier('lg');
 	});
+	
+	//중복검사
+	$('#id_chk').click(()=>{
+		var userId = $('#user_id').val();
+		if(userId == ""){
+			alert("아이디를 입력하세요");
+			return;
+		}
+		
+		$.ajax({
+			type:'POST',
+			url:'/test/overlapChkId.do',
+			data: { user_id : userId },
+			dataType: 'json',
+			success:function(data){
+				var chkNum = data.chkNum;
+				if(chkNum == 1){
+					alert("존재하는 아이디 입니다. 아이디를 입력해주세요");
+					$('#chkNum').val(chkNum);
+					$('#user_id').focus();
+				} else if(chkNum == 0){
+					alert("사용가능한 아이디입니다");
+					$('#chkNum').val(chkNum);
+					$('#tmpId').val(userId);
+				}
+			},
+			error:function(request,status,error){
+		      alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+		    }
+		});
+		
+	});
+	
 	
 	//회원가입버튼
 	$('#confirmJoinBtn').on('click',function(){
@@ -1832,23 +1865,23 @@ $(document).ready(function(){
 	});
 	
 	$('#enormal1').on('click',function(){
-		$('#email_address').attr("disable",false);
+		$('#email_address').attr("readonly",false);
 		emailAddress('1');
 	});
 	$('#enormal2').on('click',function(){
-		$('#email_address').attr("disable",true);
+		$('#email_address').attr("readonly",true);
 		emailAddress('2');
 	});
 	$('#enormal3').on('click',function(){
-		$('#email_address').attr("disable",true);
+		$('#email_address').attr("readonly",true);
 		emailAddress('3');
 	});
 	$('#enormal4').on('click',function(){
-		$('#email_address').attr("disable",true);
+		$('#email_address').attr("readonly",true);
 		emailAddress('4');
 	});
 	$('#enormal5').on('click',function(){
-		$('#email_address').attr("disable",true);
+		$('#email_address').attr("readonly",true);
 		emailAddress('5');
 	});
 	$('#enormal6').on('click',function(){
@@ -1887,7 +1920,7 @@ function emailAddress(value){
 }
 
 function mobileCarrier(value){
-	$('#mobile_Carrier').val(value);
+	$('#mobile_carrier').val(value);
 }
 
 function validation(value){
@@ -1895,7 +1928,7 @@ function validation(value){
 	var val = value; // 1: 회원가입버튼 2: 본인인증버튼
 	
 	var user_id = $('#user_id').val(); //아이디
-	var user_pw = $('#user_pw').val(); //비밀번호
+	var user_password = $('#user_password').val(); //비밀번호
 	var user_chk_pw = $('#user_chk_pw').val(); //비밀번호 확인
 	var user_name = $('#user_name').val(); //이름
 	var user_jumin1 = $('#user_jumin1').val(); //주민 앞자리
@@ -1906,7 +1939,7 @@ function validation(value){
 	var phone2 = $('#phone2').val(); //전화번호 중간자리
 	var phone3 = $('#phone3').val(); //전화번호 뒷자리
 	var user_gender = $('input[name="genderRadio"]:checked').val(); //성별
-	var mobile_carrier = $('#mobile_Carrier').val(); //통신사
+	var mobile_carrier = $('#mobile_carrier').val(); //통신사
 	
 	var chk_receive_1 = document.getElementById('chk_receive_1').checked; //전체동의
 	var onlineSiteUsefStplat = document.getElementById('onlineSiteUsefStplat').checked; //필수
@@ -1919,19 +1952,19 @@ function validation(value){
 			alert('아이디를 입력하세요');
 			$('#user_id').focus();
 			return false;
-		} else if(user_pw == ""){
+		} else if(user_password == ""){
 			alert('비밀번호를 입력하세요');
-			$('#user_pw').focus();
+			$('#user_password').focus();
 			return false;
 		} else if(user_chk_pw == ""){
 			alert('비밀번호 확인란을 입력하세요');
 			$('#user_chk_pw').focus();
 			return false;
-		} else if(user_pw != user_chk_pw){
+		} else if(user_password != user_chk_pw){
 			alert('비밀번호가 서로 다릅니다 다시 입력하세요');
 			$('#user_chk_pw').val("");
-			$('#user_pw').val("");
-			$('#user_pw').focus();
+			$('#user_password').val("");
+			$('#user_password').focus();
 			return false;
 		} else if(user_name == ""){
 			alert('이름을 입력하세요');
@@ -1973,7 +2006,27 @@ function validation(value){
 			alert('필수동의 항목을 확인해주세요')
 			return false;
 		} else {
-			return true;
+			
+			if(emailRecptnAgrYn){
+				$('#emailRecptnAgrYn').val("Y");
+			} else {
+				$('#emailRecptnAgrYn').val("N");
+			}
+			
+			if(smsRecptnAgrYn){
+				$('#smsRecptnAgrYn').val("Y");
+			} else {
+				$('#smsRecptnAgrYn').val("N");
+			}
+			
+			var chkNum = $('#chkNum').val();
+			var tmpId = $('#tmpId').val();
+			
+			if(chkNum == 0 && tmpId == user_id){
+				return true;	
+			} else {
+				return false;
+			}
 		}
 	} else {
 		if(mobile_carrier == ""){
@@ -2007,5 +2060,61 @@ function validation(value){
 	
 	
 }
+
+
+function setAgree(){
+	if($("#certAgreeYn").is(":checked")){
+		$("#chk_policy_1").prop("checked", true);
+		$("#chk_policy_2").prop("checked", true);
+		$("#chk_policy_3").prop("checked", true);
+		$("#chk_policy_4").prop("checked", true);
+		$("#chk_policy_5").prop("checked", true);
+	}else{
+		$("#chk_policy_1").prop("checked", false);
+		$("#chk_policy_2").prop("checked", false);
+		$("#chk_policy_3").prop("checked", false);
+		$("#chk_policy_4").prop("checked", false);
+		$("#chk_policy_5").prop("checked", false);
+	}
+}
+function setAgree2(){
+	if($("#mobileCo").val() == "6" || $("#mobileCo").val() == "7"){
+		if($("#chk_policy_1").is(":checked") && $("#chk_policy_2").is(":checked") && $("#chk_policy_3").is(":checked") && $("#chk_policy_4").is(":checked")&& $("#chk_policy_5").is(":checked")){
+			$("#certAgreeYn").prop("checked", true);
+		}else{
+			$("#certAgreeYn").prop("checked", false);
+		}
+	}else{
+		if($("#chk_policy_1").is(":checked") && $("#chk_policy_2").is(":checked") && $("#chk_policy_3").is(":checked") && $("#chk_policy_4").is(":checked")){
+			$("#certAgreeYn").prop("checked", true);
+		}else{
+			$("#certAgreeYn").prop("checked", false);
+		}
+	}
+	
+}
+function setCheck(){
+	if($("#chk_receive_1").is(":checked")){
+		$("#onlineSiteUsefStplat").prop("checked", true);
+		$("#psnlInfoColctUsefAgr").prop("checked", true);
+		$("#emailRecptnAgrYn").prop("checked", true);
+		$("#smsRecptnAgrYn").prop("checked", true);
+	}else{
+		$("#onlineSiteUsefStplat").prop("checked", false);
+		$("#psnlInfoColctUsefAgr").prop("checked", false);
+		$("#emailRecptnAgrYn").prop("checked", false);
+		$("#smsRecptnAgrYn").prop("checked", false);
+	}
+}
+function setCheck2(){
+	if($("#onlineSiteUsefStplat").is(":checked") && $("#psnlInfoColctUsefAgr").is(":checked") && $("#emailRecptnAgrYn").is(":checked") && $("#smsRecptnAgrYn").is(":checked")){
+		$("#chk_receive_1").prop("checked", true);
+	}else{
+		$("#chk_receive_1").prop("checked", false);
+	}
+}
+
+
+
 </script>
 </html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="loginjoinDao">
+ 	
+	<!-- 회원가입 -->
+	<insert id="insertUserInfo" parameterType="userVo">
+		INSERT INTO USERS (
+			USER_NO,
+			USER_NAME, 			
+			USER_JUMIN1, 		
+			USER_JUMIN2, 		
+			USER_ID, 			
+			USER_PASSWORD,
+			TOTAL_POINT,
+			USER_GENDER,
+			MOBILE_CARRIER, 		
+			PHONE1, 				
+			PHONE2, 				
+			PHONE3, 				
+			EMAIL_ID, 			
+			EMAIL_ADDRESS, 		
+			MEMBER_LEVEL, 		
+			USER_REGISTRATION_TIME, 		
+			AGREE_SNS, 					
+			AGREE_EMAIL, 				
+			NEWBIE
+		) VALUES(
+			(SELECT COUNT(*) FROM USERS)+1,
+			#{user_name}, 
+			#{user_jumin1}, 
+			#{user_jumin2}, 
+			#{user_id}, 
+			#{user_password},
+			2000,
+			#{user_gender},
+			#{mobile_carrier},
+			#{phone1},
+			#{phone2},
+			#{phone3},
+			#{email_id},
+			#{email_address},
+			'friends',
+			now(),
+			#{agree_sns},
+			#{agree_email},
+			#{newbie}
+		)
+	</insert>
+	
+	<select id="userId" parameterType="userVo" resultType="Integer">
+		SELECT COUNT(*)
+		  FROM USERS
+		 WHERE USER_ID = #{user_id}
+	</select>
+</mapper>

@@ -29,5 +29,6 @@
 		<mapper resource="mappings/wish-mapping.xml" />
 		<mapper resource="mappings/orderlist-mapping.xml" />
 		<mapper resource="mappings/userInfo-mapping.xml" />
+		<mapper resource="mappings/loginjoin-mapping.xml"/>
 	</mappers>
 </configuration>
