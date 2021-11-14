@@ -1792,6 +1792,32 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	var val = "${userVo}";
+	var name = "${userVo.user_name}";
+	
+	var logintype = "${logintype}";
+	
+	if(logintype == 'kakao'){
+		var gender = "${userVo.user_gender}";
+	}
+	var eId = "${userVo.email_id}";
+	var eAdd = "${userVo.email_address}";
+	
+	if(name != "" && name != null){
+		$('#user_name').val(name);
+		
+		if(logintype == 'kakao'){
+			if(gender == 'male'){
+				$('#male').attr("checked", true);
+			} else {
+				$('#female').attr("checked", true);
+			}
+		}
+		$('#email_id').val(eId);
+		$('#email_address').val(eAdd);
+	}
+	
+	
 	$("#mobileSkt").on('click',function(){
 		mobileCarrier('skt');
 	});

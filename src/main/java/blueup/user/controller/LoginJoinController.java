@@ -31,9 +31,19 @@ public class LoginJoinController {
 	}
 	
 	@RequestMapping("/join.do")
-	public String join(UsersVo userVo, Model model) {
+	public ModelAndView join(HttpServletRequest request, UsersVo userVo) {
 		
-		return "join";
+		String logintype = request.getParameter("logintype").toString();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("join");
+		
+		if(userVo != null) {
+			mav.addObject("userVo", userVo);
+			mav.addObject("logintype", logintype);
+		}
+
+		return mav;
 	}
 	
 	@RequestMapping("/movedIndex.do")
