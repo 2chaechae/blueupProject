@@ -29,8 +29,16 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public List<CartVo> cartList(CartVo vo) {
+	public CartVo cartList(CartVo vo) {
 		return cartdao.cartList(vo);
+	}
+	@Override
+	public List<CartVo> getcartList(CartVo vo) {
+		return cartdao.getcartList(vo);
+	}
+	@Override
+	public int updateCart(CartVo vo) {
+		return cartdao.updateCart(vo);
 	}
 	
 }

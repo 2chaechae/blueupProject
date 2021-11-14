@@ -9,5 +9,7 @@ public interface CartService {
 	public int addCart(CartVo vo);
 	public int deleteAllCart(CartVo vo);
 	public int deleteCart(CartVo vo);
-	public List<CartVo> cartList(CartVo vo);
+	public CartVo cartList(CartVo vo);
+	public List<CartVo> getcartList(CartVo vo);
+	public int updateCart(CartVo vo);
 }

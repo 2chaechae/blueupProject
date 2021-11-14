@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="/header.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript"
 	src="https://static.mlb-korea.com/pc/static/js/order/order.util.js?v=prod-version-858_20211102145956"></script>
@@ -45,7 +46,7 @@
 						<div class="orderTable">
 							<div class="tableTopArea">
 								<a href="#" class="btn sm gray"
-									onclick="cart.deleteCart('GNRL_DLV')"><span>선택상품삭제</span></a>
+									onclick="cart.deleteCart('GNRL_DLV')"><span>전체상품삭제</span></a>
 							</div>
 							<table class="board-list">
 								<colgroup>
@@ -57,7 +58,7 @@
 									<col style="width: 50px">
 								</colgroup>
 								<thead>
-									<tr>
+									<!-- <tr>
 										<th scope="col"><span class="check-skin"> <input
 												type="checkbox" name="entireCheck" id="GNRL_DLV_entireCheck"
 												value="GNRL_DLV" checked="checked" /> <span>선택</span>
@@ -67,8 +68,8 @@
 										<th scope="col">수량</th>
 										<th scope="col">할인/혜택</th>
 										<th scope="col">주문금액</th>
-										<th scope="col">삭제</th>
-									</tr>
+										<th scope="col">삭제</th> 
+									</tr> -->
 								</thead>
 								<!--  <td>
 		<input type="hidden" name="pbEpItems" price="10900" qty="1" erpitmno="3ASOM0916-07LDL" disable="">
@@ -79,8 +80,61 @@
 			
 		</span>
 	</td> -->
+	<!-- <tbody id="GNRL_DLV_ViewLayer"> -->
+	
+	 <tr>
+	 <th scope="col"><span class="check-skin"> <input
+												type="checkbox" name="entireCheck" id="GNRL_DLV_entireCheck"
+												value="GNRL_DLV" checked="checked" /> <span>선택</span>
+										</span></th>
+										<th scope="col">상품</th>
+										<th scope="col">수량</th>
+										<th scope="col">할인/혜택</th>
+										<th scope="col">주문금액</th>
+										<th scope="col">삭제</th>
+										</tr> 
+										
+										<c:forEach var="cart" items="${getcartList}" varStatus="status">
+										<tr>
+										<td><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/mtm.jpg" 
+										width="100" height="110"></td>
+										<td>${cart.product_name }
+										<br>
+										</td>
+										<!-- 수량 -->										
+										<td>
+									<div class="number">
+										<button type="button" id="decreaseQuantity">
+											<img
+												src="https://static.mlb-korea.com/pc/static/images/my/btn_minus.png">
+										</button>
+										<span id="numberUpDown">${cart.quantity }</span>
+										<button type="button" id="increaseQuantity">
+											<img
+												src="https://static.mlb-korea.com/pc/static/images/my/btn_plus.png">
+										</button>
+										<br>
+									</div>
+								</td>
+								<td><input type="hidden" value="${cart.cart_no}"></input></td>
+								<!--///////// 수량 -->	
+										
+										<td>${cart.total_price }</td>
+										<td>
+							<a href="#" class="btn_list_del" onclick="cart.deleteCart('GNRL_DLV','1');">삭제</a></td>
+										</tr>
+										
+								
+							<tr>
+							
+							</tr>
+										
+										</c:forEach>
+										
+									<!-- 	주석 -->
+	<%-- <c:forEach var="cart" items="${getcartList}" varStatus="status">
 								<td class="tleft">
-
+				<input type="hidden" value="${cart.cart_no}"></input>
 									<div class="product-info ">
 
 										<div class="product-info-img">
@@ -99,6 +153,7 @@
 
 													<p class="product-name">
 														<a href="/goods/GM0021073028523/view">
+														
 															<th>빅볼청키<br> (PLAYBALL MONO JACQUARD)<br>
 																뉴욕양키스<br>
 																<div class="product-price">89,000 원</div> <br>
@@ -174,35 +229,31 @@
 									</div> <!-- //툴팁 레이어  -->
 								</td>
 								<!-- //////할인 -->
-								<td><strong class="fw_bold" id="item-price_1">10,900원</strong>
-
+								<td><strong class="fw_bold" id="item-price_1${total_price}">${total_price} <!-- 10,900원 --></strong> 
+								<input type="hidden" value="${total_price }"></input>
 								</td>
+								
 								<td><a href="#" class="btn_list_del"
 									onclick="cart.deleteCart('GNRL_DLV','1');">삭제</a></td>
-
-
+</c:forEach> --%>
+ <!-- 주석 -->
+<!-- </tbody> -->
 
 
 								<!------------------------------------ 장바구니에 없을때 -------------------------------------------------------------------------->
-								<!-- <tbody id="GNRL_DLV_ViewLayer">
+								<%-- <tbody id="GNRL_DLV_ViewLayer">
+								<c:if test="${empty cart.cartList }">
                                     <tr>
                       
                                     	<td colspan="6" class="no-result">
                                     	<div class="noProductMs">
-                                    	<p>장바구니에 담긴 상품이 없습니다<span>MLB의 특별한 제안을 받아보세요</span></p>
-    			<div class="linkBox">
-        			<a href="javascript:cateLink('MBMA01', '1', 'GNRL_CTGRY', 'MBMA01');" data-ga-category="PC_MLB_장바구니" data-ga-action="특별 제안" data-ga-label="MEN">MEN</a>
-					<a href="javascript:cateLink('MBMA02', '1', 'GNRL_CTGRY', 'MBMA02');" data-ga-category="PC_MLB_장바구니" data-ga-action="특별 제안" data-ga-label="WOMEN">WOMEN</a>
-					<a href="javascript:cateLink('MBMA03', '1', 'GNRL_CTGRY', 'MBMA03');" data-ga-category="PC_MLB_장바구니" data-ga-action="특별 제안" data-ga-label="CAP">CAP</a>
-					<a href="javascript:cateLink('MBMA10', '1', 'GNRL_CTGRY', 'MBMA10');" data-ga-category="PC_MLB_장바구니" data-ga-action="특별 제안" data-ga-label="SHOES">SHOES</a>
-					<a href="javascript:cateLink('MBMA04', '1', 'GNRL_CTGRY', 'MBMA04');" data-ga-category="PC_MLB_장바구니" data-ga-action="특별 제안" data-ga-label="ACC">ACC</a>
-					<a href="javascript:cateLink('MBMA05', '1', 'GNRL_CTGRY', 'MBMA05');" data-ga-category="PC_MLB_장바구니" data-ga-action="특별 제안" data-ga-label="KIDS">KIDS</a>
-    			</div>
+                                    	<span>장바구니에 담긴 상품이 없습니다<span>MLB의 특별한 제안을 받아보세요</span></span>
+    			
 			</div>
 		</td>
 	</tr>
-
-</tbody> -->
+</c:if>
+</tbody>  --%>
 								<!--//////// 장바구니에 없을때 ------------------------------------------------------------------------------------------>
 								<tfoot id="GNRL_DLV_cart_foot" style="display: none;">
 									<tr>
@@ -499,6 +550,6 @@ function shoeSize(this) {
 }
 
 </script>
-<%@ include file="footer.jsp"%>
+<%@ include file="/footer.jsp"%>
 </body>
 </html>

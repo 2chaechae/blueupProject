@@ -388,7 +388,7 @@
             </div> -->
 						<div class="shoppingbag">
 							<button type="button" class="btn_nav ico_bag"
-								onclick="goGNBCart(); return false;"
+								onclick="cartAll()"
 								data-ga-category="PC_MLB_Header" data-ga-action="장바구니">
 								SHOPPINGBAG<em class="n" id="GNBHeaderCartCount">0</em>
 							</button>
@@ -557,6 +557,11 @@ function wish(){
 	}else{
 		location.href="/test/getWishListCookie.do";
 	}
+}
+function cartAll() {
+	sessionStorage.setItem("userNO", 1);
+	var userNO = sessionStorage.getItem("userNO");
+	location.href="/test/getcartList.do?user_no="+ userNO;
 }
 </script>
       <!--  [EOSD-2740] 카테고리 수정

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import blueup.user.vo.CartVo;
+import blueup.user.vo.NoticeVo;
 
 @Repository
 public class CartDAO {
@@ -25,8 +26,20 @@ public class CartDAO {
 	public int deleteAllCart(CartVo vo) {
 		return sqlSessionTemplate.delete("cartDao.deleteAllCart", vo);
 	}
-	public List<CartVo> cartList(CartVo vo) {
-		return sqlSessionTemplate.selectList("cartDao.cartList", vo);
+
+	/* 카트선택 */
+	public CartVo cartList(CartVo vo) {
+		return sqlSessionTemplate.selectOne("cartDao.cartList", vo);
+	}
+
+	/* 카트조회 */
+	public List<CartVo>  getcartList(CartVo vo) {
+		return sqlSessionTemplate.selectList("cartDao.getcartList" , vo);
+	}
+
+	/* 카트 수정 */
+	public int updateCart(CartVo vo) {
+		return sqlSessionTemplate.update("cartDao.updateCart", vo);
 	}
 	
 	
