@@ -18,4 +18,3 @@ public class CartVo {
 	String color; //색상
 	String clothes_size; //사이즈
 }
-
