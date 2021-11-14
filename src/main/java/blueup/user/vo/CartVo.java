@@ -15,7 +15,7 @@ public class CartVo {
 	int quantity; // 구매수량
 	int total_price; // 총 가격
 	/* 추가한것 아래 */
-	String color; //색상
-	String clothes_size; //사이즈
+	String product_color; //색상
+	String product_size; //사이즈
 }
 

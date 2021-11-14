@@ -74,8 +74,7 @@ public class CartController {
 		System.out.println(vo.getProduct_name());
 		System.out.println(vo.getQuantity());
 		System.out.println(vo.getTotal_price());
-		System.out.println(vo.getColor());
-		System.out.println(vo.getClothes_size());
+		
 		ModelAndView mav = new ModelAndView();
 		cartserviceimpl.addCart(vo);
 		return mav;

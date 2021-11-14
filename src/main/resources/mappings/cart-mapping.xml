@@ -10,13 +10,17 @@
 			PRODUCT_NO,
 			PRODUCT_NAME,
 			QUANTITY,
-			TOTAL_PRICE
+			TOTAL_PRICE,
+			PRODUCT_SIZE,
+			PRODUCT_COLOR
 		) VALUES(
 			#{user_no},
 			#{product_no},
 			#{product_name},
 			#{quantity},
-			#{total_price}
+			#{total_price},
+			#{product_size},
+			#{product_color}
 		)
 	</insert>
 	<!-- 전체 카트 삭제 -->

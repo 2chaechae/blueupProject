@@ -45,8 +45,8 @@
 						<!-- order list -->
 						<div class="orderTable">
 							<div class="tableTopArea">
-								<a href="#" class="btn sm gray"
-									onclick="cart.deleteCart('GNRL_DLV')"><span>전체상품삭제</span></a>
+								<a href="/test/deleteAllCart.do" class="btn sm gray"
+									onclick="deleteAllCart();"><span>전체상품삭제</span></a>
 							</div>
 							<table class="board-list">
 								<colgroup>
@@ -71,22 +71,15 @@
 										<th scope="col">삭제</th> 
 									</tr> -->
 								</thead>
-								<!--  <td>
-		<input type="hidden" name="pbEpItems" price="10900" qty="1" erpitmno="3ASOM0916-07LDL" disable="">
-		<span class="check-skin">
-			
-			<input type="checkbox" name="godCheck" id="godCheck_1" checked="checked">
-			<span>선택	</span>
-			
-		</span>
-	</td> -->
-	<!-- <tbody id="GNRL_DLV_ViewLayer"> -->
+								
+	
 	
 	 <tr>
-	 <th scope="col"><span class="check-skin"> <input
+	<!--  <th scope="col"><span class="check-skin"> <input
 												type="checkbox" name="entireCheck" id="GNRL_DLV_entireCheck"
 												value="GNRL_DLV" checked="checked" /> <span>선택</span>
-										</span></th>
+										</span></th> -->
+										<th scope="col"><input type="hidden" value="${cart.cart_no}"></input></th>
 										<th scope="col">상품</th>
 										<th scope="col">수량</th>
 										<th scope="col">할인/혜택</th>
@@ -99,7 +92,8 @@
 										<td><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/mtm.jpg" 
 										width="100" height="110"></td>
 										<td>${cart.product_name }
-										<br>
+										<br>${cart.product_color}/${cart.product_size}
+										&nbsp;<input type="button" value="변경" onclick="showPopup();" />
 										</td>
 										<!-- 수량 -->										
 										<td>
@@ -115,13 +109,13 @@
 										</button>
 										<br>
 									</div>
-								</td>
+								</td><!--///////// 수량 -->	
 								<td><input type="hidden" value="${cart.cart_no}"></input></td>
-								<!--///////// 수량 -->	
+								
 										
 										<td>${cart.total_price }</td>
 										<td>
-							<a href="#" class="btn_list_del" onclick="cart.deleteCart('GNRL_DLV','1');">삭제</a></td>
+							<a href="/test/deleteCart.do" class="btn_list_del" onclick="deleteCart(this);">삭제</a></td>
 										</tr>
 										
 								
@@ -482,7 +476,7 @@
 	</section>
 </article>
 <script>
-	/* 장바구니창 */
+	/* 장바구니창 수량추가감소 */
 	$(function() {
 		$('#decreaseQuantity').click(function(e) {
 			e.preventDefault();
@@ -548,8 +542,37 @@ function shoeSize(this) {
 	$(this)css("border","3px solid blue");
 	color = $(this).btn gray xs d_radio_select();
 }
-
 </script>
+<!-- 장바구니 전체삭제 -->
+<script>
+  function(){
+	  $("btn sm gray").click(function(){
+		  
+	        if(confirm("장바구니를 비우시겠습니까?")){
+	            location.href="/test/deleteAllCart.do";
+	            alert("모두삭제되었습니다.")
+	        }
+	    });
+	}
+  
+  </script>
+  <!-- 장바구니 선택삭제 -->
+<script>
+  function deleteCart(element){
+	  $(element).click(function(){
+		  if(confirm("선택상품을 삭제하겠습니깡??")){
+			  location.href="/test/deleteCart.do";
+			  alert("선택한 상품이 삭제됐습니당")
+		  }
+	  });
+	  
+  }
+  
+  </script>
+
+<script language="javascript">
+  function showPopup() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
+  </script>
 <%@ include file="/footer.jsp"%>
 </body>
 </html>
