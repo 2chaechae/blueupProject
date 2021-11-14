@@ -4,8 +4,8 @@
 
 
 <!-- 컨텐츠 시작 -->
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/member/join.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/social/social_login.js?v=prod-version-858_20211102145956"></script>
+<!-- <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/member/join.js?v=prod-version-858_20211102145956"></script> -->
+<!-- <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/social/social_login.js?v=prod-version-858_20211102145956"></script> -->
 
 	<div class="contain mb login" id="contain">		
 		<div class="container">
