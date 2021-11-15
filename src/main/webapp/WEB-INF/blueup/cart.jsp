@@ -46,7 +46,7 @@
 						<div class="orderTable">
 							<div class="tableTopArea">
 								<a href="#" class="btn sm gray"
-									onclick="cart.deleteCart('GNRL_DLV')"><span>전체상품삭제</span></a>
+									onclick="${cart.deleteCartAll }"><span>전체상품삭제</span></a>
 							</div>
 							<table class="board-list">
 								<colgroup>
@@ -98,18 +98,19 @@
 										<tr>
 										<td><img src="${cart.main_image}"> 
 										width="100" height="110"></td>
-										<td>${cart.product_name }
-										<br>
-										</td>
+										<td>${cart.product_name }<br>${cart.product_color}/${cart.product_size}
+												&nbsp;<input type="button" value="변경" class="option" onclick="option(this);" />
+											</td>
+										
 										<!-- 수량 -->										
 										<td>
 									<div class="number">
-										<button type="button" class="decreaseQuantity">
+										<button type="button" onclick="minus(this)" class="decreaseQuantity">
 											<img
 												src="https://static.mlb-korea.com/pc/static/images/my/btn_minus.png">
 										</button>
 										<span class="numberUpDown">${cart.quantity }</span>
-										<button type="button" class="increaseQuantity">
+										<button type="button" onclick="plus(this)" class="increaseQuantity">
 											<img
 												src="https://static.mlb-korea.com/pc/static/images/my/btn_plus.png">
 										</button>
@@ -483,32 +484,27 @@
 </article>
 <script>
 	/* 장바구니창 */
-	$(function() {
-		$('#decreaseQuantity').click(function(e) {
-			e.preventDefault();
-			var stat = $('.numberUpDown').next().text();
-			alert(stat);
-			stat++;
-			
-			if (stat <= 0) {
-				alert('더이상 줄일수 없습니다.');
-				stat = 1;
-			}
-			$('.numberUpDown').next().text(stat);
-		});
-		$('#increaseQuantity').click(function(e) {
-			e.preventDefault();
-			var stat = $('#numberUpDown').text();
-			var num = parseInt(stat, 10);
-			num++;
+	function minus(element){
+		var stat = $(element).next().text();
+		alert(stat);
+		stat--;
+		if (stat <= 0) {
+			alert('더이상 줄일수 없습니다.');
+			stat = 1;
+		}
+		$(element).next().text(stat);
+	}
+	function plus(element){
+		var end = $(element).prev().text();
+		alert(end);
+		end ++;
+		if (end > 999) {
+			alert('더이상 늘릴 수 없습니다.');
+			end = 999;
+		}
+		$(element).prev().text(end);
+	}
 
-			if (num > 999) {
-				alert('더이상 늘릴수 없습니다.');
-				num = 999;
-			}
-			$('#numberUpDown').text(num);
-		});
-	});
 	/* 팝업창용 */
 	$(function() {
 		$('#minusQuantity').click(function(e) {
@@ -551,6 +547,20 @@ function shoeSize(this) {
 }
 
 </script>
+
+<!-- 장바구니 전체삭제 -->
+ <script>
+  function(){
+	  $("btn sm gray").click(function(){
+		  
+	        if(confirm("장바구니를 비우시겠습니까?")){
+	            location.href="/test/deleteAllCart.do";
+	            alert("모두삭제되었습니다.")
+	        }
+	    });
+	}
+  
+  </script> 
 <%@ include file="/footer.jsp"%>
 </body>
 </html>
