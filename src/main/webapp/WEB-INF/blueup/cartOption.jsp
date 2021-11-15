@@ -27,8 +27,8 @@
 <span style="padding-left:10px;">사이즈 : </span> 
 <select id="size" style="text-align:center; width:170px; margin-bottom:10px;">
 <option value='' selected>-- 선택 --</option>
-<c:forEach var="size" items="${data}">
-	<option value="${size.clothes_size}">${size.clothes_size}</option>
+<c:forEach var="sizeList" items="${size}">
+	<option value="${sizeList}">${sizeList}</option>
 </c:forEach>
 </select>
 <!-- 사이즈 end -->
@@ -45,9 +45,9 @@
 <!-- 컬러 end -->
 <br>
 <span style="padding-left:10px;">수량 : </span>
-<img onclick="plus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/plus1.png" style="width:10px; height:10px;">
+<img onclick="plus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/plus1.png" style="width:20px; height:20px;">
 <input id="quantity" type="text" value=1 style="width:10px;"/>
-<img onclick="minus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/minus.png" style="width:10px; height:10px;">
+<img onclick="minus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/minus.png" style="width:20px; height:20px;">
 </div>
 <div style="width:300px; display: auto;">
 	<a href="javascript:void(0)" onclick="addCart()" style="text-decoration:none; display: flex; text-align:center; color:white;"><span style="width:150px; border:2px solid black; padding:5px 10px; margin-top:20px; margin-left:21px; background-color:black;">장바구니이동</span></a>
@@ -86,9 +86,8 @@ function addCart(){
 		success:function(data) {
 			if(data == 1)
 			alert('장바구니에 담겼습니다.');
-			opener.parent.moveToCart();
+			opener.parent.window.location.reload();
 			window.close();
-
 		},
 		error:function() {
 			alert('다시 시도해주세요');

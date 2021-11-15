@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -94,7 +96,7 @@ public class ProductController {
 			}
 			
 			// 위의 p_no 값과 상품번호 같으면, wish no 1(T)로 수정(T/F)
-			if(p_no != null) {
+			if(!ArrayUtils.isEmpty(p_no)) {
 				for(int i =0; i < productValue.size(); i++) {
 					for(String p : p_no) {
 						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
@@ -167,17 +169,22 @@ public class ProductController {
 			Cookie cookies[] = req.getCookies();
 			String[] p_no = null;
 			
-			// 쿠키 값 확인 
+			//쿠키값 확인
 			for(Cookie c : cookies) {
 				if(c.getName().equals("p_list")) {
+					System.out.println("쿠키체크");
 					String value = c.getValue();
-					System.out.println(value);
-					p_no = value.split("%2F");
+					if(value == "") {
+						System.out.println(" 빈문자열");
+						 p_no = null;
+					}else {
+						p_no = value.split("%2F");
+					}
 				}
 			}
 			
 			// 쿠키 값 == 상품번호 wish no 수정 
-			if(p_no != null) {
+			if(!ArrayUtils.isEmpty(p_no)) {
 				for(int i =0; i < productValue.size(); i++) {
 					for(String p : p_no) {
 						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
@@ -213,7 +220,7 @@ public class ProductController {
 	
 	// 비회원 wish
 	@RequestMapping("/getWishListCookie.do")
-	public ModelAndView getProductList(HttpServletRequest req) {
+	public ModelAndView getProductList(HttpServletRequest req, HttpServletResponse repo) {
 		List<ProductVo> product = productserviceimpl.getProductList();
 		
 		Cookie cookies[] = req.getCookies();
@@ -223,13 +230,18 @@ public class ProductController {
 		// 쿠키 값 확인 
 		for(Cookie c : cookies) {
 			if(c.getName().equals("p_list")) {
+				System.out.println("쿠키체크");
 				String value = c.getValue();
-				p_no = value.split("%2F");
+				if(value == "") {
+					System.out.println(" 빈문자열");
+					 p_no = null;
+				}else {
+					p_no = value.split("%2F");
+				}
 			}
 		}
-		
 		// 쿠키 값 == 상품번호 wish no 수정 
-		if(p_no != null) {
+		if(!ArrayUtils.isEmpty(p_no)) {
 			for(int i =0; i < product.size(); i++) {
 				for(String p : p_no) {
 					if(Integer.parseInt(p) == product.get(i).getProduct_no()) {

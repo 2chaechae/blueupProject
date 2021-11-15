@@ -83,8 +83,8 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-var id = sessionStorage.getItem("userNO");
-//var id = 1;
+//var id = sessionStorage.getItem("userNO");
+var id = 1;
 
 // 하트 눌렀을 때 : 회원 db 위시리스트 , 비회원 쿠키에 상품번호 추가
 function heart(element){

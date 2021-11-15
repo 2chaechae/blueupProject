@@ -96,7 +96,7 @@
 										
 										<c:forEach var="cart" items="${getcartList}" varStatus="status">
 										<tr>
-										<td><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/mtm.jpg" 
+										<td><img src="${cart.main_image}"> 
 										width="100" height="110"></td>
 										<td>${cart.product_name }
 										<br>
