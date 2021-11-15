@@ -13,7 +13,7 @@ public class PwChkServiceImpl  implements PwChkService{
 	private PwChkDAO pwchkdao;
 
 	public int getPwChk(UsersVo userVo) {
-		int num = 0;
-		return num;
+		int userPwChkNum = pwchkdao.pwChk(userVo);
+		return userPwChkNum;
 	}
 }

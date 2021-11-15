@@ -23,7 +23,7 @@ public class PwChkCntroller {
 	private PwChkServiceImpl pwchkserviceimpl;
 	 
 	
-	@RequestMapping("/pwchk.do")
+	@RequestMapping("/pwchkPage.do")
 	public ModelAndView pwchk() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("pwchk");
