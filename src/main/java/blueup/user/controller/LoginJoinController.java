@@ -33,16 +33,16 @@ public class LoginJoinController {
 	@RequestMapping("/join.do")
 	public ModelAndView join(HttpServletRequest request, UsersVo userVo) {
 		
-		String logintype = request.getParameter("logintype").toString();
-		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("join");
-		
-		if(userVo != null) {
-			mav.addObject("userVo", userVo);
-			mav.addObject("logintype", logintype);
+		if(request.getParameter("logintype") != null) {
+			String logintype = request.getParameter("logintype").toString();
+			if(userVo != null) {
+				mav.addObject("userVo", userVo);
+				mav.addObject("logintype", logintype);
+			}
 		}
-
+		
 		return mav;
 	}
 	
@@ -110,7 +110,7 @@ public class LoginJoinController {
 	public Map<String,Object> loginChkId(UsersVo userVo) {
 		Map<String,Object> result = new HashMap<String,Object>();
 		
-	String pw = userVo.getUser_password().toString();
+		String pw = userVo.getUser_password().toString();
 		
 		SHA256 sha256 = new SHA256(); //사용자 패스워드 암호화
 		

@@ -3,8 +3,6 @@
 <%@ include file="header.jsp" %>  
 
 <!-- 컨텐츠 시작 -->
-	<script type="text/javascript" src="/javascript/message/mypage_ko.js?v=prod-version-858_20211102145956"></script>
-
 	<div class="contain my lnblist-Wrap" id="contain" style="padding-top: 50px; min-height: 412px;">
 		<div class="container">
 		
@@ -148,8 +146,6 @@
 						<button type="button" onclick="javascript:movePage('/main/mall/view');">닫기</button></div>
 				</section>
 			</article>
-	
-
 <%@ include file="footer.jsp" %>  
 </body>
 </html>

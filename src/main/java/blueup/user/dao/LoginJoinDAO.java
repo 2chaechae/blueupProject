@@ -28,6 +28,4 @@ public class LoginJoinDAO {
 		return sqlSssionTemplate.selectList("loginjoinDao.userInfo", userVo);
 	}
 
-	
-	
 }

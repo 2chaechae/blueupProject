@@ -120,11 +120,11 @@ $(document).ready(function(){
 				     user_password : userpw }, 
 			dataType : 'json',
 			success :function(data){
-				
+				var userInfo = data.userInfo;
 				if(data.userInfo){
 					/*
 					세션
-					sessionStorage 각각 담아줘야함 key&value
+					localStorage 각각 담아줘야함 key&value
 					
 					address: null
 					agree_email: true
@@ -149,8 +149,10 @@ $(document).ready(function(){
 					user_registration_time: 1636875162649
 					zipcode: null
 					*/
-					
-					//sessionStorage.setItem("userInfo", data.userInfo);   //ex
+
+					localStorage.setItem("user_no", userInfo.user_no);
+					localStorage.setItem("user_name", userInfo.user_name);
+					localStorage.setItem("user_id", userInfo.user_id);
 				}
 				
 				if(data.userIdChkNum == 0){

@@ -128,7 +128,7 @@
 														<input type="checkbox" id="certAgreeYn" name="certAgreeYn" value="Y" onclick="setAgree();"><span>선택</span>
 													</span>
 													<label for="certAgreeYn">본인 인증을 위한 약관 모두 동의</label>
-													<a href="#" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certBtn" name="certBtn">본인인증</a>
+													<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certBtn" name="certBtn">본인인증</a>
 													<button type="button" class="btn-open d_toggle_select"><span>Open</span></button>
 													<span class="error-msg"></span>
 												</div>												
@@ -1787,6 +1787,7 @@
 		</article>
 		<input type="hidden" id="tmpId" name="tmpId" value="" />
 		<input type="hidden" id="chkNum" name="chkNum" value="" />
+		<input type="hidden" id="certNum" name="certNum" value="" />
 <%@ include file="footer.jsp" %>
 </body>
 <script type="text/javascript">
@@ -1816,6 +1817,13 @@ $(document).ready(function(){
 		$('#email_id').val(eId);
 		$('#email_address').val(eAdd);
 	}
+	
+	$('#certBtn').on('click',function(){
+		var mobilAreaNo = $('#mobilAreaNo').val();
+		var mobilTlofNo = $('#mobilTlofNo').val();
+		var mobilTlofWthnNo = $('#mobilTlofWthnNo').val();
+		phoneVerification(mobilAreaNo, mobilTlofNo, mobilTlofWthnNo);
+	});
 	
 	
 	$("#mobileSkt").on('click',function(){
@@ -2047,6 +2055,11 @@ function validation(value){
 			
 			var chkNum = $('#chkNum').val();
 			var tmpId = $('#tmpId').val();
+			var certNum = $('#certNum').val();
+			if(certNum == ""){
+				alert("본인인증을 먼저 해주세요");
+				return false;
+			}
 			
 			if(chkNum == 0 && tmpId == user_id){
 				return true;	
@@ -2140,7 +2153,29 @@ function setCheck2(){
 	}
 }
 
-
+function phoneVerification(phone1, phone2, phone3){
+	var phone = phone1+phone2+phone3;
+	$.ajax({
+		type : "POST",
+		url : "/test/sendSMS.do",
+		data : {
+			"phoneNumber" : phone
+		},
+		dataType : "json",
+		success: function(res){
+			alert("본인인증을 성공하셨습니다");
+			
+			$('#certNum').val('success');
+			/* 문자인증 */
+			/* $('#veri').css("display", "block"); */
+		},
+		error : function(request, status) {
+			alert("code:" + request.status + "\n" + "message:"
+					+ request.responseText + "\n" + "error:"
+					+ error);
+		}
+	});
+}
 
 </script>
 </html>
