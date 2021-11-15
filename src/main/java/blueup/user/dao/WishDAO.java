@@ -24,6 +24,11 @@ public class WishDAO {
 		return sqlSssionTemplate.delete("wishDao.deleteWish", vo);
 	}
 	
+	// 장바구니로 이동하면서 특정 wish list 삭제
+	public int deleteWishCart(WishListVo vo) {
+		return sqlSssionTemplate.delete("wishDao.deleteWishCart", vo);
+	}
+	
 	// 전체 wish list 삭제
 	public int deleteWishAll(WishListVo vo) {
 		return sqlSssionTemplate.delete("wishDao.deleteWishAll", vo);

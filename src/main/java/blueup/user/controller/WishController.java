@@ -73,7 +73,7 @@ public class WishController {
 			}
 			System.out.println("check" + check.length);
 			System.out.println("p_no" + p_no.length );
-			if(p_no.length > check.length || check == null) {
+			if(p_no.length > check.length || check.length == 1 && p_no.length == 1) {
 				Cookie cookie = new Cookie("p_list", null);
 				repo.addCookie(cookie);
 				System.out.println("ÄíÅ°»èÁ¦");

@@ -6,7 +6,7 @@
 
 	<select id="searchCartOption" parameterType="cartoptionvo" resultType="cartoptionvo">
 		SELECT 
-		a.stock_no, a.product_no, a.stock_quantity, a.clothes_size, a.color, b.product_price, b.category_name,
+		a.stock_no, a.product_no, b.product_name, a.stock_quantity, a.clothes_size, a.color, b.product_price, b.category_name,
 		b.detailed_category_name, b.main_image
 		FROM stock AS a JOIN product AS b
 		ON a.product_no = b.product_no

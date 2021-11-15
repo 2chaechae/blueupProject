@@ -559,9 +559,7 @@ function wish(){
 	}
 }
 function cartAll() {
-	sessionStorage.setItem("userNO", 1);
-	var userNO = sessionStorage.getItem("userNO");
-	location.href="/test/getcartList.do?user_no="+ userNO;
+	location.href="/test/getcartList.do";
 }
 </script>
       <!--  [EOSD-2740] 카테고리 수정

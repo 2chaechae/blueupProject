@@ -18,6 +18,11 @@
 	<!-- wishList 삭제를 위한 쿼리 -->
 	<delete id="deleteWish" parameterType="wishvo">
 		DELETE FROM WISHLIST WHERE WISH_NO = #{wish_no} AND USER_NO = #{user_no}
+	</delete>
+	
+	<!-- 장바구니 이동 시 wishList 삭제를 위한 쿼리 -->
+	<delete id="deleteWishCart" parameterType="wishvo">
+		DELETE FROM WISHLIST WHERE PRODUCT_NO = #{product_no} AND USER_NO = #{user_no}
 	</delete>	
 	
 	<delete id="deleteWishAll" parameterType="wishvo">

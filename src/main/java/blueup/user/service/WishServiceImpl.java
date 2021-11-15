@@ -25,4 +25,9 @@ public class WishServiceImpl implements WishService{
 	public int deleteWishListAll(WishListVo vo) {
 		return wishdao.deleteWishAll(vo);
 	}
+
+	@Override
+	public int deleteWishCart(WishListVo vo) {
+		return wishdao.deleteWishCart(vo);
+	}
 }

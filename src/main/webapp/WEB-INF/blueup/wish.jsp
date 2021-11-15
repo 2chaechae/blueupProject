@@ -164,7 +164,6 @@ $(document).ready(function(){
 			var cookieValue = getlist.split('/');
 			console.log(cookieValue);
 			var length = cookieValue.length;
-			length = length - 1;
 			console.log(length);
 			$('em').text(length);
 		}

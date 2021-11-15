@@ -40,5 +40,6 @@ public class CartServiceImpl implements CartService{
 	public int updateCart(CartVo vo) {
 		return cartdao.updateCart(vo);
 	}
+
 	
 }

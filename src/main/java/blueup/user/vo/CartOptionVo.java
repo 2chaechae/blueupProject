@@ -10,6 +10,7 @@ import lombok.ToString;
 public class CartOptionVo {
 	int stock_no;
 	int product_no;
+	String product_name;
 	int stock_quantity;
 	int clothes_size;
 	String color;
