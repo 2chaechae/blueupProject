@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="couponDao">
+
+	<select id="selectCouponList" parameterType="userVo" resultType="couponVo">
+		<![CDATA[
+		SELECT 
+		B.COUPON_NO, 
+		A.USER_NO, 
+		B.COUPON_NAME, 
+		B.COUPON_DISCOUNT,
+		to_char(B.coupon_begin, 'YYYY-MM-DD') as coupon_begin,
+		to_char(B.coupon_end, 'YYYY-MM-DD') as coupon_end,
+		B.COUPON_USABLE,
+		B.COUPON_TYPE,
+		B.REMARKS
+		FROM USERS AS A, COUPON AS B
+		WHERE A.USER_NO = #{user_no}
+		AND A.USER_NO = B.USER_NO
+		AND coupon_end > now()
+		AND COUPON_USABLE=TRUE
+		LIMIT #{perPageNum} OFFSET #{startRow}
+		]]>
+	</select>
+	
+	<select id="getCouponCount" parameterType="userVO" resultType="int">
+		SELECT 
+		COUNT(B.COUPON_NO) 
+		FROM USERS AS A, COUPON AS B
+		WHERE A.USER_NO = #{user_no}
+		AND A.USER_NO = B.USER_NO
+		AND COUPON_USABLE = TRUE
+	</select>
+	
+	<select id="getUnavailableCouponList" parameterType="userVO" resultType="couponVo">
+		<![CDATA[
+		SELECT 
+		B.COUPON_NO, 
+		A.USER_NO, 
+		B.COUPON_NAME, 
+		B.COUPON_DISCOUNT,
+		to_char(B.coupon_begin, 'YYYY-MM-DD') as coupon_begin,
+		to_char(B.coupon_end, 'YYYY-MM-DD') as coupon_end,
+		B.COUPON_USABLE,
+		B.COUPON_TYPE,
+		B.REMARKS,
+		B.COUPON_USE_DATE
+		FROM USERS AS A, COUPON AS B
+		WHERE A.USER_NO = #{user_no}
+		AND A.USER_NO = B.USER_NO
+		AND (coupon_end < now()
+		OR COUPON_USABLE<>TRUE)
+		ORDER BY COUPON_NO DESC, COUPON_END DESC]]>
+	</select>
+	
+	<select id="selectCouponBySearch" parameterType="hashMap" resultType="couponVo">
+		<![CDATA[
+		SELECT 
+		B.COUPON_NO, 
+		A.USER_NO, 
+		B.COUPON_NAME, 
+		B.COUPON_DISCOUNT,
+		to_char(B.coupon_begin, 'YYYY-MM-DD') as coupon_begin,
+		to_char(B.coupon_end, 'YYYY-MM-DD') as coupon_end,
+		B.COUPON_USABLE,
+		B.COUPON_TYPE,
+		B.REMARKS,
+		B.COUPON_USE_DATE
+		FROM USERS AS A, COUPON AS B
+		WHERE A.USER_NO = #{userVo.user_no}
+		AND A.USER_NO = B.USER_NO
+		AND (coupon_end < now()
+		OR COUPON_USABLE<>TRUE)
+		AND (COUPON_USE_DATE BETWEEN TO_DATE(#{dateStart},'YYYY-MM-DD') AND TO_DATE(#{dateEnd},'YYYY-MM-DD')
+			 OR COUPON_END BETWEEN TO_DATE(#{dateStart},'YYYY-MM-DD') AND TO_DATE(#{dateEnd},'YYYY-MM-DD'))
+		ORDER BY COUPON_NO DESC, COUPON_END DESC
+		]]>
+	</select>
+		
+</mapper>

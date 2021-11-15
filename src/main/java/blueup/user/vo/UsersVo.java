@@ -34,5 +34,6 @@ public class UsersVo {
 	boolean agree_email;//이메일 수신여부
 	boolean newbie; //신규회원 여부
 	int total_point;
-	
+	int perPageNum;
+	int startRow;
 }

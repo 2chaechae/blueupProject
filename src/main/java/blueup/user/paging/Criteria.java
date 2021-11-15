@@ -3,7 +3,11 @@ package blueup.user.paging;
 public class Criteria {
 	private int page;
 	private int perPageNum;
-	int startRow;
+	private int startRow;
+	
+	public int getStartRow() {
+		return startRow;
+	}
 	
 	public void setPageStart() {
 		this.startRow = (this.page-1)*perPageNum;
