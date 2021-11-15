@@ -42,7 +42,7 @@
 									<a href="#" class="btn-kakao" id="kakaojoin" data-ga-category="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="카카오 로그인"><span>카카오로 회원가입</span></a></div>
 								<div class="login-btn-lnk">
 									<a href="#" id="findId" onClick="return false;" data-ga-category="PC_MLB_로그인" data-ga-action="정보찾기" data-ga-label="아이디 찾기">아이디 찾기</a><a href="#" id="findPassword" onClick="return false;" data-ga-category="PC_MLB_로그인" data-ga-action="정보찾기" data-ga-label="비밀번호 찾기">비밀번호 찾기</a>
-									<a href="#" id="join" onClick="return false;" data-ga-category="PC_MLB_로그인" data-ga-action="정보찾기" data-ga-label="회원가입">회원가입</a>
+									<a href="#" id="joinin" data-ga-category="PC_MLB_로그인" data-ga-action="정보찾기" data-ga-label="회원가입">회원가입</a>
 								</div>
 							</form>
 						</div>
@@ -77,6 +77,7 @@
       	  <input type="hidden" id="user_gender"	name="user_gender" value=""/>
       	  <input type="hidden" id="logintype" name="logintype" value=""/>
 	</form>
+	<form id ="movedJoinFrm" method="post" action="/test/join.do"></form>
 <%@ include file="footer.jsp" %>
 
 </body>
@@ -274,6 +275,11 @@ function onSignInFailure(t){
 	console.log(t);
 }
 <!--// 구글 api -->
+
+
+$('#joinin').on('click',function(){
+	$('#movedJoinFrm').submit(); 
+}); //태연이 보고 널포인트 익셉션 나는거 고쳐달라고하기
 
 </script>
 
