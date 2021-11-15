@@ -104,12 +104,12 @@
 										<!-- 수량 -->										
 										<td>
 									<div class="number">
-										<button type="button" id="decreaseQuantity">
+										<button type="button" class="decreaseQuantity">
 											<img
 												src="https://static.mlb-korea.com/pc/static/images/my/btn_minus.png">
 										</button>
-										<span id="numberUpDown">${cart.quantity }</span>
-										<button type="button" id="increaseQuantity">
+										<span class="numberUpDown">${cart.quantity }</span>
+										<button type="button" class="increaseQuantity">
 											<img
 												src="https://static.mlb-korea.com/pc/static/images/my/btn_plus.png">
 										</button>
@@ -486,14 +486,15 @@
 	$(function() {
 		$('#decreaseQuantity').click(function(e) {
 			e.preventDefault();
-			var stat = $('#numberUpDown').text();
-			var num = parseInt(stat, 10);
-			num--;
-			if (num <= 0) {
+			var stat = $('.numberUpDown').next().text();
+			alert(stat);
+			stat++;
+			
+			if (stat <= 0) {
 				alert('더이상 줄일수 없습니다.');
-				num = 1;
+				stat = 1;
 			}
-			$('#numberUpDown').text(num);
+			$('.numberUpDown').next().text(stat);
 		});
 		$('#increaseQuantity').click(function(e) {
 			e.preventDefault();

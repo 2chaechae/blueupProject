@@ -17,4 +17,5 @@ public class CartVo {
 	/* 추가한것 아래 */
 	String product_color; //색상
 	String product_size; //사이즈
+	String main_image;
 }
