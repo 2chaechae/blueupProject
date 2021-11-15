@@ -1,29 +1,65 @@
 package blueup.user.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.service.CartServiceImpl;
+import blueup.user.service.WishServiceImpl;
 import blueup.user.vo.CartVo;
+import blueup.user.vo.WishListVo;
 
 @Controller
 public class CartController {
 
 	@Autowired
 	private CartServiceImpl cartserviceimpl;
+	@Autowired
+	private WishServiceImpl wishserviceimpl;
 
 	// 장바구니 추가하기
 	@RequestMapping("/addCart.do")
-	public ModelAndView addCart(CartVo vo) {
-		System.out.println(vo.getProduct_no());
-		System.out.println(vo.getUser_no());
-		ModelAndView mav = new ModelAndView();
-		cartserviceimpl.addCart(vo);
-		return mav;
+	@ResponseBody
+	public String addCart(CartVo vo, HttpSession session) {
+		System.out.println("test");
+		//session.setAttribute("userNO", 1); //회원
+		//int user_no = (int) session.getAttribute("userNO");
+		int user_no = 0;
+		String result = Integer.toString(0);
+		System.out.println(user_no);
+		WishListVo Wishvo = new WishListVo();
+		Wishvo.setUser_no(user_no);
+		/////////////회원//////////////////
+		if(user_no > 0) {
+			vo.setUser_no(user_no);
+			result = Integer.toString(cartserviceimpl.addCart(vo));
+			System.out.println(result);
+			wishserviceimpl.deleteWishList(Wishvo);
+		}else {
+		////////////비회원/////////////////
+			if(session.getAttribute("cart") == null) {
+				List<Integer> product_no = new ArrayList<Integer>();
+				session.setAttribute("cart", product_no);
+			}else {
+				List<Integer> product_no = (List<Integer>) session.getAttribute("cart");
+				List<Integer> addProduct_no = (List<Integer>) session.getAttribute("cart");
+				addProduct_no.add(vo.getProduct_no());
+				if(product_no.size() < addProduct_no.size()) {
+					result = Integer.toString(1);
+					wishserviceimpl.deleteWishList(Wishvo);
+				}
+				System.out.println(addProduct_no.get(0));
+			}
+		}
+		
+		return result;
 	}
 
 	// 장바구니 전체 삭제하기
@@ -74,8 +110,8 @@ public class CartController {
 		System.out.println(vo.getProduct_name());
 		System.out.println(vo.getQuantity());
 		System.out.println(vo.getTotal_price());
-		System.out.println(vo.getColor());
-		System.out.println(vo.getClothes_size());
+		System.out.println(vo.getProduct_size());
+		System.out.println(vo.getProduct_color());
 		ModelAndView mav = new ModelAndView();
 		cartserviceimpl.addCart(vo);
 		return mav;

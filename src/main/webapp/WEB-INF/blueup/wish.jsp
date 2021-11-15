@@ -148,8 +148,8 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-sessionStorage.setItem("userID", "이채린");
-sessionStorage.setItem("userNO", 1); 	//회원
+//sessionStorage.setItem("userID", "이채린");
+//sessionStorage.setItem("userNO", 1); 	//회원
 var userID = sessionStorage.getItem("userID");
 var userNO = sessionStorage.getItem("userNO");
 $(document).ready(function(){
@@ -237,6 +237,9 @@ function option(element){
 	window.open("/test/getCartOption.do?product_no=" + product_no,"height=300", "width=500");
 }
 
+function moveToCart(){
+	location.herf=""
+}
 </script>
 </body>
 </html>
