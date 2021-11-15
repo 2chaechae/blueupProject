@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/header.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript"
 	src="https://static.mlb-korea.com/pc/static/js/order/order.util.js?v=prod-version-858_20211102145956"></script>
@@ -9,6 +9,8 @@
 	src="https://static.mlb-korea.com/pc/static/js/order/cart.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript"
 	src="//script.about.co.kr/templates/script/cm/adbay.cart.controller.js"></script>
+<script 
+	src="/resources/jquery/jquery/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript"
 	src="/javascript/message/cart_ko.js?v=prod-version-858_20211102145956"></script>
@@ -44,9 +46,14 @@
 
 						<!-- order list -->
 						<div class="orderTable">
-							<div class="tableTopArea">
-								<a href="/test/deleteAllCart.do" class="btn sm gray"
-									onclick="deleteAllCart();"><span>전체상품삭제</span></a>
+							<!-- <div class="tableTopArea">
+								<a href="/test/deleteCart.do" class="btn sm gray"
+									onclick="deleteCart();"><span>선택상품삭제</span></a>
+							</div> -->
+							<div class="delBtn">
+								<button type="button" class="btn sm gray">
+									<span>선택상품삭제</span>
+								</button>
 							</div>
 							<table class="board-list">
 								<colgroup>
@@ -71,62 +78,107 @@
 										<th scope="col">삭제</th> 
 									</tr> -->
 								</thead>
-								
-	
-	
-	 <tr>
-	<!--  <th scope="col"><span class="check-skin"> <input
+
+
+
+								<tr>
+									<!--  <th scope="col"><span class="check-skin"> <input
 												type="checkbox" name="entireCheck" id="GNRL_DLV_entireCheck"
 												value="GNRL_DLV" checked="checked" /> <span>선택</span>
 										</span></th> -->
-										<th scope="col"><input type="hidden" value="${cart.cart_no}"></input></th>
-										<th scope="col">상품</th>
-										<th scope="col">수량</th>
-										<th scope="col">할인/혜택</th>
-										<th scope="col">주문금액</th>
-										<th scope="col">삭제</th>
-										</tr> 
-										
-										<c:forEach var="cart" items="${getcartList}" varStatus="status">
+									<th scope="col"><div class="allCheck">
+											<input type="checkbox" name="allCheck" id="allCheck" /><label
+												for="allCheck">전체</label>
+
+											<!-- 전체 선택시 개별체크박스도 체크됨 -->
+											<script>
+											$("#allCheck").click(function(){
+												if($("input:checkbox[name=allCheck]").is(":checked") == true) {
+													$("input[name=chBox]:checkbox").prop("checked", true);
+													
+												} else {
+													$("input[name=chBox]:checkbox").prop("checked", false);
+												}
+											});
+											</script>
+										</div></th>
+
+									<th scope="col"><input type="hidden"
+										value="${cart.cart_no}"></input></th>
+									<th scope="col">상품</th>
+									<th scope="col">수량</th>
+									<th scope="col">할인/혜택</th>
+									<th scope="col"></th>
+									<th scope="col"><div style="width: 130px;">주문금액</div></th>
+								</tr>
+								<div class="delBtn">
+									<c:forEach var="cart" items="${getcartList}" varStatus="status">
 										<tr>
-										<td><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/mtm.jpg" 
-										width="100" height="110"></td>
-										<td>${cart.product_name }
-										<br>${cart.product_color}/${cart.product_size}
-										&nbsp;<input type="button" value="변경" onclick="showPopup();" />
-										</td>
-										<!-- 수량 -->										
-										<td>
-									<div class="number">
-										<button type="button" id="decreaseQuantity">
-											<img
-												src="https://static.mlb-korea.com/pc/static/images/my/btn_minus.png">
-										</button>
-										<span id="numberUpDown">${cart.quantity }</span>
-										<button type="button" id="increaseQuantity">
-											<img
-												src="https://static.mlb-korea.com/pc/static/images/my/btn_plus.png">
-										</button>
-										<br>
-									</div>
-								</td><!--///////// 수량 -->	
-								<td><input type="hidden" value="${cart.cart_no}"></input></td>
-								
-										
-										<td>${cart.total_price }</td>
-										<td>
-							<a href="/test/deleteCart.do" class="btn_list_del" onclick="deleteCart(this);">삭제</a></td>
+											<!-- 선택 체크 -->
+											<td><div class="checkBox">
+													<input type="checkbox" name="chBox" class="chBox"
+														data-cart_no="${cart.cart_no}" />
+														<!-- 개별 체크박스 해제 시 전체 선택 해제 -->
+														<script>
+														$(".chBox").click(function(){
+															$("#allCheck").prop("chekced", false);
+														});
+														</script>
+												</div></td>
+											<td><img
+												src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/mtm.jpg"
+												width="100" height="110"></td>
+											<td>${cart.product_name }<br>${cart.product_color}/${cart.product_size}
+												&nbsp;<input type="button" value="변경" class="option" onclick="option(this);" />
+											</td>
+											<!-- 수량 -->
+											<td>
+												<div class="number">
+													<button type="button" class="decreaseQuantity" onclick="decreaseQuantity(this);">
+														<img
+															src="https://static.mlb-korea.com/pc/static/images/my/btn_minus.png">
+													</button>
+													<!-- 수량 증가 감소하는 --> 
+													<span class="numberUpDown">${cart.quantity }</span>
+													<button type="button" class="increaseQuantity" onclick="increaseQuantity(this);">
+														<img 
+															src="https://static.mlb-korea.com/pc/static/images/my/btn_plus.png">
+													</button>
+													<br>
+													<script>
+													</* 장바구니창 수량추가감소 */>
+													function increaseQuantity(element) {
+															var (".numberUpDown") = $('increaseQuantity').val();
+															quantity++;
+															${cart.quantity }.val('increaseQuantity ');
+														}
+													function decreaseQuantity(element) {
+															var (".numberUpDown") = $('decreaseQuantity').val();
+														   quantity--; 
+														   ${cart.quantity }.val('decreaseQuantity');
+														}
+													
+													</script>
+												</div>
+											</td>
+											<!--///////// 수량 -->
+											<td id="sale"><input type="hidden"
+												value="${cart.cart_no}"></input></td>
+
+											<td></td>
+											<td width="140px;"><div style="width: 130px;">${cart.total_price }원</div></td>
+
 										</tr>
-										
-								
-							<tr>
-							
-							</tr>
-										
-										</c:forEach>
-										
-									<!-- 	주석 -->
-	<%-- <c:forEach var="cart" items="${getcartList}" varStatus="status">
+
+
+										<tr>
+
+										</tr>
+
+									</c:forEach>
+								</div>
+								<!-- 	주석 -->
+								<%-- <c:forEach var="cart" items="${getcartList}" varStatus="status">
 								<td class="tleft">
 				<input type="hidden" value="${cart.cart_no}"></input>
 									<div class="product-info ">
@@ -230,8 +282,8 @@
 								<td><a href="#" class="btn_list_del"
 									onclick="cart.deleteCart('GNRL_DLV','1');">삭제</a></td>
 </c:forEach> --%>
- <!-- 주석 -->
-<!-- </tbody> -->
+								<!-- 주석 -->
+								<!-- </tbody> -->
 
 
 								<!------------------------------------ 장바구니에 없을때 -------------------------------------------------------------------------->
@@ -372,37 +424,44 @@
 						<li><em>컬러</em>
 							<div class="option-Goodscolor">
 								<a href="#" data-godno="GM0021092830151"
-									onclick="javascript:getChangeGod(this);" class="d_radio_select" id="goodsColor">그레이
-								</a> <a href="#" data-godno="GM0021092830152"
-									onclick="javascript:getChangeGod(this);" class="d_radio_select" id="goodsColor">브라운</a><a
-									href="#" data-godno="GM0021092830153"
-									onclick="javascript:getChangeGod(this);" class="d_radio_select" id="goodsColor">블랙</a>
+									onclick="javascript:getChangeGod(this);" class="d_radio_select"
+									id="goodsColor">그레이 </a> <a href="#"
+									data-godno="GM0021092830152"
+									onclick="javascript:getChangeGod(this);" class="d_radio_select"
+									id="goodsColor">브라운</a><a href="#" data-godno="GM0021092830153"
+									onclick="javascript:getChangeGod(this);" class="d_radio_select"
+									id="goodsColor">블랙</a>
 							</div></li>
 						<li><em>사이즈</em>
 							<div class="option-Goodssize">
-								<button type="button" class="btn gray xs d_radio_select" id="shoeSize"
-									data-index="0" data-itmno="IT202109280135080" data-itmnm="120"
-									data-godtpcd="GNRL_GOD" onclick="javascript:sizeChange(this);"
+								<button type="button" class="btn gray xs d_radio_select"
+									id="shoeSize" data-index="0" data-itmno="IT202109280135080"
+									data-itmnm="120" data-godtpcd="GNRL_GOD"
+									onclick="javascript:sizeChange(this);"
 									value="IT202109280135080">
 									<span>220</span>
 								</button>
-								<button type="button" class="btn gray xs d_radio_select" id="shoeSize"
-									data-index="0" data-itmno="IT202109280135081" data-itmnm="130"
-									data-godtpcd="GNRL_GOD" onclick="javascript:sizeChange(this);"
+								<button type="button" class="btn gray xs d_radio_select"
+									id="shoeSize" data-index="0" data-itmno="IT202109280135081"
+									data-itmnm="130" data-godtpcd="GNRL_GOD"
+									onclick="javascript:sizeChange(this);"
 									value="IT202109280135081">
 									<span>230</span>
 								</button>
-								<button type="button" class="btn gray xs d_radio_select" id="shoeSize"
-									 onclick="javascript:sizeChange(this); " value="IT202109280135082">
+								<button type="button" class="btn gray xs d_radio_select"
+									id="shoeSize" onclick="javascript:sizeChange(this); "
+									value="IT202109280135082">
 									<span>240</span>
 								</button>
-								<button type="button" class="btn gray xs d_radio_select" id="shoeSize"
-									 onclick="javascript:sizeChange(this);" value="IT202109280135083">
+								<button type="button" class="btn gray xs d_radio_select"
+									id="shoeSize" onclick="javascript:sizeChange(this);"
+									value="IT202109280135083">
 									<span>250</span>
 								</button>
-								<button type="button" class="btn gray xs d_radio_select" id="shoeSize"
-									data-index="0" data-itmno="IT202109280135084" data-itmnm="155"
-									data-godtpcd="GNRL_GOD" onclick="javascript:sizeChange(this);"
+								<button type="button" class="btn gray xs d_radio_select"
+									id="shoeSize" data-index="0" data-itmno="IT202109280135084"
+									data-itmnm="155" data-godtpcd="GNRL_GOD"
+									onclick="javascript:sizeChange(this);"
 									value="IT202109280135084">
 									<span>260</span>
 								</button>
@@ -426,11 +485,11 @@
 			</div>
 		</div>
 
-	 <div class="btnWrapBox">
-			<a href="#" class="btn d_layer_close">닫기</a> 
-			<a href="#" onclick="javascript:setChangeOption();" class="btn fill">변경하기</a>
+		<div class="btnWrapBox">
+			<a href="#" class="btn d_layer_close">닫기</a> <a href="#"
+				onclick="javascript:setChangeOption();" class="btn fill">변경하기</a>
 		</div>
-		
+
 		<div class="layer-popup-close">
 			<button type="button" class="d_layer_close">닫기</button>
 		</div>
@@ -476,32 +535,7 @@
 	</section>
 </article>
 <script>
-	/* 장바구니창 수량추가감소 */
-	$(function() {
-		$('#decreaseQuantity').click(function(e) {
-			e.preventDefault();
-			var stat = $('#numberUpDown').text();
-			var num = parseInt(stat, 10);
-			num--;
-			if (num <= 0) {
-				alert('더이상 줄일수 없습니다.');
-				num = 1;
-			}
-			$('#numberUpDown').text(num);
-		});
-		$('#increaseQuantity').click(function(e) {
-			e.preventDefault();
-			var stat = $('#numberUpDown').text();
-			var num = parseInt(stat, 10);
-			num++;
-
-			if (num > 999) {
-				alert('더이상 늘릴수 없습니다.');
-				num = 999;
-			}
-			$('#numberUpDown').text(num);
-		});
-	});
+	
 	/* 팝업창용 */
 	$(function() {
 		$('#minusQuantity').click(function(e) {
@@ -544,7 +578,7 @@ function shoeSize(this) {
 }
 </script>
 <!-- 장바구니 전체삭제 -->
-<script>
+<!-- <script>
   function(){
 	  $("btn sm gray").click(function(){
 		  
@@ -555,10 +589,38 @@ function shoeSize(this) {
 	    });
 	}
   
-  </script>
-  <!-- 장바구니 선택삭제 -->
+  </script> -->
+ <!--  <script>
+													</* 장바구니창 수량추가감소 */>
+													$(function() {
+														$('.decreaseQuantity').click(function(e) {
+															e.preventDefault();
+															var stat = $('.numberUpDown').text();
+															var num = parseInt(stat, 10);
+															num--;
+															if (num <= 0) {
+																alert('더이상 줄일수 없습니다.');
+																num = 1;
+															}
+															$('.numberUpDown').text(num);
+														});
+														$('.increaseQuantity').click(function(e) {
+															e.preventDefault();
+															var stat = $('.numberUpDown').text();
+															var num = parseInt(stat, 10);
+															num++;
+												
+															if (num > 999) {
+																alert('더이상 늘릴수 없습니다.');
+																num = 999;
+															}
+															$('.numberUpDown').text(num);
+														});
+													});
+													</script> -->
+<!-- 장바구니 선택삭제 -->
 <script>
-  function deleteCart(element){
+  /* function deleteCart(element){
 	  $(element).click(function(){
 		  if(confirm("선택상품을 삭제하겠습니깡??")){
 			  location.href="/test/deleteCart.do";
@@ -566,12 +628,50 @@ function shoeSize(this) {
 		  }
 	  });
 	  
+  } */
+  function deleteCart(element){
+	  var product_no = $(element).closest('#sale').children('input').val();
+
+	  if(userNO == null){
+		  userNO = 0;
+	  }
+	  $.ajax({
+		  url:'/test/deleteCart.do',
+	  	  type: 'POST' ,
+	  	  cahche: false,
+	  	  data: {"product_no":product_no },
+	  		success:function(data)  {
+	  			if(data == 1){
+	  				$(element).closest('.delete_ver').remove();
+	  				var now = $('.num').test();
+	  				console.log(now);
+	  				var new_num = Number(now) - 1;
+	  				console.log(new_num);
+	  				$('.num').test(new_num);
+	  			}
+	  			else{
+	  			alert("삭제 실패")
+	  			}
+	  		},
+	  		error:function() {
+	  			alert('다시 시도해주세여');
+	  		}
+	  		
+	  });
   }
   
   </script>
 
-<script language="javascript">
-  function showPopup() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
+
+
+<script>
+  function option(element) {
+	  alert("test");
+	  var product_no = $(element).closest('.cart').children('.p').val();
+	alert(product_no);
+	 window.open("/test/getCartOption.do?product_no=" + product_no, " height=300", "width=5000"); }
+  
+	 
   </script>
 <%@ include file="/footer.jsp"%>
 </body>
