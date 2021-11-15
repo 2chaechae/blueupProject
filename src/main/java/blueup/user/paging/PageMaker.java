@@ -8,7 +8,7 @@ public class PageMaker {
 	private boolean prev;
 	private boolean next;
 	private int displayPageNum = 5;
-	public int tempEndPage;
+	private int tempEndPage;
 	
 	public int getTempEndPage() {
 		return tempEndPage;

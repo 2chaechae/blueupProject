@@ -14,9 +14,12 @@ public class CouponVo {
 	String coupon_name;
 	int user_no;
 	int coupon_discount;// 할인 금액
-	Date coupon_begin;
-	Date coupon_end;
-	String member_level; //회원 등급
-	boolean usable; //사용가능 여부
-	
+	String coupon_begin;
+	String coupon_end;
+	String coupon_type;
+	boolean usable;
+	String remarks;
+	int perPageNumber;
+	int startRow;
+	Date coupon_use_date;
 }

@@ -261,7 +261,7 @@
 		
 		</script>
 
-		<%@ include file="../../view/mlb/mypageManu.jsp"%>
+		<%@ include file="../../view/mlb/mypageMenu.jsp"%>
 
 		<main class="contents memberInfoModi-wrap" id="contents">
 			<form action="/test/modifyUser.do" id="modifyMbrForm"
