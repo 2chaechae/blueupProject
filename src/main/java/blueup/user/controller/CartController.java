@@ -45,17 +45,18 @@ public class CartController {
 		}else {
 		////////////비회원/////////////////
 			if(session.getAttribute("cart") == null) {
-				List<Integer> product_no = new ArrayList<Integer>();
-				session.setAttribute("cart", product_no);
+				List<CartVo> cartList = new ArrayList<CartVo>();
+				cartList.add(vo);
+				session.setAttribute("cart", cartList);
 			}else {
-				List<Integer> product_no = (List<Integer>) session.getAttribute("cart");
-				List<Integer> addProduct_no = (List<Integer>) session.getAttribute("cart");
-				addProduct_no.add(vo.getProduct_no());
-				if(product_no.size() < addProduct_no.size()) {
+				List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
+				List<CartVo> addcartList = (List<CartVo>) session.getAttribute("cart");
+				addcartList.add(vo);
+				if(cartList.size() < addcartList.size()) {
 					result = Integer.toString(1);
 					wishserviceimpl.deleteWishList(Wishvo);
 				}
-				System.out.println(addProduct_no.get(0));
+				System.out.println(addcartList.get(0));
 			}
 		}
 		
@@ -92,12 +93,17 @@ public class CartController {
 
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
-	public ModelAndView getcartList(CartVo vo, ModelAndView mav) {
-		System.out.println(vo.getUser_no());
-		List<CartVo> test = cartserviceimpl.getcartList(vo);
-		System.out.println(test.get(0).getProduct_no());
-		mav.addObject("getcartList", cartserviceimpl.getcartList(vo));
-		mav.setViewName("cart");
+	public ModelAndView getcartList(CartVo vo, ModelAndView mav, HttpSession session) {
+		if(vo.getUser_no() > 0) {
+			List<CartVo> test = cartserviceimpl.getcartList(vo);
+			System.out.println(test.get(0).getProduct_no());
+			mav.addObject("getcartList", cartserviceimpl.getcartList(vo));
+			mav.setViewName("cart");
+		}else {
+			List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
+			mav.addObject("getcartList", cartList);
+			mav.setViewName("cart");
+		}
 		return mav;
 	}
 

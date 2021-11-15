@@ -238,7 +238,9 @@ function option(element){
 }
 
 function moveToCart(){
-	location.herf=""
+	sessionStroage.setItem("userNO", 1);
+	var userNO = sessionStroage.getItem("userNO");
+	location.herf="/test/getcartList.do?user_no=" + userNO;
 }
 </script>
 </body>
