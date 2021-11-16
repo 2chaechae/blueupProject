@@ -33,40 +33,42 @@ public class CartController {
 	@ResponseBody
 	public String addCart(CartVo vo, HttpSession session, HttpServletRequest req, HttpServletResponse repo,
 			@RequestParam(value="user_no") String user_no) {
-		System.out.println("test");
-		String result = Integer.toString(0);
+		String result = "0";
 		vo.setUser_no(Integer.parseInt(user_no));
+		System.out.println(user_no);
 		// 위시리스트 삭제를 위한 정보 
 			WishListVo Wishvo = new WishListVo();
+			
 		/////////////회원//////////////////
-		if(user_no != null) {
+		if(!session.getAttribute("user_no").equals("0")) {
+			System.out.println("회원");
 			Wishvo.setUser_no(Integer.parseInt(user_no));
 			Wishvo.setProduct_no(vo.getProduct_no());
 			result = Integer.toString(cartserviceimpl.addCart(vo));
-			System.out.println(result);
-			System.out.println(vo.getProduct_no());
+			System.out.println("회원 카트 추가 :" + result + " 추가 상품 : " + vo.getProduct_no());
 			int deleteResult = wishserviceimpl.deleteWishCart(Wishvo);
 			System.out.println("위시리스트 삭제 : " + deleteResult);
 		}else {
 		////////////비회원/////////////////
 			if(session.getAttribute("cart") == null) {
+				System.out.println("비회원");
 				List<CartVo> cartList = new ArrayList<CartVo>();
 				cartList.add(vo);
 				session.setAttribute("cart", cartList);
 				System.out.println("처음 카트리스트 생성");
-				result = Integer.toString(1);
+				result = "1";
 			}else {
 				List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
 				List<CartVo> addcartList = (List<CartVo>) session.getAttribute("cart");
 				addcartList.add(vo);
 				if(cartList.size() < addcartList.size()) {
 					System.out.println("길이 체크 완료");
-					result = Integer.toString(1);
-					// session 수정된 cartList로 재정의
+					result = "1";
+					// session:cart를 수정된 cartList로 재정의
 					session.setAttribute("cart", null);
 					session.setAttribute("cart", addcartList);
 				}
-				System.out.println(addcartList.get(0));
+				
 				///비회원 위시리스트 삭제////
 				Cookie cookies[] = req.getCookies();
 				String[] p_no = null;
@@ -84,8 +86,6 @@ public class CartController {
 						}
 					}
 				}
-				System.out.println(p_no[0]);
-				System.out.println("삭제상품 번호 : " + vo.getProduct_no());
 				// 쿠키 값 == 상품번호 wish no 수정
 				if (p_no != null) {
 					for (int i=0; i<p_no.length; i++) {

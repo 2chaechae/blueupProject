@@ -64,7 +64,6 @@ $(document).ready(function(){
 			success:function(data) {
 				alert("재고받아오기");
 				$(data).each(function(){
-					alert(this.stock_quantity);
 					if(this.stock_quantity == 0) {
 						$("select option[value ='"+this.clothes_size+"']").prop('disabled',true);
 						$("select option[value ='"+this.clothes_size+"']").text(this.clothes_size+"[품절]");
@@ -90,30 +89,12 @@ function minus(){
 	$('#quantity').val(quantity);
 }
 
-function checkStock(){
-	var color = $('#color option:selected').val();
-	var product_no = ${data.get(0).product_no};
-		$.ajax({
-			url:'/test/getStockbyProductno.do',
-		    type:'POST',
-		   	cache:false,
-			data: { "color" : color, "product_no" : product_no },
-			success:function(data) {
-				$(data).each(function(){
-					if(this.stock_quantity <= 0) {
-						$("select option[value ='clothes_size']").prop('disabled',true);
-					}
-				})
-			},
-			error:function() {
-				alert('다시 시도해주세요');
-			}
-		});
-}
-
 
 function addCart(){
 	var user_no = localStorage.getItem("user_no");
+		if(user_no == null){
+			user_no = "0";
+		}
 	var size = $('#size option:selected').val();
 	var color = $('#color option:selected').val();
 	var product_no = ${data.get(0).product_no};

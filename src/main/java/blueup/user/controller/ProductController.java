@@ -44,7 +44,7 @@ public class ProductController {
 		pageMaker.setCri(cri);
 		
 		/////////////////////회원//////////////////////////
-		if(session.getAttribute("user_no") != null) {
+		if(!session.getAttribute("user_no").equals("0")) {
 			System.out.println("회원");
 			System.out.println(session.getAttribute("user_no"));
 			// 파라미터 vo 셋팅
@@ -136,9 +136,9 @@ public class ProductController {
 		
 		productPageMaker pageMaker = new productPageMaker();
 		pageMaker.setCri(cri);
-		
+		System.out.println(session.getAttribute("user_no"));
 		/////////////////////////회원//////////////////////////
-		if(session.getAttribute("user_no") != null) {
+		if(!session.getAttribute("user_no").equals("0")) {
 			System.out.println("회원-상위카테");
 			System.out.println(session.getAttribute("user_no"));
 			
@@ -162,7 +162,7 @@ public class ProductController {
 			System.out.println("비회원-상위카테");
 			
 			//파라미터 vo 셋팅
-			vo.put("user_no", 0);
+			vo.put("user_no", session.getAttribute("user_no"));
 			vo.put("Selected", session.getAttribute("Selected"));
 			Category_detailVo cate = (Category_detailVo) vo.get("Selected");
 			System.out.println("상위 카테고리 값 : " + cate.getCategory_name());
