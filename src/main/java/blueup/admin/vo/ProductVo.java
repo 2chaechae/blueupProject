@@ -28,4 +28,5 @@ public class ProductVo {
 	
 	String searchKeyword; //검색을 위해 넣었다.
 	int wish_no; // 상품 조회시 wish list check를 위해 넣음
+	int viewCount; // 조회수 
 }
