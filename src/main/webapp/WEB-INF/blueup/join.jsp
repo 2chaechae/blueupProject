@@ -62,9 +62,9 @@
 											</li>
 											<li id="birthAfter">													
 												<span class="email">
-													<input type="text" class="input-style01 email1" style="width:130px;" placeholder="주민번호 앞자리" id="user_jumin1" name="user_jumin1">
+													<input type="text" class="input-style01 email1" style="width:130px;" placeholder="주민번호 앞자리" id="user_jumin1" name="user_jumin1"  maxlength="6">
 													<em class="att">-</em>
-													<input type="text" class="input-style01 email2" style="width:130px;" placeholder="주민번호 뒷자리" id="user_jumin2" name="user_jumin2">
+													<input type="text" class="input-style01 email2" style="width:130px;" placeholder="주민번호 뒷자리" id="user_jumin2" name="user_jumin2"  maxlength="7">
 												</span>
 												<span class="rdo-skin">
 													<input type="radio" name="user_gender" id="male" value="남자" checked><span>선택</span>
@@ -1814,6 +1814,62 @@ $(document).ready(function(){
 	});
 	$("#mobileLg").on('click',function(){
 		mobileCarrier('lg');
+	});
+	
+	$('#user_jumin1').keyup(function(event){ //주민번호 앞자리 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#user_jumin2').keyup(function(event){ //주민번호 뒷자리 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#phone1').keyup(function(event){ //전화번호 앞자리 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#phone2').keyup(function(event){ //전화번호 중자리 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#phone3').keyup(function(event){ //전화번호 뒷자리 숫자만 오게 셋팅
+		var inputVal = $(this).val();
+		$(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+	
+	$('#user_name').keyup(function(event){
+		 re = /[~!@\#$%^&*\()\-=+_']/gi;
+		 re2 = /[0-9]/gi;
+		 
+		 var temp=$("#user_name").val();
+		 
+		 if(re.test(temp)){ //이름에 특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 	$("#user_name").val(temp.replace(re,""));
+		 	return;
+		 } else if(re2.test(temp)){ //이름에 숫자가 오게 되면 삭제하여 값으로 다시 셋팅
+			$("#user_name").val(temp.replace(re2,""));
+			return;
+		 }
+	});
+	
+	$("#user_id").keyup(function(){
+		 re = /[~!@\#$%^&*\()\-=+_']/gi; 
+		 var temp=$("#user_id").val();
+		 if(re.test(temp)){ //아이디 특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 $("#user_id").val(temp.replace(re,"")); 
+		} 
+	});
+	
+	$("#email_id").keyup(function(){
+		 re = /[~!@\#$%^&*\()\-=+_']/gi; 
+		 var temp=$("#email_id").val();
+		 if(re.test(temp)){ //이메일 특수문자가 포함되면 삭제하여 값으로 다시셋팅
+		 $("#email_id").val(temp.replace(re,"")); 
+		} 
 	});
 	
 	//중복검사
