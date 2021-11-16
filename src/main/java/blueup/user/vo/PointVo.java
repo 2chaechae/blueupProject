@@ -2,6 +2,8 @@ package blueup.user.vo;
 
 import lombok.ToString;
 
+import java.util.Date;
+
 import lombok.Getter;
 
 import lombok.Setter;
@@ -13,6 +15,9 @@ import lombok.Setter;
 public class PointVo {
 	int point_no;
 	int user_no; //회원 번호
-	int total_point;//사용 가능 포인트
-	int used_point; // 사용된 포인트
+	int income;//받은 포인트
+	int expense; // 사용된 포인트
+	String content; //내용
+	String remarks; //비고
+	Date point_date;//날짜
 }

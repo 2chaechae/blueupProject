@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.map.HashedMap;
@@ -27,13 +28,14 @@ public class CouponController {
 	CouponService service;
 
 	@RequestMapping("/coupon.do")
-	public ModelAndView coupon(HttpSession session, String pageNum) {
+	public ModelAndView coupon(HttpServletRequest request, String pageNum) {
 		ModelAndView mav = new ModelAndView();
 		Criteria cri = new Criteria();
 		PageMaker pm = new PageMaker();
 		UsersVo vo = new UsersVo();
+		HttpSession session = request.getSession();
 		int page = Integer.parseInt(pageNum);
-		vo.setUser_no(1);
+		vo.setUser_no(2);
 		cri.setPage(page);
 		cri.setPerPageNum(5);
 		cri.setPageStart();
