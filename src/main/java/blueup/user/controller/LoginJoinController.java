@@ -69,6 +69,30 @@ public class LoginJoinController {
 		return mav;
 	}
 	
+	@RequestMapping("/findIdPwPage.do")
+	public ModelAndView findIdPwPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("findIdPw");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/foundIdPage.do")
+	public ModelAndView foundIdPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("foundId");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/foundPwPage.do")
+	public ModelAndView foundPwPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("foundPw");
+		
+		return mav;
+	}
+	
 	@RequestMapping("/insertJoin.do")
 	public ModelAndView getInsertJoin(HttpServletRequest request, HttpSession session, UsersVo userVo) {
 		ModelAndView mav = new ModelAndView();
