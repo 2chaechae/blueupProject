@@ -548,7 +548,6 @@
 </ul>
       </div>
 <script type="text/javascript">
-localStorage.setItem("user_no", 1); // 회원정보 임시저장
 var user_no = localStorage.getItem("user_no");
 
 function wish(){

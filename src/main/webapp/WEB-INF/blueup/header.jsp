@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% session.setAttribute("userNO", 1); %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -388,7 +387,7 @@
             </div> -->
 						<div class="shoppingbag">
 							<button type="button" class="btn_nav ico_bag"
-								onclick="goGNBCart(); return false;"
+								onclick="cartAll()"
 								data-ga-category="PC_MLB_Header" data-ga-action="장바구니">
 								SHOPPINGBAG<em class="n" id="GNBHeaderCartCount">0</em>
 							</button>
@@ -549,13 +548,41 @@
 </ul>
       </div>
 <script type="text/javascript">
+var user_no = localStorage.getItem("user_no");
+
+function checkCategoryAll(element){
+	var first = $(element).text();
+	location.href="/test/getCategoryAll.do?category_name="+first+"&user_no="+user_no;
+}   
+
+/* 하위 카테고리로 상품 조회 (상단메뉴)*/
+function checkCategoryUp(element){
+		var first = $(element).closest('.select').children('a').text();
+		var second = $(element).text();
+		location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;
+}	
+
+/*하위 카테고리로 상품 조회 (상품 조회 화면)*/
+function checkCategoryDown(element){
+	var first = $('#cate').text();
+	alert(first);
+	var second = $(element).text();
+	location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;
+}
+
 function wish(){
-	sessionStorage.setItem("userNO", 1);
-	var userNO = sessionStorage.getItem("userNO");
-	if(userNO != null){
-		location.href="/test/getWishList.do?userNO="+ userNO;
+	if(user_no != null){
+		location.href="/test/getWishList.do?user_no="+user_no;
 	}else{
 		location.href="/test/getWishListCookie.do";
+	}
+}
+
+function cartAll() {
+	if(user_no != null){
+		location.href="/test/getcartList.do?user_no="+user_no;
+	}else{
+		location.href="/test/getcartList.do";
 	}
 }
 </script>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,18 +31,16 @@ public class CartController {
 	// 장바구니 추가하기
 	@RequestMapping("/addCart.do")
 	@ResponseBody
-	public String addCart(CartVo vo, HttpSession session, HttpServletRequest req, HttpServletResponse repo) {
+	public String addCart(CartVo vo, HttpSession session, HttpServletRequest req, HttpServletResponse repo,
+			@RequestParam(value="user_no") String user_no) {
 		System.out.println("test");
-		session.setAttribute("userNO", 1); //회원
-		int user_no = (int) session.getAttribute("userNO");
-		//int user_no = 0;
 		String result = Integer.toString(0);
-		System.out.println(user_no);
-		WishListVo Wishvo = new WishListVo();
-		Wishvo.setUser_no(user_no);
+		vo.setUser_no(Integer.parseInt(user_no));
+		// 위시리스트 삭제를 위한 정보 
+			WishListVo Wishvo = new WishListVo();
 		/////////////회원//////////////////
-		if(user_no > 0) {
-			Wishvo.setUser_no(user_no);
+		if(user_no != null) {
+			Wishvo.setUser_no(Integer.parseInt(user_no));
 			Wishvo.setProduct_no(vo.getProduct_no());
 			result = Integer.toString(cartserviceimpl.addCart(vo));
 			System.out.println(result);
@@ -63,6 +62,7 @@ public class CartController {
 				if(cartList.size() < addcartList.size()) {
 					System.out.println("길이 체크 완료");
 					result = Integer.toString(1);
+					// session 수정된 cartList로 재정의
 					session.setAttribute("cart", null);
 					session.setAttribute("cart", addcartList);
 				}
@@ -143,9 +143,10 @@ public class CartController {
 
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
-	public ModelAndView getcartList(CartVo vo, ModelAndView mav, HttpSession session) {
+	public ModelAndView getcartList(CartVo vo, ModelAndView mav, HttpSession session,
+			@RequestParam(value="user_no") String user_no) {
 		/////////////회원//////////////
-		if(vo.getUser_no() > 0) {
+		if(user_no != null) {
 			List<CartVo> test = cartserviceimpl.getcartList(vo);
 			System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getProduct_no());
 			mav.addObject("getcartList", cartserviceimpl.getcartList(vo));

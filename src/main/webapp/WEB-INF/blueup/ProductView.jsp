@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/view/mlb/header.jsp"%>
+<%@ include file="header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 컨텐츠 시작 -->
@@ -83,7 +83,6 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-localStorage.setItem("user_no", 1); //회원정보 임시저장
 var user_no = localStorage.getItem("user_no");
 
 // 하트 눌렀을 때 : 회원 db 위시리스트 , 비회원 쿠키에 상품번호 추가

@@ -46,10 +46,9 @@ public class ProductController {
 		/////////////////////회원//////////////////////////
 		if(session.getAttribute("user_no") != null) {
 			System.out.println("회원");
-			System.out.println(session.getAttribute("userNO"));
-			
+			System.out.println(session.getAttribute("user_no"));
 			// 파라미터 vo 셋팅
-			vo.put("userNO", session.getAttribute("userNO")); // 회원 번호
+			vo.put("user_no", session.getAttribute("user_no")); // 회원 번호
 			vo.put("Selected", session.getAttribute("Selected")); //선택한 카테고리
 			Category_detailVo cate = (Category_detailVo) vo.get("Selected");
 			System.out.println("선택한 값 :" +cate.getCategory_name() + "," + cate.getDetailed_category_name());
@@ -72,7 +71,7 @@ public class ProductController {
 			System.out.println("비회원");
 			
 			// 파라미터 vo 셋팅
-			vo.put("userNO", 0);	// 동일 메서드 사용을 위해 비회원일 경우 0 셋팅
+			vo.put("user_no", 0);	// 동일 메서드 사용을 위해 비회원일 경우 0 셋팅
 			vo.put("Selected", session.getAttribute("Selected"));
 			Category_detailVo cate = (Category_detailVo) session.getAttribute("Selected");
 			System.out.println("선택한 값 :" +cate.getCategory_name() + "," + cate.getDetailed_category_name());
@@ -87,11 +86,17 @@ public class ProductController {
 			Cookie cookies[] = req.getCookies(); // 쿠키 리스트 얻기
 			String[] p_no = null;				 // 상품 번호 리스트
 			
-			// 쿠키의 상품 위시리스트 정보 얻어서 리스트에 넣기
+			//쿠키값 확인
 			for(Cookie c : cookies) {
-				if(c.getName().equals("p_list")) {	
+				if(c.getName().equals("p_list")) {
+					System.out.println("쿠키체크");
 					String value = c.getValue();
-					p_no = value.split("%2F");
+					if(value == "") {
+						System.out.println(" 빈문자열");
+						 p_no = null;
+					}else {
+						p_no = value.split("%2F");
+					}
 				}
 			}
 			
@@ -135,9 +140,10 @@ public class ProductController {
 		/////////////////////////회원//////////////////////////
 		if(session.getAttribute("user_no") != null) {
 			System.out.println("회원-상위카테");
+			System.out.println(session.getAttribute("user_no"));
 			
 			// 파라미터 vo 셋팅
-			vo.put("userNO", session.getAttribute("userNO"));
+			vo.put("user_no", session.getAttribute("user_no"));
 			vo.put("Selected", session.getAttribute("Selected"));
 			Category_detailVo cate = (Category_detailVo) vo.get("Selected");
 			System.out.println("상위 카테고리 값 : " + cate.getCategory_name());
@@ -156,7 +162,7 @@ public class ProductController {
 			System.out.println("비회원-상위카테");
 			
 			//파라미터 vo 셋팅
-			vo.put("userNO", 0);
+			vo.put("user_no", 0);
 			vo.put("Selected", session.getAttribute("Selected"));
 			Category_detailVo cate = (Category_detailVo) vo.get("Selected");
 			System.out.println("상위 카테고리 값 : " + cate.getCategory_name());

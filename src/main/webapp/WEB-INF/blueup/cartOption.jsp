@@ -67,6 +67,7 @@ function minus(){
 }
 
 function addCart(){
+	var user_no = localStorage.getItem("user_no");
 	var size = $('#size option:selected').val();
 	alert(size);
 	var color = $('#color option:selected').val();
@@ -81,7 +82,7 @@ function addCart(){
 	    type:'POST',
 	   	cache:false,
 		data: {"product_no":product_no, "product_name":product_name, "quantity":quantity,
-			"total_price":total_price, "product_size":size, "product_color":color
+			"total_price":total_price, "product_size":size, "product_color":color, "user_no" : user_no
 		},
 		success:function(data) {
 			if(data == 1)

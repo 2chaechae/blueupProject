@@ -21,6 +21,7 @@ public class CategoryController {
 		System.out.println("카테고리 이름 : " + vo.getCategory_name());
 		System.out.println("하위 카테고리 이름 : " + vo.getDetailed_category_name());
 		ModelAndView mav = new ModelAndView();
+		System.out.println("카테 user_no : " + user_no);
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
 		session.setAttribute("Selected", vo);
 		session.setAttribute("user_no", user_no);
@@ -32,7 +33,7 @@ public class CategoryController {
 	
 	// 카테고리 목록 조회 (상위 카테고리 매개변수)
 	@RequestMapping("/getCategoryAll.do")
-	public ModelAndView getCategoryAll(HttpSession session, Category_detailVo vo, @RequestParam(value="user_no") int user_no) {
+	public ModelAndView getCategoryAll(HttpSession session, Category_detailVo vo, @RequestParam(value="user_no") String user_no) {
 		System.out.println("카테고리 이름 : " + vo.getCategory_name());
 		ModelAndView mav = new ModelAndView();
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));

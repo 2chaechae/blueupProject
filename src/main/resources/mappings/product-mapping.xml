@@ -49,7 +49,7 @@
 	<select id="getProductListByCategory" resultType="productvo" parameterType="hashmap">
 		SELECT a.main_image, a.product_no, a.product_price, a.product_name, a.category_name, a.detailed_category_name, b.wish_no, b.user_no
 		FROM product as a LEFT OUTER JOIN wishlist as b 
-		ON a.product_no = b.product_no and b.user_no = #{userNO}
+		ON a.product_no = b.product_no and b.user_no = CAST(#{user_no} AS INTEGER)
 		WHERE a.category_name = #{Selected.category_name} LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
@@ -57,7 +57,7 @@
 	<select id="getProductListByDetailedCategory" resultType="productvo" parameterType="hashmap">
 		SELECT a.main_image, a.product_no, a.product_price, a.product_name, a.category_name, a.detailed_category_name, b.wish_no, b.user_no
 		FROM product as a LEFT OUTER JOIN wishlist as b 
-		ON a.product_no = b.product_no and b.user_no = #{userNO}
+		ON a.product_no = b.product_no and b.user_no = CAST(#{user_no} AS INTEGER)
 		WHERE a.detailed_category_name = #{Selected.detailed_category_name} LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	

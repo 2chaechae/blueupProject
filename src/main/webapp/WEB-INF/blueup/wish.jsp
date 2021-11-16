@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/view/mlb/header.jsp" %>
+<%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -148,8 +148,6 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-localStorage.setItem("user_no", 1);
-localStorage.setItem("user_id","이채린"); 	//회원정보 임시저장
 var user_id = localStorage.getItem("user_id");
 var user_no = localStorage.getItem("user_no");
 $(document).ready(function(){
@@ -237,7 +235,7 @@ function option(element){
 	alert("test");
 	var product_no = $(element).closest('.wish').children('.p').val();
 	alert(product_no);
-	window.open("/test/getCartOption.do?product_no=" + product_no,"height=300", "width=500");
+	window.open("/test/getCartOption.do?product_no=" + product_no + "&user_no=" + user_no,"height=300", "width=500");
 }
 
 </script>
