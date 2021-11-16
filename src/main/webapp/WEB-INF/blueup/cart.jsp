@@ -46,9 +46,10 @@
 						<div class="orderTable">
 							<div class="tableTopArea">
 								<a href="/test/deleteAllCart.do" class="btn sm gray">
-									<span>전체상품삭제</span></a> <a
-									href="/test/deleteCart.do" 
-									onclick="deleteSelectCart();"><span>선택상품삭제</span></a>
+									<span>전체상품삭제</span></a> 
+									<button type="button" class="deleteCart" onclick="deleteCart">선택상품삭제</button>
+									<!-- <a href="/test/deleteCart.do"
+									class="selectDelete_btn">선택상품삭제</a> -->
 							</div>
 							<table class="board-list">
 								<colgroup>
@@ -113,7 +114,9 @@
 								<c:forEach var="cart" items="${getcartList}" varStatus="status">
 									<tr>
 									<!-- 선택 체크 -->
-											<td><div class="checkBox">
+									<tbody id="delRow">
+										<td><div class="checkBox">
+													
 													<input type="checkbox" name="chBox" class="chBox"
 														data-cart_no="${cart.cart_no}" />
 														<!-- 개별 체크박스 해제 시 전체 선택 해제 -->
@@ -123,11 +126,13 @@
 														});
 														</script>
 												</div></td>
-										<td><img src="${cart.main_image}"> width="100"
+												
+										<td><img src="${cart.main_image}" width="100"
 											height="110"></td>
 										<td>${cart.product_name }<br>${cart.product_color}/${cart.product_size}
 											&nbsp;<input type="button" value="변경" class="option"
-											onclick="option(this);" />
+											onclick="option(this)"/>
+											<input class="p_no" type="hidden" value="${cart.product_no}"/>
 										</td>
 
 										<!-- 수량 -->
@@ -159,7 +164,7 @@
 										<td width="140px;"><div style="width: 130px;">${cart.total_price }원</div></td>
 										<td><a href="#" class="btn_list_del"
 											onclick="deleteSelectCart(this);">삭제</a></td>
-										
+										</tbody>
 									</tr>
 
 
@@ -321,6 +326,7 @@ function shoeSize(this) {
 
 <!-- 장바구니 삭제 -->
 <script>
+/* 전체상품삭제 */
   function(){
 	  $("btn sm gray").click(function(){
 		  
@@ -328,47 +334,72 @@ function shoeSize(this) {
 	            location.href="/test/deleteAllCart.do";
 	            alert("모두삭제되었습니다.")
 	        }
-	    });
-	}
+	   
+	
   
- /* 선텍상품삭제 */
-  function deleteSelectCart(element){
-	  var product_no = $(element).closest('#sale').children('input').val();
-
-	  if(userNO == null){
-		  userNO = 0;
-	  }
-	  $.ajax({
-		  url:'/test/deleteCart.do',
-	  	  type: 'POST' ,
-	  	  cahche: false,
-	  	  data: {"product_no":product_no },
-	  		success:function(data)  {
-	  			if(data == 1){
-	  				$(element).closest('.delete_ver').remove();
-	  				var now = $('.num').test();
-	  				console.log(now);
-	  				var new_num = Number(now) - 1;
-	  				console.log(new_num);
-	  				$('.num').test(new_num);
-	  			}
-	  			else{
-	  			alert("삭제 실패")
-	  			}
-	  		},
-	  		error:function() {
-	  			alert('다시 시도해주세여');
-	  		}
-	  		
-	  });
-  }
-  
+ /* 선택상품삭제 */
+				/* function selectdelete(element){
+				var chBox = "";
+				 $( "input[name=chBox]:checked").each (function (element){
+					chBox = chBox + $(this).val	() + "," ;
+				 });
+				 if (chBox == ''){
+					 alert("삭제할 대상을 선택하세요");
+				return false;	 
+				 }
+				 if(confirm("정보를 삭제 하시겠습니까?")){
+					 location.href = "/test/getcartList.do";
+				 }
+				 }
+			
+		  
+		/*   $.ajax({
+			  url : "/test/deleteCart.do",
+			  type: "post",
+			  data : { "cart_no":cart_no },
+			  success : function(){
+				  location.href = "/test/getcartList.do";
+			  });
+		  }
+			 }); 
+	    */ 
+	        function deleteCart(element){
+	    	var chBox = "";
+			 $( "input[name=chBox]:checked").each (function (element){
+	      	  if(userNO == null){
+	      		  userNO = 0;
+	      	  }
+	      	  $.ajax({
+	      		  url:'/test/deleteCart.do',
+	      	  	  type: 'POST' ,
+	      	  	  cahche: false,
+	      	  	  data: {"cart_no":cart_no },
+	      	  		success:function(data)  {
+	      	  			if(data == 1){
+	      	  				$(element).closest('.delRow').remove();
+	      	  				var now = $('.num').test();
+	      	  				console.log(now);
+	      	  				var new_num = Number(now) - 1;
+	      	  				console.log(new_num);
+	      	  				$('.num').test(new_num);
+	      	  			}
+	      	  			else{
+	      	  			alert("삭제 실패")
+	      	  			}
+	      	  		},
+	      	  		error:function() {
+	      	  			alert('다시 시도해주세여');
+	      	  		}
+	      	  		
+	      	  });
+	        }
+	    
   </script>
 
 <script>
   function option(element){
 		alert("장바구니 변경 창");
-		var product_no = $(element).closest('.number').children('.p').val();
+		var product_no = $(element).next().val();
 		alert(product_no);
 		window.open("/test/getCartOption.do?product_no=" + product_no,"height=300", "width=500");
 	}

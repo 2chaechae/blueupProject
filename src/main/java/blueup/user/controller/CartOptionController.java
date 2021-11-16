@@ -49,4 +49,35 @@ public class CartOptionController {
 		return mav;
 		
 	}
+	
+	@RequestMapping("/getCartChange.do")
+	@ResponseBody
+	public ModelAndView getCartChange(CartOptionVo vo) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("디비디비");
+		vo.setProduct_no(79);
+		System.out.println(vo.getProduct_no());
+		List<CartOptionVo> test = cartoptionserviceimpl.cartOption(vo);
+		
+		// 컬러 중복 제거
+		List<String> color = new ArrayList<String>();
+		for(int i=0; i < test.size(); i++) {
+			if(!color.contains(test.get(i).getColor()))
+				color.add(test.get(i).getColor());
+		}
+		
+		// 사이즈 중복 제거
+		List<Integer> size = new ArrayList<Integer>();
+		for(int i=0; i < test.size(); i++) {
+			if(!size.contains(test.get(i).getClothes_size()))
+				size.add(test.get(i).getClothes_size());
+		}
+		
+		mav.addObject("data", cartoptionserviceimpl.cartOption(vo));
+		mav.addObject("color", color);
+		mav.addObject("size", size);
+		mav.setViewName("cartChange");
+		return mav;
+		
+	}
 }

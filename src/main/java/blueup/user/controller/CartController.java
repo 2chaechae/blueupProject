@@ -40,7 +40,7 @@ public class CartController {
 			WishListVo Wishvo = new WishListVo();
 			
 		/////////////회원//////////////////
-		if(!session.getAttribute("user_no").equals("0")) {
+		if(!user_no.equals("0")) {
 			System.out.println("회원");
 			Wishvo.setUser_no(Integer.parseInt(user_no));
 			Wishvo.setProduct_no(vo.getProduct_no());
