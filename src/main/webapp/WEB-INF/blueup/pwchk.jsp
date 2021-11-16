@@ -22,24 +22,24 @@
 							</p>
 			</div> 		<div class="board-write">
 					<p class="txt13-666">회원님의 개인정보 보호를 위한 본인 확인 절차를 위해 <strong>비밀번호</strong>를 입력해 주세요.</p>
-					<input type="password" class="input-style01" style="width:400px;" id="mypagePwChk" name="mypagePwChk" placeholder="비밀번호">				
+					<input type="password" class="input-style01" style="width:400px;" id="user_password" name="user_password" placeholder="비밀번호">				
 				</div>
 				</form>
 				<div class="btnWrapBox">
-					<a href="#" class="btn" id="checkPasswordCancel" onClick="return false;">취소</a>
-					<a href="#" class="btn fill" id="checkPasswordConfirm" onClick="return false;">확인</a>
+					<a href="#" class="btn" id="checkPasswordCancel">취소</a>
+					<a href="#none;" class="btn fill" id="confirmPwchkBtn">확인</a>
 				</div>
-				
 			</main>
 		</div>
 	</div>
-	
+<form id="movedPage" method="post" action="/test/quitPage.do">
+</form>
 <script type="text/javascript">
 $(document).ready(function(){
-	   
-	   $('#mypagePwChk').on('click',function(){
+
+	   $('#confirmPwchkBtn').on('click',function(){
 	      var userPw = $('#user_password').val();
-	      var userId = getItem("user_id");
+	      var userId = localStorage.getItem("user_id");
 				
 	      if(userPw == ""){
 	         alert("비밀번호를 입력해 주세요");
@@ -48,18 +48,29 @@ $(document).ready(function(){
 	      }else {
 	         $.ajax({
 	            type : 'post',
-	            data : { user_password : userPw, 
-	            		 user_id : userId },
+	            url:"/test/pwchk.do",
+	            data : { user_password : userPw, user_id : userId },
 	            dataType : 'json',
 	            success : function(data){
-	            	int countNum = 
+	            	console.log(data);
+	            	var userPwChkNum = data.userPwChkNum;
+	            	if(userPwChkNum == 0){
+	            		alert("비밀번호를 확인해주세요");
+	            		$('#user_password').val("");
+	            		$('#user_password').focus();
+	            		return;
+	            	}else{
+	            		$("#movedPage").submit();
+	            		
+	            	}
 	            },
 	            error:function(request,status,error){
-	            alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-	           }
+	            	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	            }
 	         });
 	      }
 	   });
+});
 </script>
 
 <%@ include file="footer.jsp" %>

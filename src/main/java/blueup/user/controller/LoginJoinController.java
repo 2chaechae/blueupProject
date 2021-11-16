@@ -54,6 +54,14 @@ public class LoginJoinController {
 		return mav;
 	}
 	
+	@RequestMapping("/pwchkPage.do")
+	public ModelAndView pwchkPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("pwchk");
+		
+		return mav;
+	}
+	
 	@RequestMapping("/insertJoin.do")
 	public ModelAndView getInsertJoin(HttpServletRequest request, HttpSession session, UsersVo userVo) {
 		ModelAndView mav = new ModelAndView();
@@ -123,6 +131,32 @@ public class LoginJoinController {
 			
 			result.put("userInfo", vo.get(0));
 			result.put("userIdChkNum", userIdChkNum);
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping("/pwchk.do")
+	@ResponseBody
+	public Map<String,Object> PwChk(UsersVo userVo) {
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+		String pw = userVo.getUser_password().toString();
+		
+		SHA256 sha256 = new SHA256(); //사용자 패스워드 암호화
+		
+		try {
+			pw = sha256.encrypt(pw);
+			userVo.setUser_password(pw);
+			
+			System.out.println("qweqwe____ " + userVo);
+			
+			int userPwChkNum = loginjoinserviceimpl.getPwChk(userVo);
+		
+			result.put("userPwChkNum", userPwChkNum);
 			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
