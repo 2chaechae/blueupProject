@@ -83,10 +83,7 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-	
-	/* console.log("qweqwe____ " , localStorage.getItem("saveId"));
-	console.log("qweqwe____ " , sessionStorage.getItem("userInfo")); */
-	
+
 	if(localStorage.getItem("saveId")){
 		$('#user_id').val(localStorage.getItem("userId"));
 		$('#chkSaveId').attr("checked",true);
@@ -121,35 +118,8 @@ $(document).ready(function(){
 			dataType : 'json',
 			success :function(data){
 				var userInfo = data.userInfo;
-				if(data.userInfo){
-					/*
-					세션
-					localStorage 각각 담아줘야함 key&value
-					
-					address: null
-					agree_email: true
-					agree_sns: true
-					detailed_address: null
-					email_address: "naver.com"
-					email_id: "kty2235"
-					member_level: "friends"
-					mobile_carrier: "kt"
-					newbie: true
-					phone1: "010"
-					phone2: "1111"
-					phone3: "3333"
-					total_point: 2000
-					user_gender: "남자"
-					user_id: "1234"
-					user_jumin1: "930819"
-					user_jumin2: "1111111"
-					user_name: "김태연"
-					user_no: 4
-					user_password: "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
-					user_registration_time: 1636875162649
-					zipcode: null
-					*/
-
+				
+				if(userInfo != ""){
 					localStorage.setItem("user_no", userInfo.user_no);
 					localStorage.setItem("user_name", userInfo.user_name);
 					localStorage.setItem("user_id", userInfo.user_id);
@@ -157,6 +127,7 @@ $(document).ready(function(){
 				
 				if(data.userIdChkNum == 0){
 					alert("아이디와 비밀번호를 확인해 주세요");
+					return;
 				}else{
 					//로그인 성공시 indexmlb 이동
 					if(chkSaveId){
@@ -192,12 +163,7 @@ function kakaoLogin() {
       	  var nickname = response.properties.nickname; //properties 안에 담겨있는 닉네임
       	  var email = kakao_account.email; // kakao_account 안에 담겨있는 이메일
       	  var gender = kakao_account.gender; // kakao_account 안에 담겨있는 성별
-      	  /* console.log("qweqwe____ kakao_account ", kakao_account);
-      	  console.log("qweqwe____ email ", email);
-      	  console.log("qweqwe____ nickname ", nickname);
-      	  console.log("qweqwe____ gender ", gender);
-      	  console.log(response); */
-      	  
+   
       	  var tmpList = [];
       	  tmpList = email.split("@");
       	  var email_id = tmpList[0];
@@ -281,7 +247,7 @@ function onSignInFailure(t){
 
 $('#joinin').on('click',function(){
 	$('#movedJoinFrm').submit(); 
-}); //태연이 보고 널포인트 익셉션 나는거 고쳐달라고하기
+});
 
 </script>
 

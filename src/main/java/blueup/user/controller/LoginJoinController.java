@@ -1,5 +1,6 @@
 package blueup.user.controller;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,13 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.admin.util.SHA256;
-import blueup.admin.vo.ProductVo;
 import blueup.user.service.LoginJoinServiceImpl;
 import blueup.user.vo.UsersVo;
 
@@ -127,6 +126,8 @@ public class LoginJoinController {
 		Map<String,Object> result = new HashMap<String,Object>();
 		
 		String pw = userVo.getUser_password().toString();
+		List<UsersVo> vo = new ArrayList<UsersVo>();
+		vo = null;
 		
 		SHA256 sha256 = new SHA256(); //사용자 패스워드 암호화
 		
@@ -135,9 +136,19 @@ public class LoginJoinController {
 			userVo.setUser_password(pw);
 			
 			int userIdChkNum = loginjoinserviceimpl.getLoginIdChk(userVo);
-			List<UsersVo> vo = loginjoinserviceimpl.getUserInfo(userVo); //세션에 올려둘 유저 정보
+			if(userIdChkNum == 1) {
+				vo = loginjoinserviceimpl.getUserInfo(userVo); //세션에 올려둘 유저 정보
+			}
 			
-			result.put("userInfo", vo.get(0));
+			System.out.println("qweqwe___ userIdChkNum___ " + userIdChkNum);
+			System.out.println("qweqwe___ vo___ " + vo);
+			
+			if(vo != null) {
+				result.put("userInfo", vo.get(0));
+			} else {
+				result.put("userInfo", "");
+			}
+			
 			result.put("userIdChkNum", userIdChkNum);
 			
 		} catch (NoSuchAlgorithmException e) {
