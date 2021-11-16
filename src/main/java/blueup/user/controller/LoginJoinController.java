@@ -62,6 +62,14 @@ public class LoginJoinController {
 		return mav;
 	}
 	
+	@RequestMapping("/quitPage.do")
+	public ModelAndView quitPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("quit");
+		
+		return mav;
+	}
+	
 	@RequestMapping("/insertJoin.do")
 	public ModelAndView getInsertJoin(HttpServletRequest request, HttpSession session, UsersVo userVo) {
 		ModelAndView mav = new ModelAndView();
@@ -139,7 +147,7 @@ public class LoginJoinController {
 		return result;
 	}
 	
-	@RequestMapping("/pwchk.do")
+	@RequestMapping("/PwChk.do")
 	@ResponseBody
 	public Map<String,Object> PwChk(UsersVo userVo) {
 		Map<String,Object> result = new HashMap<String,Object>();

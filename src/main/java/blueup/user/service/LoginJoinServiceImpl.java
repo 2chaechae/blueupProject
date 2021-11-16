@@ -37,6 +37,8 @@ public class LoginJoinServiceImpl implements LoginJoinService{
 		int userPwChkNum = loginjoindao.PwChk(userVo);
 		return userPwChkNum;
 	}
+
+	
 	
 
 }

@@ -29,7 +29,7 @@ public class LoginJoinDAO {
 	}
 	
 	public int PwChk(UsersVo userVo) {
-		return sqlSssionTemplate.selectOne("loginjoinDao.userInfo", userVo);
+		return sqlSssionTemplate.selectOne("loginjoinDao.PwChk", userVo);
 	}
 
 }

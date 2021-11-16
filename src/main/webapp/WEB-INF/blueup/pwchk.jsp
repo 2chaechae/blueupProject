@@ -48,7 +48,7 @@ $(document).ready(function(){
 	      }else {
 	         $.ajax({
 	            type : 'post',
-	            url:"/test/pwchk.do",
+	            url:"/test/PwChk.do",
 	            data : { user_password : userPw, user_id : userId },
 	            dataType : 'json',
 	            success : function(data){
