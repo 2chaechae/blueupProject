@@ -76,4 +76,8 @@
 		   AND USER_PASSWORD = #{user_password}
 	</select>
 	
+	<delete id="quit" parameterType="userVo">
+		DELETE FROM USERS
+		WHERE USER_ID= #{user_id}
+	</delete>
 </mapper>

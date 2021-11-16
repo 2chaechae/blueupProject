@@ -8,4 +8,5 @@ public interface LoginJoinService {
 	public int getUserId(UsersVo userVo);
 	public int getLoginIdChk(UsersVo userVo);
 	public int getPwChk(UsersVo userVo);
+	public void getQuit(UsersVo userVo);
 }

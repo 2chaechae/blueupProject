@@ -38,7 +38,9 @@ public class LoginJoinServiceImpl implements LoginJoinService{
 		return userPwChkNum;
 	}
 
-	
-	
+	public void getQuit(UsersVo userVo) {
+		loginjoindao.quit(userVo);
+		
+	}
 
 }

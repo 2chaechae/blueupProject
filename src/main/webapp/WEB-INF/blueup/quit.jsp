@@ -102,50 +102,38 @@
 						</div>
 						
 						<div class="btnWrapBox">
-							<a href="javascript:;" class="btn" id="secessionRequest">탈퇴 요청</a>
+							<a href="javascript:;" class="btn" id="quitRequest">탈퇴 요청</a>
 						</div>
 					</form>
 					</div>
-					
-					<!-- //탈퇴 가능한 경우E -->
-					
-					<hr class="hr-ddd">
-					
-					<p class="txt13-666">문의 : 고객센터 <b class="txt13-000">080-807-0012</b> 운영시간 평일 AM 9시 ~ PM 6시 (토/일/공휴일 휴무)</p>
-					
-				</div>
-				<!-- //주문/클레임 현황 정보 영역E -->
 
-			</main>
+<form id="mainPage" method="post" action="/test/movedIndex.do">
+</form>			
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#quitRequest').on('click',function(){
+		var userId = localStorage.getItem("user_id");
+		
+		$.ajax({
+			type : 'post',
+			url:"/test/quit.do",
+			data : { user_id : userId },
+			dataType : 'json',
+	        success : function(data){
+            	alert("회원탈퇴가 정상적으로 진행되었습니다. 감사합니다");
+            	$("#mainPage").submit();
+	        },
+	        error:function(request,status,error){
+	        	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	       	}
+	  });
+	});
+});
+
+</script>					
 			
-		</div>
-	</div>
+		
 
-			<article id="secessionConfirm" class="layer-popup layer-type02" style="display: none;">
-				<section class="layer-popup-cont" tabindex="0">
-					<h2>회원탈퇴 확인</h2><div class="layer-popup-wrap02">
-						<p class="layer-txt03">F&amp;F의 모든 서비스에서 탈퇴되며, <br> 30일간 재가입 할 수 없습니다. <br> 탈퇴하시겠습니까?</p>
-						<p class="layer-txt04">Discovery Expedition, MLB, Collected</p>
-					</div>
-					<div class="btn-wrap03">
-						<a href="#" id="secessionLayerCancel" class="btn lg" onclick="return false;">취소</a><a href="#" id="secessionLayerConfirm" class="btn fill lg" onclick="return false;">확인</a></div>
-					<div class="layer-popup-close">
-						<button type="button" class="d_layer_close">닫기</button></div>
-				</section>
-			</article>
-
-			<article id="secessionSuccess" class="layer-popup layer-type02" style="display: none;">
-				<section class="layer-popup-cont" tabindex="0">
-					<h2>탈퇴 완료</h2><div class="layer-popup-wrap02">
-						<p class="layer-txt">탈퇴처리 완료되었습니다. <br>이용해 주셔서 감사합니다.</p>
-						<p class="layer-txt02">더 나은 서비스로 찾아 뵙겠습니다.</p>
-					</div>
-					<div class="btn-wrap03">
-						<a href="#" id="secessionLayerSuccess" class="btn fill lg" onclick="return false;">확인</a></div>
-					<div class="layer-popup-close">
-						<button type="button" onclick="javascript:movePage('/main/mall/view');">닫기</button></div>
-				</section>
-			</article>
-<%@ include file="footer.jsp" %>  
 </body>
 </html>

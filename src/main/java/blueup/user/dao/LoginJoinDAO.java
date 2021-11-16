@@ -32,4 +32,8 @@ public class LoginJoinDAO {
 		return sqlSssionTemplate.selectOne("loginjoinDao.PwChk", userVo);
 	}
 
+	public void quit(UsersVo userVo) {
+		sqlSssionTemplate.selectOne("loginjoinDao.quit", userVo);
+	}
+
 }
