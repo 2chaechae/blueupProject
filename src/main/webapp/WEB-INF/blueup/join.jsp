@@ -2,298 +2,289 @@
 <%@ include file="header.jsp" %>
 
 <!-- 컨텐츠 시작 -->
-	<div class="contain mb join" id="contain">	
-		<div class="container">
-			<div class="location-container">
-                <div class="location-contents">
-                    <h2 class="title01">회원가입</h2>
-                    <p class="location">                    
-	                    <span>
-	                    	<a href="/main/mall/view">Home</a>
-	                    </span>
-						<strong>회원가입</strong>
-					</p>
-                 </div>
-            </div>
-            <main class="contents" id="contents">
-				<form id="userInfoForm" method="post" action="/test/insertJoin.do">
-				<div class="join-wrap">
-					<div class="top-info">
-						<div class="hdt">회원가입</div>
-					</div>
-
-					<!-- 가입정보 -->
-					<section class="sect memInfo">						
-						<div class="hdt">
-							<span class="tit">가입정보</span>
-							<span class="tt"><em class="required">*</em> 필수입력 항목</span>
-						</div>
-						<div class="board-write forms">							
-							<table summary="개인정보입력">
-								<caption>개인정보입력</caption>
-								<colgroup>
-									<col width="200">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">
-											<label>기본정보</label>
-											<span class="required">*</span>
-										</th>
-										<td>
-											<ul class="dt-list">
-												<li>													
-													<input type="text" class="input-style01 id" style="width:260px;" placeholder="아이디 (6~15자 영문 소문자.숫자)" id="user_id" name="user_id"  maxlength="15">
-													<a href="#" class="btn fill sm btnPslCertifi" id="id_chk" >중복검사</a>
-													<span class="error-msg"></span>													
-												</li>
-												<li>													
-													<input type="password" class="input-style01 pw" style="width:100%;" placeholder="비밀번호 ( 8~12자 영문, 숫자, 특수문자 중 최소 2가지 조합)" id="user_password" name="user_password" maxlength="12">
-													<span class="error-msg"></span>
-												</li>
-												<li>												
-													<input type="password" class="input-style01 pw com" style="width:100%;" placeholder="비밀번호 확인" id="user_chk_pw" name="user_chk_pw" maxlength="12">
-													<span class="error-msg"></span>
-												</li>
-												<li id="mbrNmAfter">													
-													<input type="text" class="input-style01 name" placeholder="이름(실명입력)" id="user_name" name="user_name">
-													<span class="error-msg"></span>
-												</li>
-												<li id="birthAfter">													
-													<span class="email">
-														<input type="text" class="input-style01 email1" style="width:130px;" placeholder="주민번호 앞자리" id="user_jumin1" name="user_jumin1">
-														<em class="att">-</em>
-														<input type="text" class="input-style01 email2" style="width:130px;" placeholder="주민번호 뒷자리" id="user_jumin2" name="user_jumin2">
-													</span>
-													<span class="rdo-skin">
-														<input type="radio" name="user_gender" id="male" value="남자" checked><span>선택</span>
-													</span>
-													<label for="gender1">남자</label>
-													<span class="rdo-skin">
-														<input type="radio" name="user_gender" id="female" value="여자"><span>선택</span>
-													</span>
-													<label for="gender2">여자</label>
-													<span class="error-msg"></span>
-												</li>
-												<li>													
-													<span class="email">
-														<input type="text" class="input-style01 email1" style="width:130px;" placeholder="E-mail" id="email_id" name="email_id">
-														<em class="att">@</em>
-														<input type="text" class="input-style01 email2" style="width:130px;" placeholder="" id="email_address" name="email_address" readonly>
-														<div class="select-style01 d_select email3">
-															<button type="button" class="d_select_sel" id="user_email_select" name="user_email_select" style="width:151px;"><span>이메일선택</span></button>
-															<ul>			
-																<li><a href="#none;" id="enormal1">직접입력</a></li>													
-																<li><a href="#none;" id="enormal2">naver.com</a></li>
-																<li><a href="#none;" id="enormal3">daum.net</a></li>
-																<li><a href="#none;" id="enormal4">nate.com</a></li>
-																<li><a href="#none;" id="enormal5">gmail.com</a></li>
-																<li><a href="#none;" id="enormal6">hotmail.com</a></li>
-															</ul>
-														</div>
-													</span>
-													<span class="error-msg"></span>													
-												</li>
-												<li id="phoneAfter">													
-													<span class="phone">
-														<div class="select-style01 d_select phone0">
-															<button type="button" class="d_select_sel" style="width:151px;" id="mobileBtn"><span>통신사 선택</span></button>
-															<ul>
-																<li><a href="#none;" id="mobileSkt">SKT</a></li>
-																<li><a href="#none;" id="mobileKt">KT</a></li>
-																<li><a href="#none;" id="mobileLg">LG</a></li>
-															</ul>
-														</div>													
-														<input type="text" class="input-style01 phone1" style="width:80px;" name="phone1" id="phone1" maxlength="3" >
-														<em class="dash">-</em>
-														<input type="text" class="input-style01 phone2" style="width:80px;" name="phone2" id="phone2" maxlength="4" >
-														<em class="dash">-</em>
-														<input type="text" class="input-style01 phone3" style="width:80px;" name="phone3" id="phone3" maxlength="4">
-													</span>
-													<span class="error-msg"></span>
-												</li>
-											</ul>
-										</td>
-									</tr>
-									<tr id="certProcess">
-										<th scope="row">
-											<label>본인인증</label><span class="required">*</span>
-										</th>
-										<td>
-											<div class="d_toggle togbox">
-												<div class="hbox">
-													<span class="required">*</span>
-													<span class="check-skin">
-														<input type="checkbox" id="certAgreeYn" name="certAgreeYn" value="Y" onclick="setAgree();"><span>선택</span>
-													</span>
-													<label for="certAgreeYn">본인 인증을 위한 약관 모두 동의</label>
-													<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certBtn" name="certBtn">본인인증</a>
-													<button type="button" class="btn-open d_toggle_select"><span>Open</span></button>
-													<span class="error-msg"></span>
-												</div>												
-												<div class="cbox d_toggle_cont">
-													<ul class="list">
-														<li>
-															<span class="required">*</span>
-															<span class="check-skin">
-																<input type="checkbox" id="chk_policy_1" name="chk_policy_1" onclick="setAgree2();"><span>선택</span>
-															</span>
-															<label for="chk_policy_1">개인정보이용동의</label>
-															<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin1'); return false;">전문보기</a>
-														</li>
-														<li>
-															<span class="required">*</span>
-															<span class="check-skin">
-																<input type="checkbox" id="chk_policy_2" onclick="setAgree2();"><span>선택</span>
-															</span>
-															<label for="chk_policy_2">고유식별정보처리 동의</label>
-															<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin2'); return false;">전문보기</a>
-														</li>
-														<li>
-															<span class="required">*</span>
-															<span class="check-skin">
-																<input type="checkbox" id="chk_policy_3" onclick="setAgree2();"><span>선택</span>
-															</span>
-															<label for="chk_policy_3">서비스이용약관동의</label>
-															<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin3'); return false;">전문보기</a>
-														</li>
-														<li>
-															<span class="required">*</span>
-															<span class="check-skin">
-																<input type="checkbox" id="chk_policy_4" onclick="setAgree2();"><span>선택</span>
-															</span>
-															<label for="chk_policy_4">통신사이용약관 동의</label>
-															<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin4'); return false;">전문보기</a>
-														</li>
-														<li style="display:none" id="mCoview">
-															<span class="check-skin">
-																<input type="checkbox" id="chk_policy_5"><span>선택</span>
-															</span>
-															<label for="chk_policy_5">개인정보  제3자 제공동의</label>
-															<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin5'); return false;">전문보기</a>
-														</li>
-													</ul>
-												</div>
-												
-												<!-- 본인 인증번호 입력  -->
-												<div class="certifiBox" id="certAfter" style="display:none">
-													<span class="required">*</span>
-													<div class="num">
-														<input type="text" class="input-style01" placeholder="인증번호" name="sAuthNo" id="sAuthNo" maxlength="6">
-														<span class="time" id="remainTime">3분</span>
-													</div>
-													<div class="bts">
-														<a href="#" class="btn btnConfirm" onclick="goCertificationEnd(); return false;">확인</a>
-														<a href="#" class="btn fill btnResend" onclick="goCertification(this); return false;">재전송</a>
-													</div>
-													<ul class="text-list02 col-type01 bul-list">
-														<li>3분 이내로 인증번호(6자리)를 입력해 주세요.</li>
-														<!-- <li>인증번호가 오지 않으면 <a href="javascript:;" class="link">여기를 눌러주세요.</a></li> -->
-													</ul>
-													<span class="error-msg"></span>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr id="certProcessEnd" style="display:none">
-										<th scope="row"><label>본인인증</label><span class="required">*</span></th>
-										<td>
-											<div class="togbox">
-												<span class="btn fill sm btnPslCertifi">본인인증 완료</span>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</section>
-
-					<!-- 마켓팅수신 -->
-					<section class="sect receive">
-						<div class="d_toggle togbox" id="termToggle">
-							<div class="hbox">
-								<span class="check-skin">
-									<input type="checkbox" id="chk_receive_1" onclick="setCheck()"><span>선택</span>
-								</span>
-								<label for="chk_receive_1">MLB 이용약관 및 마케팅정보 수신 모두 동의</label>
-								<button type="button" class="btn-open d_toggle_select" id="termBtn"><span>Open</span></button>
-							</div>
-							<div class="cbox d_toggle_cont">
-								<ul class="list">
-									<li class="L1">
-										<span class="item">
-											<span class="required">*</span>
-											<span class="check-skin">
-												<input type="checkbox" name="onlineSiteUsefStplat" id="onlineSiteUsefStplat" value="N" onclick="setCheck2()"><span>선택</span>												
-											</span>
-											<label for="chk_pol_receive_1">서비스 이용약관(필수)</label>
-										</span>
-										<span class="item">
-											<span class="required">*</span>
-											<span class="check-skin">
-												<input type="checkbox" name="psnlInfoColctUsefAgr" id="psnlInfoColctUsefAgr" value="N" onclick="setCheck2()"><span>선택</span>												
-											</span>
-											<label for="chk_pol_receive_2">개인정보 수집 및 이용 (필수)</label>		
-										</span>
-									</li>
-									<li class="L2">
-										<span class="item">											
-											<span class="check-skin">
-												<input type="checkbox" name="emailRecptnAgrYn" id="emailRecptnAgrYn" value="Y" onclick="setCheck2()"><span>선택</span>
-											</span>
-											<label for="chk_pol_receive_3">e-Mail 수신</label>
-										</span>
-										<span class="item">											
-											<span class="check-skin">
-												<input type="checkbox" name="smsRecptnAgrYn" id="smsRecptnAgrYn" value="Y" onclick="setCheck2()"><span>선택</span>
-											</span>
-											<label for="chk_pol_receive_4">SMS(알림톡) 수신</label>
-										</span>
-										<ul class="text-list02 col-type01 bul-list">
-											<li>e-Mail, SMS(알림톡)을 통한 상품 및 이벤트 정보 수신에 동의합니다.</li>
-											<li>거래정보(주문/반품/교환) 관련 e-Mail/SMS(알림톡)은 수신동의 하지 않아도 발송됩니다.</li>
-										</ul>
-									</li>															
-								</ul>
-								<div class="gud">
-									<ul class="text-list02 col-type01 bul-list">
-										<li>상기 부가정보 수신 동의는 F&F 브랜드에서 회원에게 이메일, SMS를 활용하여 상품 및 서비스에 대한 제반 마케팅 활동을 하기 위한 회원정보   (개인정보취급 방침 중 “2. 수집하는 개인정보 항목” 기재 항목)제공 및 각 서비스 수신에 대한 사항입니다.</li>
-										<li>약관변경이나 공지 등의 고지성 안내 메일은 수신동의 하지않더라도 고객의 권익보호를 위해 발송됩니다.</li>
-										<li>제공된 회원정보는 F&F 브랜드가 별도 동의를 득한 경우를 제외하고는 회원탈퇴 후 30일까지 보유합니다.</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-					</section>
-					
-					
-					<div>
-
-</div>
-		<div class="bot-btns btnList">
-						<a href="#none;" class="btn lg fill btnJoin" id="confirmJoinBtn" >회원가입</a>
-					</div>	
-					<section class="sect bot-info">
-						<div class="hd">F&F membership은 회원님의 소중한 개인정보를 안전하게 관리하고 있습니다.</div>
-		  				<ul class="text-list02 col-type01 bul-list">
-							<li>
-								2017년 8월 18일 부터 시행되는 정보통신망 이용 촉진 및 정보보호 등에 관한 법률(이하 정보통신망법) 제 23조의 2 ”주민등록번호의 사용 
-  								제한”에 따라 모든 서비스에서 주민등록번호를 입력 받지 않습니다. 이에 따라 가입하실 때는 주민등록번호를 입력하는 실명인증 휴대폰을 
-  								이용한 본인인증이 필요합니다.
-  							</li>
-						</ul>
-					</section>
+<div class="contain mb join" id="contain">	
+	<div class="container">
+		<div class="location-container">
+               <div class="location-contents">
+                   <h2 class="title01">회원가입</h2>
+                   <p class="location">                    
+                    <span>
+                    	<a href="/main/mall/view">Home</a>
+                    </span>
+					<strong>회원가입</strong>
+				</p>
+                </div>
+           </div>
+           <main class="contents" id="contents">
+			<form id="userInfoForm" method="post" action="/test/insertJoin.do">
+			<div class="join-wrap">
+				<div class="top-info">
+					<div class="hdt">회원가입</div>
 				</div>
-				<input type="hidden" id="mobile_carrier" name="mobile_carrier" value=""/>
-				</form>
-			</main>
-			
-		</div>
+
+				<!-- 가입정보 -->
+				<section class="sect memInfo">						
+					<div class="hdt">
+						<span class="tit">가입정보</span>
+						<span class="tt"><em class="required">*</em> 필수입력 항목</span>
+					</div>
+					<div class="board-write forms">							
+						<table summary="개인정보입력">
+							<caption>개인정보입력</caption>
+							<colgroup>
+								<col width="200">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<label>기본정보</label>
+										<span class="required">*</span>
+									</th>
+									<td>
+										<ul class="dt-list">
+											<li>
+												<input type="text" class="input-style01 id" style="width:260px;" placeholder="아이디 (6~15자 영문 소문자.숫자)" id="user_id" name="user_id"  maxlength="15">
+												<a href="#" class="btn fill sm btnPslCertifi" id="id_chk" >중복검사</a>
+												<span class="error-msg"></span>													
+											</li>
+											<li>													
+												<input type="password" class="input-style01 pw" style="width:100%;" placeholder="비밀번호 ( 8~12자 영문, 숫자, 특수문자 중 최소 2가지 조합)" id="user_password" name="user_password" maxlength="12">
+												<span class="error-msg"></span>
+											</li>
+											<li>												
+												<input type="password" class="input-style01 pw com" style="width:100%;" placeholder="비밀번호 확인" id="user_chk_pw" name="user_chk_pw" maxlength="12">
+												<span class="error-msg"></span>
+											</li>
+											<li id="mbrNmAfter">													
+												<input type="text" class="input-style01 name" placeholder="이름(실명입력)" id="user_name" name="user_name">
+												<span class="error-msg"></span>
+											</li>
+											<li id="birthAfter">													
+												<span class="email">
+													<input type="text" class="input-style01 email1" style="width:130px;" placeholder="주민번호 앞자리" id="user_jumin1" name="user_jumin1">
+													<em class="att">-</em>
+													<input type="text" class="input-style01 email2" style="width:130px;" placeholder="주민번호 뒷자리" id="user_jumin2" name="user_jumin2">
+												</span>
+												<span class="rdo-skin">
+													<input type="radio" name="user_gender" id="male" value="남자" checked><span>선택</span>
+												</span>
+												<label for="gender1">남자</label>
+												<span class="rdo-skin">
+													<input type="radio" name="user_gender" id="female" value="여자"><span>선택</span>
+												</span>
+												<label for="gender2">여자</label>
+												<span class="error-msg"></span>
+											</li>
+											<li>													
+												<span class="email">
+													<input type="text" class="input-style01 email1" style="width:130px;" placeholder="E-mail" id="email_id" name="email_id">
+													<em class="att">@</em>
+													<input type="text" class="input-style01 email2" style="width:130px;" placeholder="" id="email_address" name="email_address" readonly>
+													<div class="select-style01 d_select email3">
+														<button type="button" class="d_select_sel" id="user_email_select" name="user_email_select" style="width:151px;"><span>이메일선택</span></button>
+														<ul>			
+															<li><a href="#none;" id="enormal1">직접입력</a></li>													
+															<li><a href="#none;" id="enormal2">naver.com</a></li>
+															<li><a href="#none;" id="enormal3">daum.net</a></li>
+															<li><a href="#none;" id="enormal4">nate.com</a></li>
+															<li><a href="#none;" id="enormal5">gmail.com</a></li>
+															<li><a href="#none;" id="enormal6">hotmail.com</a></li>
+														</ul>
+													</div>
+												</span>
+												<span class="error-msg"></span>													
+											</li>
+											<li id="phoneAfter">													
+												<span class="phone">
+													<div class="select-style01 d_select phone0">
+														<button type="button" class="d_select_sel" style="width:151px;" id="mobileBtn"><span>통신사 선택</span></button>
+														<ul>
+															<li><a href="#none;" id="mobileSkt">SKT</a></li>
+															<li><a href="#none;" id="mobileKt">KT</a></li>
+															<li><a href="#none;" id="mobileLg">LG</a></li>
+														</ul>
+													</div>													
+													<input type="text" class="input-style01 phone1" style="width:80px;" name="phone1" id="phone1" maxlength="3" >
+													<em class="dash">-</em>
+													<input type="text" class="input-style01 phone2" style="width:80px;" name="phone2" id="phone2" maxlength="4" >
+													<em class="dash">-</em>
+													<input type="text" class="input-style01 phone3" style="width:80px;" name="phone3" id="phone3" maxlength="4">
+												</span>
+												<span class="error-msg"></span>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr id="certProcess">
+									<th scope="row">
+										<label>본인인증</label><span class="required">*</span>
+									</th>
+									<td>
+										<div class="d_toggle togbox">
+											<div class="hbox">
+												<span class="required">*</span>
+												<span class="check-skin">
+													<input type="checkbox" id="certAgreeYn" name="certAgreeYn" value="Y" onclick="setAgree();"><span>선택</span>
+												</span>
+												<label for="certAgreeYn">본인 인증을 위한 약관 모두 동의</label>
+												<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certBtn" name="certBtn">본인인증</a>
+												<button type="button" class="btn-open d_toggle_select"><span>Open</span></button>
+												<span class="error-msg"></span>
+											</div>												
+											<div class="cbox d_toggle_cont">
+												<ul class="list">
+													<li>
+														<span class="required">*</span>
+														<span class="check-skin">
+															<input type="checkbox" id="chk_policy_1" name="chk_policy_1" onclick="setAgree2();"><span>선택</span>
+														</span>
+														<label for="chk_policy_1">개인정보이용동의</label>
+														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin1'); return false;">전문보기</a>
+													</li>
+													<li>
+														<span class="required">*</span>
+														<span class="check-skin">
+															<input type="checkbox" id="chk_policy_2" onclick="setAgree2();"><span>선택</span>
+														</span>
+														<label for="chk_policy_2">고유식별정보처리 동의</label>
+														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin2'); return false;">전문보기</a>
+													</li>
+													<li>
+														<span class="required">*</span>
+														<span class="check-skin">
+															<input type="checkbox" id="chk_policy_3" onclick="setAgree2();"><span>선택</span>
+														</span>
+														<label for="chk_policy_3">서비스이용약관동의</label>
+														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin3'); return false;">전문보기</a>
+													</li>
+													<li>
+														<span class="required">*</span>
+														<span class="check-skin">
+															<input type="checkbox" id="chk_policy_4" onclick="setAgree2();"><span>선택</span>
+														</span>
+														<label for="chk_policy_4">통신사이용약관 동의</label>
+														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin4'); return false;">전문보기</a>
+													</li>
+													<li style="display:none" id="mCoview">
+														<span class="check-skin">
+															<input type="checkbox" id="chk_policy_5"><span>선택</span>
+														</span>
+														<label for="chk_policy_5">개인정보  제3자 제공동의</label>
+														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin5'); return false;">전문보기</a>
+													</li>
+												</ul>
+											</div>
+											
+											<!-- 본인 인증번호 입력  -->
+											<div class="certifiBox" id="certAfter" style="display:none">
+												<span class="required">*</span>
+												<div class="num">
+													<input type="text" class="input-style01" placeholder="인증번호" name="sAuthNo" id="sAuthNo" maxlength="6">
+													<span class="time" id="remainTime">3분</span>
+												</div>
+												<div class="bts">
+													<a href="#" class="btn btnConfirm" onclick="goCertificationEnd(); return false;">확인</a>
+													<a href="#" class="btn fill btnResend" onclick="goCertification(this); return false;">재전송</a>
+												</div>
+												<ul class="text-list02 col-type01 bul-list">
+													<li>3분 이내로 인증번호(6자리)를 입력해 주세요.</li>
+													<!-- <li>인증번호가 오지 않으면 <a href="javascript:;" class="link">여기를 눌러주세요.</a></li> -->
+												</ul>
+												<span class="error-msg"></span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr id="certProcessEnd" style="display:none">
+									<th scope="row"><label>본인인증</label><span class="required">*</span></th>
+									<td>
+										<div class="togbox">
+											<span class="btn fill sm btnPslCertifi">본인인증 완료</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<!-- 마켓팅수신 -->
+				<section class="sect receive">
+					<div class="d_toggle togbox" id="termToggle">
+						<div class="hbox">
+							<span class="check-skin">
+								<input type="checkbox" id="chk_receive_1" onclick="setCheck()"><span>선택</span>
+							</span>
+							<label for="chk_receive_1">MLB 이용약관 및 마케팅정보 수신 모두 동의</label>
+							<button type="button" class="btn-open d_toggle_select" id="termBtn"><span>Open</span></button>
+						</div>
+						<div class="cbox d_toggle_cont">
+							<ul class="list">
+								<li class="L1">
+									<span class="item">
+										<span class="required">*</span>
+										<span class="check-skin">
+											<input type="checkbox" name="onlineSiteUsefStplat" id="onlineSiteUsefStplat" value="N" onclick="setCheck2()"><span>선택</span>												
+										</span>
+										<label for="chk_pol_receive_1">서비스 이용약관(필수)</label>
+									</span>
+									<span class="item">
+										<span class="required">*</span>
+										<span class="check-skin">
+											<input type="checkbox" name="psnlInfoColctUsefAgr" id="psnlInfoColctUsefAgr" value="N" onclick="setCheck2()"><span>선택</span>												
+										</span>
+										<label for="chk_pol_receive_2">개인정보 수집 및 이용 (필수)</label>		
+									</span>
+								</li>
+								<li class="L2">
+									<span class="item">											
+										<span class="check-skin">
+											<input type="checkbox" name="emailRecptnAgrYn" id="emailRecptnAgrYn" value="Y" onclick="setCheck2()"><span>선택</span>
+										</span>
+										<label for="chk_pol_receive_3">e-Mail 수신</label>
+									</span>
+									<span class="item">											
+										<span class="check-skin">
+											<input type="checkbox" name="smsRecptnAgrYn" id="smsRecptnAgrYn" value="Y" onclick="setCheck2()"><span>선택</span>
+										</span>
+										<label for="chk_pol_receive_4">SMS(알림톡) 수신</label>
+									</span>
+									<ul class="text-list02 col-type01 bul-list">
+										<li>e-Mail, SMS(알림톡)을 통한 상품 및 이벤트 정보 수신에 동의합니다.</li>
+										<li>거래정보(주문/반품/교환) 관련 e-Mail/SMS(알림톡)은 수신동의 하지 않아도 발송됩니다.</li>
+									</ul>
+								</li>															
+							</ul>
+							<div class="gud">
+								<ul class="text-list02 col-type01 bul-list">
+									<li>상기 부가정보 수신 동의는 F&F 브랜드에서 회원에게 이메일, SMS를 활용하여 상품 및 서비스에 대한 제반 마케팅 활동을 하기 위한 회원정보   (개인정보취급 방침 중 “2. 수집하는 개인정보 항목” 기재 항목)제공 및 각 서비스 수신에 대한 사항입니다.</li>
+									<li>약관변경이나 공지 등의 고지성 안내 메일은 수신동의 하지않더라도 고객의 권익보호를 위해 발송됩니다.</li>
+									<li>제공된 회원정보는 F&F 브랜드가 별도 동의를 득한 경우를 제외하고는 회원탈퇴 후 30일까지 보유합니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section><div></div>
+				<div class="bot-btns btnList">
+					<a href="#none;" class="btn lg fill btnJoin" id="confirmJoinBtn" >회원가입</a>
+				</div>	
+				<section class="sect bot-info">
+					<div class="hd">F&F membership은 회원님의 소중한 개인정보를 안전하게 관리하고 있습니다.</div>
+	  				<ul class="text-list02 col-type01 bul-list">
+						<li>
+							2017년 8월 18일 부터 시행되는 정보통신망 이용 촉진 및 정보보호 등에 관한 법률(이하 정보통신망법) 제 23조의 2 ”주민등록번호의 사용 
+ 								제한”에 따라 모든 서비스에서 주민등록번호를 입력 받지 않습니다. 이에 따라 가입하실 때는 주민등록번호를 입력하는 실명인증 휴대폰을 
+ 								이용한 본인인증이 필요합니다.
+ 							</li>
+					</ul>
+				</section>
+			</div>
+			<input type="hidden" id="mobile_carrier" name="mobile_carrier" value=""/>
+			</form>
+		</main>
 	</div>
-	
-	
+</div>
 <article id="popJoin1" class="layer-popup popTermsEt E1 inlayer">
 			<section class="layer-popup-cont" tabindex="0">
 				<h2>개인정보 이용동의</h2>
@@ -310,7 +301,6 @@
 								<div class="ctn">
 									<div class="agree-section-content">
 										<!-- 개인정보 이용 동의 SK -->
-
 <p>본인은 SK텔레콤(주)(이하 ‘회사’라 합니다)가 제공하는 본인확인서비스(이하 ‘서비스’라 합니다)를 이용하기 위해, 다음과 같이 ‘회사’가 본인의 개인정보를 수집/이용하고, 개인정보의 취급을 위탁하는 것에 동의합니다. </p>
 
 <h2>1. 수집항목 </h2>
@@ -1792,10 +1782,8 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-	
 	var val = "${userVo}";
 	var name = "${userVo.user_name}";
-	
 	var logintype = "${logintype}";
 	
 	if(logintype == 'kakao'){
@@ -1817,14 +1805,6 @@ $(document).ready(function(){
 		$('#email_id').val(eId);
 		$('#email_address').val(eAdd);
 	}
-	
-	$('#certBtn').on('click',function(){
-		var mobilAreaNo = $('#mobilAreaNo').val();
-		var mobilTlofNo = $('#mobilTlofNo').val();
-		var mobilTlofWthnNo = $('#mobilTlofWthnNo').val();
-		phoneVerification(mobilAreaNo, mobilTlofNo, mobilTlofWthnNo);
-	});
-	
 	
 	$("#mobileSkt").on('click',function(){
 		mobileCarrier('skt');
@@ -1865,20 +1845,16 @@ $(document).ready(function(){
 		      alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
 		    }
 		});
-		
 	});
-	
 	
 	//회원가입버튼
 	$('#confirmJoinBtn').on('click',function(){
-		
 		var trueNfalse = validation('1'); //밸리데이션
 		if(!trueNfalse){
 			return;
 		}
 		
 		$('#userInfoForm').submit();
-		
 	});
 	
 	//본인인증 클릭이벤트
@@ -1889,12 +1865,15 @@ $(document).ready(function(){
 			alert('본인인증을 위한 약관 모두 동의에 체크 해주세요');
 			return;
 		} else {
-			//coolsms 발동!!!!!!
 			var trueNfalse = validation('2'); //밸리데이션 
 			if(!trueNfalse){
 				return;
 			}
 			
+			var mobilAreaNo = $('#mobilAreaNo').val();
+			var mobilTlofNo = $('#mobilTlofNo').val();
+			var mobilTlofWthnNo = $('#mobilTlofWthnNo').val();
+			phoneVerification(mobilAreaNo, mobilTlofNo, mobilTlofWthnNo);
 		}
 	});
 	
@@ -2040,7 +2019,6 @@ function validation(value){
 			alert('필수동의 항목을 확인해주세요')
 			return false;
 		} else {
-			
 			if(emailRecptnAgrYn){
 				$('#emailRecptnAgrYn').val("Y");
 			} else {
@@ -2094,12 +2072,8 @@ function validation(value){
 			return true;
 		}		
 	}
-	
 	/* validation END */
-	
-	
 }
-
 
 function setAgree(){
 	if($("#certAgreeYn").is(":checked")){
@@ -2116,6 +2090,7 @@ function setAgree(){
 		$("#chk_policy_5").prop("checked", false);
 	}
 }
+
 function setAgree2(){
 	if($("#mobileCo").val() == "6" || $("#mobileCo").val() == "7"){
 		if($("#chk_policy_1").is(":checked") && $("#chk_policy_2").is(":checked") && $("#chk_policy_3").is(":checked") && $("#chk_policy_4").is(":checked")&& $("#chk_policy_5").is(":checked")){
@@ -2129,9 +2104,9 @@ function setAgree2(){
 		}else{
 			$("#certAgreeYn").prop("checked", false);
 		}
-	}
-	
+	}	
 }
+
 function setCheck(){
 	if($("#chk_receive_1").is(":checked")){
 		$("#onlineSiteUsefStplat").prop("checked", true);
@@ -2145,6 +2120,7 @@ function setCheck(){
 		$("#smsRecptnAgrYn").prop("checked", false);
 	}
 }
+
 function setCheck2(){
 	if($("#onlineSiteUsefStplat").is(":checked") && $("#psnlInfoColctUsefAgr").is(":checked") && $("#emailRecptnAgrYn").is(":checked") && $("#smsRecptnAgrYn").is(":checked")){
 		$("#chk_receive_1").prop("checked", true);

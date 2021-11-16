@@ -4,8 +4,6 @@
 
 
 <!-- 컨텐츠 시작 -->
-<!-- <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/member/join.js?v=prod-version-858_20211102145956"></script> -->
-<!-- <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/social/social_login.js?v=prod-version-858_20211102145956"></script> -->
 <meta charset="UTF-8">
 <meta name ="google-signin-client_id" content="303706230192-tavphhgtu7mtjal0puhe1g7fkedf5652.apps.googleusercontent.com">
 	<div class="contain mb login" id="contain">		
@@ -79,11 +77,9 @@
 	</form>
 	<form id ="movedJoinFrm" method="post" action="/test/join.do"></form>
 <%@ include file="footer.jsp" %>
-
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-
 	if(localStorage.getItem("saveId")){
 		$('#user_id').val(localStorage.getItem("userId"));
 		$('#chkSaveId').attr("checked",true);
@@ -93,6 +89,10 @@ $(document).ready(function(){
 	
 	$('#kakaojoin').on('click',function(){//카카오톡 로그인 클릭시 kakaoLogin()실행
 		kakaoLogin();
+	});
+	
+	$('#joinin').on('click',function(){
+		$('#movedJoinFrm').submit(); 
 	});
 	
 	$('#loginBtn').on('click',function(){
@@ -145,7 +145,6 @@ $(document).ready(function(){
 		      alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
 		    }
 		});
-		
 	});
 });
 
@@ -154,7 +153,7 @@ $(document).ready(function(){
 function kakaoLogin() {
 	Kakao.init('954e6984f5971a61992abec1bd348638'); //발급받은 키 중 javascript키를 사용해준다.
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-  Kakao.Auth.login({
+  	Kakao.Auth.login({
     success: function (response) {
       Kakao.API.request({
         url: '/v2/user/me',
@@ -196,10 +195,10 @@ function init() {
 		gapi.auth2.init();
 		options = new gapi.auth2.SigninOptionsBuilder();
 		options.setPrompt('select_account');
-      // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+      	// 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
 		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-      // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-      // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+      	// 인스턴스의 함수 호출 - element에 로그인 기능 추가
+      	// GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
 		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
 	})
 }
@@ -207,9 +206,9 @@ function init() {
 function onSignIn(googleUser) {
 	var access_token = googleUser.getAuthResponse().access_token
 	$.ajax({
-  	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+  		// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
 		url: 'https://people.googleapis.com/v1/people/me'
-      // key에 자신의 API 키를 넣습니다.
+      	// key에 자신의 API 키를 넣습니다.
 		, data: {personFields:'birthdays', key:'AIzaSyByjxAWUnuO0MvwmAS2xaAVaaVeAoA-PFQ', 'access_token': access_token}
 		, method:'GET'
 	})
@@ -243,12 +242,6 @@ function onSignInFailure(t){
 	console.log(t);
 }
 <!--// 구글 api -->
-
-
-$('#joinin').on('click',function(){
-	$('#movedJoinFrm').submit(); 
-});
-
 </script>
 
 <!-- //구글 api 사용을 위한 스크립트 -->
