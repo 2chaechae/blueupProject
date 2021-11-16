@@ -27,5 +27,13 @@ public class LoginJoinDAO {
 	public List<UsersVo> userInfo(UsersVo userVo) {
 		return sqlSssionTemplate.selectList("loginjoinDao.userInfo", userVo);
 	}
+	
+	public int PwChk(UsersVo userVo) {
+		return sqlSssionTemplate.selectOne("loginjoinDao.PwChk", userVo);
+	}
+
+	public void quit(UsersVo userVo) {
+		sqlSssionTemplate.selectOne("loginjoinDao.quit", userVo);
+	}
 
 }
