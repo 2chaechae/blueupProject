@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pointDao">
+
+	<select id="getTotalPoint" parameterType="int" resultType="int">
+		SELECT
+		SUM(COALESCE(INCOME,0)) - SUM(COALESCE(EXPENSE,0)) AS TOTAL_POINT
+		FROM POINT
+		WHERE USER_NO = #{user_no};
+	</select>
+	
+	<select id="getSavedMoney" parameterType="int" resultType="int">
+		SELECT SUM(COALESCE(EXPENSE,0))
+		FROM POINT
+		WHERE USER_NO = #{user_no};
+	</select>
+	
+	<select id="getCount" parameterType="int" resultType="int">
+		SELECT COUNT(POINT_NO)
+			FROM POINT
+			WHERE USER_NO = #{user_no}
+	</select>
+	
+	<select id="getPointList" parameterType="hashMap" resultType="pointVo">
+		SELECT 
+			POINT_DATE,
+			CONTENT,
+			INCOME,
+			EXPENSE,
+			REMARKS
+		FROM POINT
+		WHERE USER_NO = #{user_no}
+		ORDER BY POINT_DATE DESC
+		LIMIT #{perPageNum} OFFSET #{startRow}
+	</select>
+	
+	<select id="getListBySearch" parameterType="hashMap" resultType="pointVo">
+		SELECT 
+			POINT_DATE,
+			CONTENT,
+			INCOME,
+			EXPENSE,
+			REMARKS
+		FROM POINT
+		WHERE USER_NO = #{user_no}
+		AND 
+		POINT_DATE BETWEEN TO_DATE(#{dateStart},'YYYY-MM-DD') AND TO_DATE(#{dateEnd},'YYYY-MM-DD')
+		ORDER BY POINT_DATE DESC
+		
+	</select>
+	
+	<select id="getCountBySearch" parameterType="hashMap" resultType="int">
+		SELECT 
+			COUNT(POINT_DATE)
+		FROM POINT
+		WHERE USER_NO = #{user_no}
+		AND 
+		POINT_DATE BETWEEN TO_DATE(#{dateStart},'YYYY-MM-DD') AND TO_DATE(#{dateEnd},'YYYY-MM-DD')
+	</select>
+
+</mapper>

@@ -19,6 +19,7 @@
 		<typeAlias type="blueup.user.vo.UsersVo" alias="userVo"  />
 		<typeAlias type="blueup.user.vo.CartOptionVo" alias="cartoptionvo" />
 		<typeAlias type="blueup.user.vo.CouponVo" alias="couponVo"  />
+		<typeAlias type="blueup.user.vo.PointVo" alias="pointVo"  />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />
@@ -35,5 +36,7 @@
 		<mapper resource="mappings/loginjoin-mapping.xml"/>
 		<mapper resource="mappings/coupon-mapping.xml" />
 		<mapper resource="mappings/stock-mapping.xml" />
+		<mapper resource="mappings/point-mapping.xml" />
+
 	</mappers>
 </configuration>
