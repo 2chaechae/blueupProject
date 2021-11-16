@@ -51,6 +51,11 @@
 		SELECT * FROM STOCK
 	</select>
 	
+	<!-- 상품번호 검색 -->
+	<select id="getStockbyProductno" parameterType="stockvo" resultType="stockvo">
+		SELECT stock_quantity, clothes_size FROM STOCK WHERE PRODUCT_NO = #{product_no} AND COLOR = #{color}
+	</select>
+	
 	<!-- 카테고리로 검색 -->
 	<select id="getStockListbyCategory" parameterType="stockvo" resultType="stockvo">
 		SELECT * FROM STOCK WHERE CATEGORY_NAME LIKE '%'||#{category_name}||'%'

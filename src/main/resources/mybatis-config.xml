@@ -6,7 +6,7 @@
 	<properties resource="db.properties" />
 	<typeAliases>
 		<typeAlias type="blueup.admin.vo.ProductVo" alias="productvo"/>
-		<typeAlias type="blueup.admin.vo.ProductVo" alias="stockvo"/>
+		<typeAlias type="blueup.admin.vo.StockVo" alias="stockvo"/>
 		<typeAlias type="blueup.user.vo.CartVo" alias="cartvo"/>
 		<typeAlias type="blueup.user.vo.Terms_and_conditionVo" alias="termsvo"/>
 		<typeAlias type="blueup.user.vo.NoticeVo" alias="noticevo"/>
@@ -34,5 +34,6 @@
 		<mapper resource="mappings/cartoption-mapping.xml" />
 		<mapper resource="mappings/loginjoin-mapping.xml"/>
 		<mapper resource="mappings/coupon-mapping.xml" />
+		<mapper resource="mappings/stock-mapping.xml" />
 	</mappers>
 </configuration>
