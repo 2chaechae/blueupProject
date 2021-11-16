@@ -29,7 +29,7 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public CartVo cartList(CartVo vo) {
+	public List<CartVo> cartList(CartVo vo) {
 		return cartdao.cartList(vo);
 	}
 	@Override

@@ -144,21 +144,30 @@ public class CartController {
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
 	public ModelAndView getcartList(CartVo vo, ModelAndView mav, HttpSession session,
-			@RequestParam(value="user_no") String user_no) {
+			@RequestParam(value="user_no", defaultValue="0") String user_no) {
 		/////////////회원//////////////
-		if(user_no != null) {
-			List<CartVo> test = cartserviceimpl.getcartList(vo);
+		if(!user_no.equals("0")) {
+			List<CartVo> test = cartserviceimpl.cartList(vo);
+				if(test.size() == 0) {
+					mav.addObject("emptyCart", "없음");
+				}
 			System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getProduct_no());
-			mav.addObject("getcartList", cartserviceimpl.getcartList(vo));
+			mav.addObject("getcartList", cartserviceimpl.cartList(vo));
 			mav.setViewName("cart");
 		}else {
 		/////////////비회원//////////////
-			List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
-			for(CartVo test : cartList) {
-				System.out.println("비회원 장바구니 조회 : "  + test.getProduct_name());
+			System.out.println("비회원");
+			if(session.getAttribute("cart") != null) {
+				List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
+				for(CartVo test : cartList) {
+					System.out.println("비회원 장바구니 조회 : "  + test.getProduct_name());
+				}
+				mav.addObject("getcartList", cartList);
+				mav.setViewName("cart");
+			}else {
+				mav.addObject("emptyCart", "없음");
+				mav.setViewName("cart");
 			}
-			mav.addObject("getcartList", cartList);
-			mav.setViewName("cart");
 		}
 		return mav;
 	}

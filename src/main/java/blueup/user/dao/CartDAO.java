@@ -28,7 +28,7 @@ public class CartDAO {
 	}
 
 	/* 카트선택 */
-	public CartVo cartList(CartVo vo) {
+	public List<CartVo> cartList(CartVo vo) {
 		return sqlSessionTemplate.selectOne("cartDao.cartList", vo);
 	}
 
