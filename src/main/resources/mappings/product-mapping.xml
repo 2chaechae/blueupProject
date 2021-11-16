@@ -95,4 +95,10 @@
 	<select id="getProductListBySearch" parameterType="productvo" resultType="productvo">
 		SELECT * FROM PRODUCT WHERE PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
 	</select>
+	
+	<!-- 상품 클릭 수 증가 -->
+	<update id="updateViewCount" parameterType="productvo">
+		UPDATE PRODUCT SET VIEWCOUNT=(SELECT VIEWCOUNT FROM PRODUCT WHERE PRODUCT_NO = #{product_no}) +1
+		WHERE product_no=#{product_no};
+	</update>
 </mapper>

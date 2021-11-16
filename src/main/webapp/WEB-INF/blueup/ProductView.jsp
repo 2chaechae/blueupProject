@@ -31,7 +31,7 @@
 								<div class="item">
 									<div class="thumb">
 									  <a>
-											<span class="img"><img src="${product.main_image}" class="first">
+											<span class="img"><img onclick="viewCount(this)" src="${product.main_image}" class="first">
 											</span>
 										</a>
 									</div>
@@ -165,6 +165,25 @@ var img = $(element).attr("src");
 			}
 		}
 	}
+	
+function viewCount(element){
+	var product_no = $(element).closest('li').prev().prev().val();
+	alert(product_no);
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
+	
+}
 </script>
 <%@ include file="/view/mlb/footer.jsp"%>
 </body>

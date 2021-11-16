@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.admin.vo.ProductVo;
@@ -261,5 +262,11 @@ public class ProductController {
 		mav.addObject("wishList", productValue);
 		mav.setViewName("wish");
 		return mav;
+	}
+	
+	@RequestMapping("/updateViewCount.do")
+	@ResponseBody
+	public int updateViewCount(ProductVo vo) {
+		return productserviceimpl.updateViewCount(vo);
 	}
 }

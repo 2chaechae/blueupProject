@@ -65,6 +65,11 @@ public class ProductServiceImpl implements ProductService{
 	public int getCountProduct(HashMap<Object, Object> vo) {
 		return productdao.getCountProduct(vo);
 	}
+
+	@Override
+	public int updateViewCount(ProductVo vo) {
+		return productdao.updateViewCount(vo);
+	}
 	
 
 

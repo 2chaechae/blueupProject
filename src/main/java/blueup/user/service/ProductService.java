@@ -18,4 +18,5 @@ public interface ProductService {
 	public List<ProductVo> getProductListBywishList(String id);
 	public int getCountProductDetail(HashMap<Object, Object> vo);
 	public int getCountProduct(HashMap<Object, Object> vo);
+	public int updateViewCount(ProductVo vo);
 }
