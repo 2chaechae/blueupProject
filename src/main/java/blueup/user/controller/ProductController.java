@@ -43,8 +43,8 @@ public class ProductController {
 		productPageMaker pageMaker = new productPageMaker();
 		pageMaker.setCri(cri);
 		
-		/////////////////////////회원//////////////////////////
-		if(session.getAttribute("userNO") != null) {
+		/////////////////////회원//////////////////////////
+		if(session.getAttribute("user_no") != null) {
 			System.out.println("회원");
 			System.out.println(session.getAttribute("userNO"));
 			
@@ -133,7 +133,7 @@ public class ProductController {
 		pageMaker.setCri(cri);
 		
 		/////////////////////////회원//////////////////////////
-		if(session.getAttribute("userNO") != null) {
+		if(session.getAttribute("user_no") != null) {
 			System.out.println("회원-상위카테");
 			
 			// 파라미터 vo 셋팅
@@ -207,18 +207,18 @@ public class ProductController {
 	}
 
 	
-	// 회원 wish
+	//////////// 회원 wish//////////////
 	@RequestMapping("/getWishList.do")
-	public ModelAndView getProductListBywishList(String userNO) {
+	public ModelAndView getProductListBywishList(String user_no) {
 		System.out.println("위시리스트 가져오기");
 		// 리턴값 셋팅
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("wishList", productserviceimpl.getProductListBywishList(userNO));
+		mav.addObject("wishList", productserviceimpl.getProductListBywishList(user_no));
 		mav.setViewName("wish");
 		return mav;
 	}
 	
-	// 비회원 wish
+	//////////// 비회원 wish///////////
 	@RequestMapping("/getWishListCookie.do")
 	public ModelAndView getProductList(HttpServletRequest req, HttpServletResponse repo) {
 		List<ProductVo> product = productserviceimpl.getProductList();

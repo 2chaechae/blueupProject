@@ -7,7 +7,7 @@
 	<!-- 회원가입 -->
 	<insert id="insertUserInfo" parameterType="userVo">
 		INSERT INTO USERS (
-			USER_NO,
+			<!-- USER_NO, -->
 			USER_NAME, 			
 			USER_JUMIN1, 		
 			USER_JUMIN2, 		
@@ -27,7 +27,7 @@
 			AGREE_EMAIL, 				
 			NEWBIE
 		) VALUES(
-			(SELECT COUNT(*) FROM USERS)+1,
+			<!-- (SELECT COUNT(*) FROM USERS)+1, -->
 			#{user_name}, 
 			#{user_jumin1}, 
 			#{user_jumin2}, 

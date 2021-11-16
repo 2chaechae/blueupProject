@@ -144,15 +144,17 @@ public class CartController {
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
 	public ModelAndView getcartList(CartVo vo, ModelAndView mav, HttpSession session) {
-		if(session.getAttribute("userNO") != null) {
+		/////////////회원//////////////
+		if(vo.getUser_no() > 0) {
 			List<CartVo> test = cartserviceimpl.getcartList(vo);
-			System.out.println(test.get(0).getProduct_no());
+			System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getProduct_no());
 			mav.addObject("getcartList", cartserviceimpl.getcartList(vo));
 			mav.setViewName("cart");
 		}else {
+		/////////////비회원//////////////
 			List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
 			for(CartVo test : cartList) {
-				System.out.println(test.getProduct_name());
+				System.out.println("비회원 장바구니 조회 : "  + test.getProduct_name());
 			}
 			mav.addObject("getcartList", cartList);
 			mav.setViewName("cart");

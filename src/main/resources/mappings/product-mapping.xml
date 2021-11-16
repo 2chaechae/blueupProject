@@ -55,11 +55,12 @@
 	
 	<!-- 디테일 카테고리 기준 상품 조회 -->
 	<select id="getProductListByDetailedCategory" resultType="productvo" parameterType="hashmap">
-			SELECT a.main_image, a.product_no, a.product_price, a.product_name, a.category_name, a.detailed_category_name, b.wish_no, b.user_no
+		SELECT a.main_image, a.product_no, a.product_price, a.product_name, a.category_name, a.detailed_category_name, b.wish_no, b.user_no
 		FROM product as a LEFT OUTER JOIN wishlist as b 
 		ON a.product_no = b.product_no and b.user_no = #{userNO}
 		WHERE a.detailed_category_name = #{Selected.detailed_category_name} LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
+	
 	<!--  전체 목록 수 조회(디테일) -->
 	<select id="getCountProductDetail" resultType="int">
 		SELECT COUNT(*) FROM PRODUCT WHERE detailed_category_name = #{Selected.detailed_category_name};
@@ -75,7 +76,7 @@
 		SELECT a.main_image, a.product_no, a.product_price, a.product_name, b.wish_no, b.user_no
 		FROM product as a RIGHT JOIN wishlist as b
 		ON a.product_no = b.product_no 
-		WHERE b.user_no = CAST(#{userNO} AS INTEGER);
+		WHERE b.user_no = CAST(#{user_no} AS INTEGER);
 	</select>
 	
 	<!-- 특정 상품 조회 -->

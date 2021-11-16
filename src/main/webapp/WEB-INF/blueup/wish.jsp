@@ -148,14 +148,14 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-sessionStorage.setItem("userID", "이채린");
-sessionStorage.setItem("userNO", 1); 	//회원
-var userID = sessionStorage.getItem("userID");
-var userNO = sessionStorage.getItem("userNO");
+localStorage.setItem("user_no", 1);
+localStorage.setItem("user_id","이채린"); 	//회원정보 임시저장
+var user_id = localStorage.getItem("user_id");
+var user_no = localStorage.getItem("user_no");
 $(document).ready(function(){
-		if(userID != null){
+		if(user_id != null){
 			alert("아이디ok");
-			$('#id').text(userID);
+			$('#id').text(user_id);
 			var count = ${fn:length(wishList)};
 			$('em').text(count);
 		}else{
@@ -175,14 +175,15 @@ function delete_wish(element){
 	var wish_no = $(element).closest('div').prev().prev().val();
 	alert(product_no);
 	alert(wish_no);
-	if(userNO == null){
-		userNO = 0;
+	// null point 오류 -> 비회원 0으로 셋팅
+	if(user_no == null){
+		user_no = 0;
 	}
 	$.ajax({
 		url:'/test/deleteWishList.do',
 		type:'POST',
 		cache:false,
-		data: {"user_no":userNO, "wish_no":wish_no, "product_no":product_no},
+		data: {"user_no":user_no, "wish_no":wish_no, "product_no":product_no},
 		success:function(data) {
 			if(data == 1){
 				$(element).closest('.wish').remove();
@@ -204,16 +205,18 @@ function delete_wish(element){
 
 function deleteAll(){
 	alert("test");
-	if(userNO == null){
+	/////// 비회원///////
+	if(user_no == null){
 		$.removeCookie('p_list');
 		$('.num').text(0);
 		$('.wish').remove();
 	}else{
+	////// 회원 /////////
 		$.ajax({
 			url:'/test/deleteWishAll.do',
 		    type:'POST',
 		   	cache:false,
-			data: {"user_no":userNO},
+			data: {"user_no":user_no},
 			success:function(data) {
 				alert('성공');
 				if(data > 1){
@@ -229,6 +232,7 @@ function deleteAll(){
 	}
 }
 
+// 장바구니 이동 시 옵션창 
 function option(element){
 	alert("test");
 	var product_no = $(element).closest('.wish').children('.p').val();

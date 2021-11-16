@@ -83,24 +83,24 @@
 </div>
 <!--// 컨텐츠 끝 -->
 <script type="text/javascript">
-//var id = sessionStorage.getItem("userNO");
-var id = 1;
+localStorage.setItem("user_no", 1); //회원정보 임시저장
+var user_no = localStorage.getItem("user_no");
 
 // 하트 눌렀을 때 : 회원 db 위시리스트 , 비회원 쿠키에 상품번호 추가
 function heart(element){
 var img = $(element).attr("src");
 	alert(img);
-	// 회원 위시리스트
-	if(id > 0){
+	/////////////////회원 위시리스트////////////////
+	if(user_no != null){
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
-			var p_no = $(element).closest('li').prev().prev().val();
-			console.log(p_no);
+			var product_no = $(element).closest('li').prev().prev().val();
+			console.log(product_no);
 				$.ajax({
 					url:'/test/insertWishList.do',
 				    type:'POST',
 				   	cache:false,
-					data: {"user_no":id , "product_no":p_no},
+					data: {"user_no":user_no , "product_no":product_no},
 					success:function() {
 						alert('위시리스트에 담겼습니다.');
 					},
@@ -110,13 +110,13 @@ var img = $(element).attr("src");
 				});
 		}else{
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
-			var w_no = $(element).closest('li').prev('.wish_no').val();
-			console.log(w_no);
+			var wish_no = $(element).closest('li').prev('.wish_no').val();
+			console.log(wish_no);
 				$.ajax({
 					url:'/test/deleteWishList.do',
 				    type:'POST',
 				   	cache:false,
-					data: {"user_no":id , "wish_no":w_no},
+					data: {"user_no":user_no , "wish_no":wish_no},
 					success:function() {
 						alert('제외되었습니다.');
 					},
@@ -125,25 +125,24 @@ var img = $(element).attr("src");
 					}
 				});
 		}
-	// 비회원 위시리스트
 	}else{
-		var no = $(element).closest('li').prev().prev().val();
-		console.log(no);
+		/////////////////비회원 위시리스트////////////////
+		var product_no = $(element).closest('li').prev().prev().val();
+		console.log(product_no);
 		//쿠키 생성 & 내용 추가
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
 			$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
 			var getlist = $.cookie('p_list');
 				if(getlist == undefined){
-					var cookieList = no + "/";
+					var cookieList = product_no + "/";
 					$.cookie('p_list', cookieList);
 					console.log("첫번째값 넣기 :" + cookieList);
 				}else{
 					console.log("기존쿠키: " + getlist);
-					getlist += no;
+					getlist += product_no;
 					getlist += "/";
 					console.log("두번째 쿠키 넣기 : " + getlist);
 					$.cookie('p_list', getlist);
-
 				}
 		// 쿠키삭제 & 내용 삭제
 		}else{
@@ -152,10 +151,10 @@ var img = $(element).attr("src");
 			console.log("기존쿠기 : " +  cookieValue);
 			var remove = cookieValue.split("/");
 			var cookieList= "";
-			for(var m of remove){
-				if( m != no){
-					console.log(m);
-					cookieList += m;
+			for(var check of remove){
+				if( check != product_no){
+					console.log(check);
+					cookieList += check;
 					cookieList += "/";
 				}
 			}

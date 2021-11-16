@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% session.setAttribute("userNO", 1); %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -549,17 +548,23 @@
 </ul>
       </div>
 <script type="text/javascript">
+localStorage.setItem("user_no", 1); // 회원정보 임시저장
+var user_no = localStorage.getItem("user_no");
+
 function wish(){
-	sessionStorage.setItem("userNO", 1);
-	var userNO = sessionStorage.getItem("userNO");
-	if(userNO != null){
-		location.href="/test/getWishList.do?userNO="+ userNO;
+	if(user_no != null){
+		location.href="/test/getWishList.do?user_no="+ user_no;
 	}else{
 		location.href="/test/getWishListCookie.do";
 	}
 }
+
 function cartAll() {
-	location.href="/test/getcartList.do";
+	if(user_no != null){
+		location.href="/test/getcartList.do?user_no="+ user_no";
+	}else{
+		location.href="/test/getcartList.do";
+	}
 }
 </script>
       <!--  [EOSD-2740] 카테고리 수정
