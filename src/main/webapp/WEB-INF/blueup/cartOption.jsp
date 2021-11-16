@@ -11,10 +11,12 @@
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/min/jquery-3.3.1.min.js"></script>
 </head>
 <body style="font-family:Noto-Sans-Korean, sans-serif">
+<!-- 옵션창 사이즈 -->
 <script type="text/javascript">
 	self.moveTo(240,300);
 	self.resizeTo(400,300);
 </script>
+
 <!-- 옵션창 정의 -->
 <h3 style="text-align:center">[옵션선택]</h3>
 <div style="display: auto;">

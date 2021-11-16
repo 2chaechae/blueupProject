@@ -131,16 +131,6 @@ public class CartController {
 		return mav;
 	}
 
-	// 장바구니 선택하기
-	@RequestMapping("/cartList.do")
-	public ModelAndView cartList(CartVo vo) {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("cartList", cartserviceimpl.cartList(vo));
-		mav.setViewName("cart");
-		return mav;
-	}
-
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
 	public ModelAndView getcartList(CartVo vo, ModelAndView mav, HttpSession session,
@@ -184,7 +174,7 @@ public class CartController {
 		System.out.println(vo.getProduct_size());
 		System.out.println(vo.getProduct_color());
 		ModelAndView mav = new ModelAndView();
-		cartserviceimpl.addCart(vo);
+		cartserviceimpl.updateCart(vo);
 		return mav;
 	}
 }

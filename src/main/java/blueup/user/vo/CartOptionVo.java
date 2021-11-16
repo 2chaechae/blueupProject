@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CartOptionVo {
+	// stock & prodcut join
 	int stock_no;
 	int product_no;
 	String product_name;

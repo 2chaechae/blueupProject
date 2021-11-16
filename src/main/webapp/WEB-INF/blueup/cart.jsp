@@ -65,7 +65,7 @@
 								<thead>
 
 								<tr>
-									<th scope="col"><div class="allCheck" style="display:flex;">
+									<th scope="col"><div id="allCheck" style="display:flex;">
 											<input type="checkbox" name="allCheck" id="allCheck" style="margin-left:10px;" /><labelfor="allCheck" style="padding-left:10px;">전체</label>
 											<!-- 전체 선택시 개별체크박스도 체크됨 -->
 											<script>
@@ -98,7 +98,7 @@
 									<tbody id="delRow">
 										<td>
 											<div class="checkBox">
-												<input type="checkbox" name="chBox" class="chBox" data-cart_no="${cart.cart_no}" />
+												<input type="checkbox" name="chBox" class="chBox" value="${cart.cart_no}" />
 													<!-- 개별 체크박스 해제 시 전체 선택 해제 -->
 													<script>
 													$(".chBox").click(function(){
@@ -132,7 +132,7 @@
 										
 										<!-- 할인 -->
 										<td><input type="hidden"value="${cart.cart_no}"/></td>
-										<td width="140px;"><div style="width: 130px;">${cart.total_price }원</div></td>
+										<td width="140px;"><div style="width: 130px;">${cart.total_price}원</div></td>
 										<td><a href="#" class="btn_list_del" onclick="deleteSelectCart(this);">삭제</a></td>
 										</tbody>
 									</tr>
@@ -186,19 +186,18 @@
 <!--// 컨텐츠 끝 -->
 
 <script>
+var user_no = parseInt(localStorage.getItem("user_no"));
 $(document).ready(function(){
 	var price = 0;
 	var discount = 0;
 	var total = 0;
 	var count = ${fn:length(getcartList)};
 	alert(count)
-	for(m in count){
-		price += ${getcartList.get(m).total_price};
-		discount -= ${getcartList.get(m).discount};
+	for(var m=0; m < count; m++){
+		price = (price + ${getcartList.get(m).total_price});
+		discount = (discount - ${getcartList.get(m).discount});
 		total += (${getcartList.get(m).total_price} - ${getcartList.get(m).discount});
 	}
-	alert(price);
-	alert(total);
 	$('#GNRL_DLV_god_amt').text(price);
 	$('#GNRL_DLV_dc_amt').text(discount);
 	$('#GNRL_DLV_total_amt').text(total);
@@ -207,18 +206,43 @@ $(document).ready(function(){
 	/* +, -  수량버튼*/
 	function minus(element){
 		var stat = $(element).next().text();
-		alert(stat);
 		stat--;
-		if (stat <= 0) {
-			alert('더이상 줄일수 없습니다.');
-			stat = 1;
-		}
+			if (stat <= 0) {
+				alert('더이상 줄일수 없습니다.');
+				stat = 1;
+			}
 		$(element).next().text(stat);
+		// DB & Session update 및 화면처리
+		// 변수 얻기
+		var cart_no = $(element).closest('tbody').children('.chbox').val();
+		var product_price = $(element).closest('tbody').children('td').eq(7).childern('div').text();
+		var total_price = product_price * stat;
+		alert(cart_no);
+		alert(product_price);
+		alert(total_price);
+
+		$.ajax({
+			url:'/test/updateCart.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"cart_no":cart_no, "quantity":stat, "total_price":total_price, "product_price":product_price, "user_no":user_no },
+			success:function(data) {
+				if(data == 1){
+				console.log("db update 완료");
+				//화면처리
+				window.opener.location.href="/test/getcartList.do?user_no="+user_no;
+				window.close();
+				}
+			},
+			error:function() {
+				// 실패했을 때 화면 되돌리기
+				alert('다시 시도해주세요');
+			}
+		});
 	}
 	
 	function plus(element){
 		var end = $(element).prev().text();
-		alert(end);
 		end ++;
 		if (end > 999) {
 			alert('더이상 늘릴 수 없습니다.');

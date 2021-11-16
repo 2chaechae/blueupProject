@@ -11,9 +11,8 @@
 			PRODUCT_NAME,
 			QUANTITY,
 			TOTAL_PRICE,
-			PRODUCT_SIZE
-			PRODUCT_COLOR,
-
+			PRODUCT_SIZE,
+			PRODUCT_COLOR
 		) VALUES(
 			#{user_no},
 			#{product_no},
@@ -43,19 +42,15 @@
 		on a.product_no = b.product_no and user_no = #{user_no};
 	</select>
 	
-	<!--전체 카트리스트  -->
-	<select id="getcartList" parameterType="cartvo" resultType="cartvo">
-		SELECT * FROM CART WHERE user_no = #{user_no}
-	</select>
-	
 	<!-- 카트 수정을 위한 쿼리 -->
 	<update id="updateCart" parameterType="cartvo">
 		UPDATE CART   
 		SET
 		QUANTITY = #{quantity},
-		COLOR = #{color},
-		CLOTHES_SIZE = #{clothes_size}
-		WHERE CART_NO = #{CART_no}
+		PRODUCT_COLOR = #{product_color},
+		PRODUCT_SIZE = #{product_size},
+		TOTAL_PRICE = #{total_price}
+		WHERE CART_NO = #{cart_no}
 	</update>
 
 </mapper>

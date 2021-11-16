@@ -29,19 +29,11 @@ public class CartDAO {
 
 	/* 카트선택 */
 	public List<CartVo> cartList(CartVo vo) {
-		return sqlSessionTemplate.selectOne("cartDao.cartList", vo);
-	}
-
-	/* 카트조회 */
-	public List<CartVo>  getcartList(CartVo vo) {
-		return sqlSessionTemplate.selectList("cartDao.getcartList" , vo);
+		return sqlSessionTemplate.selectList("cartDao.cartList", vo);
 	}
 
 	/* 카트 수정 */
 	public int updateCart(CartVo vo) {
 		return sqlSessionTemplate.update("cartDao.updateCart", vo);
 	}
-	
-	
-
 }
