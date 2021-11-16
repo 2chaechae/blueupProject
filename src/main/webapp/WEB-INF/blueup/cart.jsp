@@ -45,10 +45,10 @@
 						<!-- order list -->
 						<div class="orderTable">
 							<div class="tableTopArea">
-								<a href="/test/deleteAllCart.do" class="btn sm gray"
-									onclick="deleteCart();"><span>전체상품삭제</span></a> <a
-									href="/test/deleteCart.do" class="btn sm gray"
-									onclick="deleteCart();"><span>선택상품삭제</span></a>
+								<a href="/test/deleteAllCart.do" class="btn sm gray">
+									<span>전체상품삭제</span></a> <a
+									href="/test/deleteCart.do" 
+									onclick="deleteSelectCart();"><span>선택상품삭제</span></a>
 							</div>
 							<table class="board-list">
 								<colgroup>
@@ -149,13 +149,16 @@
 												<br>
 											</div>
 										</td>
-										<td><input type="hidden" value="${cart.cart_no}"></input></td>
 										<!--///////// 수량 -->
-
+										<td id="sale"><input type="hidden"
+												value="${cart.cart_no}"></input></td>
+										
+										<!-- 할인 -->
+										
 										<%-- <td>${cart.total_price }</td> --%>
 										<td width="140px;"><div style="width: 130px;">${cart.total_price }원</div></td>
 										<td><a href="#" class="btn_list_del"
-											onclick="cart.deleteCart('GNRL_DLV','1');">삭제</a></td>
+											onclick="deleteSelectCart(this);">삭제</a></td>
 										
 									</tr>
 
@@ -316,7 +319,7 @@ function shoeSize(this) {
 
 </script>
 
-<!-- 장바구니 전체삭제 -->
+<!-- 장바구니 삭제 -->
 <script>
   function(){
 	  $("btn sm gray").click(function(){
@@ -327,6 +330,38 @@ function shoeSize(this) {
 	        }
 	    });
 	}
+  
+ /* 선텍상품삭제 */
+  function deleteSelectCart(element){
+	  var product_no = $(element).closest('#sale').children('input').val();
+
+	  if(userNO == null){
+		  userNO = 0;
+	  }
+	  $.ajax({
+		  url:'/test/deleteCart.do',
+	  	  type: 'POST' ,
+	  	  cahche: false,
+	  	  data: {"product_no":product_no },
+	  		success:function(data)  {
+	  			if(data == 1){
+	  				$(element).closest('.delete_ver').remove();
+	  				var now = $('.num').test();
+	  				console.log(now);
+	  				var new_num = Number(now) - 1;
+	  				console.log(new_num);
+	  				$('.num').test(new_num);
+	  			}
+	  			else{
+	  			alert("삭제 실패")
+	  			}
+	  		},
+	  		error:function() {
+	  			alert('다시 시도해주세여');
+	  		}
+	  		
+	  });
+  }
   
   </script>
 
