@@ -29,13 +29,10 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public CartVo cartList(CartVo vo) {
-		return cartdao.cartList(vo);
+	public List<CartVo> cartList(String user_no) {
+		return cartdao.cartList(user_no);
 	}
-	@Override
-	public List<CartVo> getcartList(CartVo vo) {
-		return cartdao.getcartList(vo);
-	}
+
 	@Override
 	public int updateCart(CartVo vo) {
 		return cartdao.updateCart(vo);

@@ -586,7 +586,7 @@ function wish(){
 	if(user_no != null){
 		location.href="/test/getWishList.do?user_no="+user_no;
 	}else{
-		location.href="/test/getWishListCookie.do";
+		location.href="/test/getWishList.do?";
 	}
 }
 
@@ -594,7 +594,7 @@ function cartAll() {
 	if(user_no != null){
 		location.href="/test/getcartList.do?user_no="+user_no;
 	}else{
-		location.href="/test/getcartList.do";
+		location.href="/test/getcartList.do?";
 	}
 }
 </script>

@@ -7,14 +7,16 @@
 <head>
 <meta charset="EUC-KR">
 <title>cartOption 선택</title>
-<script src="https://static.mlb-korea.com/pc/static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/min/jquery-3.3.1.min.js"></script>
 </head>
 <body style="font-family:Noto-Sans-Korean, sans-serif">
+<!-- 옵션창 사이즈 -->
 <script type="text/javascript">
 	self.moveTo(240,300);
 	self.resizeTo(400,300);
 </script>
+
 <!-- 옵션창 정의 -->
 <h3 style="text-align:center">[옵션선택]</h3>
 <div style="display: auto;">
@@ -98,15 +100,17 @@ function addCart(){
 	var size = $('#size option:selected').val();
 	var color = $('#color option:selected').val();
 	var product_no = ${data.get(0).product_no};
-	var product_name = "${data.get(0).product_name}"
-	var quantity =  $('#quantity').val();
+	var product_name = "${data.get(0).product_name}";
+	var quantity = $('#quantity').val();
+	var discount = ${data.get(0).discount};
 	var total_price = ${data.get(0).product_price} * quantity;
+	var main_image = "${data.get(0).main_image}";
 	$.ajax({
 		url:'/test/addCart.do',
 	    type:'POST',
 	   	cache:false,
-		data: {"product_no":product_no, "product_name":product_name, "quantity":quantity,
-			"total_price":total_price, "product_size":size, "product_color":color, "user_no" : user_no
+		data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+			"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "user_no" : user_no
 		},
 		success:function(data) {
 			if(data == 1){

@@ -68,8 +68,6 @@
 									<div class="hd">CP66</div>
 									<div class="ui_dp_list">
 										<ul class="list">
-
-
 											<li>
 													<div class="item">
 														<div class="thumb">
@@ -91,7 +89,6 @@
 															</div>
 													</div>
 												</li>
-
 											<li>
 													<div class="item">
 														<div class="thumb">
@@ -111,6 +108,7 @@
 																<em class="p">36,000원</em>
 																	</div>
 															</div>
+															
 													</div>
 												</li>
 
@@ -697,15 +695,12 @@
 															</div>
 													</div>
 												</li>
-
 											</ul>
-									</div>
+										</div>
 								</section>
-
 							</main>
-			
-		</div>
-	</div>
+					</div>
+			</div>
 	<!--// 컨텐츠 끝 -->
 	
 	
