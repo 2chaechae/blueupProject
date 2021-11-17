@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
-<!-- 컨텐츠 시작 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript"
@@ -121,7 +120,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	background-color: black;
 	border: none;
 	color: white;
-	padding: 10px 60px; /* 높이와 길이 */
+	padding: 7px 20px; /* 높이와 길이 */
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -196,13 +195,14 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 											</tr>
 											<!-- 여기에 내가쓴 리뷰들 목록 갖고 오기 -->
 										</div>
+										<%-- <c:forEach var="review" items="${getReviewList}" varStatus="status"></c:forEach> --%>
 										<tr>
-												<td><img src="${cart.main_image}" width="100"
-											height="110"></td>
+											<%-- 	<td><img src="${cart.main_image}" width="100"
+											height="110"></td> --%>
 										<td>${review.product_name }<br>${review.color}/${review.clothes_size}
 											&nbsp;<input type="button" class="button" value="수정"/>
 											${review.product_no }
-										</td></tr>
+										</td></tr> 
 
 										
 										

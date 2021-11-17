@@ -24,7 +24,7 @@
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: 12px;
 	margin: 4px 2px;
 	cursor: pointer;
 }
@@ -85,9 +85,13 @@
 										
 								</div>
 								
-								<div >
+								<!-- <div >
 									<input class="input_ea" type="file">
-								</div>
+								</div> -->
+								<span>
+										<input type="file" id="fileSearch" name="files" onchange="javascript:filetest(this);">
+										
+									</span>
 							</div></td>
 					</tr>
 					

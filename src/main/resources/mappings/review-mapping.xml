@@ -15,7 +15,8 @@
 			REVIEW_CONTENT,
 			USER_ID,
 			REVIEW_TIME,
-			COLOR
+			COLOR,
+			MAIN_IMAGE
 		) VALUES(
 			#{product_no},
 			#{product_name},
@@ -26,7 +27,8 @@
 			#{review_content},
 			#{user_id},
 			#{review_time},
-			#{color}
+			#{color},
+			#{main_image}
 		)
 	</insert>
 	
@@ -36,7 +38,7 @@
 	</delete>
 	<!--전체 상품리뷰  -->
 	<select id="getReviewList" parameterType="reviewvo" resultType="reviewvo">
-		DELETE FROM REVIEW WHERE REVIEW_NO = #{review_no}
+		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
 	</select>
 	
 	<!-- 리뷰 수정을 위한 쿼리 -->

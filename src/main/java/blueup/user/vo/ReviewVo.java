@@ -21,4 +21,5 @@ public class ReviewVo {
 	String review_content; // 리뷰 내용
 	String user_id; // 회원 아이디
 	Date review_time; // 리뷰 작성 시각
+	String main_image; //제품 사진
 }

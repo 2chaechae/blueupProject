@@ -39,6 +39,7 @@ public class ReviewController {
 	// 府轰 殿废
 	@RequestMapping("/insertReview.do")
 	public ModelAndView insertReview(ReviewVo vo) {
+		System.out.println("府轰 殿废 贸府");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("ReviewVO", reviewServiceimpl.insertReview(vo));
 		mav.setViewName("reviewView.do");
