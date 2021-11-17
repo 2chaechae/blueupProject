@@ -141,7 +141,10 @@ public class CartController {
 				if(test.size() == 0) {
 					mav.addObject("emptyCart", "없음");
 				}
-			System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getProduct_no());
+				for(CartVo m : test) {
+					System.out.println(m.getTotal_price());
+				}
+			System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getAll_price());
 			mav.addObject("getcartList", cartserviceimpl.cartList(vo));
 			mav.setViewName("cart");
 		}else {

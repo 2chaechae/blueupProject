@@ -128,7 +128,8 @@
 											</div>
 										</td>
 										<!--///////// 수량 -->
-										<td id="sale"> - ${cart.discount}원</td>
+									
+										<td id="sale"> - ${cart.discount_total}원</td>
 										
 										<!-- 할인 -->
 										<td><input type="hidden"value="${cart.cart_no}"/></td>
@@ -160,16 +161,18 @@
 								<h3>결제정보</h3>
 								<div class="orderPayInfo">
 									<dl>
+										<c:set value="${getcartList.get(0).all_price}" var="all_price"/>
+										<c:set value="${getcartList.get(0).all_discount}" var="all_discount"/>
 										<dt>선택상품금액</dt>
-										<dd id="GNRL_DLV_god_amt"></dd>
+										<dd id="GNRL_DLV_god_amt">${getcartList.get(0).all_price}</dd>
 										<dt>선택할인금액</dt>
-										<dd class="c_r" id="GNRL_DLV_dc_amt"></dd>
+										<dd class="c_r" id="GNRL_DLV_dc_amt">${getcartList.get(0).all_discount}</dd>
 
 									</dl>
 									<dl>
 										<dt>총 주문금액</dt>
 										<dd>
-											<strong id="GNRL_DLV_total_amt"></strong>
+											<strong id="GNRL_DLV_total_amt"><c:out value="${all_price-all_discount}"/></strong>
 										</dd>
 									</dl>
 								</div>
@@ -187,22 +190,6 @@
 
 <script>
 var user_no = parseInt(localStorage.getItem("user_no"));
-$(document).ready(function(){
-	var price = 0;
-	var discount = 0;
-	var total = 0;
-	var count = ${fn:length(getcartList)};
-	alert(count)
-	for(var m=0; m < count; m++){
-		price = (price + ${getcartList.get(m).total_price});
-		discount = (discount - ${getcartList.get(m).discount});
-		total += (${getcartList.get(m).total_price} - ${getcartList.get(m).discount});
-	}
-	$('#GNRL_DLV_god_amt').text(price);
-	$('#GNRL_DLV_dc_amt').text(discount);
-	$('#GNRL_DLV_total_amt').text(total);
-	
-});
 	/* +, -  수량버튼*/
 	function minus(element){
 		var stat = $(element).next().text();

@@ -102,13 +102,14 @@ function addCart(){
 	var product_no = ${data.get(0).product_no};
 	var product_name = "${data.get(0).product_name}";
 	var quantity = $('#quantity').val();
+	var discount = ${data.get(0).discount};
 	var total_price = ${data.get(0).product_price} * quantity;
 	var main_image = "${data.get(0).main_image}";
 	$.ajax({
 		url:'/test/addCart.do',
 	    type:'POST',
 	   	cache:false,
-		data: {"product_no":product_no, "product_name":product_name, "quantity":quantity,
+		data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
 			"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "user_no" : user_no
 		},
 		success:function(data) {

@@ -19,4 +19,5 @@ public class CartOptionVo {
 	String category_name;
 	String detailed_category_name;
 	String main_image;
+	int discount;
 }

@@ -68,8 +68,6 @@
 									<div class="hd">CP66</div>
 									<div class="ui_dp_list">
 										<ul class="list">
-
-
 											<li>
 													<div class="item">
 														<div class="thumb">
@@ -91,7 +89,6 @@
 															</div>
 													</div>
 												</li>
-
 											<li>
 													<div class="item">
 														<div class="thumb">
