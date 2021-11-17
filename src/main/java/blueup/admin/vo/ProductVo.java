@@ -13,11 +13,11 @@ import lombok.ToString;
 public class ProductVo {
 	int product_no;		// 제품번호
 	String product_name;// 제품명
-	int product_price; 			// 가격
+	int product_price; 	// 가격
 	int discount;		// 할인가격
 	int delivery_fee;	// 배송비
-	String clothes_size;// 사이즈
-	String color;		// 색상
+	String product_size;// 사이즈
+	String product_color;		// 색상
 	boolean display_status;// 진열 상태
 	Date registration_time;// 등록 시간
 	String main_image;	// 대표 이미지

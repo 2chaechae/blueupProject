@@ -548,9 +548,9 @@
 </ul>
       </div>
 <script type="text/javascript">
-var user_no = localStorage.getItem("user_no");
 
 function checkCategoryAll(element){
+	var user_no = localStorage.getItem("user_no");
 	var first = $(element).text();
 	if(user_no != null){
 		location.href="/test/getCategoryAll.do?category_name="+first+"&user_no="+user_no;
@@ -561,6 +561,7 @@ function checkCategoryAll(element){
 
 /* 하위 카테고리로 상품 조회 (상단메뉴)*/
 function checkCategoryUp(element){
+		var user_no = localStorage.getItem("user_no");
 		var first = $(element).closest('.select').children('a').text();
 		var second = $(element).text();
 		if(user_no != null){
@@ -572,6 +573,7 @@ function checkCategoryUp(element){
 
 /*하위 카테고리로 상품 조회 (상품 조회 화면)*/
 function checkCategoryDown(element){
+	var user_no = localStorage.getItem("user_no");
 	var first = $('#cate').text();
 	alert(first);
 	var second = $(element).text();
@@ -583,6 +585,7 @@ function checkCategoryDown(element){
 }
 
 function wish(){
+	var user_no = localStorage.getItem("user_no");
 	if(user_no != null){
 		location.href="/test/getWishList.do?user_no="+user_no;
 	}else{
@@ -591,6 +594,7 @@ function wish(){
 }
 
 function cartAll() {
+	var user_no = localStorage.getItem("user_no");
 	if(user_no != null){
 		location.href="/test/getcartList.do?user_no="+user_no;
 	}else{
