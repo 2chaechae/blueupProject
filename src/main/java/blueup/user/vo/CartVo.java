@@ -24,5 +24,4 @@ public class CartVo {
 	int discount;
 	int all_price;
 	int all_discount;
-
 }

@@ -94,9 +94,6 @@ function minus(){
 
 function addCart(){
 	var user_no = localStorage.getItem("user_no");
-		if(user_no == null){
-			user_no = "0";
-		}
 	var size = $('#size option:selected').val();
 	var color = $('#color option:selected').val();
 	var product_no = ${data.get(0).product_no};
@@ -105,24 +102,45 @@ function addCart(){
 	var discount = ${data.get(0).discount};
 	var total_price = ${data.get(0).product_price} * quantity;
 	var main_image = "${data.get(0).main_image}";
-	$.ajax({
-		url:'/test/addCart.do',
-	    type:'POST',
-	   	cache:false,
-		data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
-			"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "user_no" : user_no
-		},
-		success:function(data) {
-			if(data == 1){
-			alert('장바구니에 담겼습니다.');
-			window.opener.location.href="/test/getcartList.do?user_no="+user_no;
-			window.close();
+	if(user_no != null){
+		$.ajax({
+			url:'/test/addCart.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+				"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "user_no" : user_no
+			},
+			success:function(data) {
+				if(data == 1){
+				alert('장바구니에 담겼습니다.');
+				window.opener.location.href="/test/getcartList.do?user_no="+user_no;
+				window.close();
+				}
+			},
+			error:function() {
+				alert('다시 시도해주세요');
 			}
-		},
-		error:function() {
-			alert('다시 시도해주세요');
-		}
-	});
+		});
+	}else{
+		$.ajax({
+			url:'/test/addCart.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+				"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image
+			},
+			success:function(data) {
+				if(data == 1){
+				alert('장바구니에 담겼습니다.');
+				window.opener.location.href="/test/getcartList.do";
+				window.close();
+				}
+			},
+			error:function() {
+				alert('다시 시도해주세요');
+			}
+		});
+	}
 }
 </script>
 </body>

@@ -33,20 +33,13 @@ public class CartController {
 	@ResponseBody
 	public String addCart(CartVo vo, HttpSession session, HttpServletRequest req, HttpServletResponse repo, @RequestParam(value="user_no", required=false) String user_no) {
 		String result = "0";
-		vo.setUser_no(Integer.parseInt(user_no));
-		System.out.println(user_no);
-		// 위시리스트 삭제를 위한 정보 
-			WishListVo Wishvo = new WishListVo();
 			
 		/////////////회원//////////////////
 		if(user_no != null) {
 			System.out.println("회원");
-			Wishvo.setUser_no(Integer.parseInt(user_no));
-			Wishvo.setProduct_no(vo.getProduct_no());
 			result = Integer.toString(cartserviceimpl.addCart(vo));
 			System.out.println("회원 카트 추가 :" + result + " 추가 상품 : " + vo.getProduct_no());
-			int deleteResult = wishserviceimpl.deleteWishCart(Wishvo);
-			System.out.println("위시리스트 삭제 : " + deleteResult);
+
 		}else {
 		////////////비회원/////////////////
 			if(session.getAttribute("cart") == null) {
@@ -66,45 +59,6 @@ public class CartController {
 					// session:cart를 수정된 cartList로 재정의
 					session.setAttribute("cart", null);
 					session.setAttribute("cart", addcartList);
-				}
-				
-				///비회원 위시리스트 삭제////
-				Cookie cookies[] = req.getCookies();
-				String[] p_no = null;
-				String p_new_no = "";
-
-				// 쿠키 값 확인
-				for (Cookie c : cookies) {
-					if (c.getName().equals("p_list")) {
-						String value = c.getValue();
-						p_no = value.split("%2F");
-						// 쿠키가 0이면,
-						if(p_no.length == 0) {
-							Cookie cookie = new Cookie("p_list", null);
-							repo.addCookie(cookie);
-						}
-					}
-				}
-				// 쿠키 값 == 상품번호 wish no 수정
-				if (p_no != null) {
-					for (int i=0; i<p_no.length; i++) {
-						System.out.println("쿠키 널아님");
-						if (Integer.parseInt(p_no[i]) != vo.getProduct_no()) {
-								p_new_no += p_no[i];
-								p_new_no += "%2F";
-						}
-					}
-					System.out.println("새로운 리스트" + p_new_no);
-				}
-				String check[] = p_new_no.split("%2F");
-
-				if(p_no.length > check.length || check.length == 1 && p_no.length == 1) {
-					Cookie cookie = new Cookie("p_list", null);
-					repo.addCookie(cookie);
-					System.out.println("쿠키삭제");
-					cookie = new Cookie("p_list", p_new_no);
-					repo.addCookie(cookie);
-					System.out.println("쿠키추가");
 				}
 			}
 		}
@@ -132,7 +86,7 @@ public class CartController {
 
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
-	public ModelAndView getcartList(ModelAndView mav, HttpSession session,  @RequestParam(value="user_no", required=false) String user_no) {
+	public ModelAndView getcartList(ModelAndView mav, HttpSession session, @RequestParam(value="user_no", required=false) String user_no) {
 		/////////////회원//////////////
 		System.out.println(user_no);
 		if(user_no != null) {

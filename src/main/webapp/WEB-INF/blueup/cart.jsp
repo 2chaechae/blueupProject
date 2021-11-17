@@ -128,9 +128,16 @@
 											</div>
 										</td>
 										<!--///////// 수량 -->
-									
-										<td id="sale"> - ${cart.discount_total}원</td>
-										
+										<c:choose>
+											<c:when test="${user_no != null}" >
+												<td id="sale"> - ${cart.discount_total}원</td>
+											</c:when>
+											<c:otherwise>
+												<c:set value="${cart.discount}" var="discount"/>
+												<c:set value="${cart.quantity}" var="quantity"/>
+												<td id="sale"><c:out value="${discount * quantity}"/>원</td>
+											</c:otherwise>
+										</c:choose>
 										<!-- 할인 -->
 										<td><input type="hidden"value="${cart.cart_no}"/></td>
 										<td width="140px;"><div style="width: 130px;">${cart.total_price}원</div></td>
@@ -160,21 +167,46 @@
 							<div class="orderPayList d_fix_obj">
 								<h3>결제정보</h3>
 								<div class="orderPayInfo">
-									<dl>
-										<c:set value="${getcartList.get(0).all_price}" var="all_price"/>
-										<c:set value="${getcartList.get(0).all_discount}" var="all_discount"/>
-										<dt>선택상품금액</dt>
-										<dd id="GNRL_DLV_god_amt">${getcartList.get(0).all_price}</dd>
-										<dt>선택할인금액</dt>
-										<dd class="c_r" id="GNRL_DLV_dc_amt">${getcartList.get(0).all_discount}</dd>
-
-									</dl>
-									<dl>
-										<dt>총 주문금액</dt>
-										<dd>
-											<strong id="GNRL_DLV_total_amt"><c:out value="${all_price-all_discount}"/></strong>
-										</dd>
-									</dl>
+								<c:set value="${getcartList.get(0).user_no}" var="user_no"/>
+								<c:choose>
+									<c:when test="${user_no > 0}" >
+										<dl>
+											<c:set value="${getcartList.get(0).all_price}" var="all_price"/>
+											<c:set value="${getcartList.get(0).all_discount}" var="all_discount"/>
+											<dt>선택상품금액</dt>
+											<dd id="GNRL_DLV_god_amt">${getcartList.get(0).all_price}</dd>
+											<dt>선택할인금액</dt>
+											<dd class="c_r" id="GNRL_DLV_dc_amt">${getcartList.get(0).all_discount}</dd>
+	
+										</dl>
+										<dl>
+											<dt>총 주문금액</dt>
+											<dd>
+												<strong id="GNRL_DLV_total_amt"><c:out value="${all_price-all_discount}"/></strong>
+											</dd>
+										</dl>
+									</c:when>
+									<c:otherwise>
+										<c:set var="sum_price" value="0"/>
+										<c:set var="sum_discount" value="0"/>
+										<c:forEach var="cart" items="${getcartList}" varStatus="status">
+											<c:set var="sum_price" value="${sum_price + cart.total_price }"/>
+											<c:set var="sum_discount" value="${sum_discount + (cart.discount * cart.quantity) }"/>
+										</c:forEach>
+										<dl>
+											<dt>선택상품금액</dt>
+											<dd id="GNRL_DLV_god_amt"><c:out value="${sum_price}"/></dd>
+											<dt>선택할인금액</dt>
+											<dd class="c_r" id="GNRL_DLV_dc_amt"><c:out value="${sum_discount}"/></dd>
+										</dl>
+										<dl>
+											<dt>총 주문금액</dt>
+											<dd>
+												<strong id="GNRL_DLV_total_amt"><c:out value="${sum_price-sum_discount}"/></strong>
+											</dd>
+										</dl>
+									</c:otherwise>
+								</c:choose>
 								</div>
 								<div class="btn_order" id="GNRL_DLV_order_btn">
 									<a href="#" class="btn lg fill">주문하기</a>
