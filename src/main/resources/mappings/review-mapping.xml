@@ -4,55 +4,50 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reviewDao">
 
-	<insert id="addReview" parameterType="reviewvo">
-		INSERT INTO CART(
-			USER_NO,
+	<insert id="insertReview" parameterType="reviewvo">
+		INSERT INTO REVIEW(
 			PRODUCT_NO,
 			PRODUCT_NAME,
-			QUANTITY,
-			TOTAL_PRICE,
-			PRODUCT_COLOR,
-			PRODUCT_SIZE
-
+			USER_NO,
+			CLOTHES_SIZE,
+			STAR,
+			REVIEW_TITLE,
+			REVIEW_CONTENT,
+			USER_ID,
+			REVIEW_TIME,
+			COLOR
 		) VALUES(
-			#{user_no},
 			#{product_no},
 			#{product_name},
-			#{quantity},
-			#{total_price},
-			#{product_size},
-			#{product_color}
+			#{user_no},
+			#{clothes_size},
+			#{star},
+			#{review_title},
+			#{review_content},
+			#{user_id},
+			#{review_time},
+			#{color}
 		)
 	</insert>
-	<!-- 전체 카트 삭제 -->
-	<!-- <delete id="deleteAllCart">
-		DELETE FROM CART
-	</delete> -->
+	
 	<!-- 리뷰 삭제 -->
-	<delete id="deleteCart" parameterType="reviewvo">
-		DELETE FROM CART WHERE CART_NO = #{cart_no}
+	<delete id="deleteReivew" parameterType="reviewvo">
+		DELETE FROM REVIEW WHERE REVIEW_NO = #{review_no}
 	</delete>
-		<!-- 카트 선택 -->
-	<select id="cartList" resultType="HashMap">
-		SELECT a.cart_no, a.user_no, a.product_no, a.product_name, a.product_size,
-		a.product_color, a.quantity, a.total_price, b.delivery_fee, b.discount, b.discount_rate
-		FROM CART AS A JOIN PRODUCT AS B
-		on a.product_no = b.product_no and user_no = #{user_no};
-	</select>
-	
 	<!--전체 상품리뷰  -->
-	<select id="getcartList" parameterType="reviewvo" resultType="reviewvo">
-		SELECT * FROM CART WHERE user_no = #{user_no}
+	<select id="getReviewList" parameterType="reviewvo" resultType="reviewvo">
+		DELETE FROM REVIEW WHERE REVIEW_NO = #{review_no}
 	</select>
 	
-	<!-- 상품 수정을 위한 쿼리 -->
-	<update id="updateCart" parameterType="cartvo">
-		UPDATE CART   
+	<!-- 리뷰 수정을 위한 쿼리 -->
+	<update id="updateReview" parameterType="reviewvo">
+		UPDATE REVIEW   
 		SET
-		QUANTITY = #{quantity},
-		COLOR = #{color},
-		CLOTHES_SIZE = #{clothes_size}
-		WHERE CART_NO = #{CART_no}
+	    STAR = #{star}, <!-- 별점 바꾸기 -->
+		REVIEW_TITLE = #{review_title}, <!-- 리뷰 제목 -->
+		REVIEW_CONTENT = #{review_content},  <!-- 리뷰 내용 -->
+		<!-- 사진이랑 리뷰 작성 시간 -->
+		WHERE REVIEW_NO = #{review_no}
 	</update>
 
 </mapper>

@@ -14,7 +14,21 @@
 	src="/javascript/message/cart_ko.js?v=prod-version-858_20211102145956"></script>
 
 <div id="adbay_cart" style="display: none;"></div>
-
+<style>
+/* 버튼css */
+.button {
+	background-color: black;
+	border: none;
+	color: white;
+	padding: 10px 60px; /* 높이와 길이 */
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+</style>
 <!-- 컨텐츠 시작 -->
 <div class="contain od list" id="contain">
 	<div class="container">
@@ -35,8 +49,16 @@
 					<col>
 				</colgroup>
 				<tbody>
-
+				<tr><th scope="row"><label for="boardWriteTitle">상품정보</label>
+				  
+				 </th>
+				<td><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" width="200"
+											height="210"></td> <%-- 나중에  src="${review.review_photo}"등으로 고쳐야 함 --%>
+				</tr>
+				<tr></tr><tr></tr><tr></tr>
+				<!-- 여기에 디비에서 구매한 COLOR,CLOTHES_SIZE,PRODUCT_NAME 적어야함. -->
 					<tr>
+					
 						<th scope="row"><label for="boardWriteTitle">제목</label> <span
 							class="required">*</span></th>
 						<td><input type="text" id="boardWriteTitle"
@@ -60,20 +82,25 @@
 								<div class="fr">
 									<span class="txt13-999"><em class="txt13-000"
 										id="counter">0</em>자/1,000자</span>
+										
 								</div>
+								
 								<div >
 									<input class="input_ea" type="file">
 								</div>
 							</div></td>
 					</tr>
-
+					
 				</tbody>
 			</table>
 		</div>
 
 		<div class="btnWrapBox">
-			<a href="#" id="cancelBtn" class="btn btn-style03">취소</a> <a href="#"
-				id="regBtn" class="btn fill btn-style02">저장</a>
+			<!-- <a href="#" id="cancelBtn" class="btn btn-style03">취소</a> -->
+			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
+			<input type="button" class="button" onclick="location.href='/test/reviewWriteForm.do' " value="취소"/>
+			<input type="button" class="button" onclick="location.href='/test/getReviewList.do' " value="저장"/>
+			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
 
