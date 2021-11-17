@@ -695,15 +695,12 @@
 															</div>
 													</div>
 												</li>
-
 											</ul>
-									</div>
+										</div>
 								</section>
-
 							</main>
-			
-		</div>
-	</div>
+					</div>
+			</div>
 	<!--// 컨텐츠 끝 -->
 	
 	

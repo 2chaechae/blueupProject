@@ -28,8 +28,8 @@ public class CartDAO {
 	}
 
 	/* 카트선택 */
-	public List<CartVo> cartList(CartVo vo) {
-		return sqlSessionTemplate.selectList("cartDao.cartList", vo);
+	public List<CartVo> cartList(String user_no) {
+		return sqlSessionTemplate.selectList("cartDao.cartList", user_no);
 	}
 
 	/* 카트 수정 */

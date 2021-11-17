@@ -17,14 +17,14 @@ public class CategoryController {
 	
 	// 카테고리 목록 조회 (상위/하위 카테고리 매개변수)
 	@RequestMapping("/getCategory.do")
-	public ModelAndView getCategory(HttpSession session, Category_detailVo vo, @RequestParam(value="userNO", defaultValue="0") String user_no) {
+	public ModelAndView getCategory(HttpSession session, Category_detailVo vo, @RequestParam(value="user_no", defaultValue="0") String user_no) {
 		System.out.println("카테고리 이름 : " + vo.getCategory_name());
 		System.out.println("하위 카테고리 이름 : " + vo.getDetailed_category_name());
 		ModelAndView mav = new ModelAndView();
 		System.out.println("카테 user_no : " + user_no);
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
 		session.setAttribute("Selected", vo);
-		session.setAttribute("user_no", user_no);
+		session.setAttribute("userNO", user_no);
 		session.setAttribute("start", 0);
 		session.setAttribute("end", 13);
 		mav.setViewName("redirect:/getProduct.do");
@@ -38,7 +38,7 @@ public class CategoryController {
 		ModelAndView mav = new ModelAndView();
 		session.setAttribute("Category", categoryserviceimpl.getCategory(vo));
 		session.setAttribute("Selected", vo);
-		session.setAttribute("user_no", user_no);
+		session.setAttribute("userNO", user_no);
 		session.setAttribute("start", 0);
 		session.setAttribute("end", 13);
 		mav.setViewName("redirect:/getProductAll.do");
