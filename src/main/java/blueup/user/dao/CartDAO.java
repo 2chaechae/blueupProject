@@ -32,7 +32,7 @@ public class CartDAO {
 		return sqlSessionTemplate.selectList("cartDao.cartList", user_no);
 	}
 
-	public List<CartVo> selectedcartList(List<Integer> cart_no) {
+	public List<CartVo> selectedcartList(List<String> cart_no) {
 		return sqlSessionTemplate.selectList("cartDao.selectedcartList", cart_no);
 	}
 	

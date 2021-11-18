@@ -10,6 +10,6 @@ public interface CartService {
 	public int deleteAllCart(CartVo vo);
 	public int deleteCart(CartVo vo);
 	public List<CartVo> cartList(String user_no);
-	public List<CartVo> selectedcartList(List<Integer> cart_no);
+	public List<CartVo> selectedcartList(List<String> cart_no);
 	public int updateCartNum(CartVo vo);
 }

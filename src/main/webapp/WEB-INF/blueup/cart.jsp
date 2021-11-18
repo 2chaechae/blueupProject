@@ -217,16 +217,18 @@ var user_no = localStorage.getItem("user_no");
 				$('input:checkbox[class=chBox]:checked').each(function(){
 					cart_no.push(parseInt($(this).val()));
 					alert($(this).val());
+					alert(cart_no);
 				});	
 				$.ajax({
 					url:'/test/selectedcartList.do',
 				    type:'POST',
-				   	cache:false,
-					data: {cart_no},
+					dataType : "json",
+					data: JSON.stringify(cart_no),
+					contentType :  "application/json",
 					success:function(data) {
 						console.log("자료받기 완료");
-						var all_price = data.get(0).all_price;
-						var all_discount = data.get(0).all_discount;
+						var all_price = data[0].all_price;
+						var all_discount = data[0].all_discount;
 						var total_amount = all_price - all_discount;
 						$('#GNRL_DLV_god_amt').text(all_price);
 						$('#GNRL_DLV_dc_amt').text(all_discount);
@@ -238,6 +240,46 @@ var user_no = localStorage.getItem("user_no");
 				});
 			}else{
 				// 비회원 체크박스
+			}
+		});
+		
+		$("#allCheck").click(function(){
+			if($("input:checkbox[name=allCheck]").is(":checked") == true) {
+				$("input[name=chBox]:checkbox").prop("checked", true);
+					if(user_no != null){
+						var cart_no = new Array();
+						$('input:checkbox[class=chBox]:checked').each(function(){
+							cart_no.push(parseInt($(this).val()));
+							alert($(this).val());
+							alert(cart_no);
+						});	
+						$.ajax({
+							url:'/test/selectedcartList.do',
+						    type:'POST',
+							dataType : "json",
+							data: JSON.stringify(cart_no),
+							contentType :  "application/json",
+							success:function(data) {
+								console.log("자료받기 완료");
+								var all_price = data[0].all_price;
+								var all_discount = data[0].all_discount;
+								var total_amount = all_price - all_discount;
+								$('#GNRL_DLV_god_amt').text(all_price);
+								$('#GNRL_DLV_dc_amt').text(all_discount);
+								$('#GNRL_DLV_total_amt').text(total_amount);
+							},
+							error:function() {
+								alert('다시 시도해주세요');
+							}
+						});
+					}else{
+						// 비회원 체크박스
+					}
+			} else {
+				$("input[name=chBox]:checkbox").prop("checked", false);
+				$('#GNRL_DLV_god_amt').text(0);
+				$('#GNRL_DLV_dc_amt').text(0);
+				$('#GNRL_DLV_total_amt').text(0);
 			}
 		});
 	});

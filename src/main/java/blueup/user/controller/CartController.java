@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -120,7 +121,12 @@ public class CartController {
 	// 선택된 장바구니 내역 가져오기
 	@RequestMapping("/selectedcartList.do")
 	@ResponseBody
-	public List<CartVo> selectedcartList(@RequestParam(value="cart_no") List<Integer> cart_no){
+	public List<CartVo> selectedcartList(@RequestBody List<String> cart_no){
+		System.out.println("test");
+		List<CartVo> test = cartserviceimpl.selectedcartList(cart_no);
+		for(CartVo m : test) {
+			System.out.println(m.getAll_price());
+		}
 		return cartserviceimpl.selectedcartList(cart_no);
 	}
 	

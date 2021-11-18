@@ -53,8 +53,8 @@
 		FROM CART AS A JOIN PRODUCT AS B
 		ON a.product_no = b.product_no
 		WHERE a.cart_no IN
-		 <foreach collection="cart_no" item="cart_no" index="index" open="(" close=")" separator=",">
-		  	#{cart_no[index]}
+		 <foreach collection="list" item="cart_no" open="(" close=")" separator=",">
+		  	cast(#{cart_no} as integer)
 		 </foreach>
 	</select>
 	

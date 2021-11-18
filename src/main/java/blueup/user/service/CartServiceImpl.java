@@ -39,7 +39,7 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public List<CartVo> selectedcartList(List<Integer> cart_no) {
+	public List<CartVo> selectedcartList(List<String> cart_no) {
 		return cartdao.selectedcartList(cart_no);
 	}
 
