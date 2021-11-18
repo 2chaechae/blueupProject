@@ -9,35 +9,39 @@
 			PRODUCT_NO,
 			PRODUCT_NAME,
 			USER_NO,
-			CLOTHES_SIZE,
+			PRODUCT_SIZE,
 			STAR,
 			REVIEW_TITLE,
 			REVIEW_CONTENT,
 			USER_ID,
 			REVIEW_TIME,
-			COLOR,
+			PRODUCT_COLOR,
 			MAIN_IMAGE
 		) VALUES(
 			#{product_no},
 			#{product_name},
 			#{user_no},
-			#{clothes_size},
+			#{product_size},
 			#{star},
 			#{review_title},
 			#{review_content},
 			#{user_id},
 			#{review_time},
-			#{color},
+			#{product_color},
 			#{main_image}
 		)
 	</insert>
-	
+	 <!--리뷰 쓰기에  -->
+	<!--<select id="getReviewList" parameterType="reviewvo" resultType="reviewvo">
+		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
+	</select> -->
 	<!-- 리뷰 삭제 -->
 	<delete id="deleteReivew" parameterType="reviewvo">
-		DELETE FROM REVIEW WHERE REVIEW_NO = #{review_no}
+		DELETE FROM REVIEW WHERE PRODUCT_NAME = #{product_name}
 	</delete>
 	<!--전체 상품리뷰  -->
 	<select id="getReviewList" parameterType="reviewvo" resultType="reviewvo">
+		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
 		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
 	</select>
 	

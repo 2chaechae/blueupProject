@@ -165,7 +165,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 										<div id="tab1" class="tab_content">
 											<!--Content-->
-											
+
 
 
 
@@ -175,12 +175,12 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<div id="tab2" class="tab_content">
 											<!--Content-->
 											<colgroup>
-									<col style="width: 35px">
-									<col style="width:">
-									<col style="width: 110px">
-									<col style="width: 110px">
-									<col style="width: 110px">
-								</colgroup>
+												<col style="width: 35px">
+												<col style="width:">
+												<col style="width: 110px">
+												<col style="width: 110px">
+												<col style="width: 110px">
+											</colgroup>
 											<tr>
 
 
@@ -189,27 +189,37 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 												<th scope="col">상품정보</th>
 												<th scope="col">후기 제목</th>
 												<th scope="col">후기 내용</th>
-												
-												<th><br><input type="button" class="button" value="수정"/><br>
-													<input type="button" class="button" value="삭제"/></th>
-											</tr>
+
+												<th><br>
+												<input type="button" class="button" value="수정" /><br> <input
+													type="button" class="button" value="삭제" /></th>
+
+												<%-- </tr>
 											<!-- 여기에 내가쓴 리뷰들 목록 갖고 오기 -->
 										</div>
-										<%-- <c:forEach var="review" items="${getReviewList}" varStatus="status"></c:forEach> --%>
+										<c:forEach var="review" items="${getReviewList}" varStatus="status"></c:forEach>
 										<tr>
-											<%-- 	<td><img src="${cart.main_image}" width="100"
-											height="110"></td> --%>
+												<td><img src="${cart.main_image}" width="100"
+											height="110"></td>
 										<td>${review.product_name }<br>${review.color}/${review.clothes_size}
 											&nbsp;<input type="button" class="button" value="수정"/>
 											${review.product_no }
-										</td></tr> 
+										</td></tr>  --%>
+												<c:forEach var="notice" items="${getReviewList}"
+													varStatus="status">
+													<input type="hidden" value="${review.review_no}"></input>
+													<tr>
+														<td>${review.product_name}</td>
+														<td>${review.star}</td>
+														<td>${review.product_color}</td>
+														<td>${review.product_size}</td>
+														
+														<!-- 공지사항 링크 -->
+													</tr>
+												</c:forEach>
+										</div>
 
-										
-										
 									</div>
-
-								</div>
-
 							</body>
 						</td>
 					</tr>
@@ -235,9 +245,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 						</li>
 					</ul>
 				</div>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 		</div>
 
 	</div>
