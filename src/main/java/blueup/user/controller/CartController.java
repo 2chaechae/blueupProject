@@ -86,6 +86,7 @@ public class CartController {
 
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
+	@ResponseBody
 	public ModelAndView getcartList(ModelAndView mav, HttpSession session, @RequestParam(value="user_no", required=false) String user_no) {
 		/////////////회원//////////////
 		System.out.println(user_no);
@@ -121,7 +122,8 @@ public class CartController {
 
 	// 장바구니 변경하기
 	@RequestMapping("/updateCart.do")
-	public ModelAndView updateCart(CartVo vo) {
+	@ResponseBody
+	public int updateCart(CartVo vo) {
 		System.out.println(vo.getCart_no());
 		System.out.println(vo.getUser_no ());
 		System.out.println(vo.getProduct_no());
@@ -130,8 +132,16 @@ public class CartController {
 		System.out.println(vo.getTotal_price());
 		System.out.println(vo.getProduct_size());
 		System.out.println(vo.getProduct_color());
-		ModelAndView mav = new ModelAndView();
-		cartserviceimpl.updateCart(vo);
-		return mav;
+		return cartserviceimpl.updateCart(vo);
+	}
+	
+	@RequestMapping("/updateCartNum.do")
+	@ResponseBody
+	public int updateCartNum(CartVo vo) {
+		System.out.println(vo.getCart_no());
+		System.out.println(vo.getUser_no ());
+		System.out.println(vo.getQuantity());
+		System.out.println(vo.getTotal_price());
+		return cartserviceimpl.updateCartNum(vo);
 	}
 }

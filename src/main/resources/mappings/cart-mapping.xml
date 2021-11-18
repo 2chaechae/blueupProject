@@ -45,6 +45,14 @@
 	</select>
 	
 	<!-- 카트 수정을 위한 쿼리 -->
+	<update id="updateCartNum" parameterType="cartvo">
+		UPDATE CART   
+		SET
+		QUANTITY = #{quantity},
+		TOTAL_PRICE = #{total_price}
+		WHERE CART_NO = #{cart_no}
+	</update>
+	
 	<update id="updateCart" parameterType="cartvo">
 		UPDATE CART   
 		SET

@@ -111,7 +111,6 @@
 										<td><img src="${cart.main_image}" style="width:100px; height:110px;"></td>
 										<td>${cart.product_name}
 											<br>${cart.product_color}/${cart.product_size} &nbsp;
-											<input type="button" value="변경" class="option" onclick="option(this)"/>
 											<input class="p_no" type="hidden" value="${cart.product_no}"/>
 										</td>
 										<!-- 수량 -->
@@ -130,10 +129,11 @@
 										<!--///////// 수량 -->
 											<c:set value="${cart.discount}" var="discount"/>
 											<c:set value="${cart.quantity}" var="quantity"/>
-											<td id="sale" class="discount"><c:out value="${discount * quantity}"/>원</td>
+											<td id="sale" class="discountvalue"><c:out value="${discount * quantity}"/>원</td>
+											<input class="discount" type="hidden" value="${discount * quantity}"/>
 										<!-- 할인 -->
 										<td><input type="hidden"value="${cart.cart_no}"/></td>
-										<td width="140px;"><div style="width: 130px;">${cart.total_price}원</div></td>
+										<td width="140px;"><div class="product_p" style="width: 130px;">${cart.total_price}원</div></td>
 										<td><a href="#" class="btn_list_del" onclick="deleteSelectCart(this);">삭제</a></td>
 										</tbody>
 									</tr>
@@ -168,7 +168,7 @@
 											<c:set value="${getcartList.get(0).all_discount}" var="all_discount"/>
 											<dt>선택상품금액</dt>
 											<dd id="GNRL_DLV_god_amt">${getcartList.get(0).all_price}</dd>
-											<dt>선택할인금액</dt>"C:/Users/leeay/OneDrive/바탕 화면/Discord.lnk"
+											<dt>선택할인금액</dt>
 											<dd class="c_r" id="GNRL_DLV_dc_amt">${getcartList.get(0).all_discount}</dd>
 	
 										</dl>
@@ -215,73 +215,128 @@
 
 <script>
 var user_no = localStorage.getItem("user_no");
-	/* +, -  수량버튼*/
+	////////////// 수량변경 마이너스 /////////////////
 	function minus(element){
-		var stat = $(element).next().text();
+		///////////////현재 값//////////////////////
+		var stat = parseInt($(element).next().text()); // 수량 
+		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
+		var product_price = parseInt($(element).closest('tbody').find('.product_p').text()); // 선택상품의 상품총액
+		var discount_price = parseInt($(element).closest('tbody').find('.discount').val()); // 선택상품의 할인총액
+		
+		///////////////개당 값////////////////////
+		var per_p = parseInt(product_price / stat); // 1개 상품 금액
+		var per_d = parseInt(discount_price / stat); // 1개 상품 할인 금액
+		alert("1개 할인금액" + per_d);
+		alert("개수 " + stat);
+		//////////////변경 값////////////////////
+		product_price -= per_p;  // 변경된 선택상품의 상품총액
+		discount_price -= per_d; // 변경된 선택상품의 할인총액
+		
+		////////////// 수량 변경//////////////
 		stat--;
 			if (stat <= 0) {
 				alert('더이상 줄일수 없습니다.');
 				stat = 1;
 			}
 		$(element).next().text(stat);
-		// DB & Session update 및 화면처리
-		// 변수 얻기
-		var cart_no = $(element).closest('tbody').find('chbox').val();
-		var product_price = $(element).closest('tbody').children('td').eq(7).children('div').text();
-		var discount_price = $(element).closest('tbody').children('td').eq(5).text();
-		var total_price = product_price * stat;
-		alert("cart_no " + cart_no);
-		alert("product_price " + product_price);
-		alert("total_price " + total_price);
-		alert("discount " + discount_price);
-
-		$.ajax({
-			url:'/test/updateCart.do',
-		    type:'POST',
-		   	cache:false,
-			data: {"cart_no":cart_no, "quantity":stat, "total_price":total_price, "product_price":product_price, "user_no":user_no },
-			success:function(data) {
-				if(data == 1){
-				console.log("db update 완료");
-					var p_amount = $('#GNRL_DLV_god_amt').text();
-					var ds_amount = $('GNRL_DLV_dc_amt').text();
-					p_amount -= product_price;
-					ds_amount -= discount_price;
-					var total_amount = p_amount - ds_amount;
-					$('#GNRL_DLV_god_amt').text(p_amount);
-					$('GNRL_DLV_dc_amt').text(ds_amount);
-					$('GNRL_DLV_total_amt').text(total_amount);
+		/////// DB & Session update 및 화면처리///////
+		if(user_no != null){
+			$.ajax({
+				url:'/test/updateCartNum.do',
+			    type:'POST',
+			   	cache:false,
+				data: {"cart_no":cart_no, "quantity":stat, "total_price":product_price, "user_no":user_no },
+				success:function(data) {
+					if(data == 1){
+					console.log("db update 완료");
+						var p_amount = $('#GNRL_DLV_god_amt').text();
+						var ds_amount = $('#GNRL_DLV_dc_amt').text();
+						p_amount -= per_p;
+						ds_amount -= per_d; 	
+						var total_amount = p_amount - ds_amount;
+						$('#GNRL_DLV_god_amt').text(p_amount);
+						$('#GNRL_DLV_dc_amt').text(ds_amount);
+						$('#GNRL_DLV_total_amt').text(total_amount);
+						$(element).closest('tbody').find('.product_p').text(product_price);
+						$(element).closest('tbody').find('.discountvalue').text(discount_price);
+						$(element).closest('tbody').find('.discount').val(discount_price);
+					}
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+					stat++;
+					$(element).next().text(stat);
 				}
-			},
-			error:function() {
-				// 실패했을 때 화면 되돌리기
-				alert('다시 시도해주세요');
-			}
-		});
+			});
+		}else{
+			// 비회원 마이너스 
+		}
 	}
 	
+	
+	//////////////수량변경 플러스/////////////////
 	function plus(element){
-		var end = $(element).prev().text();
+		
+		///////////////현재 값////////////////////// 
+		var end = $(element).prev().text(); //수량
+		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
+		var product_price = parseInt($(element).closest('tbody').find('.product_p').text()); // 선택상품의 상품총액
+		var discount_price = parseInt($(element).closest('tbody').find('.discount').val()); // 선택상품의 할인총액
+		alert(discount_price);
+		///////////////개당 값////////////////////
+		var per_p = parseInt(product_price / end); // 1개 상품 금액
+		var per_d = parseInt(discount_price / end); // 1개 상품 할인 금액
+		
+		//////////////변경 값////////////////////
+		product_price += per_p;  // 변경된 선택상품의 상품총액
+		discount_price += per_d; // 변경된 선택상품의 할인총액
+		
+		alert("현재 할인금액" + discount_price);
+		alert("1개 할인금액" + per_d);
+		alert("개수 " + end);
+		//////////////수량 변경//////////////
 		end ++;
 		if (end > 999) {
 			alert('더이상 늘릴 수 없습니다.');
 			end = 999;
 		}
 		$(element).prev().text(end);
+		
+		/////// DB & Session update 및 화면처리 //////
+		if(user_no != null){
+			$.ajax({
+				url:'/test/updateCartNum.do',
+			    type:'POST',
+			   	cache:false,
+				data: {"cart_no":cart_no, "quantity":end, "total_price":product_price, "user_no":user_no },
+				success:function(data) {
+					if(data == 1){
+					console.log("db update 완료");
+						var p_amount = parseInt($('#GNRL_DLV_god_amt').text());
+						var ds_amount = parseInt($('#GNRL_DLV_dc_amt').text());
+						p_amount += per_p;
+						ds_amount += per_d; 	
+						var total_amount = p_amount - ds_amount;
+						$('#GNRL_DLV_god_amt').text(p_amount);
+						$('#GNRL_DLV_dc_amt').text(ds_amount);
+						$('#GNRL_DLV_total_amt').text(total_amount);
+						$(element).closest('tbody').find('.product_p').text(product_price);
+						$(element).closest('tbody').find('.discountvalue').text(discount_price);
+						$(element).closest('tbody').find('.discount').val(discount_price);
+					}
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+					end--;
+					$(element).next().text(end);
+				}
+			});
+		}else{
+			// 비회원 플러스
+		}
 	}
 
-
-/* 전체상품삭제 */
-
-
-/* 옵션 변경 창*/
-  function option(element){
-		alert("장바구니 변경 창");
-		var product_no = $(element).next().val();
-		alert(product_no);
-		window.open("/test/getCartOption.do?product_no=" + product_no,"height=300", "width=500");
-	}
-  
+ 
   </script>
 <%@ include file="/footer.jsp"%>
 </body>

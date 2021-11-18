@@ -36,4 +36,8 @@ public class CartDAO {
 	public int updateCart(CartVo vo) {
 		return sqlSessionTemplate.update("cartDao.updateCart", vo);
 	}
+	
+	public int updateCartNum(CartVo vo) {
+		return sqlSessionTemplate.update("cartDao.updateCartNum", vo);
+	}
 }
