@@ -1,18 +1,31 @@
 package blueup.user.controller;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import javax.inject.Inject;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import blueup.admin.util.Cool;
+import blueup.admin.util.MailHandler;
 
 import blueup.admin.util.SHA256;
 import blueup.user.service.LoginJoinServiceImpl;
@@ -23,6 +36,9 @@ public class LoginJoinController {
 	
 	@Autowired
 	private LoginJoinServiceImpl loginjoinserviceimpl;
+	
+	@Inject
+	JavaMailSender mailSender;     //메일 서비스를 사용하기 위해 의존성을 주입함.
 	
 	@RequestMapping("/login.do")
 	public String login() {
@@ -216,4 +232,95 @@ public class LoginJoinController {
 		
 		return result;
 	}
+	
+	@RequestMapping("/getSendSMS.do")
+	public @ResponseBody JSONObject getSendSMS(String phoneNumber) {
+		Random rand = new Random();
+		String numStr = "";
+		
+		for(int i = 0; i<4;i++) {
+			String ran = Integer.toString(rand.nextInt(10));
+			numStr+=ran;
+		}
+		
+		System.out.println("수신자 번호 : "+ phoneNumber);
+		
+		Cool.certifiedPhoneNumber(phoneNumber, numStr);
+		
+		System.out.println("numStr : "+ numStr);
+		
+		JSONObject obj = new JSONObject();
+		obj.put("numStr", numStr);
+		
+		return obj;
+	}
+	
+	@RequestMapping("/newPass.do")
+	public ModelAndView newPass(HttpServletRequest request, HttpSession session, UsersVo userVo) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("login");
+
+		String pw = userVo.getUser_password().toString();
+		
+		SHA256 sha256 = new SHA256(); //사용자 패스워드 암호화
+		
+		try {
+			pw = sha256.encrypt(pw);
+			
+			userVo.setUser_password(pw);
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		loginjoinserviceimpl.getInsertUserInfo(userVo);
+		
+		return mav;
+	}
+	
+	//메일
+    @RequestMapping("/sendingEmail.do")
+    @ResponseBody
+    public Map<String,Object> sendingEmail(HttpServletRequest request) throws IOException {
+        Random r = new Random();
+        Map<String,Object> map = new HashMap<String,Object>();
+        int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
+        
+        String setfrom = "hajinlee00@gamil.com";
+        String tomail = request.getParameter("e_mail"); // 받는 사람 이메일
+        String title = "회원가입 인증 이메일 입니다."; // 제목
+        
+        String content = System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
+        				 System.getProperty("line.separator")+
+        				 "안녕하세요 회원님 저희 홈페이지를 찾아주셔서 감사합니다"+
+        				 System.getProperty("line.separator")+
+        				 System.getProperty("line.separator")+
+        				 " 인증번호는 " +dice+ " 입니다. "+
+        				 System.getProperty("line.separator")+
+        				 System.getProperty("line.separator")+
+        				 "받으신 인증번호를 홈페이지에 입력해 주시면 다음으로 넘어갑니다."; // 내용
+        
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+            messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+            messageHelper.setTo(tomail); // 받는사람 이메일
+            messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+            messageHelper.setText(content); // 메일 내용
+            
+            mailSender.send(message);
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        map.put("dice", dice);
+        
+        return map;
+        
+    }
+	
 }
+
+
+

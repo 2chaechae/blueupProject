@@ -10,16 +10,46 @@
 			<h2>새로운 비밀번호를 입력해주세요.</h2>
 				<div class="layer-popup-wrap02">
 					<form id="modifyPasswordForm" action="/member/login/viewFind" method="post"><div class="layer-input-box">
-						<input type="password" class="input-style01" placeholder="비밀번호" style="width:100%" id="newPassword" name="newPassword" validate="required" validatetext="비밀번호" maxlength="12">						
-						<input type="password" class="input-style01" placeholder="비밀번호 확인" style="width:100%" id="mbrCheckPw" name="mbrCheckPw" validate="required" validatetext="비밀번호 확인" maxlength="12">				
+						<input type="password" class="input-style01" placeholder="비밀번호" style="width:100%" id="newUser_pw" name="newUser_pw"  maxlength="12">						
+						<input type="password" class="input-style01" placeholder="비밀번호 확인" style="width:100%" id="newUser_pwChk" name="newUser_pwChk" maxlength="12">				
 						<p class="layer-txt03">비밀번호는 8~12자 영문, 숫자, 특수문자 중 최소 2가지 조합으로 만들어 주세요</p>
 					<div>
 </div></form></div>
 				<div class="btn-wrap">
-					<a href="#" id="modifyPasswordConfirm" class="btn lg fill" onclick="return false;">비밀번호 변경하기</a>
+					<a href="#" id="modifyPwConfirm" class="btn lg fill" onclick="return false;">비밀번호 변경하기</a>
 				</div>
 		</article>
 <%@ include file="footer.jsp" %>
-
 </body>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#modifyPwConfirm').on('click',function(){
+		var newUserPw = $('#newUser_pw').val();
+		var newUserPwChk = $('#newUser_pwChk').val();
+		
+		if(newUserPw == ""){
+			alert("새로운 비밀번호를 적어주세요");
+			$('#newUser_pw').focus();
+			return;
+		}else if(newUserPwChk == ""){
+			alert("새로운 비밀번호확인란을 채워주세요");
+			$('#newUser_pwChk').focus();
+			return;
+		}else if(newUserPw != newUserPwChk){
+			alert("새로운 비밀번호가 맞지 않습니다 다시 작성해주세요");
+			$('#newUser_pw').val("");
+			$('#newUser_pwChk').val("");
+			$('#newUser_pw').focus();
+			return;
+		}
+	});
+	
+	
+	
+	
+});
+
+</script>
 </html>

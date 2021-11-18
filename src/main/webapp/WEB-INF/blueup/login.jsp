@@ -228,10 +228,9 @@ function onSignIn(googleUser) {
 		$('#email_id').val(emailId);
 		$('#email_address').val(emailadd);
       
-		console.log("google login done", profile)
-		
 		$('#userInfoForm').submit();
 		
+		console.log("google login done", profile);
 	})
 	.fail(function(e){
 		console.log("google login fail", e);
