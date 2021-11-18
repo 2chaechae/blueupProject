@@ -1,9 +1,9 @@
 package blueup.user.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,17 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.service.CartServiceImpl;
-import blueup.user.service.WishServiceImpl;
 import blueup.user.vo.CartVo;
-import blueup.user.vo.WishListVo;
+
 
 @Controller
 public class CartController {
 
 	@Autowired
 	private CartServiceImpl cartserviceimpl;
-	@Autowired
-	private WishServiceImpl wishserviceimpl;
 
 	// 장바구니 추가하기
 	@RequestMapping("/addCart.do")
@@ -120,21 +117,15 @@ public class CartController {
 		return mav;
 	}
 
-	// 장바구니 변경하기
-	@RequestMapping("/updateCart.do")
+	// 선택된 장바구니 내역 가져오기
+	@RequestMapping("/selectedcartList.do")
 	@ResponseBody
-	public int updateCart(CartVo vo) {
-		System.out.println(vo.getCart_no());
-		System.out.println(vo.getUser_no ());
-		System.out.println(vo.getProduct_no());
-		System.out.println(vo.getProduct_name());
-		System.out.println(vo.getQuantity());
-		System.out.println(vo.getTotal_price());
-		System.out.println(vo.getProduct_size());
-		System.out.println(vo.getProduct_color());
-		return cartserviceimpl.updateCart(vo);
+	public List<CartVo> selectedcartList(@RequestParam(value="cart_no") List<Integer> cart_no){
+		return cartserviceimpl.selectedcartList(cart_no);
 	}
 	
+	
+	// 장바구니 변경하기
 	@RequestMapping("/updateCartNum.do")
 	@ResponseBody
 	public int updateCartNum(CartVo vo) {

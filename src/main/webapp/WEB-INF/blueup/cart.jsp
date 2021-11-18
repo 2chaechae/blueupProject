@@ -100,11 +100,6 @@
 											<div class="checkBox">
 												<input type="checkbox" name="chBox" class="chBox" value="${cart.cart_no}" />
 													<!-- 개별 체크박스 해제 시 전체 선택 해제 -->
-													<script>
-													$(".chBox").click(function(){
-														$("#allCheck").prop("chekced", false);
-													});
-													</script>
 											</div>
 										</td>
 												
@@ -215,6 +210,37 @@
 
 <script>
 var user_no = localStorage.getItem("user_no");
+	$(document).ready(function(){
+		$('.chBox').change(function(){
+			if(user_no != null){
+				var cart_no = new Array();
+				$('input:checkbox[class=chBox]:checked').each(function(){
+					cart_no.push(parseInt($(this).val()));
+					alert($(this).val());
+				});	
+				$.ajax({
+					url:'/test/selectedcartList.do',
+				    type:'POST',
+				   	cache:false,
+					data: {cart_no},
+					success:function(data) {
+						console.log("자료받기 완료");
+						var all_price = data.get(0).all_price;
+						var all_discount = data.get(0).all_discount;
+						var total_amount = all_price - all_discount;
+						$('#GNRL_DLV_god_amt').text(all_price);
+						$('#GNRL_DLV_dc_amt').text(all_discount);
+						$('#GNRL_DLV_total_amt').text(total_amount);
+					},
+					error:function() {
+						alert('다시 시도해주세요');
+					}
+				});
+			}else{
+				// 비회원 체크박스
+			}
+		});
+	});
 	////////////// 수량변경 마이너스 /////////////////
 	function minus(element){
 		///////////////현재 값//////////////////////
@@ -276,7 +302,6 @@ var user_no = localStorage.getItem("user_no");
 	
 	//////////////수량변경 플러스/////////////////
 	function plus(element){
-		
 		///////////////현재 값////////////////////// 
 		var end = $(element).prev().text(); //수량
 		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
@@ -335,9 +360,8 @@ var user_no = localStorage.getItem("user_no");
 			// 비회원 플러스
 		}
 	}
-
- 
-  </script>
+	
+ </script>
 <%@ include file="/footer.jsp"%>
 </body>
 </html>

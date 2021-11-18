@@ -32,11 +32,11 @@ public class CartDAO {
 		return sqlSessionTemplate.selectList("cartDao.cartList", user_no);
 	}
 
-	/* 카트 수정 */
-	public int updateCart(CartVo vo) {
-		return sqlSessionTemplate.update("cartDao.updateCart", vo);
+	public List<CartVo> selectedcartList(List<Integer> cart_no) {
+		return sqlSessionTemplate.selectList("cartDao.selectedcartList", cart_no);
 	}
 	
+	/* 카트 수정 */
 	public int updateCartNum(CartVo vo) {
 		return sqlSessionTemplate.update("cartDao.updateCartNum", vo);
 	}

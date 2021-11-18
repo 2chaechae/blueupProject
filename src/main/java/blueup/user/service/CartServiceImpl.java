@@ -34,14 +34,13 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public int updateCart(CartVo vo) {
-		return cartdao.updateCart(vo);
-	}
-
-	@Override
 	public int updateCartNum(CartVo vo) {
 		return cartdao.updateCartNum(vo);
 	}
 
-	
+	@Override
+	public List<CartVo> selectedcartList(List<Integer> cart_no) {
+		return cartdao.selectedcartList(cart_no);
+	}
+
 }

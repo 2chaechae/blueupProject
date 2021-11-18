@@ -44,6 +44,21 @@
 		on a.product_no = b.product_no and user_no = cast(#{user_no} as integer);
 	</select>
 	
+	<!-- 체크된 장바구니 리스트 -->
+	<select id="selectedcartList" resultType="cartvo">
+		SELECT  a.user_no, a.cart_no, a.product_no, a.product_name, a.product_size, a.product_color, a.quantity, 
+		a.total_price, b.delivery_fee, (b.discount * a.quantity) AS discount_total, b.discount, b.main_image,
+		sum(a.total_price) OVER (PARTITION BY user_no)as all_price,
+		sum(b.discount * a.quantity) OVER (PARTITION BY user_no) AS all_discount
+		FROM CART AS A JOIN PRODUCT AS B
+		ON a.product_no = b.product_no
+		WHERE a.cart_no IN
+		 <foreach collection="cart_no" item="cart_no" index="index" open="(" close=")" separator=",">
+		  	#{cart_no[index]}
+		 </foreach>
+	</select>
+	
+	
 	<!-- 카트 수정을 위한 쿼리 -->
 	<update id="updateCartNum" parameterType="cartvo">
 		UPDATE CART   
@@ -53,14 +68,4 @@
 		WHERE CART_NO = #{cart_no}
 	</update>
 	
-	<update id="updateCart" parameterType="cartvo">
-		UPDATE CART   
-		SET
-		QUANTITY = #{quantity},
-		PRODUCT_COLOR = #{product_color},
-		PRODUCT_SIZE = #{product_size},
-		TOTAL_PRICE = #{total_price}
-		WHERE CART_NO = #{cart_no}
-	</update>
-
 </mapper>
