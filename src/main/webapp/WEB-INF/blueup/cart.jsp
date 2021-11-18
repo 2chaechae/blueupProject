@@ -128,16 +128,9 @@
 											</div>
 										</td>
 										<!--///////// 수량 -->
-										<c:choose>
-											<c:when test="${user_no != null}" >
-												<td id="sale"> - ${cart.discount_total}원</td>
-											</c:when>
-											<c:otherwise>
-												<c:set value="${cart.discount}" var="discount"/>
-												<c:set value="${cart.quantity}" var="quantity"/>
-												<td id="sale"><c:out value="${discount * quantity}"/>원</td>
-											</c:otherwise>
-										</c:choose>
+											<c:set value="${cart.discount}" var="discount"/>
+											<c:set value="${cart.quantity}" var="quantity"/>
+											<td id="sale" class="discount"><c:out value="${discount * quantity}"/>원</td>
 										<!-- 할인 -->
 										<td><input type="hidden"value="${cart.cart_no}"/></td>
 										<td width="140px;"><div style="width: 130px;">${cart.total_price}원</div></td>
@@ -175,7 +168,7 @@
 											<c:set value="${getcartList.get(0).all_discount}" var="all_discount"/>
 											<dt>선택상품금액</dt>
 											<dd id="GNRL_DLV_god_amt">${getcartList.get(0).all_price}</dd>
-											<dt>선택할인금액</dt>
+											<dt>선택할인금액</dt>"C:/Users/leeay/OneDrive/바탕 화면/Discord.lnk"
 											<dd class="c_r" id="GNRL_DLV_dc_amt">${getcartList.get(0).all_discount}</dd>
 	
 										</dl>
@@ -221,7 +214,7 @@
 <!--// 컨텐츠 끝 -->
 
 <script>
-var user_no = parseInt(localStorage.getItem("user_no"));
+var user_no = localStorage.getItem("user_no");
 	/* +, -  수량버튼*/
 	function minus(element){
 		var stat = $(element).next().text();
@@ -233,12 +226,14 @@ var user_no = parseInt(localStorage.getItem("user_no"));
 		$(element).next().text(stat);
 		// DB & Session update 및 화면처리
 		// 변수 얻기
-		var cart_no = $(element).closest('tbody').children('.chbox').val();
-		var product_price = $(element).closest('tbody').children('td').eq(7).childern('div').text();
+		var cart_no = $(element).closest('tbody').find('chbox').val();
+		var product_price = $(element).closest('tbody').children('td').eq(7).children('div').text();
+		var discount_price = $(element).closest('tbody').children('td').eq(5).text();
 		var total_price = product_price * stat;
-		alert(cart_no);
-		alert(product_price);
-		alert(total_price);
+		alert("cart_no " + cart_no);
+		alert("product_price " + product_price);
+		alert("total_price " + total_price);
+		alert("discount " + discount_price);
 
 		$.ajax({
 			url:'/test/updateCart.do',
@@ -248,9 +243,14 @@ var user_no = parseInt(localStorage.getItem("user_no"));
 			success:function(data) {
 				if(data == 1){
 				console.log("db update 완료");
-				//화면처리
-				window.opener.location.href="/test/getcartList.do?user_no="+user_no;
-				window.close();
+					var p_amount = $('#GNRL_DLV_god_amt').text();
+					var ds_amount = $('GNRL_DLV_dc_amt').text();
+					p_amount -= product_price;
+					ds_amount -= discount_price;
+					var total_amount = p_amount - ds_amount;
+					$('#GNRL_DLV_god_amt').text(p_amount);
+					$('GNRL_DLV_dc_amt').text(ds_amount);
+					$('GNRL_DLV_total_amt').text(total_amount);
 				}
 			},
 			error:function() {

@@ -37,7 +37,7 @@
 	<!-- 카트 선택 -->
 	<select id="cartList" resultType="cartvo">
 		SELECT  a.user_no, a.cart_no, a.product_no, a.product_name, a.product_size, a.product_color, a.quantity, 
-		a.total_price, b.delivery_fee, (b.discount * a.quantity) as discount_total, b.discount_rate, b.main_image,
+		a.total_price, b.delivery_fee, (b.discount * a.quantity) as discount_total, b.discount, b.main_image,
 		sum(a.total_price) over (partition by user_no)as all_price,
 		sum(b.discount * a.quantity) over (partition by user_no) as all_discount
 		FROM CART AS A JOIN PRODUCT AS B

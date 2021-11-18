@@ -107,7 +107,7 @@ public class CartController {
 			if(session.getAttribute("cart") != null) {
 				List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
 				for(CartVo test : cartList) {
-					System.out.println("비회원 장바구니 조회 : "  + test.getProduct_name());
+					System.out.println("비회원 장바구니 조회 : " + test.getProduct_name());
 				}
 				mav.addObject("getcartList", cartList);
 				mav.setViewName("cart");
