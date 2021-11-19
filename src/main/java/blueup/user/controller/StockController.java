@@ -22,7 +22,7 @@ public class StockController {
 	public List<StockVo> getStockbyProductno(StockVo vo){
 		List<StockVo> result = stockserviceimpl.getStockbyProductno(vo);
 		for(StockVo m : result) {
-			System.out.println(m.getClothes_size());
+			System.out.println(m.getProduct_size());
 		}
 		return result;
 	}

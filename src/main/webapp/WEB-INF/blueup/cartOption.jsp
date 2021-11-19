@@ -62,13 +62,13 @@ $(document).ready(function(){
 			url:'/test/getStockbyProductno.do',
 		    type:'POST',
 		   	cache:false,
-			data: { "color" : color, "product_no" : product_no },
+			data: { "product_color" : color, "product_no" : product_no },
 			success:function(data) {
 				alert("재고받아오기");
 				$(data).each(function(){
 					if(this.stock_quantity == 0) {
-						$("select option[value ='"+this.clothes_size+"']").prop('disabled',true);
-						$("select option[value ='"+this.clothes_size+"']").text(this.clothes_size+"[품절]");
+						$("select option[value ='"+this.product_size+"']").prop('disabled',true);
+						$("select option[value ='"+this.product_size+"']").text(this.product_size+"[품절]");
 					}
 				})
 			},

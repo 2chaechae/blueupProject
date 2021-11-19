@@ -149,7 +149,7 @@
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
 var user_id = localStorage.getItem("user_id");
-var user_no = localStorage.getItem("user_no");
+var user_no = parseInt(localStorage.getItem("user_no"));
 $(document).ready(function(){
 		if(user_id != null){
 			alert("아이디ok");

@@ -13,8 +13,8 @@ public class CartOptionVo {
 	int product_no;
 	String product_name;
 	int stock_quantity;
-	int clothes_size;
-	String color;
+	int product_size;
+	String product_color;
 	int product_price;
 	String category_name;
 	String detailed_category_name;
