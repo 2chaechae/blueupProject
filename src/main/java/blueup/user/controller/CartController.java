@@ -81,7 +81,7 @@ public class CartController {
 	// 장바구니 삭제하기 - 회원
 	@RequestMapping("/deleteCart.do")
 	@ResponseBody
-	public int deleteCart(List<String> cart_no) {
+	public int deleteCart(@RequestBody List<String> cart_no) {
 		int result = 0;
 		int count = cart_no.size();
 		int delete = cartserviceimpl.deleteCart(cart_no);
