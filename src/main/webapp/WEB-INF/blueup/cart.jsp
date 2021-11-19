@@ -352,8 +352,6 @@ var user_no = localStorage.getItem("user_no");
 					alert('다시 시도해주세요');
 				}
 			});
-			
-			
 		}
 	}
 	
@@ -365,7 +363,7 @@ var user_no = localStorage.getItem("user_no");
 		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
 		var product_price = parseInt($(element).closest('tbody').find('.product_p').text()); // 선택상품의 상품총액
 		var discount_price = parseInt($(element).closest('tbody').find('.discount').val()); // 선택상품의 할인총액
-		alert(discount_price);
+		var product_no = parseInt($(element).closest('tbody').find('.p_no').val()); // 상품 번호
 		///////////////개당 값////////////////////
 		var per_p = parseInt(product_price / end); // 1개 상품 금액
 		var per_d = parseInt(discount_price / end); // 1개 상품 할인 금액
@@ -414,7 +412,21 @@ var user_no = localStorage.getItem("user_no");
 				}
 			});
 		}else{
-			// 비회원 플러스
+			$.ajax({
+				url:'/test/updateCartNumNonMember.do',
+			    type:'POST',
+				data: { "quantity": end, "total_price":product_price, "product_no" : product_no
+					, "discount" : per_d},
+				success:function(data) {
+					if(data == 1 ){
+					console.log("플러스 완료");
+					location.reload();
+					}
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+				}
+			});
 		}
 	}
 	
