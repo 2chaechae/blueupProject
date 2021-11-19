@@ -60,8 +60,9 @@
 	  SELECT a.user_no, a.purchaseconfirm,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
 		FROM order_request as a JOIN order_detail as b
-		on a.order_no = b.order_no and user_no = #{user_no};
-	   
+		on a.order_no = b.order_no WHERE a.user_no = #{user_no}
+		AND b.order_status='구매확정';
+	 
 	</select>
 
 </mapper>

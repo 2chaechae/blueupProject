@@ -38,10 +38,7 @@ public class ReviewController {
 		return mav;
 	}
 	
-	
-	
-	
-	
+
 	// ¸®ºä ¸®½ºÆ® È£Ãâ
 	@RequestMapping("/getReviewList.do")
 	public ModelAndView getReviewList(ReviewVo vo, ModelAndView mav) {
@@ -53,11 +50,10 @@ public class ReviewController {
 	@RequestMapping("/getProductInfoForReview.do")
 	public ModelAndView getProductInfoForReview(HttpSession session,ReviewVo vo) {
 		ModelAndView mav = new ModelAndView();
-		List<ReviewVo> reviewWrite = reviewServiceimpl.getProductInfoForReview(vo);
-		System.out.println("¸®ºä ¾²±â Æû");
+		ReviewVo reviewWrite= reviewServiceimpl.getProductInfoForReview(vo);
+		System.out.println("¸®ºäÁ¤º¸Ãâ·Â");
+		mav.addObject("getProductInfoForReview", reviewWrite);
 		mav.setViewName("reviewWrite");
-		mav.addObject("getProductInfoForReview", reviewServiceimpl.getProductInfoForReview(vo));
-		
 		return mav;
 	}
 	

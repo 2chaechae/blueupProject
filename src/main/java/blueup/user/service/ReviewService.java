@@ -9,7 +9,7 @@ public interface ReviewService {
 		public int insertReview(ReviewVo vo);
 		public void updateReview(ReviewVo vo);
 		public List<ReviewVo> getReviewList (ReviewVo vo);
-		public List<ReviewVo> getProductInfoForReview(ReviewVo vo);
+		public ReviewVo getProductInfoForReview(ReviewVo vo);
 			
 		}
 		

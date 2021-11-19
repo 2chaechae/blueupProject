@@ -52,11 +52,11 @@
 				<tr><th scope="row">
 				<label for="boardWriteTitle">상품정보</label>
 				<td>
-				${review.product_img }</td>
-				<td>${review.product_name}</td>
-				  <td>${review.product_color}</td>
-										<td>${review.product_size }</td>
-											<td>${review.product_no }</td>
+				<img src="${getProductInfoForReview.product_img }" width="300px" height="350px">
+				<td>${getProductInfoForReview.product_name}</td>
+				<td>${getProductInfoForReview.quantity}</td>
+				  <td>${getProductInfoForReview.product_color}</td> 
+										<td>${getProductInfoForReview.product_size}</td>
 				 </th>
 				 <%-- 나중에  src="${REVIEW_PHOTO.photo1}"등으로 고쳐야 함 --%>
 				</tr>
@@ -68,7 +68,8 @@
 							class="required">*</span></th>
 						<td><input type="text" id="boardWriteTitle"
 							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${review.review_title}"> <span
+							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${getProductInfoForReview.review_title}"> 
+							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
 					</tr>
@@ -77,7 +78,7 @@
 							class="required">*</span></th>
 						<td><textarea cols="30" rows="10" id="boardWriteContent"
 								placeholder="1,000자 미만 (특수문자 \ / : < > ; 사용불가)으로 입력해 주세요."
-								style="width: 1000px; height: 150px;" >${review.review_content}</textarea>
+								style="width: 1000px; height: 150px;" >${getProductInfoForReview.review_content}</textarea>
 							<div class="clearfix">
 								<div class="fl">
 									<span class="error-msg" id="boardWriteContent-msg"
@@ -108,7 +109,7 @@
 			<!-- <a href="#" id="cancelBtn" class="btn btn-style03">취소</a> -->
 			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
 			<input type="button" class="button" onclick="location.href='/test/reviewWriteForm.do' " value="취소"/>
-			<input type="button" class="button" onclick="location.href='/test/getReviewList.do'"value="저장"/>
+			<input type="button" class="button" onclick="location.href='/test/getProductInfoForReview.do?user_no='+ user_no ;'"value="저장"/>
 			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
