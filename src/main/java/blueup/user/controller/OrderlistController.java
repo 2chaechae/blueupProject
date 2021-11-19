@@ -1,32 +1,36 @@
 package blueup.user.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.service.OrderlistServiceImpl;
-import blueup.user.vo.OrderVo;
+import blueup.user.vo.OrderlistVo;
 
 @Controller
 public class OrderlistController {
 	@Autowired
 	private OrderlistServiceImpl orderserviceimpl;
 
-	/* Ï£ºÎ¨∏,Î∞∞ÏÜ°Ï°∞Ìöå */
+	/* ¡÷πÆ,πËº€ ¿¸√º¡∂»∏*/
 	@RequestMapping("/getOrderList.do")
-	public ModelAndView getOrderList(HttpSession session, OrderVo vo) {
+	public ModelAndView getOrderList(HttpSession session, OrderlistVo vo) {
 		ModelAndView mav = new ModelAndView();
 
-		List<OrderVo> orderlist = orderserviceimpl.getOrderList(vo);
+		List<OrderlistVo> orderlist = orderserviceimpl.getOrderList(vo);
 		List odn = new ArrayList();
 
 		for (int i = 0; i < orderlist.size(); i++) {
@@ -37,18 +41,20 @@ public class OrderlistController {
 		List<String> newList = new ArrayList<String>(set);
 
 		mav.setViewName("orderlist");
-		mav.addObject("newList", newList);
 		mav.addObject("orderNum", orderlist);
+		mav.addObject("newList", newList);
+		
 
 		return mav;
 	}
 
-	/* Ï£ºÎ¨∏,Î∞∞ÏÜ° ÏÉÅÏÑ∏ Ï°∞Ìöå */
+	/* ¡÷πÆ,πËº€ ªÛºº¡∂»∏ */
 	@RequestMapping("/getOrderDetail.do")
-	public ModelAndView getOrder(HttpSession session, OrderVo vo) {
+	@ResponseBody
+	public ModelAndView getOrder(HttpSession session, OrderlistVo vo) {
 		ModelAndView mav = new ModelAndView();
 
-		List<OrderVo> orderdetail = orderserviceimpl.getOrderDetail(vo);
+		List<OrderlistVo> orderdetail = orderserviceimpl.getOrderDetail(vo);
 		List odn = new ArrayList();
 
 		for (int i = 0; i < orderdetail.size(); i++) {
@@ -57,11 +63,38 @@ public class OrderlistController {
 
 		Set<String> set = new HashSet<String>(odn);
 		List<String> odList = new ArrayList<String>(set);
-		
+
 		mav.setViewName("orderdetail");
 		mav.addObject("odList", odList);
 		mav.addObject("orderdetail", orderdetail);
 
+		return mav;
+	}
+
+	/* ¿¸√ºªÛ«∞ ¡÷πÆ√Îº“ */
+	@RequestMapping("/getOrderCancelAll.do")
+	@ResponseBody
+	public Map<String, Object> getOrderCancelAll(HttpServletRequest request, HttpSession session, OrderlistVo orderVo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<OrderlistVo> num = orderserviceimpl.getOrderList(orderVo);
+		map.put("num", num);
+
+		orderserviceimpl.getOrderCancelAll(orderVo);
+		return map;
+	}
+
+	/* º±≈√¡÷πÆ√Îº“ testøÎ */
+	@RequestMapping("/getOrderCancel.do")
+	@ResponseBody
+	public ModelAndView getOrderCancel(HttpServletRequest request, HttpSession session, OrderlistVo orderVo) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		List<OrderlistVo> ordercancel = orderserviceimpl.getOrderDetail(orderVo);
+		
+		mav.setViewName("ordercancel");
+		mav.addObject("ordercancel", ordercancel);
+		
 		return mav;
 	}
 }

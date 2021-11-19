@@ -4,22 +4,22 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="orderlistDao">
-	<!-- 모든 주문/배송 조회 -->
-	<select id="getOrderList" resultType="ordervo">
+	<!-- 주문/배송 전체조회 -->
+	<select id="getOrderList" resultType="orderlistvo">
 		SELECT  
 			a.order_no, a.order_time,
 					
 			b.product_name, b.product_price, b.product_img,
 			b.product_color, b.product_size, 
-			b.product_quantity, b.order_status
+			b.quantity, b.order_status
 		
 		FROM order_request as a right outer join order_detail as b
-		on a.order_no = b.order_no
-		ORDER BY a.order_no desc;
+		ON a.order_no = b.order_no
+		ORDER BY b.order_no desc
 	</select>
 	
-	<!-- 상세 주문/배송 조회 -->
-	<select id="getOrderDetail" resultType="ordervo">
+	<!-- 주문/배송 상세조회 -->
+	<select id="getOrderDetail" resultType="orderlistvo">
 		SELECT  
 			a.order_no, a.order_time, a.receiver, a.address,
 			a.order_price, a.coupon_discount, a.used_point,
@@ -27,14 +27,39 @@
 							
 			b.product_name, b.product_price, b.product_img,
 			b.product_color, b.product_size, 
-			b.product_quantity, b.order_status,
+			b.quantity, b.order_status,
 			b.phone1, b.phone2, b.phone3,
 			b.discount_rate, b.cancel_date, b.refund_means,
 			b.refund_bank, b.refund_account, b.refund_price
 		
 		FROM order_request as a right outer join order_detail as b
-		on a.order_no = b.order_no
-		where a.order_no = #{order_no};
+		ON a.order_no = b.order_no
+		WHERE a.order_no = #{order_no}
 	</select>
+	
+	<!-- 전체상품 주문 취소 -->
+	<update id="getOrderCancelAll">
+		UPDATE order_detail SET order_status = '주문취소'
+		WHERE order_no = #{order_no}
+	</update>
+	
+	<!-- 선택상품 주문 취소 -->
+	<update id="getOrderCancel">
+		UPDATE order_detail SET order_status = '주문취소', product_quantity = #{cancel_quantity}
+		WHERE order_no = #{order_no} AND product_name = #{product_name}
+	</update>
+	
+	<!-- 검색된 날짜의 주문/배송 조회 -->
+	<!-- <select id="getSearch" parameterType="hashMap" resultType="orderlistvo">
+		SELECT
+			a.order_no, a.order_time,
+					
+			b.product_name, b.product_price, b.product_img,
+			b.product_color, b.product_size, 
+			b.product_quantity, b.order_status
+		FROM order_request as a right outer join order_detail as b
+		ON a.order_no = b.order_no
+		WHERE a.order_time BETWEEN #{dateStart} AND #{dateEnd}
+	</select> -->
 
 </mapper>

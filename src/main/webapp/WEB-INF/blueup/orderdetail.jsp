@@ -2,8 +2,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="/header.jsp"%>
+<%@ include file="header.jsp"%>
+<style>
+/*전체취소 팝업창 CSS*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* scroll */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content/Box */
+.modal-content {
+	background-color: #ffffff;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
+</style>
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript" src="/javascript/message/mypage_ko.js?v=prod-version-858_20211102145956"></script>
 
@@ -36,7 +59,6 @@
 				<li id="myNavi2"><a href="javascript:;"><span>활동정보</span></a>
 					<ul>
 						<li><a href="/mypage/wishlist/list"><span>위시리스트</span></a></li>
-						<li><a href="/mypage/todaygood/list"><span>최근 본 상품</span></a></li>
 						<li><a href="/mypage/goods/reviewView"><span>상품리뷰</span></a></li>
 						<li><a href="/mypage/inquiry/list"><span>1:1 문의</span></a></li>
 					</ul></li>
@@ -48,7 +70,6 @@
 					</ul></li>
 				<li id="myNavi4"><a href="javascript:;"><span>회원정보</span></a>
 					<ul>
-						<li><a href="/mypage/member/deliveryLocationList"><span>배송지 관리</span></a></li>
 						<li><a href="/mypage/member/modifyMemberView"><span>회원정보 수정</span></a></li>
 						<li><a href="/mypage/member/secessionMemberView"><span>회원탈퇴</span></a>
 						</li>
@@ -73,12 +94,11 @@
 								<span><em>주문일</em> <fmt:formatDate value="${orderdetail.get(0).order_time}" pattern="yyyy-MM-dd hh:mm" /></span> 
 								<span><em>주문번호</em>${orderdetail.get(0).order_no }</span>
 							</div>
-
-							<!-- 1:1문의 -->
+							<!-- 상품 전체 취소 -->
 							<div class="btnOdTop">
-								<a href="#" class="btn sm fill" onclick="mypageorder.goInquiryList();return false;">1:1 문의</a>
-							</div>
-
+	                              	<a href="#" id="cancelAllBtn" class="btn sm gray d_layer_open">전체취소</a>
+									<a href="#" class="btn sm fill" onclick="mypageorder.goInquiryList();return false;">1:1 문의</a>
+                             </div>
 							<!-- 배송지 -->
 							<div class="orderAdd odAddBox">
 								<dl>
@@ -93,8 +113,7 @@
 									<dt>연락처</dt>
 									<dd>${orderdetail.get(0).phone1 } - ${orderdetail.get(0).phone2 } - ${orderdetail.get(0).phone3 }</dd>
 								</dl>
-								<dl>
-								</dl>
+								
 							</div>
 
 							<!-- 주문상품 리스트  -->
@@ -132,10 +151,52 @@
 													</div>
 												</div>
 											</td>
-											<td>${orderdetail.product_quantity }</td>
+											<td>${orderdetail.quantity }</td>
 											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.product_price }" />원</td>
 											<td>${orderdetail.order_status }</td>
-											<td class="selBox"></td>
+											
+											<!-- 입금대기 / 결제완료 / 배송준비중 / 배송지연(예상일자) => 주문취소 버튼 -->
+											<c:if test="${orderdetail.order_status == '입금대기' }">
+											<td class="selBox">
+			                                  	<span><a href="javascript:void(0)" class="btn gray sm d_layer_open" id="cancelBtn">주문취소</a></span>
+											</td>
+											</c:if>
+											<!-- 배송완료 / 구매확정취소 => 구매확정/반품요청/교환요청 버튼 -->
+											<c:if test="${orderdetail.order_status == '배송완료' }">
+											<td class="selBox">
+			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="confirmedBtn">구매확정</a></span>
+			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="returnBtn">반품요청</a></span>
+			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="exchangeBtn">교환요청</a></span>
+											</td>
+											</c:if>
+											
+											<!-- 반품요청 => 반품철회 버튼 -->
+											<c:if test="${orderdetail.order_status == '반품요청' }">
+											<td class="selBox">
+			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of return">반품철회</a></span>
+											</td>
+											</c:if>
+											
+											<!-- 교환요청 => 교환철회 버튼 -->
+											<c:if test="${orderdetail.order_status == '교환요청' }">
+											<td class="selBox">
+			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of exchange">교환철회</a></span>
+											</td>
+											</c:if>
+											
+											<!-- 구매확정 => 리뷰작성 버튼 -->
+											<c:if test="${orderdetail.order_status == '구매확정' }">
+											<td class="selBox">
+			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="reviewBtn">리뷰작성</a></span>
+											</td>
+											</c:if>
+											
+											<!-- 주문취소 => 주문취소 철회 -->
+											<c:if test="${orderdetail.order_status == '주문취소' }">
+											<td class="selBox">
+			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of cancel">주문취소 철회</a></span>
+											</td>
+											</c:if>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -165,31 +226,30 @@
 										</tr>
 										<tr>
 											<th>쿠폰할인</th>
-											<td colspan="2">0원</td>
+											<td colspan="2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.get(0).coupon_discount }" />원</td>
 										</tr>
 										<tr>
 											<th>사용 포인트</th>
-											<td colspan="2">0원</td>
+											<td colspan="2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.get(0).used_point }" />원</td>
 										</tr>
 									</tbody>
 									<tfoot>
 										<tr class="selLineBoxBt">
 											<th>총 결제금액</th>
-											<%-- <td>
+											<td>
 												<span class="selTxtMgL">${orderdetail.get(0).order_means }</span> 
 												<span class="selTxtMgL">결제한 은행</span> 
 												<span class="selTxtMgL">결제한 계좌</span>
-											</td> --%>
-											<td><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.get(0).order_price + orderdetail.get(0).delivery_fee }" /></strong> 원</td>
+											</td>
+											<td><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.get(0).order_price + orderdetail.get(0).delivery_fee -orderdetail.get(0).coupon_discount - orderdetail.get(0).used_point }" /></strong> 원</td>
 										</tr>
 									</tfoot>
 								</table>
 							</div>
-
 							<!-- 주문취소 -->
 							<c:forEach items="${orderdetail }" var="orderdetail" varStatus="status">
 								<c:if test="${orderdetail.order_status == '주문취소'}">
-									<c:if test='${status.index == 1 }'>
+									<c:if test='${status.index == 0 }'>
 										<div class="mgInfoBox">
 											<h3>취소 정보</h3>
 											<table class="tbTotalList">
@@ -224,10 +284,10 @@
 												<tfoot>
 													<tr>
 														<th>환불 금액</th>
-														<%-- <td><span class="selTxtMgL">${orderdetail.refund_means }</span>
+														<td><span class="selTxtMgL">${orderdetail.refund_means }</span>
 															<span class="selTxtMgL">${orderdetail.refund_bank }</span>
 															<span class="selTxtMgL">${orderdetail.refund_account }</span>
-														</td> --%>
+														</td>
 														<td><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.refund_price}" /></strong> 원</td>
 
 													</tr>
@@ -310,4 +370,78 @@
 		</main>
 	</div>
 </div>
-<%@ include file="/footer.jsp" %>
+
+<!-- 전체취소 popup-->
+<div id="modalPopup" class="modal" style="display: none;">
+	<div class="modal-content" style="width: 529px;">
+		<h2>주문 전체취소</h2>
+		<div class="layer-cont ly-box">
+			<table class="board-write selMgSm">
+				<caption>주문 전체취소</caption>
+				<colgroup>
+					<col style="width: 125px;">
+					<col>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">주문일</th>
+						<td>
+							<div class="board-write-text"><fmt:formatDate value="${orderdetail.get(0).order_time}" pattern="yyyy-MM-dd hh:mm" /></div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">주문번호</th>
+						<td>
+							<div class="board-write-text">${orderdetail.get(0).order_no }</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--  button -->
+			<div class="lyBtnArea">
+				<a href="#" class="btn w160 d_layer_close" id="escBtn">취소</a> 
+				<a href="#" class="btn fill w160" id="acceptBtn">주문취소</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+<form id="movedProductCancelForm" method="post" action="/test/getOrderCancel.do">
+	<input type="hidden" id="order_no" name="order_no" value="${orderdetail.get(0).order_no }"/>
+</form>
+<script type="text/JavaScript">
+$(function(){
+	/* 전체주문취소*/
+	$('#cancelAllBtn').click(()=>{
+		var orderNo = "${orderdetail.get(0).order_no }";
+		$.ajax({
+			url:'/test/getOrderCancelAll.do',
+		    type:'POST',
+			data: {order_no : orderNo},
+			dataType:'json',
+			success:function(data) {
+				var num = data.num;
+				console.log(num);
+				$('#modalPopup').show();
+			}
+		});
+	});
+	$('#escBtn').click(()=>{
+		$('#modalPopup').hide();
+	});
+	
+	$('#acceptBtn').click(()=>{
+		var result = confirm("주문을 취소하시겠습니까?");
+		if(result) { //yes 
+			alert("주문이 취소되었습니다.");
+			location.replace('/test/getOrderList.do'); 
+		} else { //no 
+		}
+	});
+	/* 선택한상품 주문취소 */
+	$('#cancelBtn').click(()=>{
+		$('#movedProductCancelForm').submit();
+		
+	});
+});
+</script>

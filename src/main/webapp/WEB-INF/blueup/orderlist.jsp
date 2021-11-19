@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="/header.jsp"%>
+<%@ include file="header.jsp"%>
 
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript" src="/javascript/message/mypage_ko.js?v=prod-version-858_20211102145956"></script>
@@ -28,7 +28,7 @@
 		<nav id="lnb" class="lnb-nav">
 			<strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
 			<p>
-				<b>ㅇㅇㅇ</b>님<br />반갑습니다.
+				<b>ooo</b>님<br />반갑습니다.
 			</p>
 			<hr class="hr-ddd" />
 			<ul class="nav-mnlist">
@@ -41,7 +41,6 @@
 				<li id="myNavi2"><a href="javascript:;"><span>활동정보</span></a>
 					<ul>
 						<li><a href="/mypage/wishlist/list"><span>위시리스트</span></a></li>
-						<li><a href="/mypage/todaygood/list"><span>최근 본 상품</span></a></li>
 						<li><a href="/mypage/goods/reviewView"><span>상품리뷰</span></a></li>
 						<li><a href="/mypage/inquiry/list"><span>1:1 문의</span></a></li>
 					</ul>
@@ -54,7 +53,6 @@
 					</ul></li>
 				<li id="myNavi4"><a href="javascript:;"><span>회원정보</span></a>
 					<ul>
-						<li><a href="/mypage/member/deliveryLocationList"><span>배송지 관리</span></a></li>
 						<li><a href="/mypage/member/modifyMemberView"><span>회원정보 수정</span></a></li>
 						<li><a href="/mypage/member/secessionMemberView"><span>회원탈퇴</span></a>
 						</li>
@@ -89,20 +87,19 @@
 									<li><a href="#" onclick="setOrdTpCd('SHOP_PKUP_ORD');">상품접수</a></li>
 									<li><a href="#" onclick="setOrdTpCd('LAG_QTY_ORD');">상품준비중</a></li>
 									<li><a href="#" onclick="setOrdTpCd('LAG_QTY_ORD');">상품준비완료</a></li>
-									<li><a href="#" onclick="setOrdTpCd('LAG_QTY_ORD');">상품 취소</a></li>
+									<li><a href="#" onclick="setOrdTpCd('LAG_QTY_ORD');">상품취소</a></li>
 								</ul> 
 							</div>
 							<!-- select -->
 						</dd>
-						<dt>조회기간</dt>
+						
 						<dd class="fr">
-							<a href="#" class="btn sm d_radio_select on" onclick="setMonth('3month');return false;"><span>3개월</span></a>
-							<a href="#" class="btn sm d_radio_select" onclick="setMonth('6month');return false;"><span>6개월</span></a>
-							<a href="#" class="btn sm d_radio_select" onclick="setMonth('12month');return false;"><span>12개월</span></a>
+							<dt>조회기간</dt>
 							<input type="text" class="calendar" id="dateStart" readonly>
 							<input type="text" class="calendar" id="dateEnd" readonly> 
-							<a href="#" class="btn sm" onclick="loadOrderList();return false;">검색</a>
+							<input type="button" class="btn sm" id="searchBtn" value="검색" />
 						</dd>
+						
 					</dl>
 				</div>
 				
@@ -141,7 +138,7 @@
 									<col style="width: 120px">
 									<col style="width: 145px">
 								</colgroup>
-								<tbody>
+								<tbody id="tbody">
 									<tr>
 										<c:if test="${newList == orderlist.order_no}">
 										<td class="tleft">
@@ -167,7 +164,7 @@
 												</div>
 											</div>
 										</td>
-										<td>${orderlist.product_quantity }</td>
+										<td>${orderlist.quantity }</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.product_price}" />원</td>
 										<td class="selBox"><span> ${orderlist.order_status } </span></td>
 										</c:if>
@@ -180,11 +177,6 @@
 						<div class="page">
 							<span> <strong title="현재 페이지">1</strong></span>
 						</div>
-						<script>
-							$(document).ready(function() {
-								setClaimCnt('1');
-							});
-						</script>
 					</div>
 					
 				</div>
@@ -485,5 +477,6 @@ function getorder(element){
 	$('#orderNumFrm').submit();
 }
 </script>
-<%@ include file="/footer.jsp" %>
+
+<%@ include file="footer.jsp"%>
 </html>

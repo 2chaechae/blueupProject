@@ -1,57 +1,57 @@
 package blueup.user.vo;
 
 import java.util.Date;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Setter
-@Getter
-@ToString
+import lombok.Data;
+
+@Data
 public class OrderVo {
-	/* ì£¼ë¬¸ ë°°ì†¡ ì¡°íšŒ */
-	String product_img; // ìƒí’ˆ ì´ë¯¸ì§€
-	Date order_time; // ê²°ì œ ì‹œê°„ = ì£¼ë¬¸ì¼
-	int order_no; // ì£¼ë¬¸ ë²ˆí˜¸
-	String product_name; // ìƒí’ˆëª…
-	int product_price; // ìƒí’ˆ ê°€ê²©
-	String product_color; // ìƒí’ˆ ìƒ‰ìƒ
-	String product_size; // ìƒí’ˆ ì‚¬ì´ì¦ˆ
-	int product_quantity; // ì£¼ë¬¸ ìˆ˜ëŸ‰
-	String order_status; // ì£¼ë¬¸ ìƒí™©
-
-	/* ì£¼ë¬¸ ë°°ì†¡ ìƒì„¸ì¡°íšŒ */
-	// 1. ì£¼ë¬¸ì¼ = order_time
-	// 2. ì£¼ë¬¸ë²ˆí˜¸ = order_no
-
-	String receiver; // ìˆ˜ë ¹ì¸ = ë°›ëŠ”ë¶„
-	String address; // ì£¼ì†Œ
-	// ì—°ë½ì²˜
+	/* »óÇ°Á¤º¸ = product table */
+	String main_image; // »óÇ°ÀÌ¹ÌÁö
+	String product_name; // »óÇ°ÀÌ¸§
+	int product_price; // »óÇ°°¡°İ
+	String product_color; // »óÇ°»ö»ó
+	String product_size; // »óÇ°»çÀÌÁî
+	int quantity; // »óÇ°¼ö·®
+	int discount; // ÇÒÀÎ
+	int total_price; // ÃÑ °¡°İ
+	
+	/* ÄíÆùÁ¤º¸ = coupon table */
+	String coupon_name; //ÄíÆùÀÌ¸§
+	int coupon_discount; //ÄíÆùÇÒÀÎ°¡°İ
+	String coupon_type; //ÄíÆùÁ¾·ù ex)¸â¹ö½ÊÄíÆù, ½Å±Ô°¡ÀÔÄíÆù
+	Date coupon_begin;
+	Date coupon_end;
+	Date coupon_use_date; //ÄíÆù»ç¿ë³¯Â¥
+	
+	/* Æ÷ÀÎÆ®Á¤º¸ = point table */
+	int income; //µé¾î¿À´Â Æ÷ÀÎÆ®
+	int expense; //³ª°¡´Â Æ÷ÀÎÆ®
+	String content; //Æ÷ÀÎÆ®¸¦ ¹ŞÀº ³»¿ª
+	String remarks; //ºñ°í
+	Date point_date;
+	
+	/* ÁÖ¹®ÀÚÁ¤º¸ = users table */
+	String user_name; //ÁÖ¹®ÇÏ½Ã´Â ºĞ
+	String email_id; //ÀÌ¸ŞÀÏ ¾ÆÀÌµğ
+	String email_address; //ÀÌ¸ŞÀÏÁÖ¼Ò
+	
+	/* ¹è¼ÛÁöÁ¤º¸ = destination table */
+	String receiver; //¹Ş´Â»ç¶÷
 	String phone1;
 	String phone2;
 	String phone3;
+	String zipcode;
+	String address;
+	String detailed_address; //»ó¼¼ÁÖ¼Ò
+	String request; //¹è¼ÛÁö ¿äÃ»»çÇ× ´ä¾È
+	
 
-	// ìƒí’ˆëª… , ìƒí’ˆ ê°€ê²©, ìƒí’ˆ ìƒ‰ìƒ, ìƒí’ˆ ì‚¬ì´ì¦ˆ, ì£¼ë¬¸ ìˆ˜ëŸ‰, ì£¼ë¬¸ ìƒí™©
-	// ê²°ì œì •ë³´
-	int order_price; // ì£¼ë¬¸ ê¸ˆì•¡ = ì´ ê°€ê²©
-	int delivery_fee; // ë°°ì†¡ë¹„
-	int discount_rate; // ì£¼ë¬¸ í• ì¸
-	int coupon_discount; // ì¿ í° í• ì¸
-	int used_point; // ì‚¬ìš© í¬ì¸íŠ¸
-	String order_means; // ì£¼ë¬¸ ìˆ˜ë‹¨
-	String refund_means; // í™˜ë¶ˆ ìˆ˜ë‹¨
-	String refund_bank; // í™˜ë¶ˆ ì€í–‰
-	String refund_account; // í™˜ë¶ˆ ê³„ì¢Œ
-	int refund_price; // í™˜ë¶ˆê¸ˆì•¡
-	Date cancel_date; // ì·¨ì†Œì¼ì (ë„ ê°€ëŠ¥)
-
-	/* í•„ìš”ì—†ì§€ë§Œ í˜¹ì‹œ ëª°ë¼ì„œ = DB Column */
-	int user_no; // íšŒì› ë²ˆí˜¸
-
-	int order_detail_no; // ì£¼ë¬¸ ë””í…Œì¼ ë²ˆí˜¸
-	int product_no; // ìƒí’ˆ ë²ˆí˜¸
-	Date payment_time; // ê²°ì œ ì‹œê°„
-	Date delivery_start;// ë°°ì†¡ì‹œì‘ì¼
-	Date delivery_end; // ë°°ì†¡ì™„ë£Œì¼
-
+	/* ¾²Áö ¾Ê´Â DB ÄÃ·³ */
+	int product_no; // »óÇ° ½Ã¸®¾ó¹øÈ£
+	int coupon_no; //ÄíÆù ½Ã¸®¾ó¹øÈ£
+	int point_no; //Æ÷ÀÎÆ® ½Ã¸®¾ó¹øÈ£
+	int user_no; // »ç¿ëÀÚ ½Ã¸®¾ó¹øÈ£
+	int destination; //¹è¼ÛÁö ½Ã¸®¾ó¹øÈ£
+	int cart_no; // Àå¹Ù±¸´Ï ½Ã¸®¾ó¹øÈ£
 }
