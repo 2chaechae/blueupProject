@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp" %>
 
 <!-- 컨텐츠 시작 -->
@@ -31,10 +32,10 @@
 
 					<div class="tbst-div">
 						<div class="mid fl">
-							<span>전체</span> (<span class="text-color01"><em class="num" id="inquiryCnt"></em></span>건)
+							<span>전체</span> (<span class="text-color01"><em class="num" id="inquiryCnt">${cnt }</em></span>건)
 						</div>
 						<div class="mid fr">
-							<a href="#" class="btn fill sm fdlr30 btn-style07 right" onclick="javascript:goInquiryNew()"><span>1:1 문의 등록</span></a>
+							<input type="button" class="btn fill sm fdlr30 btn-style07 right" id="writeBtn" value="1:1 문의 등록" />
 						</div>
 					</div>
 					<div id="includeInquiryList">
@@ -59,12 +60,53 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+								<c:choose>
+									<c:when test="${list ne null }">
+									<c:forEach items="${list }" var="item">
+									<c:set var="i" value="${i+1 }" />
+										<tr>
+										<td>${i }</td>
+										<td>${item.qna_type }</td>
+										<td><a href="/test/getQnAContent.do?qna_no=${item.qna_no}&user_no=${user_no}">${item.qna_title }</td>
+										<td>${item.qna_time }</td>
+										<td>${item.reply }</td>
+									</tr>
+									</c:forEach>
+									</c:when>
+									
+									<%-- <c:otherwise>
+										<tr>
 										<td colspan="5" class="no-result">상담내역이 없습니다.</td>
 									</tr>
+									</c:otherwise> --%>
+								</c:choose>
+									
 									</tbody>
 							</table>
 							<!-- //2018-05-24 -->
+						</div>
+						<!-- 페이지 -->
+						<div style="display: block; text-align: center;">
+							<c:if test="${pageMaker.startPage != 1 }">
+								<a
+									href="/test/qnaList.do?pageNum=${pageMaker.startPage - 1 }&user_no=${user_no}">&lt;</a>
+							</c:if>
+							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }"
+								var="p">
+								<c:choose>
+									<c:when test="${p == cri.page }">
+										<b>${p }</b>
+									</c:when>
+									<c:when test="${p != cri.page }">
+										<a
+											href="/test/qnaList.do?pageNum=${p }&user_no=${user_no}">${p }</a>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+								<a
+									href="/test/qnaList.do?pageNum=${pageMaker.endPage+1 }&user_no=${user_no}">&gt;</a>
+							</c:if>
 						</div>
 					</div>
 				</main>
@@ -74,4 +116,20 @@
 	
 <%@ include file="footer.jsp" %>
 </body>
+
+<script>
+/* 로컬 스토리지에서 유저 번호, 빼오기  */
+$(document).ready(function(){
+	   var user_no = localStorage.getItem("user_no");
+	   var user_name = localStorage.getItem("user_name");
+	   var user_id = localStorage.getItem("user_id");
+	});
+	
+$(document).ready(function(){
+	//수정완료 버튼 클릭 시
+	$('#writeBtn').on('click',function(){
+		location.href="/test/qnaWrite.do?pageNum="+${pageNum}+"&user_no="+user_no;
+	});
+});
+</script>
 </html>

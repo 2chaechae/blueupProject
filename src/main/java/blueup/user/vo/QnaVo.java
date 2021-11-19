@@ -15,13 +15,17 @@ public class QnaVo {
 	String qna_type; // qna 종류
 	String qna_title; // qna 제목
 	String qna_content; // qna 내용
-	String user_id; // qna 작성자
-	int qna_cnt; // qna 조회수
+	//int qna_cnt; // qna 조회수
 	Date qna_time; // qna 시간
 	int ref;
 	int step;
 	int depth;
-	int viewLimit; // 공지사항에 띄어줄 개수
-	boolean secret; //공개여부
-	String password; //비밀버놓
+	int user_no;
+	String phone1;
+	String phone2;
+	String phone3;
+	String email_id;
+	String email_address;
+	String user_name;
+	String reply;
 }

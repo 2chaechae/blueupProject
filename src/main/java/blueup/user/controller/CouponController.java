@@ -35,7 +35,7 @@ public class CouponController {
 		UsersVo vo = new UsersVo();
 		HttpSession session = request.getSession();
 		int page = Integer.parseInt(pageNum);
-		vo.setUser_no(2);
+		vo.setUser_no(6);
 		cri.setPage(page);
 		cri.setPerPageNum(5);
 		cri.setPageStart();
@@ -68,7 +68,7 @@ public class CouponController {
 	public List<CouponVo> getUnavailableCouponList(String start, String end) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		UsersVo vo = new UsersVo();
-		vo.setUser_no(1);
+		vo.setUser_no(6);
 		map.put("userVo", vo);
 		map.put("dateStart", start);
 		map.put("dateEnd", end);
@@ -83,5 +83,7 @@ public class CouponController {
 		}
 		return list;
 	}
+	
+	
 
 }

@@ -402,7 +402,7 @@
 									<li><a href="#" onclick="doGNBJoin(); return false;"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="회원가입">회원가입</a></li>
-									<li><a href="#" onclick="doGNBMypage(); return false;"
+									<li><a href="#" onclick="myPage(); return false;"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="마이페이지">마이페이지</a></li>
 								</ul>
@@ -601,6 +601,15 @@ function cartAll() {
 		location.href="/test/getcartList.do?";
 	}
 }
+
+function myPage(){
+	if(user_no!=null){
+		location.href="/test/qnaWrite.do?user_no="+user_no;
+	}else{
+		alert('로그인이 필요한 작업입니다');
+		return;
+	}
+}
 </script>
       <!--  [EOSD-2740] 카테고리 수정
       <div class="banner">
@@ -608,5 +617,7 @@ function cartAll() {
             </ul>
       </div>
        -->
+       
+
    </div>
 </nav>

@@ -5,32 +5,10 @@
 <mapper namespace="qnaDao">
 
 
-	<select id="getQnaList" resultType="qnavo" parameterType="cri">
-		<!-- <![CDATA[ select * from ( SELECT (ROW_NUMBER() OVER()) AS ROWNUM, 
-			QNA_NO, QNA_TYPE, QNA_TITLE, QNA_CONTENT, USER_ID, QNA_CNT, QNA_TIME, REF, 
-			DEPTH, STEP, SECRET FROM ( SELECT * FROM QNA ORDER BY REF DESC, STEP ASC 
-			) AS LIST) AS ALLLIST WHERE ROWNUM>=1 AND ROWNUM<=10; ]]> -->
-		SELECT
-		QNA_NO,
-		QNA_TYPE,
-		QNA_TITLE,
-		QNA_CONTENT,
-		USER_ID,
-		QNA_CNT,
-		QNA_TIME,
-		REF,
-		DEPTH,
-		STEP,
-		SECRET,
-		PASSWORD
-		FROM QNA
-		ORDER BY REF DESC, STEP ASC
-		LIMIT #{perPageNum} OFFSET #{startRow}
-	</select>
+	<!-- <select id="getQnaList" resultType="qnavo" parameterType="cri">
+		<![CDATA[ 
 
-	<select id="getCount" resultType="int">
-		SELECT COUNT(*) FROM QNA
-	</select>
+	
 
 	<insert id="insertQna" parameterType="qnavo">
 		INSERT INTO QNA (
@@ -88,6 +66,90 @@
 	
 	<delete id="deleteQna" parameterType="qnavo">
 		DELETE FROM QNA WHERE QNA_NO = #{qna_no}
+	</delete> -->
+	
+	<select id="selectUserInfoForQna" parameterType="int" resultType="userVo">
+		SELECT *
+		FROM USERS 
+		WHERE USER_NO = #{user_no}
+	</select>
+	
+	<insert id="wrtieQnaProc" parameterType="qnavo" >
+		INSERT INTO QNA (
+			QNA_TYPE,
+			QNA_TITLE,
+			QNA_CONTENT,
+			QNA_TIME,
+			PHONE1,
+			PHONE2,
+			PHONE3,
+			USER_NAME,
+			REF,
+			DEPTH,
+			STEP,
+			USER_NO,
+			EMAIL_ID,
+			EMAIL_ADDRESS,
+			REPLY
+		)
+			VALUES(
+				#{qna_type}, 
+				#{qna_title}, 
+				#{qna_content}, 
+				now(),
+				#{phone1}, 
+				#{phone2}, 
+				#{phone3},
+				#{user_name}, 
+				COALESCE((SELECT MAX(ref) FROM QNA)+1,0), 
+				0,
+				0,
+				#{user_no},
+				#{email_id},
+				#{email_address},
+				'N'	
+				)
+	</insert>
+	
+	<select id="getQnaList" parameterType="hashMap" resultType="qnavo">
+		SELECT
+			QNA_NO,
+			QNA_TYPE,
+			QNA_TITLE,
+			QNA_CONTENT,
+			QNA_TIME,
+			REPLY
+		FROM QNA
+		ORDER BY REF DESC, STEP ASC
+		LIMIT #{perPageNum} OFFSET #{startRow}
+	</select>
+	
+	<select id="getCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM QNA 
+		WHERE USER_NO = #{user_no}
+	</select>
+	
+	
+	<select id="getContnet" parameterType="int" resultType="qnavo">
+		SELECT 
+			QNA_NO,
+			QNA_TITLE,
+			QNA_CONTENT
+		FROM QNA
+		WHERE QNA_NO = #{qna_no}
+	</select>
+	
+	
+	<delete id="deleteQna" parameterType="int">
+		DELETE FROM QNA
+		WHERE QNA_NO = #{qna_no}
 	</delete>
+	
+	<update id="modifyQna" parameterType="hashMap">
+		UPDATE QNA 
+		SET QNA_TITLE = #{qna_title},
+			QNA_CONTENT = #{qna_content}
+		WHERE QNA_NO = #{qna_no}
+	</update>
 
 </mapper>

@@ -1,14 +1,16 @@
 package blueup.user.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,142 +19,149 @@ import blueup.user.paging.Criteria;
 import blueup.user.paging.PageMaker;
 import blueup.user.service.QnaService;
 import blueup.user.vo.QnaVo;
+import blueup.user.vo.UsersVo;
 
 @Controller
 public class QnaController {
-	@Autowired 
+	@Autowired
 	@Qualifier("qnaService")
-	private QnaService qnaService;
-
-	@RequestMapping("/qna.do")
-	public ModelAndView getQnaInController(@RequestParam("pageNum") int pageNum) throws Exception {
-		
+	QnaService service;
+	
+	@RequestMapping("/qnaList.do")
+	public ModelAndView getQnaList(int pageNum, @RequestParam(required=false, value="user_no") int user_no) {
 		ModelAndView mav = new ModelAndView();
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
 		Criteria cri = new Criteria();
+		PageMaker pm = new PageMaker();
+		
+		int cnt = service.getCountService(user_no);
+		System.out.println("qna 갯수 "+ cnt);
 		cri.setPage(pageNum);
 		cri.setPageStart();
+		pm.setCri(cri);
+		pm.setTotalCount(cnt);
+		System.out.println("start Page : "+pm.getStartPage());
+		System.out.println("End Page : "+pm.getEndPage());
 		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(qnaService.getCountInService()); //총계수
+		map.put("startRow", cri.getStartRow());
+		map.put("perPageNum", cri.getPerPageNum());
+		map.put("user_no", user_no);
 		
-		List<QnaVo> list = qnaService.getQnaListInService(cri);
-		mav.addObject("pageNum", pageNum);
+		
+		List<QnaVo> list =  service.getQnaListService(map);
+		
+		for(QnaVo vo : list) {
+			System.out.println(vo.getQna_title());
+		}		
+		mav.addObject("user_no", user_no);
 		mav.addObject("list", list);
-		for(QnaVo vo:list) {
-			System.out.println(vo.toString());
-			vo.getQna_no();
-			vo.getQna_content();
-			vo.getQna_title();
-		}
-		mav.addObject("pageMaker", pageMaker);
-		mav.setViewName("qna");
-		return mav;
-	}
-	
-	@RequestMapping("qnaWriteForm.do")
-	public ModelAndView qnaWriteFormController(HttpSession session, @RequestParam(required=false, value="qna_no") int qna_no, @RequestParam(required=false, value="pageNum") int pageNum) {
-		//session.getAttribute("") 원래는 여기서 세션의 아이디를 얻어와야하지만, 어쩔수없으니..
-		
-		ModelAndView mav = new ModelAndView();
-		if(qna_no>0) {
-			QnaVo content = qnaService.getQnaContentService(qna_no);
-			System.out.println("가져온 내용 : "+content.getQna_title());
-			mav.addObject("content", content);
-		}
-		mav.setViewName("qnaWriteForm");
-		//session대신 임시로 addobejct해서 사용
-		mav.addObject("qna_no", qna_no);
-		mav.addObject("writer", "래리캉");
+		mav.addObject("cnt", cnt);
+		mav.addObject("cri", cri);
+		mav.addObject("pageMaker", pm);
+		mav.setViewName("QnAlist");
 		mav.addObject("pageNum", pageNum);
 		return mav;
 	}
 	
-	@RequestMapping("qnaWriteProc.do")
-	public ModelAndView qnaWriteProc(
-			@RequestParam("pageNum") int pageNum, 
-			@RequestParam(value = "writer")String writer, 			
-			@RequestParam("contents")String contents, 
-			@RequestParam(required = false, value="password")String password, 
-			@RequestParam("open")String open,
-			@RequestParam("type")String type,
-			@RequestParam("title")String title) {
-		boolean secret;
-		ModelAndView mav = new ModelAndView();
-		QnaVo vo = new QnaVo();
-		vo.setQna_type(type);
-		vo.setUser_id(writer);
-		vo.setQna_content(contents);
-		vo.setPassword(password);
-		vo.setQna_title(title);
-		secret = Boolean.valueOf(open);
-		vo.setSecret(secret);
-		qnaService.insertQnaService(vo);
-		mav.setViewName("redirect:/qna.do?pageNum="+pageNum);
-		return mav;
-	}
 	
-	@RequestMapping("getQnaContent.do")
-	public ModelAndView getQnaContent(@RequestParam("qna_no") int qnaNo, @RequestParam("pageNum") int pageNum) {
-		QnaVo vo = new QnaVo();
-		vo.setQna_no(qnaNo);
-		System.out.println("넘어온 값 : "+qnaNo);
+	@RequestMapping("/qnaWrite.do")
+	public ModelAndView writeQna(int pageNum, int user_no) {
 		ModelAndView mav = new ModelAndView();
-		QnaVo content = qnaService.getQnaContentService(qnaNo);
-		qnaService.addCntService(vo);
-		mav.addObject("pageNum", pageNum);
-		mav.addObject("content", content);
-		mav.addObject("qna_no", qnaNo);
-		mav.setViewName("getQnaContent");
-		return mav;
-	}
-	
-	@RequestMapping("qnaUpdate.do")
-	public ModelAndView qnaUpdate(@RequestParam("qna_no")int qna_no, @RequestParam("pageNum") int pageNum) {
-		ModelAndView mav = new ModelAndView();
-		QnaVo content = qnaService.getQnaContentService(qna_no);
-		mav.addObject("content", content);
-		mav.addObject("qna_no", qna_no);
-		mav.setViewName("redirect:/qnaWriteForm.do?qna_no="+qna_no+"&pageNum="+pageNum);
-		return mav;
-	}
-	
-	@RequestMapping("qnaUpdateProc.do")
-	public ModelAndView qnaUpdateProc(
-			@RequestParam("qna_no")int qna_no,
-			@RequestParam("title") String qna_title,
-			@RequestParam("type") String qna_type,
-			@RequestParam("contents") String qna_content,
-			@RequestParam("open") boolean secret,
-			@RequestParam(required=false, value= "password")String password,
-			@RequestParam("pageNum") int pageNum) {
-		System.out.println("받아온 제목 값 : "+qna_title);
-		QnaVo vo = new QnaVo();
-		vo.setQna_no(qna_no);
-		vo.setQna_type(qna_type);
-		vo.setQna_content(qna_content);
-		vo.setSecret(secret);
-		vo.setPassword(password);
-		vo.setQna_title(qna_title);
-		System.out.println("vo객체에 담은 타이틀 : "+vo.getQna_title());
-		ModelAndView mav = new ModelAndView();
-		qnaService.qnaUpdateService(vo);
-		QnaVo modifiedQnaVo = qnaService.getQnaContentService(qna_no);
-		System.out.println("수정 제목 : "+modifiedQnaVo.getQna_title());
-		mav.addObject(modifiedQnaVo);
-		mav.setViewName("redirect:/getQnaContent.do?qna_no="+qna_no+"&pageNum="+pageNum);
-		return mav;
-	}
-	
-	@RequestMapping("qnaDelete.do")
-	public ModelAndView deleteQna(@RequestParam("qna_no") int qna_no) {
-		ModelAndView mav = new ModelAndView();
-		QnaVo vo = new QnaVo();
-		vo.setQna_no(qna_no);
-		qnaService.deleteQna(vo);
-		mav.setViewName("redirect:/qna.do?pageNum=1");
-		return mav;
-	}
-	
 
+		UsersVo vo = service.selectUserInfoForQnaService(user_no);
+		mav.addObject("user_no",user_no);
+		mav.addObject("user", vo);
+		mav.setViewName("QnA");
+		return mav;
+	}
+	
+	@RequestMapping("/qnaWriteProc.do")
+	public ModelAndView wrtieQnaProc(
+			String user_name,
+			String email_id,
+			String email_address,
+			String phone1,
+			String phone2,
+			String phone3,
+			String qna_type,
+			String title,
+			String content,
+			String userNo
+			) {
+		ModelAndView mav = new ModelAndView();
+		QnaVo vo = new QnaVo();
+		vo.setUser_name(user_name);
+		vo.setEmail_id(email_id);
+		vo.setEmail_address(email_address);
+		vo.setPhone1(phone1);
+		vo.setPhone2(phone2);
+		vo.setPhone3(phone3);
+		vo.setQna_type(qna_type);
+		vo.setQna_title(title);
+		vo.setQna_content(content);
+		vo.setUser_no(Integer.parseInt(userNo));
+		service.wrtieQnaProcService(vo);
+		
+		mav.setViewName("redirect:/qnaList.do?pageNum=1&user_no=6");
+		return mav;
+	}
+	
+	@RequestMapping("/getQnAContent.do")
+	public ModelAndView getQnaContent(int qna_no, int user_no) {
+		ModelAndView mav = new ModelAndView();
+		
+		QnaVo vo = service.getContnetService(qna_no);
+		
+		mav.addObject("user_no", user_no);
+		mav.addObject("vo", vo);
+		mav.addObject("qna_no", qna_no);
+		mav.setViewName("qnaContent");
+		return mav;
+	}
+	
+	
+	@RequestMapping("/qnaDelete.do")
+	public ModelAndView deleteQnA(int qna_no, int user_no) {
+		ModelAndView mav = new ModelAndView();
+		
+		service.deleteQnaService(qna_no);
+		
+		mav.setViewName("redirect:/qnaList.do?pageNum=1&user_no="+user_no);
+		return mav;
+		
+	}
+	
+	
+	@RequestMapping("/modifyQna.do")
+	public ModelAndView modifyQnA(int user_no, int qna_no) {
+		ModelAndView mav = new ModelAndView();
+		QnaVo vo = service.getContnetService(qna_no);
+		mav.addObject("qna", vo);
+		mav.addObject("user_no", user_no);
+		mav.addObject("qna_no", qna_no);
+		mav.setViewName("qnaModifyForm");
+		return mav;
+	}
+	
+	@RequestMapping("/qnaModifyProc.do")
+	public ModelAndView Modifyproc(int qna_no, int user_no, String qna_title, String qna_content) {
+		ModelAndView mav = new ModelAndView();
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("qna_title", qna_title);
+		map.put("qna_content", qna_content);
+		map.put("qna_no", qna_no);
+		
+		service.modifyQnaService(map);
+		QnaVo vo = service.getContnetService(qna_no);
+		
+		mav.addObject("qna", vo);
+		mav.addObject("qna_no", qna_no);
+		mav.addObject("user_no", user_no);
+		mav.setViewName("redirect:/getQnAContent.do?qna_no="+qna_no+"&user_no="+user_no);
+		
+		return mav;
+	}
 }
