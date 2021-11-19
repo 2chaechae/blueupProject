@@ -40,6 +40,8 @@
 		location.href="/test/qna.do?pageNum="+pageNum;
 	}
 	
+	
+	
 </script>
 </head>
 <body>
@@ -212,8 +214,7 @@
 
 
 			<div class="buttons_area">
-				<button class="board_btn cancle"
-					onClick="cancel(); return false">취소</button>
+				<input type="button" id="cancel" value="취소"/>
 				<button class="board_btn confirm" name="submitBtn"
 					onClick="document.getElementById('form').submit();">수정</button>
 			</div>

@@ -12,7 +12,9 @@
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/jquery.form.js"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/helpdesk/helpdesk.js?v=prod-version-858_20211102145956"></script>
 
-<form name="gForm" id="gForm" action="/helpdesk/csInquiry/add" method="post">
+
+
+<form name="gForm" id="gForm" action="/test/qnaWriteProc.do" method="post">
 	<input type="hidden" name="csoMtmInq.cstmrEmail" id="cstmrEmail" value="">
 	<input type="hidden" name="csoMtmInq.inqTpCd" id="inqTpCd">
 	<input type="hidden" name="csoMtmInq.inqCont" id="inqContent">
@@ -47,30 +49,19 @@
 							<col>
 						</colgroup>
 						<tbody><tr>
-							<th scope="row"><label for="boardWriteName">작성자</label> <span class="required">*</span></th>
+							<th scope="row"><label for="boardWriteName">이름</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteName" class="input-style01" name="csoMtmInq.inqCstmrNm" value="이하진" style="width:150px;" readonly="readonly">
+								<input type="text" id="boardWriteName" class="input-style01" name="user_name" value="${user.user_name }" style="width:150px;" readonly="readonly">
 								<span class="error-msg" id="boardWriteName-msg" style="display:none;"></span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row"><label for="boardWriteEmail">답변 이메일</label> <span class="required">*</span></th>
 							<td id="emailBox">
-								<input type="text" id="boardWriteEmail" class="input-style01" value="hyunkyoung04" style="width:110px;">
+								<input type="text" name="email_id" id="boardWriteEmail" class="input-style01" value="${user.email_id }" style="width:110px;" readonly>
 								<span class="at">@</span>
-								<input type="text" id="boardWriteEmail2" class="input-style01" value="naver.com" style="width:110px;">
-								<!-- select -->
-								<div class="select-style01 d_select">
-									<button type="button" class="d_select_sel" style="width:150px;" id="emailSelect"><span>직접입력</span></button>
-									<ul id="emailAddress">
-										<li><a href="">직접입력</a></li>
-										<li><a href="#">naver.com</a></li>
-										<li><a href="#">daum.net</a></li>
-										<li><a href="#">nate.com</a></li>
-										<li><a href="#">gmail.com</a></li>
-										<li><a href="#">hotmail.com</a></li>
-									</ul>
-								</div>
+								<input type="text" name="email_address" id="boardWriteEmail2" class="input-style01" value="${user.email_address }" style="width:110px;" readonly>
+			
 								<!-- //select -->
 								<span class="error-msg" style="display:none;" id="boardWriteEmail-msg"></span>
 							</td>
@@ -79,120 +70,63 @@
 							<th scope="row"><label for="boardWriteContact">휴대전화</label> <span class="required">*</span></th>
 							<td>
 								<div class="inputcallBox">
-									<input type="text" class="input-style01" id="boardWriteContact" name="csoMtmInq.cstmrmobilAreaNo" value="010" style="width:64px;">
+									<input type="text" class="input-style01" id="boardWriteContact" name="phone1" value="${user.phone1 }" style="width:64px;" readonly>
 									<span class="hyphen">-</span>
-									<input type="text" class="input-style01" id="boardWriteContact2" name="csoMtmInq.cstmrmobilTlofNo" value="3408" style="width:70px;">
+									<input type="text" class="input-style01" id="boardWriteContact2" name="phone2" value="${user.phone2 }" style="width:70px;" readonly>
 									<span class="hyphen">-</span>
-									<input type="text" class="input-style01" id="boardWriteContact3" name="csoMtmInq.cstmrmobilTlofWthnNo" value="4515" style="width:70px;">
+									<input type="text" class="input-style01" id="boardWriteContact3" name="phone3" value="${user.phone3 }" style="width:70px;" readonly>
 								</div>
 
-								<span class="check-skin">
-									<input type="checkbox" id="chkAgree" checked="checked" value="Y" name="csoMtmInq.cstmrSmsRecptnYn">
-									<span>선택</span>
-								</span>
-								<label for="chkAgree">답변등록여부 수신</label>
-								<span class="error-msg" id="boardWriteContact-msg" style="display:none;"></span>
+							
 							</td>
 						</tr>
-					<tr>
-							<th scope="row"><label for="ordNum2">주문번호</label></th>
-							<td>
-								<input type="text" id="ordNum2" class="input-style01" style="width:515px;" disabled="disabled">
-								<input type="hidden" id="ordGodTurn" name="ordGod.ordGodTurn" class="input-style01" style="width:443px;">
-								<a href="#layerPopup02" class="btn-style04 d_layer_open">주문찾기</a>
-							</td>
-						</tr>
+				
 						<tr>
 							<th scope="row"><label for="boardWriteSort">상담분류</label> <span class="required">*</span></th>
 							<td>
-								<!-- select -->
-								<div class="select-style01 d_select select_consul_cate">
-								<button type="button" id="boardWriteSort" class="d_select_sel" style="width:152px;"><span>선택</span></button>
-
-								<ul>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="DLV_DELAY_DSCNTT_INQ" class="selCd">배송지연/불만<input type="hidden" value="DLV_DELAY_DSCNTT_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="RTGOD_INQ" class="selCd">반품문의<input type="hidden" value="RTGOD_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="AS_INQ" class="selCd">A/S문의<input type="hidden" value="AS_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="RFD_INQ" class="selCd">환불문의<input type="hidden" value="RFD_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="ORD_PAY_INQ" class="selCd">주문결제문의<input type="hidden" value="ORD_PAY_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="MBR_INFO_INQ" class="selCd">회원정보문의<input type="hidden" value="MBR_INFO_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="CNCL_INQ" class="selCd">취소문의<input type="hidden" value="CNCL_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="EXCHG_INQ" class="selCd">교환문의<input type="hidden" value="EXCHG_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="GOD_INFO_INQ" class="selCd">상품정보문의<input type="hidden" value="GOD_INFO_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="ETC_INQ" class="selCd">기타문의<input type="hidden" value="ETC_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="EVT_INQ" class="selCd">이벤트문의<input type="hidden" value="EVT_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="GFT_INQ" class="selCd">사은품문의<input type="hidden" value="GFT_INQ"></a></li>
-										</if>
-									<if test="true">
-										<li class="selectBox"><a href="#none" onclick="return false;" id="AFF_INQ" class="selCd">제휴문의<input type="hidden" value="AFF_INQ"></a></li>
-										</if>
-									</ul>
-								</div>
-								<!-- //select -->
+							
+								<select name="qna_type" style="width: 200px;
+								 								padding: .8em .5em;
+								 								font-family: inherit;
+								 								background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+								 								border: 1px solid #999;
+								 								border-radius: 0px;
+								 								-webkit-appearance: none;
+								 								-moz-appearance: none;
+								 								appearance: none;">
+									<option value="배송지연/불만" selected>배송지연/불만</option>
+									<option value="반품문의">반품문의</option>
+									<option value="A/S문의">A/S문의</option>
+									<option value="환불문의">환불문의</option>
+									<option value="주문결제문의">주문결제문의</option>
+									<option value="취소문의">취소문의</option>
+									<option value="교환문의">교환문의</option>
+									<option value="상품정보문의">상품정보문의</option>
+									<option value="기타문의">기타문의</option>
+									<option value="이벤트문의">이벤트문의</option>
+									<option value="사은품문의">사은품문의</option>
+									<option value="제휴문의">제휴문의</option>
+								</select>
+								
 								<span class="error-msg" id="boardWriteSort-msg" style="display:none;"></span>
 							</td>
+							<input type="hidden" name="userNo" value="${user_no }" />
 						</tr>
 						<tr>
 							<th scope="row"><label for="boardWriteTitle">제목</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" name="title" placeholder="제목을 입력해 주세요." style="width:515px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row"><label for="boardWriteContent">내용</label> <span class="required">*</span></th>
 							<td>
-								<textarea cols="30" rows="10" id="boardWriteContent" placeholder="1,000자 미만 (특수문자 \ / : < > ; 사용불가)으로 입력해 주세요." style="width:515px; height:150px;"></textarea>
-								<div class="clearfix">
-									<div clsss="fl">
-										<span class="error-msg" id="boardWriteContent-msg" style="display:none;"></span>	<!-- 더 이상 입력하실 수 없습니다. -->
-									</div>
-									<div class="fr">
-										<span class="txt13-999"><em class="txt13-000" id="counter">0</em>자/1,000자</span>
-									</div>
-								</div>
+								<textarea name="content" cols="30" rows="10" id="boardWriteContent" placeholder="내용을 입력해 주세요." style="width:515px; height:150px;"></textarea>
+								
 							</td>
 						</tr>
-						<tr>
-							<th scope="row"><label for="fileSearch">첨부파일</label></th>
-							<td>
-								<span class="file-search">
-									<input type="text" class="input-style01" style="width:443px;" id="fileInputName" readonly="">
-									<span>
-										<input type="file" id="fileSearch" name="files" onchange="javascript:filetest(this);">
-										<label for="fileSearch">파일찾기</label>
-									</span>
-								</span>
-								<div class="file-name"></div>
-								<ul class="text-list02 col-type02">
-									<li>파일은 1개만 첨부할 수 있습니다. (10MB 이하)</li>
-									<li>파일형식 : hwp, doc/docx, xls/xlsx, ppt/pptx, jpg, gif, png, pdf</li>
-								</ul>
-							</td>
-						</tr>
+
 					</tbody></table>
 				</div>
 
@@ -201,7 +135,11 @@
 				</ul>
 			 	<div class="btnWrapBox">
 					<a href="#" id="cancelBtn" class="btn btn-style03">취소</a>
-					<a href="#" id="regBtn" class="btn fill btn-style02">저장</a>
+					<!-- onClick="document.getElementById('gForm').submit()" -->
+					<input type="button" id="submitBtn" class="btn fill btn-style02" style="width:200px; margin-right:2px; padding: 20px 40px; font-size: 14px;
+															box-sizing: border-box; border: 1px sold black; color: white; background: black;
+															display: inline-block; vertical-align: middle; text-align: center; cursor: pointer; white-space: nowrap; line-height:50%;
+															min-width: 220px;" value="저장" />
 				</div>
 			</main>
 		</div>
@@ -303,4 +241,32 @@
 	<form id="fTempImage" name="fTempImage" method="POST" style="display:none;"> <input type="hidden"></form>
 <%@ include file="footer.jsp" %>
 </body>
+<script>
+$(document).ready(function(){
+	//목록으로 버튼 클릭 시
+	$('#cancelBtn').on('click',function(){
+		location.href="/test/qnaList.do?pageNum=1&user_no="+${user_no};
+	});
+});
+
+$(document).ready(function(){
+	//목록으로 버튼 클릭 시
+	$('#submitBtn').on('click',function(){
+		var title = $('#boardWriteTitle').val();
+		var content = $('#boardWriteContent').val();
+		
+		
+		if(title.trim()==''){
+			alert('제목을 입력해주세요');
+			return;
+		}
+		if(content.trim()==''){
+			alert('내용을 입력해주세요');
+			return;
+		}
+		$('#gForm').submit();
+	});
+});
+
+</script>
 </html>
