@@ -19,13 +19,13 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	@Override
-	public int deleteCart(CartVo vo) {
-		return cartdao.deleteCart(vo);
+	public int deleteCart(List<String> cart_no) {
+		return cartdao.deleteCart(cart_no);
 	}
 
 	@Override
-	public int deleteAllCart(CartVo vo) {
-		return cartdao.deleteAllCart(vo);
+	public int deleteAllCart(String user_no) {
+		return cartdao.deleteAllCart(user_no);
 	}
 
 	@Override

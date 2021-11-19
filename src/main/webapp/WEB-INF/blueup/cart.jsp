@@ -44,11 +44,10 @@
 				<div class="d_tab02 orderContents">
 					<!-- order Contents : 일반주문 상품 -->
 					<div class="orderInfoArea d_tab02_cont" style="display: block;">
-
 						<!-- order list -->
 						<div class="orderTable">
 							<div class="tableTopArea">
-								<a href="/test/deleteAllCart.do" class="btn sm gray">
+								<a href="javascript:void(0)" onclick="deleteAll()" class="btn sm gray">
 									<span>전체상품삭제</span></a> 
 								<a href="#" class="btn sm gray">
 									<span>선택상품삭제</span></a> 
@@ -87,63 +86,65 @@
 									<th scope="col"><div style="width: 158px; padding-left:94px;">주문금액</div></th>
 									<th scope="col"><div style="display:flex; padding-left:217px;">삭제</div></th>
 								</tr>
-								<c:if test="${emptyCart eq '없음'}">
+								<c:choose>
+								<c:when test="${emptyCart eq '없음'}">
 									<tr>
 										<td><div style="width:880px; height:200px; padding-top:100px;">장바구니에 담긴 상품이 없습니다.</div></td>
 									</tr>
-								</c:if>
-								<c:forEach var="cart" items="${getcartList}" varStatus="status">
-									<tr>
-									<!-- 선택 체크 -->
-									<tbody id="delRow">
-										<td>
-											<div class="checkBox">
-												<input type="checkbox" name="chBox" class="chBox" value="${cart.cart_no}" />
-													<!-- 개별 체크박스 해제 시 전체 선택 해제 -->
-											</div>
-										</td>
-												
-										<td><img src="${cart.main_image}" style="width:100px; height:110px;"></td>
-										<td>${cart.product_name}
-											<br>${cart.product_color}/${cart.product_size} &nbsp;
-											<input class="p_no" type="hidden" value="${cart.product_no}"/>
-										</td>
-										<!-- 수량 -->
-										<td>
-											<div class="number">
-												<button type="button" onclick="minus(this)" class="decreaseQuantity">
-												<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/minus.png" style="width: 20px; height: 20px;">
-												</button>
-												<span class="numberUpDown">${cart.quantity}</span>
-												<button type="button" onclick="plus(this)" class="increaseQuantity">
-													<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/plus1.png" style="width: 20px; height: 20px;">
-												</button>
-												<br>
-											</div>
-										</td>
-										<!--///////// 수량 -->
-											<c:set value="${cart.discount}" var="discount"/>
-											<c:set value="${cart.quantity}" var="quantity"/>
-											<td id="sale" class="discountvalue"><c:out value="${discount * quantity}"/>원</td>
-											<input class="discount" type="hidden" value="${discount * quantity}"/>
-										<!-- 할인 -->
-										<td><input type="hidden"value="${cart.cart_no}"/></td>
-										<td width="140px;"><div class="product_p" style="width: 130px;">${cart.total_price}원</div></td>
-										<td><a href="#" class="btn_list_del" onclick="deleteSelectCart(this);">삭제</a></td>
-										</tbody>
-									</tr>
-								</c:forEach>
-
-								<tfoot id="GNRL_DLV_cart_foot" style="display: none;">
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="cart" items="${getcartList}" varStatus="status">
+										<!-- 선택 체크 -->
+									<tr class="add">
+										<tbody id="delRow">
+											<tr class="row">
+											<td>
+												<div class="checkBox">
+													<input type="checkbox" name="chBox" class="chBox" value="${cart.cart_no}" />
+														<!-- 개별 체크박스 해제 시 전체 선택 해제 -->
+												</div>
+											</td>
+													
+											<td><img src="${cart.main_image}" style="width:100px; height:110px;"></td>
+											<td>${cart.product_name}
+												<br>${cart.product_color}/${cart.product_size} &nbsp;
+												<input class="p_no" type="hidden" value="${cart.product_no}"/>
+											</td>
+											<!-- 수량 -->
+											<td>
+												<div class="number">
+													<button type="button" onclick="minus(this)" class="decreaseQuantity">
+													<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/minus.png" style="width: 20px; height: 20px;">
+													</button>
+													<span class="numberUpDown">${cart.quantity}</span>
+													<button type="button" onclick="plus(this)" class="increaseQuantity">
+														<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/plus1.png" style="width: 20px; height: 20px;">
+													</button>
+													<br>
+												</div>
+											</td>
+											<!--///////// 수량 -->
+												<c:set value="${cart.discount}" var="discount"/>
+												<c:set value="${cart.quantity}" var="quantity"/>
+												<td id="sale" class="discountvalue"><c:out value="${discount * quantity}"/>원</td>
+												<input class="discount" type="hidden" value="${discount * quantity}"/>
+											<!-- 할인 -->
+											<td><input type="hidden"value="${cart.cart_no}"/></td>
+											<td width="140px;"><div class="product_p" style="width: 130px;">${cart.total_price}원</div></td>
+											<td><a href="#" class="btn_list_del" onclick="deleteSelectCart(this);">삭제</a></td>
+											</tr>
+											</tbody>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+								</c:choose>
+								<tfoot id="GNRL_DLV_cart_foot">
 									<tr>
 										<td colspan="6" class="dvTotal"><strong>배송비</strong>
 										<em id="total_GNRL_DLV_dlv_amt">0원</em></td>
 									</tr>
 								</tfoot>
 							</table>
-							<div class="tableBtarea" id="GNRL_DLV_tableBtarea" style="display: none;">
-								<a href="#"><span>선택상품삭제</span></a>
-							</div>
 							<div class="btnWrap">
 								<a href="/test/index.do" class="btn lg" style="margin-top:50px;">쇼핑 계속하기</a>
 							</div>
@@ -216,8 +217,6 @@ var user_no = localStorage.getItem("user_no");
 				var cart_no = new Array();
 				$('input:checkbox[class=chBox]:checked').each(function(){
 					cart_no.push(parseInt($(this).val()));
-					alert($(this).val());
-					alert(cart_no);
 				});	
 				$.ajax({
 					url:'/test/selectedcartList.do',
@@ -250,8 +249,6 @@ var user_no = localStorage.getItem("user_no");
 						var cart_no = new Array();
 						$('input:checkbox[class=chBox]:checked').each(function(){
 							cart_no.push(parseInt($(this).val()));
-							alert($(this).val());
-							alert(cart_no);
 						});	
 						$.ajax({
 							url:'/test/selectedcartList.do',
@@ -403,6 +400,31 @@ var user_no = localStorage.getItem("user_no");
 		}
 	}
 	
+	function deleteAll(){
+		if(user_no != null){
+			$.ajax({
+				url:'/test/deleteAllCart.do',
+			    type:'POST',
+				data: {"user_no":user_no },
+				success:function(data) {
+					if(data == 1){
+					console.log("db 삭제 완료");
+						$('tr').remove('.row');
+						var append = '<tr><td><div style="width:880px; height:200px; padding-top:100px;">장바구니에 담긴 상품이 없습니다.</div></td></tr>';
+						$('.add').append(append);
+						$('#GNRL_DLV_god_amt').text(0);
+						$('#GNRL_DLV_dc_amt').text(0);
+						$('#GNRL_DLV_total_amt').text(0);
+					}
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+				}
+			});
+		}else{
+			location.href="/test/deleteAllCart.do";
+		}
+	}
  </script>
 <%@ include file="/footer.jsp"%>
 </body>

@@ -16,17 +16,19 @@ public class CartDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public int deleteCart(CartVo vo) {
-		return sqlSessionTemplate.delete("cartDao.deleteCart", vo);
-		
-	}
 	public int addCart(CartVo vo) {
 		return sqlSessionTemplate.insert("cartDao.addCart", vo);
 	}
-	public int deleteAllCart(CartVo vo) {
-		return sqlSessionTemplate.delete("cartDao.deleteAllCart", vo);
+	
+	/*카트 삭제*/
+	public int deleteAllCart(String user_no) {
+		return sqlSessionTemplate.delete("cartDao.deleteAllCart", user_no);
 	}
-
+	
+	public int deleteCart(List<String> cart_no) {
+		return sqlSessionTemplate.delete("cartDao.deleteCart", cart_no);	
+	}
+	
 	/* 카트선택 */
 	public List<CartVo> cartList(String user_no) {
 		return sqlSessionTemplate.selectList("cartDao.cartList", user_no);

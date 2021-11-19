@@ -64,22 +64,31 @@ public class CartController {
 		return result;
 	}
 
-	// 장바구니 전체 삭제하기
+	// 장바구니 전체 삭제하기 - 회원
 	@RequestMapping("/deleteAllCart.do")
-	public ModelAndView deleteAllCart(CartVo vo) {
-		ModelAndView mav = new ModelAndView();
-		cartserviceimpl.deleteAllCart(vo);
-		mav.setViewName("cart");
-		return mav;
+	@ResponseBody
+	public int deleteAllCart(String user_no) {
+		System.out.println("회원 장바구니 전체 삭제 시작");
+		int result = 0;
+		int delete = cartserviceimpl.deleteAllCart(user_no);
+		if(delete > 0) {
+			System.out.println("전체삭제완료");
+			result = 1;
+		}
+		return result;
 	}
 
-	// 장바구니 삭제하기
+	// 장바구니 삭제하기 - 회원
 	@RequestMapping("/deleteCart.do")
-	public ModelAndView deleteCart(CartVo vo) {
-		ModelAndView mav = new ModelAndView();
-		cartserviceimpl.deleteCart(vo);
-		mav.setViewName("cart");
-		return mav;
+	@ResponseBody
+	public int deleteCart(List<String> cart_no) {
+		int result = 0;
+		int count = cart_no.size();
+		int delete = cartserviceimpl.deleteCart(cart_no);
+			if(delete == count) {
+				result = 1;
+			}
+		return result;
 	}
 
 	// 장바구니 리스트 조회하기
@@ -92,13 +101,11 @@ public class CartController {
 			List<CartVo> test = cartserviceimpl.cartList(user_no);
 				if(test.size() == 0) {
 					mav.addObject("emptyCart", "없음");
+				}else {
+					System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getAll_price());
+					mav.addObject("getcartList", cartserviceimpl.cartList(user_no));
 				}
-				for(CartVo m : test) {
-					System.out.println(m.getTotal_price());
-				}
-			System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getAll_price());
-			mav.addObject("getcartList", cartserviceimpl.cartList(user_no));
-			mav.setViewName("cart");
+				mav.setViewName("cart");
 		}else{
 		/////////////비회원//////////////
 			System.out.println("비회원");
