@@ -78,7 +78,7 @@ public class CartController {
 		}
 		return result;
 	}
-
+	
 	// 장바구니 삭제하기 - 회원
 	@RequestMapping("/deleteCart.do")
 	@ResponseBody
@@ -91,7 +91,42 @@ public class CartController {
 			}
 		return result;
 	}
-
+	
+	// 장바구니 전체삭제하기 - 비회원
+	@RequestMapping("/deleteAllCartNonMember.do")
+	@ResponseBody
+	public int deleteAllCartNonMemeber(HttpSession session) {
+		System.out.println("비회원 장바구니 전체 삭제 시작");
+		int result = 0;
+		session.setAttribute("cart", null);
+		System.out.println("비회원 전체삭제완료");
+		result = 1;
+		return result;
+	}
+	
+	// 장바구니 삭제하기 - 비회원
+	@RequestMapping("/deleteCartNonMember.do")
+	@ResponseBody
+	public CartVo deleteCartNonMember(@RequestBody List<String> product_no, HttpSession session) {
+		List<CartVo> cart =  (List<CartVo>) session.getAttribute("cart");
+		int all_price = cart.get(0).getAll_price();
+		int all_discount = cart.get(0).getAll_discount();
+		CartVo vo = new CartVo();
+		for(int i=0; i < cart.size(); i++) {
+			for(int j=0; j < product_no.size(); j++) {
+				if(cart.get(i).getProduct_no() == Integer.parseInt(product_no.get(j))) {
+					cart.remove(i);
+					all_price -= cart.get(i).getTotal_price();
+					all_discount -= cart.get(i).getDiscount_total();
+				}
+			}
+		}
+		session.setAttribute("cart", cart);
+		vo.setAll_price(all_price);
+		vo.setAll_discount(all_discount);
+		return vo;
+	}
+	
 	// 장바구니 리스트 조회하기
 	@RequestMapping("/getcartList.do")
 	@ResponseBody
@@ -148,11 +183,13 @@ public class CartController {
 		int discount_all = 0;
 		List<CartVo> cart =  (List<CartVo>) session.getAttribute("cart");
 		for(int i=0; i < cart.size(); i++) {
-			if(cart.get(i).getProduct_no() == Integer.parseInt(product_no.get(i))) {
-				CartVo check = cart.get(i);
-				product_all += check.getTotal_price();
-				discount_all += check.getAll_discount();
-				System.out.println("세션에 있는 할인 값 : " + check.getAll_discount());
+			for(int j=0; j < product_no.size(); j++) {
+				if(cart.get(i).getProduct_no() == Integer.parseInt(product_no.get(j))) {
+					CartVo check = cart.get(i);
+					product_all += check.getTotal_price();
+					discount_all += check.getAll_discount();
+					System.out.println("세션에 있는 할인 값 : " + check.getAll_discount());
+				}
 			}
 		}
 		vo.setTotal_price(product_all);

@@ -94,9 +94,9 @@
 									</tr>
 								</c:when>
 								<c:otherwise>
+								<tr class="add">
 									<c:forEach var="cart" items="${getcartList}" varStatus="status">
 										<!-- 선택 체크 -->
-									<tr class="add">
 										<tbody id="delRow">
 											<tr class="row">
 											<td>
@@ -134,8 +134,8 @@
 											<td width="140px;"><div class="product_p" style="width: 130px;">${cart.total_price}원</div></td>
 											</tr>
 											</tbody>
-										</tr>
 									</c:forEach>
+								</tr>
 								</c:otherwise>
 								</c:choose>
 								<tfoot id="GNRL_DLV_cart_foot">
@@ -238,7 +238,29 @@ var user_no = localStorage.getItem("user_no");
 					}
 				});
 			}else{
-				// 비회원 체크박스
+				//////// 비회원////////
+				var product_no = new Array();
+				$('input:checkbox[class=chBox]:checked').each(function(){
+					product_no.push($(this).closest('tbody').find('.p_no').val());
+				});
+				$.ajax({
+					url:'/test/selectedcartListNonMember.do',
+				    type:'POST',
+					dataType : "json",
+					data: JSON.stringify(product_no),
+					contentType : "application/json",
+					success:function(data) {
+						var all_price_Nonuser = parseInt(data.total_price);
+						var all_discount =  parseInt(data.all_discount);
+						var total_amount = all_price_Nonuser - all_discount
+						$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
+						$('#GNRL_DLV_dc_amt').text(all_discount);
+						$('#GNRL_DLV_total_amt').text(total_amount);
+					},
+					error:function() {
+						alert('다시 시도해주세요');
+					}
+				});
 			}
 		});
 		
@@ -453,6 +475,7 @@ var user_no = localStorage.getItem("user_no");
 		}
 	}
 	
+	//전체삭제
 	function deleteAll(){
 		if(user_no != null){
 			$.ajax({
@@ -475,8 +498,24 @@ var user_no = localStorage.getItem("user_no");
 				}
 			});
 		}else{
-			location.href="/test/deleteAllCart.do";
-			// 비회원
+			$.ajax({
+				url:'/test/deleteAllCartNonMember.do',
+			    type:'POST',
+				success:function(data) {
+					if(data == 1){
+					console.log("session 삭제 완료");
+						$('tr').remove('.row');
+						var append = '<tr><td><div style="width:880px; height:200px; padding-top:100px;">장바구니에 담긴 상품이 없습니다.</div></td></tr>';
+						$('.add').append(append);
+						$('#GNRL_DLV_god_amt').text(0);
+						$('#GNRL_DLV_dc_amt').text(0);
+						$('#GNRL_DLV_total_amt').text(0);
+					}
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+				}
+			});
 		}
 	}
 	
@@ -509,7 +548,7 @@ var user_no = localStorage.getItem("user_no");
 								location.reload();
 							},
 							error:function() {
-								alert('다시 시도해주세요');
+								alert('db 자료 받기 실패');
 							}
 						});
 					}else{
@@ -521,7 +560,29 @@ var user_no = localStorage.getItem("user_no");
 				}
 			});
 		}else{
-			//비회원
+			//////// 비회원////////
+			var product_no = new Array();
+			$('input:checkbox[class=chBox]:checked').each(function(){
+				product_no.push($(this).closest('tbody').find('.p_no').val());
+			});
+			$.ajax({
+				url:'/test/deleteCartNonMember.do',
+			    type:'POST',
+				dataType : "json",
+				data: JSON.stringify(product_no),
+				contentType : "application/json",
+				success:function(data) {
+					var all_price_Nonuser = parseInt(data.total_price);
+					var all_discount =  parseInt(data.all_discount);
+					var total_amount = all_price_Nonuser - all_discount
+					$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
+					$('#GNRL_DLV_dc_amt').text(all_discount);
+					$('#GNRL_DLV_total_amt').text(total_amount);
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+				}
+			});
 		}
 	}
 	
