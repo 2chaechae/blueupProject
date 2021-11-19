@@ -19,13 +19,13 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	@Override
-	public int deleteCart(CartVo vo) {
-		return cartdao.deleteCart(vo);
+	public int deleteCart(List<String> cart_no) {
+		return cartdao.deleteCart(cart_no);
 	}
 
 	@Override
-	public int deleteAllCart(CartVo vo) {
-		return cartdao.deleteAllCart(vo);
+	public int deleteAllCart(String user_no) {
+		return cartdao.deleteAllCart(user_no);
 	}
 
 	@Override
@@ -34,14 +34,13 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public int updateCart(CartVo vo) {
-		return cartdao.updateCart(vo);
-	}
-
-	@Override
 	public int updateCartNum(CartVo vo) {
 		return cartdao.updateCartNum(vo);
 	}
 
-	
+	@Override
+	public List<CartVo> selectedcartList(List<String> cart_no) {
+		return cartdao.selectedcartList(cart_no);
+	}
+
 }

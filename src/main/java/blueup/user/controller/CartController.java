@@ -1,32 +1,30 @@
 package blueup.user.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.service.CartServiceImpl;
-import blueup.user.service.WishServiceImpl;
 import blueup.user.vo.CartVo;
-import blueup.user.vo.WishListVo;
+
 
 @Controller
 public class CartController {
 
 	@Autowired
 	private CartServiceImpl cartserviceimpl;
-	@Autowired
-	private WishServiceImpl wishserviceimpl;
 
 	// 장바구니 추가하기
 	@RequestMapping("/addCart.do")
@@ -66,22 +64,31 @@ public class CartController {
 		return result;
 	}
 
-	// 장바구니 전체 삭제하기
+	// 장바구니 전체 삭제하기 - 회원
 	@RequestMapping("/deleteAllCart.do")
-	public ModelAndView deleteAllCart(CartVo vo) {
-		ModelAndView mav = new ModelAndView();
-		cartserviceimpl.deleteAllCart(vo);
-		mav.setViewName("cart");
-		return mav;
+	@ResponseBody
+	public int deleteAllCart(String user_no) {
+		System.out.println("회원 장바구니 전체 삭제 시작");
+		int result = 0;
+		int delete = cartserviceimpl.deleteAllCart(user_no);
+		if(delete > 0) {
+			System.out.println("전체삭제완료");
+			result = 1;
+		}
+		return result;
 	}
 
-	// 장바구니 삭제하기
+	// 장바구니 삭제하기 - 회원
 	@RequestMapping("/deleteCart.do")
-	public ModelAndView deleteCart(CartVo vo) {
-		ModelAndView mav = new ModelAndView();
-		cartserviceimpl.deleteCart(vo);
-		mav.setViewName("cart");
-		return mav;
+	@ResponseBody
+	public int deleteCart(List<String> cart_no) {
+		int result = 0;
+		int count = cart_no.size();
+		int delete = cartserviceimpl.deleteCart(cart_no);
+			if(delete == count) {
+				result = 1;
+			}
+		return result;
 	}
 
 	// 장바구니 리스트 조회하기
@@ -94,13 +101,11 @@ public class CartController {
 			List<CartVo> test = cartserviceimpl.cartList(user_no);
 				if(test.size() == 0) {
 					mav.addObject("emptyCart", "없음");
+				}else {
+					System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getAll_price());
+					mav.addObject("getcartList", cartserviceimpl.cartList(user_no));
 				}
-				for(CartVo m : test) {
-					System.out.println(m.getTotal_price());
-				}
-			System.out.println("장바구니 조회 상품 번호 : " + test.get(0).getAll_price());
-			mav.addObject("getcartList", cartserviceimpl.cartList(user_no));
-			mav.setViewName("cart");
+				mav.setViewName("cart");
 		}else{
 		/////////////비회원//////////////
 			System.out.println("비회원");
@@ -120,21 +125,20 @@ public class CartController {
 		return mav;
 	}
 
-	// 장바구니 변경하기
-	@RequestMapping("/updateCart.do")
+	// 선택된 장바구니 내역 가져오기
+	@RequestMapping("/selectedcartList.do")
 	@ResponseBody
-	public int updateCart(CartVo vo) {
-		System.out.println(vo.getCart_no());
-		System.out.println(vo.getUser_no ());
-		System.out.println(vo.getProduct_no());
-		System.out.println(vo.getProduct_name());
-		System.out.println(vo.getQuantity());
-		System.out.println(vo.getTotal_price());
-		System.out.println(vo.getProduct_size());
-		System.out.println(vo.getProduct_color());
-		return cartserviceimpl.updateCart(vo);
+	public List<CartVo> selectedcartList(@RequestBody List<String> cart_no){
+		System.out.println("test");
+		List<CartVo> test = cartserviceimpl.selectedcartList(cart_no);
+		for(CartVo m : test) {
+			System.out.println(m.getAll_price());
+		}
+		return cartserviceimpl.selectedcartList(cart_no);
 	}
 	
+	
+	// 장바구니 변경하기
 	@RequestMapping("/updateCartNum.do")
 	@ResponseBody
 	public int updateCartNum(CartVo vo) {
