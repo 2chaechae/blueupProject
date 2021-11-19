@@ -49,7 +49,7 @@
 							<div class="tableTopArea">
 								<a href="javascript:void(0)" onclick="deleteAll()" class="btn sm gray">
 									<span>전체상품삭제</span></a> 
-								<a href="#" class="btn sm gray">
+								<a href="javascript:void(0)" onclick="deleteCheck()" class="btn sm gray">
 									<span>선택상품삭제</span></a> 
 							</div>
 							<table class="board-list">
@@ -242,6 +242,7 @@ var user_no = localStorage.getItem("user_no");
 			}
 		});
 		
+		///////////////// 전체 체크 /////////////////
 		$("#allCheck").click(function(){
 			if($("input:checkbox[name=allCheck]").is(":checked") == true) {
 				$("input[name=chBox]:checkbox").prop("checked", true);
@@ -280,6 +281,7 @@ var user_no = localStorage.getItem("user_no");
 			}
 		});
 	});
+	
 	////////////// 수량변경 마이너스 /////////////////
 	function minus(element){
 		///////////////현재 값//////////////////////
@@ -366,7 +368,6 @@ var user_no = localStorage.getItem("user_no");
 		}
 		$(element).prev().text(end);
 		
-		/////// DB & Session update 및 화면처리 //////
 		if(user_no != null){
 			$.ajax({
 				url:'/test/updateCartNum.do',
@@ -423,8 +424,41 @@ var user_no = localStorage.getItem("user_no");
 			});
 		}else{
 			location.href="/test/deleteAllCart.do";
+			// 비회원
 		}
 	}
+	
+	function deleteCheck(){
+		if(user_no != null){
+			var cart_no = new Array();
+			$('input:checkbox[class=chBox]:checked').each(function(){
+				cart_no.push(parseInt($(this).val()));
+			});	
+			$.ajax({
+				url:'/test/selectedcartList.do',
+			    type:'POST',
+				dataType : "json",
+				data: JSON.stringify(cart_no),
+				contentType :  "application/json",
+				success:function(data) {
+					console.log("자료받기 완료");
+					var all_price = data[0].all_price;
+					var all_discount = data[0].all_discount;
+					var total_amount = all_price - all_discount;
+					$('#GNRL_DLV_god_amt').text(all_price);
+					$('#GNRL_DLV_dc_amt').text(all_discount);
+					$('#GNRL_DLV_total_amt').text(total_amount);
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+				}
+			});
+		}else{
+			//비회원
+		}
+	}
+	
+	
  </script>
 <%@ include file="/footer.jsp"%>
 </body>
