@@ -246,6 +246,7 @@ var user_no = localStorage.getItem("user_no");
 		$("#allCheck").click(function(){
 			if($("input:checkbox[name=allCheck]").is(":checked") == true) {
 				$("input[name=chBox]:checkbox").prop("checked", true);
+					//////// 회원////////
 					if(user_no != null){
 						var cart_no = new Array();
 						$('input:checkbox[class=chBox]:checked').each(function(){
@@ -271,10 +272,29 @@ var user_no = localStorage.getItem("user_no");
 							}
 						});
 					}else{
-						
-						$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
-						$('#GNRL_DLV_dc_amt').text(all_discount);
-						$('#GNRL_DLV_total_amt').text(total_amount);
+						//////// 비회원////////
+						var product_no = new Array();
+						$('input:checkbox[class=chBox]:checked').each(function(){
+							product_no.push($(this).closest('tbody').find('.p_no').val());
+						});
+						$.ajax({
+							url:'/test/selectedcartListNonMember.do',
+						    type:'POST',
+							dataType : "json",
+							data: JSON.stringify(product_no),
+							contentType : "application/json",
+							success:function(data) {
+								var all_price_Nonuser = parseInt(data.total_price);
+								var all_discount =  parseInt(data.all_discount);
+								var total_amount = all_price_Nonuser - all_discount
+								$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
+								$('#GNRL_DLV_dc_amt').text(all_discount);
+								$('#GNRL_DLV_total_amt').text(total_amount);
+							},
+							error:function() {
+								alert('다시 시도해주세요');
+							}
+						});
 					}
 			} else {
 				$("input[name=chBox]:checkbox").prop("checked", false);

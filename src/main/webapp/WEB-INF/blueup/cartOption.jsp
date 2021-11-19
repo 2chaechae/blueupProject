@@ -47,7 +47,7 @@
 <br>
 <span style="padding-left:10px;">¼ö·® : </span>
 <img onclick="plus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/plus1.png" style="width:20px; height:20px;">
-<input id="quantity" type="text" value=1 style="width:10px;"/>
+<input id="quantity" type="text" value=1 style="width:10px;" readonly />
 <img onclick="minus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/minus.png" style="width:20px; height:20px;">
 </div>
 <div style="width:300px; display: auto;">
@@ -100,6 +100,7 @@ function addCart(){
 	var product_name = "${data.get(0).product_name}";
 	var quantity = $('#quantity').val();
 	var discount = ${data.get(0).discount};
+	var all_discount =  quantity * discount;
 	var total_price = ${data.get(0).product_price} * quantity;
 	var main_image = "${data.get(0).main_image}";
 	if(user_no != null){
@@ -127,7 +128,7 @@ function addCart(){
 		    type:'POST',
 		   	cache:false,
 			data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
-				"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image
+				"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "all_discount" : all_discount
 			},
 			success:function(data) {
 				if(data == 1){

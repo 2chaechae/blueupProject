@@ -138,15 +138,26 @@ public class CartController {
 		return cartserviceimpl.selectedcartList(cart_no);
 	}
 	
+	// 선택된 장바구니 내역 가져오기 - 비회원
 	@RequestMapping("/selectedcartListNonMember.do")
 	@ResponseBody
-	public List<CartVo> selectedcartListNonMember(@RequestBody List<String> cart_no){
+	public CartVo selectedcartListNonMember(@RequestBody List<String> product_no, HttpSession session){
 		System.out.println("test");
-		List<CartVo> test = cartserviceimpl.selectedcartList(cart_no);
-		for(CartVo m : test) {
-			System.out.println(m.getAll_price());
+		CartVo vo = new CartVo();
+		int product_all = 0;
+		int discount_all = 0;
+		List<CartVo> cart =  (List<CartVo>) session.getAttribute("cart");
+		for(int i=0; i < cart.size(); i++) {
+			if(cart.get(i).getProduct_no() == Integer.parseInt(product_no.get(i))) {
+				CartVo check = cart.get(i);
+				product_all += check.getTotal_price();
+				discount_all += check.getAll_discount();
+				System.out.println("세션에 있는 할인 값 : " + check.getAll_discount());
+			}
 		}
-		return cartserviceimpl.selectedcartList(cart_no);
+		vo.setTotal_price(product_all);
+		vo.setAll_discount(discount_all);
+		return vo;
 	}
 	
 	
