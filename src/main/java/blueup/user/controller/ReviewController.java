@@ -1,5 +1,7 @@
 package blueup.user.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +38,10 @@ public class ReviewController {
 		return mav;
 	}
 	
-	// ¸®ºä Á¦¸ñ
-	/*
-	 * @RequestMapping("/getReviewContent.co") public ModelAndView
-	 * getReviewContent(ReviewVo vo) { return null;
-		
-	} */
 	
 	
-
+	
+	
 	// ¸®ºä ¸®½ºÆ® È£Ãâ
 	@RequestMapping("/getReviewList.do")
 	public ModelAndView getReviewList(ReviewVo vo, ModelAndView mav) {
@@ -52,15 +49,19 @@ public class ReviewController {
 		mav.setViewName("reviewView");
 		return mav;
 	}
-	// ¸®ºä ¾²±â Æû
-	@RequestMapping("/reviewWriteForm.do")
-	public ModelAndView reviewWriteForm(ReviewVo vo) {
-		
+	// ¸®ºä Á¤º¸¿Í ¾²±â Æû
+	@RequestMapping("/getProductInfoForReview.do")
+	public ModelAndView getProductInfoForReview(HttpSession session,ReviewVo vo) {
 		ModelAndView mav = new ModelAndView();
+		List<ReviewVo> reviewWrite = reviewServiceimpl.getProductInfoForReview(vo);
 		System.out.println("¸®ºä ¾²±â Æû");
 		mav.setViewName("reviewWrite");
+		mav.addObject("getProductInfoForReview", reviewServiceimpl.getProductInfoForReview(vo));
+		
 		return mav;
 	}
+	
+	
 	
 	// ¸®ºä µî·Ï
 		@RequestMapping("insertReview.do")

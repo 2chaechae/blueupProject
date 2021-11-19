@@ -11,6 +11,13 @@
 <body>
 <br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<input type="button" class="button" onclick="location.href='/test/reviewWriteForm.do' " value="리뷰 작성"/>
+<input type="button" class="button" onclick="getProductInfo()" value="리뷰 작성"/>
+<script type="text/javascript">
+	function getProductInfo(){
+		var user_no = localStorage.getItem("user_no");
+		var product_no = 101001; 
+		location.href='/test/getProductInfoForReview.do?user_no='+ user_no +'&product_no=' + product_no;
+	}
+</script>
 </body>
 </html>

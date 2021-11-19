@@ -34,7 +34,7 @@
 	<div class="container">
 		<div class="location-container">
 			<div class="location-contents">
-				<h2 class="title01">리뷰 작성</h2>
+				<h2 class="title01">리뷰 작성</h2>.
 				<p class="location">
 					<span><a href="/">Home</a></span> <span><a href="/">구매확정</a></span><strong>리뷰 작성</strong>
 				</p>
@@ -51,8 +51,8 @@
 				<tbody>
 				<tr><th scope="row">
 				<label for="boardWriteTitle">상품정보</label>
-				<td><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/top/t.jpg" width="200"
-											height="210"></td>
+				<td>
+				${review.product_img }</td>
 				<td>${review.product_name}</td>
 				  <td>${review.product_color}</td>
 										<td>${review.product_size }</td>

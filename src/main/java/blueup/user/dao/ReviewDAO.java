@@ -34,10 +34,11 @@ public class ReviewDAO {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewList" , vo);
 	}
 	
-	
-		
+	/* 상품 조회 */
+	public List<ReviewVo> getProductInfoForReview(ReviewVo vo) {
+		return sqlSessionTemplate.selectList("reviewDao.getProductInfoForReview", vo);
 	}
 	
-
+}
 
 	

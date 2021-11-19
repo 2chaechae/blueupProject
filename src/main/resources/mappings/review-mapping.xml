@@ -42,7 +42,6 @@
 	<!--전체 상품리뷰  -->
 	<select id="getReviewList" parameterType="reviewvo" resultType="reviewvo">
 		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
-		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
 	</select>
 	
 	<!-- 리뷰 수정을 위한 쿼리 -->
@@ -55,5 +54,14 @@
 		<!-- 사진이랑 리뷰 작성 시간 -->
 		WHERE REVIEW_NO = #{review_no}
 	</update>
+	
+	<!-- 상품정보가져오기 -->
+	<select id="getProductInfoForReview" resultType="reviewvo" >
+	  SELECT a.user_no, a.purchaseconfirm,
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
+		FROM order_request as a JOIN order_detail as b
+		on a.order_no = b.order_no and user_no = #{user_no};
+	   
+	</select>
 
 </mapper>
