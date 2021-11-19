@@ -8,13 +8,13 @@
 <!-- 다른 옵션의 상품일 경우 다른 재고로 추가할 것!!! -->
 	<insert id="insertStock" parameterType="stockvo">
 		INSERT INTO STOCK (
-			PRODUCT_NO, STOCK_QUANTITY, CLOTHES_SIZE, COLOR, UNIT_PRICE, PRODUCT_NAME,
+			PRODUCT_NO, STOCK_QUANTITY, PRODUCT_SIZE, PRODUCT_COLOR, UNIT_PRICE, PRODUCT_NAME,
 			CATEGORY_NAME, DETAILED_CATEGORY_NAME
 		) VALUES(
 			#{product_no}, 
 			#{stock_quantity}, 
-			#{clothes_size}, 
-			#{color}, 
+			#{product_size}, 
+			#{product_color}, 
 			#{unit_price},
 			#{product_name},
 			#{category_name}, 
@@ -53,7 +53,7 @@
 	
 	<!-- 상품번호 검색 -->
 	<select id="getStockbyProductno" parameterType="stockvo" resultType="stockvo">
-		SELECT stock_quantity, clothes_size FROM STOCK WHERE PRODUCT_NO = #{product_no} AND COLOR = #{color}
+		SELECT stock_quantity, product_size FROM STOCK WHERE PRODUCT_NO = #{product_no} AND PRODUCT_COLOR = #{product_color}
 	</select>
 	
 	<!-- 카테고리로 검색 -->

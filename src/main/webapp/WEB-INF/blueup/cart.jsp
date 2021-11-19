@@ -47,12 +47,13 @@
 						<!-- order list -->
 						<div class="orderTable">
 							<div class="tableTopArea">
-								<a href="javascript:void(0)" onclick="deleteAll()" class="btn sm gray">
+								<a href="javascript:void(0)" onclick="deleteAll()" class="btn sm gray"
+									style="margin-left:20px;">
 									<span>전체상품삭제</span></a> 
 								<a href="javascript:void(0)" onclick="deleteCheck()" class="btn sm gray">
 									<span>선택상품삭제</span></a> 
 							</div>
-							<table class="board-list">
+							<table class="board-list" style="width:800px; margin-left:28px;">
 								<colgroup>
 									<col style="width: 35px">
 									<col style="width:">
@@ -84,7 +85,7 @@
 									<th scope="col">수량</th>
 									<th scope="col">할인/혜택</th>
 									<th scope="col"><div style="width: 158px; padding-left:94px;">주문금액</div></th>
-									<th scope="col"><div style="display:flex; padding-left:217px;">삭제</div></th>
+
 								</tr>
 								<c:choose>
 								<c:when test="${emptyCart eq '없음'}">
@@ -131,7 +132,6 @@
 											<!-- 할인 -->
 											<td><input type="hidden"value="${cart.cart_no}"/></td>
 											<td width="140px;"><div class="product_p" style="width: 130px;">${cart.total_price}원</div></td>
-											<td><a href="#" class="btn_list_del" onclick="deleteSelectCart(this);">삭제</a></td>
 											</tr>
 											</tbody>
 										</tr>
@@ -140,7 +140,7 @@
 								</c:choose>
 								<tfoot id="GNRL_DLV_cart_foot">
 									<tr>
-										<td colspan="6" class="dvTotal"><strong>배송비</strong>
+										<td colspan="7" class="dvTotal"><strong>배송비</strong>
 										<em id="total_GNRL_DLV_dlv_amt">0원</em></td>
 									</tr>
 								</tfoot>
@@ -289,7 +289,7 @@ var user_no = localStorage.getItem("user_no");
 		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
 		var product_price = parseInt($(element).closest('tbody').find('.product_p').text()); // 선택상품의 상품총액
 		var discount_price = parseInt($(element).closest('tbody').find('.discount').val()); // 선택상품의 할인총액
-		
+		var product_no = parseInt($(element).closest('tbody').find('.p_no').val()); // 상품 번호
 		///////////////개당 값////////////////////
 		var per_p = parseInt(product_price / stat); // 1개 상품 금액
 		var per_d = parseInt(discount_price / stat); // 1개 상품 할인 금액
@@ -337,6 +337,23 @@ var user_no = localStorage.getItem("user_no");
 			});
 		}else{
 			// 비회원 마이너스 
+			$.ajax({
+				url:'/test/updateCartNumNonMember.do',
+			    type:'POST',
+				data: { "quantity":stat, "total_price":product_price, "product_no" : product_no
+					, "discount" : per_d},
+				success:function(data) {
+					if(data == 1 ){
+					console.log("마이너스 완료");
+					location.reload();
+					}
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+				}
+			});
+			
+			
 		}
 	}
 	
@@ -435,19 +452,34 @@ var user_no = localStorage.getItem("user_no");
 				cart_no.push(parseInt($(this).val()));
 			});	
 			$.ajax({
-				url:'/test/selectedcartList.do',
+				url:'/test/deleteCart.do',
 			    type:'POST',
 				dataType : "json",
 				data: JSON.stringify(cart_no),
-				contentType :  "application/json",
+				contentType : "application/json",
 				success:function(data) {
-					console.log("자료받기 완료");
-					var all_price = data[0].all_price;
-					var all_discount = data[0].all_discount;
-					var total_amount = all_price - all_discount;
-					$('#GNRL_DLV_god_amt').text(all_price);
-					$('#GNRL_DLV_dc_amt').text(all_discount);
-					$('#GNRL_DLV_total_amt').text(total_amount);
+					if(data == 1){
+					console.log("선택 삭제 완료");
+						$('input:checkbox[class=chBox]:checked').each(function(){
+							alert($(this).val());
+							$(this).closest('.row').remove();
+						});	
+						/////////// 삭제 후 내역 가져오기 //////////////
+						$.ajax({
+							url:'/test/getcartList.do',
+						    type:'POST',
+							data: {"user_no":user_no },
+							success:function(data) {
+								console.log("db 자료 받기 완료");
+								location.reload();
+							},
+							error:function() {
+								alert('다시 시도해주세요');
+							}
+						});
+					}else{
+						console.log("삭제 실패");
+					}
 				},
 				error:function() {
 					alert('다시 시도해주세요');

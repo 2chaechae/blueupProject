@@ -49,9 +49,10 @@ public class CartController {
 				result = "1";
 			}else {
 				List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
+				int present = cartList.size();
 				List<CartVo> addcartList = (List<CartVo>) session.getAttribute("cart");
 				addcartList.add(vo);
-				if(cartList.size() < addcartList.size()) {
+				if(present < addcartList.size()) {
 					System.out.println("길이 체크 완료");
 					result = "1";
 					// session:cart를 수정된 cartList로 재정의
@@ -81,7 +82,7 @@ public class CartController {
 	// 장바구니 삭제하기 - 회원
 	@RequestMapping("/deleteCart.do")
 	@ResponseBody
-	public int deleteCart(List<String> cart_no) {
+	public int deleteCart(@RequestBody List<String> cart_no) {
 		int result = 0;
 		int count = cart_no.size();
 		int delete = cartserviceimpl.deleteCart(cart_no);
@@ -138,14 +139,33 @@ public class CartController {
 	}
 	
 	
-	// 장바구니 변경하기
+	// 장바구니 변경하기 - 회원
 	@RequestMapping("/updateCartNum.do")
 	@ResponseBody
 	public int updateCartNum(CartVo vo) {
-		System.out.println(vo.getCart_no());
-		System.out.println(vo.getUser_no ());
-		System.out.println(vo.getQuantity());
-		System.out.println(vo.getTotal_price());
 		return cartserviceimpl.updateCartNum(vo);
 	}
+	
+	// 장바구니 변경하기 - 비회원
+	@RequestMapping("/updateCartNumNonMember.do")
+	@ResponseBody
+	public int updateCartNumNonMember(int product_no, CartVo vo, HttpSession session) {
+		List<CartVo> cart = (List<CartVo>) session.getAttribute("cart");
+		int result = 0;
+		for(int i=0; i < cart.size(); i++) {
+			if(cart.get(i).getProduct_no() == product_no) {
+				System.out.println("test");
+				CartVo check = cart.get(i);
+				check.setQuantity(vo.getQuantity()); //수량셋팅
+				check.setDiscount_total(vo.getDiscount() * vo.getQuantity()); // 할인가 셋팅 
+				check.setTotal_price(vo.getTotal_price()); // 총 판매액 셋팅
+				session.setAttribute("cart", cart);
+				result = 1;
+			}
+		}
+		return result;
+	}
+	
+	
+	
 }
