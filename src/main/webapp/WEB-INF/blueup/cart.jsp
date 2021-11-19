@@ -271,7 +271,10 @@ var user_no = localStorage.getItem("user_no");
 							}
 						});
 					}else{
-						// 비회원 체크박스
+						
+						$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
+						$('#GNRL_DLV_dc_amt').text(all_discount);
+						$('#GNRL_DLV_total_amt').text(total_amount);
 					}
 			} else {
 				$("input[name=chBox]:checkbox").prop("checked", false);

@@ -126,10 +126,21 @@ public class CartController {
 		return mav;
 	}
 
-	// 선택된 장바구니 내역 가져오기
+	// 선택된 장바구니 내역 가져오기 - 회원
 	@RequestMapping("/selectedcartList.do")
 	@ResponseBody
 	public List<CartVo> selectedcartList(@RequestBody List<String> cart_no){
+		System.out.println("test");
+		List<CartVo> test = cartserviceimpl.selectedcartList(cart_no);
+		for(CartVo m : test) {
+			System.out.println(m.getAll_price());
+		}
+		return cartserviceimpl.selectedcartList(cart_no);
+	}
+	
+	@RequestMapping("/selectedcartListNonMember.do")
+	@ResponseBody
+	public List<CartVo> selectedcartListNonMember(@RequestBody List<String> cart_no){
 		System.out.println("test");
 		List<CartVo> test = cartserviceimpl.selectedcartList(cart_no);
 		for(CartVo m : test) {
