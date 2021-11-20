@@ -10,6 +10,7 @@ public interface ReviewService {
 		public void updateReview(ReviewVo vo);
 		public List<ReviewVo> getReviewList (ReviewVo vo);
 		public ReviewVo getProductInfoForReview(ReviewVo vo);
+		public List<ReviewVo> getReviewproductList(ReviewVo vo);
 			
 		}
 		

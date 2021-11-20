@@ -129,27 +129,27 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	cursor: pointer;
 }
 </style> <script type="text/javascript">
-        $(document).ready(function() {
+	$(document).ready(function() {
 
-            //When page loads...
-            $(".tab_content").hide(); //Hide all content
-            $("ul.tabs li:first").addClass("active").show(); //Activate first tab
-            $(".tab_content:first").show(); //Show first tab content
+		//When page loads...
+		$(".tab_content").hide(); //Hide all content
+		$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+		$(".tab_content:first").show(); //Show first tab content
 
-            //On Click Event
-            $("ul.tabs li").click(function() {
+		//On Click Event
+		$("ul.tabs li").click(function() {
 
-                $("ul.tabs li").removeClass("active"); //Remove any "active" class
-                $(this).addClass("active"); //Add "active" class to selected tab
-                $(".tab_content").hide(); //Hide all tab content
+			$("ul.tabs li").removeClass("active"); //Remove any "active" class
+			$(this).addClass("active"); //Add "active" class to selected tab
+			$(".tab_content").hide(); //Hide all tab content
 
-                var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-                $(activeTab).fadeIn(); //Fade in the active ID content
-                return false;
-            });
+			var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+			$(activeTab).fadeIn(); //Fade in the active ID content
+			return false;
+		});
 
-        });
-    </script>
+	});
+</script>
 							</head>
 							<body>
 								<td></td>
@@ -166,9 +166,15 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<div id="tab1" class="tab_content">
 											<!--Content-->
 
-
-
-
+											<c:forEach var="review" items="${getReviewproductList}" varStatus="status">
+											<tr>
+                                   <img src="${getReviewproductList.product_img}" width="150px" height="150px" >
+				<td width="100px">${getReviewproductList.product_name}</td>
+				<td width="60px">${getReviewproductList.quantity}</td>
+				<td width="100px">  ${getReviewproductList.product_color}</td>
+										<td width="100px">${getReviewproductList.product_size}</td>
+				   </tr> 
+											</c:forEach>
 										</div>
 
 
@@ -189,10 +195,16 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 												<th scope="col">상품정보</th>
 												<th scope="col">후기 제목</th>
 												<th scope="col">후기 내용</th>
-
-												<th><br>
-												<input type="button" class="button" value="수정" /><br> <input
-													type="button" class="button" value="삭제" /></th>
+													<img src="${getProductInfoForReview.product_img}"
+												width="150px" height="150px">
+											${getProductInfoForReview.product_name}
+											<td width="60px">${getProductInfoForReview.quantity}</td>
+											<td width="100px">
+												${getProductInfoForReview.product_color}</td>
+											<td>${getProductInfoForReview.product_size}</td>
+												<th><br> <input type="button" class="button"
+													value="수정" /><br> <input type="button" class="button"
+													value="삭제" /></th>
 
 												<%-- </tr>
 											<!-- 여기에 내가쓴 리뷰들 목록 갖고 오기 -->
@@ -209,11 +221,12 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 													varStatus="status">
 													<input type="hidden" value="${review.review_no}"></input>
 													<tr>
+
 														<td>${review.product_name}</td>
 														<td>${review.star}</td>
 														<td>${review.product_color}</td>
 														<td>${review.product_size}</td>
-														
+
 														<!-- 공지사항 링크 -->
 													</tr>
 												</c:forEach>
@@ -252,8 +265,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 </form>
 <script>
-
-	</script>
+	
+</script>
 <%@ include file="footer.jsp"%>
 </body>
 </html>

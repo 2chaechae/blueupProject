@@ -68,7 +68,7 @@
 							class="required">*</span></th>
 						<td><input type="text" id="boardWriteTitle"
 							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${getProductInfoForReview.review_title}"> 
+							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${insertReview.review_title}"> 
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
@@ -78,7 +78,7 @@
 							class="required">*</span></th>
 						<td><textarea cols="30" rows="10" id="boardWriteContent"
 								placeholder="1,000자 미만 (특수문자 \ / : < > ; 사용불가)으로 입력해 주세요."
-								style="width: 1000px; height: 150px;" >${getProductInfoForReview.review_content}</textarea>
+								style="width: 1000px; height: 150px;" >${insertReview.review_content}</textarea>
 							<div class="clearfix">
 								<div class="fl">
 									<span class="error-msg" id="boardWriteContent-msg"
@@ -109,11 +109,17 @@
 			<!-- <a href="#" id="cancelBtn" class="btn btn-style03">취소</a> -->
 			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
 			<input type="button" class="button" onclick="location.href='/test/reviewWriteForm.do' " value="취소"/>
-			<input type="button" class="button" onclick="location.href='/test/getProductInfoForReview.do?user_no='+ user_no ;'"value="저장"/>
+			<input type="button" class="button" onclick="getReviewList()'"value="저장"/>
 			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
-
+<script type="text/javascript">
+	function getReviewList(){
+		var user_no = localStorage.getItem("user_no");
+		var product_no = 101001; 
+		location.href='/test/insertReview.do?user_no='+ user_no +'&product_no=' + product_no;
+	}
+</script>
 		<%@ include file="/footer.jsp"%>
 		</body>
 		</html>

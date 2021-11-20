@@ -40,4 +40,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.getProductInfoForReview(vo);
 	}
 
+	@Override
+	public List<ReviewVo> getReviewproductList(ReviewVo vo) {
+		return reviewDAO.getReviewproductList(vo);
+	}
+
 }

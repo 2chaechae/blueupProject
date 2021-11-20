@@ -64,5 +64,16 @@
 		AND b.order_status='구매확정';
 	 
 	</select>
+	
+	
+	<!-- 작성가능한상품정보가져오기 -->
+	<select id="getReviewproductList" resultType="reviewvo" >
+	  SELECT a.user_no, a.purchaseconfirm,
+	   b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
+		FROM order_request as a JOIN order_detail as b
+		on a.order_no = b.order_no WHERE a.user_no = 10004
+		AND b.order_status='구매확정';
+	 
+	</select>
 
 </mapper>

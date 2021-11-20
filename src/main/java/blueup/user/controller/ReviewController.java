@@ -41,11 +41,16 @@ public class ReviewController {
 
 	// 리뷰 리스트 호출
 	@RequestMapping("/getReviewList.do")
-	public ModelAndView getReviewList(ReviewVo vo, ModelAndView mav) {
-		mav.addObject("reviewList", reviewService.getReviewList(vo));
+	public ModelAndView getReviewList(HttpSession session, ReviewVo vo) {
+		ModelAndView mav = new ModelAndView();
+		List<ReviewVo> reviewView = reviewService.getReviewList(vo);
+		System.out.println("상품 정보 출력");
+		mav.addObject("getReviewList", reviewView);
 		mav.setViewName("reviewView");
 		return mav;
 	}
+	
+	
 
 	// 리뷰 정보와 쓰기 폼
 	@RequestMapping("/getProductInfoForReview.do")
@@ -58,6 +63,19 @@ public class ReviewController {
 		return mav;
 	}
 
+	// 작성가능한 리뷰 상품 정보 호출
+			@RequestMapping("/getReviewproductList.do")
+			public ModelAndView getReviewproductList(HttpSession session, ReviewVo vo) {
+				ModelAndView mav = new ModelAndView();
+				List<ReviewVo> reviewView = reviewService.getReviewproductList(vo);
+				System.out.println("상품 정보 출력");
+				mav.addObject("getReviewproductList", reviewView);
+				mav.setViewName("reviewView");
+				return mav;
+			}
+
+	
+	
 	// 리뷰 등록
 
 	@RequestMapping("/insertReview.do")
@@ -83,7 +101,7 @@ public class ReviewController {
 		vo.setReview_time(review_time);
 		vo.setProduct_color(product_color);
 		vo.setReview_photo_no(review_photo_no);
-		reviewService.insertReview(vo);
+		reviewService.insertReview(vo);		
 		mav.setViewName("reviewView");
 		return mav;
 		
