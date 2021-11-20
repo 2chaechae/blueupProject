@@ -24,6 +24,7 @@ public class ReviewVo {
 	String main_image; //제품 사진
 	String product_img; //상품정보 사진
 	String order_status; //구매확정 
-	String quantity;
+	String quantity;//구매 수량
+	int review_photo_no; //리뷰 포토 번호
 	
 }

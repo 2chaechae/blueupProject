@@ -21,8 +21,8 @@ public class ReviewDAO {
 	}
 
 	/* ¸®ºä ÀÛ¼º */
-	public int insertReview(ReviewVo vo) {
-		return sqlSessionTemplate.insert("reviewDao.insertReview", vo);
+	public void insertReview(ReviewVo vo) {
+		sqlSessionTemplate.insert("reviewDao.insertReview", vo);
 	}
 
 	/* ¸®ºä ¼öÁ¤ */
