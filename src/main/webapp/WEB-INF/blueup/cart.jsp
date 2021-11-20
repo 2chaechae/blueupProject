@@ -209,9 +209,11 @@
 <!--// 컨텐츠 끝 -->
 
 <script>
+
 $(document).ready(function(){
 	var user_no = localStorage.getItem("user_no");
 });
+var user_no = localStorage.getItem("user_no");
 	$(document).ready(function(){
 		$('.chBox').change(function(){
 			if(user_no != null){
@@ -219,49 +221,61 @@ $(document).ready(function(){
 				$('input:checkbox[class=chBox]:checked').each(function(){
 					cart_no.push(parseInt($(this).val()));
 				});	
-				$.ajax({
-					url:'/test/selectedcartList.do',
-				    type:'POST',
-					dataType : "json",
-					data: JSON.stringify(cart_no),
-					contentType :  "application/json",
-					success:function(data) {
-						console.log("자료받기 완료");
-						var all_price = data[0].all_price;
-						var all_discount = data[0].all_discount;
-						var total_amount = all_price - all_discount;
-						$('#GNRL_DLV_god_amt').text(all_price);
-						$('#GNRL_DLV_dc_amt').text(all_discount);
-						$('#GNRL_DLV_total_amt').text(total_amount);
-					},
-					error:function() {
-						alert('다시 시도해주세요');
-					}
-				});
+				if(cart_no.length == 0){
+					$('#GNRL_DLV_god_amt').text(0);
+					$('#GNRL_DLV_dc_amt').text(0);
+					$('#GNRL_DLV_total_amt').text(0);
+				}else{
+					$.ajax({
+						url:'/test/selectedcartList.do',
+					    type:'POST',
+						dataType : "json",
+						data: JSON.stringify(cart_no),
+						contentType :  "application/json",
+						success:function(data) {
+							console.log("자료받기 완료");
+							var all_price = data[0].all_price;
+							var all_discount = data[0].all_discount;
+							var total_amount = all_price - all_discount;
+							$('#GNRL_DLV_god_amt').text(all_price);
+							$('#GNRL_DLV_dc_amt').text(all_discount);
+							$('#GNRL_DLV_total_amt').text(total_amount);
+						},
+						error:function() {
+							alert('다시 시도해주세요');
+						}
+					});
+				}
 			}else{
 				//////// 비회원////////
 				var product_no = new Array();
 				$('input:checkbox[class=chBox]:checked').each(function(){
 					product_no.push($(this).closest('tbody').find('.p_no').val());
 				});
-				$.ajax({
-					url:'/test/selectedcartListNonMember.do',
-				    type:'POST',
-					dataType : "json",
-					data: JSON.stringify(product_no),
-					contentType : "application/json",
-					success:function(data) {
-						var all_price_Nonuser = parseInt(data.total_price);
-						var all_discount =  parseInt(data.all_discount);
-						var total_amount = all_price_Nonuser - all_discount
-						$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
-						$('#GNRL_DLV_dc_amt').text(all_discount);
-						$('#GNRL_DLV_total_amt').text(total_amount);
-					},
-					error:function() {
-						alert('다시 시도해주세요');
-					}
-				});
+				if(product_no.length == 0){
+					$('#GNRL_DLV_god_amt').text(0);
+					$('#GNRL_DLV_dc_amt').text(0);
+					$('#GNRL_DLV_total_amt').text(0);
+				}else{
+					$.ajax({
+						url:'/test/selectedcartListNonMember.do',
+					    type:'POST',
+						dataType : "json",
+						data: JSON.stringify(product_no),
+						contentType : "application/json",
+						success:function(data) {
+							var all_price_Nonuser = parseInt(data.total_price);
+							var all_discount =  parseInt(data.all_discount);
+							var total_amount = all_price_Nonuser - all_discount
+							$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
+							$('#GNRL_DLV_dc_amt').text(all_discount);
+							$('#GNRL_DLV_total_amt').text(total_amount);
+						},
+						error:function() {
+							alert('다시 시도해주세요');
+						}
+					});
+				}
 			}
 		});
 		
@@ -608,7 +622,6 @@ function checkOrder(){
 		if(logincheck == true){
 			location.href="/test/login.do";
 		}else{
-			// 비회원 넘길 정보 위치
 			var product_no = new Array();
 			alert("비회원으로 주문");
 			if($('input:checkbox[class=chBox]:checked').length == 0){
@@ -626,7 +639,21 @@ function checkOrder(){
 			location.href="/test/moveToOrderNonMember.do?product_no=" + product_no;
 		}
 	}else{
+		var cart_no = new Array();
 		// 회원 넘길 정보 위치
+		if($('input:checkbox[class=chBox]:checked').length == 0){
+			alert("전체");
+			$('input:checkbox[class=chBox]').each(function(){
+				cart_no.push($(this).val());
+				alert($(this).val());
+			});
+		}else{
+			alert("선택");
+			$('input:checkbox[class=chBox]:checked').each(function(){
+				cart_no.push($(this).val());
+			});	
+		}
+		location.href="/test/moveToOrder.do?cart_no=" + cart_no;
 	}
 }
 	

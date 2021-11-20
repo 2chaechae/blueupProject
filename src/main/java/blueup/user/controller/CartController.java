@@ -244,6 +244,25 @@ public class CartController {
 		return result;
 	}
 	
+	// 주문페이지 이동 - 회원
+	@RequestMapping("/moveToOrder.do")
+	@ResponseBody
+	public ModelAndView moveToOrder(@RequestParam(value="cart_no")List<String> cart_no, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<CartVo> orderList = cartserviceimpl.selectedcartList(cart_no);
+		for(int i=0; i < orderList.size(); i++) {
+			System.out.println(orderList.get(i).getAll_discount());
+			System.out.println(orderList.get(i).getProduct_name());
+		}
+		int check = cartserviceimpl.deleteCart(cart_no);
+		if(check > 0) {
+			System.out.println("삭제 성공");
+			session.setAttribute("order", orderList);
+			mav.setViewName("redirect:/getOrder.do");
+		}
+		return mav;
+	}
+	
 	// 주문페이지 이동 - 비회원
 	@RequestMapping("/moveToOrderNonMember.do")
 	@ResponseBody
@@ -260,7 +279,7 @@ public class CartController {
 			}
 		}
 		session.setAttribute("cart", cart);
-		session.setAttribute("order", orderList);
+		session.setAttribute("orderNonMember", orderList);
 		mav.setViewName("redirect:/getOrder.do");
 		return mav;
 	}
