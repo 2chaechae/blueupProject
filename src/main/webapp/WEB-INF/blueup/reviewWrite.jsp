@@ -51,14 +51,14 @@
 				<tbody>
 				<tr><th scope="row">
 				<label for="boardWriteTitle">상품정보</label>
-				<td>
-				<img src="${getProductInfoForReview.product_img }" width="300px" height="350px">
-				<td>${getProductInfoForReview.product_name}</td>
-				<td>${getProductInfoForReview.quantity}</td>
-				  <td>${getProductInfoForReview.product_color}</td> 
-										<td>${getProductInfoForReview.product_size}</td>
+				<div></div>
+				<img src="${getProductInfoForReview.product_img}" width="150px" height="150px" >
+				<td width="100px">${getProductInfoForReview.product_name}</td>
+				<td width="60px">${getProductInfoForReview.quantity}</td>
+				<td width="100px">  ${getProductInfoForReview.product_color}</td>
+										<td width="100px">${getProductInfoForReview.product_size}</td>
 				 </th>
-				 <%-- 나중에  src="${REVIEW_PHOTO.photo1}"등으로 고쳐야 함 --%>
+				 <%-- 나중에  src="${REVIEW_PHOTO.photo1}"등으로 고쳐야 a함 --%>
 				</tr>
 				<tr></tr><tr></tr><tr></tr>
 				<!-- 여기에 디비에서 구매한 COLOR,CLOTHES_SIZE,PRODUCT_NAME 적어야함. -->
