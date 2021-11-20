@@ -24,6 +24,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+	var user_id = "${user_id}";
 	
 	$('#modifyPwConfirm').on('click',function(){
 		var newUserPw = $('#newUser_pw').val();
@@ -44,6 +45,11 @@ $(document).ready(function(){
 			$('#newUser_pw').focus();
 			return;
 		}
+		
+		/* $.ajax({
+			
+		}); */
+		
 	});
 	
 	

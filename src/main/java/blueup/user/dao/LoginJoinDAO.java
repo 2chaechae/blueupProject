@@ -36,4 +36,24 @@ public class LoginJoinDAO {
 		sqlSssionTemplate.selectOne("loginjoinDao.quit", userVo);
 	}
 
+	public int certPhone(UsersVo userVo) {
+		return sqlSssionTemplate.selectOne("loginjoinDao.certPhone", userVo);
+	}
+
+	public List<UsersVo> foundUserId(UsersVo userVo) {
+		return sqlSssionTemplate.selectList("loginjoinDao.foundUserId", userVo);
+	}
+
+	public List<UsersVo> rgstTime(UsersVo userVo) {
+		return sqlSssionTemplate.selectList("loginjoinDao.rgstTime", userVo);
+	}
+
+	public List<UsersVo> foundEmailId(UsersVo userVo) {
+		return sqlSssionTemplate.selectList("loginjoinDao.foundEmailId", userVo);
+	}
+
+	public int userEmailId(UsersVo userVo) {
+		return sqlSssionTemplate.selectOne("loginjoinDao.userEmailId", userVo);
+	}
+
 }
