@@ -1140,8 +1140,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	var user_no = localStorage.getItem("user_no");
-	localStorage.setItem("user_no", user_no);
-	localStorage.getItem("user_no");
 });
 </script>
 </html>
