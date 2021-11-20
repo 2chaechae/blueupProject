@@ -52,6 +52,9 @@ public class CartController {
 				int present = cartList.size();
 				List<CartVo> addcartList = (List<CartVo>) session.getAttribute("cart");
 				addcartList.add(vo);
+				System.out.println(vo.getDiscount());
+				System.out.println(vo.getDiscount_rate());
+				System.out.println(vo.getDiscount_total());
 				if(present < addcartList.size()) {
 					System.out.println("길이 체크 완료");
 					result = "1";
@@ -109,22 +112,37 @@ public class CartController {
 	@ResponseBody
 	public CartVo deleteCartNonMember(@RequestBody List<String> product_no, HttpSession session) {
 		List<CartVo> cart =  (List<CartVo>) session.getAttribute("cart");
-		int all_price = cart.get(0).getAll_price();
-		int all_discount = cart.get(0).getAll_discount();
+		int all_price = 0;
+		int all_discount = 0;
 		CartVo vo = new CartVo();
+		// 선택된 카트 삭제
 		for(int i=0; i < cart.size(); i++) {
 			for(int j=0; j < product_no.size(); j++) {
 				if(cart.get(i).getProduct_no() == Integer.parseInt(product_no.get(j))) {
 					cart.remove(i);
-					all_price -= cart.get(i).getTotal_price();
-					all_discount -= cart.get(i).getDiscount_total();
 				}
 			}
 		}
-		session.setAttribute("cart", cart);
-		vo.setAll_price(all_price);
-		vo.setAll_discount(all_discount);
-		return vo;
+		// 선택 후 남은 내역 합계 구하기
+		if(cart.size() > 0) {
+			for(int i=0; i < cart.size(); i++) {
+				all_price += cart.get(i).getTotal_price();
+				all_discount += cart.get(i).getDiscount() * cart.get(i).getQuantity();
+			}
+			// 합계 session에 반영
+			for(int i=0; i < cart.size(); i++) {
+				cart.get(i).setAll_price(all_price);
+				cart.get(i).setAll_discount(all_discount);
+			}
+			// 정보 넘기기
+			session.setAttribute("cart", cart);
+			vo.setAll_price(all_price);
+			vo.setAll_discount(all_discount);
+			return vo;
+		}
+		else {
+			return vo;
+		}
 	}
 	
 	// 장바구니 리스트 조회하기
@@ -146,7 +164,8 @@ public class CartController {
 		/////////////비회원//////////////
 			System.out.println("비회원");
 			System.out.println(user_no);
-			if(session.getAttribute("cart") != null) {
+			List<CartVo> list = (List<CartVo>) session.getAttribute("cart");
+			if(list != null && list.size() > 0 ) {
 				List<CartVo> cartList = (List<CartVo>) session.getAttribute("cart");
 				for(CartVo test : cartList) {
 					System.out.println("비회원 장바구니 조회 : " + test.getProduct_name());
@@ -225,6 +244,24 @@ public class CartController {
 		return result;
 	}
 	
-	
-	
+	// 주문페이지 이동 - 비회원
+	@RequestMapping("/moveToOrderNonMember.do")
+	@ResponseBody
+	public ModelAndView moveToOrderNonMember(@RequestParam(value="product_no" )List<String> product_no, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<CartVo> orderList = new ArrayList<CartVo>();
+		List<CartVo> cart = (List<CartVo>) session.getAttribute("cart");
+		for(int i=0; i < cart.size(); i++) {
+			for(int j=0; j < product_no.size(); j++) {
+				if(cart.get(i).getProduct_no() == Integer.parseInt(product_no.get(j))) {
+					orderList.add(cart.get(i));
+					cart.remove(i);
+				}
+			}
+		}
+		session.setAttribute("cart", cart);
+		session.setAttribute("order", orderList);
+		mav.setViewName("redirect:/getOrder.do");
+		return mav;
+	}
 }

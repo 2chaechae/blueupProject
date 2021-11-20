@@ -156,9 +156,8 @@
 							<div class="orderPayList d_fix_obj">
 								<h3>결제정보</h3>
 								<div class="orderPayInfo">
-								<c:set value="${getcartList.get(0).user_no}" var="user_no"/>
 								<c:choose>
-									<c:when test="${user_no > 0}" >
+									<c:when test="${user_no != null}" >
 										<dl>
 											<c:set value="${getcartList.get(0).all_price}" var="all_price"/>
 											<c:set value="${getcartList.get(0).all_discount}" var="all_discount"/>
@@ -198,7 +197,7 @@
 								</c:choose>
 								</div>
 								<div class="btn_order" id="GNRL_DLV_order_btn">
-									<a href="#" class="btn lg fill">주문하기</a>
+									<a href="javascript:void(0)" onclick="checkOrder()" class="btn lg fill">주문하기</a>
 								</div>
 							</div>
 						</div>
@@ -210,7 +209,9 @@
 <!--// 컨텐츠 끝 -->
 
 <script>
-var user_no = localStorage.getItem("user_no");
+$(document).ready(function(){
+	var user_no = localStorage.getItem("user_no");
+});
 	$(document).ready(function(){
 		$('.chBox').change(function(){
 			if(user_no != null){
@@ -572,12 +573,26 @@ var user_no = localStorage.getItem("user_no");
 				data: JSON.stringify(product_no),
 				contentType : "application/json",
 				success:function(data) {
-					var all_price_Nonuser = parseInt(data.total_price);
-					var all_discount =  parseInt(data.all_discount);
-					var total_amount = all_price_Nonuser - all_discount
-					$('#GNRL_DLV_god_amt').text(all_price_Nonuser);
-					$('#GNRL_DLV_dc_amt').text(all_discount);
-					$('#GNRL_DLV_total_amt').text(total_amount);
+					console.log("자료받기 완료");
+					if(data.all_price == 0){
+						$('tr').remove('.row');
+						var append = '<tr><td><div style="width:880px; height:200px; padding-top:100px;">장바구니에 담긴 상품이 없습니다.</div></td></tr>';
+						$('.add').append(append);
+						$('#GNRL_DLV_god_amt').text(0);
+						$('#GNRL_DLV_dc_amt').text(0);
+						$('#GNRL_DLV_total_amt').text(0);		
+					}else{
+						$('input:checkbox[class=chBox]:checked').each(function(){
+							alert($(this).val());
+							$(this).closest('.row').remove();
+						});	
+						var all_price_Nonmember = parseInt(data.all_price);
+						var all_discount =  parseInt(data.all_discount);
+						var total_amount = all_price_Nonmember - all_discount
+						$('#GNRL_DLV_god_amt').text(all_price_Nonmember);
+						$('#GNRL_DLV_dc_amt').text(all_discount);
+						$('#GNRL_DLV_total_amt').text(total_amount);
+					}
 				},
 				error:function() {
 					alert('다시 시도해주세요');
@@ -586,6 +601,34 @@ var user_no = localStorage.getItem("user_no");
 		}
 	}
 	
+/* 주문하기 */
+function checkOrder(){
+	if(user_no == null){
+		var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
+		if(logincheck == true){
+			location.href="/test/login.do";
+		}else{
+			// 비회원 넘길 정보 위치
+			var product_no = new Array();
+			alert("비회원으로 주문");
+			if($('input:checkbox[class=chBox]:checked').length == 0){
+				alert("전체");
+				$('input:checkbox[class=chBox]').each(function(){
+					product_no.push($(this).closest('tbody').find('.p_no').val());
+					alert($(this).val());
+				});
+			}else{
+				alert("선택");
+				$('input:checkbox[class=chBox]:checked').each(function(){
+					product_no.push($(this).closest('tbody').find('.p_no').val());
+				});	
+			}
+			location.href="/test/moveToOrderNonMember.do?product_no=" + product_no;
+		}
+	}else{
+		// 회원 넘길 정보 위치
+	}
+}
 	
  </script>
 <%@ include file="/footer.jsp"%>
