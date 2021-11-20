@@ -43,4 +43,28 @@ public class LoginJoinServiceImpl implements LoginJoinService{
 		
 	}
 
+	public int getCertPhone(UsersVo userVo) {
+		int chkNum = loginjoindao.certPhone(userVo);
+		return chkNum;
+	}
+
+	public List<UsersVo> getFoundUserId(UsersVo userVo) {
+		List<UsersVo> vo = loginjoindao.foundUserId(userVo);
+		return vo;
+	}
+
+	public List<UsersVo> getRgstTime(UsersVo userVo) {
+		return loginjoindao.rgstTime(userVo);
+	}
+
+	public List<UsersVo> getFoundEmailId(UsersVo userVo) {
+		List<UsersVo> vo = loginjoindao.foundEmailId(userVo);
+		return vo;
+	}
+
+	public int getUserEmailId(UsersVo userVo) {
+		int countEmail = loginjoindao.userEmailId(userVo);
+		return countEmail;
+	}
+
 }

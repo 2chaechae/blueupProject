@@ -94,17 +94,63 @@ public class LoginJoinController {
 	}
 	
 	@RequestMapping("/foundIdPage.do")
-	public ModelAndView foundIdPage() {
+	public ModelAndView foundIdPage(HttpServletRequest request, HttpSession session, UsersVo userVo) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("foundId");
+		String userId = userVo.getUser_id();
+		
+		List<UsersVo> list = loginjoinserviceimpl.getRgstTime(userVo);
+		
+		System.out.println("qweqwe_____ " + list.get(0).getUser_registration_time());
+		
+		mav.addObject("rgstTime", list.get(0).getUser_registration_time());
+		mav.addObject("user_id", userId);
 		
 		return mav;
 	}
 	
+	@RequestMapping("/foundId.do")
+	@ResponseBody
+	public Map<String,Object> foundId(String user_name, String phone1, String phone2, String phone3) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		UsersVo userVo = new UsersVo();
+		userVo.setUser_name(user_name);
+		userVo.setPhone1(phone1);
+		userVo.setPhone2(phone2);
+		userVo.setPhone3(phone3);
+		
+		List<UsersVo> list = loginjoinserviceimpl.getFoundUserId(userVo);
+		
+		map.put("list", list.get(0));
+	
+		return map;
+	}
+	
+	@RequestMapping("/foundEmailId.do")
+	@ResponseBody
+	public Map<String,Object> foundEmailId(String user_name, String email_id, String email_address) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		UsersVo userVo = new UsersVo();
+		userVo.setUser_name(user_name);
+		userVo.setEmail_id(email_id);
+		userVo.setEmail_address(email_address);
+		
+		List<UsersVo> list = loginjoinserviceimpl.getFoundEmailId(userVo);
+		
+		map.put("list", list.get(0));
+	
+		return map;
+	}
+	
 	@RequestMapping("/foundPwPage.do")
-	public ModelAndView foundPwPage() {
+	public ModelAndView foundPwPage(HttpServletRequest request, HttpSession session, UsersVo userVo) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("foundPw");
+		
+		String user_id = userVo.getUser_id().toString();
+		mav.addObject("user_id", user_id);
 		
 		return mav;
 	}
@@ -234,25 +280,50 @@ public class LoginJoinController {
 	}
 	
 	@RequestMapping("/getSendSMS.do")
-	public @ResponseBody JSONObject getSendSMS(String phoneNumber) {
+	@ResponseBody
+	public Map<String,Object> getSendSMS(String phone1,String phone2, String phone3, String user_name, String gubn) {
 		Random rand = new Random();
+		Map<String,Object> map = new HashMap<String,Object>();
+		
 		String numStr = "";
+		String errorMsg = "";
+		String sendingMsg = "";
+		String phoneNumber = phone1 + phone2 + phone3;
 		
 		for(int i = 0; i<4;i++) {
 			String ran = Integer.toString(rand.nextInt(10));
 			numStr+=ran;
 		}
 		
-		System.out.println("수신자 번호 : "+ phoneNumber);
+		if(gubn.equals("2")) {
+			
+			UsersVo userVo = new UsersVo();
+			userVo.setUser_name(user_name);
+			userVo.setPhone1(phone1);
+			userVo.setPhone2(phone2);
+			userVo.setPhone3(phone3);
+			
+			int chkNum = loginjoinserviceimpl.getCertPhone(userVo);
+			
+			if(chkNum > 0) {
+				Cool.certifiedPhoneNumber(phoneNumber, numStr);
+				sendingMsg = "인증번호를 발송했습니다. 휴대폰을 확인 해주세요";
+				map.put("sendingMsg", sendingMsg);
+			} else {
+				errorMsg = "해당 유저는 존재하지 않습니다";
+				numStr = "0";
+			}
+			map.put("errorMsg", errorMsg);
+			
+		} else if(gubn.equals("1")) {
+			
+			Cool.certifiedPhoneNumber(phoneNumber, numStr);
+			
+		}
 		
-		Cool.certifiedPhoneNumber(phoneNumber, numStr);
+		map.put("numStr", numStr);
 		
-		System.out.println("numStr : "+ numStr);
-		
-		JSONObject obj = new JSONObject();
-		obj.put("numStr", numStr);
-		
-		return obj;
+		return map;
 	}
 	
 	@RequestMapping("/newPass.do")
@@ -281,46 +352,52 @@ public class LoginJoinController {
 	//메일
     @RequestMapping("/sendingEmail.do")
     @ResponseBody
-    public Map<String,Object> sendingEmail(HttpServletRequest request) throws IOException {
+    public Map<String,Object> sendingEmail(HttpServletRequest request, UsersVo userVo) throws IOException {
         Random r = new Random();
         Map<String,Object> map = new HashMap<String,Object>();
         int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
         
-        String setfrom = "hajinlee00@gamil.com";
-        String tomail = request.getParameter("e_mail"); // 받는 사람 이메일
-        String title = "회원가입 인증 이메일 입니다."; // 제목
+        int countEmail =  loginjoinserviceimpl.getUserEmailId(userVo);
         
-        String content = System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
-        				 System.getProperty("line.separator")+
-        				 "안녕하세요 회원님 저희 홈페이지를 찾아주셔서 감사합니다"+
-        				 System.getProperty("line.separator")+
-        				 System.getProperty("line.separator")+
-        				 " 인증번호는 " +dice+ " 입니다. "+
-        				 System.getProperty("line.separator")+
-        				 System.getProperty("line.separator")+
-        				 "받으신 인증번호를 홈페이지에 입력해 주시면 다음으로 넘어갑니다."; // 내용
-        
-        try {
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+        if(countEmail == 1) {
+        	String setfrom = "hajinlee00@gamil.com";
+            String tomail = request.getParameter("e_mail"); // 받는 사람 이메일
+            String title = "회원가입 인증 이메일 입니다."; // 제목
+            
+            String content = System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
+            				 System.getProperty("line.separator")+
+            				 "안녕하세요 회원님 저희 홈페이지를 찾아주셔서 감사합니다"+
+            				 System.getProperty("line.separator")+
+            				 System.getProperty("line.separator")+
+            				 " 인증번호는 " +dice+ " 입니다. "+
+            				 System.getProperty("line.separator")+
+            				 System.getProperty("line.separator")+
+            				 "받으신 인증번호를 홈페이지에 입력해 주시면 다음으로 넘어갑니다."; // 내용
+            
+            try {
+                MimeMessage message = mailSender.createMimeMessage();
+                MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-            messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
-            messageHelper.setTo(tomail); // 받는사람 이메일
-            messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-            messageHelper.setText(content); // 메일 내용
+                messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+                messageHelper.setTo(tomail); // 받는사람 이메일
+                messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+                messageHelper.setText(content); // 메일 내용
+                
+                mailSender.send(message);
+                
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            map.put("errorMsg", "");
+            map.put("dice", dice);
             
-            mailSender.send(message);
-            
-        } catch (Exception e) {
-            System.out.println(e);
+        }else {
+        	String errorMsg = "해당 유저는 존재하지 않습니다.";
+        	 map.put("errorMsg", errorMsg);
+        	 map.put("dice", 0);
         }
-        map.put("dice", dice);
-        
         return map;
         
     }
 	
 }
-
-
-
