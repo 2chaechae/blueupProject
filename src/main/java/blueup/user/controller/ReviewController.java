@@ -39,16 +39,6 @@ public class ReviewController {
 		return mav;
 	}
 
-	// 리뷰 리스트 호출
-	@RequestMapping("/getReviewList.do")
-	public ModelAndView getReviewList(HttpSession session, ReviewVo vo) {
-		ModelAndView mav = new ModelAndView();
-		List<ReviewVo> reviewView = reviewService.getReviewList(vo);
-		System.out.println("상품 정보 출력");
-		mav.addObject("getReviewList", reviewView);
-		mav.setViewName("reviewView");
-		return mav;
-	}
 	
 	
 
@@ -65,19 +55,25 @@ public class ReviewController {
 
 	// 작성가능한 리뷰 상품 정보 호출
 			@RequestMapping("/getReviewproductList.do")
-			public ModelAndView getReviewproductList(HttpSession session, ReviewVo vo) {
-				ModelAndView mav = new ModelAndView();
-				List<ReviewVo> reviewView = reviewService.getReviewproductList(vo);
+			public ModelAndView getReviewproductList(HttpSession session, ReviewVo vo, ModelAndView mav) {
+			
 				System.out.println("상품 정보 출력");
-				mav.addObject("getReviewproductList", reviewView);
+				mav.addObject("getReviewproductList", reviewService.getReviewproductList(vo));
 				mav.setViewName("reviewView");
 				return mav;
 			}
 
-	
+	// 내가 작성한 리뷰 리스트 호출
+			@RequestMapping("/getReviewList.do")
+			public ModelAndView getReviewList(HttpSession session, ReviewVo vo, ModelAndView mav) {
+				System.out.println("상품 정보 출력");
+				mav.addObject("getReviewList", reviewService.getReviewList(vo));
+				mav.setViewName("reviewView");
+				return mav;
+			}
+			
 	
 	// 리뷰 등록
-
 	@RequestMapping("/insertReview.do")
 	public ModelAndView insertReview(
 			String product_name,

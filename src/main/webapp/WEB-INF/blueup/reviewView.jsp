@@ -150,35 +150,50 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 	});
 </script>
+
 							</head>
 							<body>
 								<td></td>
 								<div id="wrapper">
 									<!--탭 메뉴 영역 -->
-									<ul class="tabs">
-										<li><a href="#tab1">작성가능한 리뷰</a></li>
-										<li><a href="#tab2">내가 작성한 리뷰</a></li>
+									 <ul class="tabs">
+										<li><a href="#tab1" onclick="location.href='/test/getReviewproductList.do?user_no='+${getReviewproductList.get(0).user_no}" >작성가능한 리뷰</a></li>
+										<li><a href="#tab2" onclick="location.href='/test/getReviewList.do?user_no='+ ${getReviewproductList.get(0).user_no}" >내가 작성한 리뷰</a></li>
 									</ul>
-
+									<!-- <input type="button" class="button" id="tab1" onclick="getReviewproductList()" value="작성가능한 리뷰"/>
+ 									<input type="button" class="button"  id="tab2" onclick="getReviewList()" value="내가 작성한 리뷰"/> 
+									<script type="text/javascript">
+										function getReviewproductList("tab1"){
+											var user_no = localStorage.getItem("user_no");
+											location.href='/test/getReviewproductList.do?user_no='+ user_no ;
+										}
+										 function getReviewList("tab2"){
+											 var user_no = localStorage.getItem("user_no");
+											location.href='/test/getReviewList.do?user_no='+ user_no ;
+										} 
+									</script> -->
 									<!--탭 콘텐츠 영역 -->
 									<div class="tab_container">
 
-										<div id="tab1" class="tab_content">
+										<div id="tab1" class="tab_content" onclick="location.href='/test/getReviewproductList.do?user_no='+${user_no}">
 											<!--Content-->
 
 											<c:forEach var="review" items="${getReviewproductList}" varStatus="status">
+													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
 											<tr>
-                                   <img src="${getReviewproductList.product_img}" width="150px" height="150px" >
-				<td width="100px">${getReviewproductList.product_name}</td>
-				<td width="60px">${getReviewproductList.quantity}</td>
-				<td width="100px">  ${getReviewproductList.product_color}</td>
-										<td width="100px">${getReviewproductList.product_size}</td>
+											
+                                   <img src="${review.product_img}" width="150px" height="150px" >
+				<td width="100px">${review.product_name}</td>
+				<td width="60px">${review.quantity}</td>
+				<td width="100px">  ${review.product_color}</td>
+										<td width="100px">${review.product_size}</td>
+										
 				   </tr> 
 											</c:forEach>
 										</div>
 
 
-										<div id="tab2" class="tab_content">
+										<div id="tab2" class="tab_content" onclick="location.href='/test/getReviewList.do?user_no='+ ${user_no}">
 											<!--Content-->
 											<colgroup>
 												<col style="width: 35px">
@@ -187,24 +202,33 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 												<col style="width: 110px">
 												<col style="width: 110px">
 											</colgroup>
-											<tr>
+											
 
-
-												<th scope="col">별점</th>
+												<!-- <th scope="col">별점</th>
 												<th scope="col">후기 사진</th>
 												<th scope="col">상품정보</th>
 												<th scope="col">후기 제목</th>
-												<th scope="col">후기 내용</th>
-													<img src="${getProductInfoForReview.product_img}"
-												width="150px" height="150px">
-											${getProductInfoForReview.product_name}
-											<td width="60px">${getProductInfoForReview.quantity}</td>
-											<td width="100px">
-												${getProductInfoForReview.product_color}</td>
-											<td>${getProductInfoForReview.product_size}</td>
-												<th><br> <input type="button" class="button"
-													value="수정" /><br> <input type="button" class="button"
-													value="삭제" /></th>
+												<th scope="col">후기 내용</th> -->
+												
+													<c:forEach var="reviewlist" items="${getReviewList}" varStatus="status">
+													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
+											<tr>
+											
+				<td width="100px">${reviewlist.product_name}</td>
+				<td width="60px">${reviewlist.product_size}</td>
+				<td width="60px">${reviewlist.product_color}</td>
+				
+										<td width="100px">${reviewlist.review_title}</td>
+										<td width="100px">  ${reviewlist.star}</td>
+										<td width="100px">${reviewlist.review_content}</td>
+										<td width="70px">${reviewlist.review_time}</td>
+										
+										<input type="button" class="button" onclick="update()" id="updateone" value="수정"/>
+										<input type="button" class="button" onclick="delete()" id="selectone" value="삭제"/>	
+				   </tr> 
+											</c:forEach>
+												</div>
+											
 
 												<%-- </tr>
 											<!-- 여기에 내가쓴 리뷰들 목록 갖고 오기 -->
@@ -217,19 +241,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 											&nbsp;<input type="button" class="button" value="수정"/>
 											${review.product_no }
 										</td></tr>  --%>
-												<c:forEach var="notice" items="${getReviewList}"
-													varStatus="status">
-													<input type="hidden" value="${review.review_no}"></input>
-													<tr>
-
-														<td>${review.product_name}</td>
-														<td>${review.star}</td>
-														<td>${review.product_color}</td>
-														<td>${review.product_size}</td>
+												
 
 														<!-- 공지사항 링크 -->
 													</tr>
-												</c:forEach>
 										</div>
 
 									</div>

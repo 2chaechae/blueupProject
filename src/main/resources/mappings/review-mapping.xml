@@ -39,10 +39,7 @@
 	<delete id="deleteReivew" parameterType="reviewvo">
 		DELETE FROM REVIEW WHERE PRODUCT_NAME = #{product_name}
 	</delete>
-	<!--전체 상품리뷰  -->
-	<select id="getReviewList" parameterType="reviewvo" resultType="reviewvo">
-		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
-	</select>
+	
 	
 	<!-- 리뷰 수정을 위한 쿼리 -->
 	<update id="updateReview" parameterType="reviewvo">
@@ -65,14 +62,20 @@
 	 
 	</select>
 	
-	
+
 	<!-- 작성가능한상품정보가져오기 -->
 	<select id="getReviewproductList" resultType="reviewvo" >
-	  SELECT a.user_no, a.purchaseconfirm,
-	   b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
+	 SELECT a.user_no, a.purchaseconfirm,
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
 		FROM order_request as a JOIN order_detail as b
-		on a.order_no = b.order_no WHERE a.user_no = 10004
-		AND b.order_status='구매확정';
+		ON a.order_no = b.order_no 
+		WHERE a.user_no = #{user_no}
+	 	AND b.order_status='구매확정';
+	</select>
+	
+	<!-- 작성한 리뷰 가져오기 -->
+	<select id="getReviewList" resultType="reviewvo" >
+	 SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
 	 
 	</select>
 

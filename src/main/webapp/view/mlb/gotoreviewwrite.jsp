@@ -12,17 +12,17 @@
 <br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <input type="button" class="button" onclick="getProductInfo()" value="리뷰 작성"/>
-<input type="button" class="button" onclick="getReviewproductList()" value="작성 가능한 리뷰"/>
+ <input type="button" class="button" onclick="getReviewproductList()" value="작성 가능한 리뷰"/> 
 <script type="text/javascript">
 	function getProductInfo(){
 		var user_no = localStorage.getItem("user_no");
 		var product_no = 101001; 
 		location.href='/test/getProductInfoForReview.do?user_no='+ user_no +'&product_no=' + product_no;
 	}
-	function getReviewproductList(){
-		var user_no = localStorage.getItem("user_no");
+	 function getReviewproductList(){
+		 var user_no = localStorage.getItem("user_no");
 		location.href='/test/getReviewproductList.do?user_no='+ user_no ;
-	}
+	} 
 </script>
 </body>
 </html>
