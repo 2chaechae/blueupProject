@@ -60,23 +60,24 @@ public class ReviewController {
 	
 	
 	// ¸®ºä µî·Ï
-		@RequestMapping("insertReview.do")
-		public ModelAndView insertReview(
-			@RequestParam("review_title") String review_title,
-			@RequestParam("review_content") String review_content,
-			@RequestParam("star") int star,
-			@RequestParam("user_no") int user_no,
-			@RequestParam("String product_no") String product_no) {
-			ReviewVo vo = new ReviewVo();
-			vo.setUser_no(user_no);
-			vo.setStar(star);
-			vo.setReview_title(review_title);
-			vo.setReview_title(review_title);
-			vo.setReview_content(review_content);
-			ModelAndView mav = new ModelAndView();
-			/* ReviewService.insertReview(vo); */
-			mav.setViewName("redirect:/getReviewList.do?user_no="+user_no);
-			return mav;
-		}
+	/*
+	 * @RequestMapping("insertReview.do") public ModelAndView insertReview(ReviewVo
+	 * vo) {
+	 * 
+	 * @RequestParam("review_title") String review_title,
+	 * 
+	 * @RequestParam("review_content") String review_content,
+	 * 
+	 * @RequestParam("star") int star,
+	 * 
+	 * @RequestParam("user_no") int user_no,
+	 * 
+	 * @RequestParam("String product_no") String product_no) { ReviewVo vo = new
+	 * ReviewVo(); System.out.println("¸®ºä µî·Ï¿Ï·á"); vo.setUser_no(user_no);
+	 * vo.setStar(star); vo.setReview_title(review_title);
+	 * vo.setReview_title(review_title); vo.setReview_content(review_content);
+	 * ModelAndView mav = new ModelAndView(); mav.addObject("insertReview",
+	 * reviewView); mav.setViewName("reviewView"); return mav; }
+	 */
 
 }
