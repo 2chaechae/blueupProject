@@ -18,7 +18,7 @@ public class CouponDAO {
 	@Autowired
 	SqlSessionTemplate sessionTemplate;
 	
-	public List<CouponVo> getCouponList(UsersVo vo ,HttpSession session/*세션으로 받아주기  */){
+	public List<CouponVo> getCouponList(UsersVo vo){
 		//session.getAttribute(null)
 		List<CouponVo> list =  sessionTemplate.selectList("couponDao.selectCouponList", vo);
 		for(CouponVo cp : list) {
@@ -27,10 +27,9 @@ public class CouponDAO {
 		return list;
 	}
 	
-	public int getCouponCount(HttpSession session ,UsersVo vo) {
+	public Integer getCouponCount(UsersVo vo) {
 		vo.setUser_no(1);
-		int count = sessionTemplate.selectOne("couponDao.getCouponCount", vo);
-		System.out.println(count+"개");
+		Integer count = sessionTemplate.selectOne("couponDao.getCouponCount", vo);
 		return count;
 	}
 	

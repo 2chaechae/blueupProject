@@ -22,8 +22,9 @@ $(document).ready(function(){
 			type : "GET",
 			url : "/test/searchPoint.do",
 			data : {
-				start : dateStart,
-				end : dateEnd
+				'start' : dateStart,
+				'end' : dateEnd,
+				'user_no' : ${user_no}
 			},
 			success : function(result) {
 				$('#tbody').empty();
@@ -161,7 +162,7 @@ $(document).ready(function(){
 			<!-- 페이지 -->
 			<div id="pagingDiv" style="display: block; text-align: center;">
 				<c:if test="${pageMaker.startPage != 1 }">
-					<a href="/test/point.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+					<a href="/test/point.do?pageNum=${pageMaker.startPage - 1 }&user_no=${user_no}">&lt;</a>
 				</c:if>
 				<c:forEach begin="${pageMaker.startPage }"
 					end="${pageMaker.endPage }" var="p">
@@ -170,12 +171,12 @@ $(document).ready(function(){
 							<b>${p }</b>
 						</c:when>
 						<c:when test="${p != cri.page }">
-							<a href="/test/point.do?pageNum=${p }">${p }</a>
+							<a href="/test/point.do?pageNum=${p }&user_no=${user_no}">${p }</a>
 						</c:when>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
-					<a href="/test/point.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+					<a href="/test/point.do?pageNum=${pageMaker.endPage+1 }&user_no=${user_no}">&gt;</a>
 				</c:if>
 			</div>
 

@@ -20,14 +20,14 @@ public class CouponServiceImpl implements CouponService{
 	CouponDAO couponDAO;
 	
 	@Override
-	public List<CouponVo> getCouponListService(UsersVo vo,HttpSession session) {
-		List<CouponVo> list =  couponDAO.getCouponList(vo, session);
+	public List<CouponVo> getCouponListService(UsersVo vo) {
+		List<CouponVo> list =  couponDAO.getCouponList(vo);
 		return list;
 	}
 
 	@Override
-	public int getCouponCountService(HttpSession session,UsersVo vo) {
-		int count = couponDAO.getCouponCount(session, vo);
+	public Integer getCouponCountService(UsersVo vo) {
+		Integer count = couponDAO.getCouponCount(vo);
 		return count;
 	}
 

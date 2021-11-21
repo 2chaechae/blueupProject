@@ -9,13 +9,13 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class Cool {
 	public static void certifiedPhoneNumber(String phoneNumber, String cerNum) {
-		String api_key = "NCSAUIVQAMPJZ6TV";
-		String api_secret = "DOSMQRS9FWMVMJ86HVDLABDG3Z9DKEKY";
+		String api_key = "";
+		String api_secret = "";
 		Message coolsms = new Message(api_key, api_secret);
 		
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("to", phoneNumber);
-		params.put("from", "01034084515");
+		params.put("from", "");
 		params.put("type", "SMS");
 		params.put("text", "[BlueUp] 인증 메시지 : ["+cerNum+"]");
 		params.put("app_version", "test app 1.2");

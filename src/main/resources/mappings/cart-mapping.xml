@@ -19,8 +19,8 @@
 			#{product_name},
 			#{quantity},
 			#{total_price},
-			#{product_color},
-			#{product_size}
+			#{product_size},
+			#{product_color}
 		)
 	</insert>
 	
@@ -61,7 +61,11 @@
 		 </foreach>
 	</select>
 	
-	
+	<!-- 카트 리스트 조회 -->
+	<select id="selectProductNo" resultType="cartvo">
+		SELECT * FROM CART 
+		WHERE USER_NO = CAST(#{user_no} AS INTEGER)
+	</select>
 	<!-- 카트 수정을 위한 쿼리 -->
 	<update id="updateCartNum" parameterType="cartvo">
 		UPDATE CART   

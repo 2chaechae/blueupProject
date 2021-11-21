@@ -38,6 +38,9 @@ public class CartDAO {
 		return sqlSessionTemplate.selectList("cartDao.selectedcartList", cart_no);
 	}
 	
+	public List<CartVo> selectProductNo(String user_no) {
+		return sqlSessionTemplate.selectList("cartDao.selectProductNo", user_no);
+	}
 	/* 카트 수정 */
 	public int updateCartNum(CartVo vo) {
 		return sqlSessionTemplate.update("cartDao.updateCartNum", vo);

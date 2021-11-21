@@ -25,7 +25,51 @@ public class CartController {
 
 	@Autowired
 	private CartServiceImpl cartserviceimpl;
-
+	
+	// 장바구니 중복 체크
+	@RequestMapping("/addCheckCart.do")
+	@ResponseBody
+	public int addCheckCart(HttpSession session, @RequestParam(value="user_no", required=false) String user_no, CartVo vo) {
+		int result = 0;
+		if(user_no != null) {
+			System.out.println("회원 카트중복");
+			List<CartVo> check = cartserviceimpl.selectProductNo(user_no);
+			for(int i=0; i<check.size(); i++) {
+				System.out.println("cart" + check.get(i).getProduct_no());
+				System.out.println("add" + vo.getProduct_no());
+				System.out.println("cart" + check.get(i).getProduct_color());
+				System.out.println("add" + vo.getProduct_color());
+				System.out.println("cart" + check.get(i).getProduct_size());
+				System.out.println("add" + vo.getProduct_size());
+				if(check.get(i).getProduct_no() == vo.getProduct_no() && check.get(i).getProduct_color().equals(vo.getProduct_color()) &&  check.get(i).getProduct_size().equals(vo.getProduct_size())){
+					System.out.println("cart" + check.get(i).getProduct_no());
+					System.out.println("add" + vo.getProduct_no());
+					result = 1;
+				}
+			}
+			System.out.println(result);
+		}else {
+			List<CartVo> check = (List<CartVo>) session.getAttribute("cart");
+			System.out.println("비회원 카트 중복");
+			if(check != null) {
+				for(int i=0; i<check.size(); i++) {
+					System.out.println("cart" + check.get(i).getProduct_no());
+					System.out.println("add" + vo.getProduct_no());
+					System.out.println("cart" + check.get(i).getProduct_color());
+					System.out.println("add" + vo.getProduct_color());
+					System.out.println("cart" + check.get(i).getProduct_size());
+					System.out.println("add" + vo.getProduct_size());
+					if(check.get(i).getProduct_no() == vo.getProduct_no() && check.get(i).getProduct_color().equals(vo.getProduct_color()) &&  check.get(i).getProduct_size().equals(vo.getProduct_size())){
+					   System.out.println("cart" + check.get(i).getProduct_no());
+					   System.out.println("add" + vo.getProduct_no());
+					   result = 1;
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
 	// 장바구니 추가하기
 	@RequestMapping("/addCart.do")
 	@ResponseBody

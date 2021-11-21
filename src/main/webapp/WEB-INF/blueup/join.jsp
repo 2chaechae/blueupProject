@@ -57,7 +57,7 @@
 												<span class="error-msg"></span>
 											</li>
 											<li id="mbrNmAfter">													
-												<input type="text" class="input-style01 name" placeholder="이름(실명입력)" id="user_name" name="user_name">
+												<input type="text" class="input-style01 name" placeholder="이름(실명입력)" id="user_name" name="user_name" value="">
 												<span class="error-msg"></span>
 											</li>
 											<li id="birthAfter">													
@@ -2202,20 +2202,20 @@ function setCheck2(){
 }
 
 function phoneVerification(phone1, phone2, phone3){
-	var phone = phone1+phone2+phone3;
+	var userName = "";
+	var gubn = "1";
+	if($('#user_name').val() != ""){
+		userName = $('#user_name').val();
+	}
+	
 	$.ajax({
 		type : "POST",
 		url : "/test/getSendSMS.do",
-		data : {
-			"phoneNumber" : phone
-		},
+		data : { phone1 : phone1 , phone2 : phone2, phone3 : phone3, user_name : userName, gubn : gubn},
 		dataType : "json",
 		success: function(res){
-			console.log("qweqwe____ ", res.numStr);
 			$('#certNum').val(res.numStr);
 			
-			/* 문자인증 */
-			/* $('#veri').css("display", "block"); */
 		},
 		error : function(request, status) {
 			alert("code:" + request.status + "\n" + "message:"

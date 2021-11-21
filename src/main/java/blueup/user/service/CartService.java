@@ -11,5 +11,6 @@ public interface CartService {
 	public int deleteCart(List<String> cart_no);
 	public List<CartVo> cartList(String user_no);
 	public List<CartVo> selectedcartList(List<String> cart_no);
+	public List<CartVo> selectProductNo(String user_no);
 	public int updateCartNum(CartVo vo);
 }

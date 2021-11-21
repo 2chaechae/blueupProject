@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   
 <nav id="lnb" class="lnb-nav">
         <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
     	<p><b>ㅇㅇㅇ</b>님<br/>반갑습니다.</p>
@@ -30,7 +31,7 @@
     					<a href="/mypage/goods/reviewView"><span>상품리뷰</span></a>
     				</li>
     				<li>
-    					<a href="/mypage/inquiry/list"><span>QnA</span></a>
+    					<a href="#" onClick="toQna();return false"><span>QnA</span></a>
     				</li>
     			</ul>
     		</li>

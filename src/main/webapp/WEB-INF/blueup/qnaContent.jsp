@@ -131,7 +131,7 @@
 								$(document).ready(function(){
 									//목록으로 버튼 클릭 시
 									$('#toList').on('click',function(){
-										location.href="/test/qnaList.do?pageNum=1&user_no="+user_no;
+										location.href="/test/qnaList.do?pageNum=1&user_no="+${user_no};
 									});
 								});
 								

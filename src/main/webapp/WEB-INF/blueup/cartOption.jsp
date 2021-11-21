@@ -105,17 +105,34 @@ function addCart(){
 	var main_image = "${data.get(0).main_image}";
 	if(user_no != null){
 		$.ajax({
-			url:'/test/addCart.do',
+			url:'/test/addCheckCart.do',
 		    type:'POST',
 		   	cache:false,
-			data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
-				"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "user_no" : user_no
-			},
+			data: {"product_no":product_no, "user_no" : user_no, "product_size":size, "product_color":color },
 			success:function(data) {
-				if(data == 1){
-				alert('장바구니에 담겼습니다.');
-				window.opener.location.href="/test/getcartList.do?user_no="+user_no;
-				window.close();
+				if(data == 0){
+					$.ajax({
+						url:'/test/addCart.do',
+					    type:'POST',
+					   	cache:false,
+						data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+							"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "user_no" : user_no
+						},
+						success:function(data) {
+							if(data == 1){
+							alert('장바구니에 담겼습니다.');
+							window.opener.location.href="/test/getcartList.do?user_no="+user_no;
+							window.close();
+							}
+						},
+						error:function() {
+							alert('다시 시도해주세요');
+						}
+					});
+				}else{
+					var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
+					if(check) window.opener.location.href="/test/getcartList.do?user_no="+user_no;
+					window.close();
 				}
 			},
 			error:function() {
@@ -124,23 +141,40 @@ function addCart(){
 		});
 	}else{
 		$.ajax({
-			url:'/test/addCart.do',
+			url:'/test/addCheckCart.do',
 		    type:'POST',
 		   	cache:false,
-			data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
-				"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "all_discount" : all_discount
-			},
+			data: {"product_no":product_no, "product_size":size, "product_color":color },
 			success:function(data) {
-				if(data == 1){
-				alert('장바구니에 담겼습니다.');
-				window.opener.location.href="/test/getcartList.do";
-				window.close();
-				}
-			},
-			error:function() {
-				alert('다시 시도해주세요');
+				if(data == 0){
+					$.ajax({
+						url:'/test/addCart.do',
+					    type:'POST',
+					   	cache:false,
+						data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+							"total_price":total_price, "product_size":size, "product_color":color, "main_image" : main_image, "all_discount" : all_discount
+						},
+						success:function(data) {
+							if(data == 1){
+							alert('장바구니에 담겼습니다.');
+							window.opener.location.href="/test/getcartList.do";
+							window.close();
+							}
+						},
+						error:function() {
+							alert('다시 시도해주세요');
+						}
+					});
+				}else{
+					var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
+					if(check) window.opener.location.href="/test/getcartList.do";
+					window.close();
 			}
-		});
+		},
+		error:function() {
+			alert('다시 시도해주세요');
+		}
+	});
 	}
 }
 </script>
