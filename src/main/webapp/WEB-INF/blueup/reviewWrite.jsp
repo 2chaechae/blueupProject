@@ -52,31 +52,60 @@
 				<tr><th scope="row">
 				<label for="boardWriteTitle">상품정보</label>
 				<div></div>
-				<img src="${getProductInfoForReview.product_img}" width="150px" height="150px" >
-				<td width="100px">${getProductInfoForReview.product_name}</td>
-				<td width="60px">${getProductInfoForReview.quantity}</td>
-				<td width="100px">  ${getProductInfoForReview.product_color}</td>
-										<td width="100px">${getProductInfoForReview.product_size}</td>
+				<img src="${getProductInfoForReview.product_img}" id="product_img" width="150px" height="150px" >
+				<td width="100px"><input value="${getProductInfoForReview.product_name}" id="product_name"></td>
+				<td width="60px"><input value="${getProductInfoForReview.quantity}" id="quantity"></td>
+				<td width="100px">  <input value="${getProductInfoForReview.product_color}" id="product_color"></td>
+				<td width="100px"><input value="${getProductInfoForReview.product_size}" id="product_size"></td>
 				 </th>
 				 <%-- 나중에  src="${REVIEW_PHOTO.photo1}"등으로 고쳐야 a함 --%>
 				</tr>
 				<tr></tr><tr></tr><tr></tr>
 				<!-- 여기에 디비에서 구매한 COLOR,CLOTHES_SIZE,PRODUCT_NAME 적어야함. -->
 					<tr>
-					
 						<th scope="row"><label for="boardWriteTitle">제목</label> <span
 							class="required">*</span></th>
 						<td><input type="text" id="boardWriteTitle"
 							class="input-style01" name="csoMtmInq.inqSj"
 							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${insertReview.review_title}"> 
+							
+							<span
+							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
+						</td></tr>
+						<tr><th scope="row"><label for="boardWriteTitle">아이디</label> <span
+							class="required">*</span></th>
+						<td><input type="text" id="user_id"
+							class="input-style01" name="csoMtmInq.inqSj"
+							placeholder="아이디를 입력해 주세요." style="width: 300px;" value="${insertReview.user_id}"> 
+							
+							<span
+							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
+						</td>
+					</tr>
+					
+					<tr>
+					
+						<th scope="row"><label for="boardWriteTitle">별점</label> </th>
+						<td><input type="text" id="star"
+							class="input-style01" name="csoMtmInq.inqSj"
+							placeholder="별점" style="width: 100px;" value="${insertReview.star}">개 
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
 					</tr>
 					<tr>
+					
+						<th scope="row"><label for="boardWriteTitle">작성시간</label> </th>
+						<td><input type="text" id="review_time" placeholder="20XX-XX-XX"
+							class="input-style01" name="csoMtmInq.inqSj"
+							 style="width: 100px;" value="${insertReview.review_time}"> 
+							<span
+							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
+						</td>
+					</tr>
 						<th scope="row"><label for="boardWriteContent">내용</label> <span
 							class="required">*</span></th>
-						<td><textarea cols="30" rows="10" id="boardWriteContent"
+						<td><textarea cols="30" rows="10" id="content"
 								placeholder="1,000자 미만 (특수문자 \ / : < > ; 사용불가)으로 입력해 주세요."
 								style="width: 1000px; height: 150px;" >${insertReview.review_content}</textarea>
 							<div class="clearfix">
@@ -90,7 +119,11 @@
 										id="counter">0</em>자/1,000자</span>
 										
 								</div>
-								
+								<%-- <!-- 히든으로 뺀거 -->
+								<input type="hidden" id="product_name" value="${getProductInfoForReview.product_name}"/>
+								<input type="hidden" id="product_color" value="${getProductInfoForReview.product_color}"/>
+								<input type="hidden" id="product_size" value="${getProductInfoForReview.product_size}"/>
+								<input type="hidden" id="product_img" value="${getProductInfoForReview.product_img}"/> --%>
 								<!-- <div >
 									<input class="input_ea" type="file">
 								</div> -->
@@ -108,17 +141,54 @@
 		<div class="btnWrapBox">
 			<!-- <a href="#" id="cancelBtn" class="btn btn-style03">취소</a> -->
 			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
-			<input type="button" class="button" onclick="location.href='/test/reviewWriteForm.do' " value="취소"/>
-			<input type="button" class="button" onclick="getReviewList()'"value="저장"/>
+			<input type="button" class="button" onclick="getProductInfo()" value="취소"/>
+			<input type="button" class="button" id='submitBtn' value="저장"/>
 			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
 <script type="text/javascript">
-	function getReviewList(){
-		var user_no = localStorage.getItem("user_no");
-		var product_no = /* 101001;  */ localStorage.getItem("product_no");
-		location.href='/test/insertReview.do?user_no='+ user_no +'&product_no=' + product_no;
-	}
+function getProductInfo(){
+	var user_no = localStorage.getItem("user_no");
+	var product_no = localStorage.getItem("product_no"); /* 나중에 구매확정에서 product_no갖고와야함 */
+	location.href='/test/getProductInfoForReview.do?user_no='+ user_no +'&product_no=' + product_no;
+	
+}
+
+$(document).ready(function(){
+    //목록으로 버튼 클릭 시
+    $('#submitBtn').on('click',function(){
+    	var user_no = localStorage.getItem("user_no");
+    	var product_no = localStorage.getItem("product_no");
+        var title = $('#boardWriteTitle').val();
+        var star = $('#star').val();
+        var content = $('#content').val();
+        var user_id=$('#user_id').val();
+        var product_name=$('#product_name').val();
+        var product_size=$('#product_size').val();
+        var product_color=$('#product_color').val();
+        var product_img=$('#product_img').val();
+        var quantity=$('#quantity').val();
+        alert("user_no" + user_no);
+        alert("product_no" + product_no);
+        alert("title" + title);
+        alert("star"+ star);
+        alert("content" + content);
+        alert("review_time" + review_time);
+        alert("user_id" + user_id);
+        alert("product_name" + product_name);
+        alert("product_size" + product_size);
+        alert("product_color" + product_color);
+        alert("product_img" + product_img);
+        alert("quantity" + quantity);
+        location.href='/test/insertReview.do?user_no='+user_no+'&product_no='+product_no+'&title='+title+'&content='+content+'&star='+star;
+    });
+    
+    
+ });
+	
+
+	
+	
 </script>
 		<%@ include file="/footer.jsp"%>
 		</body>

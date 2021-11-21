@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.service.QnaService;
@@ -72,33 +73,43 @@ public class ReviewController {
 				return mav;
 			}
 			
-	
+			
 	// ¸®ºä µî·Ï
 	@RequestMapping("/insertReview.do")
 	public ModelAndView insertReview(
+			
+			int product_no,
+			String star,
+			String title,
+			String content,
+			String user_id,
 			String product_name,
 			String product_size,
-			int star,
-			String review_title,
-			String review_content,
-			String user_id,
 			Date review_time,
 			String product_color,
-			int review_photo_no 
+			String main_image,
+			Boolean review_status,
+			int user_no
+	/* int review_photo_no */
 			) {
+		System.out.println(1);
 		ModelAndView mav = new ModelAndView();
 		ReviewVo vo = new ReviewVo();
 		vo.setProduct_name(product_name);
 		vo.setProduct_size(product_size);
-		vo.setStar(star);
-		vo.setReview_title(review_title);
-		vo.setReview_content(review_content);
+		System.out.println(5);
+		vo.setStar(Integer.parseInt(star));
+		vo.setReview_title(title);
+		vo.setReview_content(content);
 		vo.setUser_id(user_id);
 		vo.setReview_time(review_time);
 		vo.setProduct_color(product_color);
-		vo.setReview_photo_no(review_photo_no);
+		vo.setUser_no(user_no);
+		vo.setProduct_no(product_no);
+		vo.setMain_image("dd"); 
+		vo.setReview_status(true);
 		reviewService.insertReview(vo);		
-		mav.setViewName("reviewView");
+		mav.setViewName("/getReviewList.do");
 		return mav;
 		
 	  

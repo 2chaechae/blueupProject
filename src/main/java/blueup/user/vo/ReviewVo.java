@@ -26,5 +26,5 @@ public class ReviewVo {
 	String order_status; //구매확정 
 	String quantity;//구매 수량
 	int review_photo_no; //리뷰 포토 번호
-	
+	Boolean review_status; //리뷰 작성확인 (주문결제시
 }

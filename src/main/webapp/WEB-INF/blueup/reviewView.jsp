@@ -224,8 +224,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<br>
 										<td width="70px">시간: ${reviewlist.review_time}</td>
 										
-										<input type="button" class="button" onclick="updateReview()" id="updateone" value="수정"/>
-										<input type="button" class="button" onclick="deleteReview()" id="selectone" value="삭제"/>	
+										<input type="button" class="button" onclick="updateReview(this)" id="updateone" value="수정"/>
+										<input type="button" class="button" onclick="deleteReview(this)" id="selectone" value="삭제"/>	
 				   </tr> 
 											</c:forEach>
 												</div>
@@ -279,8 +279,37 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	</div>
 
 </form>
+
 <script>
-	
+/* 리뷰 삭제 */
+function deleteReview(element){
+	var product_no = $(element).closest('div').prev().val();
+	var wish_no = $(element).closest('div').prev().prev().val();
+	alert(product_no);
+	alert(wish_no);
+	$.ajax({
+		url:'/test/deleteWishList.do',
+		type:'POST',
+		cache:false,
+		data: {"user_no":user_no, "wish_no":wish_no, "product_no":product_no},
+		success:function(data) {
+			if(data == 1){
+				$(element).closest('.wish').remove();
+				var now = $('.num').text();
+				console.log(now);
+				var new_num = Number(now) - 1; 
+				console.log(new_num);
+				$('.num').text(new_num);
+			}
+			else{
+				alert("삭제 실패")
+			}
+		},
+		error:function() {
+			alert('다시 시도해주세요');
+		}
+	});	
+}
 </script>
 <%@ include file="footer.jsp"%>
 </body>
