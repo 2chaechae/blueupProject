@@ -16,19 +16,19 @@ public class PointServiceImpl implements PointService {
 	PointDAO pointDAO;
 	
 	@Override
-	public int getToTalPointService(int user_no) {
+	public Integer getToTalPointService(int user_no) {
 		int total_point = pointDAO.getTotalPointDao(user_no);
 		return total_point;
 	}
 
 	@Override
-	public int getSavedMoneyService(int user_no) {
+	public Integer getSavedMoneyService(int user_no) {
 		int saved_money = pointDAO.getSavedMoneyDao(user_no);
 		return saved_money;
 	}
 
 	@Override
-	public int getCountService(int user_no) {
+	public Integer getCountService(int user_no) {
 		int count = pointDAO.getCountDao(user_no);
 		return count;
 	}

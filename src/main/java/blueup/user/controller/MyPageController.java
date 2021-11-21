@@ -27,11 +27,10 @@ public class MyPageController {
 	UserInfoService service;
 
 	@RequestMapping("userInfo.do")
-	public ModelAndView getUserInfo(/* requestSession */) {
+	public ModelAndView getUserInfo(int user_no) {
 		ModelAndView mav = new ModelAndView();
 		UsersVo vo = new UsersVo();
-		vo.setUser_no(1);// 여기서는 원래 세션으로 받아서 처리해야하지만
-		// 임시로 1을 넣어줘서 진행
+		vo.setUser_no(user_no);
 		UsersVo userVo = service.getUserService(vo);
 		System.out.println("불러온 userVO 이름 : " + userVo.getUser_id());
 		String jumin = userVo.getUser_jumin1();// 주민번호 앞자리 추출
@@ -51,6 +50,7 @@ public class MyPageController {
 		mav.addObject("mm", mm);
 		mav.addObject("dd", dd);
 		mav.addObject("userVo", userVo);
+		mav.addObject("user_no", user_no);
 		mav.setViewName("userInfo");
 		return mav;
 	}

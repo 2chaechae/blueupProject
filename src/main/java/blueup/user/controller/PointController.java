@@ -29,30 +29,26 @@ public class PointController {
 	PointService service;
 	
 	@RequestMapping("/point.do")
-	public ModelAndView point(HttpServletRequest request, int pageNum) {
-		/*
-		 * HttpSession session = request.getSession(); String user_id = (String)
-		 * session.getAttribute("user_id"); String user_no = (String)
-		 * session.getAttribute("user_no");
-		 */
+	public ModelAndView point(int pageNum, int user_no) {
+		ModelAndView mav = new ModelAndView();
 		Criteria cri = new Criteria();
 		PageMaker pm = new PageMaker();
 		Map<String, Object> map = new HashMap<String, Object>();
-		int count = service.getCountService(1);
+		int count = service.getCountService(user_no);
 		cri.setPage(pageNum);
 		cri.setPageStart();
 		pm.setCri(cri);
 		pm.setTotalCount(count);
 		map.put("startRow", cri.getStartRow());
 		map.put("perPageNum", cri.getPerPageNum());
-		map.put("user_no", 1);
+		map.put("user_no", user_no);
+		System.out.println("user_no : "+user_no);
 		
-		
-		ModelAndView mav = new ModelAndView();
-		int total_point = service.getToTalPointService(1);
-		int total_saved_money = service.getSavedMoneyService(1);
+		int total_point = service.getToTalPointService(user_no);
+		int total_saved_money = service.getSavedMoneyService(user_no);
 		List<PointVo> list = service.getPointListService(map);
 		
+		mav.addObject("user_no", user_no);
 		mav.addObject("pageMaker", pm);
 		mav.addObject("point_count", count);
 		mav.addObject("pointList",list);
@@ -65,14 +61,12 @@ public class PointController {
 	
 	@RequestMapping("/searchPoint.do")
 	@ResponseBody
-	public Map<String, Object> getPointListBySearch(HttpServletRequest request,String start, String end){
-		//HttpSession session = request.getSession();
-		//session.getAttribute;
+	public Map<String, Object> getPointListBySearch(int user_no, String start, String end){
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		map.put("dateStart", start);
 		map.put("dateEnd", end);
-		map.put("user_no", 1);
+		map.put("user_no", user_no);
 		
 		List<PointVo> list = service.getListBySearchService(map);
 		int count = service.getCountBySearchService(map);

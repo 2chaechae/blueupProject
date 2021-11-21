@@ -28,24 +28,22 @@ public class CouponController {
 	CouponService service;
 
 	@RequestMapping("/coupon.do")
-	public ModelAndView coupon(HttpServletRequest request, String pageNum) {
+	public ModelAndView coupon(int user_no, int pageNum) {
 		ModelAndView mav = new ModelAndView();
 		Criteria cri = new Criteria();
 		PageMaker pm = new PageMaker();
 		UsersVo vo = new UsersVo();
-		HttpSession session = request.getSession();
-		int page = Integer.parseInt(pageNum);
-		vo.setUser_no(6);
-		cri.setPage(page);
-		cri.setPerPageNum(5);
+		vo.setUser_no(user_no);
+		cri.setPage(pageNum);
+		cri.setPerPageNum(pageNum);
 		cri.setPageStart();
 		pm.setCri(cri);
 		vo.setPerPageNum(cri.getPerPageNum());
 		vo.setStartRow(cri.getStartRow());
 
-		int count = service.getCouponCountService(session, vo);
+		int count = service.getCouponCountService(vo);
 		pm.setTotalCount(count);
-		List<CouponVo> list = service.getCouponListService(vo, session);
+		List<CouponVo> list = service.getCouponListService(vo);
 		List<CouponVo> usedCouponList = service.getUnavailableCouponListService(vo);
 		for(CouponVo vv : usedCouponList) {
 			if(vv.getCoupon_use_date()!=null) {
@@ -60,6 +58,7 @@ public class CouponController {
 		mav.addObject("criteria", cri);
 		mav.addObject("count", count);
 		mav.addObject("list", list);
+		mav.addObject("user_no", user_no);
 		return mav;
 	}
 
