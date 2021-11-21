@@ -224,7 +224,7 @@
 					<div>
 						<div>
 						<c:forEach var="color" items="${color}">
-							<a  href="#" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">${color}</sapn></a>
+							<a  href="javascript:void(0)" onclick="chooseColor(this)" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">${color}</sapn></a>
 						</c:forEach>
 						</div>
 					</div>
@@ -234,7 +234,7 @@
 					<div class="dd">
 						<div class="payment-option-size">
 							<c:forEach var="size" items="${size}">
-								<button type="button" class="btn-size d_radio_select" onclick="#">
+								<button type="button" class="btn-size d_radio_select" onclick="chooseSize(this)">
 									<span>${size}</span>									
 								</button>
 							</c:forEach>
@@ -245,9 +245,9 @@
 						<div class="dt">수량</div>
 						<div class="dd">
 							<div class="quantity-wrap">
-								<button type="button" onclick="javascript:changeQty('minus'); return false;" class="pq-minus">빼기</button>
-								<button type="button" onclick="javascript:changeQty('add'); return false;" class="pq-plus">추가</button>
-								<input type="number" id="qty" title="수량" value="1" data-min-ord-qty="1" data-max-ord-qty="999" onkeyup="javascript:onlyNumber(this);" onblur="javascript:changeQty('');">
+								<button type="button" onclick="minus();" class="pq-minus">빼기</button>
+								<button type="button" onclick="plus();" class="pq-plus">추가</button>
+								<input type="number" id="qty" title="수량" value="1" readonly/>
 							</div>
 						</div>
 					</li>						
@@ -541,13 +541,7 @@
 					style="width:700px; height:600px;">
 			</div>
 			<!--// ** 상품세부정보 -->
-			
-			<!-- ** 리뷰 -->
-			<div class="lypopGoodsReview lyTabCont">
-				<div id="goodsReviewList"></div>
-			</div>
-			<!-- // ** 리뷰 -->
-			
+	
 			<!-- ** 배송/교환/반품/환불 -->
 			<div class="lypopGoodsGuide lyTabCont">
 				<!-- 배송안내  -->
@@ -634,46 +628,16 @@
         </tr>
     </tbody>
 </table>
-<!-- // 교환/반품 안내 -->
-<input type="hidden" id="dmstcDlvCstExmStdrAmt" value="100"/>
-			    <input type="hidden" id="dmstcDlvCst" value="2,500"/>                 
-			    <input type="hidden" id="repairDlvCst" value="2,500"/>                 
-				<input type="hidden" id="dmstcDlvComNm" value="로젠택배
-"/>
-			</div>
-			<!-- // ** 배송/교환/반품/환불 -->
-			
-		</div>
+</div>
+</div>
 		<div class="layer-popup-close">
 			<button type="button" class="d_layer_close" onclick="javascript:closeLayerPopAndReset('lypopGoodsDtInfo');">닫기</button>
 		</div>
 	</section>
 </article>
 
-
-<!-- 상세 광고 스크립트 -->
-<!-- CRITEO  SCRIPT START 2018.8.10 -->
-<script type="text/javascript">
-/* 
-	Criteo AD script	
-	사이트 Type(모바일 페이지는 "m", 태블릿 페이지는 "t", 일반 웹 사이트는 "d"로 삽입)	
-*/
-window.criteo_q = window.criteo_q || [];
-window.criteo_q.push(  
-        { event: "setAccount", account: "61384" },        
-        { event: "setSiteType", type: "d" },
-        { event: "viewItem", item: _erpNo }
-);
-fnf_appendCriteoScript();
-</script>
-<!-- //CRITEO  SCRIPT START 2018.8.10 -->
-
-<!-- WIDERPLANET  SCRIPT START 2018.8.10 -->
 <div id="wp_tg_cts" style="display:none;"></div>
 
-<!-- // WIDERPLANET  SCRIPT END 2018.8.10 -->
-
-<!-- PIXEL  SCRIPT START 2018.8.10 -->
 <script type="text/javascript">
 /* 
 	웹사이트 행동 : 표준 이벤트 코드
@@ -687,10 +651,7 @@ fnf_appendCriteoScript();
 	READ : Lead
 	등록 완료 : CompleteRegistration
  */
- goodsPixclTrack("ViewContent");
- function goodsPixclTrack(eventCode) {	
- 	fbq('track', eventCode);
- };
+
 </script>
 <!-- PIXEL  SCRIPT START 2018.8.10 --><script>
 	if(localStorage.getItem('goodsListScrollPositionFlag') == "Y"){
@@ -702,6 +663,37 @@ fnf_appendCriteoScript();
 	}
 </script>
 <script type="text/javascript">
+var color = "";
+var size = "";
+var count = 1;
+function chooseColor(element){
+	$(element).css('border', '1px solid black');
+	color = $(element).children('span').text();
+}
+
+function chooseSize(element){
+	$(element).css('border', '1px solid black');
+	size = $(element).children('span').text();
+}
+
+function minus(){
+	if(count == 1){
+		alert("더 이상 줄일 수 없습니다.");
+	}else{
+		count--;
+	}
+	$('#qty').val(count);
+}
+
+function plus(){
+	if(count == 999){
+		alert("더 이상 추가 할 수 없습니다.");
+	}else{
+		count++;
+	}
+	$('#qty').val(count);
+}
+
 function heart(element){
 	var user_no = localStorage.getItem("user_no");
 	var product_no = ${productDetail.get(0).product_no}
