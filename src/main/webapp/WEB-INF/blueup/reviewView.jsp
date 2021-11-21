@@ -158,8 +158,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 									<!--탭 메뉴 영역 -->
 									 <ul class="tabs">
 										<li><a href="#tab1" onclick="location.href='/test/getReviewproductList.do?user_no='+${getReviewproductList.get(0).user_no}" >작성가능한 리뷰</a></li>
-										<li><a href="#tab2" onclick="location.href='/test/getReviewList.do?user_no='+ ${getReviewproductList.get(0).user_no}" >내가 작성한 리뷰</a></li>
-									</ul>
+										<li><a href="#tab2" onclick="location.href='/test/getReviewList.do?user_no='+${getReviewproductList.get(0).user_no}" >내가 작성한 리뷰</a></li>
+									</ul> 
 									<!-- <input type="button" class="button" id="tab1" onclick="getReviewproductList()" value="작성가능한 리뷰"/>
  									<input type="button" class="button"  id="tab2" onclick="getReviewList()" value="내가 작성한 리뷰"/> 
 									<script type="text/javascript">
@@ -174,8 +174,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 									</script> -->
 									<!--탭 콘텐츠 영역 -->
 									<div class="tab_container">
-
-										<div id="tab1" class="tab_content" onclick="location.href='/test/getReviewproductList.do?user_no='+${user_no}">
+										<div id="tab1" class="tab_content" onclick="location.href='/test/getReviewproductList.do?user_no='+${getReviewproductList.get(0).user_no}">
 											<!--Content-->
 
 											<c:forEach var="review" items="${getReviewproductList}" varStatus="status">
@@ -193,7 +192,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										</div>
 
 
-										<div id="tab2" class="tab_content" onclick="location.href='/test/getReviewList.do?user_no='+ ${user_no}">
+										<div id="tab2" class="tab_content" onclick="location.href='/test/getReviewList.do?user_no='+ ${getReviewList.get(0).user_no}">
 											<!--Content-->
 											<colgroup>
 												<col style="width: 35px">
@@ -217,14 +216,16 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 				<td width="100px">${reviewlist.product_name}</td>
 				<td width="60px">${reviewlist.product_size}</td>
 				<td width="60px">${reviewlist.product_color}</td>
-				
-										<td width="100px">${reviewlist.review_title}</td>
-										<td width="100px">  ${reviewlist.star}</td>
-										<td width="100px">${reviewlist.review_content}</td>
-										<td width="70px">${reviewlist.review_time}</td>
+				<br>
+				<td width="100px"> 별점: ${reviewlist.star} 개</td>
+										<td width="100px">제목: ${reviewlist.review_title}</td>
+										<br>
+										<td width="100px">내용 : ${reviewlist.review_content}</td>
+										<br>
+										<td width="70px">시간: ${reviewlist.review_time}</td>
 										
-										<input type="button" class="button" onclick="update()" id="updateone" value="수정"/>
-										<input type="button" class="button" onclick="delete()" id="selectone" value="삭제"/>	
+										<input type="button" class="button" onclick="updateReview()" id="updateone" value="수정"/>
+										<input type="button" class="button" onclick="deleteReview()" id="selectone" value="삭제"/>	
 				   </tr> 
 											</c:forEach>
 												</div>
@@ -254,7 +255,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 
 				</div>
-
 				<div class="contTxtBox">
 					<strong>유의사항</strong>
 					<ul class="text-list01">

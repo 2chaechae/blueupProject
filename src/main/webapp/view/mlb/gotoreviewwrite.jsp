@@ -16,7 +16,7 @@
 <script type="text/javascript">
 	function getProductInfo(){
 		var user_no = localStorage.getItem("user_no");
-		var product_no = 101001; 
+		var product_no = localStorage.getItem("product_no"); /* 나중에 구매확정에서 product_no갖고와야함 */
 		location.href='/test/getProductInfoForReview.do?user_no='+ user_no +'&product_no=' + product_no;
 	}
 	 function getReviewproductList(){

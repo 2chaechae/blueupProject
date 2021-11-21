@@ -116,7 +116,7 @@
 <script type="text/javascript">
 	function getReviewList(){
 		var user_no = localStorage.getItem("user_no");
-		var product_no = 101001; 
+		var product_no = /* 101001;  */ localStorage.getItem("product_no");
 		location.href='/test/insertReview.do?user_no='+ user_no +'&product_no=' + product_no;
 	}
 </script>
