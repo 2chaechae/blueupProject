@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="adminloginDAO">
+	<select id="adminlogin" resultType="adminloginvo">
+		SELECT admin_id, admin_password
+		FROM admin
+		WHERE admin_id = #{admin_id}
+		AND admin_password = #{admin_password}
+	</select>
+</mapper>
