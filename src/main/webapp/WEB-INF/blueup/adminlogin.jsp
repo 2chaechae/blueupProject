@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../header.jsp"%>
+<%@ include file="header.jsp"%>
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/member/join.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/social/social_login.js?v=prod-version-858_20211102145956"></script>
@@ -19,7 +19,7 @@
 			<div class="login-wrap">
 				<div class="login-cnt d_tab02">
 					<div class="d_tab02_cont" style="display: block;">
-						<form id="loginForm" action="/blueup/getAdminLogin.mdo" method="post">
+						<form id="loginForm" action="/test/getAdminLogin.mdo" method="post">
 							<input type="hidden" name="accessToken" id="accessToken" value="" />
 							<input type="hidden" name="loginTarget" id="loginTarget" value="" />
 							<input type="hidden" name="remember-me" id="autologin" value="true"> 
