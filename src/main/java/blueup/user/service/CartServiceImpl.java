@@ -43,4 +43,9 @@ public class CartServiceImpl implements CartService{
 		return cartdao.selectedcartList(cart_no);
 	}
 
+	@Override
+	public List<CartVo> selectProductNo(String user_no) {
+		return cartdao.selectProductNo(user_no);
+	}
+
 }
