@@ -3,6 +3,7 @@
 <nav id="lnb" class="lnb-nav">
  <!-- <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>  -->
     	<p><b>관리자</b>님<br/>반갑습니다.</p>
+    	<p><a href="/blueup/getAdminlogout.mdo">로그아웃</a></p>
     	<hr class="hr-ddd" />
     	
     	<ul class="nav-mnlist">
