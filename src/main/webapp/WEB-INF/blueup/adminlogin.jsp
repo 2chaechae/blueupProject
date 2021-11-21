@@ -19,7 +19,7 @@
 			<div class="login-wrap">
 				<div class="login-cnt d_tab02">
 					<div class="d_tab02_cont" style="display: block;">
-						<form id="loginForm" action="/test/getAdminLogin.mdo" method="post">
+						<form id="loginForm" action="/test/getAdminLoginCheck.mdo" method="post">
 							<input type="hidden" name="accessToken" id="accessToken" value="" />
 							<input type="hidden" name="loginTarget" id="loginTarget" value="" />
 							<input type="hidden" name="remember-me" id="autologin" value="true"> 

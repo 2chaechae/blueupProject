@@ -40,7 +40,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				/WEB-INF/spring/admin/admin-servlet.xml <!-- 아래와 같이 각 팀원들이 만들 컨텍스트를 등록하면 됩니다. -->
-				WEB-INF/spring/admin/adminlogin-servlet.xml
+				/WEB-INF/spring/admin/adminlogin-servlet.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
