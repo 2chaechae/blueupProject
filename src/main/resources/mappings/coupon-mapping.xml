@@ -25,7 +25,7 @@
 		]]>
 	</select>
 	
-	<select id="getCouponCount" parameterType="userVO" resultType="int">
+	<select id="getCouponCount" parameterType="userVO" resultType="Integer">
 		SELECT 
 		COUNT(B.COUPON_NO) 
 		FROM USERS AS A, COUPON AS B

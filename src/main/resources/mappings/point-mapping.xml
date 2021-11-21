@@ -4,20 +4,20 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pointDao">
 
-	<select id="getTotalPoint" parameterType="int" resultType="int">
+	<select id="getTotalPoint" parameterType="int" resultType="Integer">
 		SELECT
-		SUM(COALESCE(INCOME,0)) - SUM(COALESCE(EXPENSE,0)) AS TOTAL_POINT
+		(SUM(COALESCE(INCOME,0))) - (SUM(COALESCE(EXPENSE,0))) AS TOTAL_POINT
 		FROM POINT
 		WHERE USER_NO = #{user_no};
 	</select>
 	
-	<select id="getSavedMoney" parameterType="int" resultType="int">
+	<select id="getSavedMoney" parameterType="int" resultType="Integer">
 		SELECT SUM(COALESCE(EXPENSE,0))
 		FROM POINT
 		WHERE USER_NO = #{user_no};
 	</select>
 	
-	<select id="getCount" parameterType="int" resultType="int">
+	<select id="getCount" parameterType="int" resultType="Integer">
 		SELECT COUNT(POINT_NO)
 			FROM POINT
 			WHERE USER_NO = #{user_no}

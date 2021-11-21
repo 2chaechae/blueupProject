@@ -14,17 +14,17 @@ public class PointDAO {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	public int getTotalPointDao(int user_no) {
+	public Integer getTotalPointDao(int user_no) {
 		int total_point = sqlSessionTemplate.selectOne("pointDao.getTotalPoint", user_no);
 		return total_point;
 	}
 	
-	public int getSavedMoneyDao(int user_no) {
+	public Integer getSavedMoneyDao(int user_no) {
 		int saved_money = sqlSessionTemplate.selectOne("pointDao.getSavedMoney", user_no);
 		return saved_money;
 	}
 	
-	public int getCountDao(int user_no) {
+	public Integer getCountDao(int user_no) {
 		int count = sqlSessionTemplate.selectOne("pointDao.getCount", user_no);
 		return count;
 	}
