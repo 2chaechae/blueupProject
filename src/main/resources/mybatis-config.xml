@@ -6,7 +6,6 @@
 	<properties resource="db.properties" />
 	<typeAliases>
 		<typeAlias type="blueup.admin.vo.ProductVo" alias="productvo"/>
-		<typeAlias type="blueup.admin.vo.ProductDetailVo" alias="productDetailvo"/>
 		<typeAlias type="blueup.admin.vo.StockVo" alias="stockvo"/>
 		<typeAlias type="blueup.user.vo.CartVo" alias="cartvo"/>
 		<typeAlias type="blueup.user.vo.Terms_and_conditionVo" alias="termsvo"/>
@@ -24,6 +23,8 @@
 		<typeAlias type="blueup.user.vo.PointVo" alias="pointVo"  />
 		<typeAlias type="blueup.admin.vo.AdminVo" alias="adminloginvo"  />
 		<typeAlias type="blueup.user.vo.ReviewVo" alias="reviewvo"  />
+		<typeAlias type="blueup.user.vo.ProductDetailVo" alias="productDetailvo"/>
+		<typeAlias type="blueup.user.vo.BannerVo" alias="bannervo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />

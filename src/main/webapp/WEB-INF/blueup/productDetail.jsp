@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="header.jsp" %>
 
 <!-- 컨텐츠 시작 -->
@@ -160,72 +161,18 @@
 				<div class="swiper-container">
 					<ul class="swiper-wrapper list">
 						<!-- 동영상 -->	
-						<input type="hidden" name="len"		id="len"	value="">	
-						<input type="hidden" name="imgCnt"  id="imgCnt"	value="9">	
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210830/3ABNM0916-50BKS-46328925477560702.jpg/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210830/3ABNM0916-50BKS-46328925477560702.jpg" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158721215558499.jpg/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158721215558499.jpg" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158725509717732.jpg/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158725509717732.jpg" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158729353569583.jpg/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158729353569583.jpg" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844417281987.png/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844417281987.png" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844536340191.jpg/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844536340191.jpg" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844677789654.jpg/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844677789654.jpg" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						<li class="pic swiper-slide">
-								<div class="item">
-									<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
-										<img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844833829831.jpg/dims/resize/634x634" data-big="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844833829831.jpg" alt="하트 비니 뉴욕양키스" onerror="errorImgShow(this,'634x634');">
-									</a>
-								</div>
-							</li>
-						</ul>
+						<c:forEach var="item_topImage" items="${productDetail}">
+							<c:if test="${ item_topImage.content_type == 'top'}">
+								<li class="pic swiper-slide">
+										<div class="item">
+											<a href="javascript:;" onclick="ui.pd.goods_zoom.open(this);">
+												<img src="${item_topImage.detailed_product_content }">
+											</a>
+										</div>
+								</li>
+							</c:if>
+						</c:forEach>
+					</ul>
 				</div>
 				<div class="navigation" id="divNavi">
 					<button type="button" class="btnNav prev">이전</button>
@@ -236,34 +183,14 @@
 				<div class="slide-container">
 					<ul class="slide-wrapper list">
 						<!-- 동영상 -->
-						<li class="pic slide" data-index="0">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="1">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210830/3ABNM0916-50BKS-46328925477560702.jpg/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="2">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158721215558499.jpg/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="3">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158725509717732.jpg/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="4">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210805/3ABNM0916-50BKS-44158729353569583.jpg/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="5">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844417281987.png/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="6">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844536340191.jpg/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="7">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844677789654.jpg/dims/resize/70x70" alt=""></a>
-							</li>
-							<li class="pic slide" data-index="8">
-								<a href="javascript:;" class="item"><img src="https://static.mlb-korea.com/images/goods/detail/m/20210804/3ABNM0916-50BKS-44086844833829831.jpg/dims/resize/70x70" alt=""></a>
-							</li>
-							</ul>
+						<c:forEach var="item_topImage" items="${productDetail}">
+							<c:if test="${ item_topImage.content_type == 'top'}">
+								<li class="pic slide" data-index="0">
+										<a href="javascript:;" class="item"><img src="${item_topImage.detailed_product_content}" style="height:70px;width:70px;"></a>
+									</li>
+							</c:if>
+						</c:forEach>
+					</ul>
 				</div>
 				<div class="navigation" id="divNavi">
 					<button type="button" class="btnNav prev">이전</button>
@@ -279,16 +206,14 @@
 		<div class="reserve">
 				
 				</div>
-		<div class="name">
-			하트 비니 뉴욕양키스</div>
-		<span class="code">3ABNM0916-50BKS</span>
+		<div class="name">${productDetail.get(0).product_name}</div>
+		<span class="code">${productDetail.get(0).product_no}</span>
 		<div class="cupon_msg"><span style='color:'></span></div>
 		<div class="price norm">
 			<div class="prc">
-				<span class="p n">49,000<em>원</em></span> 
-				</div>
-			<!-- 쿠폰가 -->
+				<span class="p n">${productDetail.get(0).product_price}<em>원</em></span> 
 			</div>
+		</div>
 	</div>
 		
 	<!-- 일반상품 -->		
@@ -298,28 +223,22 @@
 					<div class="dt">다른색상</div>
 					<div>
 						<div>
-							<a  href="#" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">브라운</sapn></a>
-							<a  href="#" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">브라운</sapn></a>
-							<a  href="#" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">브라운</sapn></a>
+						<c:forEach var="color" items="${color}">
+							<a  href="#" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">${color}</sapn></a>
+						</c:forEach>
 						</div>
 					</div>
 				</li>
 				<li class="size">
-					<div class="dt">
-						사이즈</div>
+					<div class="dt">사이즈</div>
 					<div class="dd">
 						<div class="payment-option-size">
-							<!-- 리미티드 개발 --> 
-							<!-- 예약판매 체크 -->
-											<button type="button" class="btn-size d_radio_select" onclick="#">
-												<span>230</span>									
-											</button>
-											<button type="button" class="btn-size d_radio_select" onclick="#">
-												<span>240</span>									
-											</button>
-										</div>
-						<input type="hidden" name="itmNo" id="itmNo0" value=""/>
-						<input type="hidden" name="itmNm" id="itmNm0" value=""/>
+							<c:forEach var="size" items="${size}">
+								<button type="button" class="btn-size d_radio_select" onclick="#">
+									<span>${size}</span>									
+								</button>
+							</c:forEach>
+						</div>
 					</div>
 				</li>
 				<li class="amount">
@@ -392,33 +311,28 @@
 			</a>
 		</div>
 		<span class="hits">
-			<span class="share">
-				<a class="bt" href="javascript:;" id="btn_goods_share">공유</a>
-				<input type="hidden" name="twitterTitle" id="twitterTitle" value="하트 비니 뉴욕양키스">
-			</span>
 			<span class="wish">
-						<a href="javascript:memberLogin();" class="bt " title="위시리스트 담기" data-ga-category="PC_MLB_상품상세" data-ga-action="위시리스트 담기" data-ga-label="하트 비니 뉴욕양키스"></a>
-					    	<em id="wishListCount">
-						    	18</em>
-						</span>
-				</span>
+					<c:choose>
+						<c:when test="${productDetail.get(0).wish_no ne 0}">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
+						</c:when>
+						<c:when test="${productDetail.get(0).wish_no eq 0}">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
+						</c:when>
+					</c:choose>
+			</span>
+		</span>
 		
-	</div>
-
-	<div class="info ddts ">
-		<ul>
-			<li>[UNISEX] 하트 비니 뉴욕양키스</li>
-		</ul>
 	</div>
 	</div>
 </section>
-					<!-- STYLE IN MLB(브랜드상품공지사항) -->
-					<section class="mds-section brand">
+<!-- STYLE IN MLB(브랜드상품공지사항) -->
+	<section class="mds-section brand">
 	<!-- div class="hdt"><span class="tit">STYLE IN MLB</span></div -->
-	<div class="html-box">
-			<a href="https://www.mlb-korea.com/event/EV202110150000254/GNRL"><img height="70" src="https://static.mlb-korea.com/images/goods/notice/20211015/1.MLB상품상세띠배너PC.png" width="900" /></a></div>
-	<div class="html-box">
-			<a href="https://www.mlb-korea.com/event/EV202111010000259/GNRL"><img height="70" src="https://static.mlb-korea.com/images/goods/notice/20211101/7.MLB상품상세띠배너PC.png" width="1000" /></a></div>
+	<c:forEach var="banner" items="${banner}">
+		<div class="html-box">
+				<a href="#"><img height="70" src="${banner.banner_image}" width="900" /></a></div>
+	</c:forEach>
 	</section>
 	<div class="product-content-tab tab-scroll-wrap d_fix">
 		<ul class="tab-type04 d_scroll_tab d_fix_obj">
@@ -431,34 +345,64 @@
 	<!-- 상품정보  -->
 	<div id="productInfo01" class="product-detail-section box-info">
 		<div class="html-box">
-				<br />
-<br />
-<img src="https://prd-static-fnf-online-mall.s3.ap-northeast-2.amazonaws.com/webresource/mlb-korea/images/display/content/img_detail/2020/0.SABANGNET/1MLB/1MLBmd/3ABNM0916-50BKS-md.jpg" /><br />
-<br />
-<img src="https://prd-static-fnf-online-mall.s3.ap-northeast-2.amazonaws.com/webresource/mlb-korea/images/display/content/img_detail/2020/0.SABANGNET/1MLB/2MLBkr/MLBdetail/3ABNM0916-50BKS.jpg" /><br />
-<br />
-<img src="https://prd-static-fnf-online-mall.s3.ap-northeast-2.amazonaws.com/webresource/mlb-korea/images/display/content/img_detail/2020/0.SABANGNET/1MLB/2MLBkr/MLBcolor/3ABNM0916-color.jpg" /><br />
-<br />
-<img src="https://prd-static-fnf-online-mall.s3.ap-northeast-2.amazonaws.com/webresource/mlb-korea/images/display/content/img_detail/2020/0.SABANGNET/1MLB/1MLBmd1/3ABNM0916-50BKS-md1.jpg" /><br />
-&nbsp;
+			<br/><br/>
+			<c:forEach var="image" items="${productDetail}">
+				<c:if test="${ image.content_type == 'main'}">
+						<img src="${image.detailed_product_content}" /><br />
+						<br />
+				</c:if>
+			</c:forEach>
+			&nbsp;
 
 <div id="productInfo02" class="product-detail-section box-review" style="width:1000px;">
 		<h2 class="title03" style="padding-bottom:30px;">상품리뷰</h2>
 		<hr style="color:gray">
-		<div style="display:flex; margin-left:372px; height:110px; margin-top:17px;"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star.png" style="width:50px; height:50px;">
-				<lable style="font-size:50px; margin-left:22px;">5.0</lable></div>
-		<div class="product-ext-review">
-			<div class="crema-product-reviews" data-product-code="3ASHC3S1N-50CRS">
-		<hr style="color:gray"> 
+		<div style="display:flex; margin-left:372px; height:83px; margin-top:17px;"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star.png" style="width:50px; height:50px;">
+				<lable style="font-size:50px; margin-left:22px;"><fmt:formatNumber value="${review.get(0).avgstar}" pattern=".00"/></lable></div>
+		<hr style="color:gray">
+		<div>
+		<label style="font-size : 18px; padding-right: 15px;">별점 기준 조회 : </label>
+		<select name="starSearch" style="width:170px; height:30px; text-align:center">
+			<option value='' selected>-- 선택 --</option>
+			<option value="1">1점</option>
+			<option value="2">2점</option>
+			<option value="3">3점</option>
+			<option value="4">4점</option>
+			<option value="5">5점</option>
+		</select>
+		</div>
+			<div>
 				<table>
-					<tr>
-						<td rowspan="6" colspan="7">별점<br>리뷰타이틀<br>content<tr><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star.png" style="hieght:20px; width:20px;"></td>
-						<td rowspan="6" colspan="2">날짜</td>
-						<td rowspan="6" colspan="7">사용자님의 리뷰입니다.<br>상품사이즈<br>상품컬러</td>
+				<c:forEach var="review" items="${review}">
+					<tr style="heigth:100px; border: 1px none none solid none">
+						<input type="hidden" value="${review.review_no}"/>
+						<td style="font-size:18px;" colspan="5"><img src="${review.photo1}" style="height:230px;width:230px; margin:10px;"></td>
+						<td style="font-size:18px;text-align:left" colspan="7">
+						<c:choose>
+							<c:when test="${review.star == 1}">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star1.png" style="height:10px;width:60px;">
+							</c:when>
+							<c:when test="${review.star == 2}">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star2.png" style="height:10px;width:60px;">
+							</c:when>
+							<c:when test="${review.star == 3}">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star3.png" style="height:10px;width:60px;">
+							</c:when>
+							<c:when test="${review.star == 4}">
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star4.png" style="height:10px;width:60px;">
+							</c:when>
+							<c:otherwise>
+								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star5.png" style="height:10px;width:60px;">
+							</c:otherwise>
+						</c:choose>
+						<br>${review.review_title}<br>${review.review_content}</td>
+						<fmt:formatDate var="formatRegDate" value="${review.review_time}" pattern="yyyy.MM.dd" />
+						<td style="font-size:18px; text-align:center" colspan="3">${formatRegDate }</td>
+						<td style="font-size:18px; text-align:right" colspan="4">${review.user_id}님의 리뷰입니다.<br>${review.product_size}<br>${review.product_color}</td>
 					</tr>
+				</c:forEach>
 				</table>
 			</div>
-		</div>
 </div>
 </div>
 </div>	 
@@ -757,7 +701,87 @@ fnf_appendCriteoScript();
 		localStorage.removeItem('goodDetailFlag');
 	}
 </script>
-	
+<script type="text/javascript">
+function heart(element){
+	var user_no = localStorage.getItem("user_no");
+	var product_no = ${productDetail.get(0).product_no}
+	var wish_no = ${productDetail.get(0).wish_no}
+	var img = $(element).attr("src");
+		alert(img);
+		/////////////////회원 위시리스트////////////////
+		if(user_no != null){
+			if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
+				$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
+				console.log(product_no);
+					$.ajax({
+						url:'/test/insertWishList.do',
+					    type:'POST',
+					   	cache:false,
+						data: {"user_no":user_no , "product_no":product_no},
+						success:function() {
+							alert('위시리스트에 담겼습니다.');
+						},
+						error:function() {
+							alert('다시 시도해주세요');
+						}
+					});
+			}else{
+				$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
+				console.log(wish_no);
+					$.ajax({
+						url:'/test/deleteWishList.do',
+					    type:'POST',
+					   	cache:false,
+						data: {"user_no":user_no , "wish_no":wish_no},
+						success:function() {
+							alert('제외되었습니다.');
+						},
+						error:function() {	
+							alert('다시 시도해주세요');
+						}
+					});
+			}
+		}else{
+			/////////////////비회원 위시리스트////////////////
+			console.log(product_no);
+			//쿠키 생성 & 내용 추가
+			if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
+				$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png");
+				var getlist = $.cookie('p_list');
+					if(getlist == undefined){
+						var cookieList = product_no + "/";
+						$.cookie('p_list', cookieList);
+						console.log("첫번째값 넣기 :" + cookieList);
+					}else{
+						console.log("기존쿠키: " + getlist);
+						getlist += product_no;
+						getlist += "/";
+						console.log("두번째 쿠키 넣기 : " + getlist);
+						$.cookie('p_list', getlist);
+					}
+			// 쿠키삭제 & 내용 삭제
+			}else{
+				$(element).attr("src","https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png");
+				var cookieValue = $.cookie('p_list');
+				console.log("기존쿠기 : " +  cookieValue);
+				var remove = cookieValue.split("/");
+				var cookieList= "";
+				for(var check of remove){
+					if( check != product_no){
+						console.log(check);
+						cookieList += check;
+						cookieList += "/";
+					}
+				}
+					console.log(cookieList);
+					$.removeCookie('p_list');
+					console.log("쿠키삭제");
+					$.cookie('p_list', cookieList);
+					console.log("쿠키생성");
+				}
+			}
+		}
+</script>
 
 
 <%@ include file="footer.jsp" %>

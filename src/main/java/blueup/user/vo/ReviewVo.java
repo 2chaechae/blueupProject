@@ -26,5 +26,11 @@ public class ReviewVo {
 	String order_status; //구매확정 
 	String quantity;//구매 수량
 	int review_photo_no; //리뷰 포토 번호
-	
+	String photo1;
+	String photo2;
+	String photo3;
+	String photo4;
+	String photo5;
+	int avgstar;
+
 }
