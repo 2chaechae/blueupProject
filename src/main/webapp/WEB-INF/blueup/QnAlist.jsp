@@ -16,7 +16,7 @@
 			<div class="container">
 
 				<h2 class="title01">1:1 문의</h2>
-<%@ include file="mypageMenu.jsp" %>	
+<%@ include file="../../view/mlb/mypageMenu.jsp"%>	
 <main class="contents oto_inquiryList-wrap" id="contents">
 
 					<div class="location-contents">
