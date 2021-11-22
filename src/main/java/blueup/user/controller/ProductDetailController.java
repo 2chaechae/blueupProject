@@ -30,7 +30,7 @@ public class ProductDetailController {
 	/* 상품 상세 회원*/
 	@RequestMapping("/productDetail.do")
 	public ModelAndView selectProductDetail(@RequestParam(value="product_no") String product_no, @RequestParam(value="user_no") String user_no,
-			@RequestParam(value="page_no", defaultValue="1") int page_no) {
+			@RequestParam(value="page_no", defaultValue="1") int page_no, @RequestParam(value="star", required=false) int star ) {
 		System.out.println("회원 상품상세");
 		ModelAndView mav = new ModelAndView();
 		
@@ -48,14 +48,21 @@ public class ProductDetailController {
 			System.out.println("페이지 시작 :" + cri.getStartRow());
 			ReviewPageMaker pageMaker = new ReviewPageMaker();
 			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(productDetailServiceimpl.reviewCount(Integer.parseInt(product_no)));
-			System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
-			vo.put("perPageNum", cri.getPerPageNum()); 	// 페이지당 게시물 갯수
-			vo.put("startRow", cri.getStartRow());  	// 시작 번호
-			vo.put("product", Integer.parseInt(product_no));
-			
-			
-		List<ReviewVo> test = productDetailServiceimpl.selectProductReview(vo);
+			List<ReviewVo> test = new ArrayList<ReviewVo>();
+			if(star > 0) {
+				vo.put("perPageNum", cri.getPerPageNum()); 	// 페이지당 게시물 갯수
+				vo.put("startRow", cri.getStartRow());  	// 시작 번호
+				vo.put("product", Integer.parseInt(product_no));
+				pageMaker.setTotalCount(productDetailServiceimpl.reviewCount(Integer.parseInt(product_no)));
+				System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
+				test = productDetailServiceimpl.selectProductReview(vo);
+			}else {
+				vo.put("perPageNum", cri.getPerPageNum()); 	// 페이지당 게시물 갯수
+				vo.put("startRow", cri.getStartRow());  	// 시작 번호
+				vo.put("product", Integer.parseInt(product_no));
+				vo.put("star", star);
+				/*게시물 수 review 가져오는 쿼리 */
+			}
 		if(test.size() == 0) {
 			System.out.println("review null");
 			mav.addObject("review", null);

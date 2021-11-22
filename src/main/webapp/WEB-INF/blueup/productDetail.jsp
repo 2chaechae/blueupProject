@@ -411,7 +411,7 @@ body {
 				</table>
 				<c:if test="${review.get(0).user_no != 0 }">
 					<c:if test="${pageMaker.startPage != 1 }">
-						<a href="/test/productDetail.do?page_no=${pageMaker.startPage - 1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&lt;</a>
+						<a href="/test/productDetail.do?page_no=${pageMaker.startPage - 1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}&star=${review.get(0).star}">&lt;</a>
 					</c:if>
 					<c:forEach begin="${pageMaker.startPage }"
 						end="${pageMaker.endPage }" var="p">
@@ -421,12 +421,12 @@ body {
 	
 							</c:when>
 							<c:when test="${p != cri.page }">
-								<a href="/test/productDetail.do?page_no=${p}&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">|&nbsp;${p}&nbsp;|</a>
+								<a href="/test/productDetail.do?page_no=${p}&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}&star=${review.get(0).star}">|&nbsp;${p}&nbsp;|</a>
 							</c:when>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
-						<a href="/test/productDetail.do?page_no=${pageMaker.endPage+1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&gt;</a>
+						<a href="/test/productDetail.do?page_no=${pageMaker.endPage+1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}&star=${review.get(0).star}">&gt;</a>
 					</c:if>
 				</c:if>
 			</div>
@@ -707,18 +707,7 @@ $(document).ready(function(){
 	var user_no = localStorage.getItem("user_no");
 	$('#starSearch').on('change', function(){
 		var star = $('#starSearch option:selected').val();
-		$.ajax({
-			url:'/test/getStockbyProductno.do',
-		    type:'POST',
-		   	cache:false,
-			data: {"product_no":product_no, "product_color" : product_color},
-			success:function(data) {
-				
-			},
-			error:function() {
-				alert('다시 시도해주세요');
-			}
-		});
+		location.href="/test/productDetail.do?user_no="+user_no+"&product_no="product_no+"&star="+star;
 	}
 });
 

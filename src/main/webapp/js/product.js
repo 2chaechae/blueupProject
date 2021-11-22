@@ -1,6 +1,6 @@
 /*전체상품 조회 (상단메뉴)*/
 
-var user_no = localStroage.getItem("user_no");
+var user_no = localStorage.getItem("user_no");
 
 function checkCategoryAll(element){
 	var first = $(element).text();

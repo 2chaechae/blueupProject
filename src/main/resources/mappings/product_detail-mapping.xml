@@ -13,6 +13,7 @@
 		ON SUB.product_no=D.product_no WHERE SUB.product_no=#{product_no} 
 	</select>
 
+	<!-- 특정 상품 리뷰 -->
 	<select id="selectProductReview" resultType="reviewvo">
 		SELECT a.product_no, a.review_no, a.product_name, a.user_no, a.product_size, a.star, ROUND(AVG(star) OVER (PARTITION BY a.product_no),1)AS avgstar, a.review_title,
 		a.review_content, a.user_id, a.review_time, a.product_color, b.review_no, b.photo1, b.photo2, b.photo3, b.photo4, b.photo5
@@ -21,9 +22,25 @@
 		WHERE a.product_no=#{product} LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
+	<!-- 리뷰 별점기준 조회 -->
+	<select id="selectReviewByStar" resultType="reviewvo">
+		SELECT a.product_no, a.review_no, a.product_name, a.user_no, a.product_size, a.star, ROUND(AVG(star) OVER (PARTITION BY a.product_no),1)AS avgstar, a.review_title,
+		a.review_content, a.user_id, a.review_time, a.product_color, b.review_no, b.photo1, b.photo2, b.photo3, b.photo4, b.photo5
+		FROM review AS A LEFT JOIN review_photo AS B
+		ON (a.review_no = b.review_no)
+		WHERE a.product_no=#{product} AND STAR=#{star} LIMIT #{perPageNum} OFFSET #{startRow}
+	</select>
+	
+	<!-- 리뷰 별점기준 갯수 -->
+	<select id="reviewCountByStar" resultType="int">
+		SELECT COUNT(*) FROM REVIEW WHERE PRODUCT_NO=#{product} AND STAR=${star}
+	</select>
+	
+	<!-- 리뷰 게시글 갯수 -->
 	<select id="reviewCount" resultType="int">
 		SELECT COUNT(*) FROM REVIEW WHERE PRODUCT_NO=#{product}
 	</select>
+	
 	<select id="selectProductBanner" resultType="bannervo">
 		select * from banner where banner_type = 'product';
 	</select>
