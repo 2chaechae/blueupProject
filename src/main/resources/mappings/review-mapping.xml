@@ -55,7 +55,7 @@
 	<!-- 상품정보가져오기 -->
 	<select id="getProductInfoForReview" resultType="reviewvo" >
 	  SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		on a.order_no = b.order_no WHERE a.user_no = #{user_no}
 		AND b.order_status='구매확정';
@@ -66,7 +66,7 @@
 	<!-- 작성가능한상품정보가져오기 -->
 	<select id="getReviewproductList" resultType="reviewvo" >
 	 SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		ON a.order_no = b.order_no 
 		WHERE a.user_no = #{user_no}
