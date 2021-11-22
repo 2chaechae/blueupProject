@@ -228,7 +228,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 										<input type="button" class="button" onclick="updateReview(this)" id="updateone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
-				   </tr> 
+										<input type="hidden" class="review_no" value="${reviewlist.review_no}"/>
+				   </tr> 	
 				   </div>
 				   </section>
 											</c:forEach>
@@ -289,7 +290,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
  
 
  function deleteReview(element){
-	var review_no = $(element).closest('div').prev().val();
+	var review_no = $(element).siblings('.review_no').val();
 	alert(review_no);
 	$.ajax({
 		url:'/test/deleteReview.do',

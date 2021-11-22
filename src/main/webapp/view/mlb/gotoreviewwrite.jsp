@@ -21,7 +21,7 @@
 	}
 	 function getReviewproductList(){
 		 var user_no = localStorage.getItem("user_no");
-		location.href='/test/getReviewproductList.do?user_no='+ user_no ;
+		location.href='/test/getReviewproductList.do?user_no='+user_no ;
 	} 
 </script>
 </body>
