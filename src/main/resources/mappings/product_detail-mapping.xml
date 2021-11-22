@@ -18,9 +18,12 @@
 		a.review_content, a.user_id, a.review_time, a.product_color, b.review_no, b.photo1, b.photo2, b.photo3, b.photo4, b.photo5
 		FROM review AS A LEFT JOIN review_photo AS B
 		ON (a.review_no = b.review_no)
-		WHERE a.product_no=#{product_no}
+		WHERE a.product_no=#{product} LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
+	<select id="reviewCount" resultType="int">
+		SELECT COUNT(*) FROM REVIEW WHERE PRODUCT_NO=#{product}
+	</select>
 	<select id="selectProductBanner" resultType="bannervo">
 		select * from banner where banner_type = 'product';
 	</select>

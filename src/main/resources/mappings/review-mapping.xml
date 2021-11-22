@@ -76,7 +76,8 @@
 	<!-- 작성한 리뷰 가져오기 -->
 	<select id="getReviewList" resultType="reviewvo" >
 	 SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
-	 
 	</select>
+	
+	<!-- 별점별 리뷰 -->
 
 </mapper>

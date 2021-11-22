@@ -1,6 +1,7 @@
 package blueup.user.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import blueup.user.paging.ReviewCriteria;
+import blueup.user.paging.ReviewPageMaker;
+import blueup.user.paging.productPageMaker;
 import blueup.user.service.ProductDetailServiceImpl;
 import blueup.user.vo.CartVo;
 import blueup.user.vo.ProductDetailVo;
@@ -25,7 +29,8 @@ public class ProductDetailController {
 	
 	/* 상품 상세 회원*/
 	@RequestMapping("/productDetail.do")
-	public ModelAndView selectProductDetail(@RequestParam(value="product_no") String product_no, @RequestParam(value="user_no") String user_no) {
+	public ModelAndView selectProductDetail(@RequestParam(value="product_no") String product_no, @RequestParam(value="user_no") String user_no,
+			@RequestParam(value="page_no", defaultValue="1") int page_no) {
 		System.out.println("회원 상품상세");
 		ModelAndView mav = new ModelAndView();
 		
@@ -35,15 +40,28 @@ public class ProductDetailController {
 		vo_p.setUser_no(Integer.parseInt(user_no)); 
 		
 		// 리뷰 vo 셋팅 및 값 설정
-		ReviewVo vo_r = new ReviewVo();	
-		vo_r.setProduct_no(Integer.parseInt(product_no));
-		List<ReviewVo> test = productDetailServiceimpl.selectProductReview(vo_r);
+		HashMap<String, Object> vo = new HashMap<String, Object>();
+			ReviewCriteria cri = new ReviewCriteria();
+			cri.setPage(page_no);	// 현재페이지
+			cri.setPageStart(); 	// startRow 설정 ( 현재페이지를 넘기면 시작 줄 계산)
+			System.out.println("페이지당 개수 :" + cri.getPerPageNum());
+			System.out.println("페이지 시작 :" + cri.getStartRow());
+			ReviewPageMaker pageMaker = new ReviewPageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(productDetailServiceimpl.reviewCount(Integer.parseInt(product_no)));
+			System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
+			vo.put("perPageNum", cri.getPerPageNum()); 	// 페이지당 게시물 갯수
+			vo.put("startRow", cri.getStartRow());  	// 시작 번호
+			vo.put("product", Integer.parseInt(product_no));
+			
+			
+		List<ReviewVo> test = productDetailServiceimpl.selectProductReview(vo);
 		if(test.size() == 0) {
 			System.out.println("review null");
 			mav.addObject("review", null);
 		}else {
 			System.out.println("review null 아님");
-			mav.addObject("review", productDetailServiceimpl.selectProductReview(vo_r));
+			mav.addObject("review", productDetailServiceimpl.selectProductReview(vo));
 		}
 		
 		// 품절 여부 확인 및 color, size list 따로 받기
@@ -54,6 +72,8 @@ public class ProductDetailController {
 			System.out.println(m);
 		}
 		
+		mav.addObject("pageNum", page_no);
+		mav.addObject("pageMaker", pageMaker);
 		mav.addObject("productDetail", productDetailServiceimpl.selectProductDetail(vo_p));
 		mav.addObject("banner", productDetailServiceimpl.selectProductBanner());
 		mav.addObject("color", color);

@@ -1,5 +1,6 @@
 package blueup.user.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,18 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 	}
 
 	@Override
-	public List<ReviewVo> selectProductReview(ReviewVo vo) {
+	public List<ReviewVo> selectProductReview(HashMap<String, Object> vo) {
 		return productDetailDAO.selectProductReview(vo);
 	}
 
 	@Override
 	public List<BannerVo> selectProductBanner() {
 		return  productDetailDAO.selectProductBanner();
+	}
+
+	@Override
+	public int reviewCount(int product_no) {
+		return productDetailDAO.reviewCount(product_no);
 	}
 
 }
