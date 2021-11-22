@@ -34,11 +34,19 @@ public class ProductDetailController {
 		vo_p.setProduct_no(Integer.parseInt(product_no));
 		vo_p.setUser_no(Integer.parseInt(user_no)); 
 		
-		// 리뷰 vo 셋팅
+		// 리뷰 vo 셋팅 및 값 설정
 		ReviewVo vo_r = new ReviewVo();	
 		vo_r.setProduct_no(Integer.parseInt(product_no));
+		List<ReviewVo> test = productDetailServiceimpl.selectProductReview(vo_r);
+		if(test.size() == 0) {
+			System.out.println("review null");
+			mav.addObject("review", null);
+		}else {
+			System.out.println("review null 아님");
+			mav.addObject("review", productDetailServiceimpl.selectProductReview(vo_r));
+		}
 		
-		// 상품 정보
+		// 품절 여부 확인 및 color, size list 따로 받기
 		List<ProductDetailVo> p =  productDetailServiceimpl.selectProductDetail(vo_p);
 		String[] color = p.get(0).getProduct_color().split("/");
 		String[] size = p.get(0).getProduct_size().split("/");
@@ -48,7 +56,6 @@ public class ProductDetailController {
 		
 		mav.addObject("productDetail", productDetailServiceimpl.selectProductDetail(vo_p));
 		mav.addObject("banner", productDetailServiceimpl.selectProductBanner());
-		mav.addObject("review", productDetailServiceimpl.selectProductReview(vo_r));
 		mav.addObject("color", color);
 		mav.addObject("size", size);
 		mav.setViewName("productDetail");

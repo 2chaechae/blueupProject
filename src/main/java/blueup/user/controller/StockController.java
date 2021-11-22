@@ -20,6 +20,7 @@ public class StockController {
 	@RequestMapping("/getStockbyProductno.do")
 	@ResponseBody
 	public List<StockVo> getStockbyProductno(StockVo vo){
+		System.out.println("재고확인");
 		List<StockVo> result = stockserviceimpl.getStockbyProductno(vo);
 		for(StockVo m : result) {
 			System.out.println(m.getProduct_size());

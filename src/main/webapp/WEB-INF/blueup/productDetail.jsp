@@ -298,7 +298,12 @@
 		<h2 class="title03" style="padding-bottom:30px;">상품리뷰</h2>
 		<hr style="color:gray">
 		<div style="display:flex; margin-left:372px; height:83px; margin-top:17px;"><img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star.png" style="width:50px; height:50px;">
-				<lable style="font-size:50px; margin-left:22px;"><fmt:formatNumber value="${review.get(0).avgstar}" pattern=".00"/></lable></div>
+				<lable style="font-size:50px; margin-left:22px;">
+				<c:choose>
+					<c:when test="${review == null}">0.0</c:when>
+					<c:otherwise><fmt:formatNumber value="${review.get(0).avgstar}" pattern=".0"/></c:otherwise>
+				</c:choose>
+				</lable></div>
 		<hr style="color:gray">
 		<div>
 		<label style="font-size : 18px; padding-right: 15px;">별점 기준 조회 : </label>
@@ -313,46 +318,50 @@
 		</div>
 			<div>
 				<table>
-				<c:forEach var="review" items="${review}">
-					<tr style="heigth:100px; border: 1px none none solid none">
-						<input type="hidden" value="${review.review_no}"/>
-						<td style="font-size:18px;" colspan="5"><img src="${review.photo1}" style="height:230px;width:230px; margin:10px;"></td>
-						<td style="font-size:18px;text-align:left" colspan="7">
-						<c:choose>
-							<c:when test="${review.star == 1}">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star1.png" style="height:10px;width:60px;">
-							</c:when>
-							<c:when test="${review.star == 2}">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star2.png" style="height:10px;width:60px;">
-							</c:when>
-							<c:when test="${review.star == 3}">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star3.png" style="height:10px;width:60px;">
-							</c:when>
-							<c:when test="${review.star == 4}">
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star4.png" style="height:10px;width:60px;">
-							</c:when>
-							<c:otherwise>
-								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star5.png" style="height:10px;width:60px;">
-							</c:otherwise>
-						</c:choose>
-						<br>${review.review_title}<br>${review.review_content}</td>
-						<fmt:formatDate var="formatRegDate" value="${review.review_time}" pattern="yyyy.MM.dd" />
-						<td style="font-size:18px; text-align:center" colspan="3">${formatRegDate }</td>
-						<td style="font-size:18px; text-align:right" colspan="4">${review.user_id}님의 리뷰입니다.<br>${review.product_size}<br>${review.product_color}</td>
-					</tr>
-				</c:forEach>
+				<c:choose>
+				<c:when test="${review == null}"> 
+					<div style="heigth:100px; width:800px;"><span>등록된 리뷰가 없습니다.</span></div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="review" items="${review}">
+						<tr style="heigth:100px; border: 1px none none solid none">
+							<input type="hidden" value="${review.review_no}"/>
+							<td style="font-size:16px;" colspan="5"><img src="${review.photo1}" style="height:200px;width:200px; margin:10px;"></td>
+							<td style="font-size:16px;text-align:left" colspan="7">
+							<c:choose>
+								<c:when test="${review.star == 1}">
+									<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star1.png" style="height:27px;width:117px;">
+								</c:when>
+								<c:when test="${review.star == 2}">
+									<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star2.png" style="height:27px;width:117px;">
+								</c:when>
+								<c:when test="${review.star == 3}">
+									<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star3.png" style="height:27px;width:117px;">
+								</c:when>
+								<c:when test="${review.star == 4}">
+									<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star4.png" style="height:27px;width:117px;">
+								</c:when>
+								<c:otherwise>
+									<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star5.png" style="height:10px;width:60px;">
+								</c:otherwise>
+							</c:choose>
+							<br>${review.review_title}<br>${review.review_content}</td>
+							<fmt:formatDate var="formatRegDate" value="${review.review_time}" pattern="yyyy.MM.dd" />
+							<td style="font-size:16px; text-align:center" colspan="3">${formatRegDate }</td>
+							<td style="font-size:16px; text-align:right" colspan="4">${review.user_id}님의 리뷰입니다.<br>${review.product_size}<br>${review.product_color}</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+				</c:choose>
 				</table>
 			</div>
-</div>
-</div>
+		</div>
+	</div>
 </div>	 
-</div>
-</div>
-</div>
 
 <!-- 상품정보 -->
 <div class="lypopGoodsDetail lyTabCont on" style="margin-left:350px;">
-		<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/shoes/bottom01.png" style="width:1000px; height:500px;">
+		<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/shoes/bottom01.png" style="width:984px; height:500px; margin-left:50px;">
 </div>
 
 <!-- 교환반품 -->
@@ -617,7 +626,40 @@ function chooseColor(element){
 	$(element).css('border', '1px solid black');
 	$(element).siblings().css('border', '1px solid lightgray');
 	product_color = $(element).text();
-}
+	var spanList = $('.payment-option-size').find('span');
+		$(spanList).each(function(){
+			$(this).css("text-decoration", "none");
+			$(this).attr("disabled", false);
+		});
+		$.ajax({
+			url:'/test/getStockbyProductno.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"product_no":product_no, "product_color" : product_color},
+			success:function(data) {
+				var sizeList = [];
+				var size = $('.payment-option-size').find('span').text();
+				var length = size.length;
+				for(var i=0; i < length; i+=3){
+					sizeList.push(size.substring(i, i+3));
+				}
+				
+				var spanList = $('.payment-option-size').find('span');
+				$(spanList).each(function(){
+					for(var i=0; i < data.length; i++){
+						if($(this).text() == data[i].product_size && data[i].stock_quantity == 0){
+							alert($(this).text());
+							$(this).css("text-decoration", "line-through");
+							$(this).attr("disabled", true);
+						}
+					}
+				});
+			},
+			error:function() {
+				alert('다시 시도해주세요');
+			}
+		});
+	}
 
 function chooseSize(element){
 	$(element).css('border', '1px solid black');
@@ -722,9 +764,15 @@ function heart(element){
 			}
 		}
 
+function orderCheck(){
+	if(product_size == "" || product_color == ""){
+		alert("옵션을 선택해주세요.");
+	}
+}
 /* 바로 구매 */
 function addOrder(){
 	/*비회원 주문*/
+	orderCheck();
 	var user_no = localStorage.getItem("user_no");
 	if(user_no == null){
 		var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
@@ -777,6 +825,7 @@ function addOrder(){
 
 /* 장바구니 이동 */
 function addCart(){
+	orderCheck();
 	var user_no = localStorage.getItem("user_no");
 	var total_price = product_price * quantity;
 	if(user_no != null){
