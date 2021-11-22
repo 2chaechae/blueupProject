@@ -20,13 +20,13 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void insertReview(ReviewVo vo) {
-		reviewDAO.insertReview(vo);
+	public int insertReview(ReviewVo vo) {
+		return reviewDAO.insertReview(vo);
 	}
 
 	@Override
-	public void updateReview(ReviewVo vo) {
-		reviewDAO.updateReview(vo);
+	public int updateReview(ReviewVo vo) {
+		return reviewDAO.updateReview(vo);
 	}
 	
 
