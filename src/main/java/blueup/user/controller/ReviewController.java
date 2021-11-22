@@ -107,13 +107,13 @@ public class ReviewController {
 	
 	// 리뷰 삭제
 		@RequestMapping("/deleteReview.do")
-		public ModelAndView deleteReview(HttpSession session, ReviewVo vo,ModelAndView mav ) {
+		public ModelAndView deleteReview(HttpSession session, ReviewVo vo,ModelAndView mav, Integer user_no ) {
 			System.out.println("리뷰가 삭제되었습니다");
 			reviewService.deleteReview(vo);
+			vo.setUser_no(user_no);
 			/*user_no을 넣어서 넘겨야함
-			 * 넘길 때 redirect로 넘기게되면 정보 사라짐 session에 저장해서 넘겨야 할듯 뿌잉 고생하는 숭민이 ><*/
+			 * 넘길 때 redirect로 넘기게되면 정보 사라짐 session에 저장해서 넘겨야 할듯 뿌잉 고생하는 숭민이 >< ㅎㅎㅎㅎㅎ*/
 			mav.setViewName("getReviewList.do");
-			
 			return mav;
 		}
 
