@@ -181,7 +181,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
 											<tr>
 											
-                                   <img src="${review.product_img}" width="150px" height="150px" >
+                                   <img src="${review.main_image}" width="150px" height="150px" >
 				<td width="100px">${review.product_name}</td>
 				<td width="60px">${review.quantity}</td>
 				<td width="100px">  ${review.product_color}</td>
@@ -211,8 +211,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 												
 													<c:forEach var="reviewlist" items="${getReviewList}" varStatus="status">
 													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
+										<section class="review">
+										<div>
 											<tr>
-											
+										
 				<td width="100px">${reviewlist.product_name}</td>
 				<td width="60px">${reviewlist.product_size}</td>
 				<td width="60px">${reviewlist.product_color}</td>
@@ -225,8 +227,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<td width="70px">시간: ${reviewlist.review_time}</td>
 										
 										<input type="button" class="button" onclick="updateReview(this)" id="updateone" value="수정"/>
-										<input type="button" class="button" onclick="deleteReview(this)" id="selectone" value="삭제"/>	
+										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
 				   </tr> 
+				   </div>
+				   </section>
 											</c:forEach>
 												</div>
 											
@@ -282,24 +286,20 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 <script>
 /* 리뷰 삭제 */
-function deleteReview(element){
-	var product_no = $(element).closest('div').prev().val();
-	var wish_no = $(element).closest('div').prev().prev().val();
-	alert(product_no);
-	alert(wish_no);
+ 
+
+ function deleteReview(element){
+	var review_no = $(element).closest('div').prev().val();
+	alert(review_no);
 	$.ajax({
-		url:'/test/deleteWishList.do',
+		url:'/test/deleteReview.do',
 		type:'POST',
 		cache:false,
-		data: {"user_no":user_no, "wish_no":wish_no, "product_no":product_no},
+		data: {"user_no":user_no, "review_no":review_no},
 		success:function(data) {
 			if(data == 1){
-				$(element).closest('.wish').remove();
-				var now = $('.num').text();
-				console.log(now);
-				var new_num = Number(now) - 1; 
-				console.log(new_num);
-				$('.num').text(new_num);
+				$(element).closest('.review').remove();
+				
 			}
 			else{
 				alert("삭제 실패")
@@ -309,7 +309,7 @@ function deleteReview(element){
 			alert('다시 시도해주세요');
 		}
 	});	
-}
+} 
 </script>
 <%@ include file="footer.jsp"%>
 </body>

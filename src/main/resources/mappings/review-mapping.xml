@@ -16,8 +16,7 @@
 			REVIEW_CONTENT,
 			USER_ID,
 			REVIEW_TIME,
-			PRODUCT_COLOR,
-			MAIN_IMAGE
+			PRODUCT_COLOR
 		) VALUES(
 			#{review_no},
 			#{product_no},
@@ -29,8 +28,7 @@
 			#{review_content},
 			#{user_id},
 			now(),
-			#{product_color},
-			#{main_image}
+			#{product_color}
 		)
 	</insert>
 	 <!--리뷰 쓰기에  -->
@@ -38,8 +36,8 @@
 		SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
 	</select> -->
 	<!-- 리뷰 삭제 -->
-	<delete id="deleteReivew" parameterType="reviewvo">
-		DELETE FROM REVIEW WHERE PRODUCT_NAME = #{product_name}
+	<delete id="deleteReview" parameterType="reviewvo">
+		DELETE FROM REVIEW WHERE REVIEW_NO = #{review_no}
 	</delete>
 	
 	
@@ -54,31 +52,40 @@
 		WHERE REVIEW_NO = #{review_no}
 	</update>
 	
-	<!-- 상품정보가져오기 -->
+	<!-- 리뷰를 위한 한가지 상품정보가져오기 -->
 	<select id="getProductInfoForReview" resultType="reviewvo" >
 	  SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		on a.order_no = b.order_no WHERE a.user_no = #{user_no}
-		AND b.order_status='구매확정';
-	 
+		AND b.order_status='구매확정' AND b.product_no = #{product_no} AND b.review_status='false';
 	</select>
 	
-
+	<!-- 리뷰를 위한 사진 가져오기 -->
+	<select id="getReivewPhoto" resultType="reviewvo" >
+	select user_no from order_request and select * from review_photo
+	 where user_no = #{user_no} AND product_no = #{product_no}; 
+	</select>
+	
 	<!-- 작성가능한상품정보가져오기 -->
 	<select id="getReviewproductList" resultType="reviewvo" >
 	 SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.product_img
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		ON a.order_no = b.order_no 
 		WHERE a.user_no = #{user_no}
 	 	AND b.order_status='구매확정' AND b.review_status='false';
-	</select>
+	</select> 
 	
 	<!-- 작성한 리뷰 가져오기 -->
 	<select id="getReviewList" resultType="reviewvo" >
 	 SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
-	 
+	
+	<!--  SELECT a.user_no,b.review_status 
+	 FROM review as a JOIN order_detail as b
+	 ON a.user_no = b. order_no
+	 WHERE a.user_no = #{user_no}
+	 AND b.review_status='true'; -->
 	</select>
 
 </mapper>

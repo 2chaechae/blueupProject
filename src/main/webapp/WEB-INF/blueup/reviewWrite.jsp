@@ -52,7 +52,7 @@
 				<tr><th scope="row">
 				<label for="boardWriteTitle">상품정보</label>
 				<div></div>
-				<img src="${getProductInfoForReview.product_img}" id="product_img" width="150px" height="150px" >
+				<img src="${getProductInfoForReview.main_image}" id="product_img" width="150px" height="150px" >
 				<td width="100px"><input value="${getProductInfoForReview.product_name}" id="product_name"></td>
 				<td width="60px"><input value="${getProductInfoForReview.quantity}" id="quantity"></td>
 				<td width="100px">  <input value="${getProductInfoForReview.product_color}" id="product_color"></td>
@@ -61,8 +61,7 @@
 				 <%-- 나중에  src="${REVIEW_PHOTO.photo1}"등으로 고쳐야 a함 --%>
 				</tr>
 				<tr></tr><tr></tr><tr></tr>
-				<!-- 여기에 디비에서 구매한 COLOR,CLOTHES_SIZE,PRODUCT_NAME 적어야함. -->
-					<tr>
+					 <tr>
 						<th scope="row"><label for="boardWriteTitle">제목</label> <span
 							class="required">*</span></th>
 						<td><input type="text" id="boardWriteTitle"
@@ -71,7 +70,7 @@
 							
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
-						</td></tr>
+						</td></tr> 
 						<tr><th scope="row"><label for="boardWriteTitle">아이디</label> <span
 							class="required">*</span></th>
 						<td><input type="text" id="user_id"
@@ -93,7 +92,7 @@
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
 					</tr>
-					<tr>
+					<%-- <tr>
 					
 						<th scope="row"><label for="boardWriteTitle">작성시간</label> </th>
 						<td><input type="text" id="review_time" placeholder="20XX-XX-XX"
@@ -102,7 +101,7 @@
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
-					</tr>
+					</tr> --%>
 						<th scope="row"><label for="boardWriteContent">내용</label> <span
 							class="required">*</span></th>
 						<td><textarea cols="30" rows="10" id="content"
@@ -127,10 +126,12 @@
 								<!-- <div >
 									<input class="input_ea" type="file">
 								</div> -->
+								<tr>
+								<th scope="row"><label for="boardWriteTitle">리뷰 사진</label> </th><td>
 								<span>
 										<input type="file" id="fileSearch" name="files" onchange="javascript:filetest(this);">
 										
-									</span>
+									</span></td></tr>
 							</div></td>
 					</tr>
 					
@@ -158,7 +159,7 @@ $(document).ready(function(){
     //목록으로 버튼 클릭 시
     $('#submitBtn').on('click',function(){
     	var user_no = localStorage.getItem("user_no");
-    	var product_no = localStorage.getItem("product_no");
+    	var product_no = localStorage.getItem("product_no"); 
         var title = $('#boardWriteTitle').val();
         var star = $('#star').val();
         var content = $('#content').val();
@@ -166,21 +167,21 @@ $(document).ready(function(){
         var product_name=$('#product_name').val();
         var product_size=$('#product_size').val();
         var product_color=$('#product_color').val();
-        var product_img=$('#product_img').val();
+        var main_image=$('#main_image').val();
         var quantity=$('#quantity').val();
         alert("user_no" + user_no);
         alert("product_no" + product_no);
         alert("title" + title);
         alert("star"+ star);
         alert("content" + content);
-        alert("review_time" + review_time);
         alert("user_id" + user_id);
         alert("product_name" + product_name);
         alert("product_size" + product_size);
         alert("product_color" + product_color);
-        alert("product_img" + product_img);
+        alert("main_image" + main_image);
         alert("quantity" + quantity);
-        location.href='/test/insertReview.do?user_no='+user_no+'&product_no='+product_no+'&title='+title+'&content='+content+'&star='+star;
+        location.href='/test/getReviewList.do?user_no='+user_no+'&product_no='+product_no+'&title='+title+'&content='+content+'&star='+star;
+        alert("리뷰를 작성하였습니다.");
     });
     
     

@@ -22,14 +22,7 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 
-	// 리뷰 삭제
-	@RequestMapping("/deleteReview.do")
-	public ModelAndView deleteReview(ReviewVo vo) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("ReviewVO", reviewService.deleteReview(vo));
-		mav.setViewName("redirect:/getReviewList.do");
-		return mav;
-	}
+	
 
 	// 리뷰 수정
 	@RequestMapping("/updateReview.do")
@@ -78,7 +71,7 @@ public class ReviewController {
 	@RequestMapping("/insertReview.do")
 	public ModelAndView insertReview(
 			
-			int product_no,
+			int product_no, /* ReviewVo, vo.set 다시 int로 */
 			String star,
 			String title,
 			String content,
@@ -87,10 +80,8 @@ public class ReviewController {
 			String product_size,
 			Date review_time,
 			String product_color,
-			String main_image,
 			Boolean review_status,
 			int user_no
-	/* int review_photo_no */
 			) {
 		System.out.println(1);
 		ModelAndView mav = new ModelAndView();
@@ -106,7 +97,6 @@ public class ReviewController {
 		vo.setProduct_color(product_color);
 		vo.setUser_no(user_no);
 		vo.setProduct_no(product_no);
-		vo.setMain_image("dd"); 
 		vo.setReview_status(true);
 		reviewService.insertReview(vo);		
 		mav.setViewName("/getReviewList.do");
@@ -114,5 +104,17 @@ public class ReviewController {
 		
 	  
 	}
+	
+	// 리뷰 삭제
+		@RequestMapping("/deleteReview.do")
+		public ModelAndView deleteReview(HttpSession session, ReviewVo vo,ModelAndView mav ) {
+			System.out.println("리뷰가 삭제되었습니다");
+			reviewService.deleteReview(vo);
+			/*user_no을 넣어서 넘겨야함
+			 * 넘길 때 redirect로 넘기게되면 정보 사라짐 session에 저장해서 넘겨야 할듯 뿌잉 고생하는 숭민이 ><*/
+			mav.setViewName("getReviewList.do");
+			
+			return mav;
+		}
 
 }
