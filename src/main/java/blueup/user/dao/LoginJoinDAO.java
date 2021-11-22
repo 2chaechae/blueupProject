@@ -56,4 +56,8 @@ public class LoginJoinDAO {
 		return sqlSssionTemplate.selectOne("loginjoinDao.userEmailId", userVo);
 	}
 
+	public void updateNewInfo(UsersVo userVo) {
+		sqlSssionTemplate.update("loginjoinDao.updateNewInfo", userVo);
+	}
+
 }

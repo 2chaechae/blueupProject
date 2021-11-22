@@ -16,4 +16,5 @@ public interface LoginJoinService {
 	public List<UsersVo> getRgstTime(UsersVo userVo);
 	public List<UsersVo> getFoundEmailId(UsersVo userVo);
 	public int getUserEmailId(UsersVo userVo);
+	public void getUpdateNewInfo(UsersVo userVo);
 }

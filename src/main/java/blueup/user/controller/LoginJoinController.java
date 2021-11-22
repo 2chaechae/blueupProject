@@ -399,5 +399,28 @@ public class LoginJoinController {
         return map;
         
     }
+    
+
+	@RequestMapping("/foundPw.do")
+	@ResponseBody
+	public Map<String,Object> foundPw(UsersVo userVo) {
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+		String pw = userVo.getUser_password().toString();
+		
+		SHA256 sha256 = new SHA256(); //사용자 패스워드 암호화
+		
+		try {
+			pw = sha256.encrypt(pw);
+			userVo.setUser_password(pw);
+			
+			loginjoinserviceimpl.getUpdateNewInfo(userVo);
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 }
