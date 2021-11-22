@@ -31,9 +31,9 @@
 						회원가입시 입력하였던 정보를 입력해주세요<br/><br/>
 							이름 : <input type="text" id="user_name_phone" name="user_name_phone" value=""/><br/><br/>
 							휴대폰번호 : 
-							<input type="text" id="phone1" name="phone1" value=""/>-
-							<input type="text" id="phone2" name="phone2" value=""/>-
-							<input type="text" id="phone3" name="phone3" value=""/>&emsp;
+							<input type="text" id="phone1" name="phone1" value="" maxlength="3"/>-
+							<input type="text" id="phone2" name="phone2" value="" maxlength="4"/>-
+							<input type="text" id="phone3" name="phone3" value="" maxlength="4"/>&emsp;
 							<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certConfirmBtn" name="certConfirmBtn">본인인증</a><br/><br/>
 							인증 번호 : <input type="text" id="certNum" name="certNum" value=""/>&emsp;
 							<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="confirmPhoneBtn" name="confirmPhoneBtn">확인</a>

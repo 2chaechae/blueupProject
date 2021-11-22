@@ -45,10 +45,21 @@ $(document).ready(function(){
 			$('#newUser_pw').focus();
 			return;
 		}
-		
-		/* $.ajax({
+		if(confirm("정말로 변경하시겠습니까?")){
+			$.ajax({
+				type : 'post',
+				url : '/test/foundPw.do',
+				data : { user_id : user_id , user_password : newUserPw },
+				dataType : 'json',
+				success:function(data){
+					console.log(data);
+					alert("비밀번호 변경에 성공하였습니다");
+				}
+			}); 
 			
-		}); */
+		} else {
+			return;
+		}
 		
 	});
 	

@@ -67,4 +67,8 @@ public class LoginJoinServiceImpl implements LoginJoinService{
 		return countEmail;
 	}
 
+	public void getUpdateNewInfo(UsersVo userVo) {
+		loginjoindao.updateNewInfo(userVo);
+	}
+
 }

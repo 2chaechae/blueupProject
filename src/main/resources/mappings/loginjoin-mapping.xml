@@ -120,4 +120,10 @@
 		   AND EMAIL_ID = #{email_id}
 		   AND EMAIL_ADDRESS = #{email_address}
 	</select>
+	
+	<update id="updateNewInfo" parameterType="userVo">
+		UPDATE USERS
+		   SET USER_PASSWORD = #{user_password}
+		 WHERE USER_ID = #{user_id}
+	</update>
 </mapper>
