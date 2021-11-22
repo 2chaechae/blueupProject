@@ -78,7 +78,7 @@
 								href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
 							</c:if>
 						</div>
-			</section>
+				</section>
 		</main>
 	</div>
 </div>
