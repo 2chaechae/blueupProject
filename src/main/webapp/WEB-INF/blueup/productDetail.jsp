@@ -80,67 +80,7 @@
 	});
 </script>
  -->
- 
-<form id="goodsWishlistForm">
-	<input type="hidden" id="parameterName"  name="_csrf" value="c854d7c1-02e4-4e55-b062-efcfbad2a500"/>
-	<input type="hidden" name="wishlstSn" id="wishlstSn" value=""/>
-	<input type="hidden" name="godTurn" id="godTurn" value=""/>
-	<input type="hidden" id="type" value=""><!-- 장바구니 : basket, 주문 : add -->
-	<input type="hidden" name="bskGodList[0].godNo" id="bskGodGodNo" value="GM0021073028518"/>
-	<input type="hidden" name="godNo" value="GM0021073028518"/>
-	<input type="hidden" name="bskGodList[0].pckageGodYn" id="wishlistPckageGodYn" value="N"/>
-       <input type="hidden"  id="erpGodNo" value="3ABNM0916-50BKS"/>
-</form>
 
-<form id="goodsForm">
-	<input type="hidden" id="parameterName"  name="_csrf" value="c854d7c1-02e4-4e55-b062-efcfbad2a500"/>
-	<input type="hidden" name="lastSalePrc" id="lastSalePrc" value="49000"/>
-	<input type="hidden" name="godTpCd" id="godTpCd" value="GNRL_GOD"/>
-	<input type="hidden" name="totalPrice" id="totalPrice" value=""/>
-	<input type="hidden" id="godNm" value="하트 비니 뉴욕양키스">
-	<input type="hidden" id="dsgnGrpNo" value="3ABNM0916">
-	<input type="hidden" id="brndId" value="M">
-	<input type="hidden" id="giftPromoAplYn" value="N">		
-	<!-- 장바구니 : basket, 주문 : add -->	
-	<input type="hidden" id="type" value="">
-	<input type="hidden" name="god.godNo" id="bskGodGodNo" value="GM0021073028518"/>
-	<input type="hidden" name="god.itmNo" id="bskGodItmNo" value=""/>
-	<input type="hidden" name="god.itmQty" id="bskGodItmQty" value="1"/>
-	<input type="hidden" name="god.cpstCnt" id="cpstCnt" value="0"/>	
-	<input type="hidden" name="god.dlvSectCd" id="bskGodDlvSectCd" value=""/>
-	<input type="hidden" name="god.pckageGodYn" id="bskGodPckageGodYn" value="N"/>
-	<input type="hidden" name="god.pkupShopSn" id="bskGodPkupShopSn" value=""/>
-	<input type="hidden" name="god.brndId" id="bskGodbrndId" value="M">
-	<!-- EOSD-2114 -->
-	<input type="hidden" name="god.rtlPrc" id="rtlPrc" value="49000">
-	<input type="hidden" name="god.csmrPrc" id="csmrPrc" value="49000">
-	<input type="hidden" name="god.brndNm" id="brndNm" value="엠엘비">
-	<input type="hidden" name="god.colorCd" id="colorCd" value="BKS">
-	<input type="hidden" name="god.colorNm" id="colorNm" value="Black">
-	<input type="hidden" name="god.sesonCd" id="sesonCd" value="21F">
-	<input type="hidden" name="god.sesonGrpCd" id="sesonGrpCd" value="FW">
-	<input type="hidden" name="god.godWt" id="godWt" value="">
-	<input type="hidden" name="god.mgDscr" id="mgDscr" value="">
-	<input type="hidden" name="god.matrDscr" id="matrDscr" value="겉감:아크릴 100%, 겉감:아크릴 100%">
-	<input type="hidden" name="god.godDcRt" id="godDcRt" value="0">
-	<input type="hidden" name="god.dspCtgryNm" id="dspCtgryNm" value="비니">
-	<input type="hidden" name="god.evtCd" id="evtCd" value="">
-	<input type="hidden" name="god.evtNm" id="evtNm" value="">
-	<input type="hidden" name="god.prmCd" id="prmCd" value="2447, 2474, 2495, 2496">
-	<input type="hidden" name="god.prmNm" id="prmNm" value="매일 함께 입고 싶은 커플룩 #MLB하트, 톤 업! 텐션 업! #MLB비니, 나 하나, 너 하나 #MLB하트, 스타일 온도 UP #MLB비니">
-	<input type="hidden" name="god.godUrl" id="godUrl" value="/goods/뉴욕-양키스/비니/3ABNM0916-50BKS">
-    <input type="hidden" name="god.imgUrl" id="thumbImgUrl" value="/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png"/>    	
-	
-	<input type="hidden" name="naverPayYn" id="naverPayYn" value="N"/>
-	<input type="hidden" name="loginYn" id="loginYn" value="N"/>
-	<div id="basketDiv">
-	
-	</div>			
-</form>
-	
-<input type="hidden" id="ctgryNoDpthNm1" value="CAP">
-<input type="hidden" id="ctgryNoDpthNm2" value="비니">
-	
 <acrticle id="container">
 	<section id="contents" class="product-detail">
 	
@@ -224,7 +164,7 @@
 					<div>
 						<div>
 						<c:forEach var="color" items="${color}">
-							<a  href="javascript:void(0)" onclick="chooseColor(this)" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">${color}</sapn></a>
+							<a  href="javascript:void(0)" class="btn-color" onclick="chooseColor(this)" style="height:25px; width:57px;"><sapn style="border:1px solid lightgray">${color}</sapn></a>
 						</c:forEach>
 						</div>
 					</div>
@@ -289,8 +229,8 @@
 	
 	<div class="info tool">
 		<div class="bts def">
-						<a class="btn xl bt-buy" href="javascript:;" onclick="addOrder('N');" data-ga-category="PC_MLB_상품상세" data-ga-action="주문유형" data-ga-label="바로구매">바로구매</a>
-						<a class="btn xl bt-cart" href="javascript:;" onclick="goBasket();" data-ga-category="PC_MLB_상품상세" data-ga-action="주문유형" data-ga-label="장바구니">장바구니</a>
+						<a class="btn xl bt-buy" href="javascript:void(0)" onclick="addOrder()" >바로구매</a>
+						<a class="btn xl bt-cart" href="javascript:void(0)" onclick="addCart();">장바구니</a>
 		</div>
 	</div>
 	
@@ -663,41 +603,49 @@
 	}
 </script>
 <script type="text/javascript">
-var color = "";
-var size = "";
-var count = 1;
+var product_color = "";
+var product_size = "";
+var quantity = 1;
+var product_no = ${productDetail.get(0).product_no};
+var wish_no = ${productDetail.get(0).wish_no};
+var product_price = ${productDetail.get(0).product_price};
+var discount = ${productDetail.get(0).discount};
+var main_image = "${productDetail.get(0).main_image}";
+var product_name = "${productDetail.get(0).product_name}";
+
 function chooseColor(element){
 	$(element).css('border', '1px solid black');
-	color = $(element).children('span').text();
+	$(element).siblings().css('border', '1px solid lightgray');
+	product_color = $(element).text();
 }
 
 function chooseSize(element){
 	$(element).css('border', '1px solid black');
-	size = $(element).children('span').text();
+	$(element).siblings().css('border', '1px solid lightgray');
+	product_size = $(element).children('span').text();
+	alert(product_size);
 }
 
 function minus(){
-	if(count == 1){
+	if(quantity == 1){
 		alert("더 이상 줄일 수 없습니다.");
 	}else{
-		count--;
+		quantity--;
 	}
-	$('#qty').val(count);
+	$('#qty').val(quantity);
 }
 
 function plus(){
-	if(count == 999){
+	if(quantity == 999){
 		alert("더 이상 추가 할 수 없습니다.");
 	}else{
-		count++;
+		quantity++;
 	}
-	$('#qty').val(count);
+	$('#qty').val(quantity);
 }
 
 function heart(element){
 	var user_no = localStorage.getItem("user_no");
-	var product_no = ${productDetail.get(0).product_no}
-	var wish_no = ${productDetail.get(0).wish_no}
 	var img = $(element).attr("src");
 		alert(img);
 		/////////////////회원 위시리스트////////////////
@@ -773,6 +721,138 @@ function heart(element){
 				}
 			}
 		}
+
+/* 바로 구매 */
+function addOrder(){
+	/*비회원 주문*/
+	var user_no = localStorage.getItem("user_no");
+	if(user_no == null){
+		var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
+		if(logincheck == true){
+			location.href="/test/login.do";
+		}else{
+			alert("비회원으로 주문");
+				$.ajax({
+					url:'/test/addCartNonMemberOne.do',
+				    type:'POST',
+				   	cache:false,
+					data: {"product_color" : product_color, "producr_size" : producr_size, "quantity" : quantity, "product_no" : product_no, 
+						"product_price" : product_price, "discount" : discount, "main_image" : main_image},
+					success:function(data) {
+						if(data == 1){
+						location.href="/test/getOrder.do";
+						}
+					},
+					error:function() {	
+						alert('다시 시도해주세요');
+					}
+				});
+		}
+	}else{
+		alert("회원으로 주문");
+		var discount_total = discount * quantity;
+		var total_price = product_price * quantity;
+		var all_discount = discount * quantity;
+		var all_price = product_price * quantity;
+		
+		$.ajax({
+			url:'/test/addCartOne.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
+				"product_price" : product_price, "discount" : discount, "main_image" : main_image, "discount_total" : discount_total, 
+				"total_price" : total_price, "all_discount":all_discount, "all_price" : all_price},
+			success:function(data) {
+				if(data == 1){
+				location.href="/test/getOrder.do";
+				}
+			},
+			error:function() {	
+				alert('다시 시도해주세요');
+			}
+		});
+	}
+}
+	
+
+/* 장바구니 이동 */
+function addCart(){
+	var user_no = localStorage.getItem("user_no");
+	var total_price = product_price * quantity;
+	if(user_no != null){
+		$.ajax({
+			url:'/test/addCheckCart.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"product_no":product_no, "user_no" : user_no, "product_size":product_size, "product_color":product_color},
+			success:function(data) {
+				if(data == 0){
+					$.ajax({
+						url:'/test/addCart.do',
+					    type:'POST',
+					   	cache:false,
+						data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+							"total_price":total_price, "product_size":product_size, "product_color":product_color, "main_image" : main_image, "user_no" : user_no
+						},
+						success:function(data) {
+							if(data == 1){
+							alert('장바구니에 담겼습니다.');
+							location.href="/test/getcartList.do?user_no="+user_no;
+							window.close();
+							}
+						},
+						error:function() {
+							alert('다시 시도해주세요');
+						}
+					});
+				}else{
+					var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
+					if(check) location.href="/test/getcartList.do?user_no="+user_no;
+					window.close();
+				}
+			},
+			error:function() {
+				alert('다시 시도해주세요');
+			}
+		});
+	}else{
+		$.ajax({
+			url:'/test/addCheckCart.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"product_no":product_no, "product_size":product_size, "product_color":product_color },
+			success:function(data) {
+				if(data == 0){
+					$.ajax({
+						url:'/test/addCart.do',
+					    type:'POST',
+					   	cache:false,
+						data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+							"total_price":total_price, "product_size":product_size, "product_color":product_color, "main_image" : main_image
+						},
+						success:function(data) {
+							if(data == 1){
+							alert('장바구니에 담겼습니다.');
+							location.href="/test/getcartList.do";
+							window.close();
+							}
+						},
+						error:function() {
+							alert('다시 시도해주세요');
+						}
+					});
+				}else{
+					var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
+					if(check) location.href="/test/getcartList.do";
+					window.close();
+			}
+		},
+		error:function() {
+			alert('다시 시도해주세요');
+		}
+	});
+	}
+}
 </script>
 
 
