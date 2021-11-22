@@ -22,6 +22,7 @@ public class OrderController {
 	public ModelAndView getOrder(HttpSession session, OrderVo vo) {
 		ModelAndView mav = new ModelAndView();
 		List<CartVo> test = (List<CartVo>) session.getAttribute("order");
+		System.out.println("È¸¿ø");
 		for(int i=0; i < test.size(); i++) {
 			System.out.println(test.get(i).getProduct_name());
 			System.out.println(test.get(i).getMain_image());

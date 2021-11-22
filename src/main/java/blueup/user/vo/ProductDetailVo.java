@@ -1,4 +1,4 @@
-package blueup.admin.vo;
+package blueup.user.vo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,7 @@ public class ProductDetailVo {
 	String product_size;// 사이즈
 	String product_color;		// 색상
 	String main_image;	// 대표 이미지
-	String product_content;// 내용
+	String detailed_product_content;// 내용
 	String content_type;
 	int user_no;
 	int wish_no; 

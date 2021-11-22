@@ -73,7 +73,7 @@ public class CartController {
 	// 장바구니 추가하기
 	@RequestMapping("/addCart.do")
 	@ResponseBody
-	public String addCart(CartVo vo, HttpSession session, HttpServletRequest req, HttpServletResponse repo, @RequestParam(value="user_no", required=false) String user_no) {
+	public String addCart(CartVo vo, HttpSession session, @RequestParam(value="user_no", required=false) String user_no) {
 		String result = "0";
 			
 		/////////////회원//////////////////
