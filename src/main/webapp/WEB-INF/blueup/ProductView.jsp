@@ -169,6 +169,7 @@ var img = $(element).attr("src");
 	
 function viewCount(element){
 	var product_no = $(element).closest('li').prev().prev().val();
+	var user_no = localStorage.getItem("user_no");
 	alert(product_no);
 	$.ajax({
 		url:'/test/updateViewCount.do',
@@ -178,6 +179,11 @@ function viewCount(element){
 		success:function(data) {
 			if(data == 1)
 			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+prodcut_no;
+			}
 		},
 		error:function() {	
 			console.log("조회수 증가 실패");

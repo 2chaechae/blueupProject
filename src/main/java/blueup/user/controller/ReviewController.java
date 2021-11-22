@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.service.QnaService;
@@ -21,14 +22,7 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 
-	// 리뷰 삭제
-	@RequestMapping("/deleteReview.do")
-	public ModelAndView deleteReview(ReviewVo vo) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("ReviewVO", reviewService.deleteReview(vo));
-		mav.setViewName("redirect:/getReviewList.do");
-		return mav;
-	}
+	
 
 	// 리뷰 수정
 	@RequestMapping("/updateReview.do")
@@ -72,36 +66,55 @@ public class ReviewController {
 				return mav;
 			}
 			
-	
+			
 	// 리뷰 등록
 	@RequestMapping("/insertReview.do")
 	public ModelAndView insertReview(
+			
+			int product_no, /* ReviewVo, vo.set 다시 int로 */
+			String star,
+			String title,
+			String content,
+			String user_id,
 			String product_name,
 			String product_size,
-			int star,
-			String review_title,
-			String review_content,
-			String user_id,
 			Date review_time,
 			String product_color,
-			int review_photo_no 
+			Boolean review_status,
+			int user_no
 			) {
+		System.out.println(1);
 		ModelAndView mav = new ModelAndView();
 		ReviewVo vo = new ReviewVo();
 		vo.setProduct_name(product_name);
 		vo.setProduct_size(product_size);
-		vo.setStar(star);
-		vo.setReview_title(review_title);
-		vo.setReview_content(review_content);
+		System.out.println(5);
+		vo.setStar(Integer.parseInt(star));
+		vo.setReview_title(title);
+		vo.setReview_content(content);
 		vo.setUser_id(user_id);
 		vo.setReview_time(review_time);
 		vo.setProduct_color(product_color);
-		vo.setReview_photo_no(review_photo_no);
+		vo.setUser_no(user_no);
+		vo.setProduct_no(product_no);
+		vo.setReview_status(true);
 		reviewService.insertReview(vo);		
-		mav.setViewName("reviewView");
+		mav.setViewName("/getReviewList.do");
 		return mav;
 		
 	  
 	}
+	
+	// 리뷰 삭제
+		@RequestMapping("/deleteReview.do")
+		public ModelAndView deleteReview(HttpSession session, ReviewVo vo,ModelAndView mav, Integer user_no ) {
+			System.out.println("리뷰가 삭제되었습니다");
+			reviewService.deleteReview(vo);
+			vo.setUser_no(user_no);
+			/*user_no을 넣어서 넘겨야함
+			 * 넘길 때 redirect로 넘기게되면 정보 사라짐 session에 저장해서 넘겨야 할듯 뿌잉 고생하는 숭민이 >< ㅎㅎㅎㅎㅎ*/
+			mav.setViewName("getReviewList.do");
+			return mav;
+		}
 
 }

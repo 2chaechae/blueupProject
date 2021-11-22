@@ -30,20 +30,20 @@ public class AdminLoginController {
 		
 		HttpSession session = request.getSession(true);
 
-		System.out.println("íŒŒë¼ë¯¸í„°ë¡œ ë°›ì€ id : " + vo.getAdmin_id());
-		System.out.println("íŒŒë¼ë¯¸í„°ë¡œ ë°›ì€ pass : " + vo.getAdmin_password());
-		System.out.println("ì„¸ì…˜ ID : " + session.getId());
+		System.out.println("ÆÄ¶ó¹ÌÅÍ·Î ¹ŞÀº id : " + vo.getAdmin_id());
+		System.out.println("ÆÄ¶ó¹ÌÅÍ·Î ¹ŞÀº pass : " + vo.getAdmin_password());
+		System.out.println("¼¼¼Ç ID : " + session.getId());
 
 		AdminVo vo2 = loginserviceimpl.adminlogin(vo);
 		System.out.println("db_id : " + vo2.getAdmin_id());
 		System.out.println("db_pass : " + vo2.getAdmin_password());
 
-		try { // ë¡œê·¸ì¸ ì„±ê³µ ì‹œ
+		try { // ·Î±×ÀÎ ¼º°ø ½Ã
 			session.setAttribute("admin_id", vo2.getAdmin_id());
-			System.out.println("ì„¸ì…˜ê°’ ë””ë²„ê¹… : " + session.getAttribute("admin_id"));
-			mvc.setViewName("adminnotice"); // ê´€ë¦¬ì ë©”ì¸í˜ì´ì§€ë¡œ ì´ë™
-		} catch (Exception e) { // vo2ì—ì„œ NullPointException ë‚˜ì™€ì„œ try~catch ì¼ìŠµë‹ˆë‹¹!! - ë¡œê·¸ì¸ ì‹¤íŒ¨ ì‹œ
-			mvc.setViewName("adminlogin"); // ë¡œê·¸ì¸í˜ì´ì§€ë¡œ ë‹¤ì‹œ ì´ë™
+			System.out.println("¼¼¼Ç°ª µğ¹ö±ë : " + session.getAttribute("admin_id"));
+			mvc.setViewName("adminnotice"); // °ü¸®ÀÚ ¸ŞÀÎÆäÀÌÁö·Î ÀÌµ¿
+		} catch (Exception e) { // vo2¿¡¼­ NullPointException ³ª¿Í¼­ try~catch ½è½À´Ï´ç!! - ·Î±×ÀÎ ½ÇÆĞ ½Ã
+			mvc.setViewName("adminlogin"); // ·Î±×ÀÎÆäÀÌÁö·Î ´Ù½Ã ÀÌµ¿
 		}
 		return mvc;
 	}
@@ -56,6 +56,6 @@ public class AdminLoginController {
 		mav.setViewName("adminlogin");
 		return mav;
 	}
-	/* ì„¸ì…˜ì´ ìˆìœ¼ë©´ ë©”ì¸í˜ì´ì§€, ì„¸ì…˜ì´ ì—†ìœ¼ë©´ ë¡œê·¸ì¸í˜ì´ì§€ */
-	/* ë¡œê·¸ì¸ ì‹¤íŒ¨ì‹œ ì´ë™í•˜ëŠ” ê²½ë¡œ */
+	/* ¼¼¼ÇÀÌ ÀÖÀ¸¸é ¸ŞÀÎÆäÀÌÁö, ¼¼¼ÇÀÌ ¾øÀ¸¸é ·Î±×ÀÎÆäÀÌÁö */
+	/* ·Î±×ÀÎ ½ÇÆĞ½Ã ÀÌµ¿ÇÏ´Â °æ·Î */
 }

@@ -23,6 +23,8 @@
 		<typeAlias type="blueup.user.vo.PointVo" alias="pointVo"  />
 		<typeAlias type="blueup.admin.vo.AdminVo" alias="adminloginvo"  />
 		<typeAlias type="blueup.user.vo.ReviewVo" alias="reviewvo"  />
+		<typeAlias type="blueup.user.vo.ProductDetailVo" alias="productDetailvo"/>
+		<typeAlias type="blueup.user.vo.BannerVo" alias="bannervo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />
@@ -43,6 +45,6 @@
 		<mapper resource="mappings/point-mapping.xml" />
 		<mapper resource="mappings/adminlogin-mapping.xml" />
 		<mapper resource="mappings/review-mapping.xml" />
-
+		<mapper resource="mappings/product_detail-mapping.xml" />
 	</mappers>
 </configuration>
