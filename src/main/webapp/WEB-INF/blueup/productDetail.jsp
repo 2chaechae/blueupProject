@@ -335,8 +335,8 @@ body {
 					<option value="5">5점</option>
 				</select>
 			</div>
-			<div>
-				<table>
+			<div id="reviewTabel">
+				<table id="remove">
 					<c:choose>
 						<c:when test="${review == null}">
 							<div style="display: grid; width: 800px; margin: 50px;">
@@ -398,7 +398,7 @@ body {
 			<div style="display: block; text-align: center; width:1200px; margin : 50px 0;">
 			<c:if test="${review.get(0).user_no != 0 }">
 					<c:if test="${pageMaker.startPage != 1 }">
-						<a href="/test/productDetail.do?page_no=${pageMaker.startPage - 1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&lt;</a>
+						<a href="javascript:void(0)" onclick="beforePage()">&lt;</a>
 					</c:if>
 					<c:forEach begin="${pageMaker.startPage }"
 						end="${pageMaker.endPage }" var="p">
@@ -408,12 +408,12 @@ body {
 	
 							</c:when>
 							<c:when test="${p != cri.page }">
-								<a href="/test/productDetail.do?page_no=${p}&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">|&nbsp;${p}&nbsp;|</a>
+								<a href="javascript:void(0)" onclick="numberPage(this)">|&nbsp;${p}&nbsp;|</a>
 							</c:when>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
-						<a href="/test/productDetail.do?page_no=${pageMaker.endPage+1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&gt;</a>
+						<a href="javascript:void(0)" onclick="afterPage()">&gt;</a>
 					</c:if>
 				</c:if>
 			</div>
@@ -691,11 +691,25 @@ var discount = ${productDetail.get(0).discount};
 var main_image = "${productDetail.get(0).main_image}";
 var product_name = "${productDetail.get(0).product_name}";
 $(document).ready(function(){
+	/* 별점별 리뷰 조회*/
 	var user_no = localStorage.getItem("user_no");
 	$('#starSearch').on('change', function(){
 		var star = $('#starSearch option:selected').val();
-		alert(star);
-		location.href="/test/productDetail.do?user_no="+user_no+"&product_no="+product_no+"&star="+star;
+		var user_no=${review.get(0).user_no};
+		var product_no=${review.get(0).product_no};
+		$.ajax({
+			url:'/test/selectReivew.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"user_no":user_no, "product_no":product_no, "star" : star}
+		}).done(function(data){
+			console.log("data받음");
+			alert(data);
+			$('#remove').remove();
+			$('#reviewTabel').html(data);
+		}).fail(function(){
+			console.log("에러");
+		});
 	});
 });
 
@@ -765,6 +779,71 @@ function plus(){
 	}
 	$('#qty').val(quantity);
 }
+
+/*리뷰 페이지 변경 */
+function beforePage(){
+	var page_no = ${pageMaker.startPage - 1};
+	var user_no = ${review.get(0).user_no};
+	var product_no = ${review.get(0).product_no};
+	$.ajax({
+		url:'/test/selectReivew.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"user_no":user_no , "product_no":product_no, "page_no" : page_no},
+		contentType: false, 
+		processData: false
+	}).done(function(data){
+		console.log("data받음");
+		var html = jQuery('<table>').html(data);
+		$('table').remove();
+		$('#reviewTabel').html();
+	}).fail(function(){
+		console.log("에러");
+	});
+}
+
+function numberPage(element){
+	var p = $(element).text().split("|");
+	var page_no = parseInt(p[1]);
+	var user_no=${review.get(0).user_no};
+	var product_no=${review.get(0).product_no};
+	alert(product_no);
+	$.ajax({
+		url:'/test/selectReivew.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"user_no":user_no, "product_no":product_no, "page_no":page_no}
+	}).done(function(data){
+		console.log("data받음");
+		alert(data);
+		$('#remove').remove();
+		$('#reviewTabel').html(data);
+	}).fail(function(){
+		console.log("에러");
+	});
+}
+
+function afterPage(){
+	var page_no = ${pageMaker.endPage+1};
+	var user_no = ${review.get(0).user_no};
+	var product_no = ${review.get(0).product_no};
+	$.ajax({
+		url:'/test/selectReivew.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"user_no":user_no , "product_no":product_no, "page_no" : page_no},
+		contentType: false, 
+		processData: false
+	}).done(function(data){
+		console.log("data받음");
+		var html = jQuery('<table>').html(data);
+		$('table').remove();
+		$('#reviewTabel').html();
+	}).fail(function(){
+		console.log("에러");
+	});
+}
+
 
 function heart(element){
 	var user_no = localStorage.getItem("user_no");
