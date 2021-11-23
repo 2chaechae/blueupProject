@@ -63,7 +63,7 @@ public class ProductDetailController {
 			vo.put("perPageNum", cri.getPerPageNum()); 	// 페이지당 게시물 갯수
 			vo.put("startRow", cri.getStartRow());  	// 시작 번호
 			vo.put("product", Integer.parseInt(product_no));
-				
+		
 			pageMaker.setTotalCount(productDetailServiceimpl.reviewCount(Integer.parseInt(product_no)));
 			System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
 				

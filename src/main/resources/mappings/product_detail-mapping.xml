@@ -7,10 +7,10 @@
 	<!-- 카트 리스트 조회 -->
 	<select id="selectProductDetail" resultType="productDetailvo">
 		SELECT * FROM (SELECT a.product_no, a.product_name, a.product_price, a.discount, a.product_size, a.product_color,a.main_image, b.user_no, b.wish_no
-		FROM PRODUCT AS A JOIN WISHLIST AS B
-		ON A.product_no=B.product_no
-		WHERE a.product_no=#{product_no} AND b.user_no=#{user_no}) AS SUB RIGHT JOIN PRODUCT_CONTENT_DETAIL AS D
-		ON SUB.product_no=D.product_no WHERE SUB.product_no=#{product_no} 
+		FROM PRODUCT AS A LEFT OUTER JOIN WISHLIST AS B
+		ON A.product_no=B.product_no and b.user_no=#{user_no}
+		WHERE a.product_no=#{product_no} ) AS SUB RIGHT JOIN PRODUCT_CONTENT_DETAIL AS D
+		ON SUB.product_no=D.product_no WHERE SUB.product_no=#{product_no}
 	</select>
 
 	<!-- 비회원 카트 리스트 조회 -->
