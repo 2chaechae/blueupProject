@@ -967,9 +967,9 @@ function addOrder(){
 				url:'/test/addCartOne.do',
 			    type:'POST',
 			   	cache:false,
-				data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
+				data: {"product_color" : product_color,"product_name" : product_name, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
 					"product_price" : product_price, "discount" : discount, "main_image" : main_image, "discount_total" : discount_total, 
-					"total_price" : total_price, "all_discount":all_discount, "all_price" : all_price},
+					"total_price" : total_price, "all_discount":all_discount, "all_price" : all_price, "user_no" : user_no},
 				success:function(data) {
 					if(data == 1){
 					location.href="/test/getOrder.do";

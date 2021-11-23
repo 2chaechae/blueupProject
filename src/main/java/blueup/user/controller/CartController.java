@@ -311,6 +311,7 @@ public class CartController {
 	@RequestMapping("/moveToOrderNonMember.do")
 	@ResponseBody
 	public ModelAndView moveToOrderNonMember(@RequestParam(value="product_no" )List<String> product_no, HttpSession session) {
+		System.out.println("장바구니에서 비회원 주문 페이지 ");
 		ModelAndView mav = new ModelAndView();
 		List<CartVo> orderList = new ArrayList<CartVo>();
 		List<CartVo> cart = (List<CartVo>) session.getAttribute("cart");
@@ -321,6 +322,9 @@ public class CartController {
 					cart.remove(i);
 				}
 			}
+		}
+		for(int i=0; i<orderList.size(); i++) {
+			orderList.get(i).getProduct_color();
 		}
 		session.setAttribute("cart", cart);
 		session.setAttribute("orderNonMember", orderList);
