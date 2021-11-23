@@ -327,7 +327,7 @@ body {
 				<label style="font-size: 18px; padding-right: 15px;">별점 기준
 					조회 : </label> 
 				<select id="starSearch" style="width: 170px; height: 30px; text-align: center">
-					<option value='' selected>-- 선택 --</option>
+					<option value='null' selected>-- 선택 --</option>
 					<option value="1">1점</option>
 					<option value="2">2점</option>
 					<option value="3">3점</option>
@@ -354,7 +354,7 @@ body {
 											style="height: 200px; width: 200px; margin: 10px;"></td>
 									</c:when>
 									<c:otherwise>	
-										<td style="font-size: 16px;" colspan="5"></td>
+										<td style="font-size: 16px;" colspan="5"><div style="height: 200px; width: 200px; margin: 10px;"></div></td>
 									</c:otherwise>
 								</c:choose>
 									<td style="font-size: 16px; text-align: left" colspan="7">
@@ -382,7 +382,7 @@ body {
 											<c:otherwise>
 												<img
 													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star5.png"
-													style="height: 10px; width: 60px;">
+													style="height: 27px; width: 117px;">
 											</c:otherwise>
 										</c:choose> <br>${review.review_title}<br>${review.review_content}</td>
 									<fmt:formatDate var="formatRegDate" value="${review.review_time}" pattern="yyyy.MM.dd" />
@@ -395,7 +395,7 @@ body {
 					</c:choose>
 				</table>
 			</div>
-			<div style="display: block; text-align: center; width:1200px; margin : 50px 0;">
+			<div id="paging" style="display: block; text-align: center; width:1200px; margin : 50px 0;">
 			<c:if test="${review.get(0).user_no != 0 }">
 					<c:if test="${pageMaker.startPage != 1 }">
 						<a href="javascript:void(0)" onclick="beforePage()">&lt;</a>
@@ -694,7 +694,9 @@ $(document).ready(function(){
 	/* 별점별 리뷰 조회*/
 	var user_no = localStorage.getItem("user_no");
 	$('#starSearch').on('change', function(){
+		alert("별점");
 		var star = $('#starSearch option:selected').val();
+		alert(star);
 		var user_no=${review.get(0).user_no};
 		var product_no=${review.get(0).product_no};
 		$.ajax({
@@ -706,6 +708,7 @@ $(document).ready(function(){
 			console.log("data받음");
 			alert(data);
 			$('#remove').remove();
+			$('#paging').remove();
 			$('#reviewTabel').html(data);
 		}).fail(function(){
 			console.log("에러");
@@ -796,6 +799,7 @@ function beforePage(){
 		console.log("data받음");
 		var html = jQuery('<table>').html(data);
 		$('table').remove();
+		$('#paging').remove();
 		$('#reviewTabel').html();
 	}).fail(function(){
 		console.log("에러");
@@ -803,6 +807,7 @@ function beforePage(){
 }
 
 function numberPage(element){
+	var star = $('#starSearch option:selected').val();
 	var p = $(element).text().split("|");
 	var page_no = parseInt(p[1]);
 	var user_no=${review.get(0).user_no};
@@ -812,11 +817,12 @@ function numberPage(element){
 		url:'/test/selectReivew.do',
 	    type:'POST',
 	   	cache:false,
-		data: {"user_no":user_no, "product_no":product_no, "page_no":page_no}
+		data: {"user_no":user_no, "product_no":product_no, "page_no":page_no, "star" : star}
 	}).done(function(data){
 		console.log("data받음");
 		alert(data);
 		$('#remove').remove();
+		$('#paging').remove();
 		$('#reviewTabel').html(data);
 	}).fail(function(){
 		console.log("에러");
@@ -838,6 +844,7 @@ function afterPage(){
 		console.log("data받음");
 		var html = jQuery('<table>').html(data);
 		$('table').remove();
+		$('#paging').remove();
 		$('#reviewTabel').html();
 	}).fail(function(){
 		console.log("에러");

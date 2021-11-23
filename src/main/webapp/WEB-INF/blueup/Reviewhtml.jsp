@@ -20,7 +20,7 @@
 											style="height: 200px; width: 200px; margin: 10px;"></td>
 									</c:when>
 									<c:otherwise>	
-										<td style="font-size: 16px;" colspan="5"></td>
+										<td style="font-size: 16px;" colspan="5"><div style="height: 200px; width: 200px; margin: 10px;"></div></td>
 									</c:otherwise>
 								</c:choose>
 									<td style="font-size: 16px; text-align: left" colspan="7">
@@ -48,7 +48,7 @@
 											<c:otherwise>
 												<img
 													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star5.png"
-													style="height: 10px; width: 60px;">
+													style="height: 27px; width: 117px;">
 											</c:otherwise>
 										</c:choose> <br>${review.review_title}<br>${review.review_content}</td>
 									<fmt:formatDate var="formatRegDate" value="${review.review_time}" pattern="yyyy.MM.dd" />
@@ -60,3 +60,25 @@
 						</c:otherwise>
 					</c:choose>
 				</table>
+				<div style="display: block; text-align: center; width:1200px; margin : 50px 0;">
+					<c:if test="${review.get(0).user_no != 0 }">
+							<c:if test="${pageMaker.startPage != 1 }">
+								<a href="javascript:void(0)" onclick="beforePage()">&lt;</a>
+							</c:if>
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="p">
+								<c:choose>
+									<c:when test="${p == cri.page }">
+										<b>|&nbsp;${p}&nbsp;|</b>
+			
+									</c:when>
+									<c:when test="${p != cri.page }">
+										<a href="javascript:void(0)" onclick="numberPage(this)">|&nbsp;${p}&nbsp;|</a>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+								<a href="javascript:void(0)" onclick="afterPage()">&gt;</a>
+							</c:if>
+						</c:if>
+				</div>

@@ -223,9 +223,9 @@ public class ProductDetailController {
 	@RequestMapping("/selectReivew.do")
 	@ResponseBody
 	public ModelAndView selectReivew(@RequestParam(value="product_no") String product_no, @RequestParam(value="page_no", defaultValue="1") int page_no,
-			@RequestParam(value="product_no", required = false) String star) {
+			@RequestParam(value="star", required = false) String star) {
 	// 리뷰 vo 셋팅 및 페이징, 값 설정
-		if(star == null) {
+		if(star == null || star.equals("null")) {
 				System.out.println("노별점");
 				HashMap<String, Object> hash = new HashMap<String, Object>();
 				ReviewCriteria cri = new ReviewCriteria();
@@ -274,14 +274,19 @@ public class ProductDetailController {
 			
 			ReviewPageMaker pageMaker = new ReviewPageMaker();
 			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(productDetailServiceimpl.reviewCountByStar(hash));
-			System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
 			
 			System.out.println("일반조회");
 			hash.put("perPageNum", cri.getPerPageNum()); 	// 페이지당 게시물 갯수
 			hash.put("startRow", cri.getStartRow());  	// 시작 번호
 			hash.put("product", Integer.parseInt(product_no));
-	
+			hash.put("star", star);
+			System.out.println("페이지" + cri.getPerPageNum());
+			System.out.println("시작번호" + cri.getStartRow());
+			System.out.println("상품번호" + product_no);
+			System.out.println("별" + star);
+			
+			pageMaker.setTotalCount(productDetailServiceimpl.reviewCountByStar(hash));
+			System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
 			reviewList = productDetailServiceimpl.selectReviewByStar(hash);
 			if(reviewList.size() == 0) {
 				System.out.println("review null");

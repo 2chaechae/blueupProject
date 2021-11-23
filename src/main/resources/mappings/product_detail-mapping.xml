@@ -37,7 +37,7 @@
 		a.review_content, a.user_id, a.review_time, a.product_color, b.review_no, b.photo1, b.photo2, b.photo3, b.photo4, b.photo5
 		FROM review AS A LEFT JOIN review_photo AS B
 		ON (a.review_no = b.review_no)
-		WHERE a.product_no=#{product} AND STAR=CAST(#{star} AS INTEGER) LIMIT #{perPageNum} OFFSET #{startRow}
+		WHERE a.product_no=#{product} AND a.star=CAST(#{star} AS INTEGER) LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
 	<!-- 리뷰 별점기준 갯수 -->
