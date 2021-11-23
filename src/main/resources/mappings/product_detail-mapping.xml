@@ -9,10 +9,19 @@
 		SELECT * FROM (SELECT a.product_no, a.product_name, a.product_price, a.discount, a.product_size, a.product_color,a.main_image, b.user_no, b.wish_no
 		FROM PRODUCT AS A JOIN WISHLIST AS B
 		ON A.product_no=B.product_no
-		WHERE a.product_no=#{product_no} AND b.user_no=#{user_no} ) AS SUB RIGHT JOIN PRODUCT_CONTENT_DETAIL AS D
+		WHERE a.product_no=#{product_no} AND b.user_no=#{user_no}) AS SUB RIGHT JOIN PRODUCT_CONTENT_DETAIL AS D
 		ON SUB.product_no=D.product_no WHERE SUB.product_no=#{product_no} 
 	</select>
 
+	<!-- 비회원 카트 리스트 조회 -->
+	<select id="selectProductDetailNonMember" resultType="productDetailvo">
+		SELECT * FROM (SELECT a.product_no, a.product_name, a.product_price, a.discount, a.product_size, a.product_color,a.main_image, b.user_no, b.wish_no
+		FROM PRODUCT AS A JOIN WISHLIST AS B
+		ON A.product_no=B.product_no
+		WHERE a.product_no=#{product_no}) AS SUB RIGHT JOIN PRODUCT_CONTENT_DETAIL AS D
+		ON SUB.product_no=D.product_no WHERE SUB.product_no=#{product_no} 
+	</select>
+	
 	<!-- 특정 상품 리뷰 -->
 	<select id="selectProductReview" resultType="reviewvo">
 		SELECT a.product_no, a.review_no, a.product_name, a.user_no, a.product_size, a.star, ROUND(AVG(star) OVER (PARTITION BY a.product_no),1)AS avgstar, a.review_title,
@@ -28,12 +37,12 @@
 		a.review_content, a.user_id, a.review_time, a.product_color, b.review_no, b.photo1, b.photo2, b.photo3, b.photo4, b.photo5
 		FROM review AS A LEFT JOIN review_photo AS B
 		ON (a.review_no = b.review_no)
-		WHERE a.product_no=#{product} AND STAR=#{star} LIMIT #{perPageNum} OFFSET #{startRow}
+		WHERE a.product_no=#{product} AND STAR=CAST(#{star} AS INTEGER) LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
 	<!-- 리뷰 별점기준 갯수 -->
 	<select id="reviewCountByStar" resultType="int">
-		SELECT COUNT(*) FROM REVIEW WHERE PRODUCT_NO=#{product} AND STAR=${star}
+		SELECT COUNT(*) FROM REVIEW WHERE PRODUCT_NO=#{product} AND STAR=CAST(#{star} AS INTEGER)
 	</select>
 	
 	<!-- 리뷰 게시글 갯수 -->

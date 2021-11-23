@@ -130,10 +130,7 @@ body {
 											<!-- 동영상 -->
 											<c:forEach var="item_topImage" items="${productDetail}">
 												<c:if test="${ item_topImage.content_type == 'top'}">
-													<li class="pic slide" data-index="0"><a
-														href="javascript:;" class="item"><img
-															src="${item_topImage.detailed_product_content}"
-															style="height: 70px; width: 70px;"></a></li>
+													<li class="pic slide" data-index="0"><a href="javascript:;" class="item"><img src="${item_topImage.detailed_product_content}" style="height: 70px; width: 70px;"></a></li>
 												</c:if>
 											</c:forEach>
 										</ul>
@@ -145,7 +142,7 @@ body {
 								</div>
 							</div>
 							<script>
-			pd.visual();
+				pd.visual();
 		</script>
 						</div>
 						<div class="area right">
@@ -171,10 +168,8 @@ body {
 										<div>
 											<div>
 												<c:forEach var="color" items="${color}">
-													<a href="javascript:void(0)" class="btn-color"
-														onclick="chooseColor(this)"
-														style="height: 25px; width: 57px;"><sapn
-															style="border:1px solid lightgray">${color}</sapn></a>
+													<a href="javascript:void(0)" class="btn-color" onclick="chooseColor(this)" style="height: 25px; width: 57px;">
+													<span style="border:1px solid lightgray">${color}</span></a>
 												</c:forEach>
 											</div>
 										</div>
@@ -184,8 +179,7 @@ body {
 										<div class="dd">
 											<div class="payment-option-size">
 												<c:forEach var="size" items="${size}">
-													<button type="button" class="btn-size d_radio_select"
-														onclick="chooseSize(this)">
+													<button type="button" class="btn-size d_radio_select" onclick="chooseSize(this)">
 														<span>${size}</span>
 													</button>
 												</c:forEach>
@@ -223,8 +217,8 @@ body {
 														<div class="tooltip-layer d_dropdown_cont">
 															<strong class="tooltip-title">무료배송 안내 </strong>
 															<div class="tooltip-cnt">
-																<ul class="text-list02 col-type01 bul-list">- MLB
-																	공식스토어는 모든 상품이 무료배송 됩니다.
+																<ul class="text-list02 col-type01 bul-list">
+																- MLB 공식스토어는 모든 상품이 무료배송 됩니다.
 																</ul>
 															</div>
 															<button type="button"
@@ -241,57 +235,42 @@ body {
 
 							<div class="info tool">
 								<div class="bts def">
-									<a class="btn xl bt-buy" href="javascript:void(0)"
-										onclick="addOrder()">바로구매</a> <a class="btn xl bt-cart"
-										href="javascript:void(0)" onclick="addCart();">장바구니</a>
+									<a class="btn xl bt-buy" href="javascript:void(0)" onclick="addOrder()">바로구매</a> 
+									<a class="btn xl bt-cart" href="javascript:void(0)" onclick="addCart();">장바구니</a>
 								</div>
 							</div>
 
 							<div class="info data">
-
 								<div class="left">
-									<a class="btn_go_review" href="javascript:;"
-										onclick="$('.product-detail .tab02 a').trigger('click');"
-										data-ga-category="PC_MLB_상품상세" data-ga-action="상품 리뷰">
+									<a class="btn_go_review" href="javascript:;" onclick="$('.product-detail .tab02 a').trigger('click');" data-ga-category="PC_MLB_상품상세" data-ga-action="상품 리뷰">
 										<style>
-.crema-product-reviews-score {
-	height: 23px;
-	line-height: 23px;
-}
-
-.crema_product_reviews_score_star_wrapper {
-	width: 18px;
-	height: 23px;
-}
-</style>
-										<div class="review-grade">
-											<span class="crema-product-reviews-score"
-												data-product-code="3ABNM0916-50BKS"
-												data-format="{{{stars}}}" data-star-style="multiple"></span>
-											<em> <span class="crema-product-reviews-count"
-												data-product-code="3ABNM0916-50BKS"
-												data-format="({{{count}}})">(0)</span>
-											</em>
-										</div>
-									</a>
+											.crema-product-reviews-score {
+												height: 23px;
+												line-height: 23px;
+											}
+											
+											.crema_product_reviews_score_star_wrapper {
+												width: 18px;
+												height: 23px;
+											}
+									</style>		
+								 </a>
 								</div>
-								<span class="hits"> <span class="wish"> <c:choose>
-											<c:when test="${productDetail.get(0).wish_no ne 0}">
-												<img
-													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png"
-													alt="찜" width="25" height="23" onclick="heart(this)">
-												</p>
-							</div>
-							</c:when>
-							<c:when test="${productDetail.get(0).wish_no eq 0}">
-								<img
-									src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"
-									alt="찜" width="25" height="23" onclick="heart(this)">
-								</p>
+								<span class="hits"> 
+									<span class="wish"> 
+										<p>
+											<c:choose>
+												<c:when test="${productDetail.get(0).wish_no ne 0}">
+													<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png" alt="찜" width="25" height="23" onclick="heart(this)">
+												</c:when>
+												<c:otherwise>
+													<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png" alt="찜" width="25" height="23" onclick="heart(this)">
+												</c:otherwise>
+											</c:choose>
+										</p>
+									</span>
+								</span>
 						</div>
-						</c:when>
-						</c:choose>
-						</span> </span>
 				</div>
 		</div>
 </section>
@@ -346,8 +325,8 @@ body {
 			<hr style="color: gray">
 			<div>
 				<label style="font-size: 18px; padding-right: 15px;">별점 기준
-					조회 : </label> <select id="starSearch"
-					style="width: 170px; height: 30px; text-align: center">
+					조회 : </label> 
+				<select id="starSearch" style="width: 170px; height: 30px; text-align: center">
 					<option value='' selected>-- 선택 --</option>
 					<option value="1">1점</option>
 					<option value="2">2점</option>
@@ -368,9 +347,16 @@ body {
 						<c:otherwise>
 							<c:forEach var="review" items="${review}">
 								<tr style="heigth: 100px; border: 1px none none solid none">
-									<td style="font-size: 16px;" colspan="5"><img
-										src="${review.photo1}"
-										style="height: 200px; width: 200px; margin: 10px;"></td>
+								<c:choose>
+									<c:when test="${review.photo1 != null }">
+										<td style="font-size: 16px;" colspan="5"><img
+											src="${review.photo1}"
+											style="height: 200px; width: 200px; margin: 10px;"></td>
+									</c:when>
+									<c:otherwise>	
+										<td style="font-size: 16px;" colspan="5"></td>
+									</c:otherwise>
+								</c:choose>
 									<td style="font-size: 16px; text-align: left" colspan="7">
 										<c:choose>
 											<c:when test="${review.star == 1}">
@@ -399,8 +385,7 @@ body {
 													style="height: 10px; width: 60px;">
 											</c:otherwise>
 										</c:choose> <br>${review.review_title}<br>${review.review_content}</td>
-									<fmt:formatDate var="formatRegDate"
-										value="${review.review_time}" pattern="yyyy.MM.dd" />
+									<fmt:formatDate var="formatRegDate" value="${review.review_time}" pattern="yyyy.MM.dd" />
 									<td style="font-size: 16px; text-align: center" colspan="3">${formatRegDate }</td>
 									<td style="font-size: 16px; text-align: right" colspan="4">${review.user_id}님의
 										리뷰입니다.<br>${review.product_size}<br>${review.product_color}</td>
@@ -409,9 +394,11 @@ body {
 						</c:otherwise>
 					</c:choose>
 				</table>
-				<c:if test="${review.get(0).user_no != 0 }">
+			</div>
+			<div style="display: block; text-align: center; width:1200px; margin : 50px 0;">
+			<c:if test="${review.get(0).user_no != 0 }">
 					<c:if test="${pageMaker.startPage != 1 }">
-						<a href="/test/productDetail.do?page_no=${pageMaker.startPage - 1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}&star=${review.get(0).star}">&lt;</a>
+						<a href="/test/productDetail.do?page_no=${pageMaker.startPage - 1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&lt;</a>
 					</c:if>
 					<c:forEach begin="${pageMaker.startPage }"
 						end="${pageMaker.endPage }" var="p">
@@ -421,12 +408,12 @@ body {
 	
 							</c:when>
 							<c:when test="${p != cri.page }">
-								<a href="/test/productDetail.do?page_no=${p}&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}&star=${review.get(0).star}">|&nbsp;${p}&nbsp;|</a>
+								<a href="/test/productDetail.do?page_no=${p}&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">|&nbsp;${p}&nbsp;|</a>
 							</c:when>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
-						<a href="/test/productDetail.do?page_no=${pageMaker.endPage+1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}&star=${review.get(0).star}">&gt;</a>
+						<a href="/test/productDetail.do?page_no=${pageMaker.endPage+1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&gt;</a>
 					</c:if>
 				</c:if>
 			</div>
@@ -707,14 +694,17 @@ $(document).ready(function(){
 	var user_no = localStorage.getItem("user_no");
 	$('#starSearch').on('change', function(){
 		var star = $('#starSearch option:selected').val();
-		location.href="/test/productDetail.do?user_no="+user_no+"&product_no="product_no+"&star="+star;
-	}
+		alert(star);
+		location.href="/test/productDetail.do?user_no="+user_no+"&product_no="+product_no+"&star="+star;
+	});
 });
 
 function chooseColor(element){
 	$(element).css('border', '1px solid black');
 	$(element).siblings().css('border', '1px solid lightgray');
-	product_color = $(element).text();
+	product_color = $(element).find('span').text();
+	alert(product_color);
+	alert(product_no);
 	var spanList = $('.payment-option-size').find('span');
 		$(spanList).each(function(){
 			$(this).css("text-decoration", "none");
@@ -726,17 +716,18 @@ function chooseColor(element){
 		   	cache:false,
 			data: {"product_no":product_no, "product_color" : product_color},
 			success:function(data) {
+				alert(data);
 				var sizeList = [];
 				var size = $('.payment-option-size').find('span').text();
 				var length = size.length;
 				for(var i=0; i < length; i+=3){
 					sizeList.push(size.substring(i, i+3));
 				}
-				
+
 				var spanList = $('.payment-option-size').find('span');
 				$(spanList).each(function(){
 					for(var i=0; i < data.length; i++){
-						if($(this).text() == data[i].product_size && data[i].stock_quantity == 0){
+							if($(this).text() == data[i].product_size && data[i].stock_quantity == 0){
 							alert($(this).text());
 							$(this).css("text-decoration", "line-through");
 							$(this).attr("disabled", true);
@@ -853,142 +844,145 @@ function heart(element){
 			}
 		}
 
-function orderCheck(){
-	if(product_size == "" || product_color == ""){
-		alert("옵션을 선택해주세요.");
-	}
-}
 /* 바로 구매 */
 function addOrder(){
 	/*비회원 주문*/
-	orderCheck();
-	var user_no = localStorage.getItem("user_no");
-	if(user_no == null){
-		var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
-		if(logincheck == true){
-			location.href="/test/login.do";
-		}else{
-			alert("비회원으로 주문");
-				$.ajax({
-					url:'/test/addCartNonMemberOne.do',
-				    type:'POST',
-				   	cache:false,
-					data: {"product_color" : product_color, "producr_size" : producr_size, "quantity" : quantity, "product_no" : product_no, 
-						"product_price" : product_price, "discount" : discount, "main_image" : main_image},
-					success:function(data) {
-						if(data == 1){
-						location.href="/test/getOrder.do";
-						}
-					},
-					error:function() {	
-						alert('다시 시도해주세요');
-					}
-				});
-		}
+	if(product_size == "" || product_color == ""){
+		alert("옵션을 선택해주세요.");
 	}else{
-		alert("회원으로 주문");
-		var discount_total = discount * quantity;
-		var total_price = product_price * quantity;
-		var all_discount = discount * quantity;
-		var all_price = product_price * quantity;
-		
-		$.ajax({
-			url:'/test/addCartOne.do',
-		    type:'POST',
-		   	cache:false,
-			data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
-				"product_price" : product_price, "discount" : discount, "main_image" : main_image, "discount_total" : discount_total, 
-				"total_price" : total_price, "all_discount":all_discount, "all_price" : all_price},
-			success:function(data) {
-				if(data == 1){
-				location.href="/test/getOrder.do";
-				}
-			},
-			error:function() {	
-				alert('다시 시도해주세요');
+		var user_no = localStorage.getItem("user_no");
+		if(user_no == null){
+			var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
+			if(logincheck == true){
+				location.href="/test/login.do";
+			}else{
+				alert("비회원으로 주문");
+				var total_price = product_price * quantity;
+				var discount_total = discount * quantity;
+					$.ajax({
+						url:'/test/addCartNonMemberOne.do',
+					    type:'POST',
+					   	cache:false,
+						data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
+							"product_price" : product_price, "discount" : discount, "main_image" : main_image, "product_name" : product_name, "total_price" : total_price, "discount_total" : discount_total},
+						success:function(data) {
+							if(data == 1){
+							location.href="/test/getOrder.do";
+							}
+						},
+						error:function() {	
+							alert('다시 시도해주세요');
+						}
+					});
 			}
-		});
+		}else{
+			alert("회원으로 주문");
+			var discount_total = discount * quantity;
+			var total_price = product_price * quantity;
+			var all_discount = discount * quantity;
+			var all_price = product_price * quantity;
+			
+			$.ajax({
+				url:'/test/addCartOne.do',
+			    type:'POST',
+			   	cache:false,
+				data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
+					"product_price" : product_price, "discount" : discount, "main_image" : main_image, "discount_total" : discount_total, 
+					"total_price" : total_price, "all_discount":all_discount, "all_price" : all_price},
+				success:function(data) {
+					if(data == 1){
+					location.href="/test/getOrder.do";
+					}
+				},
+				error:function() {	
+					alert('다시 시도해주세요');
+				}
+			});
+		}
 	}
 }
 	
 
 /* 장바구니 이동 */
 function addCart(){
-	orderCheck();
-	var user_no = localStorage.getItem("user_no");
-	var total_price = product_price * quantity;
-	if(user_no != null){
-		$.ajax({
-			url:'/test/addCheckCart.do',
-		    type:'POST',
-		   	cache:false,
-			data: {"product_no":product_no, "user_no" : user_no, "product_size":product_size, "product_color":product_color},
-			success:function(data) {
-				if(data == 0){
-					$.ajax({
-						url:'/test/addCart.do',
-					    type:'POST',
-					   	cache:false,
-						data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
-							"total_price":total_price, "product_size":product_size, "product_color":product_color, "main_image" : main_image, "user_no" : user_no
-						},
-						success:function(data) {
-							if(data == 1){
-							alert('장바구니에 담겼습니다.');
-							location.href="/test/getcartList.do?user_no="+user_no;
-							window.close();
+	if(product_size == "" || product_color == ""){
+		alert("옵션을 선택해주세요.");
+	}else{
+		var user_no = localStorage.getItem("user_no");
+		var total_price = product_price * quantity;
+		if(user_no != null){
+			$.ajax({
+				url:'/test/addCheckCart.do',
+			    type:'POST',
+			   	cache:false,
+				data: {"product_no":product_no, "user_no" : user_no, "product_size":product_size, "product_color":product_color},
+				success:function(data) {
+					if(data == 0){
+						$.ajax({
+							url:'/test/addCart.do',
+						    type:'POST',
+						   	cache:false,
+							data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+								"total_price":total_price, "product_size":product_size, "product_color":product_color, "main_image" : main_image, "user_no" : user_no
+							},
+							success:function(data) {
+								if(data == 1){
+								alert('장바구니에 담겼습니다.');
+								location.href="/test/getcartList.do?user_no="+user_no;
+								window.close();
+								}
+							},
+							error:function() {
+								alert('다시 시도해주세요');
 							}
-						},
-						error:function() {
-							alert('다시 시도해주세요');
-						}
-					});
-				}else{
-					var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
-					if(check) location.href="/test/getcartList.do?user_no="+user_no;
-					window.close();
+						});
+					}else{
+						var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
+						if(check) location.href="/test/getcartList.do?user_no="+user_no;
+						window.close();
+					}
+				},
+				error:function() {
+					alert('다시 시도해주세요');
+				}
+			});
+		}else{
+			$.ajax({
+				url:'/test/addCheckCart.do',
+			    type:'POST',
+			   	cache:false,
+				data: {"product_no":product_no, "product_size":product_size, "product_color":product_color },
+				success:function(data) {
+					if(data == 0){
+						$.ajax({
+							url:'/test/addCart.do',
+						    type:'POST',
+						   	cache:false,
+							data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
+								"total_price":total_price, "product_size":product_size, "product_color":product_color, "main_image" : main_image
+							},
+							success:function(data) {
+								if(data == 1){
+								alert('장바구니에 담겼습니다.');
+								location.href="/test/getcartList.do";
+								window.close();
+								}
+							},
+							error:function() {
+								alert('다시 시도해주세요');
+							}
+						});
+					}else{
+						var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
+						if(check) location.href="/test/getcartList.do";
+						window.close();
 				}
 			},
 			error:function() {
 				alert('다시 시도해주세요');
 			}
 		});
-	}else{
-		$.ajax({
-			url:'/test/addCheckCart.do',
-		    type:'POST',
-		   	cache:false,
-			data: {"product_no":product_no, "product_size":product_size, "product_color":product_color },
-			success:function(data) {
-				if(data == 0){
-					$.ajax({
-						url:'/test/addCart.do',
-					    type:'POST',
-					   	cache:false,
-						data: {"product_no":product_no, "product_name":product_name, "quantity":quantity, "discount" : discount,
-							"total_price":total_price, "product_size":product_size, "product_color":product_color, "main_image" : main_image
-						},
-						success:function(data) {
-							if(data == 1){
-							alert('장바구니에 담겼습니다.');
-							location.href="/test/getcartList.do";
-							window.close();
-							}
-						},
-						error:function() {
-							alert('다시 시도해주세요');
-						}
-					});
-				}else{
-					var check = confirm("이미 장바구니에 추가된 상품입니다\n 장바구니로 이동하시겠습니까?");
-					if(check) location.href="/test/getcartList.do";
-					window.close();
-			}
-		},
-		error:function() {
-			alert('다시 시도해주세요');
 		}
-	});
 	}
 }
 </script>

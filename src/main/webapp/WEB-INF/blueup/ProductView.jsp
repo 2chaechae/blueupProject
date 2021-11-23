@@ -182,7 +182,7 @@ function viewCount(element){
 			if(user_no != null){
 				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
 			}else{
-				location.href="/test/productDetailNonMember.do?product_no="+prodcut_no;
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
 			}
 		},
 		error:function() {	
