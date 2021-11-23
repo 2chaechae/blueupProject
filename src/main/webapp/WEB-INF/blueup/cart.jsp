@@ -106,7 +106,8 @@
 												</div>
 											</td>
 													
-											<td><img src="${cart.main_image}" style="width:100px; height:110px;"></td>
+											<td><img src="${cart.main_image}" onclick="viewCount(this)" style="width:100px; height:110px;">
+												<input type="hidden" value="${cart.product_no}"></td>
 											<td>${cart.product_name}
 												<br>${cart.product_color}/${cart.product_size} &nbsp;
 												<input class="p_no" type="hidden" value="${cart.product_no}"/>
@@ -656,7 +657,30 @@ function checkOrder(){
 		location.href="/test/moveToOrder.do?cart_no=" + cart_no;
 	}
 }
-	
+
+function viewCount(element){
+	var product_no = $(element).next().val();
+	var user_no = localStorage.getItem("user_no");
+	alert(product_no);
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
+}
  </script>
 <%@ include file="/footer.jsp"%>
 </body>

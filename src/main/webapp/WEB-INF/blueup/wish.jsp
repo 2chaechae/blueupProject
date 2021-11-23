@@ -121,7 +121,7 @@
 							<input type="hidden" class="w" value="${wishList.wish_no}" />
 							<input type="hidden" class="p" value="${wishList.product_no}" />
 							<div style="width:250px; margin:0 auto;">
-								<img src="${wishList.main_image}" style="width:242px;height:242px;margin-top:27px;">
+								<img src="${wishList.main_image}" onclick="viewCount(this)" style="width:242px;height:242px;margin-top:27px;">
 								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="delete_wish(this)" style="width:10px;height:10px; position:relative; top:-19em; right:-16.5em;">
 							<div style="width:242px; text-align:center;">  
 								<p style="font-size:14px; font-family:Noto Sans Korean;margin-bottom:5px;"><a href="#" onclick="#">${wishList.product_name}</a></p>
@@ -238,6 +238,30 @@ function option(element){
 	window.open("/test/getCartOption.do?product_no=" + product_no + "&user_no=" + user_no,"height=300", "width=500");
 }
 
+
+function viewCount(element){
+	var product_no = $(element).closest('div').prev().val();
+	var user_no = localStorage.getItem("user_no");
+	alert(product_no);
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
+}
 </script>
 </body>
 </html>

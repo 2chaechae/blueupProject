@@ -279,7 +279,7 @@ body {
 	<!-- div class="hdt"><span class="tit">STYLE IN MLB</span></div -->
 	<c:forEach var="banner" items="${banner}">
 		<div class="html-box">
-			<a href="#"><img height="70" src="${banner.banner_image}"
+			<a href="${banner.noticeurl}"><img height="70" src="${banner.banner_image}"
 				width="900" /></a>
 		</div>
 	</c:forEach>
@@ -697,8 +697,6 @@ $(document).ready(function(){
 		alert("별점");
 		var star = $('#starSearch option:selected').val();
 		alert(star);
-		var user_no=${review.get(0).user_no};
-		var product_no=${review.get(0).product_no};
 		$.ajax({
 			url:'/test/selectReivew.do',
 		    type:'POST',
@@ -786,8 +784,7 @@ function plus(){
 /*리뷰 페이지 변경 */
 function beforePage(){
 	var page_no = ${pageMaker.startPage - 1};
-	var user_no = ${review.get(0).user_no};
-	var product_no = ${review.get(0).product_no};
+	var user_no = localStorage.getItem("user_no");
 	$.ajax({
 		url:'/test/selectReivew.do',
 	    type:'POST',
@@ -810,8 +807,7 @@ function numberPage(element){
 	var star = $('#starSearch option:selected').val();
 	var p = $(element).text().split("|");
 	var page_no = parseInt(p[1]);
-	var user_no=${review.get(0).user_no};
-	var product_no=${review.get(0).product_no};
+	var user_no = localStorage.getItem("user_no");
 	alert(product_no);
 	$.ajax({
 		url:'/test/selectReivew.do',
@@ -831,8 +827,7 @@ function numberPage(element){
 
 function afterPage(){
 	var page_no = ${pageMaker.endPage+1};
-	var user_no = ${review.get(0).user_no};
-	var product_no = ${review.get(0).product_no};
+	var user_no = localStorage.getItem("user_no");
 	$.ajax({
 		url:'/test/selectReivew.do',
 	    type:'POST',

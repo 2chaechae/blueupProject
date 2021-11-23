@@ -21,7 +21,6 @@
 			#{notice_type}, 
 			#{notice_title}, 
 			#{notice_content}, 
-			#{notice_cnt},
 			#{notice_time}
 		)
 	</insert>
@@ -33,7 +32,6 @@
 		NOTICE_TYPE = #{notice_type},
 		NOTICE_TITLE = #{notice_title},
 		NOTICE_CONTENT = #{notice_content},
-		NOTICE_CNT = #{notice_cnt},
 		NOTICE_TIME = #{notice_time},
 		WHERE NOTICE_NO = #{notice_no}
 	</update>
@@ -50,7 +48,7 @@
 	
 	<!-- 특정 공지사항 검색 -->
 	<select id="getnoticeone" parameterType="noticevo" resultType="noticevo">
-		SELECT NOTICE_NO, NOTICE_TYPE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_CNT, NOTICE_TIME
+		SELECT NOTICE_NO, NOTICE_TYPE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_TIME
 		FROM NOTICE
 		WHERE NOTICE_NO = #{notice_no}
 	</select>
