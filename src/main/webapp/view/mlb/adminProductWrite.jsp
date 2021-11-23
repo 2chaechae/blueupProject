@@ -43,94 +43,119 @@ pageEncoding="UTF-8"%>
 							<col>
 						</colgroup>
 						<tbody>
-						<tr>
+						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteTitle">등록시간</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" style="width:515px;" readOnly>
+								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" style="width:200px;" readOnly>
 							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteTitle">상품등록</label> <span class="required">*</span></th>
+							<th scope="row"><label for="boardWriteTitle">상품번호</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
-								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
+								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" style="width:200px;" >
 							</td>
 						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteContent">상품번호</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
-								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteContent">가격</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
-								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteContent">할인액</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
-								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteContent">할인율</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
-								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteContent">사이즈</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
-								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteContent">컬러</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
-								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
-							</td>
-						</tr>
-						<tr>
+						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteContent">카테고리</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
 							</td>
-						</tr>
-						<tr>
 							<th scope="row"><label for="boardWriteContent">세부카테고리</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" placeholder="30자 미만으로 입력해 주세요." style="width:515px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
 							</td>
 						</tr>
-						<tr>
+						<tr style="border-top:1px solid lightgray">
+							<th scope="row"><label for="boardWriteTitle">가격</label> <span class="required">*</span></th>
+							<td>
+								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
+							</td>
+							<th scope="row"><label for="boardWriteTitle">배송비</label> <span class="required">*</span></th>
+							<td>
+								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
+							</td>
+						</tr>
+		
+						<tr style="border-top:1px solid lightgray">
+							<th scope="row"><label for="boardWriteContent">할인액</label> <span class="required">*</span></th>
+							<td>
+								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
+							</td>
+							<th scope="row"><label for="boardWriteContent">할인율</label> <span class="required">*</span></th>
+							<td>
+								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
+							</td>
+						</tr>
+
+						<tr style="border-top:1px solid lightgray">
+							<th scope="row"><label for="boardWriteContent">사이즈</label> <span class="required">*</span></th>
+							<td>
+								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
+							<th scope="row"><label for="boardWriteContent">컬러</label> <span class="required">*</span></th>
+							<td>
+								<input type="text" id="boardWriteTitle" class="input-style01"style="width:200px;">
+								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
+							</td>
+							</td>
+						</tr>
+
+						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteContent">진열여부</label> <span class="required">*</span></th>
 							<td>
-								<select id="display" style="width:400px;">
+								<select id="display" style="width:150px; text-align:center;">
+									<option value=" ">----선택----</option>
 									<option value="true">TRUE</option>
 									<option value="false">FALSE</option>
 								</select>
 							</td>
 						</tr>
-						<tr>
-							<th scope="row"><label for="boardWriteTitle">리뷰 사진</label></th>
+						<tr style="border-top:1px solid lightgray">
+						<th scope="row"><label for="boardWriteTitle">main_image</label></th>
 							<td>
                         		<span>
-                            	<input type="file" id="fileSearch" name="files" onchange="javascript:filetest(this);">
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
                            		</span>
                            	</td>
 						</tr>
-						
-					</tbody></table>
+						<tr style="border-top:1px solid lightgray">
+							<th scope="row"><label for="boardWriteTitle">content_top image</label>
+							<td>
+                        		<span>
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	</span>
+                           	</td>
+						</tr>
+						<tr style="border-top:1px solid lightgray">
+							<th scope="row"><label for="boardWriteTitle">content_main image</label></th>
+							<td>
+	                        	<span>
+	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+	                            </span>
+                           	</td>
+						</tr>
+						<tr style="border-top:1px solid lightgray">
+							<th scope="row"><label for="boardWriteTitle">product_Infor image</label></th>
+							<td>
+                        		<span>
+                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	</span>
+                           	</td>
+						</tr>
+						</tbody>
+					</table>
 				</div>
 
 			 	<div class="btnWrapBox">
