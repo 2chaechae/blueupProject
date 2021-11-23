@@ -212,23 +212,26 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 													<c:forEach var="reviewlist" items="${getReviewList}" varStatus="status">
 													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
 										<section class="review">
-										<div>
+										<div >
 											<tr>
 										
-				<td width="100px">${reviewlist.product_name}</td>
-				<td width="60px">${reviewlist.product_size}</td>
-				<td width="60px">${reviewlist.product_color}</td>
+				<td width="100px" >${reviewlist.product_name}</td>
+				<td width="60px" >${reviewlist.product_size}</td>
+				<td width="60px" >${reviewlist.product_color}</td>
 				<br>
-				<td width="100px"> 별점: ${reviewlist.star} 개</td>
-										<td width="100px">제목: ${reviewlist.review_title}</td>
+				<td class="star" width="100px" id=reviewStar> 별점: ${reviewlist.star} 개</td>
+										<td class="review_title" width="100px" id=reviewTitle>제목: ${reviewlist.review_title}</td>
 										<br>
-										<td width="100px">내용 : ${reviewlist.review_content}</td>
+										<td class="review_content" width="100px" id=reviewContent>내용 : ${reviewlist.review_content}</td>
 										<br>
 										<td width="70px">시간: ${reviewlist.review_time}</td>
 										
-										<input type="button" class="button" onclick="updateReview(this)" id="updateone" value="수정"/>
+										<input type="button" class="button" onclick="updateReview()" id="updateone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
-										<input type="hidden" class="review_no" value="${reviewlist.review_no}"/>
+										<input type="hidden" class="review_no" id="reviewNo" value="${reviewlist.review_no}"/>
+				   						<input type="hidden" value="${reviewlist.star}"/>
+				   						<input type="hidden" value="${reviewlist.review_title}"/>
+				   						<input type="hidden" value="${reviewlist.review_content}"/>
 				   </tr> 	
 				   </div>
 				   </section>
@@ -286,23 +289,88 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 </form>
 
 <script>
+
+/* 글수정 */
+ 
+/* function updateReview(element){
+	alert('test');
+	 var user_no = localStorage.getItem("user_no");
+	alert(user_no);
+	var review_no = $(element).next().next().val();
+	alert(review_no);
+	var star = $(element).next().next().next().val();
+	alert(star);
+	var review_title = $(element).next().next().next().next().val();
+	alert(review_title)
+	var review_content = $(element).next().next().next().next().next().val();
+	alert(review_content)
+	location.href='/test/updateReview.do?user_no=' + user_no+'&review_no=' + review_no+'&star=' + star;
+}  */
+  function updateReview(element){
+	alert('test');
+    //수정 버튼 클릭 시
+  
+   	 var user_no = localStorage.getItem("user_no");
+   	alert(user_no);
+   	var review_no = $('#reviewNo').next().next().val();
+   	alert(review_no);
+   	var star = $('#reviewStar').next().next().next().val();
+   	alert(star);
+   	var review_title = $('#reviewTitle').next().next().next().next().val();
+   	alert(review_title);
+   	var review_content = $('#reviewContent').next().next().next().next().next().next().val();
+   	alert(review_content);
+       		$.ajax({
+       			url : '/test/updateReview.do',
+       			type : 'POST',
+       			cache : false,
+       			data : {
+       				"user_no" : user_no, "review_no" : review_no, "star" : star, 
+       				"review_title" : review_title, "review_content" : review_content
+       	        		
+					},
+				
+				success:function(data){
+					if(data == 1){
+						alert("수정 하기");
+						location.href='/test/insertReview.do?user_no=' + user_no+
+								'&review_no=' + review_no+ '&star=' + star+
+								"review_title=" + review_title, "review_content" + review_content;
+					}
+					else{
+						alert("수정 실패")
+					}
+				},
+				error:function(){
+					alert("다시 시도해주세요");
+				}
+       		});
+    }
+    
+
+
+
 /* 리뷰 삭제 */
  
 
  function deleteReview(element){
+	 var user_no = localStorage.getItem("user_no");
+	alert(user_no);
 	var review_no = $(element).siblings('.review_no').val();
 	alert(review_no);
 	$.ajax({
 		url:'/test/deleteReview.do',
 		type:'POST',
 		cache:false,
-		data: {"user_no":user_no, "review_no":review_no},
+		data: {
+			"user_no":user_no, "review_no":review_no},
 		success:function(data) {
 			if(data == 1){
-				$(element).closest('.review').remove();
+				alert("삭제 성공");
+				$(element).closest('.review').remove(); 
 				
 			}
-			else{
+			 else{
 				alert("삭제 실패")
 			}
 		},
@@ -310,7 +378,9 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 			alert('다시 시도해주세요');
 		}
 	});	
-} 
+}  
+
+
 </script>
 <%@ include file="footer.jsp"%>
 </body>

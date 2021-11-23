@@ -6,7 +6,6 @@
 
 	<insert id="insertReview" parameterType="reviewvo" >
 		INSERT INTO REVIEW(
-			REVIEW_NO,
 			PRODUCT_NO,
 			PRODUCT_NAME,
 			USER_NO,
@@ -18,7 +17,6 @@
 			REVIEW_TIME,
 			PRODUCT_COLOR
 		) VALUES(
-			#{review_no},
 			#{product_no},
 			#{product_name},
 			#{user_no},
