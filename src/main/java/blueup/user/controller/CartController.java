@@ -297,6 +297,7 @@ public class CartController {
 		for(int i=0; i < orderList.size(); i++) {
 			System.out.println(orderList.get(i).getAll_discount());
 			System.out.println(orderList.get(i).getProduct_name());
+			System.out.println("user_no" + orderList.get(i).getUser_no());
 		}
 		int check = cartserviceimpl.deleteCart(cart_no);
 		if(check > 0) {

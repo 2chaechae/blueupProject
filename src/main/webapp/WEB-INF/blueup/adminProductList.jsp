@@ -24,7 +24,7 @@
 					<!-- 상단 버튼 -->
 					<div class="tbst-div" style="display:flex;">
 						<div>
-						<a href="#" class="btn fill sm fdlr30 btn-style07 right" onclick="javascript:goInquiryNew()">
+						<a href="/test/moveToProductWrite.mdo" class="btn fill sm fdlr30 btn-style07 right" onclick="javascript:goInquiryNew()">
 						<span>상품 등록</span></a>
 						</div>
 						<div style="width:230px; align-items:center; display:flex; margin-left:687px;">
@@ -90,9 +90,9 @@
 </form>
 <script type="text/javascript">
 function gotoDetail(element){
-	var product_no = $(element).chlidren().first().text();
+	var product_no = $(element).children().first().text();
 	alert(product_no);
-	location.href="/test/"
+	location.href="/test/getProduct.mdo?product_no=" + product_no;
 }
 
 </script>

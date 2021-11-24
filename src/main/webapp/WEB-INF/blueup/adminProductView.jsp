@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../../../view/mlb/adminHeader.jsp"%>
 
 <!-- 컨텐츠 시작 -->
@@ -24,7 +26,7 @@ pageEncoding="UTF-8"%>
 
 	<div class="contain my cs lnblist-Wrap" id="contain" style="padding-top: 50px;">
 		<div class="container">
-			<h2 class="title01" style="margin-bottom:50px;">상품 등록</h2>
+			<h2 class="title01" style="margin-bottom:50px;">상품 정보</h2>
 			
 			<!-- 사이드 메뉴 -->
 			<%@ include file="../../../view/mlb/adminMenu.jsp"%>
@@ -35,28 +37,32 @@ pageEncoding="UTF-8"%>
 						<tbody>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteTitle">등록시간</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" style="width:200px;" readOnly>
-							</td>
+							<td><input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" value="${product.registration_time}" style="width:200px;" readOnly></td>
 							<th scope="row"><label for="boardWriteTitle">상품번호</label> <span class="required">*</span></th>
+							<td><input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" value="${product.product_no}" style="width:200px;" ></td>
+						</tr>
+						<tr style="border-top:1px solid lightgray">
+							<th scope="row"><label for="boardWriteContent">카테고리</label><span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" style="width:200px;" >
+								<select id="category" style="width:150px; text-align:center;">
+									<option value=" ">----선택----</option>
+									<option value="CAP">CAP</option>
+									<option value="SHOES">SHOES</option>
+									<option value="SHOES">SHOES</option>
+									<option value="BAG">BAG</option>
+									<option value="BAG">ACC/PET</option>
+								</select>
+							</td>
+							<th scope="row"><label for="boardWriteContent">세부카테고리</label><span class="required">*</span></th>
+							<td>
+								<select id="catedetail" style="width:150px; text-align:center;">
+								</select>
 							</td>
 						</tr>
 						<tr style="border-top:1px solid lightgray">
-							<th scope="row"><label for="boardWriteContent">카테고리</label> <span class="required">*</span></th>
+							<th scope="row"><label for="boardWriteTitle">가격</label><span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
-							</td>
-							<th scope="row"><label for="boardWriteContent">세부카테고리</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
-							</td>
-						</tr>
-						<tr style="border-top:1px solid lightgray">
-							<th scope="row"><label for="boardWriteTitle">가격</label> <span class="required">*</span></th>
-							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" value="${product.product_price}" style="width:200px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
 							</td>
 							<th scope="row"><label for="boardWriteTitle">배송비</label></th>
@@ -67,25 +73,25 @@ pageEncoding="UTF-8"%>
 		
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteContent">할인액</label> <span class="required">*</span></th>
-							<td><input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;"></td>
+							<td><input type="text" id="boardWriteTitle" class="input-style01" value="${product.discount}" style="width:200px;"></td>
 							<th scope="row"><label for="boardWriteContent">할인율</label> <span class="required">*</span></th>
-							<td><input type="text" id="boardWriteTitle" class="input-style01" placeholder=" %(퍼센트)기준으로 작성해주세요" style="width:200px;"></td>
+							<td><input type="text" id="boardWriteTitle" class="input-style01" value="${product.discount_rate}" placeholder=" %(퍼센트)기준으로 작성해주세요" style="width:200px;"></td>
 						</tr>
 
 						<tr style="border-top:1px solid lightgray">
-							<th scope="row"><label for="boardWriteContent">사이즈</label> <span class="required">*</span></th>
+							<th scope="row"><label for="boardWriteContent">사이즈</label><span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" value="${product.product_size}" style="width:200px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
-							<th scope="row"><label for="boardWriteContent">컬러</label> <span class="required">*</span></th>
+							<th scope="row"><label for="boardWriteContent">컬러</label><span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01"style="width:200px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" value="${product.product_color}" style="width:200px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
 							</td>
 						</tr>
 
 						<tr style="border-top:1px solid lightgray">
-							<th scope="row"><label for="boardWriteContent">진열여부</label> <span class="required">*</span></th>
+							<th scope="row"><label for="boardWriteContent">진열여부</label><span class="required">*</span></th>
 							<td>
 								<select id="display" style="width:150px; text-align:center;">
 									<option value=" ">----선택----</option>
@@ -98,7 +104,7 @@ pageEncoding="UTF-8"%>
 						<th scope="row"><label for="boardWriteTitle">main_image</label></th>
 							<td>
                         		<span>
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            		<input type="file" style="width:500px;" value="${product.main_image}" onchange="javascript:filetest(this);">
                            		</span>
                            	</td>
 						</tr>
@@ -106,12 +112,11 @@ pageEncoding="UTF-8"%>
 							<th scope="row"><label for="boardWriteTitle">content_top image</label>
 							<td>
                         		<span>
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                        		<c:forEach var="image_main" items="${productDetail}">
+	                        		<c:if test="${image_main.content_type == 'top'}">
+	                            		<input type="file" style="width:500px;" value="${image_main.detailed_product_content}" onchange="javascript:filetest(this);">
+	                         		</c:if>
+                         		</c:forEach>
                             	</span>
                            	</td>
 						</tr>
@@ -119,10 +124,11 @@ pageEncoding="UTF-8"%>
 							<th scope="row"><label for="boardWriteTitle">content_main image</label></th>
 							<td>
 	                        	<span>
-	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
-	                            <input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+	                        	<c:forEach var="image_main" items="${productDetail}">
+	                        		<c:if test="${image_main.content_type == 'main'}">
+	                            		<input type="file" style="width:500px;" value="${image_main.detailed_product_content}" onchange="javascript:filetest(this);">
+	                         		</c:if>
+                         		</c:forEach>
 	                            </span>
                            	</td>
 						</tr>
@@ -130,7 +136,11 @@ pageEncoding="UTF-8"%>
 							<th scope="row"><label for="boardWriteTitle">product_Infor image</label></th>
 							<td>
                         		<span>
-                            	<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                            	 <c:forEach var="image_main" items="${productDetail}">
+	                        		<c:if test="${image_main.content_type == 'bottom'}">
+	                            		<input type="file" style="width:500px;" value="${image_main.detailed_product_content}" onchange="javascript:filetest(this);">
+	                         		</c:if>
+                         		</c:forEach>
                             	</span>
                            	</td>
 						</tr>
@@ -146,5 +156,30 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 	</form>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var category_name = ${product.category_name};
+		$("#category").val(category_name).prop("selected", true);
+		var display = ${product.display_status};
+		$("#display").val(display).prop("seletecd", true);
+	});
+	
+	$('#category').change(function(){
+		var category = $('#category option:selected').text();
+		$.ajax({
+			url : '/test/getCategoryDetailList.mdo'
+			type : 'POST',
+			cache : false,
+			data : { "category_name" : category_name},
+			success : function(data){
+				$(data).each(function(){
+					var detail = this.detailed_category_name;
+					$('#catedetail').append('<option value="' + detail + '">' + detail + '</option>');
+				});
+			},
+		});
+	});
+	
+</script>
 </body>
 </html>

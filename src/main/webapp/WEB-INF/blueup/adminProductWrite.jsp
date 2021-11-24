@@ -94,11 +94,11 @@ pageEncoding="UTF-8"%>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteContent">사이즈</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" style="width:200px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" placeholder="'/'로 구분해주세요.ex)230/240"style="width:200px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
 							<th scope="row"><label for="boardWriteContent">컬러</label> <span class="required">*</span></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01"style="width:200px;">
+								<input type="text" id="boardWriteTitle" class="input-style01" placeholder="'/'로 구분해주세요.ex)브라운/그레이" style="width:200px;">
 								<span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
 							</td>
 							</td>
