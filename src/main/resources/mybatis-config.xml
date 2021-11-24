@@ -27,6 +27,8 @@
 		<typeAlias type="blueup.admin.vo.AdminVo" alias="adminloginvo"  />
 		<typeAlias type="blueup.user.vo.ReviewVo" alias="reviewvo"  />
 		<typeAlias type="blueup.user.vo.BannerVo" alias="bannervo"/>
+		<typeAlias type="blueup.admin.vo.NoticeVo" alias="adminNoticevo"  />
+		<typeAlias type="blueup.admin.vo.Terms_and_conditionVo" alias="adminTermsvo"  />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappings/product-mapping.xml" />
@@ -50,5 +52,6 @@
 		<mapper resource="mappings/product_detail-mapping.xml" />
 		<mapper resource="mappings/adminproductdetail-mapping.xml" />
 		<mapper resource="mappings/admincategorydetail-mapping.xml" />
+		<mapper resource="mappings/admin_Notice_TermsAndCondition-mapping.xml" />
 	</mappers>
 </configuration>
