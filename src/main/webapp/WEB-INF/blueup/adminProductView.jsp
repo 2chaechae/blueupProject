@@ -37,9 +37,10 @@ pageEncoding="UTF-8"%>
 						<tbody>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteTitle">등록시간</label> <span class="required">*</span></th>
-							<td><input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" value="${product.registration_time}" style="width:200px;" readOnly></td>
+							<fmt:formatDate var="formatRegDate" value="${product.registration_time}" pattern="yyyy.MM.dd" />
+							<td><input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" value="${formatRegDate}" style="width:200px;" readOnly></td>
 							<th scope="row"><label for="boardWriteTitle">상품번호</label> <span class="required">*</span></th>
-							<td><input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" value="${product.product_no}" style="width:200px;" ></td>
+							<td><input type="text" id="boardWriteTitle" class="input-style01" name="csoMtmInq.inqSj" value="${product.product_no}" style="width:200px;" readOnly ></td>
 						</tr>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteContent">카테고리</label><span class="required">*</span></th>
@@ -66,7 +67,7 @@ pageEncoding="UTF-8"%>
 							</td>
 							<th scope="row"><label for="boardWriteTitle">배송비</label></th>
 							<td>
-								<input type="text" id="boardWriteTitle" class="input-style01" value="0" style="width:200px; readOnly">
+								<input type="text" id="boardWriteTitle" class="input-style01"  value="0" style="width:200px;" readOnly>
 							</td>
 						</tr>
 		
@@ -102,9 +103,10 @@ pageEncoding="UTF-8"%>
 						<tr style="border-top:1px solid lightgray">
 						<th scope="row"><label for="boardWriteTitle">main_image</label></th>
 							<td>
-                        		<span>
-                        			<div style="width:800px; padding:10px; font-size:15px;">현재이미지&nbsp;:&nbsp;${product.main_image}</div>
-                            		<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
+                        		<span class="add">
+                        			<div class="remove" style="width:800px; padding:5px; font-size:15px;">현재이미지&nbsp;:&nbsp;<span>${product.main_image}</span>
+                            		<img class="x" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="deletefile(this)" style="width:10px; height:10px; margin-left:10px;"/></div>
+	                        		<input type="hidden" value="0"/>
                            		</span>
                            	</td>
 						</tr>
@@ -164,17 +166,38 @@ pageEncoding="UTF-8"%>
 	</form>
 <script type="text/javascript">
 $(document).ready(function(){
+	/* 초기값 셋팅*/
 	$('#cate').val("${product.category_name}"); 
 	$('#display').val("${product.display_status}");
-	   
-	   var category_name = "${product.category_name}";
+	var category_name = "${product.category_name}";
 		$.ajax({
 			url : '/test/getCategoryDetailList.mdo',
 			type : 'POST',
 			cache : false,
 			data : { "category_name" : category_name},
 			success : function(data){
-				alert(data);
+				/* 세부카테고리 초기값 셋팅*/
+				$(data).each(function(){
+					var detail = this.detailed_category_name;
+					$('#catedetail').append('<option value=' + detail + '>' + detail + '</option>');
+				});
+				$('#catedetail').val("${product.detailed_category_name}");
+			},
+			error:function() {
+				alert('다시 시도해주세요');
+			}
+		});
+	
+	/* 카테고리 변경시 세부카테고리 변경 이벤트*/
+	$('#cate').change(function(){
+		var category_name = $('#cate option:selected').text();
+		$.ajax({
+			url : '/test/getCategoryDetailList.mdo',
+			type : 'POST',
+			cache : false,
+			data : { "category_name" : category_name},
+			success : function(data){
+				$('#catedetail').empty();
 				$(data).each(function(){
 					var detail = this.detailed_category_name;
 					$('#catedetail').append('<option value=' + detail + '>' + detail + '</option>');
@@ -184,17 +207,16 @@ $(document).ready(function(){
 				alert('다시 시도해주세요');
 			}
 		});
-		
-	   $('#catedetail').val("${product.detailed_category_name}");
+	 });
 });
 
 function deletefile(element){
-	$(element).closest('.remove').remove();
 	var detail_no = $(element).next().val();
-	var html = '<input type="file" style="width:500px;" onchange="addfile(this);">';
+	var html = '<input type="file" style="width:500px;border:1px solid lightgray; margin-top:10px;" onchange="addfile(this);">';
 	var html2 = '<input type="hidden" value="'+ detail_no + '"/>';
-	$('.add').append(html);
-	$('.add').append(html2);
+		$(element).closest('.add').append(html);
+		$(element).closest('.add').append(html2);
+		$(element).closest('.remove').remove();
 }
 	
 </script>
