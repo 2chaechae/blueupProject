@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ include file="adminHeader.jsp" %>
+<%@ include file="../../../view/mlb/adminHeader.jsp" %>
 
 <!-- 컨텐츠 시작 -->
 	
@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
 
 			<h2 class="title01" style="margin-bottom:50px;">상품 등록</h2>
 			
-<%@ include file="adminMenu.jsp" %>
+<%@ include file="../../../view/mlb/adminMenu.jsp"%>
 
 			<main class="contents oto_inquiryWrite-wrap" id="contents">
 

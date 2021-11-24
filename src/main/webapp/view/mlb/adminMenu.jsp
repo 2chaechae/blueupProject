@@ -45,7 +45,7 @@
     			<a href="javascript:;"><span>상품 관리</span></a>
     			<ul>
     				<li>
-    					<a href="#"><span>상품조회</span></a>
+    					<a href="/test/getProductList.mdo"><span>상품조회</span></a>
     				</li>
     				<li>
     					<a href="#"><span>결제 상품 목록</span></a>

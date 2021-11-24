@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 컨텐츠 시작 -->
 <div class="contain dp list dep3" id="contain">
 	<div class="container">
@@ -49,7 +49,8 @@
 													</c:when>
 												</c:choose>
 										<div class="prc">
-											<em class="p">${product.product_price}원</em>
+											<fmt:formatNumber var="formatNumber" value="${product.product_price}" pattern="#,###" />
+											<em class="p">${formatNumber}원</em>
 										</div>
 									</div>
 								</div>

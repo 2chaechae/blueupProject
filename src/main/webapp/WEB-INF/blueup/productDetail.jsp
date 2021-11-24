@@ -155,7 +155,8 @@ body {
 								</div>
 								<div class="price norm">
 									<div class="prc">
-										<span class="p n">${productDetail.get(0).product_price}<em>원</em></span>
+										<fmt:formatNumber var="formatNumber" value="${productDetail.get(0).product_price}" pattern="#,###" />
+										<span class="p n">${formatNumber}<em>원</em></span>
 									</div>
 								</div>
 							</div>
