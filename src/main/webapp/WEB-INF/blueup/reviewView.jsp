@@ -226,7 +226,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<br>
 										<td width="70px">시간: ${reviewlist.review_time}</td>
 										
-										<input type="button" class="button" onclick="updateReview()" id="updateone" value="수정"/>
+										<input type="button" class="button" onclick="getReviewListForReview(this)" id="updateone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
 										<input type="hidden" class="review_no" id="reviewNo" value="${reviewlist.review_no}"/>
 				   						<input type="hidden" value="${reviewlist.star}"/>
@@ -306,36 +306,29 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	alert(review_content)
 	location.href='/test/updateReview.do?user_no=' + user_no+'&review_no=' + review_no+'&star=' + star;
 }  */
-  function updateReview(element){
+  function getReviewListForReview(element){
 	alert('test');
     //수정 버튼 클릭 시
   
    	 var user_no = localStorage.getItem("user_no");
    	alert(user_no);
-   	var review_no = $('#reviewNo').next().next().val();
+   	var review_no = $(element).next().next().val();
    	alert(review_no);
-   	var star = $('#reviewStar').next().next().next().val();
-   	alert(star);
-   	var review_title = $('#reviewTitle').next().next().next().next().val();
-   	alert(review_title);
-   	var review_content = $('#reviewContent').next().next().next().next().next().next().val();
-   	alert(review_content);
-       		$.ajax({
-       			url : '/test/updateReview.do',
+ 	location.href='/test/getReviewListForReview.do?user_no='+ user_no +'&review_no=' + review_no;
+ 	
+}
+       			/* url : '/test/getReviewListForReview.do',
        			type : 'POST',
        			cache : false,
        			data : {
-       				"user_no" : user_no, "review_no" : review_no, "star" : star, 
-       				"review_title" : review_title, "review_content" : review_content
+       			"user_no" : user_no, "review_no" : review_no
        	        		
 					},
 				
 				success:function(data){
-					if(data == 1){
-						alert("수정 하기");
-						location.href='/test/insertReview.do?user_no=' + user_no+
-								'&review_no=' + review_no+ '&star=' + star+
-								"review_title=" + review_title, "review_content" + review_content;
+					if(data == 1)
+						alert("수정 성공");
+						location.href='/test/getReviewList.do?user_no=' + user_no;
 					}
 					else{
 						alert("수정 실패")
@@ -344,8 +337,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 				error:function(){
 					alert("다시 시도해주세요");
 				}
-       		});
-    }
+       		}); 
+    }*/
     
 
 

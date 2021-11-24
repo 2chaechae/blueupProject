@@ -116,25 +116,16 @@ public class ReviewController {
 		
 
 	// 리뷰 수정
-		@RequestMapping("/updateReview.do")
-		public ModelAndView updateReview(HttpSession session, String user_no, String review_no, 
-				       int star, String review_title, String review_content) {
+		@RequestMapping("/getReviewListForReview.do")
+		public ModelAndView getReviewListForReview(HttpSession session, ReviewVo vo) {
 			ModelAndView mav = new ModelAndView();
-			ReviewVo vo = new ReviewVo();
-			vo.setUser_no(Integer.parseInt(user_no));
-			vo.setReview_no(Integer.parseInt(review_no));
-			vo.setReview_title(review_title);
-			vo.setReview_content(review_content);
-			vo.setStar(star);
-			reviewService.updateReview(vo);	
-			System.out.println("리뷰 수정으로 넘어갑니다.");
-			mav.addObject("review_no", vo);
-			mav.addObject("user_no", vo);
-			mav.addObject("review_no", vo);
+			ReviewVo reviewWrite = reviewService.getReviewListForReview(vo);
+			System.out.println("수정을위한리뷰출력");
+			mav.addObject("getReviewListForReview", reviewWrite);
 			mav.setViewName("reviewWrite");
+			System.out.println("리뷰쓰기창부르기");
 			return mav;
 		}
 
-		
 
 }

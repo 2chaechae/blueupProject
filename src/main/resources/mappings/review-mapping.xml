@@ -45,7 +45,7 @@
 		SET
 	    STAR = #{star}, <!-- 별점 바꾸기 -->
 		REVIEW_TITLE = #{review_title}, <!-- 리뷰 제목 -->
-		REVIEW_CONTENT = #{review_content},  <!-- 리뷰 내용 -->
+		REVIEW_CONTENT = #{review_content}  <!-- 리뷰 내용 -->
 		<!-- 사진이랑 리뷰 작성 시간 -->
 		WHERE REVIEW_NO = #{review_no}
 	</update>
@@ -85,6 +85,9 @@
 	 AND b.review_status='true'; -->
 	</select>
 	
-	<!-- 별점별 리뷰 -->
+	<!-- 수정을 위한 쿼리 -->
+	<select id="getReviewListForReview" resultType="reviewvo" >
+	 SELECT * FROM REVIEW WHERE REVIEW_NO = #{review_no}
 
+	</select>
 </mapper>
