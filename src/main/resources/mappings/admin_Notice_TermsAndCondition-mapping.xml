@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="adminNoticeAndTermsAndCondition">
+	<select id="getNotice" resultType="adminNoticevo" parameterType="cri">
+		SELECT * FROM NOTICE
+		ORDER BY NOTICE_NO DESC
+		LIMIT #{perPageNum} OFFSET #{startRow}
+	</select>
+	
+	<select id="getNoticeCnt" resultType="Integer">
+		SELECT COUNT(NOTICE_NO) FROM NOTICE
+	</select>
+	
+	
+	<select id="getTermsAndCondition" resultType="adminTermsvo" parameterType="cri">
+		SELECT * FROM TERMS_AND_CONDITION
+		ORDER BY TERMS_NO
+		LIMIT #{perPageNum} OFFSET #{startRow}
+	</select>
+	
+	<select id="getTermsCnt" resultType="Integer">
+		SELECT COUNT(TERMS_NO) AS TERMS_NO FROM TERMS_AND_CONDITION
+	</select>
+	
+	
+	<insert id="writeNoticeProc" parameterType="adminNoticevo">
+		INSERT INTO NOTICE
+			(
+				NOTICE_TYPE,
+				NOTICE_TITLE,
+				NOTICE_CONTENT,
+				NOTICE_TIME
+			)
+			VALUES(
+				#{notice_type},
+				#{notice_title},
+				#{notice_content},
+				now()
+			)
+	</insert>
+	
+	<select id="getNoticeContent" parameterType="int" resultType="adminNoticevo">
+		SELECT NOTICE_TITLE, NOTICE_CONTENT
+			FROM NOTICE
+			WHERE NOTICE_NO = #{notice_no}
+	</select>
+	
+	<delete id="deleteNotice" parameterType="int">
+		DELETE FROM NOTICE WHERE NOTICE_NO = #{notice_no}
+	</delete>
+	
+	<update id="modifyNotice" parameterType="adminNoticevo">
+		UPDATE NOTICE SET 
+			NOTICE_TITLE = #{notice_title},
+			NOTICE_CONTENT = #{notice_content}
+		WHERE NOTICE_NO = #{notice_no}
+	</update>
+	
+	<insert id="writeTerms" parameterType="adminTermsvo">
+		INSERT INTO TERMS_AND_CONDITION (
+			TERMS_TITLE,
+			TERMS_CONTENT,
+			TERMS_ENFORCEMENT_DATE,
+			TERMS_REGISTRATION_DATE
+		) VALUES(
+			#{terms_title},
+			#{terms_content},
+			now(),
+			now()
+		);
+		
+	</insert>
+	
+	<select id="getTermsContent" parameterType="int" resultType="adminTermsvo">
+		SELECT TERMS_TITLE, TERMS_CONTENT
+			FROM TERMS_AND_CONDITION
+			WHERE TERMS_NO = #{terms_no}
+	</select>
+	
+	<delete id="deleteTerms" parameterType="int">
+		DELETE FROM TERMS_AND_CONDITION
+		WHERE TERMS_NO = #{terms_no}
+	</delete>
+	
+	<update id="modifyTerms" parameterType="adminTermsvo">
+		UPDATE TERMS_AND_CONDITION SET 
+			TERMS_TITLE = #{terms_title},
+			TERMS_CONTENT = #{terms_content}
+		WHERE TERMS_NO = #{terms_no}
+	</update>
+</mapper>

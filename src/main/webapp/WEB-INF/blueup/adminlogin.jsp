@@ -25,6 +25,7 @@
 							<input type="hidden" name="remember-me" id="autologin" value="true"> 
 							<input type="hidden" name="pageMode" value="false" /> 
 							<input type="hidden" name="redirect_uri" id="redirect_uri" value="" /> 
+							<input type="hidden" name="pageNum" value="1" />
 
 							<input type="text" class="input-style01" title="아이디 입력창" placeholder="아이디"
 								id="adminlogin" name="admin_id" value="${admin_id }" validate="required;" validateText="아이디" /> 
