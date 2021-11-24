@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import blueup.admin.service.AdminProductDetailServiceImpl;
 import blueup.admin.service.AdminProductServiceImpl;
+import blueup.admin.vo.ProductVo;
 
 @Controller
 public class AdminProductController {
@@ -36,6 +37,8 @@ public class AdminProductController {
 	@RequestMapping("/getProduct.mdo")
 	public ModelAndView getProduct(int product_no) {
 		ModelAndView mav = new ModelAndView();
+		ProductVo vo = adminproductserviceimpl.getProduct(product_no);
+		System.out.println(vo.getCategory_name());
 		mav.addObject("product", adminproductserviceimpl.getProduct(product_no));
 		mav.addObject("productDetail", adminproductdetailserviceimpl.getProductDetail(product_no));
 		mav.setViewName("adminProductView");

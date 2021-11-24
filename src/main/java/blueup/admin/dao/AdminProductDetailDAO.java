@@ -16,7 +16,7 @@ public class AdminProductDetailDAO {
 	private SqlSessionTemplate sqlSssionTemplate;
 	
 	public List<ProductContentVo> getProductDetail(int product_no) {
-		return sqlSssionTemplate.selectList("adminprodcutdetailDAO.getProductDetail");
+		return sqlSssionTemplate.selectList("adminprodcutdetailDAO.getProductDetail", product_no);
 	}
 
 }

@@ -24,6 +24,6 @@ public class AdminProductDAO {
 	}
 	
 	public ProductVo getProduct(int product_no) {
-		return sqlSssionTemplate.selectOne("productDao.getProduct");
+		return sqlSssionTemplate.selectOne("productDao.getProduct", product_no);
 	}
 }

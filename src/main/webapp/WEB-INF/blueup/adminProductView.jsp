@@ -44,10 +44,9 @@ pageEncoding="UTF-8"%>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteContent">카테고리</label><span class="required">*</span></th>
 							<td>
-								<select id="category" style="width:150px; text-align:center;">
+								<select name="category" id="cate" style="width:150px; text-align:center;">
 									<option value=" ">----선택----</option>
 									<option value="CAP">CAP</option>
-									<option value="SHOES">SHOES</option>
 									<option value="SHOES">SHOES</option>
 									<option value="BAG">BAG</option>
 									<option value="BAG">ACC/PET</option>
@@ -93,7 +92,7 @@ pageEncoding="UTF-8"%>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteContent">진열여부</label><span class="required">*</span></th>
 							<td>
-								<select id="display" style="width:150px; text-align:center;">
+								<select id="display" name="choose" style="width:150px; text-align:center;">
 									<option value=" ">----선택----</option>
 									<option value="true">TRUE</option>
 									<option value="false">FALSE</option>
@@ -104,17 +103,20 @@ pageEncoding="UTF-8"%>
 						<th scope="row"><label for="boardWriteTitle">main_image</label></th>
 							<td>
                         		<span>
-                            		<input type="file" style="width:500px;" value="${product.main_image}" onchange="javascript:filetest(this);">
+                        			<div style="width:800px; padding:10px; font-size:15px;">현재이미지&nbsp;:&nbsp;${product.main_image}</div>
+                            		<input type="file" style="width:500px;" onchange="javascript:filetest(this);">
                            		</span>
                            	</td>
 						</tr>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteTitle">content_top image</label>
 							<td>
-                        		<span>
-                        		<c:forEach var="image_main" items="${productDetail}">
-	                        		<c:if test="${image_main.content_type == 'top'}">
-	                            		<input type="file" style="width:500px;" value="${image_main.detailed_product_content}" onchange="javascript:filetest(this);">
+                        		<span class="add">
+                        		<c:forEach var="image_top" items="${productDetail}" varStatus="status">
+	                        		<c:if test="${image_top.content_type == 'top'}">
+	                        			<div class="remove" style="width:800px; padding:5px; font-size:15px;">현재이미지&nbsp;:&nbsp;<span>${image_top.detailed_product_content}</span>
+	                        			<img class="x" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="deletefile(this)" style="width:10px; height:10px; margin-left:10px;"/></div>
+	                        			<input type="hidden" value="${image_top.product_content_detail_no}"/>
 	                         		</c:if>
                          		</c:forEach>
                             	</span>
@@ -123,10 +125,12 @@ pageEncoding="UTF-8"%>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteTitle">content_main image</label></th>
 							<td>
-	                        	<span>
+	                        	<span class="add">
 	                        	<c:forEach var="image_main" items="${productDetail}">
 	                        		<c:if test="${image_main.content_type == 'main'}">
-	                            		<input type="file" style="width:500px;" value="${image_main.detailed_product_content}" onchange="javascript:filetest(this);">
+	                        			<div class="remove" style="width:800px; padding:5px; font-size:15px;">현재이미지&nbsp;:&nbsp;<span>${image_main.detailed_product_content}</span>
+	                        			<img class="x" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="deletefile(this)" style="width:10px; height:10px; margin-left:10px;"/></div>
+	                        			<input type="hidden" value="${image_main.product_content_detail_no}"/>
 	                         		</c:if>
                          		</c:forEach>
 	                            </span>
@@ -135,10 +139,12 @@ pageEncoding="UTF-8"%>
 						<tr style="border-top:1px solid lightgray">
 							<th scope="row"><label for="boardWriteTitle">product_Infor image</label></th>
 							<td>
-                        		<span>
-                            	 <c:forEach var="image_main" items="${productDetail}">
-	                        		<c:if test="${image_main.content_type == 'bottom'}">
-	                            		<input type="file" style="width:500px;" value="${image_main.detailed_product_content}" onchange="javascript:filetest(this);">
+                        		<span class="add">
+                            	 <c:forEach var="image_bottom" items="${productDetail}">
+	                        		<c:if test="${image_bottom.content_type == 'bottom'}">
+	                        			<div class="remove" style="width:800px; padding:5px; font-size:15px;"">현재이미지&nbsp;:&nbsp;<span>${image_bottom.detailed_product_content}</span>
+	                            		<img class="x" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="deletefile(this)" style="width:10px; height:10px; margin-left:10px;"/></div>
+	                        			<input type="hidden" value="${image_bottom.product_content_detail_no}"/>
 	                         		</c:if>
                          		</c:forEach>
                             	</span>
@@ -157,28 +163,39 @@ pageEncoding="UTF-8"%>
 	</div>
 	</form>
 <script type="text/javascript">
-	$(document).ready(function(){
-		var category_name = ${product.category_name};
-		$("#category").val(category_name).prop("selected", true);
-		var display = ${product.display_status};
-		$("#display").val(display).prop("seletecd", true);
-	});
-	
-	$('#category').change(function(){
-		var category = $('#category option:selected').text();
+$(document).ready(function(){
+	$('#cate').val("${product.category_name}"); 
+	$('#display').val("${product.display_status}");
+	   
+	   var category_name = "${product.category_name}";
 		$.ajax({
-			url : '/test/getCategoryDetailList.mdo'
+			url : '/test/getCategoryDetailList.mdo',
 			type : 'POST',
 			cache : false,
 			data : { "category_name" : category_name},
 			success : function(data){
+				alert(data);
 				$(data).each(function(){
 					var detail = this.detailed_category_name;
-					$('#catedetail').append('<option value="' + detail + '">' + detail + '</option>');
+					$('#catedetail').append('<option value=' + detail + '>' + detail + '</option>');
 				});
 			},
+			error:function() {
+				alert('다시 시도해주세요');
+			}
 		});
-	});
+		
+	   $('#catedetail').val("${product.detailed_category_name}");
+});
+
+function deletefile(element){
+	$(element).closest('.remove').remove();
+	var detail_no = $(element).next().val();
+	var html = '<input type="file" style="width:500px;" onchange="addfile(this);">';
+	var html2 = '<input type="hidden" value="'+ detail_no + '"/>';
+	$('.add').append(html);
+	$('.add').append(html2);
+}
 	
 </script>
 </body>
