@@ -8,5 +8,6 @@ public interface AdminProductService {
 	public List<ProductVo> getProductList();
 	public List<ProductVo> getProductListBySearch(ProductVo vo);
 	public ProductVo getProduct(int product_no);
+	public int productUpdate(ProductVo vo);
 	
 }

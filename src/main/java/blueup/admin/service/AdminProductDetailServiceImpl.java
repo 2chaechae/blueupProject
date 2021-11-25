@@ -18,4 +18,9 @@ public class AdminProductDetailServiceImpl implements AdminProductDetailService{
 		return adminproductdetaildao.getProductDetail(product_no);
 	}
 
+	@Override
+	public int updateProductDetail(List<ProductContentVo> vo) {
+		return adminproductdetaildao.updateProductDetail(vo);
+	}
+
 }

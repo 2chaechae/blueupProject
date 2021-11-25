@@ -28,5 +28,10 @@ public class AdminProductServiceImpl implements AdminProductService{
 		return adminproductdao.getProduct(product_no);
 	}
 
+	@Override
+	public int productUpdate(ProductVo vo) {
+		return adminproductdao.productUpdate(vo);
+	}
+
 
 }

@@ -18,5 +18,9 @@ public class AdminProductDetailDAO {
 	public List<ProductContentVo> getProductDetail(int product_no) {
 		return sqlSssionTemplate.selectList("adminprodcutdetailDAO.getProductDetail", product_no);
 	}
-
+	
+	/* 상품 상세 수정*/
+	public int updateProductDetail(List<ProductContentVo> vo) {
+		return sqlSssionTemplate.update("adminprodcutdetailDAO.updateProductDetail", vo);
+	}
 }
