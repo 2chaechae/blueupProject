@@ -50,4 +50,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.getReviewListForReview(vo);
 	}
 
+	@Override
+	public ReviewVo modifyReview(ReviewVo vo) {
+		return reviewDAO.modifyReview(vo);
+	}
+
 }

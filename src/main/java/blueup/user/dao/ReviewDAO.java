@@ -46,6 +46,10 @@ public class ReviewDAO {
 	public ReviewVo getReviewListForReview(ReviewVo vo) {
 		return sqlSessionTemplate.selectOne("reviewDao.getReviewListForReview", vo);
 	}
+
+	public ReviewVo modifyReview(ReviewVo vo) {
+		return sqlSessionTemplate.selectOne("reviewDao.modifyReview", vo);
+	}
 	
 }
 

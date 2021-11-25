@@ -161,7 +161,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<li><a href="#tab2" onclick="location.href='/test/getReviewList.do?user_no='+${getReviewproductList.get(0).user_no}" >내가 작성한 리뷰</a></li>
 									</ul> 
 									<!-- <input type="button" class="button" id="tab1" onclick="getReviewproductList()" value="작성가능한 리뷰"/>
- 									<input type="button" class="button"  id="tab2" onclick="getReviewList()" value="내가 작성한 리뷰"/> 
+ 									<input type="button" class="button"  id="tab2" onclick="()" value="내가 작성한 리뷰"/> 
 									<script type="text/javascript">
 										function getReviewproductList("tab1"){
 											var user_no = localStorage.getItem("user_no");
@@ -214,19 +214,19 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<section class="review">
 										<div >
 											<tr>
-										
-				<td width="100px" >${reviewlist.product_name}</td>
-				<td width="60px" >${reviewlist.product_size}</td>
-				<td width="60px" >${reviewlist.product_color}</td>
-				<br>
-				<td class="star" width="100px" id=reviewStar> 별점: ${reviewlist.star} 개</td>
+									<td width="100px" >${reviewlist.main_image}</td> <!-- 리뷰 사진 넣어야함. -->
+									<td width="100px" >${reviewlist.product_name}</td>
+									<td width="60px" >${reviewlist.product_size}</td>
+									<td width="60px" >${reviewlist.product_color}</td>
+									<br>
+									<td class="star" width="100px" id=reviewStar> 별점: ${reviewlist.star} 개</td>
 										<td class="review_title" width="100px" id=reviewTitle>제목: ${reviewlist.review_title}</td>
 										<br>
 										<td class="review_content" width="100px" id=reviewContent>내용 : ${reviewlist.review_content}</td>
 										<br>
 										<td width="70px">시간: ${reviewlist.review_time}</td>
-										
-										<input type="button" class="button" onclick="getReviewListForReview(this)" id="updateone" value="수정"/>
+										<!--onclick="modifyReview(this)"  -->
+										<input type="button" class="button"  id="updateone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
 										<input type="hidden" class="review_no" id="reviewNo" value="${reviewlist.review_no}"/>
 				   						<input type="hidden" value="${reviewlist.star}"/>
@@ -290,58 +290,28 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 <script>
 
-/* 글수정 */
- 
-/* function updateReview(element){
-	alert('test');
-	 var user_no = localStorage.getItem("user_no");
-	alert(user_no);
-	var review_no = $(element).next().next().val();
-	alert(review_no);
-	var star = $(element).next().next().next().val();
-	alert(star);
-	var review_title = $(element).next().next().next().next().val();
-	alert(review_title)
-	var review_content = $(element).next().next().next().next().next().val();
-	alert(review_content)
-	location.href='/test/updateReview.do?user_no=' + user_no+'&review_no=' + review_no+'&star=' + star;
-}  */
-  function getReviewListForReview(element){
-	alert('test');
-    //수정 버튼 클릭 시
-  
-   	 var user_no = localStorage.getItem("user_no");
-   	alert(user_no);
-   	var review_no = $(element).next().next().val();
-   	alert(review_no);
- 	location.href='/test/getReviewListForReview.do?user_no='+ user_no +'&review_no=' + review_no;
+$(document).ready(function(){
+    //저장 버튼 클릭 시
+    $('#updateone').on('click',function(){
+    	var user_no = localStorage.getItem("user_no");
+		alert(user_no);
+		var review_no =  $(element).siblings('.review_no').val();
+		alert(review_no); 
+		location.href='/test/modifyReview.do?user_no='+user_no;
+    });
+ });
+
+
+   /* function modifyReview(element){
+	   alert('수정바튼');
+	   
+	    //수정 버튼 클릭 시
+		
+	} */
  	
-}
-       			/* url : '/test/getReviewListForReview.do',
-       			type : 'POST',
-       			cache : false,
-       			data : {
-       			"user_no" : user_no, "review_no" : review_no
-       	        		
-					},
-				
-				success:function(data){
-					if(data == 1)
-						alert("수정 성공");
-						location.href='/test/getReviewList.do?user_no=' + user_no;
-					}
-					else{
-						alert("수정 실패")
-					}
-				},
-				error:function(){
-					alert("다시 시도해주세요");
-				}
-       		}); 
-    }*/
-    
 
-
+ /* 글수정 */
+ 
 
 /* 리뷰 삭제 */
  

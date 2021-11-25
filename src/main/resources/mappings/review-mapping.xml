@@ -77,7 +77,14 @@
 	
 	<!-- 작성한 리뷰 가져오기 -->
 	<select id="getReviewList" resultType="reviewvo" >
-	 SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
+	<!--  SELECT * FROM REVIEW WHERE USER_NO = #{user_no} -->
+	 
+	SELECT  a.product_name, a.product_size, a.product_color, a.star, a.review_title, a.review_content,
+		a.review_time, 
+	   b.review_photo_no, b.photo1, b.photo2, b.photo3, b.photo4, b.photo5 
+		FROM review as a LEFT OUTER JOIN review_photo as b
+		ON a.review_no = b.review_no 
+		WHERE a.user_no = #{user_no} AND a.product_no = b.product_no 
 	<!--  SELECT a.user_no,b.review_status 
 	 FROM review as a JOIN order_detail as b
 	 ON a.user_no = b. order_no
@@ -86,7 +93,7 @@
 	</select>
 	
 	<!-- 수정을 위한 쿼리 -->
-	<select id="getReviewListForReview" resultType="reviewvo" >
+	<select id="modifyReview" resultType="reviewvo" >
 	 SELECT * FROM REVIEW WHERE REVIEW_NO = #{review_no}
 
 	</select>
