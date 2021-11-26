@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,10 +35,15 @@ public class ReviewController {
 	// 작성가능한 리뷰 상품 정보 호출
 	@RequestMapping("/getReviewproductList.do")
 	public ModelAndView getReviewproductList(HttpSession session, ReviewVo vo, ModelAndView mav) {
-
-		System.out.println("상품 정보 출력");
-		mav.addObject("getReviewproductList", reviewService.getReviewproductList(vo));
+		System.out.println("작성가능한 리뷰 상품정보 출력");
+		List<ReviewVo> test = (List<ReviewVo>) reviewService.getReviewproductList(vo);
+		if(test.size() == 0) {
+			mav.addObject("emptyReviewproduct", "없음");
+		}else {
+			mav.addObject("getReviewproductList", reviewService.getReviewproductList(vo));
+		}
 		mav.setViewName("reviewView");
+		
 		return mav;
 	}
 
@@ -49,15 +55,21 @@ public class ReviewController {
 		ModelAndView mav = new ModelAndView();
 		vo.setUser_no(user_no);
 		System.out.println(user_no);
-		System.out.println("상품 정보 출력");
+		System.out.println("내가 작성한 리뷰 리스트 출력");
 		List<ReviewVo> t = reviewService.getReviewList(vo);
 		for (ReviewVo m : t) {
 			System.out.println(m);
 		}
-		mav.addObject("getReviewList", reviewService.getReviewList(vo));
-		mav.setViewName("reviewView");
-		return mav;
-	}
+		List<ReviewVo> test = (List<ReviewVo>) reviewService.getReviewList(vo);
+		if(test.size() == 0) {
+				mav.addObject("emptyReview", "없음");
+		}else {
+			mav.addObject("getReviewList", reviewService.getReviewList(vo));
+		}
+			mav.setViewName("reviewView");
+			
+			return mav;
+		}
 
 	// 리뷰 등록
 	@RequestMapping("/insertReview.do")
@@ -107,34 +119,25 @@ public class ReviewController {
 
 	// 리뷰 수정 폼으로 ㄱ
 	@RequestMapping("/modifyReview.do")
-	public ModelAndView modifyReview(HttpSession session, ReviewVo vo, ModelAndView mav, int user_no,
-			int review_no) {
-	System.out.println("test555");
-		ReviewVo reviewModifyWrite = reviewService.modifyReview(vo);
-		System.out.println(reviewModifyWrite.getUser_no());
-		mav.addObject("modifyReview", reviewModifyWrite);
-		mav.setViewName("reviewModifyWrite");
-		return mav;
+	@ResponseBody
+	public int modifyReview(int user_no, int review_no) {
+	ModelAndView mav =new ModelAndView();
+	ReviewVo vo =new ReviewVo();
+	mav.setViewName("reviewModifyWrite");
+	int result = reviewService.modifyReview(vo);
+	System.out.println("리뷰수정으로가는거 테스트");
+	return result;
+	
+	//@RequestMapping("/modifyReview.do")
+	//public ModelAndView modifyReview(HttpSession session, ReviewVo vo, ModelAndView mav, ReviewVo user_no,
+	//		int review_no) {
+	//System.out.println("test555");
+	//ReviewVo vo = reviewService.modifyReview(user_no);
+	//	mav.addObject("modifyReview", user_no);
+	//	mav.setViewName("reviewModifyWrite");
+	//	return mav;
 	}
-
-	// 리뷰 수정-
-	/*
-	 * @RequestMapping("/modifyReviewproc.do")
-	 * 
-	 * @ResponseBody public int modifyReview(
-	 * 
-	 * int product_no, ReviewVo, vo.set 다시 int로 String star, String title, String
-	 * content, String user_id, String product_name, String product_size, Date
-	 * review_time, String product_color, int user_no ) { System.out.println(1);
-	 * ReviewVo vo = new ReviewVo(); vo.setProduct_name(product_name);
-	 * vo.setProduct_size(product_size); System.out.println(5);
-	 * vo.setStar(Integer.parseInt(star)); vo.setReview_title(title);
-	 * vo.setReview_content(content); vo.setUser_id(user_id);
-	 * vo.setReview_time(review_time); vo.setProduct_color(product_color);
-	 * vo.setUser_no(user_no); vo.setProduct_no(product_no); ReviewVo result =
-	 * reviewService.modifyReview(vo); return result;
-	 * 
-	 * }
-	 */
-
 }
+
+
+

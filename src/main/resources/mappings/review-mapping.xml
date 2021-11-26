@@ -52,11 +52,16 @@
 	
 	<!-- 리뷰를 위한 한가지 상품정보가져오기 -->
 	<select id="getProductInfoForReview" resultType="reviewvo" >
+	  <!-- 얜 최종본.  
 	  SELECT a.user_no, a.purchaseconfirm,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		on a.order_no = b.order_no WHERE a.user_no = #{user_no}
-		AND b.order_status='구매확정' AND b.product_no = #{product_no} AND b.review_status='false';
+		AND b.order_status='구매확정' AND b.product_no = #{product_no} AND b.review_status='false'; -->
+		SELECT a.user_no, a.purchaseconfirm,
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
+		FROM order_request as a JOIN order_detail as b
+		on  a. user_no = #{user_no} where b.order_status='구매확정' AND b.product_no = #{product_no} ;
 	</select>
 	
 	<!-- 리뷰를 위한 사진 가져오기 -->
@@ -67,29 +72,31 @@
 	
 	<!-- 작성가능한상품정보가져오기 -->
 	<select id="getReviewproductList" resultType="reviewvo" >
-	 SELECT a.user_no, a.purchaseconfirm,
+	 <!-- SELECT a.user_no, a.purchaseconfirm,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		ON a.order_no = b.order_no 
 		WHERE a.user_no = #{user_no}
-	 	AND b.order_status='구매확정' AND b.review_status='false';
+	 	AND b.order_status='구매확정' AND b.review_status='false'; -->
+	 	SELECT a.user_no, a.purchaseconfirm,
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
+		FROM order_request as a JOIN order_detail as b
+		ON a.user_no  =#{user_no}
+		WHERE b.order_status='구매확정' AND b.review_status='false';
 	</select> 
 	
 	<!-- 작성한 리뷰 가져오기 -->
 	<select id="getReviewList" resultType="reviewvo" >
-	<!--  SELECT * FROM REVIEW WHERE USER_NO = #{user_no} -->
+	  SELECT * FROM REVIEW WHERE USER_NO = #{user_no}
 	 
-	SELECT  a.product_name, a.product_size, a.product_color, a.star, a.review_title, a.review_content,
+	<!-- 포토넣은 리뷰 쿼리
+	 SELECT  a.product_name, a.product_size, a.product_color, a.star, a.review_title, a.review_content,
 		a.review_time, 
 	   b.review_photo_no, b.photo1, b.photo2, b.photo3, b.photo4, b.photo5 
 		FROM review as a LEFT OUTER JOIN review_photo as b
 		ON a.review_no = b.review_no 
-		WHERE a.user_no = #{user_no} AND a.product_no = b.product_no 
-	<!--  SELECT a.user_no,b.review_status 
-	 FROM review as a JOIN order_detail as b
-	 ON a.user_no = b. order_no
-	 WHERE a.user_no = #{user_no}
-	 AND b.review_status='true'; -->
+		WHERE a.user_no = #{user_no} AND a.product_no = b.product_no  -->
+	
 	</select>
 	
 	<!-- 수정을 위한 쿼리 -->
