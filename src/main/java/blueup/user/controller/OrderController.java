@@ -112,7 +112,7 @@ public class OrderController {
 		map.put("couponlist", couponlist);
 		return map;
 	}
-
+	
 	@RequestMapping("/getCouponSelect.do") // 할인정보 - 쿠폰선택
 	@ResponseBody
 	public CouponVo getCouponSelect(int coupon_no, int user_no) {
