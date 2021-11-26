@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import blueup.admin.vo.ProductContentVo;
+import blueup.admin.vo.ProductVo;
 
 
 @Repository
@@ -20,7 +21,7 @@ public class AdminProductDetailDAO {
 	}
 	
 	/* 상품 상세 수정*/
-	public int updateProductDetail(List<ProductContentVo> vo) {
-		return sqlSssionTemplate.update("adminprodcutdetailDAO.updateProductDetail", vo);
+	public int updateProductDetail(ProductVo numberList) {
+		return sqlSssionTemplate.update("adminprodcutdetailDAO.updateProductDetail", numberList);
 	}
 }

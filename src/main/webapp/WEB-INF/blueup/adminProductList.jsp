@@ -91,7 +91,6 @@
 <script type="text/javascript">
 function gotoDetail(element){
 	var product_no = $(element).children().first().text();
-	alert(product_no);
 	location.href="/test/getProduct.mdo?product_no=" + product_no;
 }
 

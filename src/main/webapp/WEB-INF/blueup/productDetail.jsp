@@ -695,9 +695,7 @@ $(document).ready(function(){
 	/* 별점별 리뷰 조회*/
 	var user_no = localStorage.getItem("user_no");
 	$('#starSearch').on('change', function(){
-		alert("별점");
 		var star = $('#starSearch option:selected').val();
-		alert(star);
 		$.ajax({
 			url:'/test/selectReivew.do',
 		    type:'POST',
@@ -705,7 +703,6 @@ $(document).ready(function(){
 			data: {"user_no":user_no, "product_no":product_no, "star" : star}
 		}).done(function(data){
 			console.log("data받음");
-			alert(data);
 			$('#remove').remove();
 			$('#paging').remove();
 			$('#reviewTabel').html(data);
@@ -719,8 +716,6 @@ function chooseColor(element){
 	$(element).css('border', '1px solid black');
 	$(element).siblings().css('border', '1px solid lightgray');
 	product_color = $(element).find('span').text();
-	alert(product_color);
-	alert(product_no);
 	var spanList = $('.payment-option-size').find('span');
 		$(spanList).each(function(){
 			$(this).css("text-decoration", "none");
@@ -732,7 +727,6 @@ function chooseColor(element){
 		   	cache:false,
 			data: {"product_no":product_no, "product_color" : product_color},
 			success:function(data) {
-				alert(data);
 				var sizeList = [];
 				var size = $('.payment-option-size').find('span').text();
 				var length = size.length;
@@ -761,7 +755,6 @@ function chooseSize(element){
 	$(element).css('border', '1px solid black');
 	$(element).siblings().css('border', '1px solid lightgray');
 	product_size = $(element).children('span').text();
-	alert(product_size);
 }
 
 function minus(){
@@ -809,7 +802,6 @@ function numberPage(element){
 	var p = $(element).text().split("|");
 	var page_no = parseInt(p[1]);
 	var user_no = localStorage.getItem("user_no");
-	alert(product_no);
 	$.ajax({
 		url:'/test/selectReivew.do',
 	    type:'POST',
@@ -851,7 +843,6 @@ function afterPage(){
 function heart(element){
 	var user_no = localStorage.getItem("user_no");
 	var img = $(element).attr("src");
-		alert(img);
 		/////////////////회원 위시리스트////////////////
 		if(user_no != null){
 			if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
@@ -938,7 +929,6 @@ function addOrder(){
 			if(logincheck == true){
 				location.href="/test/login.do";
 			}else{
-				alert("비회원으로 주문");
 				var total_price = product_price * quantity;
 				var discount_total = discount * quantity;
 					$.ajax({
@@ -958,7 +948,6 @@ function addOrder(){
 					});
 			}
 		}else{
-			alert("회원으로 주문");
 			var discount_total = discount * quantity;
 			var total_price = product_price * quantity;
 			var all_discount = discount * quantity;

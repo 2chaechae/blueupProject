@@ -3,6 +3,7 @@ package blueup.admin.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,28 +61,22 @@ public class AdminProductController {
 	@ResponseBody
 	public ModelAndView updateProduct(ProductVo vo) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("업데이트 시작");
-		int result = adminproductserviceimpl.productUpdate(vo);
-			if(result == 1) {
-				System.out.println("업데이트 성공");
+		int product_no = vo.getProduct_no();
+			if(vo.getContentList() != null) {
 				/*파일 업로드*/
 				List<MultipartFile> main = vo.getContentList();
-				List<ProductContentVo> src = insertProduct(main, vo);
-				for(int i=0; i < src.size(); i++) {
-					System.out.println(src.get(i).getDetailed_product_content());
-				}
-
-				int result2 = adminproductdetailserviceimpl.updateProductDetail(src);
+				ProductVo number = insertProduct(main, vo);
+				int result2 = adminproductdetailserviceimpl.updateProductDetail(number);
+				adminproductserviceimpl.productUpdate(number);
 				if(result2 > 0) {
-					System.out.println("디테일 업데이트 확인");
+					System.out.println("상품 디테일 업데이트 완료");
 				}
-				
-				/*수정된 내역 다시 전송*/
-				int product_no = vo.getProduct_no();
-				mav.addObject("product", adminproductserviceimpl.getProduct(product_no));
-				mav.addObject("productDetail", adminproductdetailserviceimpl.getProductDetail(product_no));
-				mav.setViewName("adminProductView");
+			}else {
+				adminproductserviceimpl.productUpdate(vo);
 			}
+			mav.addObject("product", adminproductserviceimpl.getProduct(product_no));
+			mav.addObject("productDetail", adminproductdetailserviceimpl.getProductDetail(product_no));
+			mav.setViewName("adminProductView");
 		return mav;
 	}
 	
@@ -98,14 +93,13 @@ public class AdminProductController {
 					long contentLength = imageList.get(i).getSize();
 					awsS3.upload(is, key, contentType, contentLength);
 					System.out.println("업로드 완료");
-					for(int j=0; j < number.size(); j++) {
-						if(number.get(j).getProduct_content_detail_no() == 0) {
+					if(number.get(i).getProduct_content_detail_no() == 0) {
 							vo.setMain_image(uploadFolder+key);
-						}else {
-							number.get(j).setDetailed_product_content(uploadFolder+key);
-						}
-						vo.setNumber(number);
+					}else {
+							number.get(i).setDetailed_product_content(uploadFolder+key);
+							System.out.println("업로드경로" + uploadFolder+key);
 					}
+						vo.setNumber(number);
 				}
 			}
 		}catch(IOException e) {

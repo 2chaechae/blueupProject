@@ -34,7 +34,7 @@ pageEncoding="UTF-8"%>
 
 			<main class="contents oto_inquiryWrite-wrap" id="contents">
 				<div class="board-write">
-				<form id="modify" action="/test/updateProduct.mdo" method="POST" enctype="multipart/form-data">
+				<form id="modify" action="/test/updateProduct.mdo"  method="POST" enctype="multipart/form-data">
 					<table summary="상품등록" >
 						<tbody>
 						<tr style="border-top:1px solid lightgray">
@@ -105,7 +105,7 @@ pageEncoding="UTF-8"%>
                         		<span class="add">
                         			<div class="remove" style="width:800px; padding:5px; font-size:15px;">현재이미지&nbsp;:&nbsp;<span>${product.main_image}</span>
                             		<img class="x" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="deletefile(this)" style="width:10px; height:10px; margin-left:10px;"/></div>
-	                        		<input type="hidden" id="main" name="main_image" value="${product.main_image}"/>
+	                        		<input type="hidden" id="main" name="main_image" value="0"/>
                            		</span>
                            	</td>
 						</tr>
@@ -156,7 +156,7 @@ pageEncoding="UTF-8"%>
 				</div>
 			 	<div class="btnWrapBox">
 					<a href="/test/getProductList.mdo" id="cancelBtn" class="btn btn-style03">취소</a>
-					<input type="submit" class="btn btn-style02" value="수정"/>
+					<input type="submit" class="btn btn-style02"  value="수정"/>
 				</div>
 				</form>
 			</main>
@@ -164,44 +164,41 @@ pageEncoding="UTF-8"%>
 	</div>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#modify').submit(function(event) {
-		alert("test");
-
-		if($('#cate option:selected').text() == null){
+	$('#modify').submit(function(){
+		if($('#cate option:selected').text() == ""){
 			alert("카테고리 옵션을 선택해주세요.");
 			return false;
 		}
-		if($('#catedetail option:selected').text() == null){
+		if($('#catedetail option:selected').text() == ""){
 			alert("세부카테고리 옵션을 선택해주세요");
 			return false;
 		}
-		if($('#display_status option:selected').text() == null){
+		if($('#display option:selected').text() == ""){
 			alert("진열여부 옵션을 선택해주세요");
 			return false;
 		}
-		if($('#product_name').val() == null){
+		if($('#product_name').val() == ""){
 			alert("상품이름을 입력해주세요");
 			return false;
 		}
-		if($('#product_price').val() == null){
+		if($('#product_price').val() == ""){
 			alert("상품 가격을 입력해주세요");
 			return false;
 		}
-		if($('#product_discount').val() == null){
+		if($('#product_discount').val() == ""){
 			alert("할인 금액을 입력해주세요");
 			return false;
-		}if($('#dicsountrate').val() == null){
+		}if($('#dicsountrate').val() == ""){
 			alert("할인율을 입력해주세요");
 			return false;
-		}if($('#size').val() == null){
+		}if($('#size').val() == ""){
 			alert("상품 사이즈를 입력해주세요");
 			return false;
-		}if($('#color').val() == null){
+		}if($('#color').val() == ""){
 			alert("상품 색상을 입력해주세요");
 			return false;
 		}
 	});
-	
 	/* 초기값 셋팅*/
 	$('#cate').val("${product.category_name}"); 
 	$('#display').val("${product.display_status}");
@@ -248,19 +245,19 @@ $(document).ready(function(){
 var index = 0;
 function deletefile(element){
 	var detail_no = $(element).closest('div').next().val();
-	alert(detail_no);
-	var html = '<input type="file" name="contentList[' +index +']" class="content" style="width:500px;border:1px solid lightgray; margin-top:10px;" onchange="addfile(this);">';
-	var html2 = '<input type="hidden" name="number['+ index +'].getproduct_content_detail_no" class="detail_no" value="'+ detail_no + '"/>';
 		if(detail_no == 0){
 			$('#main').remove();
 			var html = '<input type="file" name="contentList[' +index +']" style="width:500px;border:1px solid lightgray; margin-top:10px;" onchange="addfile(this);">';
+			var html2 = '<input type="hidden" name="number['+ index +'].product_content_detail_no" class="detail_no" value="0"/>';
+		}else{
+			var html = '<input type="file" name="contentList[' +index +']" class="content" style="width:500px;border:1px solid lightgray; margin-top:10px;" onchange="addfile(this);">';
+			var html2 = '<input type="hidden" name="number['+ index +'].product_content_detail_no" class="detail_no" value="'+ detail_no +'"/>';
 		}
 		$(element).closest('.add').append(html);
 		$(element).closest('.add').append(html2);
 		$(element).closest('.remove').remove();
 		index++;
 }
-
 
 </script>
 </body>

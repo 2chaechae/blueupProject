@@ -10,12 +10,11 @@
 		WHERE product_no = #{product_no}
 	</select>
 	
-	<update id="updateProductDetail">
+	<update id="updateProductDetail" parameterType="productvo">
+		<foreach collection="number"  item="item" separator=";">
 		UPDATE PRODUCT_CONTENT_DETAIL 
-		SET DETAILED_PRODUCT_CONTENT = 
-		<foreach collection="list" item="src" open="'" close="'" separator=",">
-			#{src.detailed_product_content}
-		WHERE PRODUCT_CONTENT_DETAIL_NO = #{src.product_content_detail_no}
+		SET DETAILED_PRODUCT_CONTENT = #{item.detailed_product_content}
+		WHERE PRODUCT_CONTENT_DETAIL_NO = #{item.product_content_detail_no}
 		</foreach>
 	</update>
 </mapper>
