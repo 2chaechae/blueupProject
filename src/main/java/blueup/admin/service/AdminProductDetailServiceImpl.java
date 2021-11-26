@@ -20,12 +20,12 @@ public class AdminProductDetailServiceImpl implements AdminProductDetailService{
 	}
 
 	@Override
-	public int updateProductDetail(ProductVo numberList) {
-		return adminproductdetaildao.updateProductDetail(numberList);
+	public int updateProductDetail(ProductVo vo) {
+		return adminproductdetaildao.updateProductDetail(vo);
 	}
 
 	@Override
-	public int addProductDetail(List<ProductContentVo> vo) {
+	public int addProductDetail(ProductVo vo) {
 		return adminproductdetaildao.addProductDetail(vo);
 	}
 }

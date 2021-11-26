@@ -56,6 +56,8 @@ public class OrderController {
 				orderlist.add(ordervo);
 
 			}
+			System.out.println(orderlist.get(0).getProduct_name());
+			System.out.println(orderlist.get(1).getProduct_name());
 		} else { /* 비회원 */
 			List<CartVo> nomemcartlist = (List<CartVo>) session.getAttribute("orderNonMember");
 			for (int i = 0; i < nomemcartlist.size(); i++) {
@@ -121,10 +123,10 @@ public class OrderController {
 		return coupon;
 	}
 
-	@RequestMapping("/getDiscounted.do") // 선택 할인적용 금액
+	@RequestMapping("/discounted.do") // 선택 할인적용 금액
 	@ResponseBody
-	public int getDiscounted(int coupon, int point) {
-		int total_discounted = coupon + point;
+	public int discounted(int product_discount, int coupon_discount, int point_discount) {
+		int total_discounted = product_discount + coupon_discount + point_discount;
 		return total_discounted;
 	}
 

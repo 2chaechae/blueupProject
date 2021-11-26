@@ -7,9 +7,6 @@
 <script type="text/javascript"
 	src="https://static.mlb-korea.com/pc/static/js/validator.js"></script>
 
-<form id="srchForm" action="/mypage/inquiry/list" method="post">
-	<input type="hidden" name="srchMtmInqSn" value="" /> <input
-		type="hidden" name="pageNo" id="pageNo" value="" />
 
 	<!-- 컨텐츠 시작 -->
 	<div class="contain my lnblist-Wrap" id="contain">
@@ -52,7 +49,7 @@
 							</thead>
 							
 							<!-- 상품 목록 -->
-							<tbody>
+							<tbody id="remove">
 								<c:choose>
 									<c:when test="${productList == null}" >
 										<tr><td colspan="10" class="no-result">상품내역이 없습니다.</td></tr>
@@ -87,12 +84,33 @@
 			</main>
 		</div>
 	</div>
-</form>
+
 <script type="text/javascript">
+$(document).ready(function(){
+	$('#boardWriteTitle').keydown(function(key){
+		if(key.keyCode == 13){
+			var search = $('#boardWriteTitle').val();
+			$.ajax({
+				url : '/test/getProductBySearch.mdo',
+				type : 'POST',
+				cache : false,
+				data : { "search" : search},
+			}).done(function(data){
+					console.log("data받음");
+					alert(data);
+					$('#remove').empty();
+					$('#remove').html(data);
+			}).fail(function(){
+					console.log("에러");
+			});
+		}
+	});
+});
 function gotoDetail(element){
 	var product_no = $(element).children().first().text();
 	location.href="/test/getProduct.mdo?product_no=" + product_no;
 }
+
 
 </script>
 </body>
