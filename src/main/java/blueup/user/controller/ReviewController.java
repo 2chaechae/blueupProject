@@ -148,7 +148,7 @@ public class ReviewController {
 		System.out.println(review_no);
 		System.out.println("테스트중입니다");
 		int result = reviewService.modifyupdateReview(vo);
-		mav.setViewName("reviewView");
+		mav.setViewName("reviewView"); //넘겨주는 위치
 		return result;
 	}
 	
