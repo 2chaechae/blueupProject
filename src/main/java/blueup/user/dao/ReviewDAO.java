@@ -21,9 +21,10 @@ public class ReviewDAO {
 	}
 
 	/* ∏Æ∫‰ ¿€º∫ */
-	public void insertReview(ReviewVo vo) {
-		sqlSessionTemplate.insert("reviewDao.insertReview", vo);
+	public int insertReview(ReviewVo vo) {
+		return sqlSessionTemplate.insert("reviewDao.insertReview", vo);
 	}
+
 
 	
 	/* ∏Æ∫‰ ¡∂»∏ */

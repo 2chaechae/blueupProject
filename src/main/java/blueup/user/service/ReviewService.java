@@ -6,7 +6,7 @@ import blueup.user.vo.ReviewVo;
 
 public interface ReviewService {
 		public int deleteReview(ReviewVo vo);
-		public void insertReview(ReviewVo vo); 
+		public int insertReview(ReviewVo vo); 
 		public List<ReviewVo> getReviewList (ReviewVo vo);
 		public ReviewVo getProductInfoForReview(ReviewVo vo);
 		public List<ReviewVo> getReviewproductList(ReviewVo vo);
