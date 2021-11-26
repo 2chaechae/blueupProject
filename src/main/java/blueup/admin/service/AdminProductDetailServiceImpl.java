@@ -1,6 +1,5 @@
 package blueup.admin.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +22,10 @@ public class AdminProductDetailServiceImpl implements AdminProductDetailService{
 	@Override
 	public int updateProductDetail(ProductVo numberList) {
 		return adminproductdetaildao.updateProductDetail(numberList);
+	}
+
+	@Override
+	public int addProductDetail(List<ProductContentVo> vo) {
+		return adminproductdetaildao.addProductDetail(vo);
 	}
 }

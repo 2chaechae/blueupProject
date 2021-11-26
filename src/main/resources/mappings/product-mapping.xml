@@ -5,14 +5,14 @@
 <mapper namespace="productDao">
 
 <!-- 상품 등록 -->
-	<insert id="productRegistration">
+	<insert id="productAdd">
 		INSERT INTO PRODUCT (PRODUCT_NAME, PRODUCT_PRICE,
 		DISCOUNT, DELIVERY_FEE, PRODUCT_SIZE, PRODUCT_COLOR,
 		DISPLAY_STATUS, REGISTRATION_TIME, MAIN_IMAGE, DISCOUNT_RATE,
 		CATEGORY_NAME, DETAILED_CATEGORY_NAME)
 		VALUES(
 		#{product_name},
-		#{price},
+		#{product_price},
 		#{discount},
 		#{delivery_fee},
 		#{product_size},
@@ -98,4 +98,9 @@
 		UPDATE PRODUCT SET VIEWCOUNT=(SELECT VIEWCOUNT FROM PRODUCT WHERE PRODUCT_NO = #{product_no}) +1
 		WHERE product_no=#{product_no};
 	</update>
+	
+	<!-- 추가한 상품 번호 찾기 -->
+	<select id="getProductNo" resultType="Integer">
+		select max(product_no) from product
+	</select>
 </mapper>

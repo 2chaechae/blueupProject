@@ -24,4 +24,9 @@ public class AdminProductDetailDAO {
 	public int updateProductDetail(ProductVo numberList) {
 		return sqlSssionTemplate.update("adminprodcutdetailDAO.updateProductDetail", numberList);
 	}
+	
+	/* 상품 상세 등록*/
+	public int addProductDetail(List<ProductContentVo> vo) {
+		return sqlSssionTemplate.insert("adminprodcutdetailDAO.addProductDetail", vo);
+	}
 }

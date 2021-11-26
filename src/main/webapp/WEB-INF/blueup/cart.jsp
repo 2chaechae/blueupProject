@@ -132,8 +132,7 @@
 												<input class="discount" type="hidden" value="${discount * quantity}"/>
 											<!-- 할인 -->
 											<td><input type="hidden"value="${cart.cart_no}"/></td>
-											<fmt:formatNumber var="total_price" value="${cart.total_price}" pattern="#,###" />
-											<td width="140px;"><div class="product_p" style="width: 130px;">${total_price}원</div></td>
+											<td width="140px;"><div class="product_p" style="width: 130px;">${cart.total_price}원</div></td>
 											</tr>
 											</tbody>
 									</c:forEach>
@@ -164,18 +163,15 @@
 											<c:set value="${getcartList.get(0).all_price}" var="all_price"/>
 											<c:set value="${getcartList.get(0).all_discount}" var="all_discount"/>
 											<dt>선택상품금액</dt>
-											<fmt:formatNumber var="all_price" value="${getcartList.get(0).all_price}" pattern="#,###" />
-											<dd id="GNRL_DLV_god_amt">${all_price}</dd>
+											<dd id="GNRL_DLV_god_amt">${getcartList.get(0).all_price}</dd>
 											<dt>선택할인금액</dt>
-											<fmt:formatNumber var="all_discount" value="${getcartList.get(0).all_discount}" pattern="#,###" />
-											<dd class="c_r" id="GNRL_DLV_dc_amt">${all_discount}</dd>
+											<dd class="c_r" id="GNRL_DLV_dc_amt">${getcartList.get(0).all_discount}</dd>
 	
 										</dl>
 										<dl>
 											<dt>총 주문금액</dt>
 											<dd>
-												<fmt:formatNumber var="amount" value="${all_price-all_discount}" pattern="#,###" />
-												<strong id="GNRL_DLV_total_amt">${amount}"</strong>
+												<strong id="GNRL_DLV_total_amt">${all_price-all_discount}"</strong>
 											</dd>
 										</dl>
 									</c:when>
@@ -189,16 +185,13 @@
 										</c:forEach>
 										<dl>
 											<dt>선택상품금액</dt>
-											<fmt:formatNumber var="sum_price" value="${sum_price}" pattern="#,###" />
 											<dd id="GNRL_DLV_god_amt">${sum_price}</dd>
 											<dt>선택할인금액</dt>
-											<fmt:formatNumber var="sum_discount" value="${sum_discount}" pattern="#,###" />
 											<dd class="c_r" id="GNRL_DLV_dc_amt">${sum_discount}</dd>
 										</dl>
 										<dl>
 											<dt>총 주문금액</dt>
 											<dd>
-												<fmt:formatNumber var="sum_amount" value="${sum_amount}" pattern="#,###" />
 												<strong id="GNRL_DLV_total_amt">${sum_amount}</strong>
 											</dd>
 										</dl>
@@ -433,14 +426,17 @@ var user_no = localStorage.getItem("user_no");
 		var product_price = parseInt($(element).closest('tbody').find('.product_p').text()); // 선택상품의 상품총액
 		var discount_price = parseInt($(element).closest('tbody').find('.discount').val()); // 선택상품의 할인총액
 		var product_no = parseInt($(element).closest('tbody').find('.p_no').val()); // 상품 번호
+		alert("변경전" + product_price);
+		alert("할인금액" + discount_price);
 		///////////////개당 값////////////////////
 		var per_p = parseInt(product_price / end); // 1개 상품 금액
 		var per_d = parseInt(discount_price / end); // 1개 상품 할인 금액
-		
+
 		//////////////변경 값////////////////////
 		product_price += per_p;  // 변경된 선택상품의 상품총액
 		discount_price += per_d; // 변경된 선택상품의 할인총액
 		
+		alert("현재 상품금액" + product_price);
 		alert("현재 할인금액" + discount_price);
 		alert("1개 할인금액" + per_d);
 		alert("개수 " + end);

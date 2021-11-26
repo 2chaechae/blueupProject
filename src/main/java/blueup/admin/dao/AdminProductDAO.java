@@ -31,4 +31,13 @@ public class AdminProductDAO {
 	public ProductVo getProduct(int product_no) {
 		return sqlSssionTemplate.selectOne("productDao.getProduct", product_no);
 	}
+	
+	/*상품 등록*/
+	public int addProduct(ProductVo vo) {
+		return sqlSssionTemplate.insert("productDao.productAdd", vo);
+	}
+	/*상품 번호 조회 (max) */
+	public int getProductNo() {
+		return sqlSssionTemplate.selectOne("productDao.getProductNo");
+	}
 }

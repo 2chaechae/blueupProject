@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import blueup.admin.dao.AdminProductDAO;
+import blueup.admin.vo.ProductContentVo;
 import blueup.admin.vo.ProductVo;
 
 @Service("AdminProductService")
@@ -33,5 +34,14 @@ public class AdminProductServiceImpl implements AdminProductService{
 		return adminproductdao.productUpdate(vo);
 	}
 
+	@Override
+	public int addProduct(ProductVo vo) {
+		return adminproductdao.addProduct(vo);
+	}
+
+	@Override
+	public int getProductNo() {
+		return adminproductdao.getProductNo();
+	}
 
 }
