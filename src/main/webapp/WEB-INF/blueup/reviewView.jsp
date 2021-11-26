@@ -284,16 +284,38 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	</div>
 
 </form>
-
+<form id="gotoModifyForm" method="post" action="/test/modifyReview.do">
+<input type="hidden" class="review_no" id="reviewNo" value="${reviewlist.review_no}"/>
+</form>
 <script>
 /* 리뷰 수정 */
-function getmodifyReview(){
-	var user_no = localStorage.getItem("user_no");
+
+function getmodifyReview(element){
+	 var user_no = localStorage.getItem("user_no");
 	alert(user_no);
-	var review_no = $(element).siblings('.review_no').val();
+	var review_no = $('#reviewNo').val();
 	alert(review_no);
-	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + product_no;
-}
+	$.ajax({
+		url:'/test/modifyReview.do',
+		type:'POST',
+		cache:false,
+		data: {
+			"user_no":user_no, "review_no":review_no},
+		success:function(data) {
+			if(result){
+				alert("수정 가기 성공");
+				location.href='/test/modifyReview.do?user_no='+user_no+'&review_no' + review_no;
+				
+			}
+			 else{
+				alert("수정으로 가기 실패")
+			}
+		},
+		error:function() {
+			alert('다시 시도해주세요');
+		}
+	});	
+}  
 /* 리뷰 삭제 */
  
  
