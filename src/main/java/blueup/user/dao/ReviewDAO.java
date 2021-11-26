@@ -31,21 +31,25 @@ public class ReviewDAO {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewList" , vo);
 	}
 	
-	/* »óÇ° Á¶È¸ */
+	/* ¸®ºä ¾²±â Æû */
 	public ReviewVo getProductInfoForReview(ReviewVo vo) {
 		return sqlSessionTemplate.selectOne("reviewDao.getProductInfoForReview", vo);
 	}
-
+    
 	public List<ReviewVo> getReviewproductList(ReviewVo vo) {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewproductList" , vo);
 	}
-
+	/* ¸®ºä ¾²±â Æû */
 	public ReviewVo getReviewListForReview(ReviewVo vo) {
 		return sqlSessionTemplate.selectOne("reviewDao.getReviewListForReview", vo);
 	}
-
+	/* ¸®ºä ¼öÁ¤ Æû */
 	public ReviewVo modifyReview(ReviewVo vo) {
 		return sqlSessionTemplate.selectOne("reviewDao.modifyReview", vo);
+	}
+	/* ¸®ºä ¼öÁ¤ Àû¿ë */
+	public int modifyupdateReview(ReviewVo vo) {
+		return sqlSessionTemplate.selectOne("reviewDao.modifyupdateReview", vo);
 	}
 	
 }

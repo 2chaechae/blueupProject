@@ -292,9 +292,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 /* 리뷰 수정 */
 function modifyReview(){
 	var user_no = localStorage.getItem("user_no");
-	alert(user_no);
 	var review_no = $('#review_no').val();
-	alert(review_no);
+	alert("리뷰수정으로 넘어갑니다.");
 	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + review_no;
 }
  

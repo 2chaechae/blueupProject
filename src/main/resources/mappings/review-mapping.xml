@@ -102,12 +102,14 @@
 
 	</select>
 	
-	<!-- 수정문 -->
+	<!-- 수정폼에서의 수정문 -->
 	<select id="modifyupdateReview" resultType="reviewvo" >
 	 update REVIEW 
-	 set review_title= #{review_title}, 
+	 set star=#{star},
+	 review_title= #{review_title}, 
 	 review_content=#{review_content},
-	  review_time =#{review_time}
-	 where review_no= #{review_no}
+	  review_time =now()
+	 
+	 where review_no= #{review_no};
 	</select>
 </mapper>

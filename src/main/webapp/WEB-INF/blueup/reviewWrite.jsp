@@ -180,7 +180,7 @@ $(document).ready(function(){
 					},
 				success:function(data){
 					if(data == 1){
-						alert("입력 성공");
+						alert("등록 성공");
 						location.href="/test/getReviewList.do?user_no="+user_no;
 					}
 				},
