@@ -15,6 +15,11 @@ public class AdminProductDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSssionTemplate;
 	
+	/* 상품 정보 수정*/
+	public int productUpdate(ProductVo vo) {
+		return sqlSssionTemplate.update("productDao.productUpdate", vo);
+	}
+	
 	public List<ProductVo> getProductList() {
 		return sqlSssionTemplate.selectList("productDao.getProductList");
 	}
@@ -24,6 +29,6 @@ public class AdminProductDAO {
 	}
 	
 	public ProductVo getProduct(int product_no) {
-		return sqlSssionTemplate.selectOne("productDao.getProduct");
+		return sqlSssionTemplate.selectOne("productDao.getProduct", product_no);
 	}
 }

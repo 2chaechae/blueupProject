@@ -9,4 +9,12 @@
 		FROM PRODUCT_CONTENT_DETAIL
 		WHERE product_no = #{product_no}
 	</select>
+	
+	<update id="updateProductDetail" parameterType="productvo">
+		<foreach collection="number"  item="item" separator=";">
+		UPDATE PRODUCT_CONTENT_DETAIL 
+		SET DETAILED_PRODUCT_CONTENT = #{item.detailed_product_content}
+		WHERE PRODUCT_CONTENT_DETAIL_NO = #{item.product_content_detail_no}
+		</foreach>
+	</update>
 </mapper>

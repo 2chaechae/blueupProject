@@ -634,13 +634,13 @@ function checkOrder(){
 			var product_no = new Array();
 			alert("비회원으로 주문");
 			if($('input:checkbox[class=chBox]:checked').length == 0){
-				alert("전체");
+				console.log("전체");
 				$('input:checkbox[class=chBox]').each(function(){
 					product_no.push($(this).closest('tbody').find('.p_no').val());
 					alert($(this).val());
 				});
 			}else{
-				alert("선택");
+				console.log("선택");
 				$('input:checkbox[class=chBox]:checked').each(function(){
 					product_no.push($(this).closest('tbody').find('.p_no').val());
 				});	
@@ -651,13 +651,13 @@ function checkOrder(){
 		var cart_no = new Array();
 		// 회원 넘길 정보 위치
 		if($('input:checkbox[class=chBox]:checked').length == 0){
-			alert("전체");
+			console.log("전체");
 			$('input:checkbox[class=chBox]').each(function(){
 				cart_no.push($(this).val());
 				alert($(this).val());
 			});
 		}else{
-			alert("선택");
+			console.log("선택");
 			$('input:checkbox[class=chBox]:checked').each(function(){
 				cart_no.push($(this).val());
 			});	
@@ -669,7 +669,6 @@ function checkOrder(){
 function viewCount(element){
 	var product_no = $(element).next().val();
 	var user_no = localStorage.getItem("user_no");
-	alert(product_no);
 	$.ajax({
 		url:'/test/updateViewCount.do',
 	    type:'POST',

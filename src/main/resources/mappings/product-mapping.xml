@@ -7,8 +7,8 @@
 <!-- 상품 등록 -->
 	<insert id="productRegistration">
 		INSERT INTO PRODUCT (PRODUCT_NAME, PRODUCT_PRICE,
-		DISCOUNT, DELIVERY_FEE, CLOTHES_SIZE, COLOR,
-		DISPLAY_STATUS, REGISTRATION_TIME, MAIN_IMAGE, PRODUCT_CONTENT, DISCOUNT_RATE,
+		DISCOUNT, DELIVERY_FEE, PRODUCT_SIZE, PRODUCT_COLOR,
+		DISPLAY_STATUS, REGISTRATION_TIME, MAIN_IMAGE, DISCOUNT_RATE,
 		CATEGORY_NAME, DETAILED_CATEGORY_NAME)
 		VALUES(
 		#{product_name},
@@ -20,7 +20,6 @@
 		#{display_status},<!--boolean -->
 		now(),
 		#{main_image},
-		#{product_content},
 		#{discount_rate},
 		#{category_name},
 		#{detailed_category_name}
@@ -31,14 +30,12 @@
 	<update id="productUpdate" parameterType="productvo">
 		UPDATE PRODUCT SET
 		PRODUCT_NAME = #{product_name},
-		PRODUCT_PRICE = #{price},
+		PRODUCT_PRICE = #{product_price},
 		DISCOUNT = #{discount},
-		DELIVERY_FEE = #{delivery_fee},
-		CLOTHES_SIZE = #{product_size},
-		COLOR = #{product_color},
+		PRODUCT_SIZE = #{product_size},
+		PRODUCT_COLOR = #{product_color},
 		DISPLAY_STATUS = #{display_status},
 		MAIN_IMAGE = #{main_image},
-		PRODUCT_CONTENT = #{product_content},
 		DISCOUNT_RATE = #{discount_rate},
 		CATEGORY_NAME = #{category_name},
 		DETAILED_CATEGORY_NAME = #{detailed_category_name}

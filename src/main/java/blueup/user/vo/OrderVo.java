@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class OrderVo {
+	
 	/* 상품정보 = product table */
 	String main_image; // 상품이미지
 	String product_name; // 상품이름
@@ -59,3 +60,4 @@ public class OrderVo {
 	int destination; // 배송지 시리얼번호
 	int cart_no; // 장바구니 시리얼번호
 }
+

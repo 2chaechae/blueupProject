@@ -90,7 +90,6 @@ var user_no = localStorage.getItem("user_no");
 // 하트 눌렀을 때 : 회원 db 위시리스트 , 비회원 쿠키에 상품번호 추가
 function heart(element){
 var img = $(element).attr("src");
-	alert(img);
 	/////////////////회원 위시리스트////////////////
 	if(user_no != null){
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
@@ -171,7 +170,6 @@ var img = $(element).attr("src");
 function viewCount(element){
 	var product_no = $(element).closest('li').prev().prev().val();
 	var user_no = localStorage.getItem("user_no");
-	alert(product_no);
 	$.ajax({
 		url:'/test/updateViewCount.do',
 	    type:'POST',

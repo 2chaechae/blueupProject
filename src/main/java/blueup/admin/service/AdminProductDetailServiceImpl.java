@@ -1,5 +1,6 @@
 package blueup.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import blueup.admin.dao.AdminProductDetailDAO;
 import blueup.admin.vo.ProductContentVo;
+import blueup.admin.vo.ProductVo;
 
 @Service("AdminProductDetailService")
 public class AdminProductDetailServiceImpl implements AdminProductDetailService{
@@ -18,4 +20,8 @@ public class AdminProductDetailServiceImpl implements AdminProductDetailService{
 		return adminproductdetaildao.getProductDetail(product_no);
 	}
 
+	@Override
+	public int updateProductDetail(ProductVo numberList) {
+		return adminproductdetaildao.updateProductDetail(numberList);
+	}
 }

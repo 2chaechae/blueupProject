@@ -104,6 +104,9 @@ public class ProductController {
 			if(!ArrayUtils.isEmpty(p_no)) {
 				for(int i =0; i < productValue.size(); i++) {
 					for(String p : p_no) {
+						if(p == ""){
+							continue;
+						}
 						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
 							productValue.get(i).setWish_no(1);
 						}
@@ -192,14 +195,17 @@ public class ProductController {
 			if(!ArrayUtils.isEmpty(p_no)) {
 				for(int i =0; i < productValue.size(); i++) {
 					for(String p : p_no) {
-						if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
+						if(p == ""){
+							continue;
+						}else{
+							if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
 							productValue.get(i).setWish_no(1);
 							System.out.println(p);
+							}
 						}
 					}
 				}
 			}
-			
 			// 리턴값 설정
 			mav.addObject("pageNum", pageNum);
 			mav.addObject("pageMaker", pageMaker);
@@ -246,9 +252,13 @@ public class ProductController {
 			if(!ArrayUtils.isEmpty(p_no)) {
 				for(int i =0; i < product.size(); i++) {
 					for(String p : p_no) {
-						if(Integer.parseInt(p) == product.get(i).getProduct_no()) {
-							product.get(i).setWish_no(1);
-							productValue.add(product.get(i));
+						if(p == ""){
+							continue;
+						}else{
+							if (Integer.parseInt(p) == product.get(i).getProduct_no()) {
+								product.get(i).setWish_no(1);
+								productValue.add(product.get(i));
+							}
 						}
 					}
 				}
