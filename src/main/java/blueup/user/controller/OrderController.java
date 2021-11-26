@@ -41,7 +41,6 @@ public class OrderController {
 				float expected_point = (float) (memcartlist.get(i).getTotal_price() * 0.005);
 				ordervo.setMain_image(memcartlist.get(i).getMain_image()); // 상품이미지
 				ordervo.setProduct_name(memcartlist.get(i).getProduct_name());// 상품명
-				System.out.println(memcartlist.get(i).getProduct_name());
 				ordervo.setProduct_price(product_price); // 상품 가격
 				ordervo.setProduct_color(memcartlist.get(i).getProduct_color()); // 상품색상
 				ordervo.setProduct_size(memcartlist.get(i).getProduct_size()); // 상품 사이즈
