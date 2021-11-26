@@ -299,13 +299,13 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 </form>
 <script>
 //수정 버튼 클릭
-/* $(function(){
+/*  $(function(){
 	$('#updateone').click(()=>{
 		var user_no = "${reviewlist.get(0).user_no}" ;
 		var review_no = "${reviewlist.get(0).review_no}";
 		$('#gotoModifyForm').submit();
 		});
-	}); */
+	});  */
  /* $(document).ready(function(){
     //수정 버튼 클릭 시
     $('#updateone').on('click',function(){

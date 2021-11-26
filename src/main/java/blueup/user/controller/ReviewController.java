@@ -120,13 +120,13 @@ public class ReviewController {
 	// 리뷰 수정 폼으로 ㄱ
 	@RequestMapping("/modifyReview.do")
 	@ResponseBody
-	public int modifyReview(int user_no, int review_no) {
+	public ReviewVo modifyReview(int user_no, int review_no) {
+		System.out.println("야야야ㅑ야");
 	ModelAndView mav =new ModelAndView();
 	ReviewVo vo =new ReviewVo();
 	mav.setViewName("reviewModifyWrite");
-	int result = reviewService.modifyReview(vo);
 	System.out.println("리뷰수정으로가는거 테스트");
-	return result;
+	return vo;
 	
 	//@RequestMapping("/modifyReview.do")
 	//public ModelAndView modifyReview(HttpSession session, ReviewVo vo, ModelAndView mav, ReviewVo user_no,

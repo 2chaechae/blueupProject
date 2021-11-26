@@ -12,7 +12,7 @@ public interface ReviewService {
 		public ReviewVo getProductInfoForReview(ReviewVo vo);
 		public List<ReviewVo> getReviewproductList(ReviewVo vo);
 		public ReviewVo getReviewListForReview(ReviewVo vo);
-		public int modifyReview(ReviewVo vo);
+		public ReviewVo modifyReview(ReviewVo vo);
 			
 		}
 		
