@@ -226,7 +226,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<br>
 										<td width="70px">시간: ${reviewlist.review_time}</td>
 										
-										<input type="button" class="button" onclick="updateReview(this)" id="updateone" value="수정"/>
+										<input type="button" class="button" onclick="getmodifyReview(this)" id="updateone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
 										<input type="hidden" class="review_no" value="${reviewlist.review_no}"/>
 				   </tr> 	
@@ -287,14 +287,15 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 <script>
 /* 리뷰 수정 */
-function getProductInfo(){
+function getmodifyReview(){
 	var user_no = localStorage.getItem("user_no");
-	var product_no = localStorage.getItem("review_no");
+	alert(user_no);
+	var review_no = $(element).siblings('.review_no').val();
+	alert(review_no);
 	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + product_no;
 }
 /* 리뷰 삭제 */
  
-/* 리뷰 삭제 */
  
 
  function deleteReview(element){

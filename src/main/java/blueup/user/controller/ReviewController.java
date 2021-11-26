@@ -24,14 +24,7 @@ public class ReviewController {
 
 	
 
-	// ¸®ºä ¼öÁ¤
-	//@RequestMapping("/updateReview.do")
-	//public ModelAndView updateReview(ReviewVo vo) {
-	//	ModelAndView mav = new ModelAndView();
-	//mav.addObject("ReviewVO");
-	//	mav.setViewName("redirect:/getReviewList.do");
-		//return mav;
-	//}
+
 
 	// ¸®ºä Á¤º¸¿Í ¸®ºä ¼öÁ¤ Æû
 		@RequestMapping("/modifyReview.do")
