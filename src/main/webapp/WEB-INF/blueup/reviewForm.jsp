@@ -27,14 +27,14 @@
 	<div class="contain my lnblist-Wrap" id="contain">
 		<div class="container">
 
-			<h2 class="title01">상품리뷰</h2>
+			<h2 class="title01">리뷰 수정</h2>
 			<%@ include file="mypageMenu.jsp"%>
 			<main class="contents oto_inquiryList-wrap" id="contents">
 
 				<div class="location-contents">
 					<p class="location">
-						<span>Home</span> <span>마이페이지</span> <span>활동정보</span> <strong
-							title="현재 위치">상품리뷰</strong>
+						<span>Home</span> <span>마이페이지</span><span>활동정보</span> <span>상품리뷰</span> <strong
+							title="현재 위치">리뷰 수정</strong>
 					</p>
 				</div>
 
@@ -286,12 +286,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 </form>
 
 <script>
-/* 리뷰 수정 */
-function getProductInfo(){
-	var user_no = localStorage.getItem("user_no");
-	var product_no = localStorage.getItem("review_no");
-	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + product_no;
-}
 /* 리뷰 삭제 */
  
 

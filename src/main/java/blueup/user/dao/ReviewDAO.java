@@ -25,10 +25,7 @@ public class ReviewDAO {
 		sqlSessionTemplate.insert("reviewDao.insertReview", vo);
 	}
 
-	/* ¸®ºä ¼öÁ¤ */
-	public int updateReview(ReviewVo vo) {
-		return sqlSessionTemplate.update("reviewDao.updateReview", vo);
-	}
+	
 	/* ¸®ºä Á¶È¸ */
 	public List<ReviewVo>  getReviewList(ReviewVo vo) {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewList" , vo);
@@ -41,6 +38,10 @@ public class ReviewDAO {
 
 	public List<ReviewVo> getReviewproductList(ReviewVo vo) {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewproductList" , vo);
+	}
+
+	public ReviewVo modifyReview(ReviewVo vo) {
+		return sqlSessionTemplate.selectOne("reviewDao.modifyReview" , vo);
 	}
 	
 }

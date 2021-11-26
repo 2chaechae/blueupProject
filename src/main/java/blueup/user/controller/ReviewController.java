@@ -25,15 +25,25 @@ public class ReviewController {
 	
 
 	// ¸®ºä ¼öÁ¤
-	@RequestMapping("/updateReview.do")
-	public ModelAndView updateReview(ReviewVo vo) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("ReviewVO");
-		mav.setViewName("redirect:/getReviewList.do");
-		return mav;
-	}
+	//@RequestMapping("/updateReview.do")
+	//public ModelAndView updateReview(ReviewVo vo) {
+	//	ModelAndView mav = new ModelAndView();
+	//mav.addObject("ReviewVO");
+	//	mav.setViewName("redirect:/getReviewList.do");
+		//return mav;
+	//}
 
-	
+	// ¸®ºä Á¤º¸¿Í ¸®ºä ¼öÁ¤ Æû
+		@RequestMapping("/modifyReview.do")
+		public ModelAndView modifyReview(HttpSession session, ReviewVo vo) {
+			ModelAndView mav = new ModelAndView();
+			ReviewVo reviewForm = reviewService.modifyReview(vo);
+			System.out.println("¸®ºäÁ¤º¸Ãâ·Â");
+			mav.addObject("modifyReview", reviewForm);
+			mav.setViewName("reviewForm");
+			return mav;
+		}
+
 	
 
 	// ¸®ºä Á¤º¸¿Í ¾²±â Æû
