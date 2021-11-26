@@ -130,9 +130,9 @@ public class ReviewController {
 //modify 적용
 	@RequestMapping("/modifyupdateReview.do")
 	@ResponseBody
-	public int modifyupdateReview(String review_content, 
+	public int modifyupdateReview(HttpSession session,String review_content, 
 												String review_title, String star, 
-												Date review_time, int user_no, int review_no ) {
+												Date review_time, int user_no, int review_no) {
 		System.out.println(1);
 		ModelAndView mav = new ModelAndView();
 		ReviewVo vo = new ReviewVo();
@@ -141,7 +141,8 @@ public class ReviewController {
 		vo.setStar((Integer.parseInt(star)));
 		vo.setReview_time(review_time);
 		vo.setUser_no(user_no);
-		vo.setReview_no(review_no);
+		vo.setReview_no(review_no); 
+		System.out.println("테스트중입니다");
 		int result = reviewService.modifyupdateReview(vo);
 		return result;
 	}

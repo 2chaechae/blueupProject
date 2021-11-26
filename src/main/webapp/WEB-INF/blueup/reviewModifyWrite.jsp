@@ -112,7 +112,7 @@
 			</table>
 		</div>
 
-		<div class="btnWrapBox">
+		<div class="btnWrapBox" >
 			<input type="button" class="button" onclick="getProductInfo()" value="취소"/> <!-- 내가쓴리뷰페이지로 -->
 			<input type="button" class="button" id='modifyBtn' value="수정"/>
 			<input type="hidden" id="review_no" class="review_no" value="${modifyupdateReview.get(0).review_no}"/>
@@ -133,8 +133,8 @@ $(document).ready(function(){
     $('#modifyBtn').on('click',function(){
     	var user_no = localStorage.getItem("user_no");
     	alert(user_no);
-    	var review_no = $('#modifyBtn').siblings('.review_no').val();
-		alert(review_no);
+    	var review_no = $('#review_no').val();
+    	alert(review_no);
         var review_title = $('#modifyTitle').val();
         alert(review_title);
         var star = $('#modifyStar').val();

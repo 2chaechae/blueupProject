@@ -108,8 +108,7 @@
 	 set star=#{star},
 	 review_title= #{review_title}, 
 	 review_content=#{review_content},
-	  review_time =now()
-	 
+	  review_time =now() 
 	 where review_no= #{review_no};
 	</select>
 </mapper>
