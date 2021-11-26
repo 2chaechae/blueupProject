@@ -116,28 +116,31 @@ public class ReviewController {
 		System.out.println(result);
 		return result;
 	}
-
-	// 리뷰 수정 폼으로 ㄱ
+//수정하는 폼
 	@RequestMapping("/modifyReview.do")
-	@ResponseBody
-	public ReviewVo modifyReview(int user_no, int review_no) {
-		System.out.println("야야야ㅑ야");
-	ModelAndView mav =new ModelAndView();
-	ReviewVo vo =new ReviewVo();
-	mav.setViewName("reviewModifyWrite");
-	System.out.println("리뷰수정으로가는거 테스트");
-	return vo;
-	
-	//@RequestMapping("/modifyReview.do")
-	//public ModelAndView modifyReview(HttpSession session, ReviewVo vo, ModelAndView mav, ReviewVo user_no,
-	//		int review_no) {
-	//System.out.println("test555");
-	//ReviewVo vo = reviewService.modifyReview(user_no);
-	//	mav.addObject("modifyReview", user_no);
-	//	mav.setViewName("reviewModifyWrite");
-	//	return mav;
+	public ModelAndView modifyReview(HttpSession session, ReviewVo vo) {
+		ModelAndView mav = new ModelAndView();
+		ReviewVo reviewModifyWrite = reviewService.modifyReview(vo);
+		System.out.println("이제 된다구 ㅠ");
+		mav.addObject("modifyReview", reviewModifyWrite);
+		mav.setViewName("reviewModifyWrite");
+		return mav;
 	}
-}
+	/*@RequestMapping("/modifyReview.do")
+	@ResponseBody
+	public ModelAndView modifyReview(ReviewVo vo) {
+		ModelAndView mav = new ModelAndView();
+		ReviewVo reviewModifyWrite = reviewService.modifyReview(vo);
+		System.out.println("안되냐구");
+		mav.addObject("modifyReview" ,  reviewModifyWrite);
+		mav.setViewName("reviewModifyWrite");
+	System.out.println("되라되라되라마");
+	return mav;*/
+	
+	
+
+	
+	}
 
 
 

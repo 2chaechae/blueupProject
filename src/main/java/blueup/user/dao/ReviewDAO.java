@@ -25,10 +25,7 @@ public class ReviewDAO {
 		return sqlSessionTemplate.insert("reviewDao.insertReview", vo);
 	}
 
-	/* ¸®ºä ¼öÁ¤ */
-	public int updateReview(ReviewVo vo) {
-		return sqlSessionTemplate.update("reviewDao.updateReview", vo);
-	}
+	
 	/* ¸®ºä Á¶È¸ */
 	public List<ReviewVo>  getReviewList(ReviewVo vo) {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewList" , vo);

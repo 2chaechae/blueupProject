@@ -52,9 +52,8 @@
 				<tr><th scope="row">
 				<label for="boardWriteTitle">상품정보</label>
 				<div></div>
-				<img src="${modifyReview.main_image}" id="product_img" width="150px" height="150px" >
+				<%-- <img src="${modifyReview.main_image}" id="product_img" width="150px" height="150px" > --%>
 				<td width="100px"><input value="${modifyReview.product_name}" id="product_name"></td>
-				<td width="60px"><input value="${modifyReview.quantity}" id="quantity"></td>
 				<td width="100px">  <input value="${modifyReview.product_color}" id="product_color"></td>
 				<td width="100px"><input value="${modifyReview.product_size}" id="product_size"></td>
 				 </th>
@@ -62,7 +61,7 @@
 				</tr>
 				<tr></tr><tr></tr><tr></tr>
 					 <tr>
-						<th scope="row"><label for="boardWriteTitle">제목</label> <span
+						<th scope="row"><label for="boardWriteTitle">수정 제목</label> <span
 							class="required">*</span></th>
 						<td><input type="text" id="boardWriteTitle"
 							class="input-style01" name="csoMtmInq.inqSj"
@@ -71,16 +70,7 @@
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td></tr> 
-						<tr><th scope="row"><label for="boardWriteTitle">아이디</label> <span
-							class="required">*</span></th>
-						<td><input type="text" id="user_id"
-							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="아이디를 입력해 주세요." style="width: 300px;" value="${insertReview.user_id}"> 
-							
-							<span
-							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
-						</td>
-					</tr>
+						
 					
 					<tr>
 					
@@ -138,7 +128,7 @@ function getProductInfo(){
 }
 
 $(document).ready(function(){
-    //저장 버튼 클릭 시
+    //수정 버튼 클릭 시
     $('#modifyBtn').on('click',function(){
     	var user_no = localStorage.getItem("user_no");
     	alert(user_no);
@@ -147,12 +137,10 @@ $(document).ready(function(){
         var title = $('#boardWriteTitle').val();
         var star = $('#star').val();
         var content = $('#content').val();
-        var user_id=$('#user_id').val();
         var product_name=$('#product_name').val();
         var product_size=$('#product_size').val();
         var product_color=$('#product_color').val();
-        var main_image=$('#main_image').val();
-        var quantity=$('#quantity').val();
+      
        		$.ajax({
        			url : '/test/modifyReview.do',
        			type : 'POST',

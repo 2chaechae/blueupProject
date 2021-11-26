@@ -157,22 +157,26 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 								<div id="wrapper">
 									<!--탭 메뉴 영역 -->
 									 <ul class="tabs">
-										<li><a href="#tab1" onclick="location.href='/test/getReviewproductList.do?user_no='+${getReviewproductList.get(0).user_no}" >작성가능한 리뷰</a></li>
+										<li><a href="#tab1" onclick="location.href='/test/getReviewproductList.do?user_no='+${getReviewList.get(0).user_no}" >작성가능한 리뷰</a></li>
 										<li><a href="#tab2" onclick="location.href='/test/getReviewList.do?user_no='+${getReviewproductList.get(0).user_no}" >내가 작성한 리뷰</a></li>
 									</ul> 
-									
-									</script>
+									<!-- <input type="button" class="button" id="tab1" onclick="getReviewproductList()" value="작성가능한 리뷰"/>
+ 									<input type="button" class="button"  id="tab2" onclick="getReviewList()" value="내가 작성한 리뷰"/> 
+									<script type="text/javascript">
+										function getReviewproductList("tab1"){
+											var user_no = localStorage.getItem("user_no");
+											location.href='/test/getReviewproductList.do?user_no='+ user_no ;
+										}
+										 function getReviewList("tab2"){
+											 var user_no = localStorage.getItem("user_no");
+											location.href='/test/getReviewList.do?user_no='+ user_no ;
+										} 
+									</script> -->
 									<!--탭 콘텐츠 영역 -->
 									<div class="tab_container">
-										<div id="tab1" class="tab_content" onclick="location.href='/test/getReviewproductList.do?user_no='+${getReviewproductList.get(0).user_no}">
-										
-										<c:choose>
-								<c:when test="${emptyReviewproduct eq '없음'}">
-									<tr>
-										<td><div style="width:880px; height:200px; padding-top:100px;">리뷰할 상품이 존재하지 않습니다.</div></td>
-									</tr>
-								</c:when>
-								<c:otherwise>
+										<div id="tab1" class="tab_content" >
+											<!--Content-->
+
 											<c:forEach var="review" items="${getReviewproductList}" varStatus="status">
 													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
 											<tr>
@@ -185,12 +189,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 				   </tr> 
 											</c:forEach>
-											</c:otherwise>
-											</c:choose>
 										</div>
 
 
-										<div id="tab2" class="tab_content" onclick="location.href='/test/getReviewList.do?user_no='+ ${getReviewList.get(0).user_no}">
+										<div id="tab2" class="tab_content" >
 											<!--Content-->
 											<colgroup>
 												<col style="width: 35px">
@@ -200,48 +202,38 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 												<col style="width: 110px">
 											</colgroup>
 											
-                              <c:choose>
-								<c:when test="${emptyReview eq '없음'}">
-									<tr>
-										<td><div style="width:880px; height:200px; padding-top:100px;">리뷰가 존재하지 않습니다.</div></td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-										 <form action="/test/modifyReview.do" method="post"> 
+
+												<!-- <th scope="col">별점</th>
+												<th scope="col">후기 사진</th>
+												<th scope="col">상품정보</th>
+												<th scope="col">후기 제목</th>
+												<th scope="col">후기 내용</th> -->
+												
 													<c:forEach var="reviewlist" items="${getReviewList}" varStatus="status">
 													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
 										<section class="review">
-										<div >
+										<div>
 											<tr>
-									<%-- <td width="100px" >${reviewlist.photo1}</td> --%> <!-- 리뷰 사진 넣어야함. -->
-									<td width="100px" >${reviewlist.product_name}</td>
-									<td width="60px" >${reviewlist.product_size}</td>
-									<td width="60px" >${reviewlist.product_color}</td>
-									<br>
-									<td class="star" width="100px" id=reviewStar> 별점: ${reviewlist.star} 개</td>
-										<td class="review_title" width="100px" id=reviewTitle>제목: ${reviewlist.review_title}</td>
+							<td>상품정보</td>
+							<br>			
+				<td width="100px">${reviewlist.product_name}</td>
+				<td width="60px">${reviewlist.product_size}</td>
+				<td width="60px">${reviewlist.product_color}</td>
+				<br>
+				<td width="100px"> 별점: ${reviewlist.star} 개</td>
+										<td width="100px">제목: ${reviewlist.review_title}</td>
 										<br>
-										<td class="review_content" width="100px" id=reviewContent>내용 : ${reviewlist.review_content}</td>
+										<td width="100px">내용 : ${reviewlist.review_content}</td>
 										<br>
-										<td width="70px">시간: ${reviewlist.review_time}</td>
-										<!--onclick="modifyReview(this)"  -->
+										<td width="70px">작성시간: ${reviewlist.review_time}</td>
 										
-										<!-- <input type="button" class="button" onclick="reviewModifyWrite()" value="수정폼"/>  -->
-										 <input type="button" class="button" onclick="reviewModifyWrite()" id="updateone" value="수정"/> 
+										<input type="button" class="button" onclick="modifyReview()" id="modifyone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
-										<input type="hidden" class="review_no" id="reviewNo" value="${reviewlist.review_no}"/>
-				   						<input type="hidden" value="${reviewlist.star}"/>
-				   						<input type="hidden" value="${reviewlist.review_title}"/>
-				   						<input type="hidden" value="${reviewlist.review_content}"/>
-				   			
-				   						
+										<input type="hidden" id="review_no" class="review_no" value="${reviewlist.review_no}"/>
 				   </tr> 	
 				   </div>
 				   </section>
 											</c:forEach>
-											</form>	
-											</c:otherwise>
-											</c:choose>
 												</div>
 											
 
@@ -293,59 +285,51 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	</div>
 
 </form>
-<form id="gotoModifyForm" method="post" action="/test/modifyReview.do">
-<input type="hidden" class="review_no" id="reviewNo" value="${reviewlist.review_no}"/>
-<input type="hidden" class="user_no" id="userNo" value="${reviewlist.user_no}"/>
-</form>
+<%-- <form id="movedmodifyReview" method="post" action="/test/modifyReview.do">
+	<input type="hidden" id="review_no" name="review_no" value="${reviewList.get(0).review_no }"/>
+</form> --%>
 <script>
-//수정 버튼 클릭
-/*  $(function(){
-	$('#updateone').click(()=>{
-		var user_no = "${reviewlist.get(0).user_no}" ;
-		var review_no = "${reviewlist.get(0).review_no}";
-		$('#gotoModifyForm').submit();
-		});
-	});  */
- /* $(document).ready(function(){
-    //수정 버튼 클릭 시
-    $('#updateone').on('click',function(){
-    	var user_no = localStorage.getItem("user_no");
-		alert(user_no);
-		var review_no =  $(element).siblings('.review_no').val();
-		alert(review_no); 
-		location.href='/test/modifyReview.do?user_no='+user_no+'&review_no' + review_no;
-    });
- });  */
+/* 리뷰 수정 */
+function modifyReview(){
+	var user_no = localStorage.getItem("user_no");
+	alert(user_no);
+	var review_no = $('#review_no').val();
+	alert(review_no);
+	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + review_no;
+}
+ 
 
- function reviewModifyWrite(element){
+
+/* function modifyReview(element){ 
 	 var user_no = localStorage.getItem("user_no");
 	alert(user_no);
-	var review_no = $('#reviewNo').val();
+	var review_no = $('#review_no').val();
 	alert(review_no);
 	$.ajax({
 		url:'/test/modifyReview.do',
 		type:'POST',
-		cache:false,
 		data: {
-			"user_no":user_no, "review_no":review_no},
-		success:function(data) {
+			user_no:user_no, review_no:review_no},
+			dataType:'json' });
+ } */
+		/* success:function(data) {
 			if(result){
 				alert("수정 가기 성공");
-				location.href='/test/modifyReview.do?user_no='+user_no+'&review_no' + review_no;
+				location.href='/test/getReviewList.do?user_no='+user_no+'&review_no' + review_no;
 				
 			}
 			 else{
 				alert("수정으로 가기 실패")
 			}
-		},
+		}, 
 		error:function() {
 			alert('다시 시도해주세요');
 		}
-	});	
-}  
-  
+	});	*/
+ 
 
 /* 리뷰 삭제 */
+ 
  
 
  function deleteReview(element){
@@ -374,7 +358,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 		}
 	});	
 }  
-
 
 </script>
 <%@ include file="footer.jsp"%>
