@@ -294,21 +294,27 @@ function getProductInfo(){
 }
 /* 리뷰 삭제 */
  
+/* 리뷰 삭제 */
+ 
 
  function deleteReview(element){
+	 var user_no = localStorage.getItem("user_no");
+	alert(user_no);
 	var review_no = $(element).siblings('.review_no').val();
 	alert(review_no);
 	$.ajax({
 		url:'/test/deleteReview.do',
 		type:'POST',
 		cache:false,
-		data: {"user_no":user_no, "review_no":review_no},
+		data: {
+			"user_no":user_no, "review_no":review_no},
 		success:function(data) {
 			if(data == 1){
-				$(element).closest('.review').remove();
+				alert("삭제 성공");
+				$(element).closest('.review').remove(); 
 				
 			}
-			else{
+			 else{
 				alert("삭제 실패")
 			}
 		},
@@ -316,7 +322,8 @@ function getProductInfo(){
 			alert('다시 시도해주세요');
 		}
 	});	
-} 
+}  
+
 </script>
 <%@ include file="footer.jsp"%>
 </body>
