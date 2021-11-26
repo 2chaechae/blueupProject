@@ -293,7 +293,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 function getmodifyReview(element){
 	 var user_no = localStorage.getItem("user_no");
 	alert(user_no);
-	var review_no = $('#reviewNo').val();
+	var review_no = $("#reviewNo").val();
 	alert(review_no);
 	$.ajax({
 		url:'/test/modifyReview.do',

@@ -27,17 +27,20 @@ public class ReviewController {
 
 
 	// 리뷰 정보와 리뷰 수정 폼
-		@RequestMapping("/modifyReview.do")
-		public ModelAndView modifyReview(HttpSession session, ReviewVo vo) {
-			ModelAndView mav = new ModelAndView();
-			ReviewVo reviewForm = reviewService.modifyReview(vo);
-			System.out.println("리뷰정보출력");
-			mav.addObject("modifyReview", reviewForm);
-			mav.setViewName("reviewForm");
-			return mav;
-		}
-
 	
+
+		@RequestMapping("/modifyReview.do")
+		@ResponseBody
+		public ReviewVo modifyReview(int user_no, int review_no) {
+			System.out.println("야야야ㅑ야");
+		ModelAndView mav =new ModelAndView();
+		ReviewVo vo =new ReviewVo();
+		mav.setViewName("reviewForm");
+		vo.setUser_no(user_no);
+		vo.setReview_no(review_no);
+		System.out.println("리뷰수정으로가는거 테스트");
+		return vo;
+		}
 
 	// 리뷰 정보와 쓰기 폼
 	@RequestMapping("/getProductInfoForReview.do")
