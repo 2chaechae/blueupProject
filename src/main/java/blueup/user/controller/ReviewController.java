@@ -131,19 +131,24 @@ public class ReviewController {
 	@RequestMapping("/modifyupdateReview.do")
 	@ResponseBody
 	public int modifyupdateReview(HttpSession session,String review_content, 
-												String review_title, String star, 
+												String review_title, int star, 
 												Date review_time, int user_no, int review_no) {
 		System.out.println(1);
 		ModelAndView mav = new ModelAndView();
 		ReviewVo vo = new ReviewVo();
 		vo.setReview_content(review_content);
+		System.out.println(review_content);
 		vo.setReview_title(review_title);
-		vo.setStar((Integer.parseInt(star)));
-		vo.setReview_time(review_time);
+		System.out.println(review_title);
+		vo.setStar(star);
+		System.out.println(star);
 		vo.setUser_no(user_no);
+		System.out.println(user_no);
 		vo.setReview_no(review_no); 
+		System.out.println(review_no);
 		System.out.println("테스트중입니다");
 		int result = reviewService.modifyupdateReview(vo);
+		mav.setViewName("reviewView");
 		return result;
 	}
 	

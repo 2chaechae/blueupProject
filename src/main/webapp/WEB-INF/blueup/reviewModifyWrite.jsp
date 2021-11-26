@@ -64,7 +64,7 @@
 							class="required">*</span></th>
 						<td><input type="text" id="modifyTitle"
 							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${modifyupdateReview.review_title}"> 
+							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${modifyReview.review_title}"> 
 							
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
@@ -76,7 +76,7 @@
 						<th scope="row"><label for="boardWriteTitle">별점</label> </th>
 						<td><input type="text" id="modifyStar"
 							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="별점" style="width: 100px;" value="${modifyupdateReview.star}">개 
+							placeholder="별점" style="width: 100px;" value="${modifyReview.star}">개 
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
@@ -86,7 +86,7 @@
 							class="required">*</span></th>
 						<td><textarea cols="30" rows="10" id="modifyContent"
 								placeholder="1,000자 미만 (특수문자 \ / : < > ; 사용불가)으로 입력해 주세요."
-								style="width: 1000px; height: 150px;" >${modifyupdateReview.review_content}</textarea>
+								style="width: 1000px; height: 150px;" >${modifyReview.review_content}</textarea>
 							<div class="clearfix">
 								<div class="fl">
 									<span class="error-msg" id="boardWriteContent-msg"
@@ -115,7 +115,7 @@
 		<div class="btnWrapBox" >
 			<input type="button" class="button" onclick="getProductInfo()" value="취소"/> <!-- 내가쓴리뷰페이지로 -->
 			<input type="button" class="button" id='modifyBtn' value="수정"/>
-			<input type="hidden" id="review_no" class="review_no" value="${modifyupdateReview.get(0).review_no}"/>
+			<input type="text" id="review_no" class="review_no" value="${modifyReview.review_no}"/>
 			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
@@ -148,8 +148,8 @@ $(document).ready(function(){
        			cache : false,
        			data : {
        				"user_no" : user_no, "review_no" : review_no,
-       				"modifyTitle" : review_title, "modifyStar" : star,
-       				"modifyContent" : review_content
+       				"review_title" : review_title, "star" : star,
+       				"review_content" : review_content
        	        		
 					},
 				success:function(data){
