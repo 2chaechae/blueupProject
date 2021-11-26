@@ -40,4 +40,8 @@ public class AdminProductDAO {
 	public int getProductNo() {
 		return sqlSssionTemplate.selectOne("productDao.getProductNo");
 	}
+	/*상품 이름으로 검색*/
+	public List<ProductVo> getProductBySearch(String search){
+		return sqlSssionTemplate.selectList("productDao.getProductListBySearch", search);
+	}
 }

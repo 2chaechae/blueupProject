@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.io.FileSystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -118,17 +119,18 @@ public class AdminProductController {
 	public ModelAndView addProduct(ProductVo vo) {
 		ModelAndView mav = new ModelAndView();
 		List<MultipartFile> main = vo.getContentList();
-		ProductVo number = insertProduct(main, vo);
-		int result = adminproductserviceimpl.addProduct(vo);
+		ProductVo pvo = insertProduct(main, vo);
+		int result = adminproductserviceimpl.addProduct(pvo);
 		if(result == 1) {
 			int product_no = adminproductserviceimpl.getProductNo();
-			List<ProductContentVo> detail = number.getNumber();
+			List<ProductContentVo> detail = pvo.getNumber();
 			for(int i=0; i < detail.size(); i++) {
 				detail.get(i).setProduct_no(product_no);
 			}
-			adminproductdetailserviceimpl.addProductDetail(detail);
+			pvo.setNumber(detail);
+			adminproductdetailserviceimpl.addProductDetail(pvo);
 		}
-		mav.setViewName("adminPorductList");
+		mav.setViewName("redirect:/getProductList.mdo");
 		return mav;
 	}
 	
@@ -136,40 +138,56 @@ public class AdminProductController {
 	public ProductVo insertProduct(List<MultipartFile> imageList, ProductVo vo) {
 		
 		String uploadFolder = "https://blueup.s3.ap-northeast-2.amazonaws.com/";
-		
+		List<ProductContentVo> detail = new ArrayList<ProductContentVo>(); 
 		try {
 			if(imageList != null) {
 				for(int i=0; i < imageList.size(); i++) {
-					String key = "product/" + vo.getCategory_name() + "/" + imageList.get(i).getOriginalFilename();	//사진 경로
-					InputStream is = imageList.get(i).getInputStream();
-					String contentType = imageList.get(i).getContentType();
-					long contentLength = imageList.get(i).getSize();
-					awsS3.upload(is, key, contentType, contentLength);	//s3 업로드
-					System.out.println("업로드 완료");
-					List<ProductContentVo> detail = new ArrayList<ProductContentVo>(); 
-					if( i == 0) {
-						vo.setMain_image(uploadFolder + key);
-					}else if( i > 7){
-						ProductContentVo tmp = new ProductContentVo();
-						tmp.setContent_type("top");
-						tmp.setDetailed_product_content(uploadFolder + key);
-						detail.add(tmp);
-					}else if(i > 11) {
-						ProductContentVo tmp = new ProductContentVo();
-						tmp.setContent_type("main");
-						tmp.setDetailed_product_content(uploadFolder + key);
-						detail.add(tmp);
-					}else {
-						ProductContentVo tmp = new ProductContentVo();
-						tmp.setContent_type("bottom");
-						tmp.setDetailed_product_content(uploadFolder + key);
-						detail.add(tmp);
+					if(imageList.get(i).getOriginalFilename() != "") {
+						String key = "product/" + vo.getCategory_name() + "/" + imageList.get(i).getOriginalFilename();	//사진 경로
+						InputStream is = imageList.get(i).getInputStream();
+						String contentType = imageList.get(i).getContentType();
+						long contentLength = imageList.get(i).getSize();
+						awsS3.upload(is, key, contentType, contentLength);	//s3 업로드
+						System.out.println("업로드 완료");
+						System.out.println(i);
+						if( i == 0) {
+							vo.setMain_image(uploadFolder + key);
+						}else if( i < 7){
+							ProductContentVo tmp = new ProductContentVo();
+							tmp.setContent_type("top");
+							tmp.setDetailed_product_content(uploadFolder + key);
+							detail.add(tmp);
+							System.out.println("top");
+						}else if(i < 11) {
+							ProductContentVo tmp = new ProductContentVo();
+							tmp.setContent_type("main");
+							tmp.setDetailed_product_content(uploadFolder + key);
+							detail.add(tmp);
+							System.out.println("main");
+						}else {
+							ProductContentVo tmp = new ProductContentVo();
+							tmp.setContent_type("bottom");
+							tmp.setDetailed_product_content(uploadFolder + key);
+							detail.add(tmp);
+							System.out.println("bottom");
+						}
 					}
+				vo.setNumber(detail);
 				}
 			}
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+	
+	/* 검색어 기준으로 상품 조회*/
+	@RequestMapping("/getProductBySearch.mdo")
+	@ResponseBody
+	public ModelAndView getProductBySearch(String search){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productList", adminproductserviceimpl.getProductBySearch(search));
+		mav.setViewName("adminSearchHtml");
+		return mav;
 	}
 }

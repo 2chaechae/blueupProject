@@ -12,4 +12,5 @@ public interface AdminProductService {
 	public int productUpdate(ProductVo vo);
 	public int addProduct(ProductVo vo);
 	public int getProductNo();
+	public List<ProductVo> getProductBySearch(String search);
 }
