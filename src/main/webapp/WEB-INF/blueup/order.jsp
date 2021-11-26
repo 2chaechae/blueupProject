@@ -1083,11 +1083,11 @@
 									<c:when test="${orderlist.get(0).user_no > 0}">
 										<dl>
 											<dt>선택상품금액</dt>
-											<dd id="god_amt">
+											<dd id="god_amount">
 												<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.get(0).all_price}" />원
 											</dd>
 											<dt>할인적용금액</dt>
-											<dd class="c_r" id="dc_amt">
+											<dd class="c_r" id="dc_amount">
 												<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.get(0).all_discount}" />원
 											</dd>
 											<dt>배송비</dt>
@@ -1259,6 +1259,7 @@
 			dataType:'json',
 			success:function(data) {
 				$('#totalPoint').html(data);
+				discounted();
 			}
 		});
 	}
@@ -1274,6 +1275,7 @@
 			success:function(data) {
 				$('#pointUse').val(data);
 				$('#totalPoint').html((data-data));
+				discounted();
 			}
 		});
 	}
@@ -1298,11 +1300,30 @@
 			success:function(data) {
 				$('#couponListPopup').hide();
 				$('#couponUse').val(data.coupon_discount);
+				discounted();
 			}
 		});
 	}
 	/* 할인적용 금액 */
 	function discounted(){
+		var product = "${orderlist.get(0).all_price}";
+		var product_discount = "${orderlist.get(0).all_discount}";
+		var coupon_discount = $('#couponUse').val();
+		var point_discount = $('#pointUse').val();
+		$.ajax({
+			url:'/blueup/getDiscounted.do',
+		    type:'POST',
+			data: {"all_price" : product, "all_discount" : product_discount, "coupon" : coupon_discount, "point" : point_discount},
+			dataType:'json',
+			success:function(data) {
+				var total_discount = parseInt(product_discount) + data;
+				$('#dc_amount').html(total_discount + "원");
+				var total_price = parseInt(product) - total_discount;
+				$('#total_amount').html(total_price);
+				
+			}
+		});
 	}
+	
 </script>
 </html>
