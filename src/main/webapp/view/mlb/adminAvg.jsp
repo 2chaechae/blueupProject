@@ -82,56 +82,65 @@
     <script type="text/javascript">
     
      google.charts.load('current', {'packages':['line']});
-      google.charts.setOnLoadCallback(drawChart);
+     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
 
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'day');
       data.addColumn('number', '주문액');
-      
+      data.addColumn('number', '주문수');
 
       data.addRows([
-        [1,  37.8 ],
-        [2,  30.9],
-        [3,  25.4],
-        [4,  11.7],
-        [5,  11.9],
-        [6,   8.8],
-        [7,   7.6],
-        [8,  12.3],
-        [9,  16.9],
-        [10, 12.8],
-        [11,  5.3],
-        [12,  6.6],
-        [13,  6.6],
-        [14,  6.6],
-        [15,  6.6],
-        [16,  6.6],
-        [17,  6.6],
-        [18,  6.6],
-        [19,  6.6],
-        [20,  6.6],
-        [21,  6.6],
-        [22,  6.6],
-        [23,  6.6],
-        [24,  6.6],
-        [25,  6.6],
-        [26,  6.6],
-        [27,  6.6],
-        [28,  6.6],
-        [29,  6.6],
-        [30,  6.6],
-        [31,  6.6]
+        [1,  500, 8 ],
+        [2,  1000, 20 ],
+        [3,  200, 1 ],
+        [4,  1100, 5 ],
+        [5,  800, 8],
+        [6,  900, 12],
+        [7,  700, 7],
+        [8,  1000, 10],
+        [9,  1000, 15],
+        [10, 1000, 18],
+        [11, 1000, 17],
+        [12, 1000, 19],
+        [13, 1500, 15],
+        [14, 800, 10],
+        [15, 700, 8],
+        [16, 900, 10],
+        [17, 1000, 11],
+        [18, 1000, 12],
+        [19, 500, 8],
+        [20, 900, 7],
+        [21, 800, 9],
+        [22, 800, 10],
+        [23, 900, 11],
+        [24, 1000, 12],
+        [25, 1100, 20],
+        [26, 1200, 10],
+        [27, 800, 15],
+        [28, 900, 8],
+        [29, 900, 11],
+        [30, 1000, 12],
+        [31, 1000, 13]
       ]);
 
       var options = {
-        chart: {
-          title: '해당 월 주문액 통계',
-          subtitle: '주문액'
-        },
-        width: 900,
-        height: 500
+    		  chart: {
+    	          title: '일자별 주문금액 및 주문수 통계	'
+    	        },
+    	        width: 900,
+    	        height: 500,
+    	        series: {
+    	          0: {axis: '주문액'},
+    	          1: {axis: '주문수'}
+    	        },
+    	        axes: {
+    	          y: {
+    	        	  주문액: {label: '주문액 (천원)'},
+    	        	  주문수: {label: '건'},
+    	        }
+    	      }  
       };
 
       var chart = new google.charts.Line(document.getElementById('linechart_material'));
