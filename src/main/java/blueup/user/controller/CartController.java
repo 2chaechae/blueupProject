@@ -291,7 +291,7 @@ public class CartController {
 	// 주문페이지 이동 - 회원
 	@RequestMapping("/moveToOrder.do")
 	@ResponseBody
-	public ModelAndView moveToOrder(@RequestParam(value="cart_no")List<String> cart_no, HttpSession session) {
+	public ModelAndView moveToOrder(@RequestParam(value="cart_no")List<String> cart_no, HttpSession session, int user_no) {
 		ModelAndView mav = new ModelAndView();
 		List<CartVo> orderList = cartserviceimpl.selectedcartList(cart_no);
 		for(int i=0; i < orderList.size(); i++) {
@@ -303,7 +303,7 @@ public class CartController {
 		if(check > 0) {
 			System.out.println("삭제 성공");
 			session.setAttribute("order", orderList);
-			mav.setViewName("redirect:/getOrder.do");
+			mav.setViewName("redirect:/getOrder.do?user_no="+user_no);
 		}
 		return mav;
 	}

@@ -29,19 +29,20 @@ public class OrderController {
 	@RequestMapping("/getOrder.do")
 	public ModelAndView getOrder(HttpSession session, HttpServletRequest request, UsersVo uservo, int user_no) {
 		ModelAndView mav = new ModelAndView();
-
+		System.out.println("/getOrder에 넘어온 값 : "+user_no);
+		int total_point;
 		/* 상품정보 */
 		List<OrderVo> orderlist = new ArrayList<OrderVo>();
 		if (session.getAttribute("order") != null) { /* 회원 */
 			List<CartVo> memcartlist = (List<CartVo>) session.getAttribute("order");
 			for (int i = 0; i < memcartlist.size(); i++) {
+				System.out.println("for문 시작!!!!!!!!");
 				OrderVo ordervo = new OrderVo();
 				int product_price = memcartlist.get(i).getTotal_price() / memcartlist.get(i).getQuantity(); // 상품가격
 				int pay_amount = memcartlist.get(i).getAll_price() - memcartlist.get(i).getAll_discount(); // 총상품주문금액
 				float expected_point = (float) (memcartlist.get(i).getTotal_price() * 0.005);
 				ordervo.setMain_image(memcartlist.get(i).getMain_image()); // 상품이미지
 				ordervo.setProduct_name(memcartlist.get(i).getProduct_name());// 상품명
-				System.out.println(memcartlist.get(i).getProduct_name());
 				ordervo.setProduct_price(product_price); // 상품 가격
 				ordervo.setProduct_color(memcartlist.get(i).getProduct_color()); // 상품색상
 				ordervo.setProduct_size(memcartlist.get(i).getProduct_size()); // 상품 사이즈
@@ -62,6 +63,7 @@ public class OrderController {
 		} else { /* 비회원 */
 			List<CartVo> nomemcartlist = (List<CartVo>) session.getAttribute("orderNonMember");
 			for (int i = 0; i < nomemcartlist.size(); i++) {
+				System.out.println("이 놈이 걸리면 안되는건데 걸리기만 해봐라");
 				OrderVo ordervo = new OrderVo();
 				int product_price = nomemcartlist.get(i).getTotal_price() / nomemcartlist.get(i).getQuantity();
 				ordervo.setMain_image(nomemcartlist.get(i).getMain_image());
@@ -77,9 +79,15 @@ public class OrderController {
 			}
 		}
 		/* 할인정보 - 포인트(잔액) */
-		int total_point = orderserviceimpl.getToTalPointService(user_no);
+		Integer temp_total_point = orderserviceimpl.getToTalPointService(user_no);
+		if(temp_total_point == null) {
+			total_point = 0;
+		}else {
+			total_point = temp_total_point;
+		}
+		
+		
 		mav.addObject("total_point", total_point);
-
 		/* 할인정보 - 쿠폰 */
 		List<CouponVo> couponlist = orderserviceimpl.getCouponListService(uservo);
 		mav.addObject("couponlist", couponlist);
@@ -113,7 +121,7 @@ public class OrderController {
 		map.put("couponlist", couponlist);
 		return map;
 	}
-
+	
 	@RequestMapping("/getCouponSelect.do") // 할인정보 - 쿠폰선택
 	@ResponseBody
 	public CouponVo getCouponSelect(int coupon_no, int user_no) {

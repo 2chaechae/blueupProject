@@ -653,7 +653,7 @@ function checkOrder(){
 				cart_no.push($(this).val());
 			});	
 		}
-		location.href="/test/moveToOrder.do?cart_no=" + cart_no;
+		location.href="/test/moveToOrder.do?cart_no=" + cart_no+ "&user_no="+user_no;
 	}
 }
 

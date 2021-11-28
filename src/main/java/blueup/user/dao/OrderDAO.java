@@ -16,7 +16,7 @@ public class OrderDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public Integer getTotalPointDao(int user_no) {
-		int total_point = sqlSessionTemplate.selectOne("orderDao.getTotalPoint", user_no);
+		Integer total_point = sqlSessionTemplate.selectOne("orderDao.getTotalPoint", user_no);
 		return total_point;
 	}
 

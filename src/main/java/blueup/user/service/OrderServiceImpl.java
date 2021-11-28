@@ -17,7 +17,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Integer getToTalPointService(int user_no) {
-		int total_point = orderDao.getTotalPointDao(user_no);
+		Integer total_point = orderDao.getTotalPointDao(user_no);
 		return total_point;
 	}
 
