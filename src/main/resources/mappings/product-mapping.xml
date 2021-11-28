@@ -103,4 +103,11 @@
 	<select id="getProductNo" resultType="Integer">
 		select max(product_no) from product
 	</select>
+	
+	<!-- 통계 - 상품 클릭수 기준 랭킹 -->
+	<select id="getProductRanking" resultType="productvo">
+		SELECT PRODUCT_NAME, VIEWCOUNT
+		FROM PRODUCT
+		ORDER BY VIEWCOUNT DESC
+	</select>
 </mapper>

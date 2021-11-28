@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import blueup.admin.dao.AdminChartDAO;
 import blueup.admin.vo.AdminOrderAmountVo;
+import blueup.admin.vo.AdminOrderRankVo;
+import blueup.admin.vo.ProductVo;
 
 @Service("AdminChartService")
 public class AdminChartServiceImpl implements AdminChartService{
@@ -17,6 +19,16 @@ public class AdminChartServiceImpl implements AdminChartService{
 	@Override
 	public List<AdminOrderAmountVo> getOrderAmount(HashMap<String, String> vo) {
 		return adminchartdao.getOrderAmount(vo);
+	}
+
+	@Override
+	public List<AdminOrderRankVo> getOrderRateByProduct(HashMap<String, String> vo) {
+		return adminchartdao.getOrderRateByProduct(vo);
+	}
+
+	@Override
+	public List<ProductVo> getProductRanking() {
+		return adminchartdao.getProductRanking();
 	}
 
 }

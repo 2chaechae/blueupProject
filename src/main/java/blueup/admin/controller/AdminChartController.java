@@ -26,11 +26,24 @@ public class AdminChartController {
 		return mav;
 	}
 	
-	/* 차트 데이터 가져오기*/
+	/* 주문액-주문건수 차트 데이터 가져오기*/
 	@RequestMapping("/getChartData.mdo")
 	@ResponseBody
 	public JSONObject getChartData(@RequestParam(value="start")String start, @RequestParam(value="end")String end){
 		return admingooglechartserviceimpl.getChartData(start, end);
 	}
-
+	
+	/* 당월 주문액 상품별 비율 차트 데이터 가져오기  */
+	@RequestMapping("/getOrderRateByProduct.mdo")
+	@ResponseBody
+	public JSONObject getOrderRateByProduct(@RequestParam(value="start")String start, @RequestParam(value="end")String end){
+		return admingooglechartserviceimpl.getOrderRateByProduct(start, end);
+	}
+	
+	/* 조회수 기준 누적 랭킹 데이터 가져오기*/
+	@RequestMapping("/getProductRanking.mdo")
+	@ResponseBody
+	public JSONObject getProductRanking(){
+		return admingooglechartserviceimpl.getProductRanking();
+	}
 }

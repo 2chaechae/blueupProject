@@ -109,13 +109,7 @@
 								        series: {
 					                    	  0: {axis: 'price', targetAxisIndex:0},
 					                    	  1: {axis: 'count', targetAxisIndex:1, type: 'line'}
-											},
-										axes: {
-									     	  y: {
-									     		 	price: {label: '주문금액(원)'}, 
-									     			count: {side: 'top', label: '주문건(수)'} 
-									         }
-										}
+											}
 						           };
 		
 						   	 chart.draw(data, options);
@@ -132,62 +126,29 @@
     
      <script type="text/javascript">
     
-     google.charts.load('current', {'packages':['line']});
+     google.charts.load('current', {'packages':['corechart']});
      google.charts.setOnLoadCallback(drawChart2);
       
     function drawChart2() {
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'day');
-      data.addColumn('number', '방문자수');
-      
-
-      data.addRows([
-    	  [1,  37.8 ],
-          [2,  30.9],
-          [3,  25.4],
-          [4,  11.7],
-          [5,  11.9],
-          [6,   8.8],
-          [7,   7.6],
-          [8,  12.3],
-          [9,  16.9],
-          [10, 12.8],
-          [11,  5.3],
-          [12,  6.6],
-          [13,  6.6],
-          [14,  6.6],
-          [15,  6.6],
-          [16,  6.6],
-          [17,  6.6],
-          [18,  6.6],
-          [19,  6.6],
-          [20,  6.6],
-          [21,  6.6],
-          [22,  6.6],
-          [23,  6.6],
-          [24,  6.6],
-          [25,  6.6],
-          [26,  6.6],
-          [27,  6.6],
-          [28,  6.6],
-          [29,  6.6],
-          [30,  6.6],
-          [31,  6.6]
-      ]);
+    	 var start = "${start}";
+		 var end = "${end}";
+	     var jsonData = $.ajax({
+	    	  url : "/test/getOrderRateByProduct.mdo",
+	    	  dataType : "json",
+	    	  data : {"start" : start, "end" : end},
+	    	  async : false
+	      }).responseText;
+	      console.log(jsonData);
+	      
+      var data = new google.visualization.DataTable(jsonData);
+      var chart = new google.visualization.PieChart(document.getElementById('linechart_material2'));
 
       var options = {
-        chart: {
-          title: '해당 월 방문 통계',
-          subtitle: '방문자 수'
-        },
-        width: 900,
-        height: 500
-      };
-
-      var chart = new google.charts.Line(document.getElementById('linechart_material2'));
-
-      chart.draw(data, google.charts.Line.convertOptions(options));
+         	title: '월 주문액 상품별 비율(%)',
+	        width:900,
+	        height:500
+  		 };
+      chart.draw(data, options);
     }
     
     </script>
@@ -201,57 +162,26 @@
       
     function drawChart3() {
 
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'day');
-      data.addColumn('number', '페이지 방문수');
-      data.addColumn('number', '상품평 수');
-
-      data.addRows([
-    	  [1,  37.8, 5 ],
-          [2,  30.9, 5],
-          [3,  25.4, 5],
-          [4,  11.7, 5],
-          [5,  11.9, 5],
-          [6,   8.8, 5],
-          [7,   7.6, 5],
-          [8,  12.3, 5],
-          [9,  16.9, 5],
-          [10, 12.8, 5],
-          [11,  5.3, 5],
-          [12,  6.6, 5],
-          [13,  6.6, 5],
-          [14,  6.6, 50],
-          [15,  6.6, 5],
-          [16,  6.6, 5],
-          [17,  6.6, 5],
-          [18,  6.6, 5],
-          [19,  6.6, 5],
-          [20,  6.6, 5],
-          [21,  6.6, 5],
-          [22,  6.6, 5],
-          [23,  6.6, 5],
-          [24,  6.6, 5],
-          [25,  6.6, 5],
-          [26,  6.6, 5],
-          [27,  6.6, 5],
-          [28,  6.6, 5],
-          [29,  6.6, 5],
-          [30,  6.6, 5],
-          [31,  6.6, 5]
-      ]);
-
-      var options = {
-        chart: {
-          title: '해당 월 상품 통계',
-          subtitle: '상품통계'
-        },
-        width: 900,
-        height: 500
-      };
-
-      var chart = new google.charts.Line(document.getElementById('linechart_material3'));
-
+	     var jsonData = $.ajax({
+	    	  url : "/test/getProductRanking.mdo",
+	    	  dataType : "json",
+	    	  async : false
+	      }).responseText;
+	      console.log(jsonData);
+	      
+	      var data = new google.visualization.DataTable(jsonData);
+		  var chart = new google.charts.Line(document.getElementById('linechart_material3'));
+		  
+	      var options = {
+	        chart: {
+	          title: '상품 누계 랭킹'
+	        },
+	        width: 900,
+	        height: 500
+	      };
+	      
       chart.draw(data, google.charts.Line.convertOptions(options));
+      
     }
     
     </script>
