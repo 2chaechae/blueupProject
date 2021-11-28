@@ -58,7 +58,7 @@
 		SELECT a.user_no, a.purchaseconfirm,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
-		on  a. user_no = #{user_no} where b.order_status='구매확정' AND b.product_no = #{product_no} ;
+		on  a. user_no = #{user_no} where b.order_status='구매확정' ;
 	</select>
 	
 	<!-- 리뷰를 위한 사진 가져오기 -->
@@ -83,7 +83,8 @@
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		ON a.user_no  =#{user_no}
-		WHERE b.order_status='구매확정' AND b.review_status='false';
+		WHERE b.order_status='구매확정' ;
+		<!-- AND b.review_status='false' -->
 	</select> 
 	
 	<!-- 작성한 리뷰 가져오기 -->

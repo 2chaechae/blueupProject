@@ -187,6 +187,9 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 				<td width="100px">  ${review.product_color}</td>
 										<td width="100px">${review.product_size}</td>
 										
+										<input type="button" class="button" onclick="writeReview()" id="writeone" value="리뷰 쓰기"/>
+										
+										<br>
 				   </tr> 
 											</c:forEach>
 										</div>
@@ -285,10 +288,26 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	</div>
 
 </form>
+<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
 <%-- <form id="movedmodifyReview" method="post" action="/test/modifyReview.do">
 	<input type="hidden" id="review_no" name="review_no" value="${reviewList.get(0).review_no }"/>
 </form> --%>
 <script>
+/* 리뷰 쓰기 */
+
+ 
+ 
+
+ function writeReview(){
+ 	var user_no = localStorage.getItem("user_no");
+ 	alert(user_no);
+ 	var order_no = $('#order_no').val();
+ 	alert(product_no);
+ 	alert("리뷰쓰기로 넘어갑니다.");
+ 	location.href='/test/getProductInfo.do?user_no='+ user_no +'&order_no=' + order_no;
+ }
+
+
 /* 리뷰 수정 */
 function modifyReview(){
 	var user_no = localStorage.getItem("user_no");

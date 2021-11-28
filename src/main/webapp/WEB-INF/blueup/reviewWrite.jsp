@@ -144,6 +144,7 @@
 			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
 			<input type="button" class="button" onclick="getProductInfo()" value="취소"/>
 			<input type="button" class="button" id='submitBtn' value="저장"/>
+			<input type="hidden" id="product_no" class="product_no" value="${getReviewproductList.product_no}"/>
 			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
@@ -159,7 +160,7 @@ $(document).ready(function(){
     //저장 버튼 클릭 시
     $('#submitBtn').on('click',function(){
     	var user_no = localStorage.getItem("user_no");
-    	var product_no = 101001; /*리뷰작성 버튼 생기면 변수로 받기*/
+    	var product_no = $('product_no').val(); /*리뷰작성 버튼 생기면 변수로 받기*/
         var title = $('#boardWriteTitle').val();
         var star = $('#star').val();
         var content = $('#content').val();
