@@ -44,4 +44,9 @@ public class AdminProductServiceImpl implements AdminProductService{
 		return adminproductdao.getProductNo();
 	}
 
+	@Override
+	public List<ProductVo> getProductBySearch(String search) {
+		return adminproductdao.getProductBySearch(search);
+	}
+
 }

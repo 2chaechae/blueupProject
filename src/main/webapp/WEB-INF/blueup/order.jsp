@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="header.jsp"%>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
 /* 팝업창 CSS*/
 .modal {
@@ -819,7 +820,7 @@
 															<label for="webPointUse">포인트</label>
 														</th>
 														<td>
-															<input type="text" id="pointUse" class="input-style01 align-right input_required numberOnly"
+															<input type="text" id="pointUse" class="input-style01 input_required numberOnly"
 																	value="0" style="width: 255px; ime-mode: disabled;" /> 
 															<span class="btnTdArea"> 
 																<a href="#" class="btn" id="pointApply" onclick="pointApply(${user_no});">적용</a> 
@@ -880,27 +881,24 @@
 														maxlength="4" minlength="4" /></td>
 												</tr>
 												<tr>
-													<th scope="row"><label for="boardWriteEmail">이메일
-															주소</label> <span class="required">*</span></th>
-													<td><input type="text" id="memEmail1"
-														class="input-style01 input_required" style="width: 152px;"
-														alt="이메일" maxlength="100"> <span class="at">@</span>
-														<input type="text" id="memEmail2"
-														class="input-style01 input_required" style="width: 152px;"
-														alt="이메일" maxlength="100"> <!-- select -->
+													<th scope="row"><label for="boardWriteEmail">이메일 주소</label> <span class="required">*</span></th>
+													<td>
+														<input type="text" id="memEmail1" class="input-style01 input_required" style="width: 152px;" alt="이메일" maxlength="100"> 
+															<span class="at">@</span>
+														<input type="text" id="memEmail2" class="input-style01 input_required" style="width: 152px;" alt="이메일" maxlength="100">
 														<div class="select-style01 d_select">
-															<button type="button" class="d_select_sel"
-																style="width: 152px;">
+															<button type="button" class="d_select_sel" style="width: 152px;">
 																<span>직접입력</span>
 															</button>
 															<ul>
-																<li><a href="#" onClick="$('#noMemEmail2').val('');">직접입력</a></li>
-																<li><a href="#" onClick="$('#noMemEmail2').val('naver.com');">naver.com</a></li>
-																<li><a href="#" onClick="$('#noMemEmail2').val('daum.net');">daum.net</a></li>
-																<li><a href="#" onClick="$('#noMemEmail2').val('nate.com');">nate.com</a></li>
-																<li><a href="#" onClick="$('#noMemEmail2').val('gmail.com');">gmail.com</a></li>
+																<li><a href="#" onClick="emailChange('')">직접입력</a></li>
+																<li><a href="#" onClick="emailChange(this)" >naver.com</a></li>
+																<li><a href="#" onClick="emailChange(this)">daum.net</a></li>
+																<li><a href="#" onClick="emailChange(this)">nate.com</a></li>
+																<li><a href="#" onClick="emailChange(this)">gmail.com</a></li>
 															</ul>
-														</div></td>
+														</div>
+													</td>
 												</tr>
 											</tbody>
 										</table>
@@ -957,23 +955,17 @@
 														<span class="required">*</span></th>
 													<td>
 														<div class="board-gap">
-															<input type="text" class="input-style01 input_required"
-																alt="우편번호" id="postAddr" value="" style="width: 373px;"
-																readonly="readonly"> <span class="btnTdArea"><a
-																href="#" class="btn-style04"
-																onclick="openZipcodePopup(); return false;">우편번호</a></span>
+															<input type="text" class="input-style01 input_required" alt="우편번호" id="postAddr" value="" style="width: 373px;"
+																readonly="readonly"> <span class="btnTdArea">
+																<a href="#none;" class="btn-style04" onclick="execution_daum_address();return false;">우편번호</a>	</span>
 														</div>
 														<div class="board-gap">
-															<input type="text" class="input-style01 input_required"
-																alt="주소" id="baseAddr" value="" style="width: 520px;"
+															<input type="text" class="input-style01 input_required" alt="주소" id="baseAddr" value="" style="width: 520px;"
 																maxlength="200" readonly="readonly">
 														</div>
 														<div class="board-gap">
-															<input type="text" class="input-style01 input_required"
-																id="detailAddr" alt="상세주소" value=""
-																style="width: 520px;" maxlength="200"> <input
-																type="hidden" class="input-style01" id="dlvAddrSectCd"
-																value="">
+															<input type="text" class="input-style01 input_required" id="detailAddr" alt="상세주소" value="" style="width: 520px;" maxlength="200"> 
+																<input type="hidden" class="input-style01" id="dlvAddrSectCd" value="">
 														</div>
 													</td>
 												</tr>
@@ -985,16 +977,19 @@
 															<div class="select-style01 d_select">
 																<button type="button" class="d_select_sel" id="memo_title" style="width: 520px;">직접입력</button>
 																<ul id="memo_region">
-																	<li><a href="#" onclick="orderform.setMemo('')">직접입력</a></li>
-																	<li><a href="#" onclick="orderform.setMemo(this.innerHTML)">부재 시 경비실에 맡겨주세요.</a></li>
-																	<li><a href="#" onclick="orderform.setMemo(this.innerHTML)">부재 시 문 앞에 놓아주세요.</a></li>
-																	<li><a href="#" onclick="orderform.setMemo(this.innerHTML)">배송 전에 연락주세요.</a></li>
-																	<li><a href="#" onclick="orderform.setMemo(this.innerHTML)">무인 택배함에 보관해주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange('')">직접입력</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">부재 시 경비실에 맡겨주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">부재 시 문 앞에 놓아주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">배송 전에 연락주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">빠른 배송 부탁드려요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">배관함에 넣어주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">무인 택배함에 보관해주세요.</a></li>
 																</ul>
 															</div>
+															<!-- //select -->
 														</div>
 														<div class="board-gap">
-															<input type="text" class="input-style01" value="" id="dlvMemo" style="width: 520px;" maxlength="100" />
+															<input type="text" class="input-style01" value="" id="dlvMemo" style="width: 520px;" maxlength="100">
 														</div>
 													</td>
 												</tr>
@@ -1063,11 +1058,6 @@
 											</tbody>
 										</table>
 									</div>
-
-									<p class="payOptSave" id="paymentSaveRegion">
-										<span class="check-skin"> <input type="checkbox" id="preferPayemntMethod"> <span>선택</span></span> 
-											<label for="chkPayOptSame">다음에도 이 결제수단으로 결제하기</label>
-									</p>
 								</div>
 								<button type="button" class="btn-close d_toggle_select">
 									<span>Close</span>
@@ -1152,8 +1142,9 @@
 	</div>
 </div>
 <!-- 쿠폰 팝업창 -->
-<div id="couponListPopup" class="modal" style="display: none;">
-	<div class="modal-content" style="width: 592px;">
+<article id="couponListPopup" class="layer-popup lyPopOrderFail">
+	<section class="layer-popup-cont" tabindex="0" style="width: 530px">
+		<h2>쿠폰선택</h2>
 		<table>
 			<caption>사용 가능한 쿠폰</caption>
 			<colgroup>
@@ -1163,18 +1154,19 @@
 			</colgroup>
 
 			<tr>
-				<th scope="col">쿠폰종류</th>
-				<th scope="col">쿠폰명</th>
-				<th scope="col">할인</th>
+				<th scope="col" style="text-align:center;">쿠폰종류</th>
+				<th scope="col" style="text-align:center;">쿠폰명</th>
+				<th scope="col" style="text-align:center;">할인</th>
 			</tr>
 			<c:choose>
 				<c:when test="${couponlist ne null}">
 					<c:forEach items="${couponlist }" var="coupon">
-						<tr>
+						<tr style="border:1px solid black;">
 							<td scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_type }</a></td>
 							<td scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_name }</a></td>
-							<td scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_discount }</a></td>
+							<td scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});"><fmt:formatNumber type="number" maxFractionDigits="3" value="${coupon.coupon_discount }" />원</a></td>
 						</tr>
+						
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
@@ -1187,12 +1179,11 @@
 			</c:choose>
 		</table>
 		<!--  button -->
-		<div class="lyBtnArea">
-			<a href="#" class="btn w160 d_layer_close" id="couponlistEscBtn">취소</a> 
+		<div class="layer-popup-close">
+			<button type="button" class="d_layer_close">닫기</button>
 		</div>
-	</div>
-</div>
-
+	</section>
+</article>
 <!-- 결제실패시 팝업창  -->
 <article id="lyPopOrderFail" class="layer-popup lyPopOrderFail">
 	<section class="layer-popup-cont" tabindex="0" style="width: 530px">
@@ -1207,7 +1198,7 @@
 			</div>
 			<div class="lyBtnArea">
 				<a href="/" class="btn">홈으로 가기</a> 
-				<a href="/cart/goods/list" class="btn">장바구니 가기</a> 
+				<a href="/blueup/getCart.do" class="btn">장바구니 가기</a> 
 				<a href="/order/orderform/new" class="btn fill">다시 주문하기</a>
 			</div>
 		</div>
@@ -1316,7 +1307,145 @@ $("#payBtn").click(function () {
 
 
 
+	/* 포인트 차감*/
+	function pointApply(user_no){
+		var userNo = localStorage.getItem("user_no");
+		var point = $('#pointUse').val();
+		var total_point = $('#totalPoint').html();
+		$.ajax({
+			url:'/blueup/getPoint.do',
+		    type:'POST',
+			data: {"user_no" : userNo, "point" : point},
+			dataType:'json',
+			success:function(data) {
+				$('#totalPoint').html(data);
+				discounted();
+			}
+		});
+	}
+	
+	/*전체 포인트 차감*/
+	function pointApplyAll(user_no){
+		var userNo = localStorage.getItem("user_no");
+		$.ajax({
+			url:'/blueup/getPointAll.do',
+		    type:'POST',
+			data: {"user_no" : userNo },
+			dataType:'json',
+			success:function(data) {
+				$('#pointUse').val(data);
+				$('#totalPoint').html((data-data));
+				discounted();
+			}
+		});
+	}
+	
+	/*쿠폰 팝업창*/
+	$(function(){
+		$('#couponSelect').click(()=>{
+			$('#couponListPopup').show();
+		});
+	});
+	/* 쿠폰적용 */
+	function coupon(coupon_no){
+		var userNo = localStorage.getItem("user_no");
+		$.ajax({
+			url:'/blueup/getCouponSelect.do',
+		    type:'POST',
+			data: {"user_no" : userNo, "coupon_no" : coupon_no},
+			dataType:'json',
+			success:function(data) {
+				$('#couponListPopup').hide();
+				$('#couponUse').val(data.coupon_discount);
+				discounted();
+			}
+		});
+	}
+	/* 할인적용 금액 */
+	function discounted(){
+		var product = "${orderlist.get(0).all_price}";
+		var product_discount = "${orderlist.get(0).all_discount}";
+		var coupon_discount = $('#couponUse').val();
+		var point_discount = $('#pointUse').val();
+		$.ajax({
+			url:'/blueup/getDiscounted.do',
+		    type:'POST',
+			data: {"all_price" : product, "all_discount" : product_discount, "coupon" : coupon_discount, "point" : point_discount},
+			dataType:'json',
+			success:function(data) {
+				var total_discount = parseInt(product_discount) + data;
+				$('#dc_amount').html(total_discount + "원");
+				var total_price = parseInt(product) - total_discount;
+				$('#total_amount').html(total_price);
+				
+			}
+		});
+	}
+	/* 이메일 */
+	function emailChange(email) {
+		var value = $(email).text();
+		$('#memEmail2').val(value);
+	}
+	
+	/* 배송 요청사항 */
+	function shippingChange(shippingRequest) {
+		var value = $(shippingRequest).text();
+		$('#dlvMemo').val(value);
+	}
+	
+	/* 다음 우편번호 검색 api */
+	function execution_daum_address() {
+            new daum.Postcode(
+                  {
+                     oncomplete : function(data) {
+                        /* 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분. */
+                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                        var addr = ''; // 주소 변수
+                        var extraAddr = ''; // 참고항목 변수
 
+                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                           addr = data.roadAddress;
+                        } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                           addr = data.jibunAddress;
+                        }
+
+                        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                        if (data.userSelectedType === 'R') {
+                           // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                           // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                           if (data.bname !== ''
+                                 && /[동|로|가]$/g.test(data.bname)) {
+                              extraAddr += data.bname;
+                           }
+                           // 건물명이 있고, 공동주택일 경우 추가한다.
+                           if (data.buildingName !== ''
+                                 && data.apartment === 'Y') {
+                              extraAddr += (extraAddr !== '' ? ', '
+                                    + data.buildingName
+                                    : data.buildingName);
+                           }
+                           // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                           if (extraAddr !== '') {
+                              extraAddr = ' (' + extraAddr + ')';
+                           }
+                           // 주소변수 문자열과 참고항목 문자열 합치기
+                           addr += extraAddr;
+
+                        } else {
+                           addr += ' ';
+                        }
+
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        $("#postAddr").val(data.zonecode);
+                        $("#baseAddr").val(addr);
+                        // 커서를 상세주소 필드로 이동한다.
+                        document.getElementById("detailAddr").focus();
+                     }
+                  }).open();
+
+         }
 
 	
 </script>

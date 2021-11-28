@@ -43,7 +43,6 @@ public class OrderController {
 				float expected_point = (float) (memcartlist.get(i).getTotal_price() * 0.005);
 				ordervo.setMain_image(memcartlist.get(i).getMain_image()); // 상품이미지
 				ordervo.setProduct_name(memcartlist.get(i).getProduct_name());// 상품명
-				System.out.println(memcartlist.get(i).getProduct_name());
 				ordervo.setProduct_price(product_price); // 상품 가격
 				ordervo.setProduct_color(memcartlist.get(i).getProduct_color()); // 상품색상
 				ordervo.setProduct_size(memcartlist.get(i).getProduct_size()); // 상품 사이즈
@@ -59,6 +58,8 @@ public class OrderController {
 				orderlist.add(ordervo);
 
 			}
+			System.out.println(orderlist.get(0).getProduct_name());
+			System.out.println(orderlist.get(1).getProduct_name());
 		} else { /* 비회원 */
 			List<CartVo> nomemcartlist = (List<CartVo>) session.getAttribute("orderNonMember");
 			for (int i = 0; i < nomemcartlist.size(); i++) {
@@ -120,7 +121,7 @@ public class OrderController {
 		map.put("couponlist", couponlist);
 		return map;
 	}
-
+	
 	@RequestMapping("/getCouponSelect.do") // 할인정보 - 쿠폰선택
 	@ResponseBody
 	public CouponVo getCouponSelect(int coupon_no, int user_no) {
@@ -131,10 +132,10 @@ public class OrderController {
 		return coupon;
 	}
 
-	@RequestMapping("/getDiscounted.do") // 선택 할인적용 금액
+	@RequestMapping("/discounted.do") // 선택 할인적용 금액
 	@ResponseBody
-	public int getDiscounted(int coupon, int point) {
-		int total_discounted = coupon + point;
+	public int discounted(int product_discount, int coupon_discount, int point_discount) {
+		int total_discounted = product_discount + coupon_discount + point_discount;
 		return total_discounted;
 	}
 

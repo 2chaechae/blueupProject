@@ -20,11 +20,14 @@
 	
 	<insert id="addProductDetail" parameterType="productcontentvo">
 		<foreach collection="number"  item="item" separator=";">
-		INSERT INTO PRODUCT_CONTENT_DETAIL 
-		VALUES(
-		#{item.product_no},
-		#{item.detailed_product_content},
-		#{item.content_type},
+		INSERT INTO PRODUCT_CONTENT_DETAIL (
+			PRODUCT_NO, 
+			DETAILED_PRODUCT_CONTENT,
+			CONTENT_TYPE
+		) VALUES(
+			#{item.product_no},
+			#{item.detailed_product_content},
+			#{item.content_type}
 		)
 		</foreach>
 	</insert>

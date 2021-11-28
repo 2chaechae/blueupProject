@@ -426,8 +426,7 @@ var user_no = localStorage.getItem("user_no");
 		var product_price = parseInt($(element).closest('tbody').find('.product_p').text()); // 선택상품의 상품총액
 		var discount_price = parseInt($(element).closest('tbody').find('.discount').val()); // 선택상품의 할인총액
 		var product_no = parseInt($(element).closest('tbody').find('.p_no').val()); // 상품 번호
-		alert("변경전" + product_price);
-		alert("할인금액" + discount_price);
+
 		///////////////개당 값////////////////////
 		var per_p = parseInt(product_price / end); // 1개 상품 금액
 		var per_d = parseInt(discount_price / end); // 1개 상품 할인 금액
@@ -436,10 +435,6 @@ var user_no = localStorage.getItem("user_no");
 		product_price += per_p;  // 변경된 선택상품의 상품총액
 		discount_price += per_d; // 변경된 선택상품의 할인총액
 		
-		alert("현재 상품금액" + product_price);
-		alert("현재 할인금액" + discount_price);
-		alert("1개 할인금액" + per_d);
-		alert("개수 " + end);
 		//////////////수량 변경//////////////
 		end ++;
 		if (end > 999) {

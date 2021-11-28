@@ -26,7 +26,7 @@ public class AdminProductDetailDAO {
 	}
 	
 	/* 상품 상세 등록*/
-	public int addProductDetail(List<ProductContentVo> vo) {
+	public int addProductDetail(ProductVo vo) {
 		return sqlSssionTemplate.insert("adminprodcutdetailDAO.addProductDetail", vo);
 	}
 }
