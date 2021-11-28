@@ -79,7 +79,7 @@
    
 						    <script type="text/javascript">
 						    
-						     google.charts.load('current', {'packages':['line']});
+						     google.charts.load('current', {'packages':['corechart']});
 						     google.charts.setOnLoadCallback(drawChart);
 						
 						    function drawChart() {
@@ -94,23 +94,35 @@
 						      console.log(jsonData);
 						      
 						      var data = new google.visualization.DataTable(jsonData);
-						      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+						      var chart = new google.visualization.ComboChart(document.getElementById('linechart_material'));
 						      
 						      var options = {
-						    		  	'title':'일자별 주문금액 및 주문수 통계',
-						                'width':900,
-						                'height':500,
-							            'hAxis': {
-							                    title: '주문액'
-							             },
-							            'vAxis': {
-							                    title: '주문건'
-							             }
+						    		   	title : '일자별 주문금액 및 주문수 통계',
+									    width:900,
+						                height:500,
+								        vAxis: {
+								        	  0 : {minValue:0, logScale: false},
+								        	  1 : {minValue:0, maxValue:100, logScale: false}
+								        },
+								        hAxis: {title: 'day', maxValue:31, minValue:1},
+								        seriesType: 'bars',
+								        series: {
+					                    	  0: {axis: 'price', targetAxisIndex:0},
+					                    	  1: {axis: 'count', targetAxisIndex:1, type: 'line'}
+											},
+										axes: {
+									     	  y: {
+									     		 	price: {label: '주문금액(원)'}, 
+									     			count: {side: 'top', label: '주문건(수)'} 
+									         }
+										}
 						           };
-						    
+		
 						   	 chart.draw(data, options);
 						    
 							 }
+						   
+					         
 					</script>
     
      <!-- 첫번째 차트 입력 위치 -->
