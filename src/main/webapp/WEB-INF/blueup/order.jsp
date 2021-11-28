@@ -1033,15 +1033,15 @@
 														<div class="orderPayOpt">
 															<ul>
 																<li><span class="rdo-skin"> 
-																<input type="radio" id="card_payment" name="paymentBtn" value="100000000000"> <span>선택</span>
+																<input type="radio" id="card_payment" name="paymentBtn" value="신용/체크카드"> <span>선택</span>
 																</span> <label for="card_payment">신용/체크카드</label></li>
 																
 																<li><span class="rdo-skin"> 
-																<input type="radio" id="virtual_payment" name="paymentBtn" value="001000000000"> <span>선택</span>
+																<input type="radio" id="virtual_payment" name="paymentBtn" value="무통장입금(가상계좌)"> <span>선택</span>
 																</span> <label for="virtual_payment">무통장입금(가상계좌)</label></li>
 																
 																<li><span class="rdo-skin"> 
-																<input type="radio" id="transfer_payment" name="paymentBtn" value="010000000000"> <span>선택</span>
+																<input type="radio" id="transfer_payment" name="paymentBtn" value="실시간 계좌이체"> <span>선택</span>
 																</span> <label for="transfer_payment">실시간 계좌이체</label></li>
 															</ul>
 														</div>
@@ -1054,7 +1054,7 @@
 														<div class="orderPayOpt">
 															<ul>
 																<li class="easy-kakao"><span class="rdo-skin">
-																		<input type="radio" id="kakao_payment" name="paymentBtn" value="kakao"> <span>선택</span>
+																		<input type="radio" id="kakao_payment" name="paymentBtn" value="카카오페이"> <span>선택</span>
 																</span> <label for="kakao_payment">카카오페이</label></li>
 															</ul>
 														</div>
@@ -1140,7 +1140,7 @@
 									<label for="chkAgreeOk">주문하실 상품, 가격, 배송정보, 할인정보 등을 확인하였으며, 구매에 동의하시겠습니까? (전자상거래법 제 8조 제2항)</label>
 								</div>
 								<div class="btn_order">
-									<a href="#" class="btn lg fill">결제하기</a>
+									<input type="button" id="payBtn" class="btn lg fill" value="결제하기" />
 								</div>
 							</div>
 						</div>
@@ -1221,109 +1221,103 @@
 	<input type="hidden" id="user_no" name="user_no" value="${couponlist.get(0).user_no }"/>
 </form>
 </body>
+
+<!--아임포트 사용을 위한 스크립트  -->
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		var user_no = localStorage.getItem("user_no");
-		if(user_no != 0){
-			var user_name = localStorage.getItem("user_name");
-			var phone1 = localStorage.getItem("phone1");
-			var phone2 = localStorage.getItem("phone2");
-			var phone3 = localStorage.getItem("phone3");
-			var email_id = localStorage.getItem("email_id");
-			var email_address = localStorage.getItem("email_address");
-			$('#memName').val(user_name);			
-			$('#memMobile1').val(phone1);			
-			$('#memMobile2').val(phone2);			
-			$('#memMobile3').val(phone3);			
-			$('#memEmail1').val(email_id);			
-			$('#memEmail2').val(email_address);	
-		}else{
-			$('#memName').val();			
-			$('#memMobile1').val();			
-			$('#memMobile2').val();			
-			$('#memMobile3').val();			
-			$('#memEmail1').val();			
-			$('#memEmail2').val();
-		}
-	});
+
+
+$("#payBtn").click(function () {
+    var merchant_uid_origin = 'merchant_' + new Date().getTime();
+    var discount_by_coupon = $('#couponUse').val();
+    var discount_by_point = $('#pointUse').val();
+	var buyer_name1 = $("#memName").val();
+ 	var phone1 = $('#memMobile1').val();
+ 	var phone2 = $('#memMobile2').val();
+ 	var phone3 = $('#memMobile3').val();
+ 	var buyer_tel1 = phone1+phone2+phone3;
+ 	var email_id = $('#memEmail1').val();
+ 	var email_address = $('#memEmail2').val();
+ 	var email = email_id +'@'+ email_address;
+ 	var receiver = $('#ordererName').val();
+ 	var buyer_postcode1 = $('#postAddr').val();
+ 	var address = $('#baseAddr').val();
+ 	var detailed_address = $('#detailAddr').val();
+ 	buyer_addr1 = address+' '+detailed_address;
+ 	var temp = $('input:radio[name="paymentBtn"]:checked').val();
+ 	var amount1 = ${orderlist.get(0).pay_amount};
+ 	/* $('#total_amount').html(); */
+ 	alert("가격 : "+amount1);
+ 	alert('temp = '+temp);
+ 	alert(email);
+ 	alert('잘되고있어');
 	
-	/* 포인트 차감*/
-	function pointApply(user_no){
-		var userNo = localStorage.getItem("user_no");
-		var point = $('#pointUse').val();
-		var total_point = $('#totalPoint').html();
-		$.ajax({
-			url:'/blueup/getPoint.do',
-		    type:'POST',
-			data: {"user_no" : userNo, "point" : point},
-			dataType:'json',
-			success:function(data) {
-				$('#totalPoint').html(data);
-				discounted();
-			}
-		});
-	}
-	
-	/*전체 포인트 차감*/
-	function pointApplyAll(user_no){
-		var userNo = localStorage.getItem("user_no");
-		$.ajax({
-			url:'/blueup/getPointAll.do',
-		    type:'POST',
-			data: {"user_no" : userNo },
-			dataType:'json',
-			success:function(data) {
-				$('#pointUse').val(data);
-				$('#totalPoint').html((data-data));
-				discounted();
-			}
-		});
-	}
-	
-	/*쿠폰 팝업창*/
-	$(function(){
-		$('#couponSelect').click(()=>{
-			$('#couponListPopup').show();
-		});
-		$('#couponlistEscBtn').click(()=>{
-			$('#couponListPopup').hide();
-		});
-	});
-	/* 쿠폰적용 */
-	function coupon(coupon_no){
-		var userNo = localStorage.getItem("user_no");
-		$.ajax({
-			url:'/blueup/getCouponSelect.do',
-		    type:'POST',
-			data: {"user_no" : userNo, "coupon_no" : coupon_no},
-			dataType:'json',
-			success:function(data) {
-				$('#couponListPopup').hide();
-				$('#couponUse').val(data.coupon_discount);
-				discounted();
-			}
-		});
-	}
-	/* 할인적용 금액 */
-	function discounted(){
-		var product = "${orderlist.get(0).all_price}";
-		var product_discount = "${orderlist.get(0).all_discount}";
-		var coupon_discount = $('#couponUse').val();
-		var point_discount = $('#pointUse').val();
-		$.ajax({
-			url:'/blueup/getDiscounted.do',
-		    type:'POST',
-			data: {"all_price" : product, "all_discount" : product_discount, "coupon" : coupon_discount, "point" : point_discount},
-			dataType:'json',
-			success:function(data) {
-				var total_discount = parseInt(product_discount) + data;
-				$('#dc_amount').html(total_discount + "원");
-				var total_price = parseInt(product) - total_discount;
-				$('#total_amount').html(total_price);
-				
-			}
-		});
-	}
+ 	
+ 	  var IMP = window.IMP; // 생략가능
+ 	    IMP.init('imp89704086');
+ 	    /*'iamport' 대신 부여받은 "가맹점 식별코드"를 사용*/
+ 	    // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+ 	    IMP.request_pay({
+ 	    pg: 'inicis',// version 1.1.0부터 지원.
+ 	    /*
+ 	    'kakao':카카오페이,
+ 	    html5_inicis':이니시스(웹표준결제)
+ 	    'nice':나이스페이
+ 	    'jtnet':제이티넷
+ 	    'uplus':LG유플러스
+ 	    'danal':다날
+ 	    'payco':페이코
+ 	    'syrup':시럽페이
+ 	    'paypal':페이팔
+ 	    */
+ 	    pay_method: 'card',
+ 	    /*
+ 	    'samsung':삼성페이,
+ 	    'card':신용카드,
+ 	    'trans':실시간계좌이체,
+ 	    'vbank':가상계좌,
+ 	    'phone':휴대폰소액결제
+ 	    */
+ 	    merchant_uid: merchant_uid_origin,
+ 	    /*
+ 	    merchant_uid에 경우
+ 	    https://docs.iamport.kr/implementation/payment
+ 	    위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+ 	    참고하세요.
+ 	    나중에 포스팅 해볼게요.
+ 	    */
+ 	    name: '블루업 결제창',
+ 	    //결제창에서 보여질 이름
+ 	    amount: 100,
+ 	    //가격, 임의로 100으로 해놓음
+ 	    buyer_email: email,
+ 	    buyer_name: buyer_name1,
+ 	    buyer_tel: buyer_tel1,
+ 	    buyer_addr: buyer_addr1,
+ 	    buyer_postcode: buyer_postcode1,
+ 	    m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+ 	    /*
+ 	    모바일 결제시,
+ 	    결제가 끝나고 랜딩되는 URL을 지정   
+ 	    (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+ 	    */
+ 	    }, function (rsp) {
+ 	       console.log(rsp);
+ 	       if (rsp.success) {
+ 	          var msg = '결제가 완료되었습니다.\n';
+ 	          msg += '결제 금액 : ' + rsp.paid_amount;
+ 	          msg += '\n블루업을 이용해주셔서 감사합니다. 행복한 하루되세요. :)';
+ 	          alert(msg);
+  
+ 	       } 
+ 	
+ });  
+});
+
+
+
+
+
 	
 </script>
 </html>
