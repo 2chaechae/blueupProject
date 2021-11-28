@@ -268,10 +268,27 @@ public class ProductController {
 		}
 		return mav;
 	}
-
+	
+	/* 상품 조회수 */
 	@RequestMapping("/updateViewCount.do")
 	@ResponseBody
 	public int updateViewCount(ProductVo vo) {
 		return productserviceimpl.updateViewCount(vo);
 	}
+	
+	/* 세일 상품 조회*/
+	@RequestMapping("/getSaleProduct.do")
+	public ModelAndView getSaleProduct(@RequestParam(value="user_no", required=false)String user_no) {
+		ModelAndView mav = new ModelAndView();
+		if(user_no != null) {
+			mav.addObject("Category", "SALES");
+			mav.addObject("Product",productserviceimpl.getSaleProduct(user_no));
+			mav.setViewName("ProductView");
+		}else {
+			user_no = "0";
+			
+		}
+		return mav;
+	}
+	
 }

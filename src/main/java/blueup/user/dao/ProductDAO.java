@@ -54,6 +54,10 @@ public class ProductDAO {
 		return sqlSssionTemplate.update("productDao.updateViewCount", vo);
 	}
 	
+	public List<ProductVo> getSaleProduct(String user_no){
+		return sqlSssionTemplate.selectList("productDao.getSaleProduct");
+	}
+	
 	/////////////////////// 아직 안쓴거 /////////////////////////
 	public ProductVo getProduct(ProductVo vo) {
 		return sqlSssionTemplate.selectOne("productDao.getProduct", vo);

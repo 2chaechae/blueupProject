@@ -70,6 +70,11 @@ public class ProductServiceImpl implements ProductService{
 	public int updateViewCount(ProductVo vo) {
 		return productdao.updateViewCount(vo);
 	}
+
+	@Override
+	public List<ProductVo> getSaleProduct(String user_no) {
+		return productdao.getSaleProduct(user_no);
+	}
 	
 
 

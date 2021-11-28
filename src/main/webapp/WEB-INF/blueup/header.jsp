@@ -80,7 +80,7 @@
 						<ul class="list cate">
 							<!-- 세일상품 -->
 							<li class="select">
-								<a href="javascript:void(0)" onclick="checkCategoryUp(this)"> <font >SALES</font></a>
+								<a href="/"> <font >SALES</font></a>
 									<!-- 
 								<div class="pan top_cate_pan_1">
 									<div class="inner">	

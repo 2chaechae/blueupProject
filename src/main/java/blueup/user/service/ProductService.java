@@ -19,4 +19,5 @@ public interface ProductService {
 	public int getCountProductDetail(HashMap<Object, Object> vo);
 	public int getCountProduct(HashMap<Object, Object> vo);
 	public int updateViewCount(ProductVo vo);
+	public List<ProductVo> getSaleProduct(String user_no);
 }

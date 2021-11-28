@@ -110,4 +110,10 @@
 		FROM PRODUCT
 		ORDER BY VIEWCOUNT DESC
 	</select>
+	
+	<!-- 세일 상품 가져오기 -->
+	<select id="getSaleProduct" resultType="productvo">
+	select * from product as a left join wishList as b on a.product_no = b.product_no 
+	where discount > 0 and b.user_no = #{user_no}
+	</select>
 </mapper>
