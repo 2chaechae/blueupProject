@@ -137,16 +137,11 @@ public class ReviewController {
 		ModelAndView mav = new ModelAndView();
 		ReviewVo vo = new ReviewVo();
 		vo.setReview_content(review_content);
-		System.out.println(review_content);
 		vo.setReview_title(review_title);
-		System.out.println(review_title);
 		vo.setStar(star);
-		System.out.println(star);
 		vo.setUser_no(user_no);
-		System.out.println(user_no);
 		vo.setReview_no(review_no); 
-		System.out.println(review_no);
-		System.out.println("테스트중입니다");
+		System.out.println("수정되었습니당");
 		int result = reviewService.modifyupdateReview(vo);
 		mav.setViewName("reviewView"); //넘겨주는 위치
 		return result;

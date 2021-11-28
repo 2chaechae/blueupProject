@@ -87,7 +87,7 @@
 						<th scope="row"><label for="boardWriteTitle">별점</label> </th>
 						<td><input type="text" id="star"
 							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="별점" style="width: 100px;" value="${insertReview.star}">개 
+							placeholder="별점" style="width: 100px;" value="${insertReview.star}">점 
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
