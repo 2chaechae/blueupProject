@@ -57,7 +57,7 @@
     					<a href="#"><span>취소 관리</span></a>
     				</li>
     				<li>
-    					<a href="#"><span>재고/파손품 관리</span></a>
+    					<a href="/test/getStockList.mdo"><span>재고/파손품 관리</span></a>
     				</li>
     			</ul>
     		</li>
