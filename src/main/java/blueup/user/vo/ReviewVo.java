@@ -1,6 +1,9 @@
 package blueup.user.vo;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +13,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ReviewVo {
+	List<MultipartFile> reviewImage;
 	int order_detail_no; //오더넘버
 	int order_no; //오더넘버
 	int review_no; // 리뷰 번호

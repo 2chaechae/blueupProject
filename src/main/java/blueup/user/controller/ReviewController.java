@@ -1,6 +1,10 @@
 package blueup.user.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,15 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import blueup.common.awsS3.AwsS3;
 import blueup.user.service.ReviewService;
+import blueup.user.service.ReviewServiceImpl;
 import blueup.user.vo.ReviewVo;
+import blueup.user.vo.Review_photoVo;
 
 @Controller
 public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
+	public AwsS3 awsS3 = AwsS3.getInstance();
 
 	// 리뷰 정보와 쓰기 폼
 	@RequestMapping("/getProductInfoForReview.do")
@@ -72,6 +81,8 @@ public class ReviewController {
 		}
 
 	// 리뷰 등록
+	
+	
 	@RequestMapping("/insertReview.do")
 	@ResponseBody
 	public int insertReview(
@@ -82,6 +93,9 @@ public class ReviewController {
 		System.out.println(1);
 		ModelAndView mav = new ModelAndView();
 		ReviewVo vo = new ReviewVo();
+		List<MultipartFile> file = vo.getReviewImage();
+		ReviewVo rvo = insertReview(file, vo);
+		
 		vo.setProduct_name(product_name);
 		vo.setProduct_size(product_size);
 		System.out.println(5);
@@ -95,11 +109,91 @@ public class ReviewController {
 		vo.setOrder_no(order_no);
 		/* vo.setProduct_no(product_no); */
 		vo.setReview_status(true);
-		int result = reviewService.insertReview(vo);
+		int result = reviewService.insertReview(rvo);
+		System.out.println(6);
+		if(result==1) {
+			int review_no = reviewService.getReviewNo();
+			List<MultipartFile> detail = rvo.getReviewImage();
+			for (int i=0; i < detail.size(); i++) {
+				((ReviewVo) detail.get(i)).setReview_no(review_no);
+				
+			}
+		}
+		System.out.println("성공입니다.");
+		mav.setViewName("redirect:/getReviewList.do");
+		
 		return result;
 
 	}
+	
+	//리뷰 사진 업로드 및 경로 리턴
+	public ReviewVo insertReview(List<MultipartFile> imageList, ReviewVo vo ) {
+		
+		String uploadFolder = "https://blueup.s3.ap-northeast-2.amazonaws.com/";
+		List<ReviewVo> detail = new ArrayList<ReviewVo>();
+		try {
+			if(imageList != null) {
+				for(int i=0; i < imageList.size(); i++) {
+					if(imageList.get(i).getOriginalFilename() !="") { 
+						String key  ="review/" + vo.getReviewImage() + "/" + imageList.get(i).getOriginalFilename();
+						InputStream is = imageList.get(i).getInputStream();
+						String contentType = imageList.get(i).getContentType();
+						long contentLength = imageList.get(i).getSize();
+						awsS3.upload(is, key , contentType, contentLength); //s3 올릴때 
+						System.out.println("리뷰파일 업로드 성공");
+						vo.setPhoto1(uploadFolder+key);
+					    Review_photoVo rpt = new Review_photoVo();
+					    rpt.setPhoto1(uploadFolder+key);
+					    rpt.setPhoto2(uploadFolder+key);
+					    rpt.setPhoto3(uploadFolder+key);
+					    rpt.setPhoto4(uploadFolder+key);
+					    rpt.setPhoto5(uploadFolder+key);
+						System.out.println("포토업로드");
+						
+						}
+						
+					}
+				}
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
+	
+	
+	
+	
+	//@RequestMapping("/insertReview.do")
+	//@ResponseBody
+	//public int insertReview(
 
+		//	int order_no, /* int product_no, */ /* ReviewVo, vo.set 다시 int로 */
+		//	String star, String title, String content, String user_id, String product_name, String product_size,
+		//	Date review_time, String product_color, Boolean review_status, int user_no) {
+	//	System.out.println(1);
+	//	ModelAndView mav = new ModelAndView();
+	//	ReviewVo vo = new ReviewVo();
+	//	vo.setProduct_name(product_name);
+	//	vo.setProduct_size(product_size);
+	//	System.out.println(5);
+	//	vo.setStar(Integer.parseInt(star));
+	//	vo.setReview_title(title);
+	//		vo.setReview_content(content);
+	//	vo.setUser_id(user_id);
+	//	vo.setReview_time(review_time);
+	//	vo.setProduct_color(product_color);
+	//	vo.setUser_no(user_no);
+	//	vo.setOrder_no(order_no);
+	//	/* vo.setProduct_no(product_no); */
+	//	vo.setReview_status(true);
+	//	int result = reviewService.insertReview(vo);
+	//	return result;
+
+	//}
+	
 	// 리뷰 삭제
 	@RequestMapping("/deleteReview.do")
 	@ResponseBody
@@ -147,6 +241,20 @@ public class ReviewController {
 		mav.setViewName("reviewView"); //넘겨주는 위치
 		return result;
 	}
+	
+	
+//리뷰등록 - 리뷰 사진 업로드.	
+	/*
+	 * public ReviewVo insertReview(List<MultipartFile> reviewImage, ReviewVo vo) {
+	 * 
+	 * String uploadFolder = "https://blueup.s3.ap-northeast-2.amazonaws.com/"; int
+	 * number = vo.getReview_no(); //따로 컨텐트 vo로 빼야하는지 ...?
+	 * 
+	 * return vo;
+	 * 
+	 * }
+	 */
+	
 	
 	}
 

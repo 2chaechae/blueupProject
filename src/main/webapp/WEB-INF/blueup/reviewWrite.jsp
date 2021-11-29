@@ -52,6 +52,7 @@
 				<tr><th scope="row">
 				<label for="boardWriteTitle">상품정보</label>
 				<div></div>
+				<form id="addReview" action="/test/addReview.do" method="POST" enctype="multipart/form-data">
 				<img src="${getProductInfoForReview.main_image}" id="product_img" width="150px" height="150px" >
 				<td width="100px"><input value="${getProductInfoForReview.product_name}" id="product_name"></td>
 				<td width="60px"><input value="${getProductInfoForReview.quantity}" id="quantity"></td>
@@ -126,15 +127,26 @@
 								<!-- <div >
 									<input class="input_ea" type="file">
 								</div> -->
-								<tr>
-								<th scope="row"><label for="boardWriteTitle">리뷰 사진</label> </th><td>
-								<span>
-										<input type="file" id="fileSearch" name="files" onchange="javascript:filetest(this);">
-										
-									</span></td></tr>
+							
+									<tr>
+									<th scope="row"><label for="boardWriteTitle">리뷰 사진</label>
+									<td>
+									<span>
+									<input type="file" name="reviewImage[0]" onchange="javascript:filetest(this);">
+									 <input type="file" name="reviewImage[1]" onchange="javascript:filetest(this);">
+									<input type="file" name="reviewImage[2]" onchange="javascript:filetest(this);">
+									<input type="file" name="reviewImage[3]" onchange="javascript:filetest(this);">
+									<input type="file" name="reviewImage[4]" onchange="javascript:filetest(this);">
+									</span>
+									</td>
+									</tr>
+									
+									
+									
+									
 							</div></td>
 					</tr>
-					
+					</form> 
 				</tbody>
 			</table>
 		</div>

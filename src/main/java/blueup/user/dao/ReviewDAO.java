@@ -51,6 +51,10 @@ public class ReviewDAO {
 	public int modifyupdateReview(ReviewVo vo) {
 		return sqlSessionTemplate.update("reviewDao.modifyupdateReview", vo);
 	}
+	//리뷰 번호 조회 (max)
+	public int getReviewNo() {
+		return sqlSessionTemplate.selectOne("reviewDao.getReviewNo");
+	}
 	
 }
 

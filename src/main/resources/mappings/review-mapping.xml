@@ -95,7 +95,14 @@
 	
 	<!-- 작성한 리뷰 가져오기 -->
 	<select id="getReviewList" resultType="reviewvo" >
-	  SELECT * FROM REVIEW WHERE USER_NO = #{user_no} 
+	  SELECT * FROM REVIEW WHERE USER_NO = #{user_no} ;
+	  </select>
+	
+	  <!-- 추가한 리뷰 번호 찾기 -->
+	 <select id="getReviewNo" resultType="Integer">
+	 select max(review_no) from review
+	 </select>
+	 
 	 
 	<!-- 포토넣은 리뷰 쿼리 -->
 	<!--  SELECT  a.product_name, a.product_size, a.product_color, a.star, a.review_title, a.review_content,
@@ -105,7 +112,7 @@
 		ON a.review_no = b.review_no 
 		WHERE a.user_no = #{user_no}  -->
 	<!-- AND a.product_no = b.product_no  -->
-	</select>
+	
 	
 	<!-- 수정을 위한 쿼리 -->
 	<select id="modifyReview" resultType="reviewvo" >
