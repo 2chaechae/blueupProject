@@ -58,8 +58,6 @@ public class OrderController {
 				orderlist.add(ordervo);
 
 			}
-			System.out.println(orderlist.get(0).getProduct_name());
-			System.out.println(orderlist.get(1).getProduct_name());
 		} else { /* ºñÈ¸¿ø */
 			List<CartVo> nomemcartlist = (List<CartVo>) session.getAttribute("orderNonMember");
 			for (int i = 0; i < nomemcartlist.size(); i++) {
