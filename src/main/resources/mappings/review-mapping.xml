@@ -55,10 +55,15 @@
 		FROM order_request as a JOIN order_detail as b
 		on a.order_no = b.order_no WHERE a.user_no = #{user_no}
 		AND b.order_status='구매확정' AND b.product_no = #{product_no} AND b.review_status='false'; -->
-		SELECT a.user_no, a.purchaseconfirm,
+<!-- 		SELECT a.user_no, a.purchaseconfirm,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
-		on  a. user_no = #{user_no} where b.order_status='구매확정' ;
+		on  a. user_no = #{user_no} where b.order_status='구매확정' ; -->
+	SELECT a.user_no,a.order_no,
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image,b.order_status
+		FROM order_request as a JOIN order_detail as b
+		ON a.order_no  = #{order_no} and a.user_no= #{user_no}
+		WHERE b.order_status='구매확정' ;
 	</select>
 	
 	<!-- 리뷰를 위한 사진 가져오기 -->
@@ -79,12 +84,13 @@
 		ON a.order_no = b.order_no 
 		WHERE a.user_no = #{user_no}
 	 	AND b.order_status='구매확정' AND b.review_status='false'; -->
-	 	SELECT a.user_no, a.purchaseconfirm,
+	 	 SELECT a.user_no, a.purchaseconfirm,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
 		FROM order_request as a JOIN order_detail as b
 		ON a.user_no  =#{user_no}
 		WHERE b.order_status='구매확정' ;
-		<!-- AND b.review_status='false' -->
+	<!--	AND b.review_status='false' -->
+		
 	</select> 
 	
 	<!-- 작성한 리뷰 가져오기 -->

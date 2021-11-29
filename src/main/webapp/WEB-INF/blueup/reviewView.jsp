@@ -179,18 +179,20 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
 											<c:forEach var="review" items="${getReviewproductList}" varStatus="status">
 													<!-- var 뜻은 review라 부르겠다하는것. for문 돌릴때 쓰는거	 -->
+											<div>
 											<tr>
 											
                                    <img src="${review.main_image}" width="150px" height="150px" >
-				<td width="100px">${review.product_name}</td>
-				<td width="60px">${review.quantity}</td>
-				<td width="100px">  ${review.product_color}</td>
-										<td width="100px">${review.product_size}</td>
+				<td width="100px">상품 이름: ${review.product_name}</td>
+				<td width="60px">상품 수량: ${review.quantity} 개 </td>
+				<td width="100px">상품 색상:  ${review.product_color}</td>
+										<td width="100px">상품 사이즈: ${review.product_size}</td>
 										
 										<input type="button" class="button" onclick="writeReview()" id="writeone" value="리뷰 쓰기"/>
-										
+										<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
 										<br>
 				   </tr> 
+				   </div>
 											</c:forEach>
 										</div>
 
@@ -288,7 +290,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	</div>
 
 </form>
-<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
+
 <%-- <form id="movedmodifyReview" method="post" action="/test/modifyReview.do">
 	<input type="hidden" id="review_no" name="review_no" value="${reviewList.get(0).review_no }"/>
 </form> --%>
@@ -302,7 +304,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
  	var user_no = localStorage.getItem("user_no");
  	alert(user_no);
  	var order_no = $('#order_no').val();
- 	alert(product_no);
+ 	alert(order_no);
  	alert("리뷰쓰기로 넘어갑니다.");
  	location.href='/test/getProductInfo.do?user_no='+ user_no +'&order_no=' + order_no;
  }

@@ -76,7 +76,7 @@ public class ReviewController {
 	@ResponseBody
 	public int insertReview(
 
-			int product_no, /* ReviewVo, vo.set 다시 int로 */
+			int order_no, /* int product_no, */ /* ReviewVo, vo.set 다시 int로 */
 			String star, String title, String content, String user_id, String product_name, String product_size,
 			Date review_time, String product_color, Boolean review_status, int user_no) {
 		System.out.println(1);
@@ -92,7 +92,8 @@ public class ReviewController {
 		vo.setReview_time(review_time);
 		vo.setProduct_color(product_color);
 		vo.setUser_no(user_no);
-		vo.setProduct_no(product_no);
+		vo.setOrder_no(order_no);
+		/* vo.setProduct_no(product_no); */
 		vo.setReview_status(true);
 		int result = reviewService.insertReview(vo);
 		return result;

@@ -144,7 +144,8 @@
 			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
 			<input type="button" class="button" onclick="getProductInfo()" value="취소"/>
 			<input type="button" class="button" id='submitBtn' value="저장"/>
-			<input type="hidden" id="product_no" class="product_no" value="${getReviewproductList.product_no}"/>
+		<%-- 	<input type="hidden" id="product_no" class="product_no" value="${getReviewproductList.product_no}"/> --%>
+			<input type="hidden" class="order_no" id='order_no' value="${getReviewproductList.order_no}"/>
 			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
@@ -160,7 +161,7 @@ $(document).ready(function(){
     //저장 버튼 클릭 시
     $('#submitBtn').on('click',function(){
     	var user_no = localStorage.getItem("user_no");
-    	var product_no = $('product_no').val(); /*리뷰작성 버튼 생기면 변수로 받기*/
+    	var order_no = 2; /*리뷰작성 버튼 생기면 변수로 받기*/
         var title = $('#boardWriteTitle').val();
         var star = $('#star').val();
         var content = $('#content').val();
@@ -175,14 +176,14 @@ $(document).ready(function(){
        			type : 'POST',
        			cache : false,
        			data : {
-       				"user_no" : user_no, "product_no" : product_no, "title" : title, "star" : star, "content" : content,
+       				"user_no" : user_no,  "order_no" : order_no, "title" : title, "star" : star, "content" : content,
        	        		"user_id" : user_id, "product_name": product_name, "product_size" : product_size, "product_color" : product_color,
 						"main_image" : main_image, "quantity" : quantity
 					},
 				success:function(data){
 					if(data == 1){
 						alert("등록 성공");
-						location.href="/test/getReviewList.do?user_no="+user_no;
+						location.href="/test/getReviewList.do?user_no="+user_no;  //내가 작성한 리뷰 페이지
 					}
 				},
 				error:function(){
