@@ -36,7 +36,7 @@
 			<div class="location-contents">
 				<h2 class="title01">리뷰 수정</h2>.
 				<p class="location">
-					<span><a href="/">Home</a></span> <span><a href="/">마이페이지</a></span><strong>내가 작성한 리뷰</strong>
+					<span><a href="/">Home</a></span> <span><a href="/">마이페이지</a></span><span><a href="/">내가 작성한 리뷰</a></span><strong>리뷰 수정</strong>
 				</p>
 			</div>
 		</div>
@@ -64,7 +64,7 @@
 							class="required">*</span></th>
 						<td><input type="text" id="modifyTitle"
 							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${modifyupdateReview.review_title}"> 
+							placeholder="30자 미만으로 입력해 주세요." style="width: 515px;" value="${modifyReview.review_title}"> 
 							
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
@@ -76,7 +76,7 @@
 						<th scope="row"><label for="boardWriteTitle">별점</label> </th>
 						<td><input type="text" id="modifyStar"
 							class="input-style01" name="csoMtmInq.inqSj"
-							placeholder="별점" style="width: 100px;" value="${modifyupdateReview.star}">개 
+							placeholder="별점" style="width: 100px;" value="${modifyReview.star}">점
 							<span
 							class="error-msg" id="boardWriteTitle-msg" style="display: none;"></span>
 						</td>
@@ -86,7 +86,7 @@
 							class="required">*</span></th>
 						<td><textarea cols="30" rows="10" id="modifyContent"
 								placeholder="1,000자 미만 (특수문자 \ / : < > ; 사용불가)으로 입력해 주세요."
-								style="width: 1000px; height: 150px;" >${modifyupdateReview.review_content}</textarea>
+								style="width: 750px; height: 150px;" >${modifyReview.review_content}</textarea>
 							<div class="clearfix">
 								<div class="fl">
 									<span class="error-msg" id="boardWriteContent-msg"
@@ -115,7 +115,7 @@
 		<div class="btnWrapBox" >
 			<input type="button" class="button" onclick="getProductInfo()" value="취소"/> <!-- 내가쓴리뷰페이지로 -->
 			<input type="button" class="button" id='modifyBtn' value="수정"/>
-			<input type="hidden" id="review_no" class="review_no" value="${modifyupdateReview.get(0).review_no}"/>
+			<input type="hidden" id="review_no" class="review_no" value="${modifyReview.review_no}"/>
 			<!-- 저장 시 디비 insert -->
 		</div>
 		<br>
@@ -132,15 +132,10 @@ $(document).ready(function(){
     //수정 버튼 클릭 시
     $('#modifyBtn').on('click',function(){
     	var user_no = localStorage.getItem("user_no");
-    	alert(user_no);
     	var review_no = $('#review_no').val();
-    	alert(review_no);
         var review_title = $('#modifyTitle').val();
-        alert(review_title);
         var star = $('#modifyStar').val();
-        alert(star);
         var review_content = $('#modifyContent').val();
-        alert(review_content);
       
        		$.ajax({
        			url : '/test/modifyupdateReview.do',
@@ -148,13 +143,13 @@ $(document).ready(function(){
        			cache : false,
        			data : {
        				"user_no" : user_no, "review_no" : review_no,
-       				"modifyTitle" : review_title, "modifyStar" : star,
-       				"modifyContent" : review_content
+       				"review_title" : review_title, "star" : star,
+       				"review_content" : review_content
        	        		
 					},
 				success:function(data){
 					if(data == 1){
-						alert("수정 성공");
+						alert("수정이 되었습니다.");
 						location.href="/test/getReviewList.do?user_no="+user_no;
 					}
 				},
