@@ -1198,7 +1198,7 @@
 			</div>
 			<div class="lyBtnArea">
 				<a href="/" class="btn">홈으로 가기</a> 
-				<a href="/blueup/getCart.do" class="btn">장바구니 가기</a> 
+				<a href="/test/getCart.do" class="btn">장바구니 가기</a> 
 				<a href="/order/orderform/new" class="btn fill">다시 주문하기</a>
 			</div>
 		</div>
@@ -1208,7 +1208,7 @@
 	</section>
 </article>
 <%@ include file="footer.jsp"%>
-<form id="movedCouponForm" method="post" action="/blueup/getCoupon.do">
+<form id="movedCouponForm" method="post" action="/test/getCoupon.do">
 	<input type="hidden" id="user_no" name="user_no" value="${couponlist.get(0).user_no }"/>
 </form>
 </body>
@@ -1216,8 +1216,6 @@
 <!--아임포트 사용을 위한 스크립트  -->
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
-
-
 $("#payBtn").click(function () {
     var merchant_uid_origin = 'merchant_' + new Date().getTime();
     var discount_by_coupon = $('#couponUse').val();
@@ -1304,148 +1302,170 @@ $("#payBtn").click(function () {
  	
  });  
 });
-
-
-
-	/* 포인트 차감*/
-	function pointApply(user_no){
-		var userNo = localStorage.getItem("user_no");
-		var point = $('#pointUse').val();
-		var total_point = $('#totalPoint').html();
-		$.ajax({
-			url:'/blueup/getPoint.do',
-		    type:'POST',
-			data: {"user_no" : userNo, "point" : point},
-			dataType:'json',
-			success:function(data) {
-				$('#totalPoint').html(data);
-				discounted();
-			}
-		});
+$(document).ready(function() {
+	var user_no = localStorage.getItem("user_no");
+	if(user_no != 0){
+		var user_name = localStorage.getItem("user_name");
+		var phone1 = localStorage.getItem("phone1");
+		var phone2 = localStorage.getItem("phone2");
+		var phone3 = localStorage.getItem("phone3");
+		var email_id = localStorage.getItem("email_id");
+		var email_address = localStorage.getItem("email_address");
+		$('#memName').val(user_name);			
+		$('#memMobile1').val(phone1);			
+		$('#memMobile2').val(phone2);			
+		$('#memMobile3').val(phone3);			
+		$('#memEmail1').val(email_id);			
+		$('#memEmail2').val(email_address);	
+	}else{
+		$('#memName').val();			
+		$('#memMobile1').val();			
+		$('#memMobile2').val();			
+		$('#memMobile3').val();			
+		$('#memEmail1').val();			
+		$('#memEmail2').val();
 	}
-	
-	/*전체 포인트 차감*/
-	function pointApplyAll(user_no){
-		var userNo = localStorage.getItem("user_no");
-		$.ajax({
-			url:'/blueup/getPointAll.do',
-		    type:'POST',
-			data: {"user_no" : userNo },
-			dataType:'json',
-			success:function(data) {
-				$('#pointUse').val(data);
-				$('#totalPoint').html((data-data));
-				discounted();
-			}
-		});
-	}
-	
-	/*쿠폰 팝업창*/
-	$(function(){
-		$('#couponSelect').click(()=>{
-			$('#couponListPopup').show();
-		});
+});
+
+/* 포인트 차감*/
+function pointApply(user_no){
+	var userNo = localStorage.getItem("user_no");
+	var point = $('#pointUse').val();
+	var total_point = $('#totalPoint').html();
+	$.ajax({
+		url:'/test/getPoint.do',
+	    type:'POST',
+		data: {"user_no" : userNo, "point" : point},
+		dataType:'json',
+		success:function(data) {
+			$('#totalPoint').html(data);
+			discounted();
+		}
 	});
-	/* 쿠폰적용 */
-	function coupon(coupon_no){
-		var userNo = localStorage.getItem("user_no");
-		$.ajax({
-			url:'/blueup/getCouponSelect.do',
-		    type:'POST',
-			data: {"user_no" : userNo, "coupon_no" : coupon_no},
-			dataType:'json',
-			success:function(data) {
-				$('#couponListPopup').hide();
-				$('#couponUse').val(data.coupon_discount);
-				discounted();
-			}
-		});
-	}
-	/* 할인적용 금액 */
-	function discounted(){
-		var product = "${orderlist.get(0).all_price}";
-		var product_discount = "${orderlist.get(0).all_discount}";
-		var coupon_discount = $('#couponUse').val();
-		var point_discount = $('#pointUse').val();
-		$.ajax({
-			url:'/blueup/getDiscounted.do',
-		    type:'POST',
-			data: {"all_price" : product, "all_discount" : product_discount, "coupon" : coupon_discount, "point" : point_discount},
-			dataType:'json',
-			success:function(data) {
-				var total_discount = parseInt(product_discount) + data;
-				$('#dc_amount').html(total_discount + "원");
-				var total_price = parseInt(product) - total_discount;
-				$('#total_amount').html(total_price);
-				
-			}
-		});
-	}
-	/* 이메일 */
-	function emailChange(email) {
-		var value = $(email).text();
-		$('#memEmail2').val(value);
-	}
-	
-	/* 배송 요청사항 */
-	function shippingChange(shippingRequest) {
-		var value = $(shippingRequest).text();
-		$('#dlvMemo').val(value);
-	}
-	
-	/* 다음 우편번호 검색 api */
-	function execution_daum_address() {
-            new daum.Postcode(
-                  {
-                     oncomplete : function(data) {
-                        /* 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분. */
-                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                        var addr = ''; // 주소 변수
-                        var extraAddr = ''; // 참고항목 변수
+}
 
-                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                           addr = data.roadAddress;
-                        } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                           addr = data.jibunAddress;
-                        }
+/*전체 포인트 차감*/
+function pointApplyAll(user_no){
+	var userNo = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/getPointAll.do',
+	    type:'POST',
+		data: {"user_no" : userNo },
+		dataType:'json',
+		success:function(data) {
+			$('#pointUse').val(data);
+			$('#totalPoint').html((data-data));
+			discounted();
+		}
+	});
+}
 
-                        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                        if (data.userSelectedType === 'R') {
-                           // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                           // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                           if (data.bname !== ''
-                                 && /[동|로|가]$/g.test(data.bname)) {
-                              extraAddr += data.bname;
-                           }
-                           // 건물명이 있고, 공동주택일 경우 추가한다.
-                           if (data.buildingName !== ''
-                                 && data.apartment === 'Y') {
-                              extraAddr += (extraAddr !== '' ? ', '
-                                    + data.buildingName
-                                    : data.buildingName);
-                           }
-                           // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                           if (extraAddr !== '') {
-                              extraAddr = ' (' + extraAddr + ')';
-                           }
-                           // 주소변수 문자열과 참고항목 문자열 합치기
-                           addr += extraAddr;
+/*쿠폰 팝업창*/
+$(function(){
+	$('#couponSelect').click(()=>{
+		$('#couponListPopup').show();
+	});
+});
+/* 쿠폰적용 */
+function coupon(coupon_no){
+	var userNo = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/getCouponSelect.do',
+	    type:'POST',
+		data: {"user_no" : userNo, "coupon_no" : coupon_no},
+		dataType:'json',
+		success:function(data) {
+			$('#couponListPopup').hide();
+			$('#couponUse').val(data.coupon_discount);
+			discounted();
+		}
+	});
+}
+/* 할인적용 금액 */
+function discounted(){
+	var product = "${orderlist.get(0).all_price}";
+	var product_discount = "${orderlist.get(0).all_discount}";
+	var coupon_discount = $('#couponUse').val();
+	var point_discount = $('#pointUse').val();
+	$.ajax({
+		url:'/test/getDiscounted.do',
+	    type:'POST',
+		data: {"all_price" : product, "all_discount" : product_discount, "coupon" : coupon_discount, "point" : point_discount},
+		dataType:'json',
+		success:function(data) {
+			var total_discount = parseInt(product_discount) + data;
+			$('#dc_amount').html(total_discount + "원");
+			var total_price = parseInt(product) - total_discount;
+			$('#total_amount').html(total_price);
+			
+		}
+	});
+}
+/* 이메일 */
+function emailChange(email) {
+	var value = $(email).text();
+	$('#memEmail2').val(value);
+}
 
-                        } else {
-                           addr += ' ';
-                        }
+/* 배송 요청사항 */
+function shippingChange(shippingRequest) {
+	var value = $(shippingRequest).text();
+	$('#dlvMemo').val(value);
+}
 
-                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                        $("#postAddr").val(data.zonecode);
-                        $("#baseAddr").val(addr);
-                        // 커서를 상세주소 필드로 이동한다.
-                        document.getElementById("detailAddr").focus();
-                     }
-                  }).open();
+/* 다음 우편번호 검색 api */
+function execution_daum_address() {
+        new daum.Postcode(
+              {
+                 oncomplete : function(data) {
+                    /* 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분. */
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
 
-         }
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                       addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                       addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === 'R') {
+                       // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                       // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                       if (data.bname !== ''
+                             && /[동|로|가]$/g.test(data.bname)) {
+                          extraAddr += data.bname;
+                       }
+                       // 건물명이 있고, 공동주택일 경우 추가한다.
+                       if (data.buildingName !== ''
+                             && data.apartment === 'Y') {
+                          extraAddr += (extraAddr !== '' ? ', '
+                                + data.buildingName
+                                : data.buildingName);
+                       }
+                       // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                       if (extraAddr !== '') {
+                          extraAddr = ' (' + extraAddr + ')';
+                       }
+                       // 주소변수 문자열과 참고항목 문자열 합치기
+                       addr += extraAddr;
+
+                    } else {
+                       addr += ' ';
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    $("#postAddr").val(data.zonecode);
+                    $("#baseAddr").val(addr);
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("detailAddr").focus();
+                 }
+              }).open();
+
+     }
 
 	
 </script>
