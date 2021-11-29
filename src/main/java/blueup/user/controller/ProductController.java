@@ -278,15 +278,80 @@ public class ProductController {
 	
 	/* 세일 상품 조회*/
 	@RequestMapping("/getSaleProduct.do")
-	public ModelAndView getSaleProduct(@RequestParam(value="user_no", required=false)String user_no) {
+	public ModelAndView getSaleProduct(@RequestParam(value="user_no", required=false)String user_no, 
+			@RequestParam(value="pageNum", defaultValue="1")int pageNum, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
+		productCriteria cri = new productCriteria();
+		System.out.println(user_no);
+		cri.setPage(pageNum);
+		cri.setPageStart();
+		System.out.println("페이지당 개수 :" + cri.getPerPageNum());
+		System.out.println("페이지 시작 :" + cri.getStartRow());
+		
+		productPageMaker pageMaker = new productPageMaker();
+		pageMaker.setCri(cri);
+		
 		if(user_no != null) {
-			mav.addObject("Category", "SALES");
-			mav.addObject("Product",productserviceimpl.getSaleProduct(user_no));
-			mav.setViewName("ProductView");
-		}else {
-			user_no = "0";
+			HashMap<Object, Object> vo = new HashMap<Object, Object>();
+			vo.put("user_no", user_no);
+			vo.put("perPageNum", cri.getPerPageNum());
+			vo.put("startRow", cri.getStartRow());
 			
+			pageMaker.setTotalCount(productserviceimpl.getSaleProductCount());
+			System.out.println("총게시물수: " + pageMaker.getTotalCount());
+			
+			mav.addObject("pageNum", pageNum);
+			mav.addObject("pageMaker", pageMaker);
+			mav.addObject("Category", "SALES");
+			mav.addObject("Product", productserviceimpl.getSaleProduct(vo));
+			mav.setViewName("ProductViewForSale");
+		}else {
+			HashMap<Object, Object> vo = new HashMap<Object, Object>();
+			vo.put("perPageNum", cri.getPerPageNum());
+			vo.put("startRow", cri.getStartRow());
+			
+			pageMaker.setTotalCount(productserviceimpl.getSaleProductCount());
+			System.out.println("총게시물수: " + pageMaker.getTotalCount());
+			
+			List<ProductVo> productValue = productserviceimpl.getSaleProductNonMember(vo);
+			Cookie cookies[] = req.getCookies();
+			String[] p_no = null;
+			
+			//쿠키값 확인
+			for(Cookie c : cookies) {
+				if(c.getName().equals("p_list")) {
+					System.out.println("쿠키체크");
+					String value = c.getValue();
+					if(value == "") {
+						System.out.println(" 빈문자열");
+						 p_no = null;
+					}else {
+						p_no = value.split("%2F");
+					}
+				}
+			}
+			
+			// 쿠키 값 == 상품번호 wish no 수정 
+			if(!ArrayUtils.isEmpty(p_no)) {
+				for(int i =0; i < productValue.size(); i++) {
+					for(String p : p_no) {
+						if(p == ""){
+							continue;
+						}else{
+							if(Integer.parseInt(p) == productValue.get(i).getProduct_no()) {
+							productValue.get(i).setWish_no(1);
+							System.out.println(p);
+							}
+						}
+					}
+				}
+			}
+			
+			mav.addObject("pageNum", pageNum);
+			mav.addObject("pageMaker", pageMaker);
+			mav.addObject("Category", "SALES");
+			mav.addObject("Product", productValue);
+			mav.setViewName("ProductViewForSale");
 		}
 		return mav;
 	}

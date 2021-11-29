@@ -112,8 +112,21 @@
 	</select>
 	
 	<!-- 세일 상품 가져오기 -->
-	<select id="getSaleProduct" resultType="productvo">
-	select * from product as a left join wishList as b on a.product_no = b.product_no 
-	where discount > 0 and b.user_no = #{user_no}
+	<select id="getSaleProduct" resultType="productvo" parameterType="hashmap">
+	select * from product as a left outer join wishList as b 
+	on a.product_no = b.product_no and user_no = CAST(#{user_no} AS INTEGER) 
+	where discount > 0 LIMIT #{perPageNum} OFFSET #{startRow}
+	</select>
+	
+	<!-- 세일 상품 게시물 수 -->
+	<select id="getSaleProductCount" resultType="Integer">
+	select count(*) from product 
+	where discount > 0 
+	</select>
+	
+	<!-- 세일 상품 가져오기 비회원 -->
+	<select id="getSaleProductNonMember" resultType="productvo" parameterType="hashmap">
+	select * from product 
+	where discount > 0 LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 </mapper>

@@ -59,12 +59,17 @@ public class WishController {
 			// 쿠키 값 == 상품번호 wish no 수정
 			if (p_no != null) {
 				for (int i=0; i<p_no.length; i++) {
-					System.out.println("쿠키 널아님");
-					if (Integer.parseInt(p_no[i]) != vo.getProduct_no()) {
-							p_new_no += p_no[i];
+					for(String p : p_no) {
+						if(p == ""){
+							continue;
+						}else{
+							if (Integer.parseInt(p) != vo.getProduct_no()) {
+							p_new_no += p;
 							p_new_no += "%2F";
+						}
 					}
 				}
+			}
 				System.out.println("새로운 리스트" + p_new_no);
 			}
 			String check[] = p_new_no.split("%2F");

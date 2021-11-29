@@ -80,7 +80,7 @@
 						<ul class="list cate">
 							<!-- 세일상품 -->
 							<li class="select">
-								<a href="/"> <font >SALES</font></a>
+								<a href="javascript:void(0)" onclick="sale()"><font >SALES</font></a>
 									<!-- 
 								<div class="pan top_cate_pan_1">
 									<div class="inner">	
@@ -609,6 +609,15 @@ function myPage(){
 	}else{
 		alert('로그인이 필요한 작업입니다');
 		return;
+	}
+}
+
+function sale(){
+	var user_no = localStorage.getItem("user_no");
+	if(user_no != null){
+		location.href="/test/getSaleProduct.do?user_no="+user_no;
+	}else{
+		location.href="/test/getSaleProduct.do?";
 	}
 }
 </script>
