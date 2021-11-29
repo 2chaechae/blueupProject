@@ -49,7 +49,7 @@ public class ReviewDAO {
 	}
 	/* 리뷰 수정 적용 */
 	public int modifyupdateReview(ReviewVo vo) {
-		return sqlSessionTemplate.selectOne("reviewDao.modifyupdateReview", vo);
+		return sqlSessionTemplate.update("reviewDao.modifyupdateReview", vo);
 	}
 	
 }

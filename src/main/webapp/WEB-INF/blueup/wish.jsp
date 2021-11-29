@@ -143,9 +143,9 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-var user_id = localStorage.getItem("user_id");
-var user_no = parseInt(localStorage.getItem("user_no"));
+
 $(document).ready(function(){
+		var user_id = localStorage.getItem("user_id");
 		if(user_id != null){
 			alert("아이디ok");
 			$('#id').text(user_id);
@@ -166,6 +166,7 @@ $(document).ready(function(){
 function delete_wish(element){
 	var product_no = $(element).closest('div').prev().val();
 	var wish_no = $(element).closest('div').prev().prev().val();
+	var user_no = localStorage.getItem("user_no");
 	alert(product_no);
 	alert(wish_no);
 	// null point 오류 -> 비회원 0으로 셋팅
@@ -197,6 +198,7 @@ function delete_wish(element){
 }
 
 function deleteAll(){
+	var user_no =localStorage.getItem("user_no");
 	alert("test");
 	/////// 비회원///////
 	if(user_no == null){
@@ -228,9 +230,33 @@ function deleteAll(){
 // 장바구니 이동 시 옵션창 
 function option(element){
 	alert("test");
+	var user_no =localStorage.getItem("user_no");
 	var product_no = $(element).closest('.wish').children('.p').val();
-	alert(product_no);
 	window.open("/test/getCartOption.do?product_no=" + product_no + "&user_no=" + user_no,"height=300", "width=500");
+}
+
+
+function viewCount(element){
+	var product_no = $(element).closest('div').prev().val();
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
 }
 
 </script>
