@@ -174,6 +174,7 @@ $(document).ready(function(){
     $('#submitBtn').on('click',function(){
     	var user_no = localStorage.getItem("user_no");
     	var order_no = 2; /*리뷰작성 버튼 생기면 변수로 받기*/
+    	var product_no= 101001; /*리뷰작성 버튼 생기면 변수로 받기*/
         var title = $('#boardWriteTitle').val();
         var star = $('#star').val();
         var content = $('#content').val();
@@ -188,7 +189,7 @@ $(document).ready(function(){
        			type : 'POST',
        			cache : false,
        			data : {
-       				"user_no" : user_no,  "order_no" : order_no, "title" : title, "star" : star, "content" : content,
+       			"product_no" :product_no, "user_no" : user_no,  "order_no" : order_no, "title" : title, "star" : star, "content" : content,
        	        		"user_id" : user_id, "product_name": product_name, "product_size" : product_size, "product_color" : product_color,
 						"main_image" : main_image, "quantity" : quantity
 					},
