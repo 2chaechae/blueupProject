@@ -552,17 +552,17 @@ var user_no = localStorage.getItem("user_no");
 
 function wish(){
 	if(user_no != null){
-		location.href="/blueupProject3/getWishList.do?user_no="+ user_no;
+		location.href="/getWishList.do?user_no="+ user_no;
 	}else{
-		location.href="/blueupProject3/getWishListCookie.do";
+		location.href="/getWishListCookie.do";
 	}
 }
 
 function cartAll() {
 	if(user_no != null){
-		location.href="/blueupProject3/getcartList.do?user_no="+ user_no";
+		location.href="/getcartList.do?user_no="+ user_no";
 	}else{
-		location.href="/blueupProject3/getcartList.do";
+		location.href="/getcartList.do";
 	}
 }
 </script>
