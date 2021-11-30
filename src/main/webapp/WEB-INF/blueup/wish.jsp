@@ -155,7 +155,7 @@ $(document).ready(function(){
 			var getlist = $.cookie('p_list');
 			var cookieValue = getlist.split('/');
 			console.log(cookieValue);
-			var length = cookieValue.length;
+			var length = cookieValue.length - 1;
 			console.log(length);
 			$('em').text(length);
 		}
@@ -180,7 +180,7 @@ function delete_wish(element){
 				$(element).closest('.wish').remove();
 				var now = $('.num').text();
 				console.log(now);
-				var new_num = Number(now) - 1; 
+				var new_num = parseInt(now) - 1; 
 				console.log(new_num);
 				$('.num').text(new_num);
 			}
