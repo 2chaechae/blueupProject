@@ -97,7 +97,6 @@ $(document).ready(function(){
 				data : { "search" : search},
 			}).done(function(data){
 					console.log("data받음");
-					alert(data);
 					$('#remove').empty();
 					$('#remove').html(data);
 			}).fail(function(){

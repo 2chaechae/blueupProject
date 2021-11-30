@@ -50,7 +50,7 @@ public class CartOptionController {
 		mav.addObject("data", cartoptionserviceimpl.cartOption(vo));
 		mav.addObject("color", color);
 		mav.addObject("size", size);
-		mav.setViewName("cartOption");
+		mav.setViewName("cartChange");
 		return mav;
 		
 	}

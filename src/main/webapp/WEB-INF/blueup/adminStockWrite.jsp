@@ -89,7 +89,6 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#addStock').submit(function(){
-		alert("test");
 		if($('#size option:selected').text() == ""){
 			alert("사이즈 옵션을 선택해주세요.");
 			return false;
@@ -164,7 +163,6 @@ $(document).ready(function(){
 	});
 	
 	$('#color').change(function(){
-			alert("test");
 			var product_size =  $('#size option:selected').text();
 			var product_color = $('#color option:selected').text();
 			var unit_price = $('#unit_price').val();
