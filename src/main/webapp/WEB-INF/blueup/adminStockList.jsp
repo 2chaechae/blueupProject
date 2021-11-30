@@ -44,7 +44,6 @@
 									<th scope="col">색상</th>
 									<th scope="col">단가</th>
 									<th scope="col">재고수량</th>
-									<th scope="col">구입비용</th>
 								</tr>
 							</thead>
 							
@@ -59,7 +58,6 @@
 										<c:set value="${stock.unit_price}" var="unit"/>
 										<c:set value="${stock.stock_quantity}" var="quantity"/>
 										<fmt:formatNumber var="formatNumber" value="${stock.unit_price}" pattern="#,###" />
-										<fmt:formatNumber var="cost" value="${unit * quantity}" pattern="#,###" />
 										<tr onclick="gotoDetail(this)">
 											<td scope="col" id="stock_no">${stock.stock_no}</td>
 											<td scope="col">${stock.product_name}</td>
@@ -67,8 +65,6 @@
 											<td scope="col">${stock.product_color}</td>
 											<td scope="col">${formatNumber}원</td>
 											<td scope="col">${stock.stock_quantity}</td>
-											<td scope="col"><c:out value="${cost}"></c:out></td>
-											<input type="hidden" value="${stock.product_no}"/>
 										</tr>
 										</c:forEach>
 									</c:otherwise>
@@ -102,8 +98,9 @@ $(document).ready(function(){
 	});
 });
 function gotoDetail(element){
-	var stock_no = $('#stock_no').text();
-	location.href="/test/getProduct.mdo?product_no=" + product_no;
+	var flag = $('#stock_no').text();
+	var stock_no = parseInt(flag);
+	location.href="/test/getStockInfo.mdo?stock_no=" + stock_no;
 }
 
 

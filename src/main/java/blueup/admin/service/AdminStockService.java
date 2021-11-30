@@ -11,4 +11,6 @@ public interface AdminStockService {
 	public List<StockVo> getStockListBySearch(String search);
 	public int insertStock(StockVo vo);
 	public int checkStock(StockVo vo);
+	public StockVo getStockInfo(int stock_no);
+	public int updateStock(StockVo vo);
 }

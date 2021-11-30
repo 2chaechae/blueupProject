@@ -74,4 +74,13 @@
 		where product_no = #{product_no} and product_size = #{product_size} and unit_price = #{unit_price} and product_color = #{product_color};
 	</select>
 
+	<!-- 특정 재고 정보 가져오기 -->
+	<select id="getStockInfo" parameterType="Integer" resultType="stockvo">
+		select * from stock where stock_no=#{stock_no}
+	</select>
+	
+	<!-- 재고 수정 -->
+	<update id="updateStock" parameterType="stockvo" >
+		update stock set stock_quantity=#{stock_quantity} where stock_no=#{stcok_no};
+	</update>
 </mapper>

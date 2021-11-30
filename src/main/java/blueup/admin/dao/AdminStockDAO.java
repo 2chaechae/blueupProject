@@ -35,4 +35,13 @@ public class AdminStockDAO {
 		return sqlSssionTemplate.selectOne("stockDao.checkStock", vo);
 	}
 	
+	/* 특정 재고 정보 가져오기 */
+	public StockVo getStockInfo(int stock_no) {
+		return sqlSssionTemplate.selectOne("stockDao.getStockInfo", stock_no);
+	}
+	
+	/* 재고 수량 변경 */
+	public int updateStock(StockVo vo) {
+		return sqlSssionTemplate.update("stockDao.updateStock", vo);
+	}
 }

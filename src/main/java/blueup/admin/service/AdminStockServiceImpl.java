@@ -34,4 +34,14 @@ public class AdminStockServiceImpl implements AdminStockService{
 		return adminstockdao.checkStock(vo);
 	}
 
+	@Override
+	public StockVo getStockInfo(int stock_no) {
+		return adminstockdao.getStockInfo(stock_no);
+	}
+
+	@Override
+	public int updateStock(StockVo vo) {
+		return adminstockdao.updateStock(vo);
+	}
+
 }

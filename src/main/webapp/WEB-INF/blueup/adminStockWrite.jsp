@@ -131,8 +131,8 @@ $(document).ready(function(){
 					var colorflag = data.product_color;
 					var color = (colorflag).split("/");
 					
-					var htmlsize = '"<option>---선택---</option>"';
-					var htmlcolor = '"<option>---선택---</option>"';
+					var htmlsize = '"<option value=1>---선택---</option>"';
+					var htmlcolor = '"<option value=1>---선택---</option>"';
 					
 					for(s of size){
 						htmlsize += "<option value='" + s + "'>" + s + "</option>";
@@ -163,7 +163,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#product_color').change(function(){
+	$('#color').change(function(){
 			alert("test");
 			var product_size =  $('#size option:selected').text();
 			var product_color = $('#color option:selected').text();
@@ -176,6 +176,9 @@ $(document).ready(function(){
 				success:function(data) {
 					if(data > 0){
 						alert("동일 옵션으로 등록된 재고가 있습니다.");
+						$('#size option[value=1]').attr('selected', 'selected');
+						$('#color option[value=1]').attr('selected', 'selected');
+						$('#unit_price').val(0);
 					}
 				},
 				error:function() {

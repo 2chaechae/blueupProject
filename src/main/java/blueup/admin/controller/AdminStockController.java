@@ -80,4 +80,25 @@ public class AdminStockController {
 		System.out.println(result);
 		return result;
 	}
+	
+	/* 특정 재고 가져오기 */
+	@RequestMapping("/getStockInfo.mdo")
+	public ModelAndView getStockInfo(int stock_no) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("StockInfo", adminstockserviceimpl.getStockInfo(stock_no));
+		mav.setViewName("adminStockView");
+		return mav;
+	}
+	
+	/* 재고 수정*/
+	@RequestMapping("/updateStock.mdo")
+	public ModelAndView updateStock(StockVo vo) {
+		ModelAndView mav = new ModelAndView();
+		adminstockserviceimpl.updateStock(vo);
+		int stock_no = vo.getStock_no();
+		mav.addObject("StockInfo", adminstockserviceimpl.getStockInfo(stock_no));
+		mav.setViewName("adminStockView");
+		return mav;
+	}
+	
 }
