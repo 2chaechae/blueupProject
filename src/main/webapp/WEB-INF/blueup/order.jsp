@@ -809,6 +809,8 @@
 														</th>
 														<td>
 															<input type="text" id="couponUse" class="input-style01 input_required textOnly" value="0"
+																	style="width: 137px; ime-mode: disabled;" maxlength="270" disabled="disabled" /> 
+															<input type="text" id="couponName" class="input-style01 input_required textOnly"
 																	style="width: 255px; ime-mode: disabled;" maxlength="270" disabled="disabled" /> 
 															<span class="btnTdArea"> 
 																<a href="#none;" class="btn d_layer_open" id="couponSelect">쿠폰조회</a>
@@ -1198,7 +1200,7 @@
 			</div>
 			<div class="lyBtnArea">
 				<a href="/" class="btn">홈으로 가기</a> 
-				<a href="/blueup/getCart.do" class="btn">장바구니 가기</a> 
+				<a href="/test/getCart.do" class="btn">장바구니 가기</a> 
 				<a href="/order/orderform/new" class="btn fill">다시 주문하기</a>
 			</div>
 		</div>
@@ -1208,7 +1210,7 @@
 	</section>
 </article>
 <%@ include file="footer.jsp"%>
-<form id="movedCouponForm" method="post" action="/blueup/getCoupon.do">
+<form id="movedCouponForm" method="post" action="/test/getCoupon.do">
 	<input type="hidden" id="user_no" name="user_no" value="${couponlist.get(0).user_no }"/>
 </form>
 </body>
@@ -1219,6 +1221,13 @@
 
 
 $("#payBtn").click(function () {
+/* var arr = [];
+<c:forEach items="${orderlist}" var="item">
+orderListSession
+</c:forEach> */
+	var coupon1 = $('#couponName').val();
+	var message1 = $('#dlvMemo').val();
+	var user_no1 = $('#user_no').val();
     var merchant_uid_origin = 'merchant_' + new Date().getTime();
     var discount_by_coupon = $('#couponUse').val();
     var discount_by_point = $('#pointUse').val();
@@ -1232,22 +1241,20 @@ $("#payBtn").click(function () {
  	var email = email_id +'@'+ email_address;
  	var receiver = $('#ordererName').val();
  	var buyer_postcode1 = $('#postAddr').val();
- 	var address = $('#baseAddr').val();
+ 	var buyer_address = $('#baseAddr').val();
  	var detailed_address = $('#detailAddr').val();
- 	buyer_addr1 = address+' '+detailed_address;
+ 	address = '('+buyer_postcode1+') '+buyer_address+' '+detailed_address;
  	var temp = $('input:radio[name="paymentBtn"]:checked').val();
  	var amount1 = ${orderlist.get(0).pay_amount};
  	/* $('#total_amount').html(); */
  	alert("가격 : "+amount1);
- 	alert('temp = '+temp);
- 	alert(email);
- 	alert('잘되고있어');
 	
  	
  	  var IMP = window.IMP; // 생략가능
- 	    IMP.init('imp89704086');
+ 	  IMP.init('imp89704086');
  	    /*'iamport' 대신 부여받은 "가맹점 식별코드"를 사용*/
  	    // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+ 	    alert('결제 시작');
  	    IMP.request_pay({
  	    pg: 'inicis',// version 1.1.0부터 지원.
  	    /*
@@ -1277,14 +1284,14 @@ $("#payBtn").click(function () {
  	    참고하세요.
  	    나중에 포스팅 해볼게요.
  	    */
- 	    name: '블루업 결제창',
+ 	    name: 'MIB 결제창',
  	    //결제창에서 보여질 이름
  	    amount: 100,
  	    //가격, 임의로 100으로 해놓음
  	    buyer_email: email,
  	    buyer_name: buyer_name1,
  	    buyer_tel: buyer_tel1,
- 	    buyer_addr: buyer_addr1,
+ 	    buyer_addr: address,
  	    buyer_postcode: buyer_postcode1,
  	    m_redirect_url: 'https://www.yourdomain.com/payments/complete'
  	    /*
@@ -1297,13 +1304,39 @@ $("#payBtn").click(function () {
  	       if (rsp.success) {
  	          var msg = '결제가 완료되었습니다.\n';
  	          msg += '결제 금액 : ' + rsp.paid_amount;
- 	          msg += '\n블루업을 이용해주셔서 감사합니다. 행복한 하루되세요. :)';
+ 	          msg += '\n MLB를 이용해주셔서 감사합니다. 행복한 하루되세요. :)';
+ 	          
+ 	          $.ajax({
+ 				url:'/test/payment.do',
+ 			    type:'POST',
+ 				data: {"user_no" : user_no1,
+ 	            	 "coupon_discount" : discount_by_coupon,
+ 	            	 "used_point" : discount_by_point,
+ 	            	 "buyer_name" : buyer_name1,
+ 	            	 "phone1" : phone1,
+ 	            	 "phone2" : phone2,
+ 	            	 "phone3" : phone3,
+ 	            	 "couponName" : coupon1,
+ 	            	 "receiver" : receiver,
+ 	            	 "address" : address,
+ 	            	 "order_means" : temp,
+ 	            	 "order_price" : amount1,
+ 	            	 "message" : message1
+ 				},
+ 				dataType:'json'
+ 				,success:function(data) {
+ 					alert(data);
+ 				}
+ 			}); 
+ 	         
  	          alert(msg);
-  
- 	       } 
- 	
- });  
-});
+ 	       } else {
+ 	          var msg = '결제에 실패하였습니다.';
+ 	          msg += '에러내용 : ' + rsp.error_msg;
+ 	          alert(msg);
+ 	       }
+ 	    });
+ 	    });
 
 
 
@@ -1313,7 +1346,7 @@ $("#payBtn").click(function () {
 		var point = $('#pointUse').val();
 		var total_point = $('#totalPoint').html();
 		$.ajax({
-			url:'/blueup/getPoint.do',
+			url:'/test/getPoint.do',
 		    type:'POST',
 			data: {"user_no" : userNo, "point" : point},
 			dataType:'json',
@@ -1328,7 +1361,7 @@ $("#payBtn").click(function () {
 	function pointApplyAll(user_no){
 		var userNo = localStorage.getItem("user_no");
 		$.ajax({
-			url:'/blueup/getPointAll.do',
+			url:'/test/getPointAll.do',
 		    type:'POST',
 			data: {"user_no" : userNo },
 			dataType:'json',
@@ -1350,13 +1383,14 @@ $("#payBtn").click(function () {
 	function coupon(coupon_no){
 		var userNo = localStorage.getItem("user_no");
 		$.ajax({
-			url:'/blueup/getCouponSelect.do',
+			url:'/test/getCouponSelect.do',
 		    type:'POST',
 			data: {"user_no" : userNo, "coupon_no" : coupon_no},
 			dataType:'json',
 			success:function(data) {
 				$('#couponListPopup').hide();
 				$('#couponUse').val(data.coupon_discount);
+				$('#couponName').val(data.coupon_name);
 				discounted();
 			}
 		});
@@ -1368,7 +1402,7 @@ $("#payBtn").click(function () {
 		var coupon_discount = $('#couponUse').val();
 		var point_discount = $('#pointUse').val();
 		$.ajax({
-			url:'/blueup/getDiscounted.do',
+			url:'/test/getDiscounted.do',
 		    type:'POST',
 			data: {"all_price" : product, "all_discount" : product_discount, "coupon" : coupon_discount, "point" : point_discount},
 			dataType:'json',
