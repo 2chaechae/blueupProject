@@ -36,19 +36,19 @@
 		WHERE STOCK_NO = #{stock_no};
 	</update>
 
-<!-- 재고 삭제를 위한 쿼리 -->
+	<!-- 재고 삭제를 위한 쿼리 -->
 	<delete id="deleteStock" parameterType="stockvo">
 		DELETE FROM STOCK WHERE STOCK_NO = #{stock_no}
 	</delete>	
 	
-<!--검색으로 재고 검색  -->
+	<!--검색으로 재고 검색  -->
 	<select id="getStockListBySearch" parameterType="stockvo" resultType="stockvo">
 		SELECT * FROM STOCK WHERE PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
 	</select>
 	
 	<!--전체 재고 검색  -->
 	<select id="getStockList" parameterType="stockvo" resultType="stockvo">
-		SELECT * FROM STOCK
+		SELECT * FROM STOCK ORDER BY STOCK_NO ASC;
 	</select>
 	
 	<!-- 상품번호&상품컬러 검색 -->
@@ -68,5 +68,19 @@
 		AND DETAILED_CATEGORY_NAME LIKE '%'||#{detailed_category_name}||'%'
 	</select>
 	
+	<!-- 재고 중복 여부 체크-->
+	<select id="checkStock" parameterType="stockvo" resultType="Integer">
+		select count(*) from stock 
+		where product_no = #{product_no} and product_size = #{product_size} and unit_price = #{unit_price} and product_color = #{product_color};
+	</select>
 
+	<!-- 특정 재고 정보 가져오기 -->
+	<select id="getStockInfo" parameterType="Integer" resultType="stockvo">
+		select * from stock where stock_no=#{stock_no}
+	</select>
+	
+	<!-- 재고 수정 -->
+	<update id="updateStock" parameterType="stockvo" >
+		update stock set stock_quantity=#{stock_quantity} where stock_no=#{stcok_no};
+	</update>
 </mapper>

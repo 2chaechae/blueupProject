@@ -10,6 +10,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ReviewVo {
+	int order_detail_no; //오더넘버
+	int order_no; //오더넘버
 	int review_no; // 리뷰 번호
 	int product_no; // 제품 번호 int
 	String product_name; // 제품 이름

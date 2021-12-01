@@ -140,7 +140,6 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#addProduct').submit(function(){
-		alert("test");
 		if($('#cate option:selected').text() == ""){
 			alert("카테고리 옵션을 선택해주세요.");
 			return false;

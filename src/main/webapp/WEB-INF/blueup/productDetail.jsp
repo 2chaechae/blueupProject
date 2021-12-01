@@ -738,7 +738,6 @@ function chooseColor(element){
 				$(spanList).each(function(){
 					for(var i=0; i < data.length; i++){
 							if($(this).text() == data[i].product_size && data[i].stock_quantity == 0){
-							alert($(this).text());
 							$(this).css("text-decoration", "line-through");
 							$(this).attr("disabled", true);
 						}
@@ -809,7 +808,6 @@ function numberPage(element){
 		data: {"user_no":user_no, "product_no":product_no, "page_no":page_no, "star" : star}
 	}).done(function(data){
 		console.log("data받음");
-		alert(data);
 		$('#remove').remove();
 		$('#paging').remove();
 		$('#reviewTabel').html(data);
@@ -935,9 +933,10 @@ function addOrder(){
 						url:'/test/addCartNonMemberOne.do',
 					    type:'POST',
 					   	cache:false,
-						data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
+						data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, "user_no" : 0,
 							"product_price" : product_price, "discount" : discount, "main_image" : main_image, "product_name" : product_name, "total_price" : total_price, "discount_total" : discount_total},
 						success:function(data) {
+							alert(data);
 							if(data == 1){
 							location.href="/test/getOrder.do";
 							}

@@ -30,9 +30,6 @@
     				<li>
     					<a href="/mypage/claim/list"><span>취소/교환/반품 조회</span></a>
     				</li>
-    				<li>
-    					<a href="/mypage/order/receipt/list"><span>증빙서류 조회</span></a>
-    				</li>
     			</ul>
     		</li>
     		<li id="myNavi2">
@@ -48,16 +45,13 @@
     					<a href="/mypage/goods/reviewView"><span>상품리뷰</span></a>
     				</li>
     				<li>
-    					<a href="/mypage/inquiry/list"><span>1:1 문의</span></a>
+    					<a href="/mypage/inquiry/list"><span>QnA</span></a>
     				</li>
     			</ul>
     		</li>
     		<li id="myNavi3">
     			<a href="javascript:;"><span>혜택정보</span></a>
     			<ul>
-    				<li>
-    					<a href="/mypage/benefit/listMileage"><span>마일리지</span></a>
-    				</li>
     				<li>
     					<a href="/mypage/benefit/listPoint"><span>포인트</span></a>
     				</li>
@@ -121,14 +115,15 @@
 							<input type="hidden" class="w" value="${wishList.wish_no}" />
 							<input type="hidden" class="p" value="${wishList.product_no}" />
 							<div style="width:250px; margin:0 auto;">
-								<img src="${wishList.main_image}" onclick="viewCount(this)" style="width:242px;height:242px;margin-top:27px;">
+								<img src="${wishList.main_image}" style="width:242px;height:242px;margin-top:27px;">
 								<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/x.png" onclick="delete_wish(this)" style="width:10px;height:10px; position:relative; top:-19em; right:-16.5em;">
 							<div style="width:242px; text-align:center;">  
 								<p style="font-size:14px; font-family:Noto Sans Korean;margin-bottom:5px;"><a href="#" onclick="#">${wishList.product_name}</a></p>
 								<p style="text-align:center; margin-bottom:5px;"><strong><fmt:formatNumber value="${wishList.product_price}" pattern="#,###,###"/>원</strong></p>
 							</div>
-							<div style="width:242px; display: flex;">
-								<a href="javascript:void(0)" onclick="option(this)" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+							<div style="height:30px; line-height: 28px; min-width: 30px; padding: 0 6px; font-size: 12px; width:110px; margin:auto;">
+								<a href="javascript:void(0)" onclick="option(this)" style="display: flex; text-align:center;">
+								<span style="width: 92px; background: #fff; color: #000; border: solid 1px #999;">장바구니</span></a>
 							</div>
 							</div>
 							</section>
@@ -148,11 +143,10 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-var user_id = localStorage.getItem("user_id");
-var user_no = parseInt(localStorage.getItem("user_no"));
+
 $(document).ready(function(){
+		var user_id = localStorage.getItem("user_id");
 		if(user_id != null){
-			alert("아이디ok");
 			$('#id').text(user_id);
 			var count = ${fn:length(wishList)};
 			$('em').text(count);
@@ -161,7 +155,7 @@ $(document).ready(function(){
 			var getlist = $.cookie('p_list');
 			var cookieValue = getlist.split('/');
 			console.log(cookieValue);
-			var length = cookieValue.length;
+			var length = cookieValue.length - 1;
 			console.log(length);
 			$('em').text(length);
 		}
@@ -171,8 +165,7 @@ $(document).ready(function(){
 function delete_wish(element){
 	var product_no = $(element).closest('div').prev().val();
 	var wish_no = $(element).closest('div').prev().prev().val();
-	alert(product_no);
-	alert(wish_no);
+	var user_no = localStorage.getItem("user_no");
 	// null point 오류 -> 비회원 0으로 셋팅
 	if(user_no == null){
 		user_no = 0;
@@ -187,7 +180,7 @@ function delete_wish(element){
 				$(element).closest('.wish').remove();
 				var now = $('.num').text();
 				console.log(now);
-				var new_num = Number(now) - 1; 
+				var new_num = parseInt(now) - 1; 
 				console.log(new_num);
 				$('.num').text(new_num);
 			}
@@ -202,7 +195,7 @@ function delete_wish(element){
 }
 
 function deleteAll(){
-	alert("test");
+	var user_no =localStorage.getItem("user_no");
 	/////// 비회원///////
 	if(user_no == null){
 		$.removeCookie('p_list');
@@ -216,11 +209,10 @@ function deleteAll(){
 		   	cache:false,
 			data: {"user_no":user_no},
 			success:function(data) {
-				alert('성공');
-				if(data > 1){
+				if(data > 0){
+				alert('모두 삭제되었습니다.');
 				$('.wish').remove();
 				$('.num').text(0);
-				alert('모두 삭제되었습니다.');
 				}
 			},
 			error:function() {
@@ -232,9 +224,8 @@ function deleteAll(){
 
 // 장바구니 이동 시 옵션창 
 function option(element){
-	alert("test");
+	var user_no =localStorage.getItem("user_no");
 	var product_no = $(element).closest('.wish').children('.p').val();
-	alert(product_no);
 	window.open("/test/getCartOption.do?product_no=" + product_no + "&user_no=" + user_no,"height=300", "width=500");
 }
 
@@ -242,7 +233,6 @@ function option(element){
 function viewCount(element){
 	var product_no = $(element).closest('div').prev().val();
 	var user_no = localStorage.getItem("user_no");
-	alert(product_no);
 	$.ajax({
 		url:'/test/updateViewCount.do',
 	    type:'POST',
@@ -262,6 +252,7 @@ function viewCount(element){
 		}
 	});
 }
+
 </script>
 </body>
 </html>

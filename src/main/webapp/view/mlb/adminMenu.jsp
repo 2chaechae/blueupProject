@@ -31,7 +31,7 @@
     			<a href="javascript:;"><span>주문 관리</span></a>
     			<ul>
     				<li>
-    					<a href="#"><span>통계내역</span></a>
+    					<a href="/test/getChartForm.mdo?start='2021-11-01'&end='2021-11-31'"><span>통계내역</span></a>
     				</li>
     				<li>
     					<a href="#"><span>일일주문내역</span></a>
@@ -57,7 +57,7 @@
     					<a href="#"><span>취소 관리</span></a>
     				</li>
     				<li>
-    					<a href="#"><span>재고/파손품 관리</span></a>
+    					<a href="/test/getStockList.mdo"><span>재고/파손품 관리</span></a>
     				</li>
     			</ul>
     		</li>

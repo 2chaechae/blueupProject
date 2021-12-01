@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminHeader.jsp" %>
-
 <!-- 컨텐츠 시작 -->
    
   <link rel="stylesheet" href="https://static.mlb-korea.com/pc/static/css/customer.css">
@@ -28,8 +27,8 @@
 
          <main class="contents oto_inquiryWrite-wrap" id="contents">
 
-            <div class="board-write">
-               <table summary="1:1고객상담 입력">
+            <div class="board-write" style="width:900px; height:230px; margin:0 auto; margin-top:20px;"">
+               <table summary="1:1고객상담 입력" style="margin-left:auto;margin-right:auto";>
                   <caption>공지사항</caption>
                   <colgroup>
                      <col style="width:200px;">
@@ -38,14 +37,14 @@
                   <tbody>
 
                   <tr>
-                     <th scope="row"><label for="boardWriteTitle">제목</label> <span class="required">*</span></th>
+                     <th scope="row" style="text-align: center;"><label for="boardWriteTitle">제목</label> <span class="required">*</span></th>
                      <td>
-                        <input type="text" id="boardWriteTitle" class="input-style01" name="notice_title" value="${content.notice_title }" style="width:515px;" readonly>
+                        <input type="text" id="boardWriteTitle" class="input-style01" name="notice_title" value="${content.notice_title }" style="width:586px;" readonly>
                         <span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
                      </td>
                   </tr>
                   <tr>
-                     <th scope="row"><label for="boardWriteContent">내용</label> <span class="required">*</span></th>
+                     <th scope="row" style="text-align: center;"><label for="boardWriteContent">내용</label> <span class="required">*</span></th>
                      <td>
                         <textarea name="notice_content" cols="30" rows="10" id="boardWriteContent" style="width:515px; height:150px;" readonly>${content.notice_content }</textarea>
                         

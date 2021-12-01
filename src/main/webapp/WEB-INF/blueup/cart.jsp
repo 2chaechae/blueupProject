@@ -355,8 +355,6 @@ var user_no = localStorage.getItem("user_no");
 		///////////////개당 값////////////////////
 		var per_p = parseInt(product_price / stat); // 1개 상품 금액
 		var per_d = parseInt(discount_price / stat); // 1개 상품 할인 금액
-		alert("1개 할인금액" + per_d);
-		alert("개수 " + stat);
 		//////////////변경 값////////////////////
 		product_price -= per_p;  // 변경된 선택상품의 상품총액
 		discount_price -= per_d; // 변경된 선택상품의 할인총액
@@ -550,7 +548,6 @@ var user_no = localStorage.getItem("user_no");
 					if(data == 1){
 					console.log("선택 삭제 완료");
 						$('input:checkbox[class=chBox]:checked').each(function(){
-							alert($(this).val());
 							$(this).closest('.row').remove();
 						});	
 						/////////// 삭제 후 내역 가져오기 //////////////
@@ -597,7 +594,6 @@ var user_no = localStorage.getItem("user_no");
 						$('#GNRL_DLV_total_amt').text(0);		
 					}else{
 						$('input:checkbox[class=chBox]:checked').each(function(){
-							alert($(this).val());
 							$(this).closest('.row').remove();
 						});	
 						var all_price_Nonmember = parseInt(data.all_price);
@@ -628,7 +624,6 @@ function checkOrder(){
 				console.log("전체");
 				$('input:checkbox[class=chBox]').each(function(){
 					product_no.push($(this).closest('tbody').find('.p_no').val());
-					alert($(this).val());
 				});
 			}else{
 				console.log("선택");
@@ -645,7 +640,6 @@ function checkOrder(){
 			console.log("전체");
 			$('input:checkbox[class=chBox]').each(function(){
 				cart_no.push($(this).val());
-				alert($(this).val());
 			});
 		}else{
 			console.log("선택");

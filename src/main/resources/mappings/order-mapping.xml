@@ -47,4 +47,13 @@
 		WHERE A.USER_NO = #{user_no }
 		AND B.COUPON_NO = #{coupon_no}
 	</select>
+	
+	<!-- 통계 상품 주문액 -->
+	<select id="getOrderAmount" parameterType="hashmap" resultType="orderamountvo">
+	 SELECT SUM(ORDER_PRICE) AS ORDER_TOTALPRICE , COUNT(*) AS ORDER_COUNT, TO_CHAR(ORDER_TIME, 'DD') AS DAY
+	 FROM ORDER_REQUEST
+	 WHERE TO_CHAR(ORDER_TIME, 'YYYYMMDD')<![CDATA[ > ]]>#{start} AND TO_CHAR(ORDER_TIME, 'YYYYMMDD')<![CDATA[ < ]]>#{end}
+	 GROUP BY TO_CHAR(ORDER_TIME, 'DD')
+	</select>
+
 </mapper>
