@@ -55,7 +55,7 @@
 							</thead>
 						</table>
 						<!-- 페이지 -->
-							<div style="display: block; text-align: center;">
+							<div style="display: block; text-align: center; margin-top:12px;">
 								<c:if test="${noticePm.startPage != 1 }">
 									<a href="/test/getAdminLoginCheck.mdo?noticePageNum=${noticePm.startPage - 1 }&admin_id=${admin_id}&admin_password">&lt;</a>
 								</c:if>
@@ -130,7 +130,7 @@
 							</tbody>
 						</table>
 						<!-- 페이지 -->
-							<div style="display: block; text-align: center;">
+							<div style="display: block; text-align: center; margin-top:12px;">
 								<c:if test="${termsPm.startPage != 1 }">
 									<a href="/test/getAdminLoginCheck.mdo?termsPageNum=${termsPm.startPage - 1 }&admin_id=${admin_id}&admin_password">&lt;</a>
 								</c:if>

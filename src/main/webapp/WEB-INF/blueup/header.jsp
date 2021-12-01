@@ -396,6 +396,7 @@
 							<button type="button" class="btn_nav ico_my">MY</button>
 							<div id="layerLogin" class="layer_login">
 								<ul>
+
 									<li><a href='/test/login.do' 
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="로그인">로그인</a></li>

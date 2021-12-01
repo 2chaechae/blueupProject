@@ -27,7 +27,7 @@
 
          <main class="contents oto_inquiryWrite-wrap" id="contents">
 
-            <div class="board-write">
+            <div class="board-write" style="width:900px; height:295px; margin:0 auto; margin-top:20px;">
                <table>
                   <caption>공지사항</caption>
                   <colgroup>
@@ -36,7 +36,7 @@
                   </colgroup>
                   <tbody>
                   <tr>
-                     <th scope="row"><label for="boardWriteSort">공지분류</label> <span class="required">*</span></th>
+                     <th scope="row" style="text-align: center;"><label for="boardWriteSort">공지분류</label> <span class="required">*</span></th>
                      <td>
                      
                         <select id="sel" name="notice_type" style="width: 200px;
@@ -60,14 +60,14 @@
                      </td>
                   </tr>
                   <tr>
-                     <th scope="row"><label for="boardWriteTitle">제목</label> <span class="required">*</span></th>
+                     <th scope="row" style="text-align: center;"><label for="boardWriteTitle">제목</label> <span class="required">*</span></th>
                      <td>
-                        <input type="text" id="boardWriteTitle" class="input-style01" name="notice_title" value="${notice.notice_title }" style="width:515px;">
+                        <input type="text" id="boardWriteTitle" class="input-style01" name="notice_title" value="${notice.notice_title }" style="width:586px;">
                         <span class="error-msg" id="boardWriteTitle-msg" style="display:none;"></span>
                      </td>
                   </tr>
                   <tr>
-                     <th scope="row"><label for="boardWriteContent">내용</label> <span class="required">*</span></th>
+                     <th scope="row" style="text-align: center;"><label for="boardWriteContent">내용</label> <span class="required">*</span></th>
                      <td>
                         <textarea name="notice_content" cols="30" rows="10" id="boardWriteContent" placeholder="내용을 입력해 주세요." style="width:515px; height:150px;">${notice.notice_content }</textarea>
                         
