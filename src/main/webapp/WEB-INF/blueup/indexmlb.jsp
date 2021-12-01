@@ -75,7 +75,8 @@
 											<li>
 													<div class="item">
 														<div class="thumb">
-															<a href="#" onclick="" class="goDetail">
+															<input class="product_no" type="hidden" value="${cap.product_no}" />
+															<a href="javascript:void(0)" onclick="viewCount(this)" class="goDetail">
 																<span class="img">
 																	<img src="${cap.main_image}" alt="N-COVER 볼캡 뉴욕양키스" onerror='errorImgShow(this, "285");' class="first" >
 																	</span>
@@ -97,6 +98,30 @@
 							</main>
 					</div>
 			</div>
+			<script type="text/javascript">
+			function viewCount(element){
+				var product_no = $(element).prev().val();
+				var user_no = localStorage.getItem("user_no");
+				$.ajax({
+					url:'/test/updateViewCount.do',
+				    type:'POST',
+				   	cache:false,
+					data: {"product_no":product_no},
+					success:function(data) {
+						if(data == 1)
+						console.log("조회수 증가 완료");
+						if(user_no != null){
+							location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+						}else{
+							location.href="/test/productDetailNonMember.do?product_no="+product_no;
+						}
+					},
+					error:function() {	
+						console.log("조회수 증가 실패");
+					}
+				});
+			}
+			</script>
 	<!--// 컨텐츠 끝 -->
 	
 	

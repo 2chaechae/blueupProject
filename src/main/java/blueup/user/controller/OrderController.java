@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,9 +28,10 @@ public class OrderController {
 
 	/* 주문페이지 */
 	@RequestMapping("/getOrder.do")
-	public ModelAndView getOrder(HttpSession session, HttpServletRequest request, UsersVo uservo, int user_no) {
+	public ModelAndView getOrder(HttpSession session, HttpServletRequest request, UsersVo uservo) {
 		ModelAndView mav = new ModelAndView();
 		session = request.getSession();
+		int user_no = uservo.getUser_no();
 		System.out.println("/getOrder에 넘어온 값 : "+user_no);
 		int total_point;
 		/* 상품정보 */
@@ -81,23 +83,29 @@ public class OrderController {
 				orderlist.add(ordervo);
 			}
 		}
-		/* 할인정보 - 포인트(잔액) */
-		Integer temp_total_point = orderserviceimpl.getToTalPointService(user_no);
-		if(temp_total_point == null) {
-			total_point = 0;
+		
+		if(user_no > 0) {
+			/* 할인정보 - 포인트(잔액) */
+			Integer temp_total_point = orderserviceimpl.getToTalPointService(user_no);
+			if(temp_total_point == null) {
+				total_point = 0;
+			}else {
+				total_point = temp_total_point;
+			}
+			
+			
+			mav.addObject("total_point", total_point);
+			/* 할인정보 - 쿠폰 */
+			List<CouponVo> couponlist = orderserviceimpl.getCouponListService(uservo);
+			mav.addObject("couponlist", couponlist);
+	
+			/* 배송지 정보 */
+			mav.addObject("orderlist", orderlist);
+			mav.setViewName("order");
 		}else {
-			total_point = temp_total_point;
+			mav.addObject("orderlist", orderlist);
+			mav.setViewName("order");
 		}
-		
-		
-		mav.addObject("total_point", total_point);
-		/* 할인정보 - 쿠폰 */
-		List<CouponVo> couponlist = orderserviceimpl.getCouponListService(uservo);
-		mav.addObject("couponlist", couponlist);
-
-		/* 배송지 정보 */
-		mav.addObject("orderlist", orderlist);
-		mav.setViewName("order");
 		return mav;
 	}
 
