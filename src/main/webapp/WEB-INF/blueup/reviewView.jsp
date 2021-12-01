@@ -220,8 +220,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<div>
 											<tr>
 							<td>상품정보</td>
-							<br>			
-				<td width="100px">${reviewlist.product_name}</td>
+							<br>		
+							 <img src="${reviewlist.photo1}" width="150px" height="150px" >
+							<br>
+							
+				<td width="100px">상품정보: ${reviewlist.product_name}</td>
 				<td width="60px">${reviewlist.product_size}</td>
 				<td width="60px">${reviewlist.product_color}</td>
 				<br>
@@ -296,9 +299,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 </form> --%>
 <script>
 /* 리뷰 쓰기 */
-
- 
- 
 
  function writeReview(){
  	var user_no = localStorage.getItem("user_no");

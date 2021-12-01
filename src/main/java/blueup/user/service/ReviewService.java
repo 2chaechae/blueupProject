@@ -14,5 +14,6 @@ public interface ReviewService {
 		public ReviewVo modifyReview(ReviewVo vo);
 		public int modifyupdateReview(ReviewVo vo);
 		public int getReviewNo();
+		public int insertPhoto(ReviewVo vo);
 		}
 		

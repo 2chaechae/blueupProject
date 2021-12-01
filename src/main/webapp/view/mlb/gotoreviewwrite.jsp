@@ -18,8 +18,10 @@
 <script type="text/javascript">
 function getProductInfoForReview(){
 	var user_no = localStorage.getItem("user_no");
-	var order_no = localStorage.getItem("order_no");; /* 나중에 구매확정에서 product_no갖고와야함 */
-	location.href='/test/getProductInfoForReview.do?user_no='+ user_no +'&order_no=' + order_no;
+	var order_detail_no = 25;
+	var order_no = 2; /* 나중에 구매확정에서 product_no갖고와야함 */
+	location.href='/test/getProductInfoForReview.do?user_no='+ user_no +'&order_detail_no=' + order_detail_no
+			          +'&order_no=' + order_no;
 }
 	/* function getProductInfo(){
 		var user_no = localStorage.getItem("user_no");

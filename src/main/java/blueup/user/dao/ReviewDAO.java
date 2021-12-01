@@ -36,6 +36,13 @@ public class ReviewDAO {
 		return sqlSessionTemplate.selectOne("reviewDao.getProductInfoForReview", vo);
 	}
     
+	/* 리뷰에 포토넣기 */
+	public int insertPhoto(ReviewVo vo) { 
+		return sqlSessionTemplate.insert("reviewDao.insertPhoto", vo);
+	}
+	
+	
+	
 	public List<ReviewVo> getReviewproductList(ReviewVo vo) {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewproductList" , vo);
 	}

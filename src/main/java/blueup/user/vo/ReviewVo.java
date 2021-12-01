@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class ReviewVo {
 	List<MultipartFile> reviewImage;
-	int order_detail_no; //오더넘버
+	int order_detail_no; //오더디테일넘버
 	int order_no; //오더넘버
 	int review_no; // 리뷰 번호
 	int product_no; // 제품 번호 int
