@@ -219,7 +219,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<section class="review">
 										<div>
 											<tr>
-							<td>상품정보</td>
+							
 							<br>		
 							 <img src="${reviewlist.photo1}" width="150px" height="150px" >
 							<br>
@@ -238,6 +238,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<input type="button" class="button" onclick="modifyReview()" id="modifyone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
 										<input type="hidden" id="review_no" class="review_no" value="${reviewlist.review_no}"/>
+										<input type="hidden" id="user_no" class="user_no" value="${reviewlist.user_no}"/>
 				   </tr> 	
 				   </div>
 				   </section>
@@ -355,7 +356,7 @@ function modifyReview(){
 
  function deleteReview(element){
 	 var user_no = localStorage.getItem("user_no");
-	alert(user_no);
+	
 	var review_no = $(element).siblings('.review_no').val();
 	alert(review_no);
 	$.ajax({

@@ -102,8 +102,10 @@
 	
 	<!-- 작성한 리뷰 가져오기 -->
 	<select id="getReviewList" resultType="reviewvo" >
-	 <!--  SELECT * FROM REVIEW WHERE USER_NO = #{user_no} ; -->
-	 SELECT * FROM review CROSS JOIN review_photo
+	
+	select * from review as a left outer join review_photo as b  on a.review_no = b.review_no where user_no= #{user_no}
+	<!-- select * from review as a left outer join review_photo as b  on a.review_no = b.review_no where user_no= #{user_no} -->
+	<!--  SELECT * FROM review CROSS JOIN review_photo where USER_NO = #{user_no} ; -->
 	 
 	 
 	  </select>

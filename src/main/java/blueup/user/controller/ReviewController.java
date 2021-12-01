@@ -66,16 +66,20 @@ public class ReviewController {
 		List<ReviewVo> t = reviewService.getReviewList(vo);
 		for (ReviewVo m : t) {
 			System.out.println(m);
+			
 		}
 		List<ReviewVo> test = (List<ReviewVo>) reviewService.getReviewList(vo);
 		if(test.size() == 0) {
+			
 				mav.addObject("emptyReview", "없음");
+				
 		}else {
 			mav.addObject("getReviewList", reviewService.getReviewList(vo));
 		}
 			mav.setViewName("reviewView");
 			
 			return mav;
+			
 		}
 
 	
@@ -86,6 +90,7 @@ public class ReviewController {
 	public ModelAndView insertReview(ReviewVo vo) {
 		System.out.println(vo.getReview_title());
 		System.out.println(1);
+		System.out.println(vo.getUser_no());
 		System.out.println(vo.getOrder_no());
 		System.out.println(vo.getOrder_detail_no());
 		ModelAndView mav = new ModelAndView();
@@ -94,14 +99,19 @@ public class ReviewController {
 		ReviewVo rvo = insertPhoto(file, vo);
 		
 		System.out.println(rvo.getPhoto1());
+		System.out.println(rvo.getPhoto2());
+		System.out.println(rvo.getPhoto3());
+		System.out.println(rvo.getPhoto4());
+		System.out.println(rvo.getPhoto5());
 		/* vo.setProduct_no(product_no); */
 		vo.setReview_status(true);
 		int result = reviewService.insertReview(rvo);
 		if(result==1) {
-			
 			int review_no = reviewService.getReviewNo();
-			rvo.setReview_photo_no(review_no);
-			reviewService.insertPhoto(rvo);
+			rvo.setReview_no(review_no);
+			System.out.println();
+			int result3 = reviewService.insertPhoto(rvo);
+			System.out.println("insert개수" + result3);
 		}
 		
 		/* 포토 테이블에 넣을 쿼리 + 파라미터는 REVIEWVO로 받아야함*/

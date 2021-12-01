@@ -60,6 +60,8 @@
 				<td width="60px"><input value="${getProductInfoForReview.quantity}" name="quantity" id="quantity"></td>
 				<td width="100px">  <input value="${getProductInfoForReview.product_color}" name="product_color" id="product_color"></td>
 				<td width="100px"><input value="${getProductInfoForReview.product_size}" name="product_size" id="product_size"></td>
+				<input type="hidden" id="review_no" class="review_no" value="${getProductInfoForReview.review_no}" name="review_no" />
+				<input type="hidden" id="user_no" class="user_no" value="${getProductInfoForReview.user_no}" name="user_no" />
 				 </th>
 				 <%-- 나중에  src="${REVIEW_PHOTO.photo1}"등으로 고쳐야 a함 --%>
 				</tr>
@@ -114,6 +116,8 @@
 										id="counter">0</em>자/1,000자</span>
 										
 								</div>
+								
+								
 								<%-- <!-- 히든으로 뺀거 -->
 								<input type="hidden" id="product_name" value="${getProductInfoForReview.product_name}"/>
 								<input type="hidden" id="product_color" value="${getProductInfoForReview.product_color}"/>
@@ -151,8 +155,9 @@
 			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
 			<input type="button" class="button" onclick="getProductInfo()" value="취소"/>
 			<input type="submit" class="button" id="submitBtn" value="저장"/>
-		<input type="hidden" id="product_no" class="product_no" value="${getReviewproductList.product_no}"/> 
+			<input type="hidden" id="product_no" class="product_no" value="${getReviewproductList.product_no}"/> 
 			<input type="hidden" class="order_no" id='order_no' value="${getReviewproductList.order_no}"/>
+		
 			<!-- 저장 시 디비 insert -->
 		</div>
 			</form>
@@ -177,7 +182,6 @@ $(document).ready(function(){
     	 var order_detai_no = 25;
     	 var user_no = localStorage.getItem("user_no");
     	 var product_no = 101001;
-	    	
     		if($('#boardWriteTitle').val() == ""){
     			alert("제목을 입력해주세요");
     			return false;
