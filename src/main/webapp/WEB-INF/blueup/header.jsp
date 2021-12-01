@@ -553,9 +553,9 @@ function checkCategoryAll(element){
 	var user_no = localStorage.getItem("user_no");
 	var first = $(element).text();
 	if(user_no != null){
-		location.href="/blueupProject3/getCategoryAll.do?category_name="+first+"&user_no="+user_no;
+		location.href="/test/getCategoryAll.do?category_name="+first+"&user_no="+user_no;
 	}else{
-		location.href="/blueupProject3/getCategoryAll.do?category_name="+first;
+		location.href="/test/getCategoryAll.do?category_name="+first;
 	}
 }   
 
@@ -565,9 +565,9 @@ function checkCategoryUp(element){
 		var first = $(element).closest('.select').children('a').text();
 		var second = $(element).text();
 		if(user_no != null){
-			location.href="/blueupProject3/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;
+			location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;
 		}else{
-			location.href="/blueupProject3/getCategory.do?category_name="+first+"&detailed_category_name="+second;
+			location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second;
 		}
 }	
 
@@ -615,9 +615,9 @@ function myPage(){
 function sale(){
 	var user_no = localStorage.getItem("user_no");
 	if(user_no != null){
-		location.href="/blueupProject3/getSaleProduct.do?user_no="+user_no;
+		location.href="/test/getSaleProduct.do?user_no="+user_no;
 	}else{
-		location.href="/blueupProject3/getSaleProduct.do?";
+		location.href="/test/getSaleProduct.do?";
 	}
 }
 </script>
