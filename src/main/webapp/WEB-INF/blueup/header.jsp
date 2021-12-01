@@ -396,13 +396,13 @@
 							<button type="button" class="btn_nav ico_my">MY</button>
 							<div id="layerLogin" class="layer_login">
 								<ul>
-									<li><a href='#' onclick="doGNBLogin(); return false;"
+									<li><a href='/test/login.do' 
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="로그인">로그인</a></li>
-									<li><a href="#" onclick="doGNBJoin(); return false;"
+									<li><a href="/test/join.do"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="회원가입">회원가입</a></li>
-									<li><a href="#" onclick="myPage(); return false;"
+									<li><a href="#"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="마이페이지">마이페이지</a></li>
 								</ul>

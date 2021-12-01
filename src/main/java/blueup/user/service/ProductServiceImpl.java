@@ -97,4 +97,9 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVo> getSaleProductNonMember(HashMap<Object, Object> vo) {
 		return productdao.getSaleProductNonMember(vo);
 	}
+
+	@Override
+	public List<ProductVo> getProductMain() {
+		return productdao.getProductMain();
+	}
 }
