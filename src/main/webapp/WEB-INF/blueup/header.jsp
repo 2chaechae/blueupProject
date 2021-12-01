@@ -578,9 +578,9 @@ function checkCategoryDown(element){
 	alert(first);
 	var second = $(element).text();
 	if(user_no != null){
-		location.href="/blueupProject3/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;
+		location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;
 	}else{
-		location.href="/blueupProject3/getCategory.do?category_name="+first+"&detailed_category_name="+second;
+		location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second;
 	}
 }
 
@@ -596,16 +596,16 @@ function wish(){
 function cartAll() {
 	var user_no = localStorage.getItem("user_no");
 	if(user_no != null){
-		location.href="/blueupProject3/getcartList.do?user_no="+user_no;
+		location.href="/test/getcartList.do?user_no="+user_no;
 	}else{
-		location.href="/blueupProject3/getcartList.do?";
+		location.href="/test/getcartList.do?";
 	}
 }
 
 function myPage(){
 	var user_no = localStorage.getItem("user_no");
 	if(user_no!=null){
-		location.href="/blueupProject3/qnaWrite.do?user_no="+user_no;
+		location.href="/test/qnaWrite.do?user_no="+user_no;
 	}else{
 		alert('로그인이 필요한 작업입니다');
 		return;
