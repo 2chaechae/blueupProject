@@ -27,9 +27,14 @@ public class OrderController {
 
 	/* 주문페이지 */
 	@RequestMapping("/getOrder.do")
-	public ModelAndView getOrder(HttpSession session, HttpServletRequest request, UsersVo uservo, int user_no) {
+	public ModelAndView getOrder(HttpSession session, HttpServletRequest request, UsersVo uservo) {
 		ModelAndView mav = new ModelAndView();
-
+		
+		int user_no = uservo.getUser_no();
+		if(user_no < 0) {
+			user_no = 0;
+		}
+		
 		/* 상품정보 */
 		List<OrderVo> orderlist = new ArrayList<OrderVo>();
 		if (session.getAttribute("order") != null) { /* 회원 */
@@ -73,17 +78,23 @@ public class OrderController {
 				orderlist.add(ordervo);
 			}
 		}
-		/* 할인정보 - 포인트(잔액) */
-		int total_point = orderserviceimpl.getToTalPointService(user_no);
-		mav.addObject("total_point", total_point);
-
-		/* 할인정보 - 쿠폰 */
-		List<CouponVo> couponlist = orderserviceimpl.getCouponListService(uservo);
-		mav.addObject("couponlist", couponlist);
-
-		/* 배송지 정보 */
-		mav.addObject("orderlist", orderlist);
-		mav.setViewName("order");
+		
+		if(uservo.getUser_no() > 0) {
+			/* 할인정보 - 포인트(잔액) */
+			int total_point = orderserviceimpl.getToTalPointService(user_no);
+			mav.addObject("total_point", total_point);
+	
+			/* 할인정보 - 쿠폰 */
+			List<CouponVo> couponlist = orderserviceimpl.getCouponListService(uservo);
+			mav.addObject("couponlist", couponlist);
+	
+			/* 배송지 정보 */
+			mav.addObject("orderlist", orderlist);
+			mav.setViewName("order");
+		}else {
+			mav.addObject("orderlist", orderlist);
+			mav.setViewName("order");
+		}
 		return mav;
 	}
 
