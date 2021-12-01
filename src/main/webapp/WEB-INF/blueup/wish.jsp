@@ -147,7 +147,6 @@
 $(document).ready(function(){
 		var user_id = localStorage.getItem("user_id");
 		if(user_id != null){
-			alert("아이디ok");
 			$('#id').text(user_id);
 			var count = ${fn:length(wishList)};
 			$('em').text(count);
@@ -156,7 +155,7 @@ $(document).ready(function(){
 			var getlist = $.cookie('p_list');
 			var cookieValue = getlist.split('/');
 			console.log(cookieValue);
-			var length = cookieValue.length;
+			var length = cookieValue.length - 1;
 			console.log(length);
 			$('em').text(length);
 		}
@@ -167,8 +166,6 @@ function delete_wish(element){
 	var product_no = $(element).closest('div').prev().val();
 	var wish_no = $(element).closest('div').prev().prev().val();
 	var user_no = localStorage.getItem("user_no");
-	alert(product_no);
-	alert(wish_no);
 	// null point 오류 -> 비회원 0으로 셋팅
 	if(user_no == null){
 		user_no = 0;
@@ -183,7 +180,7 @@ function delete_wish(element){
 				$(element).closest('.wish').remove();
 				var now = $('.num').text();
 				console.log(now);
-				var new_num = Number(now) - 1; 
+				var new_num = parseInt(now) - 1; 
 				console.log(new_num);
 				$('.num').text(new_num);
 			}
@@ -199,7 +196,6 @@ function delete_wish(element){
 
 function deleteAll(){
 	var user_no =localStorage.getItem("user_no");
-	alert("test");
 	/////// 비회원///////
 	if(user_no == null){
 		$.removeCookie('p_list');
@@ -213,11 +209,10 @@ function deleteAll(){
 		   	cache:false,
 			data: {"user_no":user_no},
 			success:function(data) {
-				alert('성공');
-				if(data > 1){
+				if(data > 0){
+				alert('모두 삭제되었습니다.');
 				$('.wish').remove();
 				$('.num').text(0);
-				alert('모두 삭제되었습니다.');
 				}
 			},
 			error:function() {
@@ -229,7 +224,6 @@ function deleteAll(){
 
 // 장바구니 이동 시 옵션창 
 function option(element){
-	alert("test");
 	var user_no =localStorage.getItem("user_no");
 	var product_no = $(element).closest('.wish').children('.p').val();
 	window.open("/test/getCartOption.do?product_no=" + product_no + "&user_no=" + user_no,"height=300", "width=500");

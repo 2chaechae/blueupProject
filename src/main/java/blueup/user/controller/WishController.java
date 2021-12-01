@@ -44,6 +44,9 @@ public class WishController {
 			//////////////////비회원/////////////////////////
 			System.out.println("비회원-카테삭제");
 			Cookie cookies[] = req.getCookies();
+			/* p_no : 쿠키 안에 상품번호 spilt할 리스트
+			 * p_new_no : 새로운 쿠키 리스트 */
+			
 			String[] p_no = null;
 			String p_new_no = "";
 
@@ -54,19 +57,16 @@ public class WishController {
 					p_no = value.split("%2F");
 				}
 			}
-			System.out.println(p_no[0]);
 			System.out.println("삭제상품 번호 : " + vo.getProduct_no());
 			// 쿠키 값 == 상품번호 wish no 수정
 			if (p_no != null) {
-				for (int i=0; i<p_no.length; i++) {
-					for(String p : p_no) {
-						if(p == ""){
-							continue;
-						}else{
-							if (Integer.parseInt(p) != vo.getProduct_no()) {
-							p_new_no += p;
-							p_new_no += "%2F";
-						}
+				for(String p : p_no) {
+					if(p == ""){
+						continue;
+					}else{
+						if (Integer.parseInt(p) != vo.getProduct_no()) {
+						p_new_no += p;
+						p_new_no += "%2F";
 					}
 				}
 			}
@@ -102,7 +102,7 @@ public class WishController {
 		}else {
 			Cookie cookie = new Cookie("p_list", null);
 			repo.addCookie(cookie);
-			result = 1;
+			result = 1; 
 		}
 		return Integer.toString(result);
 	}

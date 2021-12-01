@@ -22,4 +22,5 @@ public interface ProductService {
 	public List<ProductVo> getSaleProduct(HashMap<Object, Object> vo);
 	public int getSaleProductCount();
 	public List<ProductVo> getSaleProductNonMember(HashMap<Object, Object> vo);
+	public List<ProductVo> getProductMain();
 }

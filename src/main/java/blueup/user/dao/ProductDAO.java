@@ -69,6 +69,10 @@ public class ProductDAO {
 		return sqlSssionTemplate.selectList("productDao.getSaleProductNonMember", vo);
 	}
 	
+	/* 메인화면 볼캡 조회 */
+	public List<ProductVo> getProductMain(){
+		return  sqlSssionTemplate.selectList("productDao.getProductMain");
+	}
 	/////////////////////// 아직 안쓴거 /////////////////////////
 	public ProductVo getProduct(ProductVo vo) {
 		return sqlSssionTemplate.selectOne("productDao.getProduct", vo);

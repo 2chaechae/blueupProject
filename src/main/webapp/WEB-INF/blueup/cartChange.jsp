@@ -62,7 +62,6 @@ $(document).ready(function(){
 		   	cache:false,
 			data: { "color" : color, "product_no" : product_no },
 			success:function(data) {
-				alert("재고받아오기");
 				$(data).each(function(){
 					if(this.stock_quantity == 0) {
 						$("select option[value ='"+this.clothes_size+"']").prop('disabled',true);

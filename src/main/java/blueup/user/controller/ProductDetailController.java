@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import blueup.admin.vo.ProductVo;
 import blueup.user.paging.ReviewCriteria;
 import blueup.user.paging.ReviewPageMaker;
-import blueup.user.paging.productPageMaker;
 import blueup.user.service.ProductDetailServiceImpl;
 import blueup.user.vo.CartVo;
 import blueup.user.vo.ProductDetailVo;
@@ -168,6 +166,7 @@ public class ProductDetailController {
 			
 			// color, size list 따로 받기
 			List<ProductDetailVo> p =  productDetailServiceimpl.selectProductDetailNonMember(vo);
+			System.out.println(vo.getProduct_no());
 			String[] color = p.get(0).getProduct_color().split("/");
 			String[] size = p.get(0).getProduct_size().split("/");
 			for( String m : size ) {
@@ -196,9 +195,11 @@ public class ProductDetailController {
 				System.out.println(vo.getProduct_color());
 				List<CartVo> list = new ArrayList<CartVo>();
 				list.add(vo);
+				System.out.println("add");
 				session.setAttribute("orderNonMember", list);
 				result = 1; 
 			}
+			System.out.println("result" + result);
 		return result;
 	}
 	

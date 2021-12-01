@@ -205,9 +205,6 @@
 		year = date.substring(0,4);
 		month = date.substring(6,8);
 		start = year + "-" + month + "-01";
-		alert("year" + year);
-		alert("month" + month);
-		alert("start" + start);
 	}
 	
 	function checkdate(){
@@ -253,8 +250,6 @@
 				end = year + "-" + month + "-31";
 				break;
 			}
-			alert("start" + start);
-			alert("end" + end);
 			location.href="/test/getChartForm.mdo?start="+start+"&end="+end;
 		}
 	}
