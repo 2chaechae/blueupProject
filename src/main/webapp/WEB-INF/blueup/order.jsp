@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="header.jsp"%>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <style>
 /* 팝업창 CSS*/
 .modal {
@@ -1145,7 +1146,7 @@
 <article id="couponListPopup" class="layer-popup lyPopOrderFail">
 	<section class="layer-popup-cont" tabindex="0" style="width: 530px">
 		<h2>쿠폰선택</h2>
-		<table>
+		<table style="border: 1px solid #333333;">
 			<caption>사용 가능한 쿠폰</caption>
 			<colgroup>
 				<col style="width: 100px;">
@@ -1153,18 +1154,18 @@
 				<col style="width: 100px;">
 			</colgroup>
 
-			<tr>
-				<th scope="col" style="text-align:center;">쿠폰종류</th>
-				<th scope="col" style="text-align:center;">쿠폰명</th>
-				<th scope="col" style="text-align:center;">할인</th>
-			</tr>
+			<tr height=40px>
+				<th height=40px scope="col" style="text-align:center;"><b>쿠폰종류</b></th>
+				<th height=40px scope="col" style="text-align:center;"><b>쿠폰명</b></th>
+				<th height=40px scope="col" style="text-align:center;"><b>할인</b></th>
+			</tr >
 			<c:choose>
 				<c:when test="${couponlist ne null}">
 					<c:forEach items="${couponlist }" var="coupon">
-						<tr style="border:1px solid black;">
-							<td scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_type }</a></td>
-							<td scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_name }</a></td>
-							<td scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});"><fmt:formatNumber type="number" maxFractionDigits="3" value="${coupon.coupon_discount }" />원</a></td>
+						<tr height=40px style="border:1px solid black;">
+							<td height=40px scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_type }</a></td>
+							<td height=40px  scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_name }</a></td>
+							<td height=40px scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});"><fmt:formatNumber type="number" maxFractionDigits="3" value="${coupon.coupon_discount }" />원</a></td>
 						</tr>
 						
 					</c:forEach>
@@ -1466,7 +1467,6 @@ function execution_daum_address() {
               }).open();
 
      }
-
 	
 </script>
 </html>
