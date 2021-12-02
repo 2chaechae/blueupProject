@@ -92,12 +92,18 @@
 		WHERE a.user_no = #{user_no}
 	 	AND b.order_status='구매확정' AND b.review_status='false'; -->
 	 	
-		SELECT a.user_no, a.purchaseconfirm,a.order_no,
+		<!-- SELECT a.user_no, a.purchaseconfirm,a.order_no,
 			  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color,
 			  b.main_image, b.order_status,b.review_status,b.order_detail_no
 				FROM order_request as a JOIN order_detail as b
 				ON a.user_no  = #{user_no}
-				WHERE b.order_status='구매확정' and b.review_status='false'
+				WHERE b.order_status='구매확정' and b.review_status='false' -->
+				
+				SELECT a.user_no, a.purchaseconfirm,
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image, review_Status
+		FROM order_request as a JOIN order_detail as b
+		ON a.user_no  = #{user_no}  and a.purchaseconfirm = 'no' and b.review_status='false'
+		WHERE b.order_status='구매확정'  ;
 		
 	</select> 
 	

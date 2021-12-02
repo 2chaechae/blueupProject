@@ -27,10 +27,26 @@
 		location.href= "/test/getOrderList.do?user_no=" + user_no;
 	}
 	
+	function toWishList(){
+		location.href="/test/getWishList.do?user_no="+user_no;
+	}
+	
+	function getBenefitPage(){
+		location.href="/test/getBenefitPage.do";
+	}
+	
+	function toReview(){
+		location.href='/test/getReviewproductList.do?user_no='+user_no;
+	}
+	
+	function deleteMember(){
+		location.href='/test/quitPage.do?user_no='+user_no;
+	}
+	
 </script>
 <nav id="lnb" class="lnb-nav">
         <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
-    	<p><b></b>님<br/>반갑습니다.</p>
+    	<p id="user_name"></p>
     	<hr class="hr-ddd" />
     	
     	<ul class="nav-mnlist">
@@ -46,13 +62,11 @@
     			<a href="javascript:;"><span>활동정보</span></a>
     			<ul>
     				<li>
-    					<a href="/mypage/wishlist/list"><span>위시리스트</span></a>
+    					<a href="#" onClick="toWishList();return false"><span>위시리스트</span></a>
     				</li>
+
     				<li>
-    					<a href="/mypage/todaygood/list"><span>최근 본 상품</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/goods/reviewView"><span>상품리뷰</span></a>
+    					<a href="#" onClick="toReview()"><span>상품리뷰</span></a>
     				</li>
     				<li>
     					<a href="#" onClick="toQna();return false"><span>QnA</span></a>
@@ -66,10 +80,10 @@
     					<a href="#" onClick="toPoint();"><span>포인트</span></a>
     				</li>
     				<li>
-    					<a href="#" onClick="toPoint();"><span>쿠폰함</span></a>
+    					<a href="#" onClick="toCoupon();"><span>쿠폰함</span></a>
     				</li>
     				<li>
-    					<a href="/blueup/benefit.jsp"><span>회원혜택안내</span></a>
+    					<a href="#" onClick="getBenefitPage();"><span>회원혜택안내</span></a>
     				</li>
     			</ul>
     		</li>
@@ -80,7 +94,7 @@
     					<a href="#" onClick="toModify();"><span>회원정보 수정</span></a>
     				</li>
     				<li>
-    					<a href="/mypage/member/secessionMemberView"><span>회원탈퇴</span></a>
+    					<a href="#" onClick="deleteMember();"><span>회원탈퇴</span></a>
     				</li>
     			</ul>
     		</li>
