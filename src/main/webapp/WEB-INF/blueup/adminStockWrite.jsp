@@ -130,6 +130,9 @@ $(document).ready(function(){
 					var colorflag = data.product_color;
 					var color = (colorflag).split("/");
 					
+					$('#size').empty();
+					$('#color').empty();
+					
 					var htmlsize = '"<option value=1>---선택---</option>"';
 					var htmlcolor = '"<option value=1>---선택---</option>"';
 					

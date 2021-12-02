@@ -43,12 +43,12 @@
 	
 	<!--검색으로 재고 검색  -->
 	<select id="getStockListBySearch" parameterType="stockvo" resultType="stockvo">
-		SELECT * FROM STOCK WHERE PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%'
+		SELECT * FROM STOCK WHERE PRODUCT_NAME LIKE '%'||#{searchKeyword}||'%' ORDER BY STOCK_NO
 	</select>
 	
 	<!--전체 재고 검색  -->
 	<select id="getStockList" parameterType="stockvo" resultType="stockvo">
-		SELECT * FROM STOCK ORDER BY STOCK_NO ASC;
+		SELECT * FROM STOCK ORDER BY STOCK_NO DESC;
 	</select>
 	
 	<!-- 상품번호&상품컬러 검색 -->
