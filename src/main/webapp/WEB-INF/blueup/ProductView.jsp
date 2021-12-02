@@ -56,29 +56,56 @@
 								</div>
 							</li>
 						</c:forEach>
-					<div style="display: block; text-align: center; width:1310px; margin : 0 auto;">
-							<c:if test="${pageMaker.startPage != 1 }">
-								<a
-									href="/test/getProduct.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
-							</c:if>
-							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }"
-								var="p">
-								<c:choose>
-									<c:when test="${p == cri.page }">
-										<b>|&nbsp;${p}&nbsp;|</b>
-										
-									</c:when>
-									<c:when test="${p != cri.page }">
-										<a
-											href="/test/getProduct.do?pageNum=${p }">|&nbsp;${p}&nbsp;|</a>
-									</c:when>
-								</c:choose>
-							</c:forEach>
-							<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
-								<a
-								href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
-							</c:if>
-						</div>
+						<c:choose>
+						<c:when test="${check == 'bottom' }">
+							<div style="display: block; text-align: center; width:1310px; margin : 0 auto;">
+								<c:if test="${pageMaker.startPage != 1 }">
+									<a
+										href="/test/getProduct.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == cri.page }">
+											<b>|&nbsp;${p}&nbsp;|</b>
+											
+										</c:when>
+										<c:when test="${p != cri.page }">
+											<a
+												href="/test/getProduct.do?pageNum=${p}">|&nbsp;${p}&nbsp;|</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+									<a
+									href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+								</c:if>
+							</div>
+						</c:when>
+						<c:otherwise>
+								<div style="display: block; text-align: center; width:1310px; margin : 0 auto;">
+								<c:if test="${pageMaker.startPage != 1 }">
+									<a
+										href="/test/getProductAll.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == cri.page }">
+											<b>|&nbsp;${p}&nbsp;|</b>
+											
+										</c:when>
+										<c:when test="${p != cri.page }">
+											<a
+												href="/test/getProductAll.do?pageNum=${p}">|&nbsp;${p}&nbsp;|</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+									<a
+									href="/test/getProductAll.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+								</c:if>
+							</div>
+						</c:otherwise>
+						</c:choose>
 				</section>
 		</main>
 	</div>

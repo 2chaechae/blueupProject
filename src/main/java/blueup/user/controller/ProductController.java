@@ -58,6 +58,7 @@ public class ProductController {
 			pageMaker.setTotalCount(productserviceimpl.getCountProductDetail(vo)); // 총 게시물 갯수
 			System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
 
+			mav.addObject("check", "bottom");
 			mav.addObject("pageNum", pageNum);
 			mav.addObject("pageMaker", pageMaker);
 			mav.addObject("Category", cateList); // 전체 카테고리 ( 각 상품 조회 화면 카테고리 설정을 위해)
@@ -113,6 +114,7 @@ public class ProductController {
 					}
 				}
 			}
+			mav.addObject("check", "bottom");
 			mav.addObject("pageNum", pageNum);
 			mav.addObject("pageMaker", pageMaker);
 			mav.addObject("Category", cateList);
@@ -155,6 +157,7 @@ public class ProductController {
 			System.out.println("총게시물수: " + pageMaker.getTotalCount());
 			
 			// 리턴 값 셋팅
+			mav.addObject("check", "top");
 			mav.addObject("pageNum", pageNum);
 			mav.addObject("pageMaker", pageMaker);
 			mav.addObject("Product", productserviceimpl.getProductListByCategory(vo)); // 선택 카테고리 기준 상품 & wishlist
@@ -166,10 +169,12 @@ public class ProductController {
 			//파라미터 vo 셋팅
 			vo.put("user_no", session.getAttribute("userNO"));
 			vo.put("Selected", session.getAttribute("Selected"));
+			vo.put("perPageNum", cri.getPerPageNum());
+			vo.put("startRow", cri.getStartRow());
 			Category_detailVo cate = (Category_detailVo) vo.get("Selected");
 			System.out.println("상위 카테고리 값 : " + cate.getCategory_name());
 			List<Category_detailVo> cateList = (List<Category_detailVo>) session.getAttribute("Category");
-			pageMaker.setTotalCount(productserviceimpl.getCountProductDetail(vo)); // 총 게시물 갯수
+			pageMaker.setTotalCount(productserviceimpl.getCountProduct(vo)); // 총 게시물 갯수
 			System.out.println("총 게시물 수: " + pageMaker.getTotalCount());
 			
 			// 쿠키 값 확인 및 상품 list mav에 추가
@@ -207,6 +212,7 @@ public class ProductController {
 				}
 			}
 			// 리턴값 설정
+			mav.addObject("check", "top");
 			mav.addObject("pageNum", pageNum);
 			mav.addObject("pageMaker", pageMaker);
 			mav.addObject("Category", cateList);
