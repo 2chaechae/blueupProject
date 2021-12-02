@@ -666,5 +666,4 @@ function reviewOrder(user_no, order_no, product_no){
 	var productNo = product_no;
 	location.href="/test/getProductInfoForReview.do?user_no=" + userNo + "&order_no=" + orderNo + "&product_no=" + productNo;
 }
-
 </script>

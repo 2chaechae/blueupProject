@@ -73,6 +73,7 @@
 		UPDATE order_detail SET order_status = '교환요청'
 		WHERE order_no = #{order_no} AND product_no = #{product_no}
 	</update>
+	
 	<!-- 반품요청 -->
 	<update id="getReturnRequest">
 		UPDATE order_detail SET order_status = '반품요청'
