@@ -212,8 +212,14 @@
 				});
 			}
 
-
-
+			$(document).ready(function(){
+				$("#modifyMbrForm").click(function(){
+					 document.getElementById('frm').submit(); 
+					});
+			});
+			
+			
+			
 		
 		</script>
 
