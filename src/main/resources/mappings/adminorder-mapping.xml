@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminorderDAO">
+	<select id="adminorderlist" resultType="orderlistvo">
+		SELECT
+		*
+		FROM order_request as a right outer join order_detail as b
+		ON a.order_no = b.order_no
+		ORDER BY payment_time desc
+	</select>
+	
+	<select id="adminorderproduct" resultType="orderlistvo">
+		SELECT
+		*
+		FROM order_request as a right outer join order_detail as b
+		ON a.order_no = b.order_no
+		WHERE b.order_detail_no = #{order_detail_no}
+	</select>
+	
+	<!-- 배송준비중 -->
+	<update id="getDeliveryPreparing">
+		UPDATE order_detail SET order_status = '배송준비중'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+	
+	<!-- 배송중 -->
+	<update id="getDeliveryShipping">
+		UPDATE order_detail SET order_status = '배송중'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+	
+	<!-- 배송완료 -->
+	<update id="getDeliveryComplete">
+		UPDATE order_detail SET order_status = '배송완료'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+	
+	<!-- 배송지연 -->
+	<update id="getDeliveryDelay">
+		UPDATE order_detail SET order_status = '배송지연'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+	
+	<!-- 반품수거중 -->
+	<update id="getReturnShipping">
+		UPDATE order_detail SET order_status = '반품수거중'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+	
+	<!-- 반품수거완료 -->
+	<update id="getReturnComplete">
+		UPDATE order_detail SET order_status = '반품수거완료'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+	
+	<!-- 교환수거중 -->
+	<update id="getExchangeCollectionShipping">
+		UPDATE order_detail SET order_status = '교환수거중'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+	
+	<!-- 교환수거완료 -->
+	<update id="getExchangeCollectionComplete">
+		UPDATE order_detail SET order_status = '교환수거완료'
+		WHERE order_detail_no = #{order_detail_no}
+	</update>
+
+</mapper>

@@ -22,12 +22,12 @@
    <div class="contain my cs lnblist-Wrap" id="contain" style="padding-top: 50px;">
       <div class="container">
 
-         <h2 class="title01">공지사항 등록</h2>
+         <h2 class="title01">공지사항</h2>
          
 
          <main class="contents oto_inquiryWrite-wrap" id="contents">
 
-            <div class="board-write" style="width:900px; height:230px; margin:0 auto; margin-top:20px;"">
+            <div class="board-write" style="width:900px; height:230px; margin:0 auto; margin-top:20px;">
                <table summary="1:1고객상담 입력" style="margin-left:auto;margin-right:auto";>
                   <caption>공지사항</caption>
                   <colgroup>

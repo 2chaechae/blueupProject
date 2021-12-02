@@ -396,10 +396,11 @@
 							<button type="button" class="btn_nav ico_my">MY</button>
 							<div id="layerLogin" class="layer_login">
 								<ul>
-									<li><a href='#' onclick="doGNBLogin(); return false;"
+
+									<li><a href='/test/login.do' 
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="로그인">로그인</a></li>
-									<li><a href="#" onclick="doGNBJoin(); return false;"
+									<li><a href="/test/join.do"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="회원가입">회원가입</a></li>
 									<li><a href="#" onclick="myPage(); return false;"
@@ -541,14 +542,13 @@
       <div class="link">
          <ul class="list">
             <li><a href="/event/promotionList" data-ga-category="PC_MLB_Header" data-ga-action="PROMOTION/EVENT">PROMOTION</a></li>
-            <!-- [EOSD-2740] 카테고리 수정 <li><a href="/display/view?dspCtgryNo=MBMA06&currentCtgryDpthCd=1&ctgrySectCd=OTLT_CTGRY&ctgryNoDpth1=MBMA06" data-ga-category="PC_MLB_Header" data-ga-action="OUTLET">OUTLET</a></li>
-            <li><a href="/display/majorView?dspCtgryNo=MBMA11&currentCtgryDpthCd=1&ctgrySectCd=GNRL_CTGRY&ctgryNoDpth1=MBMA11" data-ga-category="PC_MLB_Header" data-ga-action="FAMILY">FAMILY</a></li> -->
             <li><a href="/lookbook/lookbookList" data-ga-category="PC_MLB_Header" data-ga-action="LOOKBOOK">LOOKBOOK</a></li>
             <li><a href="/culture/cultureList" data-ga-category="PC_MLB_Header" data-ga-action="CULTURE">CULTURE</a></li>
 </ul>
       </div>
+      </div>
+</nav>
 <script type="text/javascript">
-
 function checkCategoryAll(element){
 	var user_no = localStorage.getItem("user_no");
 	var first = $(element).text();
@@ -620,14 +620,12 @@ function sale(){
 		location.href="/test/getSaleProduct.do?";
 	}
 }
+function myPage() {
+	var user_no = localStorage.getItem("user_no");
+	if (user_no != null) {
+		location.href = "/test/getOrderList.do?user_no=" + user_no;
+	} else{
+		location.href = "/test/getOrderList.do?";
+	}
+}
 </script>
-      <!--  [EOSD-2740] 카테고리 수정
-      <div class="banner">
-         <ul class="list">
-            </ul>
-      </div>
-       -->
-       
-
-   </div>
-</nav>

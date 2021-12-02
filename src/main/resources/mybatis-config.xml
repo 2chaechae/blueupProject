@@ -58,5 +58,6 @@
 		<mapper resource="mappings/admincategorydetail-mapping.xml" />
 		<mapper resource="mappings/admin_Notice_TermsAndCondition-mapping.xml" />
 		<mapper resource="mappings/payment-mapping.xml" />
+		<mapper resource="mappings/adminorder-mapping.xml" />
 	</mappers>
 </configuration>

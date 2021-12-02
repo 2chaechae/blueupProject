@@ -41,13 +41,17 @@
 		DETAILED_CATEGORY_NAME = #{detailed_category_name}
 		WHERE PRODUCT_NO = #{product_no}
 	</update>
+	<!-- 메인 화면 캡볼 상품 조회 -->
+	<select id="getProductMain" resultType="productvo">
+		SELECT * FROM PRODUCT WHERE DETAILED_CATEGORY_NAME = '볼캡' ORDER BY PRODUCT_NO LIMIT 12
+	</select>
 	
 	<!-- 카테고리 기준 상품 조회 -->
 	<select id="getProductListByCategory" resultType="productvo" parameterType="hashmap">
 		SELECT a.main_image, a.product_no, a.product_price, a.product_name, a.category_name, a.detailed_category_name, b.wish_no, b.user_no
 		FROM product as a LEFT OUTER JOIN wishlist as b 
 		ON a.product_no = b.product_no and b.user_no = CAST(#{user_no} AS INTEGER)
-		WHERE a.category_name = #{Selected.category_name} LIMIT #{perPageNum} OFFSET #{startRow}
+		WHERE a.category_name = #{Selected.category_name} AND DISPLAY_STATUS = true ORDER BY PRODUCT_NO LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
 	<!-- 디테일 카테고리 기준 상품 조회 -->
@@ -55,7 +59,7 @@
 		SELECT a.main_image, a.product_no, a.product_price, a.product_name, a.category_name, a.detailed_category_name, b.wish_no, b.user_no
 		FROM product as a LEFT OUTER JOIN wishlist as b 
 		ON a.product_no = b.product_no and b.user_no = CAST(#{user_no} AS INTEGER)
-		WHERE a.detailed_category_name = #{Selected.detailed_category_name} LIMIT #{perPageNum} OFFSET #{startRow}
+		WHERE a.detailed_category_name = #{Selected.detailed_category_name} AND DISPLAY_STATUS = true ORDER BY PRODUCT_NO LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
 	<!--  전체 목록 수 조회(디테일) -->
@@ -73,7 +77,7 @@
 		SELECT a.main_image, a.product_no, a.product_price, a.product_name, b.wish_no, b.user_no
 		FROM product as a RIGHT JOIN wishlist as b
 		ON a.product_no = b.product_no 
-		WHERE b.user_no = CAST(#{user_no} AS INTEGER);
+		WHERE b.user_no = CAST(#{user_no} AS INTEGER)  ORDER BY WISH_NO;
 	</select>
 	
 	<!-- 특정 상품 조회 -->
@@ -115,7 +119,7 @@
 	<select id="getSaleProduct" resultType="productvo" parameterType="hashmap">
 	select * from product as a left outer join wishList as b 
 	on a.product_no = b.product_no and user_no = CAST(#{user_no} AS INTEGER) 
-	where discount > 0 LIMIT #{perPageNum} OFFSET #{startRow}
+	where discount > 0 AND DISPLAY_STATUS = true LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 	
 	<!-- 세일 상품 게시물 수 -->
@@ -127,6 +131,6 @@
 	<!-- 세일 상품 가져오기 비회원 -->
 	<select id="getSaleProductNonMember" resultType="productvo" parameterType="hashmap">
 	select * from product 
-	where discount > 0 LIMIT #{perPageNum} OFFSET #{startRow}
+	where discount > 0 AND DISPLAY_STATUS = true LIMIT #{perPageNum} OFFSET #{startRow}
 	</select>
 </mapper>

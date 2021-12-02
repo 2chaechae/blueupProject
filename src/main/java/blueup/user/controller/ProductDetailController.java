@@ -166,6 +166,7 @@ public class ProductDetailController {
 			
 			// color, size list 따로 받기
 			List<ProductDetailVo> p =  productDetailServiceimpl.selectProductDetailNonMember(vo);
+			System.out.println(vo.getProduct_no());
 			String[] color = p.get(0).getProduct_color().split("/");
 			String[] size = p.get(0).getProduct_size().split("/");
 			for( String m : size ) {

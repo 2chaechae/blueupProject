@@ -121,8 +121,13 @@ $(document).ready(function(){
 				
 				if(userInfo != ""){
 					localStorage.setItem("user_no", userInfo.user_no);
-					localStorage.setItem("user_name", userInfo.user_name);
-					localStorage.setItem("user_id", userInfo.user_id);
+		            localStorage.setItem("user_name", userInfo.user_name);
+		            localStorage.setItem("user_id", userInfo.user_id);
+		            localStorage.setItem("phone1", userInfo.phone1);
+		            localStorage.setItem("phone2", userInfo.phone2);
+		            localStorage.setItem("phone3", userInfo.phone3);
+		            localStorage.setItem("email_id", userInfo.email_id);
+		            localStorage.setItem("email_address", userInfo.email_address);
 				}
 				
 				if(data.userIdChkNum == 0){
