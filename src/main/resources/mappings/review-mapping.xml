@@ -35,40 +35,15 @@
 		DELETE FROM REVIEW WHERE REVIEW_NO = #{review_no}
 	</delete>
 	
-	
-	<!-- 리뷰 수정을 위한 쿼리 -->
-	<!-- <update id="updateReview" parameterType="reviewvo">
-		UPDATE REVIEW   
-		SET
-	    STAR = #{star}, 별점 바꾸기
-		REVIEW_TITLE = #{review_title}, 리뷰 제목
-		REVIEW_CONTENT = #{review_content}  리뷰 내용
-		사진이랑 리뷰 작성 시간
-		WHERE REVIEW_NO = #{review_no}
-	</update> -->
+
 	
 	<!-- 리뷰를 위한 한가지 상품정보가져오기 -->
 	<select id="getProductInfoForReview" resultType="reviewvo" >
-	  <!-- 얜 최종본.  
-	  SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
-		FROM order_request as a JOIN order_detail as b
-		on a.order_no = b.order_no WHERE a.user_no = #{user_no}
-		AND b.order_status='구매확정' AND b.product_no = #{product_no} AND b.review_status='false'; -->
-<!-- 		SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
-		FROM order_request as a JOIN order_detail as b
-		on  a. user_no = #{user_no} where b.order_status='구매확정' ; -->
-<!-- 	SELECT a.user_no,a.order_no,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image,b.order_status
-		FROM order_request as a JOIN order_detail as b
-		ON a.order_no  = #{order_no} and a.user_no= #{user_no}
-		WHERE b.order_status='구매확정' ; -->
-			SELECT a.user_no,a.order_no,
+		SELECT a.user_no,a.order_no,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image,b.order_status,b.order_detail_no
-		FROM order_request as a JOIN order_detail as b
-		ON b.order_detail_no  =  #{order_detail_no} and a.user_no= #{user_no} and a.order_no=#{order_no}
-		WHERE b.order_status='구매확정'   ;
+		FROM order_request as a right outer JOIN order_detail as b
+		ON a.order_no = b.order_no and a.user_no=#{user_no}
+		WHERE b.order_status='구매확정' and order_detail_no=#{order_detail_no};
 		
 	</select>
 	
@@ -99,7 +74,7 @@
 				WHERE b.order_status='구매확정' and b.review_status='false' -->
 				
 				SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image, review_Status
+	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image, b.review_Status, b.order_detail_no
 		FROM order_request as a JOIN order_detail as b
 		ON a.user_no  = #{user_no}  and a.purchaseconfirm = 'no' and b.review_status='false'
 		WHERE b.order_status='구매확정'  ;

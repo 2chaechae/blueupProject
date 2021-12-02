@@ -183,9 +183,9 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 											<tr>
 											
                                    <img src="${review.main_image}" width="150px" height="150px" >
-				<td width="100px">상품 이름: ${review.product_name}</td>
-				<td width="60px">상품 수량: ${review.quantity} 개 </td>
-				<td width="100px">상품 색상:  ${review.product_color}</td>
+										<td width="100px">상품 이름: ${review.product_name}</td>
+										<td width="60px">상품 수량: ${review.quantity} 개 </td>
+										<td width="100px">상품 색상:  ${review.product_color}</td>
 										<td width="100px">상품 사이즈: ${review.product_size}</td>
 										
 										<input type="button" class="button" onclick="writeReview()" id="writeone" value="리뷰 쓰기"/>
@@ -305,10 +305,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
  function writeReview(){
  	var user_no = localStorage.getItem("user_no");
  	var order_detail_no = $('#order_detail_no').val();
- 	var order_no = $('#order_no').val();
- 	
- 	alert("리뷰쓰기로 넘어갑니다.");
- 	location.href='/test/getProductInfoForReview.do?user_no='+ user_no  +'&order_detail_no=' + order_detail_no +'&order_no=' + order_no ;
+ 	location.href='/test/getProductInfoForReview.do?user_no='+ user_no  +'&order_detail_no=' + order_detail_no ;
  }
 
 

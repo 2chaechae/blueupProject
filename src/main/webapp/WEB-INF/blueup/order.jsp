@@ -1257,7 +1257,7 @@ $("#payBtn").click(function () {
 orderListSession
 </c:forEach> */
 	var coupon_no1 = $('#coupon_no').val();
-	if(coupon_no1 == '' || coupon_no == null){
+	if(coupon_no1 == '' || coupon_no1 == null){
 		coupon_no1 = 0;
 	}
 	var coupon1 = $('#couponName').val();

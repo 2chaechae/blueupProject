@@ -215,9 +215,10 @@
 $(document).ready(function(){
 	var user_no = localStorage.getItem("user_no");
 });
-var user_no = localStorage.getItem("user_no");
+
 	$(document).ready(function(){
 		$('.chBox').change(function(){
+			var user_no = localStorage.getItem("user_no");
 			if(user_no != null){
 				var cart_no = new Array();
 				$('input:checkbox[class=chBox]:checked').each(function(){
@@ -346,6 +347,7 @@ var user_no = localStorage.getItem("user_no");
 	
 	////////////// 수량변경 마이너스 /////////////////
 	function minus(element){
+		var user_no = localStorage.getItem("user_no");
 		///////////////현재 값//////////////////////
 		var stat = parseInt($(element).next().text()); // 수량 
 		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
@@ -418,6 +420,7 @@ var user_no = localStorage.getItem("user_no");
 	
 	//////////////수량변경 플러스/////////////////
 	function plus(element){
+		var user_no = localStorage.getItem("user_no");
 		///////////////현재 값////////////////////// 
 		var end = $(element).prev().text(); //수량
 		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
@@ -490,6 +493,7 @@ var user_no = localStorage.getItem("user_no");
 	
 	//전체삭제
 	function deleteAll(){
+		var user_no = localStorage.getItem("user_no");
 		if(user_no != null){
 			$.ajax({
 				url:'/test/deleteAllCart.do',
@@ -533,6 +537,7 @@ var user_no = localStorage.getItem("user_no");
 	}
 	
 	function deleteCheck(){
+		var user_no = localStorage.getItem("user_no");
 		if(user_no != null){
 			var cart_no = new Array();
 			$('input:checkbox[class=chBox]:checked').each(function(){
@@ -613,6 +618,8 @@ var user_no = localStorage.getItem("user_no");
 	
 /* 주문하기 */
 function checkOrder(){
+	var user_no = localStorage.getItem("user_no");
+	alert(user_no);
 	if(user_no == null){
 		var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
 		if(logincheck == true){
@@ -635,6 +642,7 @@ function checkOrder(){
 		}
 	}else{
 		var cart_no = new Array();
+		var user_no = localStorage.getItem("user_no");
 		// 회원 넘길 정보 위치
 		if($('input:checkbox[class=chBox]:checked').length == 0){
 			console.log("전체");

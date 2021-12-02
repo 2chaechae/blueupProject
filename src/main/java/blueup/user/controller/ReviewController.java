@@ -31,6 +31,8 @@ public class ReviewController {
 	@RequestMapping("/getProductInfoForReview.do")
 	public ModelAndView getProductInfoForReview(HttpSession session, ReviewVo vo) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(vo.getOrder_detail_no());
+		System.out.println(vo.getUser_no());
 		ReviewVo reviewWrite = reviewService.getProductInfoForReview(vo);
 		System.out.println("리뷰정보출력");
 		mav.addObject("getProductInfoForReview", reviewWrite);
