@@ -67,9 +67,8 @@
 			SELECT a.user_no,a.order_no,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image,b.order_status,b.order_detail_no
 		FROM order_request as a JOIN order_detail as b
-		ON b.order_detail_no  = #{order_detail_no} and a.user_no= #{user_no} and a.order_no=#{order_no}
-		WHERE b.order_status='구매확정' ;
-		
+		ON b.order_detail_no  =  #{order_detail_no} and a.user_no= #{user_no} and a.order_no=#{order_no}
+		WHERE b.order_status='구매확정'   ;
 		
 	</select>
 	

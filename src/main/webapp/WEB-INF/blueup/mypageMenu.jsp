@@ -40,7 +40,7 @@
 	}
 	
 	function deleteMember(){
-		location.href='/test/quitPage.do?user_no='+user_no;
+		location.href='/test/pwchkPage.do?user_no='+user_no;
 	}
 	
 </script>
