@@ -313,38 +313,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 function modifyReview(){
 	var user_no = localStorage.getItem("user_no");
 	var review_no = $('#review_no').val();
-	alert("리뷰수정으로 넘어갑니다.");
 	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + review_no;
 }
- 
-
-
-/* function modifyReview(element){ 
-	 var user_no = localStorage.getItem("user_no");
-	alert(user_no);
-	var review_no = $('#review_no').val();
-	alert(review_no);
-	$.ajax({
-		url:'/test/modifyReview.do',
-		type:'POST',
-		data: {
-			user_no:user_no, review_no:review_no},
-			dataType:'json' });
- } */
-		/* success:function(data) {
-			if(result){
-				alert("수정 가기 성공");
-				location.href='/test/getReviewList.do?user_no='+user_no+'&review_no' + review_no;
-				
-			}
-			 else{
-				alert("수정으로 가기 실패")
-			}
-		}, 
-		error:function() {
-			alert('다시 시도해주세요');
-		}
-	});	*/
  
 
 /* 리뷰 삭제 */
@@ -353,9 +323,7 @@ function modifyReview(){
 
  function deleteReview(element){
 	 var user_no = localStorage.getItem("user_no");
-	
 	var review_no = $(element).siblings('.review_no').val();
-	alert(review_no);
 	$.ajax({
 		url:'/test/deleteReview.do',
 		type:'POST',

@@ -15,8 +15,6 @@ $(document).ready(function(){
 	$('#getPointListBtn').on('click',function(){
 		var dateStart = $('#dateStart').val();
 		var dateEnd = $('#dateEnd').val();
-		alert(dateStart);
-		alert(dateEnd);
 		
 		$.ajax({
 			type : "GET",

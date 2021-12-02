@@ -17,9 +17,6 @@
 		$('#couponSearchBtn').on('click',function(){
 			var dateStart = $('#dateStart').val();
 			var dateEnd = $('#dateEnd').val();
-			alert('하이');
-			alert(dateStart);
-			alert(dateEnd);
 			
 			$.ajax({
 					type : "GET",

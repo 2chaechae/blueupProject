@@ -861,7 +861,6 @@ function addOrder(){
 						data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, "user_no" : 0,
 							"product_price" : product_price, "discount" : discount, "main_image" : main_image, "product_name" : product_name, "total_price" : total_price, "discount_total" : discount_total},
 						success:function(data) {
-							alert(data);
 							if(data == 1){
 							location.href="/test/getOrder.do";
 							}

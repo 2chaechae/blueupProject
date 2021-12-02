@@ -1282,14 +1282,12 @@ orderListSession
  	var temp = $('input:radio[name="paymentBtn"]:checked').val();
  	var amount1 = ${orderlist.get(0).pay_amount};
  	/* $('#total_amount').html(); */
- 	alert("유저넘버 : "+user_no1);
 	
  	
  	  var IMP = window.IMP; // 생략가능
  	  IMP.init('imp89704086');
  	    /*'iamport' 대신 부여받은 "가맹점 식별코드"를 사용*/
  	    // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
- 	    alert('결제 시작');
  	    IMP.request_pay({
  	    pg: 'inicis',// version 1.1.0부터 지원.
  	    /*
@@ -1473,7 +1471,6 @@ orderListSession
 			data: {"product_discount" : product_discount, "coupon_discount" : coupon_discount, "point_discount" : point_discount},
 			dataType:'json',
 			success:function(data) {
-				alert(data);
 				var total_discount = data;
 				$('#dc_amount').text(total_discount);
 				var total_price = parseInt(product) - total_discount;

@@ -419,7 +419,6 @@
 function getnotice(element){
 	var noticeNo = $(element).closest('tr').prev().val();
 	location.href="/test/getnoticeone.do?notice_no="+noticeNo;
-	alert(noticeNo);
 }
 	
 

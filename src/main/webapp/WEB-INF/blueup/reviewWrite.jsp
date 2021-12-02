@@ -176,7 +176,6 @@ function getProductInfo(){
 $(document).ready(function(){
     //저장 버튼 클릭 시
     $("#addReview").submit(function(){
-    	alert("test");
     	 var order_detai_no = 25;
     	 var user_no = localStorage.getItem("user_no");
     	 var product_no = 101001;
@@ -220,45 +219,6 @@ $(document).ready(function(){
     });
 });
 
-
-/* $(document).ready(function(){
-    //저장 버튼 클릭 시
-    $('#submitBtn').submit('click',function(){
-    	var user_no = localStorage.getItem("user_no");
-    	var order_no = 2; 
-    	var product_no= 101001; 
-        var title = $('#boardWriteTitle').val();
-        var star = $('#star').val();
-        var content = $('#content').val();
-        var user_id=$('#user_id').val();
-        var product_name=$('#product_name').val();
-        var product_size=$('#product_size').val();
-        var product_color=$('#product_color').val();
-        var main_image=$('#main_image').val();
-        var quantity=$('#quantity').val();
-       		$.ajax({
-       			url : '/test/insertReview.do',
-       			type : 'POST',
-       			cache : false,
-       			data : {
-       			"product_no" :product_no, "user_no" : user_no,  "order_no" : order_no, "title" : title, "star" : star, "content" : content,
-       	        		"user_id" : user_id, "product_name": product_name, "product_size" : product_size, "product_color" : product_color,
-						"main_image" : main_image, "quantity" : quantity
-					},
-				success:function(data){
-					if(data == 1){
-						alert("등록 성공");
-						location.href="/test/getReviewList.do?user_no="+user_no;  //내가 작성한 리뷰 페이지
-					}
-				},
-				error:function(){
-					alert("다시 시도해주세요");
-				}
-       		});
-    });
-    
- });
-	 */
 
 	
 	

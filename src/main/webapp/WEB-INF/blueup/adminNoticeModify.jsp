@@ -108,11 +108,9 @@ $(document).ready(function(){
 $(document).ready(function(){
 	   //저장 버튼 클릭 시
 	   $('#submitBtn').on('click',function(){
-		   alert('하이요!!')
 	      var title = $('#boardWriteTitle').val();
 	      var content = $('#boardWriteContent').val();
-	      
-	      alert(title);
+
 	      
 	       if(title.trim()==''){
 	         alert('제목을 입력해주세요');

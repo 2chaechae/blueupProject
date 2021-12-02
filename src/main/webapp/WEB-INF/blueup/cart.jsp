@@ -566,7 +566,7 @@ $(document).ready(function(){
 								location.reload();
 							},
 							error:function() {
-								alert('db 자료 받기 실패');
+								alert('다시 시도해주세요');
 							}
 						});
 					}else{
@@ -620,14 +620,12 @@ $(document).ready(function(){
 /* 주문하기 */
 function checkOrder(){
 	var user_no = localStorage.getItem("user_no");
-	alert(user_no);
 	if(user_no == null){
 		var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
 		if(logincheck == true){
 			location.href="/test/login.do";
 		}else{
 			var product_no = new Array();
-			alert("비회원으로 주문");
 			if($('input:checkbox[class=chBox]:checked').length == 0){
 				console.log("전체");
 				$('input:checkbox[class=chBox]').each(function(){

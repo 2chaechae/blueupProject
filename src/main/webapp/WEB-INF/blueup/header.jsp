@@ -604,7 +604,6 @@ function checkCategoryUp(element){
 function checkCategoryDown(element){
 	var user_no = localStorage.getItem("user_no");
 	var first = $('#cate').text();
-	alert(first);
 	var second = $(element).text();
 	if(user_no != null){
 		location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;

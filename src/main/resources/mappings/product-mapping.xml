@@ -112,7 +112,7 @@
 	<select id="getProductRanking" resultType="productvo">
 		SELECT PRODUCT_NAME, VIEWCOUNT
 		FROM PRODUCT
-		ORDER BY VIEWCOUNT DESC
+		ORDER BY VIEWCOUNT DESC LIMIT 10
 	</select>
 	
 	<!-- 세일 상품 가져오기 -->
