@@ -13,9 +13,6 @@
     				<li>
     					<a href="/mypage/order/list"><span>주문/배송조회</span></a>
     				</li>
-    				<li>
-    					<a href="/mypage/claim/list"><span>취소/교환/반품 조회</span></a>
-    				</li>
     			</ul>
     		</li>
     		<li id="myNavi2">
@@ -39,10 +36,10 @@
     			<a href="javascript:;"><span>혜택정보</span></a>
     			<ul>
     				<li>
-    					<a href="#" onClick="toPoint();"><span>포인트</span></a>
+    					<a href="/mypage/benefit/listPoint"><span>포인트</span></a>
     				</li>
     				<li>
-    					<a href="#" onClick="toPoint();"><span>쿠폰함</span></a>
+    					<a href="/mypage/benefit/listCoupon"><span>쿠폰함</span></a>
     				</li>
     				<li>
     					<a href="/mypage/benefit/membershipRateInfo"><span>회원혜택안내</span></a>
@@ -53,10 +50,7 @@
     			<a href="javascript:;"><span>회원정보</span></a>
     			<ul>
     				<li>
-    					<a href="/mypage/member/deliveryLocationList"><span>배송지 관리</span></a>
-    				</li>
-    				<li>
-    					<a href="#" onClick="toModify();"><span>회원정보 수정</span></a>
+    					<a href="/mypage/member/modifyMemberView"><span>회원정보 수정</span></a>
     				</li>
     				<li>
     					<a href="/mypage/member/secessionMemberView"><span>회원탈퇴</span></a>
@@ -65,30 +59,3 @@
     		</li>
     	</ul>
     	</nav>
-    	
-    	 <script>
-        var user_no;
-        var user_name;
-        var user_id;
-    $(document).ready(function(){
- 	   user_no = localStorage.getItem("user_no");
- 	   user_name = localStorage.getItem("user_name");
- 	   user_id = localStorage.getItem("user_id");
- 	   
- 	   $('#user_name').html('<b>'+user_name+'</b>님<br/>반갑습니다.');
- 	});
-    
-    function toQna(){
-	    	location.href="/test/qnaList.do?user_no="+user_no+"&pageNum=1";
-	    }
-    function toPoint(){
-    	location='/test/point.do?pageNum=1&user_no='+user_no;
-    }
-    function toCoupon(){
-    	location.href='/test/coupon.do?pageNum=1&user_no='+user_no;
-    }
-    function toModify(){
-    	location.href='/test/userInfo.do?user_no='+user_no;
-    }
-    
-    </script>
