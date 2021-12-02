@@ -26,7 +26,9 @@ public class PaymentController {
 	
 	@RequestMapping("/payment.do")
 	@ResponseBody
-	public String payment(PaymentVo payVo, HttpServletRequest request) {
+	public String payment(PaymentVo payVo, HttpServletRequest request, int coupon_no) {
+		System.out.println("user_no 확인 : "+payVo.getUser_no());
+		System.out.println("넘어온 coupon_no : "+coupon_no);
 		HttpSession session = request.getSession();
 		//orderlist에서 값들을 받아줄 paymentVo 리스트
 		List<PaymentVo> paymentDetailList = new ArrayList<PaymentVo>();
@@ -101,6 +103,16 @@ public class PaymentController {
 		
 		System.out.println("디비 넣기 완료!");
 		
+		
+		  service.deductPointService(payVo);
+		  System.out.println("포인트 차감 성공!");
+		 
+		if(coupon_no == 0) {
+			System.out.println("쿠폰 차감 필요 X");
+		}else {
+			service.deleteCouponService(coupon_no);
+			System.out.println("쿠폰번호 : "+coupon_no + "차감 완료");
+		}
 		
 		
 		return "완성";

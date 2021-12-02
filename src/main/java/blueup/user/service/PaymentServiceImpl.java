@@ -32,6 +32,16 @@ public class PaymentServiceImpl implements PaymentService {
 	public void deductStockService(StockDeduction stock) {
 		dao.deductStockDao(stock);
 	}
+
+	@Override
+	public void deductPointService(PaymentVo vo) {
+		dao.deductPointDao(vo);
+	}
+
+	@Override
+	public void deleteCouponService(int user_no) {
+		dao.deleteCouponDao(user_no);
+	}
 	
 	
 

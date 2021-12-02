@@ -29,4 +29,12 @@ public class PaymentDAO {
 	public void deductStockDao(StockDeduction stock) {
 		sqlSessionTemplate.update("paymentMapper.deductStock", stock);
 	}
+	
+	public void deductPointDao(PaymentVo vo) {
+		sqlSessionTemplate.insert("paymentMapper.deductPoint", vo);
+	}
+	
+	public void deleteCouponDao(int coupon_no) {
+		sqlSessionTemplate.delete("paymentMapper.deleteCoupon", coupon_no);
+	}
 }

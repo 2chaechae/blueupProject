@@ -813,6 +813,7 @@
 																	style="width: 137px; ime-mode: disabled;" maxlength="270" disabled="disabled" /> 
 															<input type="text" id="couponName" class="input-style01 input_required textOnly"
 																	style="width: 255px; ime-mode: disabled;" maxlength="270" disabled="disabled" /> 
+															<input type="hidden" id="coupon_no" />
 															<span class="btnTdArea"> 
 																<a href="#none;" class="btn d_layer_open" id="couponSelect">쿠폰조회</a>
 															</span>
@@ -999,6 +1000,7 @@
 
 											</tbody>
 										</table>
+										<input type="hidden" id="user_no" value="${orderlist.get(0).user_no }" />
 									</div>
 								</div>
 								<button type="button" class="btn-close d_toggle_select">
@@ -1253,6 +1255,10 @@ $("#payBtn").click(function () {
 <c:forEach items="${orderlist}" var="item">
 orderListSession
 </c:forEach> */
+	var coupon_no1 = $('#coupon_no').val();
+	if(coupon_no1 == '' || coupon_no == null){
+		coupon_no1 = 0;
+	}
 	var coupon1 = $('#couponName').val();
 	var message1 = $('#dlvMemo').val();
 	var user_no1 = $('#user_no').val();
@@ -1275,7 +1281,7 @@ orderListSession
  	var temp = $('input:radio[name="paymentBtn"]:checked').val();
  	var amount1 = ${orderlist.get(0).pay_amount};
  	/* $('#total_amount').html(); */
- 	alert("가격 : "+amount1);
+ 	alert("유저넘버 : "+user_no1);
 	
  	
  	  var IMP = window.IMP; // 생략가능
@@ -1349,7 +1355,8 @@ orderListSession
  	            	 "address" : address,
  	            	 "order_means" : temp,
  	            	 "order_price" : amount1,
- 	            	 "message" : message1
+ 	            	 "message" : message1,
+ 	            	 "coupon_no" : coupon_no1
  				},
  				dataType:'json'
  				,success:function(data) {
@@ -1420,6 +1427,7 @@ orderListSession
 				$('#couponListPopup').hide();
 				$('#couponUse').val(data.coupon_discount);
 				$('#couponName').val(data.coupon_name);
+				$('#coupon_no').val(data.coupon_no);
 				discounted();
 			}
 		});

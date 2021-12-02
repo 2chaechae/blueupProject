@@ -96,4 +96,23 @@
 		PRODUCT_SIZE = #{product_size} AND
 		PRODUCT_COLOR = #{product_color} 
 	</update>
+	
+	<insert id="deductPoint" parameterType="paymentVo">
+		INSERT INTO POINT (
+		EXPENSE,
+		USER_NO,
+		CONTENT,
+		POINT_DATE
+		) VALUES(
+			#{used_point},
+			#{user_no},
+			'상품 구매',
+			now()
+		) 
+	</insert>
+	
+	<delete id="deleteCoupon" parameterType="int">
+		DELETE FROM COUPON
+		WHERE USER_NO = #{user_no}
+	</delete>
 </mapper>
