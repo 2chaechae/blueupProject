@@ -1,6 +1,5 @@
 package blueup.user.controller;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,22 +10,17 @@ import java.util.Random;
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import blueup.admin.util.Cool;
-import blueup.admin.util.MailHandler;
-
 import blueup.admin.util.SHA256;
 import blueup.user.service.LoginJoinServiceImpl;
 import blueup.user.vo.UsersVo;
@@ -324,6 +318,14 @@ public class LoginJoinController {
 		
 		return map;
 	}
+	
+	@RequestMapping("/logout.do")
+	@ResponseBody
+	public int logout(HttpSession session ) {
+		session.invalidate();
+		return 1;
+	}
+
 	
 	@RequestMapping("/newPass.do")
 	public ModelAndView newPass(HttpServletRequest request, HttpSession session, UsersVo userVo) {

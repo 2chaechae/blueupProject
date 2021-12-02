@@ -572,8 +572,20 @@ function checkCategoryAll(element){
 function logout(){
 	var result = confirm("로그아웃 하시겠습니까?");
 	if(result){
-		localStorage.clear();
-		location.href="/test/index.do";
+		$.ajax({
+			url:'/test/logout.do',
+		    type:'POST',
+		   	cache:false,
+			success:function(data) {
+				if(data==1){
+					localStorage.clear();
+					location.href="/test/index.do";
+				}
+			},
+			error:function() {	
+				alert('다시 시도해주세요');
+			}
+		});
 	}
 }
 /* 하위 카테고리로 상품 조회 (상단메뉴)*/
