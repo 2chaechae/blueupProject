@@ -1458,19 +1458,26 @@ orderListSession
 	/* 할인적용 금액 */
 	function discounted(){
 		var product = "${orderlist.get(0).all_price}";
-		var product_discount = "${orderlist.get(0).all_discount}";
-		var coupon_discount = $('#couponUse').val();
-		var point_discount = $('#pointUse').val();
+		var product_discount_f = "${orderlist.get(0).all_discount}";
+		var coupon_discount_f = $('#couponUse').val();
+		var point_discount_f = $('#pointUse').val();
+		
+		/* int로 변환 */
+		var product_discount = parseInt(product_discount_f);
+		var coupon_discount = parseInt(coupon_discount_f);
+		var point_discount = parseInt(point_discount_f);
+		
 		$.ajax({
 			url:'/test/getDiscounted.do',
 		    type:'POST',
-			data: {"all_price" : product, "all_discount" : product_discount, "coupon" : coupon_discount, "point" : point_discount},
+			data: {"product_discount" : product_discount, "coupon_discount" : coupon_discount, "point_discount" : point_discount},
 			dataType:'json',
 			success:function(data) {
-				var total_discount = parseInt(product_discount) + data;
-				$('#dc_amount').html(total_discount + "원");
+				alert(data);
+				var total_discount = data;
+				$('#dc_amount').text(total_discount);
 				var total_price = parseInt(product) - total_discount;
-				$('#total_amount').html(total_price);
+				$('#total_amount').text(total_price);
 				
 			}
 		});

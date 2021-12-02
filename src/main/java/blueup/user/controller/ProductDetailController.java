@@ -214,6 +214,7 @@ public class ProductDetailController {
 				System.out.println(vo.getProduct_color());
 				List<CartVo> list = new ArrayList<CartVo>();
 				list.add(vo);
+				System.out.println(vo.getUser_no());
 				session.setAttribute("order", list);
 				result = 1; 
 			}

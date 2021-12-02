@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,8 +31,8 @@ public class OrderController {
 	public ModelAndView getOrder(HttpSession session, HttpServletRequest request, UsersVo uservo) {
 		ModelAndView mav = new ModelAndView();
 		session = request.getSession();
-		int user_no = uservo.getUser_no();
-		System.out.println("/getOrder에 넘어온 값 : "+user_no);
+		int user_no = 0;
+		System.out.println("장바구니에서 /getOrder에 넘어온 값 : "+user_no);
 		int total_point;
 		/* 상품정보 */
 		List<OrderVo> orderlist = new ArrayList<OrderVo>();
@@ -60,7 +61,8 @@ public class OrderController {
 				ordervo.setUser_no(memcartlist.get(i).getUser_no());
 				orderlist.add(ordervo);
 				System.out.println("총할인금액" + ordervo.getAll_discount());
-
+				System.out.println("상세->주문" + ordervo.getUser_no());
+				user_no = ordervo.getUser_no();
 			}
 			System.out.println(orderlist.get(0).getProduct_name());
 			session.setAttribute("orderListSession", orderlist);
@@ -147,7 +149,8 @@ public class OrderController {
 
 	@RequestMapping("/getDiscounted.do") // 선택 할인적용 금액
 	@ResponseBody
-	public int discounted(int product_discount, int coupon_discount, int point_discount) {
+	public int discounted(@RequestParam(value="product_discount", required=false) int product_discount, @RequestParam(value="coupon_discount", required=false) int coupon_discount, 
+			@RequestParam(value="point_discount", required=false)int point_discount) {
 		int total_discounted = product_discount + coupon_discount + point_discount;
 		return total_discounted;
 	}

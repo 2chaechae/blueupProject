@@ -5,83 +5,9 @@
 <%@ include file="header.jsp"%>
 
 <!-- 컨텐츠 시작 -->
-<!-- <meta property="recopick:title" content="하트 비니 뉴욕양키스">
-<meta property="recopick:image" content="https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png">
-<meta property="recopick:price" content="49000">
-<meta property="recopick:price:currency" content="KRW">
-<meta property="recopick:description" content="하트 비니 뉴욕양키스">
- -->
-<!-- <link rel="stylesheet" type="text/css" href="http://img3.tmon.kr/fe/release/staticResource/deals_v3/p/css/deals.css?v=1636078127276"> -->
-<script type="text/javascript"
-	src="https://static.mlb-korea.com/pc/static/js/goods.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript"
-	src="/javascript/message/goods_ko.js?v=prod-version-858_20211102145956"></script>
-<!-- <script>
-	var	_erpNo = '3ABNM0916-50BKS';
-	var _godNo = 'GM0021073028518';
-	var _godNm = '하트 비니 뉴욕양키스';
-	var _godPrice = parseInt('49000');
-	var _pickupStoreCnt = 0;
-	
-	$(document).ready(function() {
-		// $('#recommendProduct').viewtogether({godNo:_erpNo});
-		//Facebook Pixel
-		fbq('track', 'ViewContent', {
-			content_ids: ['3ABNM0916-50BKS'],
-			content_type: 'product'
-		});
-		
-		//카카오모먼트 EOSD-2568
-		kakaoPixel('7684449978440634289').viewContent({ id: _erpNo });
-		
-		setTimeout(function() {
-			
-			var soldOutText = ('SALE_PROGRS' == 'SMTM_SLDOUT' || 'SALE_PROGRS' == 'SLDOUT') ? "일시품절" : "재고있음";
-			var reviewCountText = $(".crema-product-reviews-count").text();
-			var reviewText = $(".crema-product-reviews-score").text();
-			reviewCountText = reviewCountText.replace(/(\(|\))/g, "");
-			reviewText = reviewText.replace(/(\(|\))/g, "");
-			var detailBrand = '/goods/뉴욕-양키스/비니/3ABNM0916-50BKS'.split("/");
-			
-			window.dataLayer = window.dataLayer || [];
-			window.gtmDataLayer.pushDataLayer(
-				{
-					'event':'ee-productView'
-					,'dimension62': soldOutText 
-					,'dimension90': reviewCountText
-					,'dimension91': reviewText.substring(0,1)
-					,'ecommerce': {
-						'currencyCode': 'KRW', //현지 통화
-						'detail': {
-							'products': [{
-								'id':'3ABNM0916-50BKS'
-								,'name':'하트 비니 뉴욕양키스'
-								,'price':Number('49000')
-								,'brand':convertBrandNm('엠엘비')
-								,'category':'비니'
-								,'dimension18':'Black'
-								,'dimension20':'' == '' ? undefined : ''
-								,'dimension52':'' == '' ? undefined : ''
-								,'dimension53':'매일 함께 입고 싶은 커플룩 #MLB하트, 톤 업! 텐션 업! #MLB비니, 나 하나, 너 하나 #MLB하트, 스타일 온도 UP #MLB비니' == '' ? undefined : '매일 함께 입고 싶은 커플룩 #MLB하트, 톤 업! 텐션 업! #MLB비니, 나 하나, 너 하나 #MLB하트, 스타일 온도 UP #MLB비니'
-								,'dimension54':'2447, 2474, 2495, 2496' == '' ? undefined : '2447, 2474, 2495, 2496'
-								,'dimension85':'0' == '' ? undefined : '0'+'%'
-								,'dimension87':'/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png' == '' ? undefined : 'https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png'
-								,'dimension131':'' == '' ? undefined : ''
-								,'dimension132': '' == '' ? undefined : ''
-								,'dimension133': '겉감:아크릴 100%, 겉감:아크릴 100%' == '' ? undefined : '겉감:아크릴 100%, 겉감:아크릴 100%'
-								,'dimension134':detailBrand[2]
-								,'dimension135':getSeasonCd('21F')
-							}]
-						}
-					}
-				}
-			);
-			
-			//console.log("goods window.dataLayer  ==>",window.dataLayer);
-		}, 2000);
-	});
-</script>
- -->
+
+<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/goods.js?v=prod-version-858_20211102145956"></script>
+<script type="text/javascript" src="/javascript/message/goods_ko.js?v=prod-version-858_20211102145956"></script>
 
 <acrticle id="container">
 <section id="contents" class="product-detail">
@@ -92,10 +18,10 @@
 
 			<main class="contents" id="contents">
 				<style>
-body {
-	height: 100% !important;
-}
-</style>
+				body {
+					height: 100% !important;
+				}
+				</style>
 				<div class="gdsWrap">
 					<!-- 상품  -->
 					<section class="sect product">
@@ -289,7 +215,7 @@ body {
 	<ul class="tab-type04 d_scroll_tab d_fix_obj">
 		<li class="on tab01"><a href="#productInfo01">상품 정보</a></li>
 		<li class="tab02"><a href="#productInfo02">상품 리뷰</a></li>
-		<li class="tab03"><a href="#info">상품 고시 정보</a></li>
+		<li class="tab03"><a href="#productInfo03">상품 고시 정보</a></li>
 	</ul>
 </div>
 
@@ -307,8 +233,7 @@ body {
 		</c:forEach>
 		&nbsp;
 
-		<div id="productInfo02" class="product-detail-section box-review"
-			style="width: 1000px;">
+		<div id="productInfo02" class="product-detail-section box-review" style="width: 1000px;">
 			<h2 class="title03" style="padding-bottom: 30px;">상품리뷰</h2>
 			<hr style="color: gray">
 			<div
@@ -424,10 +349,9 @@ body {
 
 
 <!-- 상품정보 -->
-<div id="info" class="lypopGoodsDetail lyTabCont on" style="margin-left: 350px;">
+<div id="#productInfo03" class="lypopGoodsDetail lyTabCont on" style="width:1000px; margin: 0 auto;">
 	<img
-		src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/shoes/bottom01.png"
-		style="width: 984px; height: 500px; margin-left: 50px;">
+		src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/shoes/bottom01.png" style="width:1000px;">
 </div>
 
 <!-- 교환반품 -->
@@ -922,6 +846,7 @@ function addOrder(){
 		alert("옵션을 선택해주세요.");
 	}else{
 		var user_no = localStorage.getItem("user_no");
+		alert("상세->주문" + user_no);
 		if(user_no == null){
 			var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
 			if(logincheck == true){
@@ -947,6 +872,7 @@ function addOrder(){
 					});
 			}
 		}else{
+			var user_no = localStorage.getItem("user_no");
 			var discount_total = discount * quantity;
 			var total_price = product_price * quantity;
 			var all_discount = discount * quantity;

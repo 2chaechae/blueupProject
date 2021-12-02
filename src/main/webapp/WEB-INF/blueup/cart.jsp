@@ -284,6 +284,7 @@ $(document).ready(function(){
 		
 		///////////////// 전체 체크 /////////////////
 		$("#allCheck").click(function(){
+			var user_no = localStorage.getItem("user_no");
 			if($("input:checkbox[name=allCheck]").is(":checked") == true) {
 				$("input[name=chBox]:checkbox").prop("checked", true);
 					//////// 회원////////
