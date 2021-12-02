@@ -39,7 +39,7 @@
                     <ul>
                         <li><a href="/helpdesk/notice/list">공지사항</a></li>
                         <li>
-                            <a href="#" onclick="openLayerPopupForLogin('guestCounsel', '/helpdesk/csInquiry/new'); return false;">1:1 문의</a>
+                            <a href="/test/qnaList.do?pageNum=1&user_no=">1:1 문의</a>
                                     </li>
                         <li><a href="${pageContext.request.contextPath}/mypage/benefit/membershipRateInfo">회원혜택안내</a></li>
                         <li><a href="/helpdesk/faq/list?searchAllCd=FAQ_EXCHG_RTGOD_INQ">반품/교환 안내</a></li>

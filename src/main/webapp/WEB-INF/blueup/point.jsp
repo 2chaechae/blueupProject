@@ -70,7 +70,7 @@ $(document).ready(function(){
 
 		<h2 class="title01">포인트</h2>
 
-		<%@ include file="../../view/mlb/mypageMenu.jsp"%>
+		<%@ include file="mypageMenu.jsp"%>
 		<main class="contents pointList-wrap" id="contents">
 
 			<div class="location-contents">

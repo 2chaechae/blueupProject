@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../view/mlb/header.jsp"%>
+<%@ include file="header.jsp"%>
 
 
 <!-- 컨텐츠 시작 -->
@@ -28,7 +28,7 @@
 			});
 		});
 		
-		$(document).ready(function(){
+		/* $(document).ready(function(){
 			$('#confirmBtn').on('click',function(){
 				var password = $('#newPassword').val();
 				var chkPassword = $('#mbrCheckPw').val();
@@ -72,7 +72,7 @@
 				
 			});
 		});
-		
+		 */
 		
 			/* 드롭박스의 email domain이 바뀔때마다 자동으로 텍스트에 입력되도록 설정 */
 			function statusChange(statusItem) {
@@ -261,7 +261,7 @@
 		
 		</script>
 
-		<%@ include file="../../view/mlb/mypageMenu.jsp"%>
+		<%@ include file="mypageMenu.jsp"%>
 
 		<main class="contents memberInfoModi-wrap" id="contents">
 			<form action="/test/modifyUser.do" id="modifyMbrForm"
@@ -457,6 +457,6 @@
 		</main>
 	</div>
 </div>
-<%@ include file="../../view/mlb/footer.jsp"%>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

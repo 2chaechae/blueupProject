@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import blueup.user.service.PaymentService;
 import blueup.user.vo.OrderVo;
@@ -100,6 +101,16 @@ public class PaymentController {
 		
 		System.out.println("디비 넣기 완료!");
 		
+		
+		
 		return "완성";
+	}
+	
+	
+	@RequestMapping("/orderSuccess.do")
+	public ModelAndView orderSuccess() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("ordersuccess");
+		return mav;
 	}
 }

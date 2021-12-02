@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../header.jsp"%>
+<%@ include file="header.jsp"%>
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript"
 	src="https://static.mlb-korea.com/pc/static/js/validator.js"></script>
@@ -67,7 +67,7 @@
 	<div class="container">
 
 		<h2 class="title01">쿠폰함</h2>
-		<%@ include file="../../view/mlb/mypageMenu.jsp"%>
+		<%@ include file="mypageMenu.jsp"%>
 		<main class="contents couponList-wrap" id="contents">
 
 			<div class="location-contents">
@@ -280,6 +280,6 @@
 
 <!--// 컨텐츠 끝 -->
 
-<%@ include file="../../footer.jsp"%>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

@@ -605,7 +605,7 @@ function cartAll() {
 function myPage(){
 	var user_no = localStorage.getItem("user_no");
 	if(user_no!=null){
-		location.href="/test/qnaWrite.do?user_no="+user_no;
+		location.href="/test/getOrderList.do?user_no="+user_no;
 	}else{
 		alert('로그인이 필요한 작업입니다');
 		return;

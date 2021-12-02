@@ -1352,7 +1352,7 @@ orderListSession
  				},
  				dataType:'json'
  				,success:function(data) {
- 					alert(data);
+ 					
  				}
  			}); 
  	         
@@ -1362,6 +1362,7 @@ orderListSession
  	          msg += '에러내용 : ' + rsp.error_msg;
  	          alert(msg);
  	       }
+ 	      location.href='/test/orderSuccess.do';
  	    });
  	    });
 
