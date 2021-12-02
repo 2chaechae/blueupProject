@@ -289,7 +289,7 @@ body {
 	<ul class="tab-type04 d_scroll_tab d_fix_obj">
 		<li class="on tab01"><a href="#productInfo01">상품 정보</a></li>
 		<li class="tab02"><a href="#productInfo02">상품 리뷰</a></li>
-		<li class="tab03"><a href="#productInfo03">상품 고시 정보</a></li>
+		<li class="tab03"><a href="#info">상품 고시 정보</a></li>
 	</ul>
 </div>
 
@@ -424,7 +424,7 @@ body {
 
 
 <!-- 상품정보 -->
-<div class="lypopGoodsDetail lyTabCont on" style="margin-left: 350px;">
+<div id="info" class="lypopGoodsDetail lyTabCont on" style="margin-left: 350px;">
 	<img
 		src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/shoes/bottom01.png"
 		style="width: 984px; height: 500px; margin-left: 50px;">
@@ -719,7 +719,7 @@ function chooseColor(element){
 	var spanList = $('.payment-option-size').find('span');
 		$(spanList).each(function(){
 			$(this).css("text-decoration", "none");
-			$(this).attr("disabled", false);
+			$(this).prop('disabled',false);
 		});
 		$.ajax({
 			url:'/test/getStockbyProductno.do',
@@ -739,7 +739,7 @@ function chooseColor(element){
 					for(var i=0; i < data.length; i++){
 							if($(this).text() == data[i].product_size && data[i].stock_quantity == 0){
 							$(this).css("text-decoration", "line-through");
-							$(this).attr("disabled", true);
+							$(this).prop('disabled',true);
 						}
 					}
 				});

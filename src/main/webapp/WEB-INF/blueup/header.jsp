@@ -548,10 +548,14 @@
 $(document).ready(function(){
 	var user_no = localStorage.getItem("user_no");
 	if(user_no != null){
-		var html = 	"<ul><li><a href='#'>로그아웃</a></li>"
+		var html = 	"<ul><li><a href='javascript:void(0)' onclick='logout()'>로그아웃</a></li>"
 		 			+ "<li><a href='/test/getOrderList.do?user_no=" + user_no + "'>마이페이지</a></li>";
 		$('#layerLogin').empty();
 		$('#layerLogin').append(html);
+	}else{
+		var html = "<ul><li><a href='/test/login.do'>로그인</a></li>"
+					+ "<li><a href='/test/join.do'회원가입</a></li>"
+					+ "<li><a href='/test/getOrderList.do?user_no='" + user_no + "'>마이페이지</a></li>";
 	}
 });
 
@@ -564,7 +568,14 @@ function checkCategoryAll(element){
 		location.href="/test/getCategoryAll.do?category_name="+first;
 	}
 }   
-
+/* 로그아웃 */
+function logout(){
+	var result = confirm("로그아웃 하시겠습니까?");
+	if(result){
+		localStorage.clear();
+		location.href="/test/index.do";
+	}
+}
 /* 하위 카테고리로 상품 조회 (상단메뉴)*/
 function checkCategoryUp(element){
 		var user_no = localStorage.getItem("user_no");

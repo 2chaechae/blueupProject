@@ -81,6 +81,6 @@
 	
 	<!-- 재고 수정 -->
 	<update id="updateStock" parameterType="stockvo" >
-		update stock set stock_quantity=#{stock_quantity} where stock_no=#{stcok_no};
+		update stock set stock_quantity=#{stock_quantity} where stock_no=#{stock_no};
 	</update>
 </mapper>

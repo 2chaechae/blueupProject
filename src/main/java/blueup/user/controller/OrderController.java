@@ -60,6 +60,7 @@ public class OrderController {
 				ordervo.setExpected_point(expected_point); // 적립예상포인트
 				ordervo.setUser_no(memcartlist.get(i).getUser_no());
 				orderlist.add(ordervo);
+				System.out.println("총할인금액" + ordervo.getAll_discount());
 
 			}
 			System.out.println(orderlist.get(0).getProduct_name());
@@ -76,7 +77,7 @@ public class OrderController {
 				ordervo.setProduct_price(product_price);
 				ordervo.setProduct_color(nomemcartlist.get(i).getProduct_color());
 				ordervo.setProduct_size(nomemcartlist.get(i).getProduct_size());
-				ordervo.setQuantity(nomemcartlist.get(i).getQuantity());
+				ordervo.setQuantity(nomemcartlist.get(i).getQuantity());	
 				ordervo.setDiscount(nomemcartlist.get(i).getDiscount());
 				ordervo.setDelivery_fee(nomemcartlist.get(i).getDelivery_fee());
 				ordervo.setTotal_price(nomemcartlist.get(i).getTotal_price());
@@ -100,9 +101,11 @@ public class OrderController {
 			mav.addObject("couponlist", couponlist);
 	
 			/* 배송지 정보 */
+			mav.addObject("user", user_no);
 			mav.addObject("orderlist", orderlist);
 			mav.setViewName("order");
 		}else {
+			mav.addObject("user", user_no);
 			mav.addObject("orderlist", orderlist);
 			mav.setViewName("order");
 		}

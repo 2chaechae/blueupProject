@@ -83,6 +83,9 @@ $(document).ready(function(){
 					if(this.stock_quantity == 0) {
 						$("select option[value ='"+this.product_size+"']").prop('disabled',true);
 						$("select option[value ='"+this.product_size+"']").text(this.product_size+"[Ç°Àý]");
+					}else{
+						$("select option[value ='"+this.product_size+"']").prop('disabled',false);
+						$("select option[value ='"+this.product_size+"']").text(this.product_size);
 					}
 				})
 			},

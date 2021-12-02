@@ -79,7 +79,8 @@
 													<td class="tleft">
 														<div class="product-info">
 															<div class="product-info-img">
-																<img src="${product.main_image }" alt="상품이미지" onerror="errorImgShow(this, 100);">
+																<img src="${product.main_image }" onclick="viewCount(this)" alt="상품이미지" onerror="errorImgShow(this, 100);">
+																<input type="hidden" value="${product.product_no}"/>
 															</div>
 															<div class="product-info-text">
 																<div class="product-info-box">
@@ -110,7 +111,7 @@
 									</table>
 								</div>
 								<c:choose>
-								<c:when test="${orderlist.get(0).user_no > 0}"></c:when>
+								<c:when test="${user > 0}"></c:when>
 								<c:otherwise>
 									<!-- 비회원 -->
 									<p class="iconTxt01 mt20 info_no_mem">회원 가입(로그인)후 주문하시면 MLB에서 제공하는 할인, 쿠폰, 적립 등의 다양한 혜택을 받으실 수 있습니다.</p>
@@ -124,7 +125,7 @@
 						</div>
 						<!-- 약관동의 및 개인정보수집 동의 -->
 						<c:choose>
-						<c:when test="${orderlist.get(0).user_no > 0}"></c:when>
+						<c:when test="${user > 0}"></c:when>
 						<c:otherwise>
 								<!-- 비회원 -->
 								<div class="orderWriteArea info_no_mem" style="">
@@ -789,7 +790,7 @@
 							</c:choose>
 						<!-- 할인정보 -->
 						<c:choose>
-							<c:when test="${orderlist.get(0).user_no > 0}">
+							<c:when test="${user > 0}">
 								<div class="orderWriteArea info_mem">
 									<h3 class="title06">할인정보</h3>
 									<div class="order-detail-wrap d_toggle on dcInfo">
@@ -1000,7 +1001,7 @@
 
 											</tbody>
 										</table>
-										<input type="hidden" id="user_no" value="${orderlist.get(0).user_no }" />
+										<input type="hidden" id="user_no" value="${user }" />
 									</div>
 								</div>
 								<button type="button" class="btn-close d_toggle_select">
@@ -1075,7 +1076,7 @@
 								<h3>결제정보</h3>
 								<div class="orderPayInfo">
 								<c:choose>
-									<c:when test="${orderlist.get(0).user_no > 0}">
+									<c:when test="${user > 0}">
 										<dl>
 											<dt>선택상품금액</dt>
 											<dd id="god_amount">
@@ -1214,7 +1215,7 @@
 </article>
 <%@ include file="footer.jsp"%>
 <form id="movedCouponForm" method="post" action="/test/getCoupon.do">
-	<input type="hidden" id="user_no" name="user_no" value="${couponlist.get(0).user_no }"/>
+	<input type="hidden" id="user_no" name="user_no" value="${user}"/>
 </form>
 </body>
 
@@ -1408,7 +1409,29 @@ orderListSession
 			}
 		});
 	}
-	
+	/* 이미지 클릭시 상세페이지 이동 */
+	function viewCount(element){
+	var product_no = $(element).next().val();
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
+}
 	/*쿠폰 팝업창*/
 	$(function(){
 		$('#couponSelect').click(()=>{

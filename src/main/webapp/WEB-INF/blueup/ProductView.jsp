@@ -39,7 +39,6 @@
 										<div class="name">${product.product_name}
 											<p class="heart" style="display:inline-block;">
 												<c:set var="wish" value="${product.wish_no}"></c:set>
-												<c:out value="${wish}"/>
 												<c:choose>
 													<c:when test="${wish ne 0}">
 														<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
