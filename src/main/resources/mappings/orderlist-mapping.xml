@@ -2,32 +2,33 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+
 <mapper namespace="orderlistDao">
 	<!-- 주문/배송 전체조회 -->
-	<select id="getOrderList" resultType="orderlistvo">
+	<select id="getOrderList" parameterType="int" resultType="orderlistvo">
 		SELECT  
-			a.order_no, a.order_time,
+			a.order_no, a.order_time, a.user_no,
 					
-			b.product_name, b.product_price, b.product_img,
-			b.product_color, b.product_size, 
+			b.product_name, b.product_price, b.main_image,
+			b.product_color, b.product_size, b.product_no,
 			b.quantity, b.order_status
 		
 		FROM order_request as a right outer join order_detail as b
 		ON a.order_no = b.order_no
-		ORDER BY b.order_no desc
+		WHERE a.user_no = #{user_no}
+		
 	</select>
 	
 	<!-- 주문/배송 상세조회 -->
-	<select id="getOrderDetail" resultType="orderlistvo">
+	<select id="getOrderDetail" parameterType="orderlistvo" resultType="orderlistvo">
 		SELECT  
 			a.order_no, a.order_time, a.receiver, a.address,
 			a.order_price, a.coupon_discount, a.used_point,
-			a.order_means, a.delivery_fee,
+			a.order_means, a.delivery_fee, a.user_no,
 							
-			b.product_name, b.product_price, b.product_img,
-			b.product_color, b.product_size, 
-			b.quantity, b.order_status,
+			b.product_name, b.product_price, b.main_image,
+			b.product_color, b.product_size, b.product_no,
+			b.quantity, b.order_status, b.review_status,
 			b.phone1, b.phone2, b.phone3,
 			b.discount_rate, b.cancel_date, b.refund_means,
 			b.refund_bank, b.refund_account, b.refund_price
@@ -45,22 +46,39 @@
 	
 	<!-- 선택상품 주문 취소 -->
 	<update id="getOrderCancel">
-		UPDATE order_detail SET order_status = '주문취소', product_quantity = #{cancel_quantity}
+		UPDATE order_detail SET order_status = '주문취소', quantity = #{cancel_quantity}
 		WHERE order_no = #{order_no} AND product_name = #{product_name}
 	</update>
 	
-	<!-- 검색된 날짜의 주문/배송 조회 -->
-	<!-- <select id="getSearch" parameterType="hashMap" resultType="orderlistvo">
-		SELECT
-			a.order_no, a.order_time,
-					
-			b.product_name, b.product_price, b.product_img,
-			b.product_color, b.product_size, 
-			b.product_quantity, b.order_status
-		FROM order_request as a right outer join order_detail as b
-		ON a.order_no = b.order_no
-		WHERE a.order_time BETWEEN #{dateStart} AND #{dateEnd}
-	</select> -->
+	<!-- 배송완료 => 구매확정 -->
+	<update id="getOrderConfirmed">
+		UPDATE order_detail SET order_status = '구매확정'
+		WHERE order_no = #{order_no} AND product_no = #{product_no}
+	</update>
+	
+	<!-- 반품요청 => 반품요청철회 -->
+	<update id="getWithdrawalReturn">
+		UPDATE order_detail SET order_status = '배송완료'
+		WHERE order_no = #{order_no} AND product_no = #{product_no}
+	</update>
+	
+	<!-- 교환요청 => 교환요청철회 -->
+	<update id="getWithdrawalExchange">
+		UPDATE order_detail SET order_status = '배송완료'
+		WHERE order_no = #{order_no} AND product_no = #{product_no}
+	</update>
+	
+	<!-- 교환요청 -->
+	<update id="getExchangeRequest">
+		UPDATE order_detail SET order_status = '교환요청'
+		WHERE order_no = #{order_no} AND product_no = #{product_no}
+	</update>
+	<!-- 반품요청 -->
+	<update id="getReturnRequest">
+		UPDATE order_detail SET order_status = '반품요청'
+		WHERE order_no = #{order_no} AND product_no = #{product_no}
+	</update>
+
 
 	<!-- 통계 - 월별 주문액 상품비율 -->
 	<select id="getOrderRateByProduct" parameterType="hashmap" resultType="orderrankvo">

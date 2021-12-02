@@ -402,7 +402,7 @@
 									<li><a href="/test/join.do"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="회원가입">회원가입</a></li>
-									<li><a href="#"
+									<li><a href="#" onclick="myPage(); return false;"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="마이페이지">마이페이지</a></li>
 								</ul>
@@ -618,6 +618,14 @@ function sale(){
 		location.href="/test/getSaleProduct.do?user_no="+user_no;
 	}else{
 		location.href="/test/getSaleProduct.do?";
+	}
+}
+function myPage() {
+	var user_no = localStorage.getItem("user_no");
+	if (user_no != null) {
+		location.href = "/test/getOrderList.do?user_no=" + user_no;
+	} else{
+		location.href = "/test/getOrderList.do?";
 	}
 }
 </script>

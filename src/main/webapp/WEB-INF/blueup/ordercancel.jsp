@@ -17,38 +17,7 @@
 	<div class="container">
 		<form name="frmClaimInfo" id="frmClaimInfo" method="post" action="/">
 			<h2 class="title01">상품 취소신청</h2>
-			<nav id="lnb" class="lnb-nav">
-				<strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
-				<p><b>ㅇㅇㅇ</b>님<br />반갑습니다.</p>
-				<hr class="hr-ddd" />
-				<ul class="nav-mnlist">
-					<li id="myNavi1"><a href="javascript:;"><span>주문정보</span></a>
-						<ul>
-							<li><a href="/mypage/order/list"><span>주문/배송조회</span></a></li>
-							<li><a href="/mypage/claim/list"><span>취소/교환/반품조회</span></a></li>
-						</ul></li>
-					<li id="myNavi2"><a href="javascript:;"><span>활동정보</span></a>
-						<ul>
-							<li><a href="/mypage/wishlist/list"><span>위시리스트</span></a></li>
-							<li><a href="/mypage/goods/reviewView"><span>상품리뷰</span></a>
-							</li>
-							<li><a href="/mypage/inquiry/list"><span>QnA</span></a></li>
-						</ul></li>
-					<li id="myNavi3"><a href="javascript:;"><span>혜택정보</span></a>
-						<ul>
-							<li><a href="/mypage/benefit/listPoint"><span>포인트</span></a></li>
-							<li><a href="/mypage/benefit/listCoupon"><span>쿠폰함</span></a></li>
-							<li><a href="/mypage/benefit/membershipRateInfo"><span>회원혜택안내</span></a>
-							</li>
-						</ul></li>
-					<li id="myNavi4"><a href="javascript:;"><span>회원정보</span></a>
-						<ul>
-							<li><a href="/mypage/member/modifyMemberView"><span>회원정보 수정</span></a></li>
-							<li><a href="/mypage/member/secessionMemberView"><span>회원탈퇴</span></a>
-							</li>
-						</ul></li>
-				</ul>
-			</nav>
+			<%@ include file="mypageMenu.jsp" %>
 			<main class="contents" id="contents">
 				<div class="location-contents">
 					<p class="location">
@@ -100,7 +69,7 @@
 												<div class="product-info">
 													<div class="product-info-img">
 														<a href="javascript:mypageorder.goGoodsInfo('GM0021082429406');">
-														<img src="${ordercancel.product_img }" alt="상품이미지" onerror="errorImgShow(this, 100);"></a>
+														<img src="${ordercancel.main_image }" alt="상품이미지" onerror="errorImgShow(this, 100);"></a>
 													</div>
 													<div class="product-info-text">
 														<div class="product-info-box">
@@ -150,35 +119,41 @@
 				</div>
 			</main>
 		</form>
+		<form id="movedAjaxFrm" method="post" action="/test/getOrderCancel.do">
+			<input type="hidden" id="size" name="size" value=""/>
+		</form>
 	</div>
 </div>
-<form id="movedAjaxFrm" method="post" action="/test/getMovedAjax.do">
-	<input type="hidden" id="size" name="size" value=""/>
-</form>
 <%@ include file="footer.jsp"%>
+
 <script type="text/javascript">
 $(function(){
-	var size = "${size}";
-	var orderNo = "${ordercancel.get(0).order_no }";
-	
-	console.log(orderNo);
-	
 	$('#acceptCancel').click(()=>{
+		var size = "${size}";
+		var userNo = "${ordercancel.get(0).user_no }";
+		var orderNo = "${ordercancel.get(0).order_no }";
+		var productNo = "${ordercancel.get(0).product_no }";
+		console.log("size", size);
 		var string = "";
 		var productNm = "";
 		for(var i=0; i<size; i++){
 			string = string + $('#quantity'+i).val();
-			productNm = productNm + $('#pdn'+i).val() + "/";
+			productNm = productNm + $('#pdn'+i).text() + "/";
 			
 		}
 		
+		console.log("qweqwe___ string", string);
+		console.log("qweqwe___ productNm", productNm);
+		
 		$.ajax({
 			type:'post',
-			url:'/test/getMovedAjax.do',
-			data:{size : string, pdn : productNm, order_no : orderNo},
+			url:'/test/getOrderCancel.do',
+			data:{size : string, pdn : productNm, user_no : userNo, order_no : orderNo, product_no : productNo},
 			dataType:'json',
 			success:function(data){
 				console.log(data);
+				alert("주문이 취소되었습니다.");
+				location.href="/test/getOrderList.do?user_no="+userNo;
 			}
 		});
 	});

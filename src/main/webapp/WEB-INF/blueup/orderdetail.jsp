@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="header.jsp"%>
 <style>
-/*전체취소 팝업창 CSS*/
+/* 팝업창 CSS*/
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -46,36 +46,7 @@
 <div class="contain my od lnblist-Wrap" id="contain">
 	<div class="container">
 		<h2 class="title01">주문/배송상세</h2>
-		<nav id="lnb" class="lnb-nav">
-			<strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
-			<p><b>ㅇㅇㅇ</b>님<br />반갑습니다.</p>
-			<hr class="hr-ddd" />
-			<ul class="nav-mnlist">
-				<li id="myNavi1"><a href="javascript:;"><span>주문정보</span></a>
-					<ul>
-						<li><a href="/orderlist.jsp"><span>주문/배송조회</span></a></li>
-						<li><a href="/mypage/claim/list"><span>취소/교환/반품 조회</span></a></li>
-					</ul></li>
-				<li id="myNavi2"><a href="javascript:;"><span>활동정보</span></a>
-					<ul>
-						<li><a href="/mypage/wishlist/list"><span>위시리스트</span></a></li>
-						<li><a href="/mypage/goods/reviewView"><span>상품리뷰</span></a></li>
-						<li><a href="/mypage/inquiry/list"><span>1:1 문의</span></a></li>
-					</ul></li>
-				<li id="myNavi3"><a href="javascript:;"><span>혜택정보</span></a>
-					<ul>
-						<li><a href="/mypage/benefit/listPoint"><span>포인트</span></a></li>
-						<li><a href="/mypage/benefit/listCoupon"><span>쿠폰함</span></a></li>
-						<li><a href="/mypage/benefit/membershipRateInfo"><span>회원혜택안내</span></a></li>
-					</ul></li>
-				<li id="myNavi4"><a href="javascript:;"><span>회원정보</span></a>
-					<ul>
-						<li><a href="/mypage/member/modifyMemberView"><span>회원정보 수정</span></a></li>
-						<li><a href="/mypage/member/secessionMemberView"><span>회원탈퇴</span></a>
-						</li>
-					</ul></li>
-			</ul>
-		</nav>
+		<%@ include file="mypageMenu.jsp" %>
 		<main class="contents" id="contents">
 			<div class="location-contents">
 				<p class="location">
@@ -91,6 +62,7 @@
 						<div class="odResulBox">
 							<!-- 주문정보 -->
 							<div class="orderNb ">
+								<span>주문</span>
 								<span><em>주문일</em> <fmt:formatDate value="${orderdetail.get(0).order_time}" pattern="yyyy-MM-dd hh:mm" /></span> 
 								<span><em>주문번호</em>${orderdetail.get(0).order_no }</span>
 							</div>
@@ -126,13 +98,13 @@
 									<col style="width: 146px">
 								</colgroup>
 								<tbody>
-									<c:forEach items="${orderdetail }" var="orderdetail">
+									<c:forEach items="${orderdetail }" var="orderdetail" varStatus="status">
 										<tr>
 											<td class="tleft">
 												<div class="product-info ">
 													<div class="product-info-img">
 														<a href="javascript:mypageorder.goGoodsInfo('GM0021073028544');">
-															<img src="${orderdetail.product_img }" alt="상품이미지" onerror="errorImgShow(this, 100);">
+															<img src="${orderdetail.main_image }" alt="상품이미지" onerror="errorImgShow(this, 100);">
 														</a>
 													</div>
 													<div class="product-info-text">
@@ -154,49 +126,52 @@
 											<td>${orderdetail.quantity }</td>
 											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.product_price }" />원</td>
 											<td>${orderdetail.order_status }</td>
-											
-											<!-- 입금대기 / 결제완료 / 배송준비중 / 배송지연(예상일자) => 주문취소 버튼 -->
-											<c:if test="${orderdetail.order_status == '입금대기' }">
-											<td class="selBox">
-			                                  	<span><a href="javascript:void(0)" class="btn gray sm d_layer_open" id="cancelBtn">주문취소</a></span>
-											</td>
-											</c:if>
-											<!-- 배송완료 / 구매확정취소 => 구매확정/반품요청/교환요청 버튼 -->
-											<c:if test="${orderdetail.order_status == '배송완료' }">
-											<td class="selBox">
-			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="confirmedBtn">구매확정</a></span>
-			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="returnBtn">반품요청</a></span>
-			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="exchangeBtn">교환요청</a></span>
-											</td>
-											</c:if>
-											
-											<!-- 반품요청 => 반품철회 버튼 -->
-											<c:if test="${orderdetail.order_status == '반품요청' }">
-											<td class="selBox">
-			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of return">반품철회</a></span>
-											</td>
-											</c:if>
-											
-											<!-- 교환요청 => 교환철회 버튼 -->
-											<c:if test="${orderdetail.order_status == '교환요청' }">
-											<td class="selBox">
-			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of exchange">교환철회</a></span>
-											</td>
-											</c:if>
-											
-											<!-- 구매확정 => 리뷰작성 버튼 -->
-											<c:if test="${orderdetail.order_status == '구매확정' }">
-											<td class="selBox">
-			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="reviewBtn">리뷰작성</a></span>
-											</td>
-											</c:if>
-											
-											<!-- 주문취소 => 주문취소 철회 -->
-											<c:if test="${orderdetail.order_status == '주문취소' }">
-											<td class="selBox">
-			                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of cancel">주문취소 철회</a></span>
-											</td>
-											</c:if>
+											<c:choose>
+												<c:when test="${orderdetail.order_status == '결제완료' or '배송지연'}">
+												<!-- 결제완료 / 배송지연(예상일자) => 주문취소 버튼 -->
+													<td class="selBox">
+				                                  		<span><a href="#none;" class="btn gray sm d_layer_open" id="cancelBtn${status.index }" onclick="cancelOrder(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">주문취소</a></span>
+													</td>
+												</c:when>
+												<c:when test="${orderdetail.order_status == '배송완료' or '교환완료'}">
+												<!-- 배송완료 / 교환완료 => 구매확정/반품요청/교환요청 버튼 -->
+													<td class="selBox">
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="confirmedBtn${status.index }" onclick="confirmedOrder(${orderdetail.user_no }, ${orderdetail.order_no }, ${orderdetail.product_no });">구매확정</a></span>
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="returnBtn${status.index }" onclick="returnRequest(${orderdetail.user_no }, ${orderdetail.order_no }, ${orderdetail.product_no });">반품요청</a></span>
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="exchangeBtn${status.index }" onclick="exchangeRequest(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">교환요청</a></span>
+													</td>
+												</c:when>
+												<c:when test="${orderdetail.order_status == '구매확정' }">
+												<!-- 구매확정 => 리뷰작성 버튼 -->
+													<c:if test="${orderdetail.review_status == false }">
+													<td class="selBox">
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="reviewBtn${status.index }" onclick="reviewOrder(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">리뷰작성</a></span>
+													</td>
+													</c:if>
+												</c:when>
+												<c:when test="${orderdetail.order_status == '반품요청' }">
+												<!-- 반품요청 => 반품철회 버튼 -->
+													<td class="selBox">
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of return${status.index }" onclick="withdrawalReturn(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">반품철회</a></span>
+													</td>
+												</c:when>
+												<c:when test="${orderdetail.order_status == '교환요청' }">
+												<!-- 교환요청 => 교환철회 버튼 -->
+													<td class="selBox">
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of exchange${status.index }" onclick="withdrawalExchange(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">교환철회</a></span>
+													</td>
+												</c:when>
+												<c:when test="${orderdetail.order_status == '주문취소' }">
+												<!-- 주문취소 => 주문취소철회 버튼 -->
+													<td class="selBox">
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="Withdrawal of Cancel${status.index }" onclick="withdrawalCancel(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">주문취소철회</a></span>
+													</td>
+												</c:when>
+												<c:otherwise>
+													<td class="selBox">
+													</td>
+												</c:otherwise>
+											</c:choose>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -305,7 +280,7 @@
 
 							<!-- 반품정보 -->
 							<c:forEach items="${orderdetail }" var="orderdetail" varStatus="status">
-								<c:if test="${orderdetail.order_status == '반품'}">
+								<c:if test="${orderdetail.order_status == '반품완료'}">
 									<c:if test='${status.index == 1 }'>
 										<div class="mgInfoBox">
 											<h3>반품 정보</h3>
@@ -361,7 +336,7 @@
 							</c:forEach>
 							<!-- 확인버튼 -->
 							<div class="btnWrapBox">
-								<a href="/test/getOrderList.do" class="btn fill">확인</a>
+								<a href="#" id="confirmBtn" class="btn fill">확인</a>
 							</div>
 						</div>
 					</div>
@@ -372,7 +347,7 @@
 </div>
 
 <!-- 전체취소 popup-->
-<div id="modalPopup" class="modal" style="display: none;">
+<div id="allCancelPopup" class="modal" style="display: none;">
 	<div class="modal-content" style="width: 529px;">
 		<h2>주문 전체취소</h2>
 		<div class="layer-cont ly-box">
@@ -403,45 +378,293 @@
 				<a href="#" class="btn fill w160" id="acceptBtn">주문취소</a>
 			</div>
 		</div>
-
 	</div>
 </div>
-<form id="movedProductCancelForm" method="post" action="/test/getOrderCancel.do">
+<!-- 교환요청 popup -->
+<div id="exchangePopup" class="modal" style="display: none;">
+	<div class="modal-content" style="width: 529px;">
+		<h2>교환요청</h2>
+		<div class="layer-cont ly-box">
+			<table class="board-write selMgSm">
+				<caption>교환요청</caption>
+				<colgroup>
+					<col style="width: 125px;">
+					<col>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">주문일</th>
+						<td>
+							<div class="board-write-text"><fmt:formatDate value="${orderdetail.get(0).order_time}" pattern="yyyy-MM-dd hh:mm" /></div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">주문번호</th>
+						<td>
+							<div id="orderNum" class="board-write-text">${orderdetail.get(0).order_no }</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">상품번호</th>
+						<td>
+							<div id="productNum" class="board-write-text">${orderdetail.get(0).product_no }</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--  button -->
+			<div class="lyBtnArea">
+				<a href="#" class="btn w160 d_layer_close" id="exchangeEscBtn">취소</a> 
+				<a href="#" class="btn fill w160" id="exchangeRequest">교환요청</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 반품요청 popup -->
+<div id="returnPopup" class="modal" style="display: none;">
+	<div class="modal-content" style="width: 529px;">
+		<h2>반품요청</h2>
+		<div class="layer-cont ly-box">
+			<table class="board-write selMgSm">
+				<caption>반품요청</caption>
+				<colgroup>
+					<col style="width: 125px;">
+					<col>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">주문일</th>
+						<td>
+							<div class="board-write-text"><fmt:formatDate value="${orderdetail.get(0).order_time}" pattern="yyyy-MM-dd hh:mm" /></div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">주문번호</th>
+						<td>
+							<div id="orderNum" class="board-write-text">${orderdetail.get(0).order_no }</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">상품번호</th>
+						<td>
+							<div id="productNum" class="board-write-text">${orderdetail.get(0).product_no }</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--  button -->
+			<div class="lyBtnArea">
+				<a href="#" class="btn w160 d_layer_close" id="returnEscBtn">취소</a> 
+				<a href="#" class="btn fill w160" id="returnRequest">반품요청</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 선택한 상품 주문취소 -->
+<form id="movedProductCancelForm" method="post" action="/test/getOrderCancelPage.do">
+	<input type="hidden" id="user_no" name="user_no" value="${orderdetail.get(0).user_no }"/>
 	<input type="hidden" id="order_no" name="order_no" value="${orderdetail.get(0).order_no }"/>
+	<input type="hidden" id="product_no" name="product_no" value="${orderdetail.get(0).product_no }"/>
 </form>
-<script type="text/JavaScript">
+<script type="text/javascript">
 $(function(){
-	/* 전체주문취소*/
-	$('#cancelAllBtn').click(()=>{
-		var orderNo = "${orderdetail.get(0).order_no }";
-		$.ajax({
-			url:'/test/getOrderCancelAll.do',
-		    type:'POST',
-			data: {order_no : orderNo},
-			dataType:'json',
-			success:function(data) {
-				var num = data.num;
-				console.log(num);
-				$('#modalPopup').show();
-			}
-		});
+	/* order_detail에서 확인버튼*/
+	$('#confirmBtn').click(()=>{
+		var userNo = "${orderdetail.get(0).user_no }";
+		location.href="/test/getOrderList.do?user_no="+userNo;
 	});
+	/* 전체 주문 취소*/
+	$('#cancelAllBtn').click(()=>{
+		$('#allCancelPopup').show();
+	});
+	
 	$('#escBtn').click(()=>{
-		$('#modalPopup').hide();
+		$('#allCancelPopup').hide();
 	});
 	
 	$('#acceptBtn').click(()=>{
 		var result = confirm("주문을 취소하시겠습니까?");
 		if(result) { //yes 
+			var userNo = "${orderdetail.get(0).user_no }";
+			var orderNo = "${orderdetail.get(0).order_no }";
+			var productNo = "${orderdetail.get(0).product_no }";
+			$.ajax({
+				url:'/test/getOrderCancelAll.do',
+			    type:'POST',
+				data: {user_no : userNo, order_no : orderNo, product_no : productNo},
+				dataType:'json',
+				success:function(data) {
+					var num = data.num;
+					console.log(num);
+				}
+			});
 			alert("주문이 취소되었습니다.");
-			location.replace('/test/getOrderList.do'); 
+			location.href="/test/getOrderList.do?user_no="+userNo;
 		} else { //no 
 		}
 	});
-	/* 선택한상품 주문취소 */
-	$('#cancelBtn').click(()=>{
-		$('#movedProductCancelForm').submit();
-		
+	
+	/* 교환요청 */
+	$('#exchangeRequest').click(()=>{
+		var result = confirm("교환 요청하시겠습니까?");
+		if(result) { //yes 
+			var userNo = "${orderdetail.get(0).user_no }";
+			var orderNo = "${orderdetail.get(0).order_no }";
+			var productNo = "${orderdetail.get(0).product_no }";
+			$.ajax({
+				url:'/test/getExchangeRequest.do',
+			    type:'POST',
+				data: {user_no : userNo, order_no : orderNo, product_no : productNo},
+				dataType:'json',
+				success:function(data) {
+					var num = data.num;
+					console.log(num);
+				}
+			});
+			alert("교환요청이 완료되었습니다.");
+			location.href="/test/getOrderList.do?user_no="+userNo;
+		} else { //no 
+		}
 	});
+	
+	$('#exchangeEscBtn').click(()=>{
+		$('#exchangePopup').hide();
+	});
+	
+	/* 반품요청 */
+	$('#returnRequest').click(()=>{
+		var result = confirm("반품 요청하시겠습니까?");
+		if(result) { //yes 
+			var userNo = "${orderdetail.get(0).user_no }";
+			var orderNo = "${orderdetail.get(0).order_no }";
+			var productNo = "${orderdetail.get(0).product_no }";
+			$.ajax({
+				url:'/test/getReturnRequest.do',
+			    type:'POST',
+				data: {user_no : userNo, order_no : orderNo, product_no : productNo},
+				dataType:'json',
+				success:function(data) {
+					var num = data.num;
+					console.log(num);
+				}
+			});
+			alert("반품요청이 완료되었습니다.");
+			location.href="/test/getOrderList.do?user_no="+userNo;
+		} else { //no 
+		}
+	});
+	
+	$('#returnEscBtn').click(()=>{
+		$('#returnPopup').hide();
+	});
+	
+	
 });
+
+/* 선택주문취소 */
+function cancelOrder(user_no, order_no, product_no){
+	var userNo = user_no;
+	var orderNo = order_no;
+	var productNo = product_no;
+	$('#user_no').val(userNo); //히든값 세팅
+	$('#order_no').val(orderNo); //히든값 세팅
+	$('#product_no').val(productNo);
+	$('#movedProductCancelForm').submit();
+}
+/* 구매확정 */
+function confirmedOrder(user_no, order_no, product_no){
+	var userNo = user_no;
+	var orderNo = order_no;
+	var productNo = product_no;
+	var result = confirm("구매확정하시겠습니까?");
+	if(result) { //yes 
+		console.log(productNo);
+		$.ajax({
+			url:'/test/getOrderConfirmed.do',
+		    type:'POST',
+			data: {user_no : userNo, order_no : orderNo, product_no : productNo},
+			dataType:'json',
+			success:function(data) {
+				var num = data.num;
+				console.log(num);
+			}
+		});
+		alert("구매확정되었습니다.");
+		location.href="/test/getOrderList.do?user_no="+userNo;
+		
+	} else { //no 
+	}
+}
+/* 반품요청 팝업*/
+function returnRequest(user_no, order_no, product_no){
+	var userNo = user_no;
+	var orderNo = order_no;
+	var productNo = product_no;
+	$('#orderNum').html(orderNo);
+	$('#productNum').html(productNo);
+	$('#returnPopup').show();
+}
+
+/* 반품요청철회*/
+function withdrawalReturn(user_no, order_no, product_no){
+	var userNo = user_no;
+	var orderNo = order_no;
+	var productNo = product_no;
+	var result = confirm("반품요청을 철회하시겠습니까?");
+	if(result) { //yes 
+		$.ajax({
+			url:'/test/getWithdrawalReturn.do',
+		    type:'POST',
+			data: {user_no : userNo, order_no : orderNo, product_no : productNo},
+			dataType:'json',
+			success:function(data) {
+				var num = data.num;
+				console.log(num);
+			}
+		});
+		alert("반품요청이 철회되었습니다.");
+		location.href="/test/getOrderList.do?user_no=" + userNo;
+	} else { //no 
+	}
+}
+/* 교환요청 팝업 */
+function exchangeRequest(user_no, order_no, product_no){
+	var userNo = user_no;
+	var orderNo = order_no;
+	var productNo = product_no;
+	$('#orderNum').html(orderNo);
+	$('#productNum').html(productNo);
+	$('#exchangePopup').show();
+}
+/* 교환요청철회*/
+function withdrawalExchange(user_no, order_no, product_no){
+	var userNo = user_no;
+	var orderNo = order_no;
+	var productNo = product_no;
+	var result = confirm("교환요청을 철회하시겠습니까?");
+	if(result) { //yes 
+		$.ajax({
+			url:'/test/getWithdrawalExchange.do',
+		    type:'POST',
+			data: {user_no : userNo, order_no : orderNo, product_no : productNo},
+			dataType:'json',
+			success:function(data) {
+				var num = data.num;
+				console.log(num);
+			}
+		});
+		alert("교환요청이 철회되었습니다.");
+		location.href="/test/getOrderList.do?user_no=" + userNo;
+	} else { //no 
+	}
+}
+/* 리뷰작성 */
+function reviewOrder(user_no, order_no, product_no){
+	var userNo = user_no;
+	var orderNo = order_no;
+	var productNo = product_no;
+	location.href="/test/getProductInfoForReview.do?user_no=" + userNo + "&order_no=" + orderNo + "&product_no=" + productNo;
+}
+
 </script>
