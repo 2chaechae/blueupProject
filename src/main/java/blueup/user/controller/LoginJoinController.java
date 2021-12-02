@@ -275,7 +275,6 @@ public class LoginJoinController {
 	public Map<String,Object> Quit(UsersVo userVo) {
 		Map<String,Object> result = new HashMap<String,Object>();
 		loginjoinserviceimpl.getQuit(userVo);
-		
 		return result;
 	}
 	
