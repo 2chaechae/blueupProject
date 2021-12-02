@@ -174,7 +174,7 @@
 </article>
 
 <!-- 주문/배송 조회 => 주문/배송 상세조회  post 방식으로 이동-->
-<form id="orderNumFrm" method="post" action="/blueup/getOrderDetail.do">
+<form id="orderNumFrm" method="post" action="/test/getOrderDetail.do">
 	<input type="hidden" id="order_no" name="order_no" value=""/>
 </form>
 </body>

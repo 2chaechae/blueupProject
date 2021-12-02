@@ -28,51 +28,7 @@
 			});
 		});
 		
-		/* $(document).ready(function(){
-			$('#confirmBtn').on('click',function(){
-				var password = $('#newPassword').val();
-				var chkPassword = $('#mbrCheckPw').val();
-				var mailId = $('#mbrEmail').val();
-				var mailDomain = $('#mbrEmailDomain').val();
-				var veriNum = $('#veriText').val();
-				var hiddenVeriNum = $('#hiddenVeri').val();
-				var zipcode = $('#mbrPostNo').val();
-				var address = $('#mbrBaseAddr').val();
-				var detailAddress = $('#mbrDetailAddr').val();
-				var passwordSpan = $('#passwordVal').val();
-				var password_regex = '^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$';
-				
-				if(password.trim().length<8){
-					alert('비밀번호는 8글자 이상입니다');
-					return;
-				}
-				if(password != chkPassword){
-					alert('비밀번호를 다시 확인해주세요');
-					return;
-				}
-				if(!flag){
-					alert('비밀번호 형식을 맞춰서 작성해주세요');
-					return;
-				}
-				
-				if(!mailId || !mailDomain){
-					alert('메일을 모두 채워주세요');
-					return;
-				}
-				
-				
-				if(hiddenVeriNum.trim() !=veriNum){
-					alert('인증번호가 틀립니다');
-					return;
-				}
-				
-				if(!zipcode || !address || !detailAddress){
-					alert('주소를 모두 입력해주세요');
-				}
-				
-			});
-		});
-		 */
+		
 		
 			/* 드롭박스의 email domain이 바뀔때마다 자동으로 텍스트에 입력되도록 설정 */
 			function statusChange(statusItem) {
