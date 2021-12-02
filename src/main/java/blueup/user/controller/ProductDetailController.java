@@ -49,7 +49,7 @@ public class ProductDetailController {
 			cri.setPageStart(); 	// startRow 설정 ( 현재페이지를 넘기면 시작 줄 계산)
 			System.out.println("페이지당 개수 :" + cri.getPerPageNum());
 			System.out.println("페이지 시작 :" + cri.getStartRow());
-			
+			System.out.println("product_no" + product_no);
 			ReviewPageMaker pageMaker = new ReviewPageMaker();
 			pageMaker.setCri(cri);
 			
