@@ -76,7 +76,7 @@
 			<header id="gnbMenu" class="gnb_menu">
 				<div class="gnb_menu_wrap">
 					<h1 class="logo">
-						<a href="/" data-ga-category="PC_MLB_Header" data-ga-action="MLB">MLB</a>
+						<a href="/test/index.do" data-ga-category="PC_MLB_Header" data-ga-action="MLB">MLB</a>
 					</h1>
 					<div class="menu">
 						<ul class="list cate">
