@@ -143,15 +143,15 @@ public class ReviewController {
 				}
 					for(int i=0; i < tmp.size(); i++) {
 						if( i == 0) {
-							if(tmp.get(0) == null){vo.setPhoto1("0");}else {vo.setPhoto1(tmp.get(0));}
+							vo.setPhoto1(tmp.get(0));
 						}else if(i == 1) {
-							if(tmp.get(1) == null){vo.setPhoto2("0");}else {vo.setPhoto2(tmp.get(1));}
+							vo.setPhoto2(tmp.get(1));
 						}else if(i == 2) {
-							if(tmp.get(2) == null){vo.setPhoto3("0");}else {vo.setPhoto3(tmp.get(2));}
+							vo.setPhoto3(tmp.get(2));
 						}else if(i == 3) {
-							if(tmp.get(3) == null){vo.setPhoto4("0");}else {vo.setPhoto4(tmp.get(3));}
+							vo.setPhoto4(tmp.get(3));
 						}else if(i == 4) {
-							if(tmp.get(4) == null){vo.setPhoto5("0");}else {vo.setPhoto5(tmp.get(4));}
+							vo.setPhoto5(tmp.get(4));
 							
 						}
 					}

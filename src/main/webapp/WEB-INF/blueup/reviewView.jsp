@@ -190,6 +190,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 										<input type="button" class="button" onclick="writeReview()" id="writeone" value="리뷰 쓰기"/>
 										<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
+										<input type="hidden" id="order_detail_no" class="order_detail_no" value="${review.order_detail_no}"/>
 										<br>
 				   </tr> 
 				   </div>
@@ -303,11 +304,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 
  function writeReview(){
  	var user_no = localStorage.getItem("user_no");
- 	alert(user_no);
+ 	var order_detail_no = $('#order_detail_no').val();
  	var order_no = $('#order_no').val();
- 	alert(order_no);
+ 	
  	alert("리뷰쓰기로 넘어갑니다.");
- 	location.href='/test/getProductInfo.do?user_no='+ user_no +'&order_no=' + order_no;
+ 	location.href='/test/getProductInfoForReview.do?user_no='+ user_no  +'&order_detail_no=' + order_detail_no +'&order_no=' + order_no ;
  }
 
 
@@ -315,7 +316,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 function modifyReview(){
 	var user_no = localStorage.getItem("user_no");
 	var review_no = $('#review_no').val();
-	alert(review_no);
 	alert("리뷰수정으로 넘어갑니다.");
 	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + review_no;
 }
