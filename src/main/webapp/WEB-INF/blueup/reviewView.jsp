@@ -188,9 +188,9 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<td width="100px">상품 색상:  ${review.product_color}</td>
 										<td width="100px">상품 사이즈: ${review.product_size}</td>
 										
-										<input type="button" class="button" onclick="writeReview()" id="writeone" value="리뷰 쓰기"/>
-										<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
 										<input type="hidden" id="order_detail_no" class="order_detail_no" value="${review.order_detail_no}"/>
+										<input type="button" class="button" onclick="writeReview(this)" id="writeone" value="리뷰 쓰기"/>
+										<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
 										<br>
 				   </tr> 
 				   </div>
@@ -302,9 +302,9 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 <script>
 /* 리뷰 쓰기 */
 
- function writeReview(){
+ function writeReview(element){
  	var user_no = localStorage.getItem("user_no");
- 	var order_detail_no = $('#order_detail_no').val();
+ 	var order_detail_no = $(element).prev().val();
  	location.href='/test/getProductInfoForReview.do?user_no='+ user_no  +'&order_detail_no=' + order_detail_no ;
  }
 

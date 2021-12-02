@@ -13,6 +13,7 @@
     				<li>
     					<a href="#"><span>공지사항/약관 관리</span></a>
     				</li>
+    				<!-- 
     				<li>
     					<a href="#"><span>문의 관리</span></a>
     				</li>
@@ -33,11 +34,12 @@
     				<li>
     					<a href="/test/getChartForm.mdo?start='2021-11-01'&end='2021-11-31'"><span>통계내역</span></a>
     				</li>
+    				<!--  
     				<li>
     					<a href="#"><span>일일주문내역</span></a>
-    				</li>
+    				</li>-->
     				<li>
-    					<a href="#"><span>배송/주문 관리</span></a>
+    					<a href="/test/getOrderManagement.mdo"><span>배송/주문 관리</span></a>
     				</li>
     			</ul>
     		</li>
@@ -47,6 +49,7 @@
     				<li>
     					<a href="/test/getProductList.mdo"><span>상품조회</span></a>
     				</li>
+    				<!-- 
     				<li>
     					<a href="#"><span>결제 상품 목록</span></a>
     				</li>
@@ -56,12 +59,13 @@
     				<li>
     					<a href="#"><span>취소 관리</span></a>
     				</li>
+    				 -->
     				<li>
     					<a href="/test/getStockList.mdo"><span>재고/파손품 관리</span></a>
     				</li>
     			</ul>
     		</li>
- 
+ 		<!--  
     		<li id="myNavi4">
     			<a href="javascript:;"><span>정산관리</span></a>
     			<ul>
@@ -73,5 +77,6 @@
     				</li>
     			</ul>
     		</li>
+    		-->
     	</ul>
     	</nav>

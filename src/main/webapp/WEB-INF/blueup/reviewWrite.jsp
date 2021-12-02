@@ -155,7 +155,7 @@
 			<!--  <a href="#" id="regBtn" class="btn fill btn-style02">저장</a> -->
 			<input type="button" class="button" onclick="getProductInfo()" value="취소"/>
 			<input type="submit" class="button" id="submitBtn" value="저장"/>
-			<input type="hidden" id="product_no" class="product_no" value="${getReviewproductList.product_no}"/> 
+			<input type="hidden" id="product_no" class="product_no" name="product_no" value="${getReviewproductList.product_no}"/> 
 			<input type="hidden" class="order_no" id='order_no' value="${getReviewproductList.order_no}"/>
 		
 			<!-- 저장 시 디비 insert -->
@@ -165,8 +165,6 @@
 <script type="text/javascript">
 function getProductInfo(){
 	var user_no = localStorage.getItem("user_no");
-	/*  var order_no = 2; */
-/* 	var product_no = localStorage.getItem("product_no"); */ /* 나중에 구매확정에서 product_no갖고와야함 */
 	location.href='/test/index.do' ;
 	
 }

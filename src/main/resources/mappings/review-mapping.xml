@@ -42,8 +42,7 @@
 		SELECT a.user_no,a.order_no,
 	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image,b.order_status,b.order_detail_no
 		FROM order_request as a right outer JOIN order_detail as b
-		ON a.order_no = b.order_no and a.user_no=#{user_no}
-		WHERE b.order_status='구매확정' and order_detail_no=#{order_detail_no};
+		ON a.order_no = b.order_no WHERE order_detail_no=#{order_detail_no};
 		
 	</select>
 	
@@ -51,52 +50,26 @@
 	<select id="getReivewPhoto" resultType="reviewvo" >
 	select user_no from order_request and select * from review_photo
 	 where user_no = #{user_no} AND product_no = #{product_no}; 
-	 <!--사진넣을시-->
-	<!--  select a.user_no ,b.product_no,b.photo1,b.photo2,b.photo3,b.photo4,b.photo5 from review as a left outer join review_photo as b
-		on a.review_no= b.review_no
-		where a.user_no= #{user_no} and a.product_no = b.product_no -->
 	</select>
 	
 	<!-- 작성가능한상품정보가져오기 -->
 	<select id="getReviewproductList" resultType="reviewvo" >
-	 <!-- SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image
+	    SELECT a.user_no, a.purchaseconfirm, b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image, b.review_Status, b.order_detail_no
 		FROM order_request as a JOIN order_detail as b
-		ON a.order_no = b.order_no 
-		WHERE a.user_no = #{user_no}
-	 	AND b.order_status='구매확정' AND b.review_status='false'; -->
-	 	
-		<!-- SELECT a.user_no, a.purchaseconfirm,a.order_no,
-			  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color,
-			  b.main_image, b.order_status,b.review_status,b.order_detail_no
-				FROM order_request as a JOIN order_detail as b
-				ON a.user_no  = #{user_no}
-				WHERE b.order_status='구매확정' and b.review_status='false' -->
-				
-				SELECT a.user_no, a.purchaseconfirm,
-	  b.product_no, b.quantity, b.product_name, b.product_size, b.product_color, b.main_image, b.review_Status, b.order_detail_no
-		FROM order_request as a JOIN order_detail as b
-		ON a.user_no  = #{user_no}  and a.purchaseconfirm = 'no' and b.review_status='false'
-		WHERE b.order_status='구매확정'  ;
-		
+		ON a.order_no  = b.order_no and a.purchaseconfirm = 'no' and b.review_status='false'
+		WHERE b.order_status='구매확정' and user_no=#{user_no}
 	</select> 
 	
 	<!-- 작성한 리뷰 가져오기 -->
 	<select id="getReviewList" resultType="reviewvo" >
-	select * from review as a left outer join review_photo as b  on a.review_no = b.review_no where user_no=#{user_no} limit 1
-	<!-- select * from review as a left outer join review_photo as b  on a.review_no = b.review_no where user_no= #{user_no} -->
-	<!--  SELECT * FROM review CROSS JOIN review_photo where USER_NO = #{user_no} ; -->
-	 
-	 
-	  </select>
+	select * from review as a left outer join review_photo as b  on a.review_no = b.review_no where user_no=#{user_no}
+	</select>
 	
-	  <!-- 추가한 리뷰 번호 찾기 -->
+	  <!-- 추가한 리뷰 번호 찾기 -->	
 	 <select id="getReviewNo" resultType="Integer">
 	 select max(review_no) from review
 	 </select>
-	 
-	 
-	 
+
 	 
 	<!-- 포토리뷰 쿼리 -->
 	<insert id="insertPhoto" parameterType="reviewvo" >

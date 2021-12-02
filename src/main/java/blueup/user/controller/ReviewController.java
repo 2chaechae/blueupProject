@@ -89,35 +89,23 @@ public class ReviewController {
 	
 	@RequestMapping("/insertReview.do")
 	@ResponseBody
-	public ModelAndView insertReview(ReviewVo vo) {
-		System.out.println(vo.getReview_title());
-		System.out.println(1);
-		System.out.println(vo.getUser_no());
-		System.out.println(vo.getOrder_no());
-		System.out.println(vo.getOrder_detail_no());
+	public ModelAndView insertReview(ReviewVo vo, @RequestParam(value="product_no") String product_no) {
+
 		ModelAndView mav = new ModelAndView();
 		List<MultipartFile> file = vo.getReviewImage();
-		
+		vo.setProduct_no(Integer.parseInt(product_no));
 		ReviewVo rvo = insertPhoto(file, vo);
 		
-		System.out.println(rvo.getPhoto1());
-		System.out.println(rvo.getPhoto2());
-		System.out.println(rvo.getPhoto3());
-		System.out.println(rvo.getPhoto4());
-		System.out.println(rvo.getPhoto5());
-		/* vo.setProduct_no(product_no); */
 		vo.setReview_status(true);
 		int result = reviewService.insertReview(rvo);
 		if(result==1) {
 			int review_no = reviewService.getReviewNo();
 			rvo.setReview_no(review_no);
-			System.out.println();
 			int result3 = reviewService.insertPhoto(rvo);
 			System.out.println("insert개수" + result3);
 		}
 		
 		/* 포토 테이블에 넣을 쿼리 + 파라미터는 REVIEWVO로 받아야함*/
-		mav.addObject("getPhotoForReview", reviewService.insertPhoto(rvo));
 		mav.addObject("getReviewList", reviewService.getReviewList(vo));
 		mav.setViewName("reviewView");
 		
