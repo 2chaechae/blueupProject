@@ -23,12 +23,8 @@ public class CartOptionController {
 	@ResponseBody
 	public ModelAndView getCartOption(CartOptionVo vo) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("디비디비");
 		System.out.println(vo.getProduct_no());
 		List<CartOptionVo> test = cartoptionserviceimpl.cartOption(vo);
-		for(CartOptionVo t : test) {
-			System.out.println(t.getProduct_color());
-		}
 		
 		// 컬러 중복 제거
 		List<String> color = new ArrayList<String>();
@@ -39,7 +35,7 @@ public class CartOptionController {
 		}
 		
 		// 사이즈 중복 제거
-		List<Integer> size = new ArrayList<Integer>();
+		List<String> size = new ArrayList<String>();
 		for(int i=0; i < test.size(); i++) {
 			if(!size.contains(test.get(i).getProduct_size())) {
 				size.add(test.get(i).getProduct_size());
