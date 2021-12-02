@@ -66,7 +66,7 @@
 
 								<tr>
 									<th scope="col"><div id="allCheck" style="display:flex;">
-											<input type="checkbox" name="allCheck" id="allCheck" style="margin-left:10px;" /><labelfor="allCheck" style="padding-left:10px;">전체</label>
+											<input type="checkbox" name="allCheck" id="allCheck" style="margin-left:10px;" /><label for="allCheck" style="padding-left:10px;">전체</label>
 											<!-- 전체 선택시 개별체크박스도 체크됨 -->
 											<script>
 											$("#allCheck").click(function(){
