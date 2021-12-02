@@ -146,7 +146,7 @@ public class OrderController {
 		return coupon;
 	}
 
-	@RequestMapping("/discounted.do") // 선택 할인적용 금액
+	@RequestMapping("/getdiscounted.do") // 선택 할인적용 금액
 	@ResponseBody
 	public int discounted(int product_discount, int coupon_discount, int point_discount) {
 		int total_discounted = product_discount + coupon_discount + point_discount;

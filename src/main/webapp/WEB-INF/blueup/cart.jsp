@@ -85,7 +85,7 @@
 									<th scope="col">수량</th>
 									<th scope="col">할인/혜택</th>
 									<th scope="col"><div style="width: 158px; padding-left:94px;">주문금액</div></th>
-
+									<th scope="col"></th>
 								</tr>
 								<c:choose>
 								<c:when test="${emptyCart eq '없음'}">
