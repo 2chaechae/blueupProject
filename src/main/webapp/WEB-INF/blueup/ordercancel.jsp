@@ -101,7 +101,6 @@
 							</div>
 						</div>
 						<div class="mgInfoBox" id="refundInfoDiv"></div>
-
 						<div class="btnWrapBox">
 							<a href="#none;" class="btn" onclick="javascript:history.back();">취소</a>
 							<a href="#none;" class="btn fill" id="acceptCancel">선택주문취소</a>

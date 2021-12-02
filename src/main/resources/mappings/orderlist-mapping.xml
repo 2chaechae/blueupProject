@@ -80,7 +80,6 @@
 		WHERE order_no = #{order_no} AND product_no = #{product_no}
 	</update>
 
-
 	<!-- 통계 - 월별 주문액 상품비율 -->
 	<select id="getOrderRateByProduct" parameterType="hashmap" resultType="orderrankvo">
 		WITH AMOUNT_BY_PRODUCT AS (SELECT SUM(PRODUCT_PRICE) AS SALE, PRODUCT_NAME

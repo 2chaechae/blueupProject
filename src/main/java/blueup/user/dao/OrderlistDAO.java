@@ -35,23 +35,23 @@ public class OrderlistDAO {
 	public void getOrderConfirmed(OrderlistVo vo) {
 		sqlSessionTemplate.update("orderlistDao.getOrderConfirmed", vo);
 	}
-	
-	/* 반품요청철회*/
+
+	/* 반품요청철회 */
 	public void getWithdrawalReturn(OrderlistVo vo) {
 		sqlSessionTemplate.update("orderlistDao.getWithdrawalReturn", vo);
 	}
-	
-	/* 교환요청철회*/
+
+	/* 교환요청철회 */
 	public void getWithdrawalExchange(OrderlistVo vo) {
 		sqlSessionTemplate.update("orderlistDao.getWithdrawalExchange", vo);
 	}
-	
-	/* 교환요청*/
+
+	/* 교환요청 */
 	public void getExchangeRequest(OrderlistVo vo) {
 		sqlSessionTemplate.update("orderlistDao.getExchangeRequest", vo);
 	}
-	
-	/* 반품요청*/
+
+	/* 반품요청 */
 	public void getReturnRequest(OrderlistVo vo) {
 		sqlSessionTemplate.update("orderlistDao.getReturnRequest", vo);
 	}

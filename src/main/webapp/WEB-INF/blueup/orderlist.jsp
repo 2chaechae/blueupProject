@@ -191,5 +191,4 @@ function reset(){
 	$('#dateEnd').val('');
 }
 </script>
-
 </html>
