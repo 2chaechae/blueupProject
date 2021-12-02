@@ -55,10 +55,6 @@
 									<span class="hyphen">-</span>
 									<input type="text" class="input-style01" title="연락처 마지막 입력창" id="mobilTlofWthnNo" maxlength = "4">
 								</div>							
-								<p class="error-msg"></p>
-								<div class="btn-wrap">
-									<a href="#" class="btn-style02" id="guestLogin" onClick="return false;" data-ga-category="PC_MLB_로그인" data-ga-action="비회원" data-ga-label="주문조회">주문조회</a>
-								</div>
 								<p class="login-cs-info"><strong>080-807-0012</strong> 평일 오전 9시 ~ 오후 6시 (토/일/공휴일 휴무)</p>
 							</form>
 						</div>
@@ -138,6 +134,7 @@ $(document).ready(function(){
 					if(chkSaveId){
 						localStorage.setItem("userId", userid);
 						localStorage.setItem("saveId", chkSaveId);
+	
 					} else {
 						localStorage.removeItem("userId");
 						localStorage.removeItem("saveId");

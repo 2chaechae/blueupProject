@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -364,15 +366,10 @@
 							</li>
 							<!-- Community -->
 							<li><a data-pan="top_cate_pan_7"
-								href="javascript:cateLink('MBMA16', '1', 'GNRL_CTGRY', 'MBMA16');"
+								href="/test/getNoticeList.do"
 								data-ga-category="PC_MLB_Header" data-ga-action="MONOGRAM">
 									<font color="">COMMUNITY</font>
 								</a>
-								<li><a href="/test/getNoticeList.do" >공지사항</a></li>
-								<!-- <div class="pan top_cate_pan_7">
-									<div class="inner">
-									</div>
-								</div> -->
 							</li>
 						</ul>
 					</div>
@@ -396,7 +393,6 @@
 							<button type="button" class="btn_nav ico_my">MY</button>
 							<div id="layerLogin" class="layer_login">
 								<ul>
-
 									<li><a href='/test/login.do' 
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="로그인">로그인</a></li>
@@ -549,6 +545,16 @@
       </div>
 </nav>
 <script type="text/javascript">
+$(document).ready(function(){
+	var user_no = localStorage.getItem("user_no");
+	if(user_no != null){
+		var html = 	"<ul><li><a href='#'>로그아웃</a></li>"
+		 			+ "<li><a href='/test/getOrderList.do?user_no=" + user_no + "'>마이페이지</a></li>";
+		$('#layerLogin').empty();
+		$('#layerLogin').append(html);
+	}
+});
+
 function checkCategoryAll(element){
 	var user_no = localStorage.getItem("user_no");
 	var first = $(element).text();
