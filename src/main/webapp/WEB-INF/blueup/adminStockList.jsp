@@ -59,7 +59,7 @@
 										<c:set value="${stock.stock_quantity}" var="quantity"/>
 										<fmt:formatNumber var="formatNumber" value="${stock.unit_price}" pattern="#,###" />
 										<tr onclick="gotoDetail(this)">
-											<td scope="col" id="stock_no">${stock.stock_no}</td>
+											<td scope="col" class="stock_no">${stock.stock_no}</td>
 											<td scope="col">${stock.product_name}</td>
 											<td scope="col">${stock.product_size}</td>
 											<td scope="col">${stock.product_color}</td>
@@ -98,7 +98,7 @@ $(document).ready(function(){
 	});
 });
 function gotoDetail(element){
-	var flag = $('#stock_no').text();
+	var flag = $(element).children('.stock_no').text();
 	var stock_no = parseInt(flag);
 	location.href="/test/getStockInfo.mdo?stock_no=" + stock_no;
 }
