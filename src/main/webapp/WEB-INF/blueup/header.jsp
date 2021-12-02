@@ -547,8 +547,9 @@
             <li><a href="/culture/cultureList" data-ga-category="PC_MLB_Header" data-ga-action="CULTURE">CULTURE</a></li>
 </ul>
       </div>
+      </div>
+</nav>
 <script type="text/javascript">
-
 function checkCategoryAll(element){
 	var user_no = localStorage.getItem("user_no");
 	var first = $(element).text();
@@ -629,13 +630,3 @@ function myPage() {
 	}
 }
 </script>
-      <!--  [EOSD-2740] 카테고리 수정
-      <div class="banner">
-         <ul class="list">
-            </ul>
-      </div>
-       -->
-       
-
-   </div>
-</nav>
