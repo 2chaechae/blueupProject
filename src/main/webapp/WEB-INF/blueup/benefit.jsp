@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-
 <!-- 컨텐츠 시작 -->
 <div class="contain my lnblist-Wrap" id="contain">
 	<div class="container">

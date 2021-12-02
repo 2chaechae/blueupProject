@@ -26,6 +26,7 @@
 	function orderlist(){
 		location.href= "/test/getOrderList.do?user_no=" + user_no;
 	}
+	
 </script>
 <nav id="lnb" class="lnb-nav">
         <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
