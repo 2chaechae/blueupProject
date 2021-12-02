@@ -190,6 +190,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 										<input type="button" class="button" onclick="writeReview()" id="writeone" value="리뷰 쓰기"/>
 										<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
+										<input type="hidden" id="order_detail_no" class="order_detail_no" value="${review.order_detail_no}"/>
 										<br>
 				   </tr> 
 				   </div>
@@ -219,9 +220,12 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<section class="review">
 										<div>
 											<tr>
-							<td>상품정보</td>
-							<br>			
-				<td width="100px">${reviewlist.product_name}</td>
+							
+							<br>		
+							 <img src="${reviewlist.photo1}" width="150px" height="150px" >
+							<br>
+							
+				<td width="100px">상품정보: ${reviewlist.product_name}</td>
 				<td width="60px">${reviewlist.product_size}</td>
 				<td width="60px">${reviewlist.product_color}</td>
 				<br>
@@ -235,6 +239,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<input type="button" class="button" onclick="modifyReview()" id="modifyone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
 										<input type="hidden" id="review_no" class="review_no" value="${reviewlist.review_no}"/>
+										<input type="hidden" id="user_no" class="user_no" value="${reviewlist.user_no}"/>
 				   </tr> 	
 				   </div>
 				   </section>
@@ -297,16 +302,13 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 <script>
 /* 리뷰 쓰기 */
 
- 
- 
-
  function writeReview(){
  	var user_no = localStorage.getItem("user_no");
- 	alert(user_no);
+ 	var order_detail_no = $('#order_detail_no').val();
  	var order_no = $('#order_no').val();
- 	alert(order_no);
+ 	
  	alert("리뷰쓰기로 넘어갑니다.");
- 	location.href='/test/getProductInfo.do?user_no='+ user_no +'&order_no=' + order_no;
+ 	location.href='/test/getProductInfoForReview.do?user_no='+ user_no  +'&order_detail_no=' + order_detail_no +'&order_no=' + order_no ;
  }
 
 
@@ -314,7 +316,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 function modifyReview(){
 	var user_no = localStorage.getItem("user_no");
 	var review_no = $('#review_no').val();
-	alert(review_no);
 	alert("리뷰수정으로 넘어갑니다.");
 	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + review_no;
 }
@@ -355,7 +356,7 @@ function modifyReview(){
 
  function deleteReview(element){
 	 var user_no = localStorage.getItem("user_no");
-	alert(user_no);
+	
 	var review_no = $(element).siblings('.review_no').val();
 	alert(review_no);
 	$.ajax({

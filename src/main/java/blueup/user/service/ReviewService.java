@@ -12,6 +12,8 @@ public interface ReviewService {
 		public List<ReviewVo> getReviewproductList(ReviewVo vo);
 		public ReviewVo getReviewListForReview(ReviewVo vo);
 		public ReviewVo modifyReview(ReviewVo vo);
-		public int modifyupdateReview(ReviewVo vo);	
+		public int modifyupdateReview(ReviewVo vo);
+		public int getReviewNo();
+		public int insertPhoto(ReviewVo vo);
 		}
 		

@@ -8,7 +8,6 @@
  	   user_no = localStorage.getItem("user_no");
  	   user_name = localStorage.getItem("user_name");
  	   user_id = localStorage.getItem("user_id");
- 	   
  	   $('#user_name').html('<b>'+user_name+'</b>님<br/>반갑습니다.');
  	});
     
@@ -23,6 +22,9 @@
     }
     function toModify(){
     	location.href='/test/userInfo.do?user_no='+user_no;
+    }
+    function getReviewproductList(){
+    	location.href='/test/getReviewproductList.do?user_no='+user_no ;
     }
     
     </script>
@@ -53,7 +55,7 @@
     					<a href="/mypage/todaygood/list"><span>최근 본 상품</span></a>
     				</li>
     				<li>
-    					<a href="/mypage/goods/reviewView"><span>상품리뷰</span></a>
+    					<a href="#" onClick="getReviewproductList();"><span>상품리뷰</span></a>
     				</li>
     				<li>
     					<a href="#" onClick="toQna();"><span>QnA</span></a>

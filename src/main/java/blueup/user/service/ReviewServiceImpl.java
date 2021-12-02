@@ -18,13 +18,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public int deleteReview(ReviewVo vo) {
 		return reviewDAO.deleteReview(vo);
 	}
-
+	
 	@Override
 	public int insertReview(ReviewVo vo) {
 		return reviewDAO.insertReview(vo);
 	}
 
-
+	@Override
+	public int getReviewNo() {
+		return reviewDAO.getReviewNo();
+	}
 
 	@Override
 	public List<ReviewVo> getReviewList(ReviewVo vo) {
@@ -54,5 +57,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public int modifyupdateReview(ReviewVo vo) {
 		return reviewDAO.modifyupdateReview(vo);
 	}
+
+	@Override
+	public int insertPhoto(ReviewVo vo) {
+		return reviewDAO.insertPhoto(vo);
+	}
+
+
 
 }
