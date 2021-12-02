@@ -52,10 +52,9 @@
 <!-- 사이즈 end -->
 <br>
 <span style="padding-left:12px;">수량 </span>
-<img onclick="plus()
-" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/plus1.png" style="width:20px; vertical-align:middle; margin-left:30px; height:20px;"">
-<input id="quantity" type="text" value=1 style="text-align:center; width:20px;" readonly />
 <img onclick="minus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/minus.png" style="width:20px; vertical-align:middle; height:20px;">
+<input id="quantity" type="text" value=1 style="text-align:center; width:20px;" readonly />
+<img onclick="plus()" src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/order/plus1.png" style="width:20px; vertical-align:middle; margin-left:30px; height:20px;"">
 </div>
 <div style="width:300px; display: flex; position: absolute; left: 15%;">
 	<a href="#" onClick="window.close()" style="text-decoration:none; display: flex; text-align:center; color:black;">
@@ -80,7 +79,6 @@ $(document).ready(function(){
 		   	cache:false,
 			data: { "product_color" : color, "product_no" : product_no },
 			success:function(data) {
-				alert("재고받아오기");
 				$(data).each(function(){
 					if(this.stock_quantity == 0) {
 						$("select option[value ='"+this.product_size+"']").prop('disabled',true);
