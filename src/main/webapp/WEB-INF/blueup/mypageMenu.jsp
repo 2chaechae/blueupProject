@@ -7,8 +7,11 @@
 		user_no = localStorage.getItem("user_no");
 		user_name = localStorage.getItem("user_name");
 		user_id = localStorage.getItem("user_id");
-
-		$('#user_name').html('<b>' + user_name + '</b>님<br/>반갑습니다.');
+		if(user_no != null){
+			$('#user_name').html('<b>' + user_name + '</b>님<br/>반갑습니다.');
+		}else{
+			$('#user_name').html('<b> 비회원</b>님<br/>반갑습니다.');
+		}
 	});
 
 	function toQna() {

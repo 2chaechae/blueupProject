@@ -846,7 +846,6 @@ function addOrder(){
 		alert("옵션을 선택해주세요.");
 	}else{
 		var user_no = localStorage.getItem("user_no");
-		alert("상세->주문" + user_no);
 		if(user_no == null){
 			var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
 			if(logincheck == true){

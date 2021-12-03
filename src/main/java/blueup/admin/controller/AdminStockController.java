@@ -97,7 +97,7 @@ public class AdminStockController {
 		adminstockserviceimpl.updateStock(vo);
 		int stock_no = vo.getStock_no();
 		mav.addObject("StockInfo", adminstockserviceimpl.getStockInfo(stock_no));
-		mav.setViewName("adminStockView");
+		mav.setViewName("adminStockList");
 		return mav;
 	}
 	

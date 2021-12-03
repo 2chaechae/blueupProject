@@ -160,18 +160,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										<li><a href="#tab1" onclick="location.href='/test/getReviewproductList.do?user_no='+${getReviewList.get(0).user_no}" >작성가능한 리뷰</a></li>
 										<li><a href="#tab2" onclick="location.href='/test/getReviewList.do?user_no='+${getReviewproductList.get(0).user_no}" >내가 작성한 리뷰</a></li>
 									</ul> 
-									<!-- <input type="button" class="button" id="tab1" onclick="getReviewproductList()" value="작성가능한 리뷰"/>
- 									<input type="button" class="button"  id="tab2" onclick="getReviewList()" value="내가 작성한 리뷰"/> 
-									<script type="text/javascript">
-										function getReviewproductList("tab1"){
-											var user_no = localStorage.getItem("user_no");
-											location.href='/test/getReviewproductList.do?user_no='+ user_no ;
-										}
-										 function getReviewList("tab2"){
-											 var user_no = localStorage.getItem("user_no");
-											location.href='/test/getReviewList.do?user_no='+ user_no ;
-										} 
-									</script> -->
+
 									<!--탭 콘텐츠 영역 -->
 									<div class="tab_container">
 										<div id="tab1" class="tab_content" >
@@ -182,12 +171,13 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 											<div>
 											<tr>
 											
-                                   <img src="${review.main_image}" width="150px" height="150px" >
+                                   <img src="${review.main_image}" onclick="viewCount(this)" width="150px" height="150px" >
+                                   <input type="hidden" id="product_no" class="product_no" name="product_no" value="${reviewlist.product_no}"/>
 										<td width="100px">상품 이름: ${review.product_name}</td>
 										<td width="60px">상품 수량: ${review.quantity} 개 </td>
 										<td width="100px">상품 색상:  ${review.product_color}</td>
 										<td width="100px">상품 사이즈: ${review.product_size}</td>
-										
+										<input type="hidden" id="product_no" class="product_no" name="product_no" value="${reviewlist.product_no}"/>
 										<input type="hidden" id="order_detail_no" class="order_detail_no" value="${review.order_detail_no}"/>
 										<input type="button" class="button" onclick="writeReview(this)" id="writeone" value="리뷰 쓰기"/>
 										<input type="hidden" id="order_no" class="order_no" value="${review.order_no}"/>
@@ -238,28 +228,16 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 										<input type="button" class="button" onclick="modifyReview()" id="modifyone" value="수정"/>
 										<input type="button" class="button" onclick="deleteReview(this)" id="deleteone" value="삭제"/>	
-										<input type="hidden" id="review_no" class="review_no" value="${reviewlist.review_no}"/>
-										<input type="hidden" id="user_no" class="user_no" value="${reviewlist.user_no}"/>
+										<input type="hidden" id="review_no" class="review_no" name="review_no" value="${reviewlist.review_no}"/>
+										<input type="hidden" id="user_no" class="user_no" name="user_no" value="${reviewlist.user_no}"/>
+										
 				   </tr> 	
 				   </div>
 				   </section>
 											</c:forEach>
 												</div>
-											
 
-												<%-- </tr>
-											<!-- 여기에 내가쓴 리뷰들 목록 갖고 오기 -->
-										</div>
-										<c:forEach var="review" items="${getReviewList}" varStatus="status"></c:forEach>
-										<tr>
-												<td><img src="${cart.main_image}" width="100"
-											height="110"></td>
-										<td>${review.product_name }<br>${review.color}/${review.clothes_size}
-											&nbsp;<input type="button" class="button" value="수정"/>
-											${review.product_no }
-										</td></tr>  --%>
-												
-
+								
 														<!-- 공지사항 링크 -->
 													</tr>
 										</div>
@@ -316,11 +294,31 @@ function modifyReview(){
 	location.href='/test/modifyReview.do?user_no='+ user_no +'&review_no=' + review_no;
 }
  
-
+/* 상품 상세 */
+function viewCount(element){
+	var product_no = $(element).next().val();
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
+	
+}
 /* 리뷰 삭제 */
- 
- 
-
  function deleteReview(element){
 	 var user_no = localStorage.getItem("user_no");
 	var review_no = $(element).siblings('.review_no').val();

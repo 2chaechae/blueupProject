@@ -69,7 +69,7 @@
 							<!-- 상품 전체 취소 -->
 							<div class="btnOdTop">
 	                              	<a href="#" id="cancelAllBtn" class="btn sm gray d_layer_open">전체취소</a>
-									<a href="#" class="btn sm fill" onclick="mypageorder.goInquiryList();return false;">1:1 문의</a>
+									<a href="javascript:void(0)" class="btn sm fill" onclick="move()">1:1 문의</a>
                              </div>
 							<!-- 배송지 -->
 							<div class="orderAdd odAddBox">
@@ -145,7 +145,7 @@
 												<!-- 구매확정 => 리뷰작성 버튼 -->
 													<c:if test="${orderdetail.review_status == false }">
 													<td class="selBox">
-					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="reviewBtn${status.index }" onclick="reviewOrder(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">리뷰작성</a></span>
+					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="reviewBtn${status.index }" onclick="reviewOrder(${orderdetail.user_no }, ${orderdetail.order_detail_no },${orderdetail.product_no });">리뷰작성</a></span>
 													</td>
 													</c:if>
 												</c:when>
@@ -505,6 +505,12 @@ $(function(){
 		}
 	});
 	
+	/* 1:1 문의글 이동 */
+	function movd(){
+		var user_no = localStorage.getItem("user_no");
+		location.href="/test/qnaList.do?user_no=" + user_no + "&pageNum=1";
+	}
+	
 	/* 교환요청 */
 	$('#exchangeRequest').click(()=>{
 		var result = confirm("교환 요청하시겠습니까?");
@@ -660,11 +666,11 @@ function withdrawalExchange(user_no, order_no, product_no){
 	}
 }
 /* 리뷰작성 */
-function reviewOrder(user_no, order_no, product_no){
+function reviewOrder(user_no, order_detail_no, product_no){
 	var userNo = user_no;
-	var orderNo = order_no;
+	var orderNo = order_detail_no;
 	var productNo = product_no;
-	location.href="/test/getProductInfoForReview.do?user_no=" + userNo + "&order_no=" + orderNo + "&product_no=" + productNo;
+	location.href="/test/getProductInfoForReview.do?user_no=" + userNo + "&order_detail_no=" + order_detail_no + "&product_no=" + productNo;
 }
 
 </script>
