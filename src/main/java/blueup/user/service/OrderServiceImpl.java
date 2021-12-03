@@ -27,9 +27,4 @@ public class OrderServiceImpl implements OrderService {
 		return list;
 	}
 
-	@Override
-	public CouponVo getCouponSelect(Map<String, Object> map) {
-		CouponVo coupon = orderDao.getCouponSelect(map);
-		return coupon;
-	}
 }

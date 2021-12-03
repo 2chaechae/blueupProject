@@ -81,7 +81,7 @@ public class OrderlistController {
 		List<Object> orderno = new ArrayList<Object>();
 		String size = "";
 		for (int i = 0; i < ordercancel.size(); i++) {
-			orderno.add(i, ordercancel.get(i).getOrder_no());
+			
 			orderno.add(i, ordercancel.get(i).getProduct_no());
 			if (i == ordercancel.size() - 1) {
 				size = size + (i + 1);
