@@ -21,7 +21,7 @@
 		</article>
 <%@ include file="footer.jsp" %>
 </body>
-
+<form id="movedlogin" method ="post" action="/test/login.do"></form>
 <script type="text/javascript">
 $(document).ready(function(){
 	var user_id = "${user_id}";
@@ -54,6 +54,7 @@ $(document).ready(function(){
 				success:function(data){
 					console.log(data);
 					alert("비밀번호 변경에 성공하였습니다");
+					$('#movedlogin').submit();
 				}
 			}); 
 			
