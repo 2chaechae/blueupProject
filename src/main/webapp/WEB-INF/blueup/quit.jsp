@@ -122,6 +122,7 @@ $(document).ready(function(){
 			dataType : 'json',
 	        success : function(data){
             	alert("회원탈퇴가 정상적으로 진행되었습니다. 감사합니다");
+            	localStorage.clear();
             	$("#mainPage").submit();
 	        },
 	        error:function(request,status,error){

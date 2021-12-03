@@ -15,8 +15,6 @@ $(document).ready(function(){
 	$('#getPointListBtn').on('click',function(){
 		var dateStart = $('#dateStart').val();
 		var dateEnd = $('#dateEnd').val();
-		alert(dateStart);
-		alert(dateEnd);
 		
 		$.ajax({
 			type : "GET",
@@ -70,7 +68,7 @@ $(document).ready(function(){
 
 		<h2 class="title01">포인트</h2>
 
-		<%@ include file="../../view/mlb/mypageMenu.jsp"%>
+		<%@ include file="mypageMenu.jsp"%>
 		<main class="contents pointList-wrap" id="contents">
 
 			<div class="location-contents">
@@ -100,8 +98,8 @@ $(document).ready(function(){
 
 					<input type="text" class="calendar" id="dateStart" readonly>
 					<input type="text" class="calendar" id="dateEnd" readonly>
-					<input type="button" class="btn sm" id="getPointListBtn" value="검색" />
-					<p class="calendar-info-txt">시작일로부터 최대 1년 단위로 조회가 가능합니다.</p>
+					<input type="button" class="btn sm" id="getPointListBtn" value="검색" style="width: 92px; background: #fff; color: #000; border: solid 1px #999;"/>
+					<p class="calendar-info-txt" >시작일로부터 최대 1년 단위로 조회가 가능합니다.</p>
 					<!-- 2018-08-13 -->
 				</dd>
 			</dl>
@@ -184,27 +182,8 @@ $(document).ready(function(){
 			</ul>
 	</div>
 
-	<!-- 포인트 적립 사용안내 영역S -->
-	<div class="contTxtBox">
-		<strong>포인트 적립 / 사용</strong>
-		<ul class="text-list01">
-			<li>포인트 적립 기준은 <a href="/mypage/benefit/membershipRateInfo"
-				class="text-color01">회원혜택안내</a>에서 확인하세요.
-			</li>
-			<li>주문 결제 시 1,000원 이상 1,000원 단위로 사용 가능 합니다.</li>
-			<li>현금으로 환원되지 않는 비현금성 서비스 입니다.</li>
-			<li>주문 시 구매한 상품 가격에 비례하여 분할 적용되며 부분 취소/반품 시 분할 환원 됩니다.</li>
-		</ul>
-		<strong>포인트 유효기간</strong>
-		<ul class="text-list01">
-			<li>적립 시 부여되는 포인트 별 유효기간을 따르며, 유효기간이 경과한 포인트는 자동으로 소멸됩니다.</li>
-		</ul>
-	</div>
-	<!-- //포인트 적립 사용안내 영역E -->
-
 	</main>
 
-</div>
 </div>
 <%@ include file="footer.jsp"%>
 </body>

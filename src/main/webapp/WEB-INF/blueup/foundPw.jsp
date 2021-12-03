@@ -22,52 +22,9 @@
 <%@ include file="footer.jsp" %>
 </body>
 <form id="movedlogin" method ="post" action="/test/login.do"></form>
-<script type="text/javascript">
-$(document).ready(function(){
-	var user_id = "${user_id}";
-	
-	$('#modifyPwConfirm').on('click',function(){
-		var newUserPw = $('#newUser_pw').val();
-		var newUserPwChk = $('#newUser_pwChk').val();
-		
-		if(newUserPw == ""){
-			alert("새로운 비밀번호를 적어주세요");
-			$('#newUser_pw').focus();
-			return;
-		}else if(newUserPwChk == ""){
-			alert("새로운 비밀번호확인란을 채워주세요");
-			$('#newUser_pwChk').focus();
-			return;
-		}else if(newUserPw != newUserPwChk){
-			alert("새로운 비밀번호가 맞지 않습니다 다시 작성해주세요");
-			$('#newUser_pw').val("");
-			$('#newUser_pwChk').val("");
-			$('#newUser_pw').focus();
-			return;
-		}
-		if(confirm("정말로 변경하시겠습니까?")){
-			$.ajax({
-				type : 'post',
-				url : '/test/foundPw.do',
-				data : { user_id : user_id , user_password : newUserPw },
-				dataType : 'json',
-				success:function(data){
-					console.log(data);
-					alert("비밀번호 변경에 성공하였습니다");
-					$('#movedlogin').submit();
-				}
-			}); 
-			
-		} else {
-			return;
-		}
-		
-	});
+
 	
 	
-	
-	
-});
 
 </script>
 </html>

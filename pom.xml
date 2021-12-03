@@ -67,27 +67,22 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
-		
+
 		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>1.4.7</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context-support</artifactId>
-		    <version>${org.springframework-version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
-		<!--json
-		<dependency>
-		branch 'main' of https://github.com/2chaechae/blueupProject.git
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.4</version>
-			<classifier>jdk15</classifier>
-		</dependency> -->
+		<!--json <dependency> branch 'main' of https://github.com/2chaechae/blueupProject.git 
+			<groupId>net.sf.json-lib</groupId> <artifactId>json-lib</artifactId> <version>2.4</version> 
+			<classifier>jdk15</classifier> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -98,6 +93,11 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 
 		<!-- AspectJ -->
@@ -161,6 +161,19 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+		<!-- file -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
 
 		<!-- Servlet -->
 		<dependency>
@@ -207,14 +220,14 @@
 			<artifactId>javaSDK</artifactId>
 			<version>2.2</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/com.sun.activation/javax.activation -->
-<dependency>
-    <groupId>com.sun.activation</groupId>
-    <artifactId>javax.activation</artifactId>
-    <version>1.2.0</version>
-</dependency>
-		
+		<dependency>
+			<groupId>com.sun.activation</groupId>
+			<artifactId>javax.activation</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

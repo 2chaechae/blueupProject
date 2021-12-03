@@ -32,7 +32,7 @@
 		WHERE A.USER_NO = #{user_no}
 		AND A.USER_NO = B.USER_NO
 		AND COUPON_USABLE = TRUE
-	</select>
+	</select> 
 	
 	<select id="getUnavailableCouponList" parameterType="userVO" resultType="couponVo">
 		<![CDATA[

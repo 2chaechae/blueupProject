@@ -1,17 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="header.jsp"%>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<!-- 컨텐츠 시작 -->
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.util.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.pay.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.form.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/order/order.coupon.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/jquery.serializejson.min.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="/javascript/message/order_ko.js?v=prod-version-858_20211102145956"></script>
+<style>
+/* 팝업창 CSS*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* scroll */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content/Box */
+.modal-content {
+	background-color: #ffffff;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
+</style>
 <!-- 컨텐츠 시작 -->
 <div class="contain od list" id="contain">
 	<div class="container">
@@ -57,33 +74,33 @@
 											</tr>
 										</thead>
 										<tbody id="goodsViewLayer">
-										<c:forEach items="${product }" var="product">
-											<tr>
-												<td class="tleft">
-													<div class="product-info">
-														<div class="product-info-img">
-															<img src="${product.main_image }"
-																alt="상품이미지" onerror="errorImgShow(this, 100);">
-														</div>
-														<div class="product-info-text">
-															<div class="product-info-box">
-																<div class="product-more-info"></div>
-																<p class="product-name">${product.product_name }</p>
-																<div class="product-price">
-																	<span><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price}" />원</span>
+											<c:forEach items="${orderlist }" var="product">
+												<tr>
+													<td class="tleft">
+														<div class="product-info">
+															<div class="product-info-img">
+																<img src="${product.main_image }" onclick="viewCount(this)" alt="상품이미지" onerror="errorImgShow(this, 100);">
+																<input type="hidden" value="${product.product_no}"/>
+															</div>
+															<div class="product-info-text">
+																<div class="product-info-box">
+																	<div class="product-more-info"></div>
+																	<p class="product-name">${product.product_name }</p>
+																	<div class="product-price">
+																		<span><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price}" />원</span>
+																	</div>
+																</div>
+																<div class="product-option">
+																	<span>${product.product_color} / ${product.product_size}</span>
 																</div>
 															</div>
-															<div class="product-option">
-																<span> BKS / F</span>
-															</div>
 														</div>
-													</div>
-												</td>
-												<td>1</td>
-												<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.discount}" />원</td>
-												<td><strong class="fw_bold">39,000원</strong></td>
-												
-											</tr>
+													</td>
+													<td>${product.quantity}</td>
+													<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.discount}" />원</td>
+													<td><strong class="fw_bold">
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.total_price}" />원</strong></td>
+												</tr>
 											</c:forEach>
 										</tbody>
 										<tfoot>
@@ -94,22 +111,23 @@
 									</table>
 								</div>
 								<c:choose>
-									<c:when test="${user_no ne 0}" > <!-- 회원 -->
+								<c:when test="${user > 0}"></c:when>
+								<c:otherwise>
+									<!-- 비회원 -->
+									<p class="iconTxt01 mt20 info_no_mem">회원 가입(로그인)후 주문하시면 MLB에서 제공하는 할인, 쿠폰, 적립 등의 다양한 혜택을 받으실 수 있습니다.</p>
+									<p class="iconTxt01 mt05 info_no_mem">비회원으로 구매하시면 사은품 및 적립 포인트가 제공되지 않습니다. 
+									<a href="/test/join.do" class="btnJoinMb">회원가입</a>
+									</p>
+								</c:otherwise>
 								
-									</c:when>
-									<c:otherwise> <!-- 비회원 -->
-										<p class="iconTxt01 mt20 info_no_mem">회원 가입(로그인)후 주문하시면 MLB에서 제공하는 할인, 쿠폰, 적립 등의 다양한 혜택을 받으실 수 있습니다.</p>
-										<p class="iconTxt01 mt05 info_no_mem">비회원으로 구매하시면 사은품 및 적립 포인트가 제공되지 않습니다. 
-										<a href="/member/join/view" class="btnJoinMb">회원가입</a></p>
-									</c:otherwise>
 								</c:choose>
 							</div>
 						</div>
 						<!-- 약관동의 및 개인정보수집 동의 -->
 						<c:choose>
-							<c:when test="${user_no ne 0}"> <!-- 회원 -->
-							</c:when>
-							<c:otherwise> <!-- 비회원 -->
+						<c:when test="${user > 0}"></c:when>
+						<c:otherwise>
+								<!-- 비회원 -->
 								<div class="orderWriteArea info_no_mem" style="">
 									<h3 class="title06 info_no_mem" style="">약관 동의 및 개인정보수집 안내</h3>
 									<div class="order-detail-wrap d_toggle on info_no_mem" style="">
@@ -143,8 +161,7 @@
 															<li><a href="#agree0118">[제18조] 구매신청</a></li>
 															<li><a href="#agree0119">[제19조] 구매계약의 성립</a></li>
 															<li><a href="#agree0120">[제20조] 지급방법</a></li>
-															<li><a href="#agree0121">[제21조] 수신확인통지, 구매신청 변경
-																	및 취소</a></li>
+															<li><a href="#agree0121">[제21조] 수신확인통지, 구매신청 변경 및 취소</a></li>
 															<li><a href="#agree0122">[제22조] 재화 등의 공급</a></li>
 															<li><a href="#agree0123">[제23조] 환급</a></li>
 															<li><a href="#agree0124">[제24조] 청약철회 등</a></li>
@@ -258,14 +275,12 @@
 																	경우, 다만 제7조 제3항에 의한 회원자격 상실 후 30일이 경과한 자로서 "사이트"의 회원재가입
 																	승낙을 얻은 경우에는 예외로 한다.</li>
 																<li>나.등록 내용에 허위, 기재누락, 오기가 있는 경우</li>
-																<li>다.기타 회원으로 등록하는 것이 "사이트"의 기술상 현저히 지장이 있다고 판단되는
-																	경우</li>
+																<li>다.기타 회원으로 등록하는 것이 "사이트"의 기술상 현저히 지장이 있다고 판단되는 경우</li>
 																<li>라.회원가입일 현재 만 14세 미만인 경우</li>
 															</ol>
 														</li>
 														<li>3. 회원가입계약의 성립시기는 "사이트"의 승낙이 회원에게 도달한 시점으로 합니다.</li>
-														<li>4. “사이트” 정책에 따라 등급별로 구분하여 이용시간, 이용횟수, 서비스 메뉴 등을
-															세분하여 이용에 차등을 둘 수 있습니다.</li>
+														<li>4. “사이트” 정책에 따라 등급별로 구분하여 이용시간, 이용횟수, 서비스 메뉴 등을 세분하여 이용에 차등을 둘 수 있습니다.</li>
 													</ol>
 
 													<h2>
@@ -756,15 +771,13 @@
 														가능합니다.)</h2>
 												</section>
 												<ul class="agree-right">
-													<li><span class="rdo-skin"> <input type="radio"
-															id="rdoAgreeMem2-01" name="rdoAgreeMem2"
-															checked="checked"> <span>선택</span>
-													</span> <label for="rdoAgreeMem2-01">동의 안함</label></li>
-													<li><span class="rdo-skin"> <input type="radio"
-															id="rdoAgreeMem2-02" name="rdoAgreeMem2"
-															class="input_required" alt="개인정보수집 및 이용에 대한 안내 (필수)">
+													<li><span class="rdo-skin"> 
+														<input type="radio" id="rdoAgreeMem2-01" name="rdoAgreeMem2" checked="checked"> <span>선택</span>
+														</span> <label for="rdoAgreeMem2-01">동의 안함</label></li>
+													<li><span class="rdo-skin"> 
+														<input type="radio" id="rdoAgreeMem2-02" name="rdoAgreeMem2" class="input_required" alt="개인정보수집 및 이용에 대한 안내 (필수)">
 															<span>선택</span>
-													</span> <label for="rdoAgreeMem2-02">비회원 구매이용약관 동의 함</label></li>
+														</span> <label for="rdoAgreeMem2-02">비회원 구매이용약관 동의 함</label></li>
 												</ul>
 											</section>
 										</div>
@@ -775,344 +788,408 @@
 								</div>
 							</c:otherwise>
 							</c:choose>
-							<!-- 할인정보 -->
-							<div class="orderWriteArea info_mem">
-								<h3 class="title06">할인정보</h3>
-								<div class="order-detail-wrap d_toggle on dcInfo">
-									<button type="button" class="btn-open d_toggle_select">
-										<span>Open</span>
-									</button>
-									<div class="order-detail-content d_toggle_cont">
-										<div class="board-write">
-											<table>
-												<caption>할인정보 쿠폰, 포인트.</caption>
-												<colgroup>
-													<col style="width: 200px;">
-													<col>
-												</colgroup>
-												<tr>
-													<th scope="row"><label for="labelCoupon">쿠폰</label></th>
-													<td><input type="text" id="labelCoupon"
-														class="input-style01 input_required textOnly" value="0"
-														style="width: 255px; ime-mode: disabled;" maxlength="270"
-														disabled="disabled" /> <span class="btnTdArea"> <a
-															href="#layerPopupCoupon" class="btn d_layer_open"
-															id="btnLoadCoupons">쿠폰조회</a>
-													</span></td>
-												</tr>
-												<tr class="not_emp">
-													<th scope="row"><label for="webPointUse">포인트</label></th>
-													<td><input type="text" id="webPointUse"
-														class="input-style01 align-right input_required numberOnly"
-														value="0" style="width: 255px; ime-mode: disabled;" /> <span
-														class="btnTdArea"> <a href="#" class="btn"
-															id="btnWebPointApply">적용</a> <a href="#" class="btn fill"
-															id="btnWebPointApplyEnt">전체적용</a>
-													</span> <span class="txtSub01">잔액&nbsp;<em
-															id="webPointBalance">0P</em></span></td>
-												</tr>
-											</table>
+						<!-- 할인정보 -->
+						<c:choose>
+							<c:when test="${user > 0}">
+								<div class="orderWriteArea info_mem">
+									<h3 class="title06">할인정보</h3>
+									<div class="order-detail-wrap d_toggle on dcInfo">
+										<button type="button" class="btn-open d_toggle_select">
+											<span>Open</span>
+										</button>
+										<div class="order-detail-content d_toggle_cont">
+											<div class="board-write">
+												<table>
+													<caption>할인정보 쿠폰, 포인트.</caption>
+													<colgroup>
+														<col style="width: 200px;">
+														<col>
+													</colgroup>
+													<tr>
+														<th scope="row">
+															<label for="labelCoupon">쿠폰</label>
+														</th>
+														<td>
+															<input type="text" id="couponUse" class="input-style01 input_required textOnly" value="0"
+																	style="width: 137px; ime-mode: disabled;" maxlength="270" disabled="disabled" /> 
+															<input type="text" id="couponName" class="input-style01 input_required textOnly"
+																	style="width: 255px; ime-mode: disabled;" maxlength="270" disabled="disabled" /> 
+															<input type="hidden" id="coupon_no" />
+															<span class="btnTdArea"> 
+																<a href="#none;" class="btn d_layer_open" id="couponSelect">쿠폰조회</a>
+															</span>
+														</td>
+													</tr>
+													<tr class="not_emp">
+														<th scope="row">
+															<label for="webPointUse">포인트</label>
+														</th>
+														<td>
+															<input type="text" id="pointUse" class="input-style01 input_required numberOnly"
+																	value="0" style="width: 255px; ime-mode: disabled;" /> 
+															<span class="btnTdArea"> 
+																<a href="#" class="btn" id="pointApply" onclick="pointApply(${user_no});">적용</a> 
+																<a href="#" class="btn fill" id="pointApplyAll" onclick="pointApplyAll(${user_no});">전체적용</a>
+															</span> 
+															<span class="txtSub01">잔액&nbsp;<em id="totalPoint">${total_point }</em></span>P</td>
+													</tr>
+												</table>
+											</div>
 										</div>
+										<button type="button" class="btn-close d_toggle_select">
+											<span>Close</span>
+										</button>
 									</div>
-									<button type="button" class="btn-close d_toggle_select">
-										<span>Close</span>
-									</button>
 								</div>
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
+						</c:choose>
+						<!-- 주문자 정보 -->
+						<div class="orderWriteArea">
+							<h3 class="title06">주문자정보</h3>
+							<div class="order-detail-wrap d_toggle on">
+								<button type="button" class="btn-open d_toggle_select">
+									<span>Open</span>
+								</button>
+								<div class="order-detail-content d_toggle_cont">
+									<div class="board-write">
+										<table>
+											<caption>주문하시는분</caption>
+											<colgroup>
+												<col style="width: 200px;">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row"><label for="noMemName">주문하시는분</label>
+														<span class="required">*</span>
+													</th>
+													<td>
+														<input type="text" id="memName" class="input-style01 input_required textOnly" style="width: 255px;" alt="주문하시는분" maxlength="100" />
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="noMemContact">휴대전화번호</label>
+														<span class="required">*</span></th>
+													<td><input type="text" id="memMobile1"
+														class="input-style01 input_required numberOnly"
+														style="width: 65px;" alt="휴대전화번호" maxlength="3"
+														minlength="3" /> <span class="hyphen">-</span> <input
+														type="text"
+														class="input-style01 input_required numberOnly"
+														id="memMobile2" style="width: 75px;" alt="휴대전화번호"
+														maxlength="4" minlength="3" /> <span class="hyphen">-</span>
+														<input type="text"
+														class="input-style01 input_required numberOnly"
+														id="memMobile3" style="width: 75px;" alt="휴대전화번호"
+														maxlength="4" minlength="4" /></td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="boardWriteEmail">이메일 주소</label> <span class="required">*</span></th>
+													<td>
+														<input type="text" id="memEmail1" class="input-style01 input_required" style="width: 152px;" alt="이메일" maxlength="100"> 
+															<span class="at">@</span>
+														<input type="text" id="memEmail2" class="input-style01 input_required" style="width: 152px;" alt="이메일" maxlength="100">
+														<div class="select-style01 d_select">
+															<button type="button" class="d_select_sel" style="width: 152px;">
+																<span>직접입력</span>
+															</button>
+															<ul>
+																<li><a href="#" onClick="emailChange('')">직접입력</a></li>
+																<li><a href="#" onClick="emailChange(this)" >naver.com</a></li>
+																<li><a href="#" onClick="emailChange(this)">daum.net</a></li>
+																<li><a href="#" onClick="emailChange(this)">nate.com</a></li>
+																<li><a href="#" onClick="emailChange(this)">gmail.com</a></li>
+															</ul>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<button type="button" class="btn-close d_toggle_select">
+									<span>Close</span>
+								</button>
 							</div>
+						</div>
 
-							<!-- 주문자 정보 -->
-							<div class="orderWriteArea">
-								<h3 class="title06">주문자정보</h3>
-								<div class="order-detail-wrap d_toggle on">
-									<button type="button" class="btn-open d_toggle_select">
-										<span>Open</span>
-									</button>
-									<div class="order-detail-content d_toggle_cont">
-										<div class="board-write">
-											<table>
-												<caption>주문하시는분</caption>
-												<colgroup>
-													<col style="width: 200px;">
-													<col>
-												</colgroup>
-												<tbody>
-													<tr>
-														<th scope="row"><label for="noMemName">주문하시는분</label>
-															<span class="required">*</span></th>
-														<td><input type="text" id="noMemName"
-															class="input-style01 input_required textOnly"
-															style="width: 255px;" alt="주문하시는분" maxlength="100" /></td>
-													</tr>
-													<tr>
-														<th scope="row"><label for="noMemContact">휴대전화번호</label>
-															<span class="required">*</span></th>
-														<td><input type="text" id="noMemMobile1"
-															class="input-style01 input_required numberOnly"
-															style="width: 65px;" alt="휴대전화번호" maxlength="3"
-															minlength="3" /> <span class="hyphen">-</span> <input
-															type="text"
-															class="input-style01 input_required numberOnly"
-															id="noMemMobile2" style="width: 75px;" alt="휴대전화번호"
-															maxlength="4" minlength="3" /> <span class="hyphen">-</span>
-															<input type="text"
-															class="input-style01 input_required numberOnly"
-															id="noMemMobile3" style="width: 75px;" alt="휴대전화번호"
-															maxlength="4" minlength="4" /></td>
-													</tr>
-													<tr>
-														<th scope="row"><label for="boardWriteEmail">이메일
-																주소</label> <span class="required">*</span></th>
-														<td><input type="text" id="noMemEmail1"
-															class="input-style01 input_required"
-															style="width: 152px;" alt="이메일" maxlength="100">
-															<span class="at">@</span> <input type="text"
-															id="noMemEmail2" class="input-style01 input_required"
-															style="width: 152px;" alt="이메일" maxlength="100">
+						<!-- 배송지 정보 -->
+						<div class="orderWriteArea">
+							<h3 class="title06 info_not_pickup not-delivery">배송지 정보</h3>
+
+							<div class="order-detail-wrap d_toggle on">
+								<button type="button" class="btn-open d_toggle_select">
+									<span>Open</span>
+								</button>
+								<div class="order-detail-content d_toggle_cont">
+									<div class="board-write">
+										<table>
+											<caption>배송지정보 입력</caption>
+											<colgroup>
+												<col style="width: 200px;">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row"><label for="ordererName">받는분</label> <span
+														class="required">*</span></th>
+													<td><input type="text" id="ordererName"
+														class="input-style01 input_required textOnly" alt="받는분"
+														value="" style="width: 255px;" maxlength="20"></td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="ordMobile1">휴대전화번호</label>
+														<span class="required">*</span></th>
+													<td><input type="text" id="ordMobile1"
+														class="input-style01 numberOnly input_required" value=""
+														style="width: 65px;" alt="휴대전화번호" maxlength="3"
+														minlength="3" /> <span class="hyphen">-</span> <input
+														type="text"
+														class="input-style01 numberOnly input_required"
+														id="ordMobile2" value="" style="width: 75px;" alt="휴대전화번호"
+														maxlength="4" minlength="3" /> <span class="hyphen">-</span>
+														<input type="text"
+														class="input-style01 numberOnly input_required"
+														id="ordMobile3" value="" style="width: 75px;" alt="휴대전화번호"
+														maxlength="4" minlength="4" /></td>
+												</tr>
+												<tr class="info_not_pickup">
+													<th scope="row"><label for="labelAddress">배송지주소</label>
+														<span class="required">*</span></th>
+													<td>
+														<div class="board-gap">
+															<input type="text" class="input-style01 input_required" alt="우편번호" id="postAddr" value="" style="width: 373px;"
+																readonly="readonly"> <span class="btnTdArea">
+																<a href="#none;" class="btn-style04" onclick="execution_daum_address();return false;">우편번호</a>	</span>
+														</div>
+														<div class="board-gap">
+															<input type="text" class="input-style01 input_required" alt="주소" id="baseAddr" value="" style="width: 520px;"
+																maxlength="200" readonly="readonly">
+														</div>
+														<div class="board-gap">
+															<input type="text" class="input-style01 input_required" id="detailAddr" alt="상세주소" value="" style="width: 520px;" maxlength="200"> 
+																<input type="hidden" class="input-style01" id="dlvAddrSectCd" value="">
+														</div>
+													</td>
+												</tr>
+												<tr class="info_not_pickup">
+													<th scope="row"><label for="labelComment">배송요청사항</label></th>
+													<td>
+														<div class="board-gap">
 															<!-- select -->
 															<div class="select-style01 d_select">
-																<button type="button" class="d_select_sel"
-																	style="width: 152px;">
-																	<span>직접입력</span>
-																</button>
-																<ul>
-																	<li><a href="#"
-																		onClick="$('#noMemEmail2').val('');">직접입력</a></li>
-																	<li><a href="#"
-																		onClick="$('#noMemEmail2').val('naver.com');">naver.com</a></li>
-																	<li><a href="#"
-																		onClick="$('#noMemEmail2').val('daum.net');">daum.net</a></li>
-																	<li><a href="#"
-																		onClick="$('#noMemEmail2').val('nate.com');">nate.com</a></li>
-																	<li><a href="#"
-																		onClick="$('#noMemEmail2').val('gmail.com');">gmail.com</a></li>
-																</ul>
-															</div></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-									<button type="button" class="btn-close d_toggle_select">
-										<span>Close</span>
-									</button>
-								</div>
-							</div>
-
-							<!-- 배송지 정보 -->
-							<div class="orderWriteArea">
-								<h3 class="title06 info_not_pickup not-delivery">배송지 정보</h3>
-
-								<div class="order-detail-wrap d_toggle on">
-									<button type="button" class="btn-open d_toggle_select">
-										<span>Open</span>
-									</button>
-									<div class="order-detail-content d_toggle_cont">
-										<div class="board-write">
-											<table>
-												<caption>배송지정보 입력</caption>
-												<colgroup>
-													<col style="width: 200px;">
-													<col>
-												</colgroup>
-												<tbody>
-													<tr>
-														<th scope="row"><label for="ordererName">받는분</label>
-															<span class="required">*</span></th>
-														<td><input type="text" id="ordererName"
-															class="input-style01 input_required textOnly" alt="받는분"
-															value="" style="width: 255px;" maxlength="20"></td>
-													</tr>
-													<tr>
-														<th scope="row"><label for="ordMobile1">휴대전화번호</label>
-															<span class="required">*</span></th>
-														<td><input type="text" id="ordMobile1"
-															class="input-style01 numberOnly input_required" value=""
-															style="width: 65px;" alt="휴대전화번호" maxlength="3"
-															minlength="3" /> <span class="hyphen">-</span> <input
-															type="text"
-															class="input-style01 numberOnly input_required"
-															id="ordMobile2" value="" style="width: 75px;"
-															alt="휴대전화번호" maxlength="4" minlength="3" /> <span
-															class="hyphen">-</span> <input type="text"
-															class="input-style01 numberOnly input_required"
-															id="ordMobile3" value="" style="width: 75px;"
-															alt="휴대전화번호" maxlength="4" minlength="4" /></td>
-													</tr>
-													<tr class="info_not_pickup">
-														<th scope="row"><label for="labelAddress">배송지주소</label>
-															<span class="required">*</span></th>
-														<td>
-															<div class="board-gap">
-																<input type="text" class="input-style01 input_required"
-																	alt="우편번호" id="postAddr" value="" style="width: 373px;"
-																	readonly="readonly"> <span class="btnTdArea"><a
-																	href="#" class="btn-style04"
-																	onclick="openZipcodePopup(); return false;">우편번호</a></span>
-															</div>
-															<div class="board-gap">
-																<input type="text" class="input-style01 input_required"
-																	alt="주소" id="baseAddr" value="" style="width: 520px;"
-																	maxlength="200" readonly="readonly">
-															</div>
-															<div class="board-gap">
-																<input type="text" class="input-style01 input_required"
-																	id="detailAddr" alt="상세주소" value=""
-																	style="width: 520px;" maxlength="200"> <input
-																	type="hidden" class="input-style01" id="dlvAddrSectCd"
-																	value="">
-															</div>
-														</td>
-													</tr>
-													<tr class="info_not_pickup">
-														<th scope="row"><label for="labelComment">배송요청사항</label></th>
-														<td>
-															<div class="board-gap">
-																<!-- select -->
-																<div class="select-style01 d_select">
-																	<button type="button" class="d_select_sel"
-																		id="memo_title" style="width: 520px;">직접입력</button>
-																	<ul id="memo_region">
-																		<li><a href="#" onclick="orderform.setMemo('')">직접입력</a></li>
-																		<li><a href="#"
-																			onclick="orderform.setMemo(this.innerHTML)">부재 시
-																				경비실에 맡겨주세요.</a></li>
-																		<li><a href="#"
-																			onclick="orderform.setMemo(this.innerHTML)">부재 시
-																				문 앞에 놓아주세요.</a></li>
-																		<li><a href="#"
-																			onclick="orderform.setMemo(this.innerHTML)">배송 전에
-																				연락주세요.</a></li>
-																		<li><a href="#"
-																			onclick="orderform.setMemo(this.innerHTML)">무인
-																				택배함에 보관해주세요.</a></li>
-																	</ul>
-																</div>
-															</div>
-															<div class="board-gap">
-																<input type="text" class="input-style01" value=""
-																	id="dlvMemo" style="width: 520px;" maxlength="100" />
-															</div>
-														</td>
-													</tr>
-
-												</tbody>
-											</table>
-										</div>
-									</div>
-									<button type="button" class="btn-close d_toggle_select">
-										<span>Close</span>
-									</button>
-
-								</div>
-							</div>
-
-							<!-- 결제수단 -->
-							<div class="orderWriteArea">
-								<h3 class="title06 orderPayMethod">결제수단</h3>
-								<div class="order-detail-wrap d_toggle on orderPayMethod">
-									<button type="button" class="btn-open d_toggle_select">
-										<span>Open</span>
-									</button>
-									<div class="order-detail-content d_toggle_cont orderPayOptTab">
-										<div class="board-write type02 order-paymethod-group">
-											<table>
-												<caption>결제수단 선택</caption>
-												<colgroup>
-													<col style="width: 200px;">
-													<col>
-												</colgroup>
-
-												<tbody>
-													<tr>
-														<th scope="row"><label for="">일반결제</label></th>
-														<td>
-															<div class="orderPayOpt">
-																<ul>
-																	<li><span class="rdo-skin"> 
-																			<input type="radio" id="card_payment" name="paymentBtn" value="100000000000"> <span>선택</span>
-																		</span> <label for="card_payment">신용/체크카드</label></li>
-																	<li><span class="rdo-skin"> 
-																			<input type="radio" id="virtual_payment" name="paymentBtn" value="001000000000"> <span>선택</span>
-																		</span> <label for="virtual_payment">무통장입금(가상계좌)</label></li>
-																	<li><span class="rdo-skin"> 
-																			<input type="radio" id="transfer_payment" name="paymentBtn" value="010000000000"> <span>선택</span>
-																		</span> <label for="transfer_payment">실시간 계좌이체</label></li>
+																<button type="button" class="d_select_sel" id="memo_title" style="width: 520px;">직접입력</button>
+																<ul id="memo_region">
+																	<li><a href="#" onclick="shippingChange('')">직접입력</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">부재 시 경비실에 맡겨주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">부재 시 문 앞에 놓아주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">배송 전에 연락주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">빠른 배송 부탁드려요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">배관함에 넣어주세요.</a></li>
+																	<li><a href="#" onclick="shippingChange(this)">무인 택배함에 보관해주세요.</a></li>
 																</ul>
 															</div>
-														</td>
-													</tr>
+															<!-- //select -->
+														</div>
+														<div class="board-gap">
+															<input type="text" class="input-style01" value="" id="dlvMemo" style="width: 520px;" maxlength="100">
+														</div>
+													</td>
+												</tr>
 
-													<tr>
-														<th scope="row"><label for="">간편결제</label></th>
-														<td>
-															<div class="orderPayOpt">
-																<ul>
-																	<li class="easy-kakao">
-																	<span class="rdo-skin">
-																		<input type="radio" id="kakao_payment" name="paymentBtn" value="kakao"> <span>선택</span>
-																	</span> <label for="kakao_payment">카카오페이</label></li>
-																</ul>
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-
-										<p class="payOptSave" id="paymentSaveRegion">
-											<span class="check-skin"> <input type="checkbox" id="preferPayemntMethod"> <span>선택</span></span> 
-											<label for="chkPayOptSame">다음에도 이 결제수단으로 결제하기</label>
-										</p>
+											</tbody>
+										</table>
+										<input type="hidden" id="user_no" value="${user }" />
 									</div>
-									<button type="button" class="btn-close d_toggle_select">
-										<span>Close</span>
-									</button>
 								</div>
-							</div>
+								<button type="button" class="btn-close d_toggle_select">
+									<span>Close</span>
+								</button>
 
-							<div class="orderPay d_fix">
-								<div class="orderPayList d_fix_obj">
-									<h3>결제정보</h3>
-									<div class="orderPayInfo">
+							</div>
+						</div>
+
+						<!-- 결제수단 -->
+						<div class="orderWriteArea">
+							<h3 class="title06 orderPayMethod">결제수단</h3>
+							<div class="order-detail-wrap d_toggle on orderPayMethod">
+								<button type="button" class="btn-open d_toggle_select">
+									<span>Open</span>
+								</button>
+								<div class="order-detail-content d_toggle_cont orderPayOptTab">
+									<div class="board-write type02 order-paymethod-group">
+										<table>
+											<caption>결제수단 선택</caption>
+											<colgroup>
+												<col style="width: 200px;">
+												<col>
+											</colgroup>
+
+											<tbody>
+												<tr>
+													<th scope="row"><label for="">일반결제</label></th>
+													<td>
+														<div class="orderPayOpt">
+															<ul>
+																<li><span class="rdo-skin"> 
+																<input type="radio" id="card_payment" name="paymentBtn" value="신용/체크카드"> <span>선택</span>
+																</span> <label for="card_payment">신용/체크카드</label></li>
+																
+																<li><span class="rdo-skin"> 
+																<input type="radio" id="virtual_payment" name="paymentBtn" value="무통장입금(가상계좌)"> <span>선택</span>
+																</span> <label for="virtual_payment">무통장입금(가상계좌)</label></li>
+																
+																<li><span class="rdo-skin"> 
+																<input type="radio" id="transfer_payment" name="paymentBtn" value="실시간 계좌이체"> <span>선택</span>
+																</span> <label for="transfer_payment">실시간 계좌이체</label></li>
+															</ul>
+														</div>
+													</td>
+												</tr>
+
+												<tr>
+													<th scope="row"><label for="">간편결제</label></th>
+													<td>
+														<div class="orderPayOpt">
+															<ul>
+																<li class="easy-kakao"><span class="rdo-skin">
+																		<input type="radio" id="kakao_payment" name="paymentBtn" value="카카오페이"> <span>선택</span>
+																</span> <label for="kakao_payment">카카오페이</label></li>
+															</ul>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<button type="button" class="btn-close d_toggle_select">
+									<span>Close</span>
+								</button>
+							</div>
+						</div>
+
+						<div class="orderPay d_fix">
+							<div class="orderPayList d_fix_obj">
+								<h3>결제정보</h3>
+								<div class="orderPayInfo">
+								<c:choose>
+									<c:when test="${user > 0}">
 										<dl>
 											<dt>선택상품금액</dt>
-											<dd id="god_amt">0원</dd>
+											<dd id="god_amount">
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.get(0).all_price}" />원
+											</dd>
 											<dt>할인적용금액</dt>
-											<dd class="c_r" id="dc_amt">+0원</dd>
+											<dd class="c_r" id="dc_amount">
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.get(0).all_discount}" />원
+											</dd>
 											<dt>배송비</dt>
 											<dd id="dlv_amt">+0원</dd>
 										</dl>
 										<dl>
 											<dt>총 주문금액</dt>
 											<dd>
-												<strong id="total_amount">0</strong>원
+												<strong id="total_amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.get(0).pay_amount}" /></strong>원
 											</dd>
 										</dl>
+										
 										<dl class="info_mem not_emp">
 											<dt>적립예상 포인트</dt>
-											<dd class="c_r" id="mileage">0원</dd>
+											<dd class="c_r" id="mileage"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.get(0).expected_point}" />원</dd>
 										</dl>
-									</div>
-									<div class="chkPayAgree">
-										<span class="check-skin"> 
-											<input type="checkbox" class="input_required" id="CheckoutAgree"
-											alt="주문하실 상품, 가격, 배송정보, 할인정보 등을 확인하였으며, 구매에 동의하시겠습니까? (전자상거래법 제 8조 제2항)"><span>선택</span></span>
-										<label for="chkAgreeOk">주문하실 상품, 가격, 배송정보, 할인정보 등을 확인하였으며, 구매에 동의하시겠습니까? (전자상거래법 제 8조 제2항)</label>
-									</div>
-									<div class="btn_order">
-										<a href="#" class="btn lg fill">결제하기</a>
-									</div>
+									</c:when>
+									<c:otherwise>
+									<c:set var="sum_price" value="0" />
+									<c:set var="sum_discount" value="0" />
+									<c:forEach var="orderlist" items="${orderlist}" varStatus="status">
+										<c:set var="sum_price" value="${sum_price + orderlist.total_price }" />
+										<c:set var="sum_discount" value="${sum_discount + (orderlist.discount * orderlist.quantity) }" />
+									</c:forEach>
+									<dl>
+										<dt>선택상품금액</dt>
+											<dd id="god_amt">
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${sum_price}" />원
+											</dd>
+										<dt>할인적용금액</dt>
+											<dd class="c_r" id="dc_amt">
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${sum_discount}" />원
+											</dd>
+										<dt>배송비</dt>
+											<dd id="dlv_amt">+0원</dd>
+									</dl>
+									<dl>
+									<dt>총 주문금액</dt>
+									<dd>
+										<strong id="total_amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${sum_price-sum_discount}" /></strong>원
+									</dd>
+									</dl>
+									<dl><dt></dt></dl>
+									</c:otherwise>
+								</c:choose>
+								</div>
+								<div class="chkPayAgree">
+									<span class="check-skin"> 
+									<input type="checkbox" class="input_required" id="CheckoutAgree" alt="주문하실 상품, 가격, 배송정보, 할인정보 등을 확인하였으며, 구매에 동의하시겠습니까? (전자상거래법 제 8조 제2항)"><span>선택</span></span>
+									<label for="chkAgreeOk">주문하실 상품, 가격, 배송정보, 할인정보 등을 확인하였으며, 구매에 동의하시겠습니까? (전자상거래법 제 8조 제2항)</label>
+								</div>
+								<div class="btn_order">
+									<input type="button" id="payBtn" class="btn lg fill" value="결제하기" />
 								</div>
 							</div>
+						</div>
 					</div>
 				</div>
-				<div>
-			</div>
+				<div></div>
 			</section>
 		</main>
 	</div>
 </div>
+<!-- 쿠폰 팝업창 -->
+<article id="couponListPopup" class="layer-popup lyPopOrderFail">
+	<section class="layer-popup-cont" tabindex="0" style="width: 530px">
+		<h2>쿠폰선택</h2>
+		<table style="border: 1px solid #333333;">
+			<caption>사용 가능한 쿠폰</caption>
+			<colgroup>
+				<col style="width: 100px;">
+				<col style="width: 100px;">
+				<col style="width: 100px;">
+			</colgroup>
 
+			<tr height=40px>
+				<th height=40px scope="col" style="text-align:center;"><b>쿠폰종류</b></th>
+				<th height=40px scope="col" style="text-align:center;"><b>쿠폰명</b></th>
+				<th height=40px scope="col" style="text-align:center;"><b>할인</b></th>
+			</tr >
+			<c:choose>
+				<c:when test="${couponlist ne null}">
+					<c:forEach items="${couponlist }" var="coupon">
+						<tr height=40px style="border:1px solid black;">
+							<td height=40px scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_type }</a></td>
+							<td height=40px  scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});">${coupon.coupon_name }</a></td>
+							<td height=40px scope="col" style="text-align:center;"><a href="#none;" onclick="coupon(${coupon.coupon_no});"><fmt:formatNumber type="number" maxFractionDigits="3" value="${coupon.coupon_discount }" />원</a></td>
+						</tr>
+						
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<tbody>
+						<tr>
+							<td colspan="6" class="no-result">조회된 쿠폰 내역이 없습니다.</td>
+						</tr>
+					</tbody>
+				</c:otherwise>
+			</c:choose>
+		</table>
+		<!--  button -->
+		<div class="layer-popup-close">
+			<button type="button" class="d_layer_close">닫기</button>
+		</div>
+	</section>
+</article>
 <!-- 결제실패시 팝업창  -->
 <article id="lyPopOrderFail" class="layer-popup lyPopOrderFail">
 	<section class="layer-popup-cont" tabindex="0" style="width: 530px">
@@ -1121,12 +1198,13 @@
 			<div class="mgBoxSy01">
 				주문 처리에 실패하여<br>주문을 완료하지 못했습니다.
 			</div>
-			<div class="mgBoxSy02">재시도를 하시거나 계속 발생하는 경우 <br>고객센터(080-807-0012)로 문의 주시기 바랍니다.<br>
+			<div class="mgBoxSy02">
+				재시도를 하시거나 계속 발생하는 경우 <br>고객센터(080-807-0012)로 문의 주시기 바랍니다.<br>
 				<span class="txtTime">(평일 오전 9시 ~ 오후 6시: 토/일 공휴일 휴무)</span>
 			</div>
 			<div class="lyBtnArea">
 				<a href="/" class="btn">홈으로 가기</a> 
-				<a href="/cart/goods/list" class="btn">장바구니 가기</a> 
+				<a href="/test/getCart.do" class="btn">장바구니 가기</a> 
 				<a href="/order/orderform/new" class="btn fill">다시 주문하기</a>
 			</div>
 		</div>
@@ -1136,10 +1214,336 @@
 	</section>
 </article>
 <%@ include file="footer.jsp"%>
+<form id="movedCouponForm" method="post" action="/test/getCoupon.do">
+	<input type="hidden" id="user_no" name="user_no" value="${user}"/>
+</form>
 </body>
+
+<!--아임포트 사용을 위한 스크립트  -->
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
+
+//자동완성
+$(document).ready(function() {
+    var user_no = localStorage.getItem("user_no");
+    if(user_no != 0){
+       var user_name = localStorage.getItem("user_name");
+       var phone1 = localStorage.getItem("phone1");
+       var phone2 = localStorage.getItem("phone2");
+       var phone3 = localStorage.getItem("phone3");
+       var email_id = localStorage.getItem("email_id");
+       var email_address = localStorage.getItem("email_address");
+       $('#memName').val(user_name);         
+       $('#memMobile1').val(phone1);         
+       $('#memMobile2').val(phone2);         
+       $('#memMobile3').val(phone3);         
+       $('#memEmail1').val(email_id);         
+       $('#memEmail2').val(email_address);   
+    }else{
+       $('#memName').val();         
+       $('#memMobile1').val();         
+       $('#memMobile2').val();         
+       $('#memMobile3').val();         
+       $('#memEmail1').val();         
+       $('#memEmail2').val();
+    }
+ });
+
+
+
+$("#payBtn").click(function () {
+/* var arr = [];
+<c:forEach items="${orderlist}" var="item">
+orderListSession
+</c:forEach> */
+	var coupon_no1 = $('#coupon_no').val();
+	if(coupon_no1 == '' || coupon_no1 == null){
+		coupon_no1 = 0;
+	}
+	var coupon1 = $('#couponName').val();
+	var message1 = $('#dlvMemo').val();
+	var user_no1 = $('#user_no').val();
+    var merchant_uid_origin = 'merchant_' + new Date().getTime();
+    var discount_by_coupon = $('#couponUse').val();
+    var discount_by_point = $('#pointUse').val();
+	var buyer_name1 = $("#memName").val();
+ 	var phone1 = $('#memMobile1').val();
+ 	var phone2 = $('#memMobile2').val();
+ 	var phone3 = $('#memMobile3').val();
+ 	var buyer_tel1 = phone1+phone2+phone3;
+ 	var email_id = $('#memEmail1').val();
+ 	var email_address = $('#memEmail2').val();
+ 	var email = email_id +'@'+ email_address;
+ 	var receiver = $('#ordererName').val();
+ 	var buyer_postcode1 = $('#postAddr').val();
+ 	var buyer_address = $('#baseAddr').val();
+ 	var detailed_address = $('#detailAddr').val();
+ 	address = '('+buyer_postcode1+') '+buyer_address+' '+detailed_address;
+ 	var temp = $('input:radio[name="paymentBtn"]:checked').val();
+ 	var amount1 = ${orderlist.get(0).pay_amount};
+ 	/* $('#total_amount').html(); */
+	
+ 	
+ 	  var IMP = window.IMP; // 생략가능
+ 	  IMP.init('imp89704086');
+ 	    /*'iamport' 대신 부여받은 "가맹점 식별코드"를 사용*/
+ 	    // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+ 	    IMP.request_pay({
+ 	    pg: 'inicis',// version 1.1.0부터 지원.
+ 	    /*
+ 	    'kakao':카카오페이,
+ 	    html5_inicis':이니시스(웹표준결제)
+ 	    'nice':나이스페이
+ 	    'jtnet':제이티넷
+ 	    'uplus':LG유플러스
+ 	    'danal':다날
+ 	    'payco':페이코
+ 	    'syrup':시럽페이
+ 	    'paypal':페이팔
+ 	    */
+ 	    pay_method: 'card',
+ 	    /*
+ 	    'samsung':삼성페이,
+ 	    'card':신용카드,
+ 	    'trans':실시간계좌이체,
+ 	    'vbank':가상계좌,
+ 	    'phone':휴대폰소액결제
+ 	    */
+ 	    merchant_uid: merchant_uid_origin,
+ 	    /*
+ 	    merchant_uid에 경우
+ 	    https://docs.iamport.kr/implementation/payment
+ 	    위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+ 	    참고하세요.
+ 	    나중에 포스팅 해볼게요.
+ 	    */
+ 	    name: 'MIB 결제창',
+ 	    //결제창에서 보여질 이름
+ 	    amount: 100,
+ 	    //가격, 임의로 100으로 해놓음
+ 	    buyer_email: email,
+ 	    buyer_name: buyer_name1,
+ 	    buyer_tel: buyer_tel1,
+ 	    buyer_addr: address,
+ 	    buyer_postcode: buyer_postcode1,
+ 	    m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+ 	    /*
+ 	    모바일 결제시,
+ 	    결제가 끝나고 랜딩되는 URL을 지정   
+ 	    (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+ 	    */
+ 	    }, function (rsp) {
+ 	       console.log(rsp);
+ 	       if (rsp.success) {
+ 	          var msg = '결제가 완료되었습니다.\n';
+ 	          msg += '결제 금액 : ' + rsp.paid_amount;
+ 	          msg += '\n MLB를 이용해주셔서 감사합니다. 행복한 하루되세요. :)';
+ 	          
+ 	          $.ajax({
+ 				url:'/test/payment.do',
+ 			    type:'POST',
+ 				data: {"user_no" : user_no1,
+ 	            	 "coupon_discount" : discount_by_coupon,
+ 	            	 "used_point" : discount_by_point,
+ 	            	 "buyer_name" : buyer_name1,
+ 	            	 "phone1" : phone1,
+ 	            	 "phone2" : phone2,
+ 	            	 "phone3" : phone3,
+ 	            	 "couponName" : coupon1,
+ 	            	 "receiver" : receiver,
+ 	            	 "address" : address,
+ 	            	 "order_means" : temp,
+ 	            	 "order_price" : amount1,
+ 	            	 "message" : message1,
+ 	            	 "coupon_no" : coupon_no1
+ 				},
+ 				dataType:'json'
+ 				,success:function(data) {
+ 					
+ 				}
+ 			}); 
+ 	         
+ 	          alert(msg);
+ 	       } else {
+ 	          var msg = '결제에 실패하였습니다.';
+ 	          msg += '에러내용 : ' + rsp.error_msg;
+ 	          alert(msg);
+ 	       }
+ 	      location.href='/test/orderSuccess.do';
+ 	    });
+ 	    });
+
+
+
+	/* 포인트 차감*/
+	function pointApply(user_no){
+		var userNo = localStorage.getItem("user_no");
+		var point = $('#pointUse').val();
+		var total_point = $('#totalPoint').html();
+		$.ajax({
+			url:'/test/getPoint.do',
+		    type:'POST',
+			data: {"user_no" : userNo, "point" : point},
+			dataType:'json',
+			success:function(data) {
+				$('#totalPoint').html(data);
+				discounted();
+			}
+		});
+	}
+	
+	/*전체 포인트 차감*/
+	function pointApplyAll(user_no){
+		var userNo = localStorage.getItem("user_no");
+		$.ajax({
+			url:'/test/getPointAll.do',
+		    type:'POST',
+			data: {"user_no" : userNo },
+			dataType:'json',
+			success:function(data) {
+				$('#pointUse').val(data);
+				$('#totalPoint').html((data-data));
+				discounted();
+			}
+		});
+	}
+	/* 이미지 클릭시 상세페이지 이동 */
+	function viewCount(element){
+	var product_no = $(element).next().val();
 	var user_no = localStorage.getItem("user_no");
-});
-</script>
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
+}
+	/*쿠폰 팝업창*/
+	$(function(){
+		$('#couponSelect').click(()=>{
+			$('#couponListPopup').show();
+		});
+	});
+	/* 쿠폰적용 */
+	function coupon(coupon_no){
+		var userNo = localStorage.getItem("user_no");
+		$.ajax({
+			url:'/test/getCouponSelect.do',
+		    type:'POST',
+			data: {"user_no" : userNo, "coupon_no" : coupon_no},
+			dataType:'json',
+			success:function(data) {
+				$('#couponListPopup').hide();
+				$('#couponUse').val(data.coupon_discount);
+				$('#couponName').val(data.coupon_name);
+				$('#coupon_no').val(data.coupon_no);
+				discounted();
+			}
+		});
+	}
+	/* 할인적용 금액 */
+	function discounted(){
+		var product = "${orderlist.get(0).all_price}";
+		var product_discount_f = "${orderlist.get(0).all_discount}";
+		var coupon_discount_f = $('#couponUse').val();
+		var point_discount_f = $('#pointUse').val();
+		
+		/* int로 변환 */
+		var product_discount = parseInt(product_discount_f);
+		var coupon_discount = parseInt(coupon_discount_f);
+		var point_discount = parseInt(point_discount_f);
+		
+		$.ajax({
+			url:'/test/getDiscounted.do',
+		    type:'POST',
+			data: {"product_discount" : product_discount, "coupon_discount" : coupon_discount, "point_discount" : point_discount},
+			dataType:'json',
+			success:function(data) {
+				var total_discount = data;
+				$('#dc_amount').text(total_discount);
+				var total_price = parseInt(product) - total_discount;
+				$('#total_amount').text(total_price);
+				
+			}
+		});
+	}
+	/* 이메일 */
+	function emailChange(email) {
+		var value = $(email).text();
+		$('#memEmail2').val(value);
+	}
+	
+	/* 배송 요청사항 */
+	function shippingChange(shippingRequest) {
+		var value = $(shippingRequest).text();
+		$('#dlvMemo').val(value);
+	}
+	
+	  /* 다음 우편번호 검색 api */
+	   function execution_daum_address() {
+	            new daum.Postcode(
+	                  {
+	                     oncomplete : function(data) {
+	                        /* 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분. */
+	                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                        var addr = ''; // 주소 변수
+	                        var extraAddr = ''; // 참고항목 변수
+
+	                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                           addr = data.roadAddress;
+	                        } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                           addr = data.jibunAddress;
+	                        }
+
+	                        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                        if (data.userSelectedType === 'R') {
+	                           // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                           // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                           if (data.bname !== ''
+	                                 && /[동|로|가]$/g.test(data.bname)) {
+	                              extraAddr += data.bname;
+	                           }
+	                           // 건물명이 있고, 공동주택일 경우 추가한다.
+	                           if (data.buildingName !== ''
+	                                 && data.apartment === 'Y') {
+	                              extraAddr += (extraAddr !== '' ? ', '
+	                                    + data.buildingName
+	                                    : data.buildingName);
+	                           }
+	                           // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                           if (extraAddr !== '') {
+	                              extraAddr = ' (' + extraAddr + ')';
+	                           }
+	                           // 주소변수 문자열과 참고항목 문자열 합치기
+	                           addr += extraAddr;
+
+	                        } else {
+	                           addr += ' ';
+	                        }
+
+	                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                        $("#postAddr").val(data.zonecode);
+	                        $("#baseAddr").val(addr);
+	                        // 커서를 상세주소 필드로 이동한다.
+	                        document.getElementById("detailAddr").focus();
+	                     }
+	                  }).open();
+
+	         }
+
+	</script>
 </html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="paymentMapper">
+	<insert id="orderRequest" parameterType="paymentVo">
+		INSERT INTO ORDER_REQUEST (
+			USER_NO,
+			DELIVERY_FEE,
+			ADDRESS,
+			ORDER_PRICE,
+			ORDER_MEANS,
+			ORDER_TIME,
+			USED_POINT,
+			COUPON_DISCOUNT,
+			RECEIVER,
+			PURCHASECONFIRM,
+			BUYER_NAME,
+			MESSAGE,
+			COUPONNAME
+		)
+		VALUES(
+			#{user_no},
+			0,
+			#{address},
+			#{order_price},
+			#{order_means},
+			now(),
+			#{used_point},
+			#{coupon_discount},
+			#{receiver},
+			#{purchaseconfirm},
+			#{buyer_name},
+			#{message},
+			#{couponName}
+		)
+	</insert>
+	
+	<insert id="orderRequestDetail" parameterType="paymentVo">
+		INSERT INTO ORDER_DETAIL (
+			ORDER_NO,
+			PRODUCT_NO,
+			QUANTITY,
+			PRODUCT_PRICE,
+			PRODUCT_NAME,
+			ORDER_STATUS,
+			PRODUCT_SIZE,
+			PAYMENT_TIME,
+			PRODUCT_COLOR,
+			PHONE1,
+			PHONE2,
+			PHONE3,
+			DISCOUNT_RATE,
+			MAIN_IMAGE,
+			REFUND_BANK,
+			REFUND_ACCOUNT,
+			REFUND_PRICE,
+			REFUND_MEANS,
+			REVIEW_STATUS
+		) VALUES(
+			(SELECT * FROM (SELECT ORDER_NO FROM ORDER_REQUEST ORDER BY ORDER_TIME DESC LIMIT 1) AS A),
+			#{product_no},
+			#{quantity},
+			#{product_price},
+			#{product_name},
+			#{order_status},
+			#{product_size},
+			(SELECT * FROM (SELECT ORDER_TIME FROM ORDER_REQUEST ORDER BY ORDER_TIME DESC LIMIT 1) AS A),
+			#{product_color},
+			#{phone1},
+			#{phone2},
+			#{phone3},
+			0,
+			#{main_image},
+			#{refund_bank},
+			#{refund_account},
+			#{refund_price},
+			#{refund_means},
+			#{review_status}	
+		)
+	</insert>
+	
+	<select id="getStockQuantity" parameterType="stockDeduction" resultType="Integer">
+		SELECT STOCK_QUANTITY 
+		FROM STOCK 
+		WHERE PRODUCT_NO = #{product_no}
+		AND PRODUCT_SIZE = #{product_size}
+		AND PRODUCT_COLOR = #{product_color}
+		LIMIT 1
+	</select>
+	
+	<update id="deductStock" parameterType="stockDeduction">
+		UPDATE STOCK SET STOCK_QUANTITY = (STOCK_QUANTITY - #{quantity}) 
+		WHERE PRODUCT_NO = #{product_no} AND
+		PRODUCT_SIZE = #{product_size} AND
+		PRODUCT_COLOR = #{product_color} 
+	</update>
+	
+	<insert id="deductPoint" parameterType="paymentVo">
+		INSERT INTO POINT (
+		EXPENSE,
+		USER_NO,
+		CONTENT,
+		POINT_DATE
+		) VALUES(
+			#{used_point},
+			#{user_no},
+			'상품 구매',
+			now()
+		) 
+	</insert>
+	
+	<delete id="deleteCoupon" parameterType="int">
+		DELETE FROM COUPON
+		WHERE USER_NO = #{user_no}
+	</delete>
+</mapper>

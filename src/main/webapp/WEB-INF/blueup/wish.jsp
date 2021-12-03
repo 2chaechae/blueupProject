@@ -16,74 +16,9 @@
 
 			<h2 class="title01">위시리스트</h2>
 		<nav id="lnb" class="lnb-nav">
-        <strong><img src="https://static.mlb-korea.com/pc/static/images/my/mypage_titImg.png" alt="MYPAGE"></strong>
-    	<p id="id"><b></b>님</p><br/><p>반갑습니다.</p>
-    	<hr class="hr-ddd" />
+        
     	
-    	<ul class="nav-mnlist">
-    		<li id="myNavi1">
-    			<a href="javascript:;"><span>주문정보</span></a>
-    			<ul>
-    				<li>
-    					<a href="/mypage/order/list"><span>주문/배송조회</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/claim/list"><span>취소/교환/반품 조회</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/order/receipt/list"><span>증빙서류 조회</span></a>
-    				</li>
-    			</ul>
-    		</li>
-    		<li id="myNavi2">
-    			<a href="javascript:;"><span>활동정보</span></a>
-    			<ul>
-    				<li>
-    					<a href="/mypage/wishlist/list"><span>위시리스트</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/todaygood/list"><span>최근 본 상품</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/goods/reviewView"><span>상품리뷰</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/inquiry/list"><span>1:1 문의</span></a>
-    				</li>
-    			</ul>
-    		</li>
-    		<li id="myNavi3">
-    			<a href="javascript:;"><span>혜택정보</span></a>
-    			<ul>
-    				<li>
-    					<a href="/mypage/benefit/listMileage"><span>마일리지</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/benefit/listPoint"><span>포인트</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/benefit/listCoupon"><span>쿠폰함</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/benefit/membershipRateInfo"><span>회원혜택안내</span></a>
-    				</li>
-    			</ul>
-    		</li>
-    		<li id="myNavi4">
-    			<a href="javascript:;"><span>회원정보</span></a>
-    			<ul>
-    				<li>
-    					<a href="/mypage/member/deliveryLocationList"><span>배송지 관리</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/member/modifyMemberView"><span>회원정보 수정</span></a>
-    				</li>
-    				<li>
-    					<a href="/mypage/member/secessionMemberView"><span>회원탈퇴</span></a>
-    				</li>
-    			</ul>
-    		</li>
-    	</ul>
+    	<%@ include file="mypageMenu.jsp"%>
     	</nav>
 		<main class="contents wishList-wrap" id="contents">
 			<div class="location-contents">
@@ -127,8 +62,9 @@
 								<p style="font-size:14px; font-family:Noto Sans Korean;margin-bottom:5px;"><a href="#" onclick="#">${wishList.product_name}</a></p>
 								<p style="text-align:center; margin-bottom:5px;"><strong><fmt:formatNumber value="${wishList.product_price}" pattern="#,###,###"/>원</strong></p>
 							</div>
-							<div style="width:242px; display: flex;">
-								<a href="javascript:void(0)" onclick="option(this)" style="display: flex; text-align:center;"><span style="width:242px; border:1px solid black; padding:5px 10px;">장바구니</span></a>
+							<div style="height:30px; line-height: 28px; min-width: 30px; padding: 0 6px; font-size: 12px; width:110px; margin:auto;">
+								<a href="javascript:void(0)" onclick="option(this)" style="display: flex; text-align:center;">
+								<span style="width: 92px; background: #fff; color: #000; border: solid 1px #999;">장바구니</span></a>
 							</div>
 							</div>
 							</section>
@@ -148,11 +84,10 @@
 </form>
 <%@ include file="/view/mlb/footer.jsp" %>
 <script type="text/javascript">
-var user_id = localStorage.getItem("user_id");
-var user_no = parseInt(localStorage.getItem("user_no"));
+
 $(document).ready(function(){
+		var user_id = localStorage.getItem("user_id");
 		if(user_id != null){
-			alert("아이디ok");
 			$('#id').text(user_id);
 			var count = ${fn:length(wishList)};
 			$('em').text(count);
@@ -161,7 +96,7 @@ $(document).ready(function(){
 			var getlist = $.cookie('p_list');
 			var cookieValue = getlist.split('/');
 			console.log(cookieValue);
-			var length = cookieValue.length;
+			var length = cookieValue.length - 1;
 			console.log(length);
 			$('em').text(length);
 		}
@@ -171,8 +106,7 @@ $(document).ready(function(){
 function delete_wish(element){
 	var product_no = $(element).closest('div').prev().val();
 	var wish_no = $(element).closest('div').prev().prev().val();
-	alert(product_no);
-	alert(wish_no);
+	var user_no = localStorage.getItem("user_no");
 	// null point 오류 -> 비회원 0으로 셋팅
 	if(user_no == null){
 		user_no = 0;
@@ -187,7 +121,7 @@ function delete_wish(element){
 				$(element).closest('.wish').remove();
 				var now = $('.num').text();
 				console.log(now);
-				var new_num = Number(now) - 1; 
+				var new_num = parseInt(now) - 1; 
 				console.log(new_num);
 				$('.num').text(new_num);
 			}
@@ -202,7 +136,7 @@ function delete_wish(element){
 }
 
 function deleteAll(){
-	alert("test");
+	var user_no =localStorage.getItem("user_no");
 	/////// 비회원///////
 	if(user_no == null){
 		$.removeCookie('p_list');
@@ -216,11 +150,10 @@ function deleteAll(){
 		   	cache:false,
 			data: {"user_no":user_no},
 			success:function(data) {
-				alert('성공');
-				if(data > 1){
+				if(data > 0){
+				alert('모두 삭제되었습니다.');
 				$('.wish').remove();
 				$('.num').text(0);
-				alert('모두 삭제되었습니다.');
 				}
 			},
 			error:function() {
@@ -232,10 +165,33 @@ function deleteAll(){
 
 // 장바구니 이동 시 옵션창 
 function option(element){
-	alert("test");
+	var user_no =localStorage.getItem("user_no");
 	var product_no = $(element).closest('.wish').children('.p').val();
-	alert(product_no);
 	window.open("/test/getCartOption.do?product_no=" + product_no + "&user_no=" + user_no,"height=300", "width=500");
+}
+
+
+function viewCount(element){
+	var product_no = $(element).closest('div').prev().val();
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
 }
 
 </script>

@@ -27,7 +27,7 @@
 
 			<h2 class="title01">QnA</h2>
 			
-<%@ include file="../../view/mlb/mypageMenu.jsp"%>
+<%@ include file="mypageMenu.jsp"%>
 
 			<main class="contents oto_inquiryWrite-wrap" id="contents">
 

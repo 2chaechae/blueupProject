@@ -6,51 +6,54 @@ import lombok.Data;
 
 @Data
 public class OrderlistVo {
-	/* ì£¼ë¬¸ ë°°ì†¡ ì¡°íšŒ */
-	String product_img; // ìƒí’ˆ ì´ë¯¸ì§€
-	Date order_time; // ê²°ì œ ì‹œê°„ = ì£¼ë¬¸ì¼
-	int order_no; // ì£¼ë¬¸ ë²ˆí˜¸
-	String product_name; // ìƒí’ˆëª…
-	int product_price; // ìƒí’ˆ ê°€ê²©
-	String product_color; // ìƒí’ˆ ìƒ‰ìƒ
-	String product_size; // ìƒí’ˆ ì‚¬ì´ì¦ˆ
-	int quantity; // ì£¼ë¬¸ ìˆ˜ëŸ‰
-	String order_status; // ì£¼ë¬¸ ìƒí™©
+	/* ÁÖ¹® ¹è¼Û Á¶È¸ */
+	String main_image; // »óÇ° ÀÌ¹ÌÁö
+	Date order_time; // °áÁ¦ ½Ã°£ = ÁÖ¹®ÀÏ
+	int order_no; // ÁÖ¹® ¹øÈ£
+	String product_name; // »óÇ°¸í
+	int product_price; // »óÇ° °¡°İ
+	String product_color; // »óÇ° »ö»ó
+	String product_size; // »óÇ° »çÀÌÁî
+	int quantity; // ÁÖ¹® ¼ö·®
+	String order_status; // ÁÖ¹® »óÈ²
+	String buyer_name; // ÁÖ¹®ÀÚ
+	String message; // ¹è¼Û¿äÃ»»çÇ×
 
-	/* ì£¼ë¬¸ ë°°ì†¡ ìƒì„¸ì¡°íšŒ */
-	// 1. ì£¼ë¬¸ì¼ = order_time
-	// 2. ì£¼ë¬¸ë²ˆí˜¸ = order_no
+	/* ÁÖ¹® ¹è¼Û »ó¼¼Á¶È¸ */
+	// 1. ÁÖ¹®ÀÏ = order_time
+	// 2. ÁÖ¹®¹øÈ£ = order_no
 
-	String receiver; // ìˆ˜ë ¹ì¸ = ë°›ëŠ”ë¶„
-	String address; // ì£¼ì†Œ
-	// ì—°ë½ì²˜
+	String receiver; // ¼ö·ÉÀÎ = ¹Ş´ÂºĞ
+	String address; // ÁÖ¼Ò
+	// ¿¬¶ôÃ³
 	String phone1;
 	String phone2;
 	String phone3;
 
-	// ìƒí’ˆëª… , ìƒí’ˆ ê°€ê²©, ìƒí’ˆ ìƒ‰ìƒ, ìƒí’ˆ ì‚¬ì´ì¦ˆ, ì£¼ë¬¸ ìˆ˜ëŸ‰, ì£¼ë¬¸ ìƒí™©
-	// ê²°ì œì •ë³´
-	int order_price; // ì£¼ë¬¸ ê¸ˆì•¡ = ì´ ê°€ê²©
-	int delivery_fee; // ë°°ì†¡ë¹„
-	int discount_rate; // ì£¼ë¬¸ í• ì¸
-	int coupon_discount; // ì¿ í° í• ì¸
-	int used_point; // ì‚¬ìš© í¬ì¸íŠ¸
-	String order_means; // ì£¼ë¬¸ ìˆ˜ë‹¨
-	String refund_means; // í™˜ë¶ˆ ìˆ˜ë‹¨
-	String refund_bank; // í™˜ë¶ˆ ì€í–‰
-	String refund_account; // í™˜ë¶ˆ ê³„ì¢Œ
-	int refund_price; // í™˜ë¶ˆê¸ˆì•¡
-	Date cancel_date; // ì·¨ì†Œì¼ì (ë„ ê°€ëŠ¥)
+	// »óÇ°¸í , »óÇ° °¡°İ, »óÇ° »ö»ó, »óÇ° »çÀÌÁî, ÁÖ¹® ¼ö·®, ÁÖ¹® »óÈ²
+	// °áÁ¦Á¤º¸
+	int order_price; // ÁÖ¹® ±İ¾× = ÃÑ °¡°İ
+	int delivery_fee; // ¹è¼Ûºñ
+	int discount_rate; // ÁÖ¹® ÇÒÀÎ
+	int coupon_discount; // ÄíÆù ÇÒÀÎ
+	int used_point; // »ç¿ë Æ÷ÀÎÆ®
+	String order_means; // ÁÖ¹® ¼ö´Ü
+	String refund_means; // È¯ºÒ ¼ö´Ü
+	String refund_bank; // È¯ºÒ ÀºÇà
+	String refund_account; // È¯ºÒ °èÁÂ
+	int refund_price; // È¯ºÒ±İ¾×
+	Date cancel_date; // Ãë¼ÒÀÏÀÚ (³Î °¡´É)
+	boolean review_status; // ¸®ºä ÀÛ¼º È®ÀÎ
 
-	/* í•„ìš”ì—†ì§€ë§Œ í˜¹ì‹œ ëª°ë¼ì„œ = DB Column */
-	int user_no; // íšŒì› ë²ˆí˜¸
+	/* ÇÊ¿ä¾øÁö¸¸ È¤½Ã ¸ô¶ó¼­ = DB Column */
+	int user_no; // È¸¿ø ¹øÈ£
 
-	int order_detail_no; // ì£¼ë¬¸ ë””í…Œì¼ ë²ˆí˜¸
-	int product_no; // ìƒí’ˆ ë²ˆí˜¸
-	Date payment_time; // ê²°ì œ ì‹œê°„
-	Date delivery_start;// ë°°ì†¡ì‹œì‘ì¼
-	Date delivery_end; // ë°°ì†¡ì™„ë£Œì¼
-	
-	int cancel_quantity; //ì·¨ì†Œ ìˆ˜ëŸ‰
+	int order_detail_no; // ÁÖ¹® µğÅ×ÀÏ ¹øÈ£
+	int product_no; // »óÇ° ¹øÈ£
+	Date payment_time; // °áÁ¦ ½Ã°£
+	Date delivery_start_date;// ¹è¼Û½ÃÀÛÀÏ
+	Date delivery_end_date; // ¹è¼Û¿Ï·áÀÏ
+
+	int cancel_quantity; // Ãë¼Ò ¼ö·®
 
 }

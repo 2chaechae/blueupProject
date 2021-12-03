@@ -2,12 +2,59 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="orderDao">
- 	<!-- 상품 -->
-	<select id="getProduct" resultType="ordervo">
-		SELECT  * FROM product
+
+<mapper namespace="orderDao">
+	<select id="getTotalPoint" parameterType="int"
+		resultType="Integer">
+		SELECT
+		(SUM(COALESCE(INCOME,0))) -
+		(SUM(COALESCE(EXPENSE,0))) AS TOTAL_POINT
+		FROM POINT
+		WHERE USER_NO =
+		#{user_no};
+	</select>
+
+	<select id="selectCouponList" parameterType="userVo"
+		resultType="couponVo">
+		<![CDATA[
+		SELECT 
+		B.COUPON_NO, 
+		A.USER_NO, 
+		B.COUPON_NAME, 
+		B.COUPON_DISCOUNT,
+		to_char(B.coupon_begin, 'YYYY-MM-DD') as coupon_begin,
+		to_char(B.coupon_end, 'YYYY-MM-DD') as coupon_end,
+		B.COUPON_USABLE,
+		B.COUPON_TYPE,
+		B.REMARKS
+		FROM USERS AS A, COUPON AS B
+		WHERE A.USER_NO = #{user_no}
+		AND A.USER_NO = B.USER_NO
+		AND coupon_end > now()
+		AND COUPON_USABLE=TRUE
+		]]>
+	</select>
+
+	<select id="getCouponSelect" parameterType="hashMap"
+		resultType="couponVo">
+		SELECT
+		B.COUPON_NO,
+		A.USER_NO,
+		B.COUPON_NAME,
+		B.COUPON_DISCOUNT,
+		B.COUPON_TYPE
+		FROM USERS AS A, COUPON AS B
+		WHERE A.USER_NO = #{user_no }
+		AND B.COUPON_NO = #{coupon_no}
 	</select>
 	
+	<!-- 통계 상품 주문액 -->
+	<select id="getOrderAmount" parameterType="hashmap" resultType="orderamountvo">
+	 SELECT SUM(ORDER_PRICE) AS ORDER_TOTALPRICE , COUNT(*) AS ORDER_COUNT, TO_CHAR(ORDER_TIME, 'DD') AS DAY
+	 FROM ORDER_REQUEST
+	 WHERE TO_CHAR(ORDER_TIME, 'YYYYMMDD')<![CDATA[ > ]]>#{start} AND TO_CHAR(ORDER_TIME, 'YYYYMMDD')<![CDATA[ < ]]>#{end}
+	 GROUP BY TO_CHAR(ORDER_TIME, 'DD') 
+	 ORDER BY DAY
+	</select>
 
- </mapper>
+</mapper>

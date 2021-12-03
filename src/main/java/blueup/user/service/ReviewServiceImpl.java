@@ -18,17 +18,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public int deleteReview(ReviewVo vo) {
 		return reviewDAO.deleteReview(vo);
 	}
-
-	@Override
-	public void insertReview(ReviewVo vo) {
-		reviewDAO.insertReview(vo);
-	}
-
-	@Override
-	public void updateReview(ReviewVo vo) {
-		reviewDAO.updateReview(vo);
-	}
 	
+	@Override
+	public int insertReview(ReviewVo vo) {
+		return reviewDAO.insertReview(vo);
+	}
+
+	@Override
+	public int getReviewNo() {
+		return reviewDAO.getReviewNo();
+	}
 
 	@Override
 	public List<ReviewVo> getReviewList(ReviewVo vo) {
@@ -44,5 +43,26 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVo> getReviewproductList(ReviewVo vo) {
 		return reviewDAO.getReviewproductList(vo);
 	}
+
+	@Override
+	public ReviewVo getReviewListForReview(ReviewVo vo) {
+		return reviewDAO.getReviewListForReview(vo);
+	}
+
+	@Override
+	public ReviewVo modifyReview(ReviewVo vo) {
+		return reviewDAO.modifyReview(vo);
+	}
+	@Override
+	public int modifyupdateReview(ReviewVo vo) {
+		return reviewDAO.modifyupdateReview(vo);
+	}
+
+	@Override
+	public int insertPhoto(ReviewVo vo) {
+		return reviewDAO.insertPhoto(vo);
+	}
+
+
 
 }

@@ -291,18 +291,19 @@ public class CartController {
 	// 주문페이지 이동 - 회원
 	@RequestMapping("/moveToOrder.do")
 	@ResponseBody
-	public ModelAndView moveToOrder(@RequestParam(value="cart_no")List<String> cart_no, HttpSession session) {
+	public ModelAndView moveToOrder(@RequestParam(value="cart_no")List<String> cart_no, HttpSession session, int user_no) {
 		ModelAndView mav = new ModelAndView();
 		List<CartVo> orderList = cartserviceimpl.selectedcartList(cart_no);
 		for(int i=0; i < orderList.size(); i++) {
 			System.out.println(orderList.get(i).getAll_discount());
 			System.out.println(orderList.get(i).getProduct_name());
+			System.out.println("user_no" + orderList.get(i).getUser_no());
 		}
 		int check = cartserviceimpl.deleteCart(cart_no);
 		if(check > 0) {
 			System.out.println("삭제 성공");
 			session.setAttribute("order", orderList);
-			mav.setViewName("redirect:/getOrder.do");
+			mav.setViewName("redirect:/getOrder.do?user_no="+user_no);
 		}
 		return mav;
 	}
@@ -311,6 +312,7 @@ public class CartController {
 	@RequestMapping("/moveToOrderNonMember.do")
 	@ResponseBody
 	public ModelAndView moveToOrderNonMember(@RequestParam(value="product_no" )List<String> product_no, HttpSession session) {
+		System.out.println("장바구니에서 비회원 주문 페이지 ");
 		ModelAndView mav = new ModelAndView();
 		List<CartVo> orderList = new ArrayList<CartVo>();
 		List<CartVo> cart = (List<CartVo>) session.getAttribute("cart");
@@ -321,6 +323,9 @@ public class CartController {
 					cart.remove(i);
 				}
 			}
+		}
+		for(int i=0; i<orderList.size(); i++) {
+			orderList.get(i).getProduct_color();
 		}
 		session.setAttribute("cart", cart);
 		session.setAttribute("orderNonMember", orderList);

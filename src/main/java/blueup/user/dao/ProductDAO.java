@@ -54,6 +54,25 @@ public class ProductDAO {
 		return sqlSssionTemplate.update("productDao.updateViewCount", vo);
 	}
 	
+	/* 세일 상품 리트스 - 회원 */
+	public List<ProductVo> getSaleProduct(HashMap<Object, Object> vo){
+		return sqlSssionTemplate.selectList("productDao.getSaleProduct", vo);
+	}
+	
+	/* 세일 상품 게시물수 */
+	public int getSaleProductCount() {
+		return sqlSssionTemplate.selectOne("productDao.getSaleProductCount");
+	}
+	
+	/* 세일 상품 리스트 - 비회원 */
+	public List<ProductVo> getSaleProductNonMember(HashMap<Object, Object> vo){
+		return sqlSssionTemplate.selectList("productDao.getSaleProductNonMember", vo);
+	}
+	
+	/* 메인화면 볼캡 조회 */
+	public List<ProductVo> getProductMain(){
+		return  sqlSssionTemplate.selectList("productDao.getProductMain");
+	}
 	/////////////////////// 아직 안쓴거 /////////////////////////
 	public ProductVo getProduct(ProductVo vo) {
 		return sqlSssionTemplate.selectOne("productDao.getProduct", vo);

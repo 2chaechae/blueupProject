@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -74,13 +76,13 @@
 			<header id="gnbMenu" class="gnb_menu">
 				<div class="gnb_menu_wrap">
 					<h1 class="logo">
-						<a href="/" data-ga-category="PC_MLB_Header" data-ga-action="MLB">MLB</a>
+						<a href="/test/index.do" data-ga-category="PC_MLB_Header" data-ga-action="MLB">MLB</a>
 					</h1>
 					<div class="menu">
 						<ul class="list cate">
 							<!-- 세일상품 -->
 							<li class="select">
-								<a href="javascript:void(0)" onclick="checkCategoryUp(this)"> <font >SALES</font></a>
+								<a href="javascript:void(0)" onclick="sale()"><font >SALES</font></a>
 									<!-- 
 								<div class="pan top_cate_pan_1">
 									<div class="inner">	
@@ -364,15 +366,10 @@
 							</li>
 							<!-- Community -->
 							<li><a data-pan="top_cate_pan_7"
-								href="javascript:cateLink('MBMA16', '1', 'GNRL_CTGRY', 'MBMA16');"
+								href="/test/getNoticeList.do"
 								data-ga-category="PC_MLB_Header" data-ga-action="MONOGRAM">
 									<font color="">COMMUNITY</font>
 								</a>
-								<li><a href="/test/getNoticeList.do" >공지사항</a></li>
-								<!-- <div class="pan top_cate_pan_7">
-									<div class="inner">
-									</div>
-								</div> -->
 							</li>
 						</ul>
 					</div>
@@ -396,10 +393,10 @@
 							<button type="button" class="btn_nav ico_my">MY</button>
 							<div id="layerLogin" class="layer_login">
 								<ul>
-									<li><a href='#' onclick="doGNBLogin(); return false;"
+									<li><a href='/test/login.do' 
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="로그인">로그인</a></li>
-									<li><a href="#" onclick="doGNBJoin(); return false;"
+									<li><a href="/test/join.do"
 										data-ga-category="PC_MLB_Header" data-ga-action="회원"
 										data-ga-label="회원가입">회원가입</a></li>
 									<li><a href="#" onclick="myPage(); return false;"
@@ -541,13 +538,26 @@
       <div class="link">
          <ul class="list">
             <li><a href="/event/promotionList" data-ga-category="PC_MLB_Header" data-ga-action="PROMOTION/EVENT">PROMOTION</a></li>
-            <!-- [EOSD-2740] 카테고리 수정 <li><a href="/display/view?dspCtgryNo=MBMA06&currentCtgryDpthCd=1&ctgrySectCd=OTLT_CTGRY&ctgryNoDpth1=MBMA06" data-ga-category="PC_MLB_Header" data-ga-action="OUTLET">OUTLET</a></li>
-            <li><a href="/display/majorView?dspCtgryNo=MBMA11&currentCtgryDpthCd=1&ctgrySectCd=GNRL_CTGRY&ctgryNoDpth1=MBMA11" data-ga-category="PC_MLB_Header" data-ga-action="FAMILY">FAMILY</a></li> -->
             <li><a href="/lookbook/lookbookList" data-ga-category="PC_MLB_Header" data-ga-action="LOOKBOOK">LOOKBOOK</a></li>
             <li><a href="/culture/cultureList" data-ga-category="PC_MLB_Header" data-ga-action="CULTURE">CULTURE</a></li>
 </ul>
       </div>
+      </div>
+</nav>
 <script type="text/javascript">
+$(document).ready(function(){
+	var user_no = localStorage.getItem("user_no");
+	if(user_no != null){
+		var html = 	"<ul><li><a href='javascript:void(0)' onclick='logout()'>로그아웃</a></li>"
+		 			+ "<li><a href='/test/getOrderList.do?user_no=" + user_no + "'>마이페이지</a></li>";
+		$('#layerLogin').empty();
+		$('#layerLogin').append(html);
+	}else{
+		var html = "<ul><li><a href='/test/login.do'>로그인</a></li>"
+					+ "<li><a href='/test/join.do'회원가입</a></li>"
+					+ "<li><a href='/test/getOrderList.do?user_no='" + user_no + "'>마이페이지</a></li>";
+	}
+});
 
 function checkCategoryAll(element){
 	var user_no = localStorage.getItem("user_no");
@@ -558,7 +568,26 @@ function checkCategoryAll(element){
 		location.href="/test/getCategoryAll.do?category_name="+first;
 	}
 }   
-
+/* 로그아웃 */
+function logout(){
+	var result = confirm("로그아웃 하시겠습니까?");
+	if(result){
+		$.ajax({
+			url:'/test/logout.do',
+		    type:'POST',
+		   	cache:false,
+			success:function(data) {
+				if(data==1){
+					localStorage.clear();
+					location.href="/test/index.do";
+				}
+			},
+			error:function() {	
+				alert('다시 시도해주세요');
+			}
+		});
+	}
+}
 /* 하위 카테고리로 상품 조회 (상단메뉴)*/
 function checkCategoryUp(element){
 		var user_no = localStorage.getItem("user_no");
@@ -575,7 +604,6 @@ function checkCategoryUp(element){
 function checkCategoryDown(element){
 	var user_no = localStorage.getItem("user_no");
 	var first = $('#cate').text();
-	alert(first);
 	var second = $(element).text();
 	if(user_no != null){
 		location.href="/test/getCategory.do?category_name="+first+"&detailed_category_name="+second+"&user_no="+user_no;
@@ -605,20 +633,27 @@ function cartAll() {
 function myPage(){
 	var user_no = localStorage.getItem("user_no");
 	if(user_no!=null){
-		location.href="/test/qnaWrite.do?user_no="+user_no;
+		location.href="/test/getOrderList.do?user_no="+user_no;
 	}else{
 		alert('로그인이 필요한 작업입니다');
 		return;
 	}
 }
-</script>
-      <!--  [EOSD-2740] 카테고리 수정
-      <div class="banner">
-         <ul class="list">
-            </ul>
-      </div>
-       -->
-       
 
-   </div>
-</nav>
+function sale(){
+	var user_no = localStorage.getItem("user_no");
+	if(user_no != null){
+		location.href="/test/getSaleProduct.do?user_no="+user_no;
+	}else{
+		location.href="/test/getSaleProduct.do?";
+	}
+}
+function myPage() {
+	var user_no = localStorage.getItem("user_no");
+	if (user_no != null) {
+		location.href = "/test/getOrderList.do?user_no=" + user_no;
+	} else{
+		location.href = "/test/getOrderList.do?";
+	}
+}
+</script>

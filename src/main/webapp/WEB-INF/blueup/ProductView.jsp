@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 컨텐츠 시작 -->
 <div class="contain dp list dep3" id="contain">
 	<div class="container">
@@ -39,7 +39,6 @@
 										<div class="name">${product.product_name}
 											<p class="heart" style="display:inline-block;">
 												<c:set var="wish" value="${product.wish_no}"></c:set>
-												<c:out value="${wish}"/>
 												<c:choose>
 													<c:when test="${wish ne 0}">
 														<img src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart_hover.png" alt="찜" width="25" height="23" onclick="heart(this)"></p></div>
@@ -49,35 +48,63 @@
 													</c:when>
 												</c:choose>
 										<div class="prc">
-											<em class="p">${product.product_price}원</em>
+											<fmt:formatNumber var="formatNumber" value="${product.product_price}" pattern="#,###" />
+											<em class="p">${formatNumber}원</em>
 										</div>
 									</div>
 								</div>
 							</li>
 						</c:forEach>
-					<div style="display: block; text-align: center; width:1310px; margin : 0 auto;">
-							<c:if test="${pageMaker.startPage != 1 }">
-								<a
-									href="/test/getProduct.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
-							</c:if>
-							<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }"
-								var="p">
-								<c:choose>
-									<c:when test="${p == cri.page }">
-										<b>|&nbsp;${p}&nbsp;|</b>
-										
-									</c:when>
-									<c:when test="${p != cri.page }">
-										<a
-											href="/test/getProduct.do?pageNum=${p }">|&nbsp;${p}&nbsp;|</a>
-									</c:when>
-								</c:choose>
-							</c:forEach>
-							<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
-								<a
-								href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
-							</c:if>
-						</div>
+						<c:choose>
+						<c:when test="${check == 'bottom' }">
+							<div style="display: block; text-align: center; width:1310px; margin : 0 auto;">
+								<c:if test="${pageMaker.startPage != 1 }">
+									<a
+										href="/test/getProduct.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == cri.page }">
+											<b>|&nbsp;${p}&nbsp;|</b>
+											
+										</c:when>
+										<c:when test="${p != cri.page }">
+											<a
+												href="/test/getProduct.do?pageNum=${p}">|&nbsp;${p}&nbsp;|</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+									<a
+									href="/test/getProduct.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+								</c:if>
+							</div>
+						</c:when>
+						<c:otherwise>
+								<div style="display: block; text-align: center; width:1310px; margin : 0 auto;">
+								<c:if test="${pageMaker.startPage != 1 }">
+									<a
+										href="/test/getProductAll.do?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == cri.page }">
+											<b>|&nbsp;${p}&nbsp;|</b>
+											
+										</c:when>
+										<c:when test="${p != cri.page }">
+											<a
+												href="/test/getProductAll.do?pageNum=${p}">|&nbsp;${p}&nbsp;|</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
+									<a
+									href="/test/getProductAll.do?pageNum=${pageMaker.endPage+1 }">&gt;</a>
+								</c:if>
+							</div>
+						</c:otherwise>
+						</c:choose>
 				</section>
 		</main>
 	</div>
@@ -89,7 +116,6 @@ var user_no = localStorage.getItem("user_no");
 // 하트 눌렀을 때 : 회원 db 위시리스트 , 비회원 쿠키에 상품번호 추가
 function heart(element){
 var img = $(element).attr("src");
-	alert(img);
 	/////////////////회원 위시리스트////////////////
 	if(user_no != null){
 		if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
@@ -170,7 +196,6 @@ var img = $(element).attr("src");
 function viewCount(element){
 	var product_no = $(element).closest('li').prev().prev().val();
 	var user_no = localStorage.getItem("user_no");
-	alert(product_no);
 	$.ajax({
 		url:'/test/updateViewCount.do',
 	    type:'POST',

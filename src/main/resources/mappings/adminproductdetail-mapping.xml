@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="adminprodcutdetailDAO">
+	<select id="getProductDetail" resultType="productcontentvo">
+		SELECT *
+		FROM PRODUCT_CONTENT_DETAIL
+		WHERE product_no = #{product_no}
+	</select>
+	
+	<update id="updateProductDetail" parameterType="productvo">
+		<foreach collection="number"  item="item" separator=";">
+		UPDATE PRODUCT_CONTENT_DETAIL 
+		SET DETAILED_PRODUCT_CONTENT = #{item.detailed_product_content}
+		WHERE PRODUCT_CONTENT_DETAIL_NO = #{item.product_content_detail_no}
+		</foreach>
+	</update>
+	
+	<insert id="addProductDetail" parameterType="productcontentvo">
+		<foreach collection="number"  item="item" separator=";">
+		INSERT INTO PRODUCT_CONTENT_DETAIL (
+			PRODUCT_NO, 
+			DETAILED_PRODUCT_CONTENT,
+			CONTENT_TYPE
+		) VALUES(
+			#{item.product_no},
+			#{item.detailed_product_content},
+			#{item.content_type}
+		)
+		</foreach>
+	</insert>
+</mapper>

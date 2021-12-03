@@ -66,7 +66,7 @@
 
 								<tr>
 									<th scope="col"><div id="allCheck" style="display:flex;">
-											<input type="checkbox" name="allCheck" id="allCheck" style="margin-left:10px;" /><labelfor="allCheck" style="padding-left:10px;">전체</label>
+											<input type="checkbox" name="allCheck" id="allCheck" style="margin-left:10px;" /><label for="allCheck" style="padding-left:10px;">전체</label>
 											<!-- 전체 선택시 개별체크박스도 체크됨 -->
 											<script>
 											$("#allCheck").click(function(){
@@ -85,7 +85,7 @@
 									<th scope="col">수량</th>
 									<th scope="col">할인/혜택</th>
 									<th scope="col"><div style="width: 158px; padding-left:94px;">주문금액</div></th>
-
+									<th scope="col"></th>
 								</tr>
 								<c:choose>
 								<c:when test="${emptyCart eq '없음'}">
@@ -106,7 +106,8 @@
 												</div>
 											</td>
 													
-											<td><img src="${cart.main_image}" style="width:100px; height:110px;"></td>
+											<td><img src="${cart.main_image}" onclick="viewCount(this)" style="width:100px; height:110px;">
+												<input type="hidden" value="${cart.product_no}"></td>
 											<td>${cart.product_name}
 												<br>${cart.product_color}/${cart.product_size} &nbsp;
 												<input class="p_no" type="hidden" value="${cart.product_no}"/>
@@ -170,7 +171,7 @@
 										<dl>
 											<dt>총 주문금액</dt>
 											<dd>
-												<strong id="GNRL_DLV_total_amt"><c:out value="${all_price-all_discount}"/></strong>
+												<strong id="GNRL_DLV_total_amt">${all_price-all_discount}"</strong>
 											</dd>
 										</dl>
 									</c:when>
@@ -180,17 +181,18 @@
 										<c:forEach var="cart" items="${getcartList}" varStatus="status">
 											<c:set var="sum_price" value="${sum_price + cart.total_price }"/>
 											<c:set var="sum_discount" value="${sum_discount + (cart.discount * cart.quantity) }"/>
+											<c:set var="sum_amount" value="${sum_price - sum_discount}" />
 										</c:forEach>
 										<dl>
 											<dt>선택상품금액</dt>
-											<dd id="GNRL_DLV_god_amt"><c:out value="${sum_price}"/></dd>
+											<dd id="GNRL_DLV_god_amt">${sum_price}</dd>
 											<dt>선택할인금액</dt>
-											<dd class="c_r" id="GNRL_DLV_dc_amt"><c:out value="${sum_discount}"/></dd>
+											<dd class="c_r" id="GNRL_DLV_dc_amt">${sum_discount}</dd>
 										</dl>
 										<dl>
 											<dt>총 주문금액</dt>
 											<dd>
-												<strong id="GNRL_DLV_total_amt"><c:out value="${sum_price-sum_discount}"/></strong>
+												<strong id="GNRL_DLV_total_amt">${sum_amount}</strong>
 											</dd>
 										</dl>
 									</c:otherwise>
@@ -213,9 +215,10 @@
 $(document).ready(function(){
 	var user_no = localStorage.getItem("user_no");
 });
-var user_no = localStorage.getItem("user_no");
+
 	$(document).ready(function(){
 		$('.chBox').change(function(){
+			var user_no = localStorage.getItem("user_no");
 			if(user_no != null){
 				var cart_no = new Array();
 				$('input:checkbox[class=chBox]:checked').each(function(){
@@ -281,6 +284,7 @@ var user_no = localStorage.getItem("user_no");
 		
 		///////////////// 전체 체크 /////////////////
 		$("#allCheck").click(function(){
+			var user_no = localStorage.getItem("user_no");
 			if($("input:checkbox[name=allCheck]").is(":checked") == true) {
 				$("input[name=chBox]:checkbox").prop("checked", true);
 					//////// 회원////////
@@ -344,6 +348,7 @@ var user_no = localStorage.getItem("user_no");
 	
 	////////////// 수량변경 마이너스 /////////////////
 	function minus(element){
+		var user_no = localStorage.getItem("user_no");
 		///////////////현재 값//////////////////////
 		var stat = parseInt($(element).next().text()); // 수량 
 		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
@@ -353,8 +358,6 @@ var user_no = localStorage.getItem("user_no");
 		///////////////개당 값////////////////////
 		var per_p = parseInt(product_price / stat); // 1개 상품 금액
 		var per_d = parseInt(discount_price / stat); // 1개 상품 할인 금액
-		alert("1개 할인금액" + per_d);
-		alert("개수 " + stat);
 		//////////////변경 값////////////////////
 		product_price -= per_p;  // 변경된 선택상품의 상품총액
 		discount_price -= per_d; // 변경된 선택상품의 할인총액
@@ -418,23 +421,22 @@ var user_no = localStorage.getItem("user_no");
 	
 	//////////////수량변경 플러스/////////////////
 	function plus(element){
+		var user_no = localStorage.getItem("user_no");
 		///////////////현재 값////////////////////// 
 		var end = $(element).prev().text(); //수량
 		var cart_no = $(element).closest('tbody').find('.chBox').val(); // 장바구니 번호
 		var product_price = parseInt($(element).closest('tbody').find('.product_p').text()); // 선택상품의 상품총액
 		var discount_price = parseInt($(element).closest('tbody').find('.discount').val()); // 선택상품의 할인총액
 		var product_no = parseInt($(element).closest('tbody').find('.p_no').val()); // 상품 번호
+
 		///////////////개당 값////////////////////
 		var per_p = parseInt(product_price / end); // 1개 상품 금액
 		var per_d = parseInt(discount_price / end); // 1개 상품 할인 금액
-		
+
 		//////////////변경 값////////////////////
 		product_price += per_p;  // 변경된 선택상품의 상품총액
 		discount_price += per_d; // 변경된 선택상품의 할인총액
 		
-		alert("현재 할인금액" + discount_price);
-		alert("1개 할인금액" + per_d);
-		alert("개수 " + end);
 		//////////////수량 변경//////////////
 		end ++;
 		if (end > 999) {
@@ -492,6 +494,7 @@ var user_no = localStorage.getItem("user_no");
 	
 	//전체삭제
 	function deleteAll(){
+		var user_no = localStorage.getItem("user_no");
 		if(user_no != null){
 			$.ajax({
 				url:'/test/deleteAllCart.do',
@@ -535,6 +538,7 @@ var user_no = localStorage.getItem("user_no");
 	}
 	
 	function deleteCheck(){
+		var user_no = localStorage.getItem("user_no");
 		if(user_no != null){
 			var cart_no = new Array();
 			$('input:checkbox[class=chBox]:checked').each(function(){
@@ -550,7 +554,6 @@ var user_no = localStorage.getItem("user_no");
 					if(data == 1){
 					console.log("선택 삭제 완료");
 						$('input:checkbox[class=chBox]:checked').each(function(){
-							alert($(this).val());
 							$(this).closest('.row').remove();
 						});	
 						/////////// 삭제 후 내역 가져오기 //////////////
@@ -563,7 +566,7 @@ var user_no = localStorage.getItem("user_no");
 								location.reload();
 							},
 							error:function() {
-								alert('db 자료 받기 실패');
+								alert('다시 시도해주세요');
 							}
 						});
 					}else{
@@ -597,7 +600,6 @@ var user_no = localStorage.getItem("user_no");
 						$('#GNRL_DLV_total_amt').text(0);		
 					}else{
 						$('input:checkbox[class=chBox]:checked').each(function(){
-							alert($(this).val());
 							$(this).closest('.row').remove();
 						});	
 						var all_price_Nonmember = parseInt(data.all_price);
@@ -617,21 +619,20 @@ var user_no = localStorage.getItem("user_no");
 	
 /* 주문하기 */
 function checkOrder(){
+	var user_no = localStorage.getItem("user_no");
 	if(user_no == null){
 		var logincheck = confirm("로그인하면 더 많은 해택을 받으실 수 있습니다. \n 로그인하시겠습니까?");
 		if(logincheck == true){
 			location.href="/test/login.do";
 		}else{
 			var product_no = new Array();
-			alert("비회원으로 주문");
 			if($('input:checkbox[class=chBox]:checked').length == 0){
-				alert("전체");
+				console.log("전체");
 				$('input:checkbox[class=chBox]').each(function(){
 					product_no.push($(this).closest('tbody').find('.p_no').val());
-					alert($(this).val());
 				});
 			}else{
-				alert("선택");
+				console.log("선택");
 				$('input:checkbox[class=chBox]:checked').each(function(){
 					product_no.push($(this).closest('tbody').find('.p_no').val());
 				});	
@@ -640,23 +641,45 @@ function checkOrder(){
 		}
 	}else{
 		var cart_no = new Array();
+		var user_no = localStorage.getItem("user_no");
 		// 회원 넘길 정보 위치
 		if($('input:checkbox[class=chBox]:checked').length == 0){
-			alert("전체");
+			console.log("전체");
 			$('input:checkbox[class=chBox]').each(function(){
 				cart_no.push($(this).val());
-				alert($(this).val());
 			});
 		}else{
-			alert("선택");
+			console.log("선택");
 			$('input:checkbox[class=chBox]:checked').each(function(){
 				cart_no.push($(this).val());
 			});	
 		}
-		location.href="/test/moveToOrder.do?cart_no=" + cart_no;
+		location.href="/test/moveToOrder.do?cart_no=" + cart_no+ "&user_no="+user_no;
 	}
 }
-	
+
+function viewCount(element){
+	var product_no = $(element).next().val();
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/updateViewCount.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"product_no":product_no},
+		success:function(data) {
+			if(data == 1)
+			console.log("조회수 증가 완료");
+			if(user_no != null){
+				location.href="/test/productDetail.do?product_no="+product_no+"&user_no="+user_no;
+			}else{
+				location.href="/test/productDetailNonMember.do?product_no="+product_no;
+			}
+		},
+		error:function() {	
+			console.log("조회수 증가 실패");
+		}
+	});
+}
  </script>
 <%@ include file="/footer.jsp"%>
 </body>

@@ -55,11 +55,15 @@
 									<sp n cl ss="hyphen">-</sp n>
 									<input type="text" cl ss="input-style01" title="연락처 마지막 입력창" id="mobilTlofWthnNo" m xlength = "4">
 								</div>							
+<<<<<<< HEAD
 								<p cl ss="error-msg"></p>
 								<div cl ss="btn-wr p">
 									<  href="#" cl ss="btn-style02" id="guestLogin" onClick="return f lse;" d t -g -c tegory="PC_MLB_로그인" d t -g - ction="비회원" d t -g -l bel="주문조회">주문조회</ >
 								</div>
 								<p cl ss="login-cs-info"><strong>080-807-0012</strong> 평일 오전 9시 ~ 오후 6시 (토/일/공휴일 휴무)</p>
+=======
+								<p class="login-cs-info"><strong>080-807-0012</strong> 평일 오전 9시 ~ 오후 6시 (토/일/공휴일 휴무)</p>
+>>>>>>> refs/remotes/origin/main
 							</form>
 						</div>
 					</div>
@@ -125,6 +129,7 @@ $(document).re dy(function(){
 				v r userInfo = d t .userInfo;
 				
 				if(userInfo != ""){
+<<<<<<< HEAD
 					loc lStor ge.setItem("user_no", userInfo.user_no);
 					loc lStor ge.setItem("user_n me", userInfo.user_n me);
 					loc lStor ge.setItem("user_id", userInfo.user_id);
@@ -133,6 +138,16 @@ $(document).re dy(function(){
 					loc lStor ge.setItem("phone3", userInfo.phone3);
 					loc lStor ge.setItem("em il_id", userInfo.em il_id);
 					loc lStor ge.setItem("em il_ ddress", userInfo.em il_ ddress);
+=======
+					localStorage.setItem("user_no", userInfo.user_no);
+		            localStorage.setItem("user_name", userInfo.user_name);
+		            localStorage.setItem("user_id", userInfo.user_id);
+		            localStorage.setItem("phone1", userInfo.phone1);
+		            localStorage.setItem("phone2", userInfo.phone2);
+		            localStorage.setItem("phone3", userInfo.phone3);
+		            localStorage.setItem("email_id", userInfo.email_id);
+		            localStorage.setItem("email_address", userInfo.email_address);
+>>>>>>> refs/remotes/origin/main
 				}
 				
 				if(d t .userIdChkNum == 0){
@@ -140,9 +155,16 @@ $(document).re dy(function(){
 					return;
 				}else{
 					//로그인 성공시 indexmlb 이동
+<<<<<<< HEAD
 					if(chkS veId){
 						loc lStor ge.setItem("userId", userid);
 						loc lStor ge.setItem("s veId", chkS veId);
+=======
+					if(chkSaveId){
+						localStorage.setItem("userId", userid);
+						localStorage.setItem("saveId", chkSaveId);
+	
+>>>>>>> refs/remotes/origin/main
 					} else {
 						loc lStor ge.removeItem("userId");
 						loc lStor ge.removeItem("s veId");

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="header.jsp"%>
+<%@ include file="adminHeader.jsp" %>
 <!-- 컨텐츠 시작 -->
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/member/join.js?v=prod-version-858_20211102145956"></script>
 <script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/social/social_login.js?v=prod-version-858_20211102145956"></script>
@@ -25,6 +25,7 @@
 							<input type="hidden" name="remember-me" id="autologin" value="true"> 
 							<input type="hidden" name="pageMode" value="false" /> 
 							<input type="hidden" name="redirect_uri" id="redirect_uri" value="" /> 
+							<input type="hidden" name="pageNum" value="1" />
 
 							<input type="text" class="input-style01" title="아이디 입력창" placeholder="아이디"
 								id="adminlogin" name="admin_id" value="${admin_id }" validate="required;" validateText="아이디" /> 

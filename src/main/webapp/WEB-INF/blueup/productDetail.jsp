@@ -5,83 +5,9 @@
 <%@ include file="header.jsp"%>
 
 <!-- 컨텐츠 시작 -->
-<!-- <meta property="recopick:title" content="하트 비니 뉴욕양키스">
-<meta property="recopick:image" content="https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png">
-<meta property="recopick:price" content="49000">
-<meta property="recopick:price:currency" content="KRW">
-<meta property="recopick:description" content="하트 비니 뉴욕양키스">
- -->
-<!-- <link rel="stylesheet" type="text/css" href="http://img3.tmon.kr/fe/release/staticResource/deals_v3/p/css/deals.css?v=1636078127276"> -->
-<script type="text/javascript"
-	src="https://static.mlb-korea.com/pc/static/js/goods.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript"
-	src="/javascript/message/goods_ko.js?v=prod-version-858_20211102145956"></script>
-<!-- <script>
-	var	_erpNo = '3ABNM0916-50BKS';
-	var _godNo = 'GM0021073028518';
-	var _godNm = '하트 비니 뉴욕양키스';
-	var _godPrice = parseInt('49000');
-	var _pickupStoreCnt = 0;
-	
-	$(document).ready(function() {
-		// $('#recommendProduct').viewtogether({godNo:_erpNo});
-		//Facebook Pixel
-		fbq('track', 'ViewContent', {
-			content_ids: ['3ABNM0916-50BKS'],
-			content_type: 'product'
-		});
-		
-		//카카오모먼트 EOSD-2568
-		kakaoPixel('7684449978440634289').viewContent({ id: _erpNo });
-		
-		setTimeout(function() {
-			
-			var soldOutText = ('SALE_PROGRS' == 'SMTM_SLDOUT' || 'SALE_PROGRS' == 'SLDOUT') ? "일시품절" : "재고있음";
-			var reviewCountText = $(".crema-product-reviews-count").text();
-			var reviewText = $(".crema-product-reviews-score").text();
-			reviewCountText = reviewCountText.replace(/(\(|\))/g, "");
-			reviewText = reviewText.replace(/(\(|\))/g, "");
-			var detailBrand = '/goods/뉴욕-양키스/비니/3ABNM0916-50BKS'.split("/");
-			
-			window.dataLayer = window.dataLayer || [];
-			window.gtmDataLayer.pushDataLayer(
-				{
-					'event':'ee-productView'
-					,'dimension62': soldOutText 
-					,'dimension90': reviewCountText
-					,'dimension91': reviewText.substring(0,1)
-					,'ecommerce': {
-						'currencyCode': 'KRW', //현지 통화
-						'detail': {
-							'products': [{
-								'id':'3ABNM0916-50BKS'
-								,'name':'하트 비니 뉴욕양키스'
-								,'price':Number('49000')
-								,'brand':convertBrandNm('엠엘비')
-								,'category':'비니'
-								,'dimension18':'Black'
-								,'dimension20':'' == '' ? undefined : ''
-								,'dimension52':'' == '' ? undefined : ''
-								,'dimension53':'매일 함께 입고 싶은 커플룩 #MLB하트, 톤 업! 텐션 업! #MLB비니, 나 하나, 너 하나 #MLB하트, 스타일 온도 UP #MLB비니' == '' ? undefined : '매일 함께 입고 싶은 커플룩 #MLB하트, 톤 업! 텐션 업! #MLB비니, 나 하나, 너 하나 #MLB하트, 스타일 온도 UP #MLB비니'
-								,'dimension54':'2447, 2474, 2495, 2496' == '' ? undefined : '2447, 2474, 2495, 2496'
-								,'dimension85':'0' == '' ? undefined : '0'+'%'
-								,'dimension87':'/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png' == '' ? undefined : 'https://static.mlb-korea.com/images/goods/thnail/m/20210804/3ABNM0916-50BKS-44086845068013980.png'
-								,'dimension131':'' == '' ? undefined : ''
-								,'dimension132': '' == '' ? undefined : ''
-								,'dimension133': '겉감:아크릴 100%, 겉감:아크릴 100%' == '' ? undefined : '겉감:아크릴 100%, 겉감:아크릴 100%'
-								,'dimension134':detailBrand[2]
-								,'dimension135':getSeasonCd('21F')
-							}]
-						}
-					}
-				}
-			);
-			
-			//console.log("goods window.dataLayer  ==>",window.dataLayer);
-		}, 2000);
-	});
-</script>
- -->
+
+<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/goods.js?v=prod-version-858_20211102145956"></script>
+<script type="text/javascript" src="/javascript/message/goods_ko.js?v=prod-version-858_20211102145956"></script>
 
 <acrticle id="container">
 <section id="contents" class="product-detail">
@@ -92,10 +18,10 @@
 
 			<main class="contents" id="contents">
 				<style>
-body {
-	height: 100% !important;
-}
-</style>
+				body {
+					height: 100% !important;
+				}
+				</style>
 				<div class="gdsWrap">
 					<!-- 상품  -->
 					<section class="sect product">
@@ -155,7 +81,8 @@ body {
 								</div>
 								<div class="price norm">
 									<div class="prc">
-										<span class="p n">${productDetail.get(0).product_price}<em>원</em></span>
+										<fmt:formatNumber var="formatNumber" value="${productDetail.get(0).product_price}" pattern="#,###" />
+										<span class="p n">${formatNumber}<em>원</em></span>
 									</div>
 								</div>
 							</div>
@@ -279,7 +206,7 @@ body {
 	<!-- div class="hdt"><span class="tit">STYLE IN MLB</span></div -->
 	<c:forEach var="banner" items="${banner}">
 		<div class="html-box">
-			<a href="#"><img height="70" src="${banner.banner_image}"
+			<a href="${banner.noticeurl}"><img height="70" src="${banner.banner_image}"
 				width="900" /></a>
 		</div>
 	</c:forEach>
@@ -306,8 +233,7 @@ body {
 		</c:forEach>
 		&nbsp;
 
-		<div id="productInfo02" class="product-detail-section box-review"
-			style="width: 1000px;">
+		<div id="productInfo02" class="product-detail-section box-review" style="width: 1000px;">
 			<h2 class="title03" style="padding-bottom: 30px;">상품리뷰</h2>
 			<hr style="color: gray">
 			<div
@@ -327,7 +253,7 @@ body {
 				<label style="font-size: 18px; padding-right: 15px;">별점 기준
 					조회 : </label> 
 				<select id="starSearch" style="width: 170px; height: 30px; text-align: center">
-					<option value='' selected>-- 선택 --</option>
+					<option value='null' selected>-- 선택 --</option>
 					<option value="1">1점</option>
 					<option value="2">2점</option>
 					<option value="3">3점</option>
@@ -335,8 +261,8 @@ body {
 					<option value="5">5점</option>
 				</select>
 			</div>
-			<div>
-				<table>
+			<div id="reviewTabel">
+				<table id="remove">
 					<c:choose>
 						<c:when test="${review == null}">
 							<div style="display: grid; width: 800px; margin: 50px;">
@@ -354,7 +280,7 @@ body {
 											style="height: 200px; width: 200px; margin: 10px;"></td>
 									</c:when>
 									<c:otherwise>	
-										<td style="font-size: 16px;" colspan="5"></td>
+										<td style="font-size: 16px;" colspan="5"><div style="height: 200px; width: 200px; margin: 10px;"></div></td>
 									</c:otherwise>
 								</c:choose>
 									<td style="font-size: 16px; text-align: left" colspan="7">
@@ -382,7 +308,7 @@ body {
 											<c:otherwise>
 												<img
 													src="https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/star5.png"
-													style="height: 10px; width: 60px;">
+													style="height: 27px; width: 117px;">
 											</c:otherwise>
 										</c:choose> <br>${review.review_title}<br>${review.review_content}</td>
 									<fmt:formatDate var="formatRegDate" value="${review.review_time}" pattern="yyyy.MM.dd" />
@@ -395,10 +321,10 @@ body {
 					</c:choose>
 				</table>
 			</div>
-			<div style="display: block; text-align: center; width:1200px; margin : 50px 0;">
+			<div id="paging" style="display: block; text-align: center; width:1200px; margin : 50px 0;">
 			<c:if test="${review.get(0).user_no != 0 }">
 					<c:if test="${pageMaker.startPage != 1 }">
-						<a href="/test/productDetail.do?page_no=${pageMaker.startPage - 1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&lt;</a>
+						<a href="javascript:void(0)" onclick="beforePage()">&lt;</a>
 					</c:if>
 					<c:forEach begin="${pageMaker.startPage }"
 						end="${pageMaker.endPage }" var="p">
@@ -408,12 +334,12 @@ body {
 	
 							</c:when>
 							<c:when test="${p != cri.page }">
-								<a href="/test/productDetail.do?page_no=${p}&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">|&nbsp;${p}&nbsp;|</a>
+								<a href="javascript:void(0)" onclick="numberPage(this)">|&nbsp;${p}&nbsp;|</a>
 							</c:when>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${pageMaker.endPage != pageMaker.tempEndPage}">
-						<a href="/test/productDetail.do?page_no=${pageMaker.endPage+1 }&user_no=${review.get(0).user_no}&product_no=${review.get(0).product_no}">&gt;</a>
+						<a href="javascript:void(0)" onclick="afterPage()">&gt;</a>
 					</c:if>
 				</c:if>
 			</div>
@@ -423,10 +349,9 @@ body {
 
 
 <!-- 상품정보 -->
-<div class="lypopGoodsDetail lyTabCont on" style="margin-left: 350px;">
+<div id="#productInfo03" class="lypopGoodsDetail lyTabCont on" style="width:1000px; margin: 0 auto;">
 	<img
-		src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/shoes/bottom01.png"
-		style="width: 984px; height: 500px; margin-left: 50px;">
+		src="https://blueup.s3.ap-northeast-2.amazonaws.com/product/shoes/bottom01.png" style="width:1000px;">
 </div>
 
 <!-- 교환반품 -->
@@ -691,11 +616,23 @@ var discount = ${productDetail.get(0).discount};
 var main_image = "${productDetail.get(0).main_image}";
 var product_name = "${productDetail.get(0).product_name}";
 $(document).ready(function(){
+	/* 별점별 리뷰 조회*/
 	var user_no = localStorage.getItem("user_no");
 	$('#starSearch').on('change', function(){
 		var star = $('#starSearch option:selected').val();
-		alert(star);
-		location.href="/test/productDetail.do?user_no="+user_no+"&product_no="+product_no+"&star="+star;
+		$.ajax({
+			url:'/test/selectReivew.do',
+		    type:'POST',
+		   	cache:false,
+			data: {"user_no":user_no, "product_no":product_no, "star" : star}
+		}).done(function(data){
+			console.log("data받음");
+			$('#remove').remove();
+			$('#paging').remove();
+			$('#reviewTabel').html(data);
+		}).fail(function(){
+			console.log("에러");
+		});
 	});
 });
 
@@ -703,12 +640,10 @@ function chooseColor(element){
 	$(element).css('border', '1px solid black');
 	$(element).siblings().css('border', '1px solid lightgray');
 	product_color = $(element).find('span').text();
-	alert(product_color);
-	alert(product_no);
 	var spanList = $('.payment-option-size').find('span');
 		$(spanList).each(function(){
 			$(this).css("text-decoration", "none");
-			$(this).attr("disabled", false);
+			$(this).prop('disabled',false);
 		});
 		$.ajax({
 			url:'/test/getStockbyProductno.do',
@@ -716,7 +651,6 @@ function chooseColor(element){
 		   	cache:false,
 			data: {"product_no":product_no, "product_color" : product_color},
 			success:function(data) {
-				alert(data);
 				var sizeList = [];
 				var size = $('.payment-option-size').find('span').text();
 				var length = size.length;
@@ -728,9 +662,8 @@ function chooseColor(element){
 				$(spanList).each(function(){
 					for(var i=0; i < data.length; i++){
 							if($(this).text() == data[i].product_size && data[i].stock_quantity == 0){
-							alert($(this).text());
 							$(this).css("text-decoration", "line-through");
-							$(this).attr("disabled", true);
+							$(this).prop('disabled',true);
 						}
 					}
 				});
@@ -745,7 +678,6 @@ function chooseSize(element){
 	$(element).css('border', '1px solid black');
 	$(element).siblings().css('border', '1px solid lightgray');
 	product_size = $(element).children('span').text();
-	alert(product_size);
 }
 
 function minus(){
@@ -766,10 +698,73 @@ function plus(){
 	$('#qty').val(quantity);
 }
 
+/*리뷰 페이지 변경 */
+function beforePage(){
+	var page_no = ${pageMaker.startPage - 1};
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/selectReivew.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"user_no":user_no , "product_no":product_no, "page_no" : page_no},
+		contentType: false, 
+		processData: false
+	}).done(function(data){
+		console.log("data받음");
+		var html = jQuery('<table>').html(data);
+		$('table').remove();
+		$('#paging').remove();
+		$('#reviewTabel').html();
+	}).fail(function(){
+		console.log("에러");
+	});
+}
+
+function numberPage(element){
+	var star = $('#starSearch option:selected').val();
+	var p = $(element).text().split("|");
+	var page_no = parseInt(p[1]);
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/selectReivew.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"user_no":user_no, "product_no":product_no, "page_no":page_no, "star" : star}
+	}).done(function(data){
+		console.log("data받음");
+		$('#remove').remove();
+		$('#paging').remove();
+		$('#reviewTabel').html(data);
+	}).fail(function(){
+		console.log("에러");
+	});
+}
+
+function afterPage(){
+	var page_no = ${pageMaker.endPage+1};
+	var user_no = localStorage.getItem("user_no");
+	$.ajax({
+		url:'/test/selectReivew.do',
+	    type:'POST',
+	   	cache:false,
+		data: {"user_no":user_no , "product_no":product_no, "page_no" : page_no},
+		contentType: false, 
+		processData: false
+	}).done(function(data){
+		console.log("data받음");
+		var html = jQuery('<table>').html(data);
+		$('table').remove();
+		$('#paging').remove();
+		$('#reviewTabel').html();
+	}).fail(function(){
+		console.log("에러");
+	});
+}
+
+
 function heart(element){
 	var user_no = localStorage.getItem("user_no");
 	var img = $(element).attr("src");
-		alert(img);
 		/////////////////회원 위시리스트////////////////
 		if(user_no != null){
 			if(img == "https://blueup.s3.ap-northeast-2.amazonaws.com/icon/product/heart.png"){
@@ -856,14 +851,13 @@ function addOrder(){
 			if(logincheck == true){
 				location.href="/test/login.do";
 			}else{
-				alert("비회원으로 주문");
 				var total_price = product_price * quantity;
 				var discount_total = discount * quantity;
 					$.ajax({
 						url:'/test/addCartNonMemberOne.do',
 					    type:'POST',
 					   	cache:false,
-						data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
+						data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, "user_no" : 0,
 							"product_price" : product_price, "discount" : discount, "main_image" : main_image, "product_name" : product_name, "total_price" : total_price, "discount_total" : discount_total},
 						success:function(data) {
 							if(data == 1){
@@ -876,7 +870,7 @@ function addOrder(){
 					});
 			}
 		}else{
-			alert("회원으로 주문");
+			var user_no = localStorage.getItem("user_no");
 			var discount_total = discount * quantity;
 			var total_price = product_price * quantity;
 			var all_discount = discount * quantity;
@@ -886,9 +880,9 @@ function addOrder(){
 				url:'/test/addCartOne.do',
 			    type:'POST',
 			   	cache:false,
-				data: {"product_color" : product_color, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
+				data: {"product_color" : product_color,"product_name" : product_name, "product_size" : product_size, "quantity" : quantity, "product_no" : product_no, 
 					"product_price" : product_price, "discount" : discount, "main_image" : main_image, "discount_total" : discount_total, 
-					"total_price" : total_price, "all_discount":all_discount, "all_price" : all_price},
+					"total_price" : total_price, "all_discount":all_discount, "all_price" : all_price, "user_no" : user_no},
 				success:function(data) {
 					if(data == 1){
 					location.href="/test/getOrder.do";

@@ -6,7 +6,7 @@
 	<head>
   <link rel="stylesheet" href="https://static.mlb-korea.com/pc/static/css/customer.css">
    <script type="text/javascript" src="/javascript/message/helpdesk_ko.js?v=prod-version-858_20211102145956"></script>
- <input type="hidden"  id="confirmBtn" />
+ <input type="hidden" id="confirmBtn" />
   </head>
  <div id="pageTop"></div>
 <form id ="gForm" action ="/helpdesk/notice/list" method="get">

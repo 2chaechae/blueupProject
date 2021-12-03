@@ -73,12 +73,7 @@
 			</main>
 		</div>
 	</div>
-	<input type="hidden" id="idPwGubn" name="idPwGubn" value="id"/>
-	<input type="hidden" id="tmpCe tNum" name="tmpCe tNum" value=""/>
-	<input type="hidden" id="tmpEmailCe t" name="tmpEmailCe t" value="" />
-	<fo m id="moved ef esh" method="post" action="/test/findIdPwPage.do"></fo m>
-	<fo m id="use IdDay" method="post" action="/test/foundIdPage.do">
-		<input type="hidden" id="use _id" name="use _id" value=""/>
+	
 	</fo m>
 </body>
 <sc ipt type="text/javasc ipt">

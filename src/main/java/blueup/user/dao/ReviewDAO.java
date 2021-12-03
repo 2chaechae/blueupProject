@@ -21,26 +21,46 @@ public class ReviewDAO {
 	}
 
 	/* ¸®ºä ÀÛ¼º */
-	public void insertReview(ReviewVo vo) {
-		sqlSessionTemplate.insert("reviewDao.insertReview", vo);
+	public int insertReview(ReviewVo vo) {
+		return sqlSessionTemplate.insert("reviewDao.insertReview", vo);
 	}
 
-	/* ¸®ºä ¼öÁ¤ */
-	public int updateReview(ReviewVo vo) {
-		return sqlSessionTemplate.update("reviewDao.updateReview", vo);
-	}
+	
 	/* ¸®ºä Á¶È¸ */
 	public List<ReviewVo>  getReviewList(ReviewVo vo) {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewList" , vo);
 	}
 	
-	/* »óÇ° Á¶È¸ */
+	/* ¸®ºä ¾²±â Æû */
 	public ReviewVo getProductInfoForReview(ReviewVo vo) {
 		return sqlSessionTemplate.selectOne("reviewDao.getProductInfoForReview", vo);
 	}
-
+    
+	/* ¸®ºä¿¡ Æ÷Åä³Ö±â */
+	public int insertPhoto(ReviewVo vo) { 
+		return sqlSessionTemplate.insert("reviewDao.insertPhoto", vo);
+	}
+	
+	
+	
 	public List<ReviewVo> getReviewproductList(ReviewVo vo) {
 		return sqlSessionTemplate.selectList("reviewDao.getReviewproductList" , vo);
+	}
+	/* ¸®ºä ¾²±â Æû */
+	public ReviewVo getReviewListForReview(ReviewVo vo) {
+		return sqlSessionTemplate.selectOne("reviewDao.getReviewListForReview", vo);
+	}
+	/* ¸®ºä ¼öÁ¤ Æû */
+	public ReviewVo modifyReview(ReviewVo vo) {
+		return sqlSessionTemplate.selectOne("reviewDao.modifyReview", vo);
+	}
+	/* ¸®ºä ¼öÁ¤ Àû¿ë */
+	public int modifyupdateReview(ReviewVo vo) {
+		return sqlSessionTemplate.update("reviewDao.modifyupdateReview", vo);
+	}
+	//¸®ºä ¹øÈ£ Á¶È¸ (max)
+	public int getReviewNo() {
+		return sqlSessionTemplate.selectOne("reviewDao.getReviewNo");
 	}
 	
 }

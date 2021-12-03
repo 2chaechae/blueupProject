@@ -1,6 +1,9 @@
 package blueup.admin.vo;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,4 +32,7 @@ public class ProductVo {
 	String searchKeyword; //검색을 위해 넣었다.
 	int wish_no; // 상품 조회시 wish list check를 위해 넣음
 	int viewCount; // 조회수 
+	List<MultipartFile> contentList;
+	List<ProductContentVo> number;
+	
 }

@@ -54,14 +54,6 @@
 <%@ include file="footer.jsp" %>
 </body>
 <script type="text/javascript">
-$(function(){
-	var userId = "${user_id}";
-	$('#user_id').text(userId);
-	
-	
-	
-	
-});
-	
+
 </script>
 </html>
