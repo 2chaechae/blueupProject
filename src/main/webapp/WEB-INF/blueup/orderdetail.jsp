@@ -127,13 +127,13 @@
 											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderdetail.product_price }" />원</td>
 											<td>${orderdetail.order_status }</td>
 											<c:choose>
-												<c:when test="${orderdetail.order_status == '결제완료' or '배송지연'}">
+												<c:when test="${orderdetail.order_status == '결제완료' or orderdetail.order_status == '배송지연'}">
 												<!-- 결제완료 / 배송지연(예상일자) => 주문취소 버튼 -->
 													<td class="selBox">
 				                                  		<span><a href="#none;" class="btn gray sm d_layer_open" id="cancelBtn${status.index }" onclick="cancelOrder(${orderdetail.user_no }, ${orderdetail.order_no },${orderdetail.product_no });">주문취소</a></span>
 													</td>
 												</c:when>
-												<c:when test="${orderdetail.order_status == '배송완료' or '교환완료'}">
+												<c:when test="${orderdetail.order_status == '배송완료' or orderdetail.order_status == '교환완료'}">
 												<!-- 배송완료 / 교환완료 => 구매확정/반품요청/교환요청 버튼 -->
 													<td class="selBox">
 					                                  	<span><a href="#none;" class="btn gray sm d_layer_open" id="confirmedBtn${status.index }" onclick="confirmedOrder(${orderdetail.user_no }, ${orderdetail.order_no }, ${orderdetail.product_no });">구매확정</a></span>
