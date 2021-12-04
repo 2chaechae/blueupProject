@@ -9,7 +9,7 @@
                    <h2 class="title01">회원가입</h2>
                    <p class="location">                    
                     <span>
-                    	<a href="/main/mall/view">Home</a>
+                    	<a href="/main/mall/vie ">Home</a>
                     </span>
 					<strong>회원가입</strong>
 				</p>
@@ -17,7 +17,7 @@
            </div>
            <main class="contents" id="contents">
 			<form id="userInfoForm" method="post" action="/test/insertJoin.do">
-			<div class="join-wrap">
+			<div class="join- rap">
 				<div class="top-info">
 					<div class="hdt">회원가입</div>
 				</div>
@@ -28,32 +28,32 @@
 						<span class="tit">가입정보</span>
 						<span class="tt"><em class="required">*</em> 필수입력 항목</span>
 					</div>
-					<div class="board-write forms">							
+					<div class="board- rite forms">							
 						<table summary="개인정보입력">
 							<caption>개인정보입력</caption>
 							<colgroup>
-								<col width="200">
+								<col  idth="200">
 								<col>
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row">
+									<th scope="ro ">
 										<label>기본정보</label>
 										<span class="required">*</span>
 									</th>
 									<td>
 										<ul class="dt-list">
 											<li>
-												<input type="text" class="input-style01 id" style="width:260px;" placeholder="아이디 (6~15자 영문 소문자.숫자)" id="user_id" name="user_id"  maxlength="15">
+												<input type="text" class="input-style01 id" style=" idth:260px;" placeholder="아이디 (6~15자 영문 소문자.숫자)" id="user_id" name="user_id"  maxlength="15">
 												<a href="#" class="btn fill sm btnPslCertifi" id="id_chk" >중복검사</a>
 												<span class="error-msg"></span>													
 											</li>
 											<li>													
-												<input type="password" class="input-style01 pw" style="width:100%;" placeholder="비밀번호 ( 8~12자 영문, 숫자, 특수문자 중 최소 2가지 조합)" id="user_password" name="user_password" maxlength="12">
+												<input type="pass ord" class="input-style01 p " style=" idth:100%;" placeholder="비밀번호 ( 8~12자 영문, 숫자, 특수문자 중 최소 2가지 조합)" id="user_pass ord" name="user_pass ord" maxlength="12">
 												<span class="error-msg"></span>
 											</li>
 											<li>												
-												<input type="password" class="input-style01 pw com" style="width:100%;" placeholder="비밀번호 확인" id="user_chk_pw" name="user_chk_pw" maxlength="12">
+												<input type="pass ord" class="input-style01 p  com" style=" idth:100%;" placeholder="비밀번호 확인" id="user_chk_p " name="user_chk_p " maxlength="12">
 												<span class="error-msg"></span>
 											</li>
 											<li id="mbrNmAfter">													
@@ -62,9 +62,9 @@
 											</li>
 											<li id="birthAfter">													
 												<span class="email">
-													<input type="text" class="input-style01 email1" style="width:130px;" placeholder="주민번호 앞자리" id="user_jumin1" name="user_jumin1"  maxlength="6">
+													<input type="text" class="input-style01 email1" style=" idth:130px;" placeholder="주민번호 앞자리" id="user_jumin1" name="user_jumin1"  maxlength="6">
 													<em class="att">-</em>
-													<input type="text" class="input-style01 email2" style="width:130px;" placeholder="주민번호 뒷자리" id="user_jumin2" name="user_jumin2"  maxlength="7">
+													<input type="text" class="input-style01 email2" style=" idth:130px;" placeholder="주민번호 뒷자리" id="user_jumin2" name="user_jumin2"  maxlength="7">
 												</span>
 												<span class="rdo-skin">
 													<input type="radio" name="user_gender" id="male" value="남자" checked><span>선택</span>
@@ -78,11 +78,11 @@
 											</li>
 											<li>													
 												<span class="email">
-													<input type="text" class="input-style01 email1" style="width:130px;" placeholder="E-mail" id="email_id" name="email_id">
+													<input type="text" class="input-style01 email1" style=" idth:130px;" placeholder="E-mail" id="email_id" name="email_id">
 													<em class="att">@</em>
-													<input type="text" class="input-style01 email2" style="width:130px;" placeholder="" id="email_address" name="email_address" readonly>
+													<input type="text" class="input-style01 email2" style=" idth:130px;" placeholder="" id="email_address" name="email_address" readonly>
 													<div class="select-style01 d_select email3">
-														<button type="button" class="d_select_sel" id="user_email_select" name="user_email_select" style="width:151px;"><span>이메일선택</span></button>
+														<button type="button" class="d_select_sel" id="user_email_select" name="user_email_select" style=" idth:151px;"><span>이메일선택</span></button>
 														<ul>			
 															<li><a href="#none;" id="enormal1">직접입력</a></li>													
 															<li><a href="#none;" id="enormal2">naver.com</a></li>
@@ -98,25 +98,25 @@
 											<li id="phoneAfter">													
 												<span class="phone">
 													<div class="select-style01 d_select phone0">
-														<button type="button" class="d_select_sel" style="width:151px;" id="mobileBtn"><span>통신사 선택</span></button>
+														<button type="button" class="d_select_sel" style=" idth:151px;" id="mobileBtn"><span>통신사 선택</span></button>
 														<ul>
 															<li><a href="#none;" id="mobileSkt">SKT</a></li>
 															<li><a href="#none;" id="mobileKt">KT</a></li>
 															<li><a href="#none;" id="mobileLg">LG</a></li>
 														</ul>
 													</div>													
-													<input type="text" class="input-style01 phone1" style="width:80px;" name="phone1" id="phone1" maxlength="3" >
+													<input type="text" class="input-style01 phone1" style=" idth:80px;" name="phone1" id="phone1" maxlength="3" >
 													<em class="dash">-</em>
-													<input type="text" class="input-style01 phone2" style="width:80px;" name="phone2" id="phone2" maxlength="4" >
+													<input type="text" class="input-style01 phone2" style=" idth:80px;" name="phone2" id="phone2" maxlength="4" >
 													<em class="dash">-</em>
-													<input type="text" class="input-style01 phone3" style="width:80px;" name="phone3" id="phone3" maxlength="4">
+													<input type="text" class="input-style01 phone3" style=" idth:80px;" name="phone3" id="phone3" maxlength="4">
 												</span>
 											</li>
 										</ul>
 									</td>
 								</tr>
 								<tr id="certProcess">
-									<th scope="row">
+									<th scope="ro ">
 										<label>본인인증</label><span class="required">*</span>
 									</th>
 									<td>
@@ -131,7 +131,7 @@
 												<button type="button" class="btn-open d_toggle_select"><span>Open</span></button>
 												<div>
 												<br/>
-													<input type="text" class="input-style01 id" style="width:260px;" placeholder="인증 번호" id="certChkNum" name="certChkNum" value="">
+													<input type="text" class="input-style01 id" style=" idth:260px;" placeholder="인증 번호" id="certChkNum" name="certChkNum" value="">
 													<a href="#" class="btn fill sm btnPslCertifi" id="certChkNumBtn" name="certChkNumBtn" >확인</a>
 												</div>
 											</div>												
@@ -143,7 +143,7 @@
 															<input type="checkbox" id="chk_policy_1" name="chk_policy_1" onclick="setAgree2();"><span>선택</span>
 														</span>
 														<label for="chk_policy_1">개인정보이용동의</label>
-														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin1'); return false;">전문보기</a>
+														<a href="#" class="btn gray sm btnAllVie " onclick="layerPopup.popupOpenNo ('#popJoin1'); return false;">전문보기</a>
 													</li>
 													<li>
 														<span class="required">*</span>
@@ -151,7 +151,7 @@
 															<input type="checkbox" id="chk_policy_2" onclick="setAgree2();"><span>선택</span>
 														</span>
 														<label for="chk_policy_2">고유식별정보처리 동의</label>
-														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin2'); return false;">전문보기</a>
+														<a href="#" class="btn gray sm btnAllVie " onclick="layerPopup.popupOpenNo ('#popJoin2'); return false;">전문보기</a>
 													</li>
 													<li>
 														<span class="required">*</span>
@@ -159,7 +159,7 @@
 															<input type="checkbox" id="chk_policy_3" onclick="setAgree2();"><span>선택</span>
 														</span>
 														<label for="chk_policy_3">서비스이용약관동의</label>
-														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin3'); return false;">전문보기</a>
+														<a href="#" class="btn gray sm btnAllVie " onclick="layerPopup.popupOpenNo ('#popJoin3'); return false;">전문보기</a>
 													</li>
 													<li>
 														<span class="required">*</span>
@@ -167,14 +167,14 @@
 															<input type="checkbox" id="chk_policy_4" onclick="setAgree2();"><span>선택</span>
 														</span>
 														<label for="chk_policy_4">통신사이용약관 동의</label>
-														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin4'); return false;">전문보기</a>
+														<a href="#" class="btn gray sm btnAllVie " onclick="layerPopup.popupOpenNo ('#popJoin4'); return false;">전문보기</a>
 													</li>
-													<li style="display:none" id="mCoview">
+													<li style="display:none" id="mCovie ">
 														<span class="check-skin">
 															<input type="checkbox" id="chk_policy_5"><span>선택</span>
 														</span>
 														<label for="chk_policy_5">개인정보  제3자 제공동의</label>
-														<a href="#" class="btn gray sm btnAllView" onclick="layerPopup.popupOpenNow('#popJoin5'); return false;">전문보기</a>
+														<a href="#" class="btn gray sm btnAllVie " onclick="layerPopup.popupOpenNo ('#popJoin5'); return false;">전문보기</a>
 													</li>
 												</ul>
 											</div>
@@ -200,7 +200,7 @@
 									</td>
 								</tr>
 								<tr id="certProcessEnd" style="display:none">
-									<th scope="row"><label>본인인증</label><span class="required">*</span></th>
+									<th scope="ro "><label>본인인증</label><span class="required">*</span></th>
 									<td>
 										<div class="togbox">
 											<span class="btn fill sm btnPslCertifi">본인인증 완료</span>
@@ -339,7 +339,7 @@
 								
 								<h2>5. 위 개인정보 수집·이용 및 취급위탁에 동의하지 않으실 경우, 서비스를 이용하실 수 없습니다. </h2>
 								
-								<p>※ 회사가 제공하는 서비스와 관련된 개인정보의 취급과 관련된 사항은, 회사의 개인정보취급방침(회사 홈페이지 www.sktelecom.com )에 따릅니다.</p>
+								<p>※ 회사가 제공하는 서비스와 관련된 개인정보의 취급과 관련된 사항은, 회사의 개인정보취급방침(회사 홈페이지    .sktelecom.com )에 따릅니다.</p>
 								<p>&nbsp;</p>
 								<p>NICE평가정보(주) 귀중</p>
 								<p>NICE평가정보(주)(이하 ‘회사’)는 SK텔레콤(주)의 업무를 대행하여 휴대폰본인확인서비스를 제공함에 있어 고객으로부터 개인정보를 수집하고 이용하기 위해 ‘정보통신망 이용촉진 및 정보보호에 관한 법률’에 따라서 다음과 같이 본인의 동의를 받습니다. </p>
@@ -366,7 +366,7 @@
 									<li>
 										가. 이용 목적 
 										<ol>
-											<li><u>- 고객의 회원가입, ID/PW찾기, 거래동의 등을 위한 휴대폰 본인확인 결과</u></li>
+											<li><u>- 고객의 회원가입, ID/P 찾기, 거래동의 등을 위한 휴대폰 본인확인 결과</u></li>
 											<li><u>- 휴대폰 소지 확인을 위한 SMS 인증번호 전송 </u></li>
 											<li><u>- 부정 이용 방지 및 수사의뢰 </u></li>
 											<li><u>- 휴대폰번호보호서비스 해제(서비스 가입자에 한함)</u></li>
@@ -442,7 +442,7 @@
 								
 								<p>‘회사’가 제공하는 서비스의 개인정보 취급과 관련된 사항은 아래의 ‘회사’ 홈페이지에 기재된 개인정보취급방침에 따릅니다.</p>
 								<ol>
-									<li>-(주)케이티 : www.kt.com</li>
+									<li>-(주)케이티 :    .kt.com</li>
 								</ol>
 								<p>&nbsp;</p>
 								<p>본인은 상기 내용을 숙지하였으며 이에 동의합니다.</p>
@@ -472,7 +472,7 @@
 									<li>
 										가. 이용 목적 
 										<ol>
-											<li><u>- 고객의 회원가입, ID/PW찾기, 거래동의 등을 위한 휴대폰 본인확인 결과</u></li>
+											<li><u>- 고객의 회원가입, ID/P 찾기, 거래동의 등을 위한 휴대폰 본인확인 결과</u></li>
 											<li><u>- 휴대폰 소지 확인을 위한 SMS 인증번호 전송 </u></li>
 											<li><u>- 부정 이용 방지 및 수사의뢰 </u></li>
 											<li><u>- 휴대폰번호보호서비스 해제(서비스 가입자에 한함)</u></li>
@@ -547,7 +547,7 @@
 								<h2>5. 상기 개인정보 수집 및 이용과 취급위탁에 동의하지 않는 경우, 서비스를 이용할 수 없습니다.</h2>
 								
 								<p>‘회사’가 제공하는 서비스의 개인정보 취급과 관련된 사항은 아래의 ‘회사’ 홈페이지에 기재된 개인정보취급방침에 따릅니다.</p>
-								<p>-LG유플러스(주)  : www.lguplus.co.kr</p>
+								<p>-LG유플러스(주)  :    .lguplus.co.kr</p>
 								<p>&nbsp;</p>
 								<p>본인은 상기 내용을 숙지하였으며 이에 동의합니다.</p>
 								<p>&nbsp;</p>
@@ -578,7 +578,7 @@
 									<li>
 										가. 이용 목적 
 										<ol>
-											<li><u>- 고객의 회원가입, ID/PW찾기, 거래동의 등을 위한 휴대폰 본인확인 결과</u></li>
+											<li><u>- 고객의 회원가입, ID/P 찾기, 거래동의 등을 위한 휴대폰 본인확인 결과</u></li>
 											<li><u>- 휴대폰 소지 확인을 위한 SMS 인증번호 전송 </u></li>
 											<li><u>- 부정 이용 방지 및 수사의뢰 </u></li>
 											<li><u>- 휴대폰번호보호서비스 해제(서비스 가입자에 한함)</u></li>
@@ -841,7 +841,7 @@
 								<h2>제7조 (서비스의 내용) </h2>
 								<ol>
 									<li>1. "서비스"는 "이용자"가 주민등록번호의 입력 없이, 본인명의로 된 인증수단(휴대폰 등)을 이용하여 본인 확인이 가능한 인증 서비스 입니다. </li>
-									<li>2. "인터넷사업자"는 회원가입, ID/PW찾기, 성인인증, 기타 본인확인이 필요한 컨텐츠 요청 시 "이용자"에게 "서비스"를 제공 합니다. </li>
+									<li>2. "인터넷사업자"는 회원가입, ID/P 찾기, 성인인증, 기타 본인확인이 필요한 컨텐츠 요청 시 "이용자"에게 "서비스"를 제공 합니다. </li>
 									<li>3. "이용자"는 자신의 생년월일, 성명, 성별, 내/외국인, 휴대폰번호, 통신사 등의 정보를 입력 후, 입력한 정보가 일치한 경우 해당 휴대폰번호로 1회성 비밀번호(승인번호)가 발송되며, 수신된 승인번호를 정확하게 입력하는 것으로 본인 확인이 이루어 집니다. </li>
 								</ol>
 								
@@ -977,7 +977,7 @@
 								<h2>제7조 (서비스의 내용) </h2>
 								<ol>
 									<li>1. "서비스"는 "이용자"가 주민등록번호의 입력 없이, 본인명의로 된 인증수단(휴대폰 등)을 이용하여 본인 확인이 가능한 인증 서비스 입니다. </li>
-									<li>2. "인터넷사업자"는 회원가입, ID/PW찾기, 성인인증, 기타 본인확인이 필요한 컨텐츠 요청 시 "이용자"에게 "서비스"를 제공 합니다. </li>
+									<li>2. "인터넷사업자"는 회원가입, ID/P 찾기, 성인인증, 기타 본인확인이 필요한 컨텐츠 요청 시 "이용자"에게 "서비스"를 제공 합니다. </li>
 									<li>3. "이용자"는 자신의 생년월일, 성명, 성별, 내/외국인, 휴대폰번호, 통신사 등의 정보를 입력 후, 입력한 정보가 일치한 경우 해당 휴대폰번호로 1회성 비밀번호(승인번호)가 발송되며, 수신된 승인번호를 정확하게 입력하는 것으로 본인 확인이 이루어 집니다. </li>
 								<ol>
 								
@@ -1114,7 +1114,7 @@
 								<h2>제7조 (서비스의 내용) </h2>
 								<ol>
 									<li>1. "서비스"는 "이용자"가 주민등록번호의 입력 없이, 본인명의로 된 인증수단(휴대폰 등)을 이용하여 본인 확인이 가능한 인증 서비스 입니다. </li>
-									<li>2. "인터넷사업자"는 회원가입, ID/PW찾기, 성인인증, 기타 본인확인이 필요한 컨텐츠 요청 시 "이용자"에게 "서비스"를 제공 합니다. </li>
+									<li>2. "인터넷사업자"는 회원가입, ID/P 찾기, 성인인증, 기타 본인확인이 필요한 컨텐츠 요청 시 "이용자"에게 "서비스"를 제공 합니다. </li>
 									<li>3. "이용자"는 자신의 생년월일, 성명, 성별, 내/외국인, 휴대폰번호, 통신사 등의 정보를 입력 후, 입력한 정보가 일치한 경우 해당 휴대폰번호로 1회성 비밀번호(승인번호)가 발송되며, 수신된 승인번호를 정확하게 입력하는 것으로 본인 확인이 이루어 집니다. </li>
 								</ol>
 								
@@ -1231,7 +1231,7 @@
 									<li>⑥ ‘연계 식별정보’라 함은 ‘이용자’가 가입/등록한 ‘사이트’들간의 서비스 또는 Contents, point등의 연계, 정산 등의 목적으로 ‘사이트’에 가입/등록한 ‘이용자’를 식별하기 위하여 생성되는 정보를 말합니다.</li>
 									<li>⑦ ‘대행기관’은 ‘이용자’가 ‘사이트’에서 ‘본인확인서비스’를 제공받을 수 있도록, ‘사이트’와 ‘회사’간의 ‘본인확인서비스’를 중계하고 ‘이용자’에게 ‘본인확인서비스’ 이용방법의 안내와 문의 등 지원업무를 담당하는 등, ‘회사’가 위탁한 업무범위내에서 ‘회사’를 대신하여 ‘이용자’에게 ‘본인확인서비스’와 관련된 업무를 제공하는 사업자를 말합니다.</li>
 									<li>⑧ ‘사이트’라 함은 유무선 인터넷 웹’사이트’, 스마트폰 Application 등을 통하여 ‘이용자’에게 상품, 서비스, Contents, Point 등 각종 재화와 용역을 유/무료로 제공하는 개인, 법인, 기관, 단체 등을 말합니다.</li>
-									<li>⑨ ‘접근매체’란 ‘본인확인서비스’ 이용을 위해 ‘이용자’ 및 ‘이용자’가 입력하는 내용 등의진실성과 정확성을 담보하는 수단으로서, ‘이용자’가 입력하는 제2항의 정보, I-PIN ID 및 Password 등 ‘본인확인기관’에서 발급받은 정보, 기타 ‘이용자’가 ‘회사’ 및 ‘사이트’에서 설정한 ID 및 Password 등의 정보, ‘이용자’ 명의의 이동전화 번호 등을 말합니다.</li>
+									<li>⑨ ‘접근매체’란 ‘본인확인서비스’ 이용을 위해 ‘이용자’ 및 ‘이용자’가 입력하는 내용 등의진실성과 정확성을 담보하는 수단으로서, ‘이용자’가 입력하는 제2항의 정보, I-PIN ID 및 Pass ord 등 ‘본인확인기관’에서 발급받은 정보, 기타 ‘이용자’가 ‘회사’ 및 ‘사이트’에서 설정한 ID 및 Pass ord 등의 정보, ‘이용자’ 명의의 이동전화 번호 등을 말합니다.</li>
 									<li>⑩ ‘대체수단’이라 함은 ‘중복가입확인정보’ 및 연계식별정보를 포함하여, 주민등록정보를 사용하지 아니하고 본인여부를 식별 및 확인할 수 있는 수단을 말합니다.</li>
 									<li>⑪ ‘부가서비스’라 함은 ‘회사’가 ‘본인확인서비스’와 관련하여 추가적인 보안·인증절차 등을 유료 또는 무료로 제공하는 서비스를 말하여, 유료인 경우에는 ‘이용자’에 대해 ‘회사’의 이동전화서비스 청구서에 합산하여 ‘부가서비스’ 이용요금을 청구하고 이동전화 요금과 함께 수납합니다.</li>
 								</ol>
@@ -1340,7 +1340,7 @@
 								
 								<h2>제14조 (‘이용자’의 개인정보보호) </h2>
 								<ol>
-									<li>① ‘이용자’의 개인정보 보호는 ‘회사’가 관련 법령과 ‘회사’가 수립하여 운영하는 개인정보 취급방침 등에 따릅니다. 자세한 ‘회사’의 개인정보 수집·이용 범위 등은 이동전화 가입신청서와 ‘회사’ 대표 ‘사이트’(www.sktelecom.com)에서 제공되는 개인정보 취급방침을 참조하시기 바랍니다.</li>
+									<li>① ‘이용자’의 개인정보 보호는 ‘회사’가 관련 법령과 ‘회사’가 수립하여 운영하는 개인정보 취급방침 등에 따릅니다. 자세한 ‘회사’의 개인정보 수집·이용 범위 등은 이동전화 가입신청서와 ‘회사’ 대표 ‘사이트’(   .sktelecom.com)에서 제공되는 개인정보 취급방침을 참조하시기 바랍니다.</li>
 									<li>② ‘이용자’중 ‘회사’의 이동전화망을 이용하여 개별적으로 이동전화서비스를 제공하는 별정통신사업자의 가입자에 대해서는, 해당 가입자가 속한 개별 별정통신사업자가 개인정보보호 및 수집·이용·제공 등에 대한 법적 절차 준수와 관련된 일체의 책임을 부담하며, 해당 가입자에 대한 개인정보 수집·이용 범위 등은 개별 별정통신사업자의 개인정보 취급방침을 참조하시기 바랍니다.</li>
 									<li>③ 제1항과 제2항의 개인정보 취급방침에서 정한 바 이외에, ‘회사’는 ‘본인확인서비스’를 위하여  다음 각 호의 경우에 ‘이용자’ 개인정보의 일부를 ‘회사’가 선정한 사업자에게 제공할 수 있습니다.
 										<ol>
@@ -1416,7 +1416,7 @@
 								<h2>제5조 (본인확인서비스 안내)</h2>
 								<ol>
 									<li>① 본인확인서비스는 이용자가 주민등록번호의 입력 없이, 본인명의로 된 개통된 휴대폰정보(이용자 개인 명의로 개통된 휴대폰 정보 또는 법인 명의로 개통된 휴대폰으로서 이용자가 본인확인서비스에 가입한 정보)를 이용하여 본인 식별 또는 본인 확인이 가능한 생년월일 기반의 주민등록번호 대체 휴대폰인증 서비스 입니다.</li>
-									<li>② 회사는 대행기관을 통해 인터넷사업자에게 본인확인서비스를 제공하며, 인터넷사업자는 회원가입, ID/PW 찾기, 성인인증, 기타 본인확인이 필요한 경우 이용자에게 본인확인서비스를 제공 합니다.</li>
+									<li>② 회사는 대행기관을 통해 인터넷사업자에게 본인확인서비스를 제공하며, 인터넷사업자는 회원가입, ID/P  찾기, 성인인증, 기타 본인확인이 필요한 경우 이용자에게 본인확인서비스를 제공 합니다.</li>
 									<li>③ 이용자는 자신의 생년월일, 성명, 성별, 내/외국인, 휴대폰번호, 통신사 등의 정보를 입력하며(법인 명의로 개통된 휴대폰으로서 이용자가 본인확인서비스에 가입한 경우에는 본인확인서비스 가입 시 등록한 비밀번호를 추가로 입력하며), 입력한 정보가 일치한 경우에는 해당 휴대폰번호로 수신된 1회성 비밀번호(승인번호)를 정확하게 입력하는 것으로 본인 식별 또는 본인 확인이 이루어집니다. 단, 이용자가 간편본인확인서비스를 선택한 경우에는 자신의 통신사, 휴대폰번호, 이름만 입력하며, 입력한 정보가 일치한 경우에 해당 휴대폰에 설치 및 가입된 KT 인증 앱을 통해 이용자가 사전에 등록해둔 인증수단(비밀번호, 지문, 화자 정보 등)을 정확하게 입력하는 것으로 본인 식별 또는 본인 확인이 이루어집니다. 이 때, KT 인증 앱에 미 가입된 상태로 간편본인확인서비스 이용을 시도하는 경우 회사는 영속적인 서비스 제공을 위해 해당 이용자에게 KT 인증 앱 설치를 안내합니다(24시간 내 1회).</li>
 									<li>④ 본인확인서비스는 본인 명의로 개통된 휴대폰 정보(이용자 개인 명의로 개통된 휴대폰 정보 또는 법인 명의로 개통된 휴대폰으로서 이용자가 본인확인서비스에 가입한 정보)로 본인확인이 이루어집니다. 단, 휴대폰 일시정지 또는 이용정지 시 해당 정지기간 동안에는 본인확인서비스도 정지됩니다. </li>
 									<li>⑤ 본인 확인이 완료 된 이용자에 대해서는 본인확인정보와 중복가입확인정보 및 연계정보가 인터넷사업 자에게 제공되며, 인터넷사업자는 중복가입확인정보 또는 연계정보 등을 이용하여 이용자 관리 및 컨텐츠를 제공ㆍ운영 합니다.</li>
@@ -1539,7 +1539,7 @@
 								
 								<h2>제 3조 (약관의 효력 및 변경)</h2>
 								<ol>
-									<li>1. 본 약관은 이용자에게 서비스 화면에 게시하거나, 회사 홈페이지(www.uplus.co.kr)에 게시하여 공지함으로써 효력이 발생합니다. </li>
+									<li>1. 본 약관은 이용자에게 서비스 화면에 게시하거나, 회사 홈페이지(   .uplus.co.kr)에 게시하여 공지함으로써 효력이 발생합니다. </li>
 									<li>2. 회사는 약관의 규제에 관한 법률 및 기타 관련 법령에 위배되지 않는 범위에서 본 약관의 내용을 개정할 수 있으며, 변경된 경우에는 제1항과 같은 방법으로 공지합니다. 다만 “이용자”의 권리와 의무에 관한 중요한 사항은 변경된 내용의 시행 15일 이전에 공지합니다. </li>
 									<li>3. 이용자는 변경된 약관에 대한 내용을 알지 못하여 발생하는 손해 및 피해에 대해서는 회사가 책임을 지지 않습니다.</li>
 								</ol>
@@ -1553,7 +1553,7 @@
 								<h2>제 5조 (서비스 이용방법)</h2>
 								<ol>
 									<li>1. 서비스는 이용자가 주민등록번호를 입력하지 아니하고 본인의 생년월일과 본인 명의로 된 휴대폰정보를 이용하여 본인 식별 또는 본인 확인이 가능하도록 하는 휴대폰인증 서비스 입니다.</li>
-									<li>2. 회사는 인증대행사를 통해 인터넷사업자에게 서비스를 제공하며, 인터넷사업자는 회원가입, ID/PW찾기, 성인인증 등 이용자의 본인확인이 필요한 경우 이용자에게 서비스를 제공 합니다.</li>
+									<li>2. 회사는 인증대행사를 통해 인터넷사업자에게 서비스를 제공하며, 인터넷사업자는 회원가입, ID/P 찾기, 성인인증 등 이용자의 본인확인이 필요한 경우 이용자에게 서비스를 제공 합니다.</li>
 									<li>3. 제2항의 경우 이용자가 자신의 생년월일, 성명, 성별, 내/외국인, 휴대폰번호, 통신사 등의 정보를 입력한 후 입력한 정보가 이용자 본인의 정보와 일치한 경우에는 이용자 본인 명의의 휴대폰번호로 수신된 1회성 비밀번호(이하 “승인번호”)를 정확하게 입력하면 본인 식별 또는 본인 확인이 이루어 집니다.</li>
 									<li>4. 제3항과 같이 본인확인이 완료 된 이용자에 대해서는 본인확인정보와 중복가입확인정보 및 연계정보가 인터넷사업자에게 제공되며, 인터넷사업자가 중복가입확인정보 또는 연계정보 등을 이용하여 이용자 관리 및 컨텐츠를 제공 운영 합니다.</li>
 								</ol>
@@ -1680,7 +1680,7 @@
 								<p>"알뜰폰(MVNO)"사업자는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
 								
 								<h2>제1조 (알뜰폰(MVNO) 사업자)</h2>
-								<p>(주)케이티의 알뜰폰(MVNO) 사업자는 (주)CJ헬로비전(헬로모바일), KT파워텔(주)(더블비), 홈플러스(주)(플러스모바일), (주)씨엔커뮤니케이션(WMVNO), (주)에넥스텔레콤(WHOM), (주)에스원(안심폰), (주)위너스텔(Well), 에이씨앤코리아(Flash모바일), (주)세종텔레콤(스노우맨), (주)KT텔레캅(KT텔레캅), (주)프리텔레콤(freeT), (주)EG모바일(EG제로), (주)KT M모바일(M모바일), (주)앤알커뮤니케이션(앤텔레콤), (주)아이즈비전(아이즈모바일), (주)제이씨티(제이씨티), (주)머천드코리아(마이월드), 장성모바일(장성모바일), (주)유니컴즈(Mobing), 아이원(아이플러스유), (주)파인디지털, (주)미니게이트, (주)핀플레이, 드림라인(주) 입니다.</p>
+								<p>(주)케이티의 알뜰폰(MVNO) 사업자는 (주)CJ헬로비전(헬로모바일), KT파워텔(주)(더블비), 홈플러스(주)(플러스모바일), (주)씨엔커뮤니케이션( MVNO), (주)에넥스텔레콤( HOM), (주)에스원(안심폰), (주)위너스텔( ell), 에이씨앤코리아(Flash모바일), (주)세종텔레콤(스노우맨), (주)KT텔레캅(KT텔레캅), (주)프리텔레콤(freeT), (주)EG모바일(EG제로), (주)KT M모바일(M모바일), (주)앤알커뮤니케이션(앤텔레콤), (주)아이즈비전(아이즈모바일), (주)제이씨티(제이씨티), (주)머천드코리아(마이월드), 장성모바일(장성모바일), (주)유니컴즈(Mobing), 아이원(아이플러스유), (주)파인디지털, (주)미니게이트, (주)핀플레이, 드림라인(주) 입니다.</p>
 								
 								<h2>제2조 (제공목적)</h2>
 								<p><u>본 동의는 본인확인서비스를 제공하기 위하여 본인확인기관인 (주)케이티와 본인확인서비스 이용자간 본인확인서비스 이용에 필요한 고객정보를 위탁하여 본인확인서비스를 제공 하는 것에 대해 동의합니다.</u></p>
@@ -1999,58 +1999,7 @@ function emailAddress(value){
 	}
 }
 
-function mobileCarrier(value){
-	$('#mobile_carrier').val(value);
-}
 
-function validation(value){
-	/* validation START */
-	var val = value; // 1: 회원가입버튼 2: 본인인증버튼
-	
-	var user_id = $('#user_id').val(); //아이디
-	var user_password = $('#user_password').val(); //비밀번호
-	var user_chk_pw = $('#user_chk_pw').val(); //비밀번호 확인
-	var user_name = $('#user_name').val(); //이름
-	var user_jumin1 = $('#user_jumin1').val(); //주민 앞자리
-	var user_jumin2 = $('#user_jumin2').val(); //주민 뒷자리
-	var email_id = $('#email_id').val(); //이메일 앞자리
-	var email_address = $('#email_address').val(); //이메일 뒷자리
-	var phone1 = $('#phone1').val(); //전화번호 앞자리
-	var phone2 = $('#phone2').val(); //전화번호 중간자리
-	var phone3 = $('#phone3').val(); //전화번호 뒷자리
-	var certChkNum = $('#certChkNum').val(); //인증번호
-	var user_gender = $('input[name="genderRadio"]:checked').val(); //성별
-	var mobile_carrier = $('#mobile_carrier').val(); //통신사
-	
-	var chk_receive_1 = document.getElementById('chk_receive_1').checked; //전체동의
-	var onlineSiteUsefStplat = document.getElementById('onlineSiteUsefStplat').checked; //필수
-	var psnlInfoColctUsefAgr = document.getElementById('psnlInfoColctUsefAgr').checked; //필수
-	var emailRecptnAgrYn = document.getElementById('emailRecptnAgrYn').checked; //선택
-	var smsRecptnAgrYn = document.getElementById('smsRecptnAgrYn').checked; //선택
-	
-	if(val == '1'){
-		if(user_id == ""){
-			alert('아이디를 입력하세요');
-			$('#user_id').focus();
-			return false;
-		} else if(user_password == ""){
-			alert('비밀번호를 입력하세요');
-			$('#user_password').focus();
-			return false;
-		} else if(user_chk_pw == ""){
-			alert('비밀번호 확인란을 입력하세요');
-			$('#user_chk_pw').focus();
-			return false;
-		} else if(user_password != user_chk_pw){
-			alert('비밀번호가 서로 다릅니다 다시 입력하세요');
-			$('#user_chk_pw').val("");
-			$('#user_password').val("");
-			$('#user_password').focus();
-			return false;
-		} else if(user_name == ""){
-			alert('이름을 입력하세요');
-			$('#user_name').focus();
-			return false;
 		} else if(user_jumin1 == ""){
 			alert('주민번호 앞자리를 입력하세요');
 			$('#user_jumin1').focus();

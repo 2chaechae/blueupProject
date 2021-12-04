@@ -1,63 +1,63 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; cha set=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="heade .jsp" %>
 <!-- 컨텐츠 시작 -->
 	<div class="contain mb idpw" id="contain" style="padding-top: 50px; min-height: 412px;">		
-		<div class="container">
+		<div class="containe ">
 
-			<div class="location-container">
+			<div class="location-containe ">
                 <div class="location-contents">
-                    <h2 class="title01">아이디 찾기</h2>
+                    <h2 class="title01">아이디/비밀번호 찾기</h2>
                     <p class="location">                    
-	                    <span><a href="/main/mall/view">Home</a></span>
-								<strong>아이디 찾기</strong>
+	                    <span><a h ef="/main/mall/view">Home</a></span>
+								<st ong>아이디/비밀번호 찾기</st ong>
 								</p>
                  </div>
             </div><main class="contents" id="contents">
 				
-				<div class="member-certification-wrap">
-					<div class="member-certification-cnt d_tab02">
+				<div class="membe -ce tification-w ap">
+					<div class="membe -ce tification-cnt d_tab02">
 						<ul class="tab-type05">
-							<li class="d_tab02_select on"><a href="#none;" id="findIdTab">아이디 찾기</a></li>
-							<li class="d_tab02_select"><a href="#none;" id="findPwTab">비밀번호 찾기</a></li>
+							<li class="d_tab02_select on"><a h ef="#none;" id="findIdTab">아이디 찾기</a></li>
+							<li class="d_tab02_select"><a h ef="#none;" id="findPwTab">비밀번호 찾기</a></li>
 						</ul>
-						<div class="d_tab02_cont" style="display:block;" id="certGroup">
-							<ul class="certification-list">
-								<li><a href="#" class="" id="phoneCert" name="phoneCert">휴대폰 인증</a></li>
-								<li><a href="#" class="" id="emailCert" name="emailCert">이메일 인증</a></li>
+						<div class="d_tab02_cont" style="display:block;" id="ce tG oup">
+							<ul class="ce tification-list">
+								<li><a h ef="#" class="" id="phoneCe t" name="phoneCe t">휴대폰 인증</a></li>
+								<li><a h ef="#" class="" id="emailCe t" name="emailCe t">이메일 인증</a></li>
 							</ul>
 						</div>
-						<div id="certGroupPhone" style="display:none;"><br/><br/><br/>
-						회원가입시 입력하였던 정보를 입력해주세요<br/><br/>
-							이름 : <input type="text" id="user_name_phone" name="user_name_phone" value=""/><br/><br/>
+						<div id="ce tG oupPhone" style="display:none;"><b /><b /><b />
+						회원가입시 입력하였던 정보를 입력해주세요<b /><b />
+							이름 : <input type="text" id="use _name_phone" name="use _name_phone" value=""/><b /><b />
 							휴대폰번호 : 
 							<input type="text" id="phone1" name="phone1" value="" maxlength="3"/>-
 							<input type="text" id="phone2" name="phone2" value="" maxlength="4"/>-
 							<input type="text" id="phone3" name="phone3" value="" maxlength="4"/>&emsp;
-							<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certConfirmBtn" name="certConfirmBtn">본인인증</a><br/><br/>
-							인증 번호 : <input type="text" id="certNum" name="certNum" value=""/>&emsp;
-							<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="confirmPhoneBtn" name="confirmPhoneBtn">확인</a>
-							<div class="btn-wrap02">
-								<a href="#" class="btn-style02" id="cancelBtn"  data-ga-category="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="로그인" style="text-align:center;">취소</a>
+							<a h ef="#none;" class="btn fill sm btnPslCe tifi" data-ga-catego y="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="ce tConfi mBtn" name="ce tConfi mBtn">본인인증</a><b /><b />
+							인증 번호 : <input type="text" id="ce tNum" name="ce tNum" value=""/>&emsp;
+							<a h ef="#none;" class="btn fill sm btnPslCe tifi" data-ga-catego y="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="confi mPhoneBtn" name="confi mPhoneBtn">확인</a>
+							<div class="btn-w ap02">
+								<a h ef="#" class="btn-style02" id="cancelBtn"  data-ga-catego y="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="로그인" style="text-align:cente ;">취소</a>
 							</div>
 						</div>
-						<div id="certGroupEmail" style="display:none;"><br/><br/><br/>
-						회원가입시 입력하였던 정보를 입력해주세요<br/><br/>
-							이름 : <input type="text" id="user_name_email" name="user_name_email" value=""/><br/><br/>
+						<div id="ce tG oupEmail" style="display:none;"><b /><b /><b />
+						회원가입시 입력하였던 정보를 입력해주세요<b /><b />
+							이름 : <input type="text" id="use _name_email" name="use _name_email" value=""/><b /><b />
 							이메일 : 
 							<input type="text" id="email_id" name="email_id" value=""/>@
-							<input type="text" id="email_address" name="email_address" value=""/>&emsp;
-							<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="certEmailBtn" name="certEmailBtn">본인인증</a><br/><br/>
-							인증 번호 : <input type="text" id="certEmailNum" name="certEmailNum" value=""/>&emsp;
-							<a href="#none;" class="btn fill sm btnPslCertifi" data-ga-category="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="confirmEmailBtn" name="confirmEmailBtn">확인</a>
-							<div class="btn-wrap02">
-								<a href="#" class="btn-style02" id="cancelBtn2"  data-ga-category="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="로그인" style="text-align:center;">취소</a>
+							<input type="text" id="email_add ess" name="email_add ess" value=""/>&emsp;
+							<a h ef="#none;" class="btn fill sm btnPslCe tifi" data-ga-catego y="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="ce tEmailBtn" name="ce tEmailBtn">본인인증</a><b /><b />
+							인증 번호 : <input type="text" id="ce tEmailNum" name="ce tEmailNum" value=""/>&emsp;
+							<a h ef="#none;" class="btn fill sm btnPslCe tifi" data-ga-catego y="PC_MLB_회원가입" data-ga-action="본인인증" data-ga-label="인증번호받기" id="confi mEmailBtn" name="confi mEmailBtn">확인</a>
+							<div class="btn-w ap02">
+								<a h ef="#" class="btn-style02" id="cancelBtn2"  data-ga-catego y="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="로그인" style="text-align:cente ;">취소</a>
 							</div>
 						</div>
 						<!-- <div class="d_tab02_cont">
-							<ul class="certification-list">
-								<li><a href="#" class="" name="pccCertBtn">휴대폰 인증</a></li>
-								<li><a href="#" class="" name="ipinCertBtn">이메일 인증</a></li>
+							<ul class="ce tification-list">
+								<li><a h ef="#" class="" name="pccCe tBtn">휴대폰 인증</a></li>
+								<li><a h ef="#" class="" name="ipinCe tBtn">이메일 인증</a></li>
 							</ul>
 						</div> -->
 						<h3 class="title06">인증방법안내</h3><ul class="text-list02 col-type01">
@@ -66,53 +66,48 @@
 						</ul>
 					</div>
 					<div class="guds">
-						<strong class="cs-number">고객센터 : 080-807–0012</strong> <ul class="links">
-							<li><a href="/helpdesk/faq/list">FAQ바로가기</a></li></ul>
+						<st ong class="cs-numbe ">고객센터 : 080-807–0012</st ong> <ul class="links">
+							<li><a h ef="/helpdesk/faq/list">FAQ바로가기</a></li></ul>
 						<div class="time">운영시간 : 평일 오전 9시 ~ 오후 6시 (토/일/공휴일휴무)</div></div>
 				</div>
 			</main>
 		</div>
 	</div>
-	<input type="hidden" id="idPwGubn" name="idPwGubn" value="id"/>
-	<input type="hidden" id="tmpCertNum" name="tmpCertNum" value=""/>
-	<input type="hidden" id="tmpEmailCert" name="tmpEmailCert" value="" />
-	<form id="movedRefresh" method="post" action="/test/findIdPwPage.do"></form>
-	<form id="userIdDay" method="post" action="/test/foundIdPage.do">
-		<input type="hidden" id="user_id" name="user_id" value=""/>
-	</form>
+	
+	</fo m>
 </body>
-<script type="text/javascript">
+<sc ipt type="text/javasc ipt">
 $(function(){
-	$('#phoneCert').click(()=>{
-		var idPwGubn = $('#idPwGubn').val();
+	$('#phoneCe t').click(()=>{
+		va  idPwGubn = $('#idPwGubn').val();
 		
-		$('#certGroup').hide();
-		$('#certGroupPhone').show();
+		$('#ce tG oup').hide();
+		$('#ce tG oupPhone').show();
 		if(idPwGubn == 'id'){
-			$('#findPwTab').attr('style','display:none;');			
+			$('#findPwTab').att ('style','display:none;');			
 		} else if(idPwGubn == 'pw'){
-			$('#findIdTab').attr('style','display:none;');
+			$('#findIdTab').att ('style','display:none;');
 		}
 	});
 	
-	$('#emailCert').click(()=>{
-		var idPwGubn = $('#idPwGubn').val();
+	$('#emailCe t').click(()=>{
+		va  idPwGubn = $('#idPwGubn').val();
 		
-		$('#certGroup').hide();
-		$('#certGroupEmail').show();
+		$('#ce tG oup').hide();
+		$('#ce tG oupEmail').show();
 		if(idPwGubn == 'id'){
-			$('#findPwTab').attr('style','display:none;');			
+			$('#findPwTab').att ('style','display:none;');			
 		} else if(idPwGubn == 'pw'){
-			$('#findIdTab').attr('style','display:none;');
+			$('#findIdTab').att ('style','display:none;');
 		}
 	});
 	
 	$('#cancelBtn').click(()=>{
-		$('#movedRefresh').submit();
+		$('#moved ef esh').submit();
 	});
 	
 	$('#cancelBtn2').click(()=>{
-		$('#movedRefresh').submit();
+		$('#moved ef esh').submit();
 	});
 	
 	$('#findIdTab').click(()=>{
@@ -124,209 +119,209 @@ $(function(){
 	});
 	
 	//본인인증 
-	$('#certConfirmBtn').on('click',function(){
-		var userName = $('#user_name_phone').val();
-		var phone1 = $('#phone1').val();
-		var phone2 = $('#phone2').val();
-		var phone3 = $('#phone3').val();
+	$('#ce tConfi mBtn').on('click',function(){
+		va  use Name = $('#use _name_phone').val();
+		va  phone1 = $('#phone1').val();
+		va  phone2 = $('#phone2').val();
+		va  phone3 = $('#phone3').val();
 		
-		if(userName == ""){
-			alert("이름을 입력해주세요");
-			$("#user_name_phone").focus();
-			return;
+		if(use Name == ""){
+			ale t("이름을 입력해주세요");
+			$("#use _name_phone").focus();
+			 etu n;
 		} else if(phone1 == ""){
-			alert("전화번호를 입력해주세요");
+			ale t("전화번호를 입력해주세요");
 			$('#phone1').focus();
-			return;
+			 etu n;
 		} else if(phone2 == ""){
-			alert("전화번호를 입력해주세요");
+			ale t("전화번호를 입력해주세요");
 			$('#phone2').focus();
-			return;
+			 etu n;
 		} else if(phone3 == ""){
-			alert("전화번호를 입력해주세요");
+			ale t("전화번호를 입력해주세요");
 			$('#phone3').focus();
-			return;
+			 etu n;
 		}
 		
-		phoneVerification(phone1, phone2, phone3, userName);
+		phoneVe ification(phone1, phone2, phone3, use Name);
 	});
 	
 	//이메일인증
-	$('#certEmailBtn').click(()=>{
+	$('#ce tEmailBtn').click(()=>{
 		
-		var user_name_email = $('#user_name_email').val();
-		var emailId = $('#email_id').val();
-		var emailAd = $('#email_address').val();
+		va  use _name_email = $('#use _name_email').val();
+		va  emailId = $('#email_id').val();
+		va  emailAd = $('#email_add ess').val();
 		
-		if(user_name_email == ""){
-			alert("이름을 입력해주세요");
-			$('#user_name_email').focus();
-			return;
+		if(use _name_email == ""){
+			ale t("이름을 입력해주세요");
+			$('#use _name_email').focus();
+			 etu n;
 			
 		} else if(emailId == ""){
-			alert("이메일 앞자리를 입력해주세요");
+			ale t("이메일 앞자리를 입력해주세요");
 			$('#email_id').focus();
-			return;
+			 etu n;
 			
 		} else if(emailAd == ""){
-			alert("이메일 뒷자리를 입력해주세요");
-			$('#email_address').focus();
-			return;
+			ale t("이메일 뒷자리를 입력해주세요");
+			$('#email_add ess').focus();
+			 etu n;
 			
 		} 
 		
-		var email = $('#email_id').val() + "@" + $('#email_address').val();
+		va  email = $('#email_id').val() + "@" + $('#email_add ess').val();
 	
 		$.ajax({
 			type:'POST',
-			url:'/test/sendingEmail.do',
-			data:{ e_mail : email, user_name : user_name_email, email_id : emailId, email_address : emailAd},
+			u l:'/test/sendingEmail.do',
+			data:{ e_mail : email, use _name : use _name_email, email_id : emailId, email_add ess : emailAd},
 			dataType:'json',
-			success:function(res){
-				console.log(res.dice);
+			success:function( es){
+				console.log( es.dice);
 				
-				if(res.errorMsg != ""){
-					alert(res.errorMsg);
-					return;
+				if( es.e  o Msg != ""){
+					ale t( es.e  o Msg);
+					 etu n;
 				}
-				$('#tmpEmailCert').val(res.dice);
+				$('#tmpEmailCe t').val( es.dice);
 			}
 		});
 	});
 	
-	$('#confirmEmailBtn').click(()=>{
-		var certEmailNum = $('#certEmailNum').val();
-		var tmpEmailCert = $('#tmpEmailCert').val();
-		var user_name_email = $('#user_name_email').val();
-		var emailId = $('#email_id').val();
-		var emailAd = $('#email_address').val();
+	$('#confi mEmailBtn').click(()=>{
+		va  ce tEmailNum = $('#ce tEmailNum').val();
+		va  tmpEmailCe t = $('#tmpEmailCe t').val();
+		va  use _name_email = $('#use _name_email').val();
+		va  emailId = $('#email_id').val();
+		va  emailAd = $('#email_add ess').val();
 		
-		if(user_name_email == ""){
-			alert("이름을 입력해주세요");
-			$('#user_name_email').focus();
-			return;
+		if(use _name_email == ""){
+			ale t("이름을 입력해주세요");
+			$('#use _name_email').focus();
+			 etu n;
 			
 		} else if(emailId == ""){
-			alert("이메일 앞자리를 입력해주세요");
+			ale t("이메일 앞자리를 입력해주세요");
 			$('#email_id').focus();
-			return;
+			 etu n;
 			
 		} else if(emailAd == ""){
-			alert("이메일 뒷자리를 입력해주세요");
-			$('#email_address').focus();
-			return;
+			ale t("이메일 뒷자리를 입력해주세요");
+			$('#email_add ess').focus();
+			 etu n;
 			
-		} else if(certEmailNum == ""){
-			alert("인증번호를 입력해주세요");
-			$('#certEmailNum').focus();
-			return;
+		} else if(ce tEmailNum == ""){
+			ale t("인증번호를 입력해주세요");
+			$('#ce tEmailNum').focus();
+			 etu n;
 		}
 		
-		if(tmpEmailCert == certEmailNum){
+		if(tmpEmailCe t == ce tEmailNum){
 			$.ajax({
 				type : 'post',
-				url : '/test/foundEmailId.do',
-				data : {user_name : user_name_email, email_id : emailId, email_address : emailAd},
+				u l : '/test/foundEmailId.do',
+				data : {use _name : use _name_email, email_id : emailId, email_add ess : emailAd},
 				dataType : 'json',
 				success : function(data){
-					var list = data.list;
-					var user_id = list.user_id;
-					var idPwGubn = $('#idPwGubn').val();
-					$('#user_id').val(user_id);
+					va  list = data.list;
+					va  use _id = list.use _id;
+					va  idPwGubn = $('#idPwGubn').val();
+					$('#use _id').val(use _id);
 					
 					if(idPwGubn == 'id'){
-						$('#userIdDay').submit();
+						$('#use IdDay').submit();
 					} else if(idPwGubn == 'pw'){
-						$('#userIdDay').attr('action','/test/foundPwPage.do');
-						$('#userIdDay').submit();
+						$('#use IdDay').att ('action','/test/foundPwPage.do');
+						$('#use IdDay').submit();
 					}
 					
 				},
-				error : function(request,status,error){
-				      alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+				e  o  : function( equest,status,e  o ){
+				      ale t("code = "+  equest.status + " message = " +  equest. esponseText + " e  o  = " + e  o ); // 실패 시 처리
 				}
 			});
 		} else {
-			alert("인증번호를 확인해주세요");
-			$('#certEmailNum').val("");
-			$('#certEmailNum').focus();
-			return;
+			ale t("인증번호를 확인해주세요");
+			$('#ce tEmailNum').val("");
+			$('#ce tEmailNum').focus();
+			 etu n;
 		}
 	});
 	
-	$('#confirmPhoneBtn').click(()=>{
+	$('#confi mPhoneBtn').click(()=>{
 		
-		alert("본인인증 확인버튼 클릭이벤트 시작");
-		var certNum = $('#certNum').val();
-		var tmpCertNum = $('#tmpCertNum').val();
-		var userName = $('#user_name_phone').val();
-		var phone1 = $('#phone1').val();
-		var phone2 = $('#phone2').val();
-		var phone3 = $('#phone3').val();
+		ale t("본인인증 확인버튼 클릭이벤트 시작");
+		va  ce tNum = $('#ce tNum').val();
+		va  tmpCe tNum = $('#tmpCe tNum').val();
+		va  use Name = $('#use _name_phone').val();
+		va  phone1 = $('#phone1').val();
+		va  phone2 = $('#phone2').val();
+		va  phone3 = $('#phone3').val();
 		
-		if(certNum == tmpCertNum){
+		if(ce tNum == tmpCe tNum){
 			$.ajax({
 				type:'POST',
-				url:'/test/foundId.do',
-				data:{ user_name : userName, phone1 : phone1, phone2 : phone2, phone3 : phone3},
+				u l:'/test/foundId.do',
+				data:{ use _name : use Name, phone1 : phone1, phone2 : phone2, phone3 : phone3},
 				dataType:'json',
 				success:function(data){
 					console.log(data.list);
-					var list = data.list;
-					$('#user_id').val(list.user_id);
+					va  list = data.list;
+					$('#use _id').val(list.use _id);
 					
-					var idPwGubn = $('#idPwGubn').val();
+					va  idPwGubn = $('#idPwGubn').val();
 					
 					if(idPwGubn == 'id'){
-						$('#userIdDay').submit();
+						$('#use IdDay').submit();
 					} else if(idPwGubn == 'pw'){
-						$('#userIdDay').attr('action','/test/foundPwPage.do');
-						$('#userIdDay').submit()
+						$('#use IdDay').att ('action','/test/foundPwPage.do');
+						$('#use IdDay').submit()
 					}
 					
 					
 				},
-				error:function(request,status,error){
-			      alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+				e  o :function( equest,status,e  o ){
+			      ale t("code = "+  equest.status + " message = " +  equest. esponseText + " e  o  = " + e  o ); // 실패 시 처리
 			    }
 			});
 		} else {
-			alert("본인인증번호를 확인해주세요");
-			$('#certNum').val("");
-			$('#certNum').focus();
-			return;
+			ale t("본인인증번호를 확인해주세요");
+			$('#ce tNum').val("");
+			$('#ce tNum').focus();
+			 etu n;
 		}
 	});
 	
 	
 });
 
-function phoneVerification(phone1, phone2, phone3, user_name){
-	var userName = user_name;
-	var gubn = "2";
+function phoneVe ification(phone1, phone2, phone3, use _name){
+	va  use Name = use _name;
+	va  gubn = "2";
 	
 	$.ajax({
 		type : "POST",
-		url : "/test/getSendSMS.do",
-		data : { phone1 : phone1 , phone2 : phone2, phone3 : phone3, user_name : userName, gubn : gubn},
+		u l : "/test/getSendSMS.do",
+		data : { phone1 : phone1 , phone2 : phone2, phone3 : phone3, use _name : use Name, gubn : gubn},
 		dataType : "json",
 		success: function(data){
 			console.log(data);
-			if(data.errorMsg != "" && data.numStr == "0"){
-				alert(data.errorMsg);
-				return;
+			if(data.e  o Msg != "" && data.numSt  == "0"){
+				ale t(data.e  o Msg);
+				 etu n;
 			}
 			
-			alert(data.sendingMsg);
-			$('#tmpCertNum').val(data.numStr);
+			ale t(data.sendingMsg);
+			$('#tmpCe tNum').val(data.numSt );
 			
 		},
-		error : function(request, status) {
-			alert("code:" + request.status + "\n" + "message:"
-					+ request.responseText + "\n" + "error:"
-					+ error);
+		e  o  : function( equest, status) {
+			ale t("code:" +  equest.status + "\n" + "message:"
+					+  equest. esponseText + "\n" + "e  o :"
+					+ e  o );
 		}
 	});
 }
-</script>
+</sc ipt>
 </html>

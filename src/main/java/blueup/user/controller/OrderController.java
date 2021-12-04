@@ -74,11 +74,9 @@ public class OrderController {
 				int product_price = nomemcartlist.get(i).getTotal_price() / nomemcartlist.get(i).getQuantity();
 				ordervo.setProduct_no(nomemcartlist.get(i).getProduct_no());
 				ordervo.setMain_image(nomemcartlist.get(i).getMain_image());
-				ordervo.setProduct_name(nomemcartlist.get(i).getProduct_name());
 				ordervo.setProduct_price(product_price);
 				ordervo.setProduct_color(nomemcartlist.get(i).getProduct_color());
-				ordervo.setProduct_size(nomemcartlist.get(i).getProduct_size());
-				ordervo.setQuantity(nomemcartlist.get(i).getQuantity());	
+				ordervo.setProduct_size(nomemcartlist.get(i).getProduct_size());	
 				ordervo.setDiscount(nomemcartlist.get(i).getDiscount());
 				ordervo.setDelivery_fee(nomemcartlist.get(i).getDelivery_fee());
 				ordervo.setTotal_price(nomemcartlist.get(i).getTotal_price());

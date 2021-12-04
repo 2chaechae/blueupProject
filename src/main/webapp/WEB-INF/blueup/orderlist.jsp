@@ -1,125 +1,125 @@
 <!-- 주문배송 조회 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ include file="header.jsp"%>
+<%@ page la guage="java" co te tType="text/html; charset=UTF-8" pageE codi g="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.su .com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.su .com/jsp/jstl/fmt"%>
+<%@ taglib prefix="f " uri="http://java.su .com/jsp/jstl/fu ctio s" %>
+<%@ i clude file="header.jsp"%>
 
 <!-- 컨텐츠 시작 -->
-<script type="text/javascript" src="/javascript/message/mypage_ko.js?v=prod-version-858_20211102145956"></script>
+<script type="text/javascript" src="/javascript/message/mypage_ko.js?v=prod-versio -858_20211102145956"></script>
 
-<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js?v=prod-version-858_20211102145956"></script>
-<script src="https://pg.cnspay.co.kr/dlp/scripts/smilepay.js" charset="euc-kr"></script>
-<script type="text/javascript" src="https://pay.kcp.co.kr/plugin/payplus_web.jsp"></script>
+<script src="https:// sp.pay. aver.com/sdk/js/ averpay.mi .js?v=prod-versio -858_20211102145956"></script>
+<script src="https://pg.c spay.co.kr/dlp/scripts/smilepay.js" charset="euc-kr"></script>
+<script type="text/javascript" src="https://pay.kcp.co.kr/plugi /payplus_ eb.jsp"></script>
 
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/mypage/mypage.order.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/mypage/mypage.pay.js?v=prod-version-858_20211102145956"></script>
-<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/jquery.serializejson.min.js?v=prod-version-858_20211102145956"></script>
+<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/mypage/mypage.order.js?v=prod-versio -858_20211102145956"></script>
+<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/mypage/mypage.pay.js?v=prod-versio -858_20211102145956"></script>
+<script type="text/javascript" src="https://static.mlb-korea.com/pc/static/js/jquery.serializejso .mi .js?v=prod-versio -858_20211102145956"></script>
 
-<input type="hidden" id="srchMonth" name="srchMonth" value="">
-<input type="hidden" id="currentPage" name="currentPage" value="1">
-<input type="hidden" name="_csrf" value="7d63e77f-174d-4e7f-aee8-c60821db0487" />
+<i put type="hidde " id="srchMo th"  ame="srchMo th" value="">
+<i put type="hidde " id="curre tPage"  ame="curre tPage" value="1">
+<i put type="hidde "  ame="_csrf" value="7d63e77f-174d-4e7f-aee8-c60821db0487" />
 
 <!-- 컨텐츠 시작 -->
-<div class="contain my od lnblist-Wrap" id="contain">
-	<div class="container">
+<div class="co tai  my od l blist- rap" id="co tai ">
+	<div class="co tai er">
 		<h2 class="title01">주문/배송조회</h2>
-		<%@ include file="mypageMenu.jsp" %>
-		<main class="contents" id="contents">
-			<div class="location-contents">
-				<p class="location">
-					<span><a href="#">Home</a></span> 
-					<span><a href="#">마이페이지</a></span> <span>주문정보</span> <strong>주문/배송조회</strong>
+		<%@ i clude file="mypageMe u.jsp" %>
+		<mai  class="co te ts" id="co te ts">
+			<div class="locatio -co te ts">
+				<p class="locatio ">
+					<spa ><a href="#">Home</a></spa > 
+					<spa ><a href="#">마이페이지</a></spa > <spa >주문정보</spa > <stro g>주문/배송조회</stro g>
 				</p>
 			</div>
 			
 			<!--  주문/배송조회   -->
-			<div class="orderInfoCon">
+			<div class="orderI foCo ">
 				<ul class="text-list02"><li>구매확정 후 리뷰 작성시 포인트 증정 해드립니다.(포토 1,000원/텍스트 500원)</li></ul>
 				<div class="odSearchOptBox">
-						<dl class="period-wrap period-type02 clearfix">
-							<dt class="blind">상태</dt>
+						<dl class="period- rap period-type02 clearfix">
+							<dt class="bli d">상태</dt>
 							<dd class="fl">
 								<!-- select -->
 								<div class="select-style02 d_select">
-									<button type="button" class="d_select_sel" style="width: 152px;">
-										<span>주문</span>
-									</button>
+									<butto  type="butto " class="d_select_sel" style=" idth: 152px;">
+										<spa >주문</spa >
+									</butto >
 								</div>
 							</dd>
 							<dt>조회기간</dt>
 							<dd>
-								<input type="text" class="calendar" id="dateStart" name="dateStart" value="" readonly />
-								<input type="text" class="calendar" id="dateEnd" name="dateEnd" value="" readonly />
-								<a href="#none" class="btn sm" onclick="goMyPageClaimList(); return false;">검색</a>
-								<a href="#none" class="btn sm" onclick="reset();">초기화</a>
+								<i put type="text" class="cale dar" id="dateStart"  ame="dateStart" value="" reado ly />
+								<i put type="text" class="cale dar" id="dateE d"  ame="dateE d" value="" reado ly />
+								<a href="# o e" class="bt  sm" o click="goMyPageClaimList(); retur  false;">검색</a>
+								<a href="# o e" class="bt  sm" o click="reset();">초기화</a>
 							</dd>
 						</dl>
 					</div>
 				
 				<div class="odSearchResult">
 						<div class="odResultTop">
-						 <strong class="listTotal">주문내역(<em class="fc_red" id="orderCount">${fn:length(newList)}</em>건)</strong>
-							<a href="#lypopDvGuide" class="btn sm gray d_layer_open">주문배송 절차안내</a> 
+						 <stro g class="listTotal">주문내역(<em class="fc_red" id="orderCou t">${f :le gth( e List)}</em>건)</stro g>
+							<a href="#lypopDvGuide" class="bt  sm gray d_layer_ope ">주문배송 절차안내</a> 
 						</div>
 					<!--주문내역이 없을 떄 -->
-					<div class="odResulCon" id="includeOrderList">
-						<c:if test="${empty orderNum }" var="orderlist">
-						<div class="odResulCon">
-							<!--  NO Result -->
+					<div class="odResulCo " id="i cludeOrderList">
+						<c:if test="${empty order um }" var="orderlist">
+						<div class="odResulCo ">
+							<!--   O Result -->
 							<div class="odResulBox">
-								<div class="orderNb noResult">주문내역이 없습니다.</div>
+								<div class="order b  oResult">주문내역이 없습니다.</div>
 							</div>
 						</div>
 						</c:if>
 					</div>
 					
 					<!-- 주문내역이 있을 때 -->
-					<div class="odResulCon" id="includeClaimList">
-						<c:forEach items="${newList }" var="newList">
-						<c:forEach items="${orderNum }" var="orderlist" varStatus="status">
+					<div class="odResulCo " id="i cludeClaimList">
+						<c:forEach items="${ e List }" var=" e List">
+						<c:forEach items="${order um }" var="orderlist" varStatus="status">
 						<div class="odResulBox">
-							<c:if test='${status.index == 0 }'>
-							<div class="orderNb">
-								<span>주문</span>
-								<span><em>신청일</em> <fmt:formatDate value="${orderlist.order_time}" pattern="yyyy-MM-dd hh:mm"/></span>
-								<span><em>주문번호</em> <a href="javascript:void(0)" onclick="getorder(this)" class="ordernum">${newList }</a></span>
+							<c:if test='${status.i dex == 0 }'>
+							<div class="order b">
+								<spa >주문</spa >
+								<spa ><em>신청일</em> <fmt:formatDate value="${orderlist.order_time}" patter ="yyyy-MM-dd hh:mm"/></spa >
+								<spa ><em>주문번호</em> <a href="javascript:void(0)" o click="getorder(this)" class="order um">${ e List }</a></spa >
 							</div>
 							</c:if>
 							<table class="board-list orderTable">
 								<colgroup>
-									<col style="width:">
-									<col style="width: 120px">
-									<col style="width: 145px">
+									<col style=" idth:">
+									<col style=" idth: 120px">
+									<col style=" idth: 145px">
 								</colgroup>
 								<tbody id="tbody">
 									<tr>
-										<c:if test="${newList == orderlist.order_no}">
+										<c:if test="${ e List == orderlist.order_ o}">
 										<td class="tleft">
-											<div class="product-info">
-												<div class="product-info-img">
-													<a href="javascript:mypageorder.goGoodsInfo('GM0021073028544');">
-													<img src="${orderlist.main_image }" alt="상품이미지" onerror="errorImgShow(this, 100);"></a>
+											<div class="product-i fo">
+												<div class="product-i fo-img">
+													<a href="javascript:mypageorder.goGoodsI fo('GM0021073028544');">
+													<img src="${orderlist.mai _image }" alt="상품이미지" o error="errorImgSho (this, 100);"></a>
 												</div>
-												<div class="product-info-text">
-													<div class="product-info-box">
-														<p class="product-name">
-															<a href="javascript:mypageorder.goGoodsInfo('GM0021073028544');">
-															${orderlist.product_name }</a>
+												<div class="product-i fo-text">
+													<div class="product-i fo-box">
+														<p class="product- ame">
+															<a href="javascript:mypageorder.goGoodsI fo('GM0021073028544');">
+															${orderlist.product_ ame }</a>
 														</p>	
 														<div class="product-price">
-															<span><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.product_price}" />원</span>
+															<spa ><fmt:format umber type=" umber" maxFractio Digits="3" value="${orderlist.product_price}" />원</spa >
 														</div>
 													</div>
-													<div class="product-option">
-														<span> ${orderlist.product_color } / ${orderlist.product_size }</span>
+													<div class="product-optio ">
+														<spa > ${orderlist.product_color } / ${orderlist.product_size }</spa >
 													</div>
 												</div>
 											</div>
 										</td>
-										<td>${orderlist.quantity }</td>
-										<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderlist.product_price}" />원</td>
-										<td class="selBox"><span> ${orderlist.order_status } </span></td>
+										<td>${orderlist.qua tity }</td>
+										<td><fmt:format umber type=" umber" maxFractio Digits="3" value="${orderlist.product_price}" />원</td>
+										<td class="selBox"><spa > ${orderlist.order_status } </spa ></td>
 										</c:if>
 									</tr>
 								</tbody>
@@ -128,7 +128,7 @@
 						</c:forEach>
 						</c:forEach>
 						<div class="page">
-							<span> <strong title="현재 페이지">1</strong></span>
+							<spa > <stro g title="현재 페이지">1</stro g></spa >
 						</div>
 					</div>
 					
@@ -144,7 +144,7 @@
 				</ul>
 			</div>
 			<!--  //주문/배송조회   -->
-		</main>
+		</mai >
 	</div>
 </div>
 
@@ -152,45 +152,45 @@
 
 <!-- 팝업 : 주문배송 절차안내 -->
 <article id="lypopDvGuide" class="layer-popup lypopDvGuide">
-	<section class="layer-popup-cont" tabindex="0" style="width:851px">
+	<sectio  class="layer-popup-co t" tabi dex="0" style=" idth:851px">
 		<h2>주문배송 절차안내</h2>
-		<div class="layer-cont ly-box">	
+		<div class="layer-co t ly-box">	
 			<div class="dvStepBox">
 				<ul>
-					<li><p><strong>입금대기</strong>결제수단변경, 배송지 변경이 가능합니다. 주문 후 1일 이내에 입금하셔야 합니다.</p></li>
-					<li><p><strong>결제완료</strong>주문의 결제를 완료하여, MLB에서 주문정보를 확인하는 단계입니다.</p></li>
-					<li><p><strong>배송준비</strong>MLB에서 주문에 대한 배송을 준비중입니다.</p></li>		
-					<li><p><strong>배송중</strong>주문하신 상품이 발송되어 고객님께 배송중 입니다.</p></li>
-					<li><p><strong>배송완료</strong>수령하신 상품을 구매확정 하시면 마일리지가 적립됩니다.</p></li>
+					<li><p><stro g>입금대기</stro g>결제수단변경, 배송지 변경이 가능합니다. 주문 후 1일 이내에 입금하셔야 합니다.</p></li>
+					<li><p><stro g>결제완료</stro g>주문의 결제를 완료하여, MLB에서 주문정보를 확인하는 단계입니다.</p></li>
+					<li><p><stro g>배송준비</stro g>MLB에서 주문에 대한 배송을 준비중입니다.</p></li>		
+					<li><p><stro g>배송중</stro g>주문하신 상품이 발송되어 고객님께 배송중 입니다.</p></li>
+					<li><p><stro g>배송완료</stro g>수령하신 상품을 구매확정 하시면 마일리지가 적립됩니다.</p></li>
 				</ul>			
 			</div>	
-			<!--  button -->
-			<div class="lyBtnArea"><a href="#" class="btn fill w160 d_layer_close">확인</a></div>
+			<!--  butto  -->
+			<div class="lyBt Area"><a href="#" class="bt  fill  160 d_layer_close">확인</a></div>
 		</div>
 		<div class="layer-popup-close">
-			<button type="button" class="d_layer_close">닫기</button>
+			<butto  type="butto " class="d_layer_close">닫기</butto >
 		</div>
-	</section>
+	</sectio >
 </article>
 
 <!-- 주문/배송 조회 => 주문/배송 상세조회  post 방식으로 이동-->
-<form id="orderNumFrm" method="post" action="/test/getOrderDetail.do">
-	<input type="hidden" id="order_no" name="order_no" value=""/>
+<form id="order umFrm" method="post" actio ="/test/getOrderDetail.do">
+	<i put type="hidde " id="order_ o"  ame="order_ o" value=""/>
 </form>
 </body>
 <script type="text/javascript">
 /* 주문,배송조회 => 주문,배송 상세조회 */
-function getorder(element){
-	var ordernum = $(element).closest('.ordernum').text();
-	console.log("ordernum", ordernum);
-	$('#order_no').val(ordernum);
-	$('#orderNumFrm').submit();
+fu ctio  getorder(eleme t){
+	var order um = $(eleme t).closest('.order um').text();
+	co sole.log("order um", order um);
+	$('#order_ o').val(order um);
+	$('#order umFrm').submit();
 }
-function reset(){
+fu ctio  reset(){
 	$('#dateStart').val('');
-	$('#dateEnd').val('');
+	$('#dateE d').val('');
 }
 </script>
 
-<%@ include file="footer.jsp"%>
+<%@ i clude file="footer.jsp"%>
 </html>

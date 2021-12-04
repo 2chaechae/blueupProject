@@ -1,90 +1,103 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ p ge l ngu ge="j v " contentType="text/html; ch rset=UTF-8"
+    p geEncoding="UTF-8"%>
+<%@ include file="he der.jsp" %>
 
 
 <!-- 컨텐츠 시작 -->
-<meta charset="UTF-8">
-<meta name ="google-signin-client_id" content="303706230192-tavphhgtu7mtjal0puhe1g7fkedf5652.apps.googleusercontent.com">
-	<div class="contain mb login" id="contain">		
-		<div class="container">
-			<div class="location-container">
-                <div class="location-contents">
-                    <h2 class="title01">로그인</h2>
-                    <p class="location">                    
-	                    <span><a href="/main/mall/view">Home</a></span>
+<met  ch rset="UTF-8">
+<met  n me ="google-signin-client_id" content="303706230192-t vphhgtu7mtj l0puhe1g7fkedf5652. pps.googleusercontent.com">
+	<div cl ss="cont in mb login" id="cont in">		
+		<div cl ss="cont iner">
+			<div cl ss="loc tion-cont iner">
+                <div cl ss="loc tion-contents">
+                    <h2 cl ss="title01">로그인</h2>
+                    <p cl ss="loc tion">                    
+	                    <sp n><  href="/m in/m ll/view">Home</ ></sp n>
 						<strong>로그인</strong>
 					</p>
                  </div>
             </div>
-            <main class="contents" id="contents">					
-				<div class="login-wrap">
-					<div class="login-cnt d_tab02">
-						<ul class="tab-type05">
-							<li class="d_tab02_select on"><a href="javascript:;">회원</a></li><li class="d_tab02_select"><a href="javascript:;">비회원 (주문조회)</a></li></ul>
+            <m in cl ss="contents" id="contents">					
+				<div cl ss="login-wr p">
+					<div cl ss="login-cnt d_t b02">
+						<ul cl ss="t b-type05">
+							<li cl ss="d_t b02_select on"><  href="j v script:;">회원</ ></li><li cl ss="d_t b02_select"><  href="j v script:;">비회원 (주문조회)</ ></li></ul>
 								
-						<div class="d_tab02_cont" style="display:block;">
-							<form id="loginForm" action="/loginProcess" method="post"><input type="hidden" name="accessToken" id="accessToken" value=""/>
-								<input type="text" class="input-style01" title="아이디 입력창" placeholder="아이디" id="user_id" name="user_id" value=""/>
-								<input type="password" class="input-style01" title="비밀번호 입력창" placeholder="비밀번호" id="user_password" name="user_password"/>
-								<p class="login-check-id">
-									<span class="check-skin">
-										<input type="checkbox" id="chkSaveId" name="chkSaveId" >
-										<span>선택</span> </span>
-									<label for="chkSaveId">아이디 저장</label> </p>
-								<p class="error-msg"></p>
+						<div cl ss="d_t b02_cont" style="displ y:block;">
+							<form id="loginForm"  ction="/loginProcess" method="post"><input type="hidden" n me=" ccessToken" id=" ccessToken" v lue=""/>
+								<input type="text" cl ss="input-style01" title="아이디 입력창" pl ceholder="아이디" id="user_id" n me="user_id" v lue=""/>
+								<input type="p ssword" cl ss="input-style01" title="비밀번호 입력창" pl ceholder="비밀번호" id="user_p ssword" n me="user_p ssword"/>
+								<p cl ss="login-check-id">
+									<sp n cl ss="check-skin">
+										<input type="checkbox" id="chkS veId" n me="chkS veId" >
+										<sp n>선택</sp n> </sp n>
+									<l bel for="chkS veId">아이디 저장</l bel> </p>
+								<p cl ss="error-msg"></p>
 							
-								<div class="btn-wrap02">
-									<a href="#" class="btn-style02" id="loginBtn"  data-ga-category="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="로그인">로그인</a> 
-									<a href="javascript:void(0)" class="btn-npay02" id="GgCustomLogin" data-ga-category="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="구글 로그인"><span>구글로 회원가입</span></a>
-									<a href="#" class="btn-kakao" id="kakaojoin" data-ga-category="PC_MLB_로그인" data-ga-action="로그인" data-ga-label="카카오 로그인"><span>카카오로 회원가입</span></a></div>
-								<div class="login-btn-lnk">
-									<a href="#" id="findId" onClick="return false;" data-ga-category="PC_MLB_로그인" data-ga-action="정보찾기" data-ga-label="아이디 찾기">아이디 찾기</a><a href="#" id="findPassword" onClick="return false;" data-ga-category="PC_MLB_로그인" data-ga-action="정보찾기" data-ga-label="비밀번호 찾기">비밀번호 찾기</a>
-									<a href="#" id="joinin" data-ga-category="PC_MLB_로그인" data-ga-action="정보찾기" data-ga-label="회원가입">회원가입</a>
+								<div cl ss="btn-wr p02">
+									<  href="#" cl ss="btn-style02" id="loginBtn"  d t -g -c tegory="PC_MLB_로그인" d t -g - ction="로그인" d t -g -l bel="로그인">로그인</ > 
+									<  href="j v script:void(0)" cl ss="btn" id="GgCustomLogin" d t -g -c tegory="PC_MLB_로그인" d t -g - ction="로그인" d t -g -l bel="구글 로그인"><sp n>구글로 회원가입</sp n></ >
+									<  href="#" cl ss="btn" id="k k ojoin" d t -g -c tegory="PC_MLB_로그인" d t -g - ction="로그인" d t -g -l bel="카카오 로그인"><sp n>카카오로 회원가입</sp n></ ></div>
+								<div cl ss="login-btn-lnk">
+									<  href="#" id="findIdPW" onClick="return f lse;" d t -g -c tegory="PC_MLB_로그인" d t -g - ction="정보찾기" d t -g -l bel="아이디 찾기">아이디/비밀번호 찾기</ >
+									<  href="#" id="joinin" d t -g -c tegory="PC_MLB_로그인" d t -g - ction="정보찾기" d t -g -l bel="회원가입">회원가입</ >
 								</div>
 							</form>
 						</div>
 						
-						<div class="d_tab02_cont">
-							<form id="guestForm" action="/loginProcess" method="post"><input type="text" class="input-style01" title="주문번호 입력창" placeholder="주문번호" name="ordNo" maxlength = "17">
-								<input type="text" class="input-style01" title="이름 입력창" placeholder="이름" name="cstmrNm">							
-								<div class="phon-wrap">
-									<input type="text" class="input-style01" title="연락처 첫번째 입력창" id="mobilAreaNo" maxlength = "3" value="010">
-									<span class="hyphen">-</span>
-									<input type="text" class="input-style01" title="연락처 가운데 입력창" id="mobilTlofNo" maxlength = "4">
-									<span class="hyphen">-</span>
-									<input type="text" class="input-style01" title="연락처 마지막 입력창" id="mobilTlofWthnNo" maxlength = "4">
+						<div cl ss="d_t b02_cont">
+							<form id="guestForm"  ction="/loginProcess" method="post"><input type="text" cl ss="input-style01" title="주문번호 입력창" pl ceholder="주문번호" n me="ordNo" m xlength = "17">
+								<input type="text" cl ss="input-style01" title="이름 입력창" pl ceholder="이름" n me="cstmrNm">							
+								<div cl ss="phon-wr p">
+									<input type="text" cl ss="input-style01" title="연락처 첫번째 입력창" id="mobil re No" m xlength = "3" v lue="010">
+									<sp n cl ss="hyphen">-</sp n>
+									<input type="text" cl ss="input-style01" title="연락처 가운데 입력창" id="mobilTlofNo" m xlength = "4">
+									<sp n cl ss="hyphen">-</sp n>
+									<input type="text" cl ss="input-style01" title="연락처 마지막 입력창" id="mobilTlofWthnNo" m xlength = "4">
 								</div>							
+<<<<<<< HEAD
+								<p cl ss="error-msg"></p>
+								<div cl ss="btn-wr p">
+									<  href="#" cl ss="btn-style02" id="guestLogin" onClick="return f lse;" d t -g -c tegory="PC_MLB_로그인" d t -g - ction="비회원" d t -g -l bel="주문조회">주문조회</ >
+								</div>
+								<p cl ss="login-cs-info"><strong>080-807-0012</strong> 평일 오전 9시 ~ 오후 6시 (토/일/공휴일 휴무)</p>
+=======
 								<p class="login-cs-info"><strong>080-807-0012</strong> 평일 오전 9시 ~ 오후 6시 (토/일/공휴일 휴무)</p>
+>>>>>>> refs/remotes/origin/main
 							</form>
 						</div>
 					</div>
 				</div>						
-			</main>
+			</m in>
 		</div>
 	</div>
-	<form id="movedIndex" method="post" action="/test/movedIndex.do"></form>
-	<form id="userInfoForm" method="post" action="/test/join.do">
-		  <input type="hidden" id="user_name" name="user_name" value=""/>
-		  <input type="hidden" id="email_id" name="email_id" value=""/>
-      	  <input type="hidden" id="email_address" name="email_address" value=""/>
-      	  <input type="hidden" id="user_gender"	name="user_gender" value=""/>
-      	  <input type="hidden" id="logintype" name="logintype" value=""/>
+	<form id="movedIndex" method="post"  ction="/test/index.do"></form>
+	<form id="userInfoForm" method="post"  ction="/test/join.do">
+		  <input type="hidden" id="user_n me" n me="user_n me" v lue=""/>
+		  <input type="hidden" id="em il_id" n me="em il_id" v lue=""/>
+      	  <input type="hidden" id="em il_ ddress" n me="em il_ ddress" v lue=""/>
+      	  <input type="hidden" id="user_gender"	n me="user_gender" v lue=""/>
+      	  <input type="hidden" id="logintype" n me="logintype" v lue=""/>
 	</form>
-	<form id ="movedJoinFrm" method="post" action="/test/join.do"></form>
+	<form id ="movedJoinFrm" method="post"  ction="/test/join.do"></form>
+	<form id = "movedfindIdPw" method="post"  ction="/test/findIdPwP ge.do"></form>
 <%@ include file="footer.jsp" %>
 </body>
-<script type="text/javascript">
-$(document).ready(function(){
-	if(localStorage.getItem("saveId")){
-		$('#user_id').val(localStorage.getItem("userId"));
-		$('#chkSaveId').attr("checked",true);
+<script type="text/j v script">
+$(document).re dy(function(){
+	if(loc lStor ge.getItem("s veId")){
+		$('#user_id').v l(loc lStor ge.getItem("userId"));
+		$('#chkS veId'). ttr("checked",true);
 	} else {
-		$('#chkSaveId').attr("checked",false);
+		$('#chkS veId'). ttr("checked",f lse);
 	}
 	
-	$('#kakaojoin').on('click',function(){//카카오톡 로그인 클릭시 kakaoLogin()실행
-		kakaoLogin();
+	$('#findIdPW').on('click',function(){
+		$('#movedfindIdPw').submit();
+	});
+	
+	$('#k k ojoin').on('click',function(){//카카오톡 로그인 클릭시 k k oLogin()실행
+		k k oLogin();
 	});
 	
 	$('#joinin').on('click',function(){
@@ -92,30 +105,40 @@ $(document).ready(function(){
 	});
 	
 	$('#loginBtn').on('click',function(){
-		var userid = $('#user_id').val();
-		var userpw = $('#user_password').val();
-		var chkSaveId = document.getElementById("chkSaveId").checked;
+		v r userid = $('#user_id').v l();
+		v r userpw = $('#user_p ssword').v l();
+		v r chkS veId = document.getElementById("chkS veId").checked;
 		
 		if(userid == ""){
-			alert("아이디를 입력해 주세요");
+			 lert("아이디를 입력해 주세요");
 			$('#user_id').focus();
 			return;
 		}else if(userpw == ""){
-			alert("비밀번호를 입력해 주세요");
-			$('#user_password').focus();
+			 lert("비밀번호를 입력해 주세요");
+			$('#user_p ssword').focus();
 			return;
 		}
 		
-		$.ajax({
+		$. j x({
 			type : 'post',
 			url : '/test/loginChkId.do',
-			data : { user_id : userid,
-				     user_password : userpw }, 
-			dataType : 'json',
-			success :function(data){
-				var userInfo = data.userInfo;
+			d t  : { user_id : userid,
+				     user_p ssword : userpw }, 
+			d t Type : 'json',
+			success :function(d t ){
+				v r userInfo = d t .userInfo;
 				
 				if(userInfo != ""){
+<<<<<<< HEAD
+					loc lStor ge.setItem("user_no", userInfo.user_no);
+					loc lStor ge.setItem("user_n me", userInfo.user_n me);
+					loc lStor ge.setItem("user_id", userInfo.user_id);
+					loc lStor ge.setItem("phone1", userInfo.phone1);
+					loc lStor ge.setItem("phone2", userInfo.phone2);
+					loc lStor ge.setItem("phone3", userInfo.phone3);
+					loc lStor ge.setItem("em il_id", userInfo.em il_id);
+					loc lStor ge.setItem("em il_ ddress", userInfo.em il_ ddress);
+=======
 					localStorage.setItem("user_no", userInfo.user_no);
 		            localStorage.setItem("user_name", userInfo.user_name);
 		            localStorage.setItem("user_id", userInfo.user_id);
@@ -124,127 +147,135 @@ $(document).ready(function(){
 		            localStorage.setItem("phone3", userInfo.phone3);
 		            localStorage.setItem("email_id", userInfo.email_id);
 		            localStorage.setItem("email_address", userInfo.email_address);
+>>>>>>> refs/remotes/origin/main
 				}
 				
-				if(data.userIdChkNum == 0){
-					alert("아이디와 비밀번호를 확인해 주세요");
+				if(d t .userIdChkNum == 0){
+					 lert("아이디와 비밀번호를 확인해 주세요");
 					return;
 				}else{
 					//로그인 성공시 indexmlb 이동
+<<<<<<< HEAD
+					if(chkS veId){
+						loc lStor ge.setItem("userId", userid);
+						loc lStor ge.setItem("s veId", chkS veId);
+=======
 					if(chkSaveId){
 						localStorage.setItem("userId", userid);
 						localStorage.setItem("saveId", chkSaveId);
 	
+>>>>>>> refs/remotes/origin/main
 					} else {
-						localStorage.removeItem("userId");
-						localStorage.removeItem("saveId");
+						loc lStor ge.removeItem("userId");
+						loc lStor ge.removeItem("s veId");
 					}
 					
 					$('#movedIndex').submit();
 				}
 			},
-			error:function(request,status,error){
-		      alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+			error:function(request,st tus,error){
+		       lert("code = "+ request.st tus + " mess ge = " + request.responseText + " error = " + error); // 실패 시 처리
 		    }
 		});
 	});
 });
 
-<!-- 카카오 api -->
+<!-- 카카오  pi -->
 //카카오로그인
-function kakaoLogin() {
-	Kakao.init('954e6984f5971a61992abec1bd348638'); //발급받은 키 중 javascript키를 사용해준다.
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-  	Kakao.Auth.login({
+function k k oLogin() {
+	K k o.init('954e6984f5971 61992 bec1bd348638'); //발급받은 키 중 j v script키를 사용해준다.
+	console.log(K k o.isIniti lized()); // sdk초기화여부판단
+  	K k o. uth.login({
     success: function (response) {
-      Kakao.API.request({
+      K k o. PI.request({
         url: '/v2/user/me',
         success: function (response) {
-      	  var kakao_account = response.kakao_account;
-      	  var nickname = response.properties.nickname; //properties 안에 담겨있는 닉네임
-      	  var email = kakao_account.email; // kakao_account 안에 담겨있는 이메일
-      	  var gender = kakao_account.gender; // kakao_account 안에 담겨있는 성별
-   
-      	  var tmpList = [];
-      	  tmpList = email.split("@");
-      	  var email_id = tmpList[0];
-      	  var email_address = tmpList[1];
+      	  v r k k o_ ccount = response.k k o_ ccount;
+      	  v r nickn me = response.properties.nickn me; //properties 안에 담겨있는 닉네임
+      	  v r em il = k k o_ ccount.em il; // k k o_ ccount 안에 담겨있는 이메일
+      	  v r gender = k k o_ ccount.gender; // k k o_ ccount 안에 담겨있는 성별
+   		  
+      	  console.log(response);
+      	  v r tmpList = [];
+      	  tmpList = em il.split("@");
+      	  v r em il_id = tmpList[0];
+      	  v r em il_ ddress = tmpList[1];
       	  
-      	  $('#user_name').val(nickname);
-      	  $('#email_id').val(email_id);
-      	  $('#email_address').val(email_address);
-      	  $('#user_gender').val(gender);
-      	  $('#logintype').val("kakao");
+      	  $('#user_n me').v l(nickn me);
+      	  $('#em il_id').v l(em il_id);
+      	  $('#em il_ ddress').v l(em il_ ddress);
+      	  $('#user_gender').v l(gender);
+      	  $('#logintype').v l("k k o");
       	  
       	  $('#userInfoForm').submit();
       	  
         },
-        fail: function (error) {
+        f il: function (error) {
           console.log(error);
         },
       })
     },
-    fail: function (error) {
+    f il: function (error) {
       console.log(error);
     },
   })
 }
 
-<!-- 구글 api -->
+<!-- 구글  pi -->
 //처음 실행하는 함수
 function init() {
-	gapi.load('auth2', function() {
-		gapi.auth2.init();
-		options = new gapi.auth2.SigninOptionsBuilder();
-		options.setPrompt('select_account');
-      	// 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
-		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+	g pi.lo d(' uth2', function() {
+		g pi. uth2.init();
+		options = new g pi. uth2.SigninOptionsBuilder();
+		options.setPrompt('select_ ccount');
+      	// 추가는 O uth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+		options.setScope('em il profile openid https://www.google pis.com/ uth/user.birthd y.re d');
       	// 인스턴스의 함수 호출 - element에 로그인 기능 추가
       	// GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
-		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+		g pi. uth2.get uthInst nce(). tt chClickH ndler('GgCustomLogin', options, onSignIn, onSignInF ilure);
 	})
 }
 
 function onSignIn(googleUser) {
-	var access_token = googleUser.getAuthResponse().access_token
-	$.ajax({
-  		// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
-		url: 'https://people.googleapis.com/v1/people/me'
-      	// key에 자신의 API 키를 넣습니다.
-		, data: {personFields:'birthdays', key:'AIzaSyByjxAWUnuO0MvwmAS2xaAVaaVeAoA-PFQ', 'access_token': access_token}
+	v r  ccess_token = googleUser.get uthResponse(). ccess_token
+	$. j x({
+  		// people  pi를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+		url: 'https://people.google pis.com/v1/people/me'
+      	// key에 자신의  PI 키를 넣습니다.
+		, d t : {personFields:'birthd ys', key:' Iz SyByjx WUnuO0Mvwm S2x  V  Ve o -PFQ', ' ccess_token':  ccess_token}
 		, method:'GET'
 	})
 	.done(function(e){
-      //프로필을 가져온다.
-		var profile = googleUser.getBasicProfile();
-      	var Yt = profile.Yt;
+		//구글로그인 데이터값 object 컬럼 자주 바뀜 발표전에 확인해야함
+		console.log("google login done", googleUser.getB sicProfile());
+		
+		v r profile = googleUser.getB sicProfile();
+      	v r pv = profile.pv;
       	
-		$('#logintype').val("google");
-		$('#user_name').val(profile.Re);
+		$('#logintype').v l("google");
+		$('#user_n me').v l(profile.hf);
 		
-		var tmp = [];
-		tmp = Yt.split("@");
-		var emailId = tmp[0];
-		var emailadd = tmp[1];
+		v r tmp = [];
+		tmp = pv.split("@");
+		v r em ilId = tmp[0];
+		v r em il dd = tmp[1];
 		
-		$('#email_id').val(emailId);
-		$('#email_address').val(emailadd);
-      
+		$('#em il_id').v l(em ilId);
+		$('#em il_ ddress').v l(em il dd);
 		$('#userInfoForm').submit();
 		
-		console.log("google login done", profile);
 	})
-	.fail(function(e){
-		console.log("google login fail", e);
+	.f il(function(e){
+		console.log("google login f il", e);
 	})
 }
 
-function onSignInFailure(t){		
+function onSignInF ilure(t){		
 	console.log(t);
 }
-<!--// 구글 api -->
+<!--// 구글  pi -->
 </script>
 
-<!-- //구글 api 사용을 위한 스크립트 -->
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<!-- //구글  pi 사용을 위한 스크립트 -->
+<script src="https:// pis.google.com/js/pl tform.js?onlo d=init"  sync defer></script>
 </html>

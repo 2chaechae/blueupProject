@@ -34,19 +34,6 @@
 		AND COUPON_USABLE=TRUE
 		]]>
 	</select>
-
-	<select id="getCouponSelect" parameterType="hashMap"
-		resultType="couponVo">
-		SELECT
-		B.COUPON_NO,
-		A.USER_NO,
-		B.COUPON_NAME,
-		B.COUPON_DISCOUNT,
-		B.COUPON_TYPE
-		FROM USERS AS A, COUPON AS B
-		WHERE A.USER_NO = #{user_no }
-		AND B.COUPON_NO = #{coupon_no}
-	</select>
 	
 	<!-- 통계 상품 주문액 -->
 	<select id="getOrderAmount" parameterType="hashmap" resultType="orderamountvo">
